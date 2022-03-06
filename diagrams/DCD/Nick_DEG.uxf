@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>4</zoom_level>
+  <zoom_level>5</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>500</x>
-      <y>204</y>
-      <w>84</w>
-      <h>44</h>
+      <x>625</x>
+      <y>255</y>
+      <w>105</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>User{abstract}
 --
@@ -23,10 +23,10 @@ group=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>444</x>
-      <y>244</y>
-      <w>72</w>
-      <h>64</h>
+      <x>555</x>
+      <y>305</y>
+      <w>90</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 group=3</panel_attributes>
@@ -35,10 +35,10 @@ group=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>352</x>
-      <y>300</y>
-      <w>140</w>
-      <h>40</h>
+      <x>440</x>
+      <y>375</y>
+      <w>175</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes>Mechanic
 --
@@ -55,10 +55,10 @@ group=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>500</x>
-      <y>300</y>
-      <w>84</w>
-      <h>28</h>
+      <x>625</x>
+      <y>375</y>
+      <w>105</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>Manager
 --
@@ -72,15 +72,15 @@ group=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>592</x>
-      <y>300</y>
-      <w>84</w>
-      <h>28</h>
+      <x>740</x>
+      <y>375</y>
+      <w>120</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>GarageHolder
 --
 +GarageHolder(name:String)
-+orderNewCar()
++orderNewCar(carModel: CarModel)
 
 
 group=3</panel_attributes>
@@ -89,10 +89,10 @@ group=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>540</x>
-      <y>244</y>
-      <w>16</w>
-      <h>64</h>
+      <x>675</x>
+      <y>305</y>
+      <w>20</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 group=3</panel_attributes>
@@ -101,10 +101,10 @@ group=3</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>572</x>
-      <y>244</y>
-      <w>72</w>
-      <h>64</h>
+      <x>715</x>
+      <y>305</y>
+      <w>90</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 group=3</panel_attributes>
@@ -113,10 +113,10 @@ group=3</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>120</x>
-      <y>228</y>
-      <w>140</w>
-      <h>60</h>
+      <x>150</x>
+      <y>285</y>
+      <w>175</w>
+      <h>75</h>
     </coordinates>
     <panel_attributes>CarModel
 --
@@ -136,10 +136,10 @@ group=4</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>720</x>
+      <x>900</x>
       <y>0</y>
-      <w>120</w>
-      <h>64</h>
+      <w>150</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes>CarManufacturingCompany
 --
@@ -160,10 +160,10 @@ offeredCarModel: String)
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>144</x>
-      <y>304</y>
-      <w>84</w>
-      <h>68</h>
+      <x>180</x>
+      <y>380</y>
+      <w>105</w>
+      <h>85</h>
     </coordinates>
     <panel_attributes>CarModel
 Specification
@@ -184,9 +184,9 @@ group=4</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>448</y>
-      <w>76</w>
-      <h>28</h>
+      <y>560</y>
+      <w>95</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>Body
 --
@@ -199,10 +199,10 @@ group=4</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>80</x>
-      <y>448</y>
-      <w>76</w>
-      <h>28</h>
+      <x>100</x>
+      <y>560</y>
+      <w>95</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>Color
 --
@@ -216,9 +216,9 @@ group=4</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>484</y>
-      <w>76</w>
-      <h>32</h>
+      <y>605</y>
+      <w>95</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>Engine
 --
@@ -231,10 +231,10 @@ group=4</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>80</x>
-      <y>484</y>
-      <w>76</w>
-      <h>32</h>
+      <x>100</x>
+      <y>605</y>
+      <w>95</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>Gearbox
 --
@@ -247,10 +247,10 @@ group=4</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>160</x>
-      <y>448</y>
-      <w>76</w>
-      <h>28</h>
+      <x>200</x>
+      <y>560</y>
+      <w>95</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>Seats
 --
@@ -263,10 +263,10 @@ group=4</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>160</x>
-      <y>484</y>
-      <w>76</w>
-      <h>32</h>
+      <x>200</x>
+      <y>605</y>
+      <w>95</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>Airco
 --
@@ -279,10 +279,10 @@ group=4</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>244</x>
-      <y>448</y>
-      <w>84</w>
-      <h>28</h>
+      <x>305</x>
+      <y>560</y>
+      <w>105</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>Wheels
 --
@@ -295,10 +295,10 @@ group=4</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>144</x>
-      <y>392</y>
-      <w>84</w>
-      <h>44</h>
+      <x>180</x>
+      <y>490</y>
+      <w>105</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>Option{abstract}
 --
@@ -314,10 +314,10 @@ group=4</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>36</x>
-      <y>432</y>
-      <w>152</w>
-      <h>24</h>
+      <x>45</x>
+      <y>540</y>
+      <w>190</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 group=4</panel_attributes>
@@ -326,10 +326,10 @@ group=4</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>116</x>
-      <y>432</y>
-      <w>72</w>
-      <h>24</h>
+      <x>145</x>
+      <y>540</y>
+      <w>90</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 group=4</panel_attributes>
@@ -338,10 +338,10 @@ group=4</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>180</x>
-      <y>432</y>
-      <w>28</w>
-      <h>24</h>
+      <x>225</x>
+      <y>540</y>
+      <w>35</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 group=4</panel_attributes>
@@ -350,10 +350,10 @@ group=4</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>184</x>
-      <y>432</y>
-      <w>116</w>
-      <h>24</h>
+      <x>230</x>
+      <y>540</y>
+      <w>145</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 group=4</panel_attributes>
@@ -362,10 +362,10 @@ group=4</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>36</x>
-      <y>432</y>
-      <w>152</w>
-      <h>60</h>
+      <x>45</x>
+      <y>540</y>
+      <w>190</w>
+      <h>75</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 group=4</panel_attributes>
@@ -374,10 +374,10 @@ group=4</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>112</x>
-      <y>432</y>
-      <w>76</w>
-      <h>60</h>
+      <x>140</x>
+      <y>540</y>
+      <w>95</w>
+      <h>75</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 group=4</panel_attributes>
@@ -386,10 +386,10 @@ group=4</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>180</x>
-      <y>432</y>
-      <w>24</w>
-      <h>60</h>
+      <x>225</x>
+      <y>540</y>
+      <w>30</w>
+      <h>75</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 group=4</panel_attributes>
@@ -398,10 +398,10 @@ group=4</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>184</x>
-      <y>368</y>
-      <w>12</w>
-      <h>32</h>
+      <x>230</x>
+      <y>460</y>
+      <w>15</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 group=4</panel_attributes>
@@ -410,10 +410,10 @@ group=4</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>180</x>
-      <y>284</y>
-      <w>12</w>
-      <h>28</h>
+      <x>225</x>
+      <y>355</y>
+      <w>15</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 group=4</panel_attributes>
@@ -422,10 +422,10 @@ group=4</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>140</x>
-      <y>92</y>
-      <w>84</w>
-      <h>124</h>
+      <x>175</x>
+      <y>115</y>
+      <w>105</w>
+      <h>155</h>
     </coordinates>
     <panel_attributes>CarOrder
 --
@@ -446,16 +446,17 @@ group=4</panel_attributes>
 -updateProductionSchedule()
 +setIsCompleted(boolean)
 +getIsCompleted:boolean
+-scheduleOrder()
 group=4</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>180</x>
-      <y>212</y>
-      <w>12</w>
-      <h>24</h>
+      <x>225</x>
+      <y>265</y>
+      <w>15</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 group=4
@@ -465,16 +466,17 @@ group=4
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>844</x>
-      <y>192</y>
-      <w>120</w>
-      <h>84</h>
+      <x>1055</x>
+      <y>210</y>
+      <w>150</w>
+      <h>135</h>
     </coordinates>
     <panel_attributes>WorkStation{abstract}
 --
 -currentOrder: Order
 -assemblyLine: AssemblyLine
 -List&lt;AssemblyTask&gt; tasks
+-isFinished: boolean
 --
 +getCurrentOrder: Order
 +setCurrentOrder(order:Order)
@@ -483,6 +485,9 @@ group=4
 +WorkStation(currentOrder: Order, 
 assemblyLine: AssemblyLine)
 +getAssemblyTasks: List&lt;AssemblyTask&gt;
++setIsFinished(isFinished: boolean)
++getIsFinished
+-checkTasks()
 
 
 
@@ -492,10 +497,10 @@ group=5</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>712</x>
-      <y>432</y>
-      <w>148</w>
-      <h>144</h>
+      <x>890</x>
+      <y>540</y>
+      <w>185</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>AssemblyTask
 --
@@ -528,10 +533,10 @@ Option, Taskdefinition: String)
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>720</x>
-      <y>288</y>
-      <w>120</w>
-      <h>76</h>
+      <x>900</x>
+      <y>360</y>
+      <w>150</w>
+      <h>95</h>
     </coordinates>
     <panel_attributes>CarBodyPost
 --
@@ -554,10 +559,10 @@ group=5</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>844</x>
-      <y>288</y>
-      <w>120</w>
-      <h>76</h>
+      <x>1055</x>
+      <y>360</y>
+      <w>150</w>
+      <h>95</h>
     </coordinates>
     <panel_attributes>DrivetrainPost
 --
@@ -580,10 +585,10 @@ group=5</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>968</x>
-      <y>288</y>
-      <w>120</w>
-      <h>76</h>
+      <x>1210</x>
+      <y>360</y>
+      <w>150</w>
+      <h>95</h>
     </coordinates>
     <panel_attributes>AccessoriesPost
 --
@@ -606,10 +611,10 @@ group=5</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>776</x>
-      <y>272</y>
-      <w>132</w>
-      <h>24</h>
+      <x>970</x>
+      <y>340</y>
+      <w>165</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 group=5</panel_attributes>
@@ -618,10 +623,10 @@ group=5</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>896</x>
-      <y>272</y>
-      <w>136</w>
-      <h>24</h>
+      <x>1120</x>
+      <y>340</y>
+      <w>170</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 group=5</panel_attributes>
@@ -630,10 +635,10 @@ group=5</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>896</x>
-      <y>272</y>
-      <w>12</w>
-      <h>28</h>
+      <x>1120</x>
+      <y>340</y>
+      <w>15</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-
 group=5</panel_attributes>
@@ -642,10 +647,10 @@ group=5</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>720</x>
-      <y>80</y>
-      <w>120</w>
-      <h>76</h>
+      <x>900</x>
+      <y>100</y>
+      <w>150</w>
+      <h>105</h>
     </coordinates>
     <panel_attributes>AssemblyLine
 --
@@ -660,6 +665,7 @@ group=5</panel_attributes>
 company CarManufacturingCompany)
 +canMove()
 +move()
+-checkAllWorkStations()
 
 
 </panel_attributes>
@@ -668,21 +674,21 @@ company CarManufacturingCompany)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>780</x>
-      <y>152</y>
-      <w>132</w>
-      <h>48</h>
+      <x>975</x>
+      <y>200</y>
+      <w>165</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;310.0;100.0</additional_attributes>
+    <additional_attributes>10.0;10.0;310.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>776</x>
-      <y>272</y>
-      <w>132</w>
-      <h>168</h>
+      <x>970</x>
+      <y>340</y>
+      <w>165</w>
+      <h>210</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>310.0;10.0;10.0;400.0</additional_attributes>
@@ -690,10 +696,10 @@ company CarManufacturingCompany)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>772</x>
-      <y>60</y>
-      <w>12</w>
-      <h>28</h>
+      <x>965</x>
+      <y>75</y>
+      <w>15</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
@@ -701,21 +707,21 @@ company CarManufacturingCompany)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>540</x>
-      <y>156</y>
-      <w>64</w>
-      <h>152</h>
+      <x>675</x>
+      <y>225</y>
+      <w>80</w>
+      <h>160</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>140.0;10.0;10.0;360.0</additional_attributes>
+    <additional_attributes>140.0;10.0;10.0;300.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>180</x>
-      <y>212</y>
-      <w>464</w>
-      <h>96</h>
+      <x>225</x>
+      <y>265</y>
+      <w>580</w>
+      <h>120</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;1140.0;220.0</additional_attributes>
@@ -723,10 +729,10 @@ company CarManufacturingCompany)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>408</x>
-      <y>336</y>
-      <w>392</w>
-      <h>248</h>
+      <x>510</x>
+      <y>420</y>
+      <w>490</w>
+      <h>310</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>960.0;600.0;10.0;10.0</additional_attributes>
@@ -734,10 +740,10 @@ company CarManufacturingCompany)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>180</x>
-      <y>88</y>
-      <w>724</w>
-      <h>196</h>
+      <x>225</x>
+      <y>110</y>
+      <w>905</w>
+      <h>245</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>1790.0;470.0;10.0;10.0</additional_attributes>
@@ -745,16 +751,17 @@ company CarManufacturingCompany)
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>528</x>
-      <y>80</y>
-      <w>128</w>
-      <h>80</h>
+      <x>660</x>
+      <y>85</y>
+      <w>160</w>
+      <h>145</h>
     </coordinates>
     <panel_attributes>ProductionScheduler
 --
 -timeDeviation: int
 -time:Time
 -assemblyLine: AssemblyLine
+-orderQueue: PriorityQueue
 --
 -calcTimeDeviation()
 +getTimeDeviation: int
@@ -763,6 +770,10 @@ company CarManufacturingCompany)
 +setTime(time: Time)
 +getAssemblyLine: AssemblyLine
 +setAssemblyLine(assemblyLine: AssemblyLine)
++ShuffleOrders()
+-canShuffle()
++setEstCompletitionDate()
+-addOrderToQueue()
 
 
 
@@ -772,12 +783,23 @@ company CarManufacturingCompany)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>652</x>
-      <y>100</y>
-      <w>76</w>
-      <h>12</h>
+      <x>815</x>
+      <y>125</y>
+      <w>95</w>
+      <h>15</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;170.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>225</x>
+      <y>115</y>
+      <w>530</w>
+      <h>125</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>1040.0;230.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
