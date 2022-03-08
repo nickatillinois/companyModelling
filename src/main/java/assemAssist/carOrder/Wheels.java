@@ -1,4 +1,4 @@
-package assemAssist.option;
+package assemAssist.carOrder;
 
 /**
  * Class representing a wheels option.
