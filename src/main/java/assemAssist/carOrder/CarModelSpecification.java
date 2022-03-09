@@ -59,6 +59,7 @@ public class CarModelSpecification {
      *
      */
     public void setBody(Body body) {
+        if(body == null){throw new IllegalArgumentException("A body cannot be null.");}
         this.body = body;
     }
 
@@ -79,6 +80,7 @@ public class CarModelSpecification {
      *
      */
     public void setColor(Color color) {
+        if(color == null){throw new IllegalArgumentException("A color cannot be null.");}
         this.color = color;
     }
 
@@ -99,6 +101,7 @@ public class CarModelSpecification {
      *
      */
     public void setEngine(Engine engine) {
+        if(engine == null){throw new IllegalArgumentException("An engine cannot be null.");}
         this.engine = engine;
     }
 
@@ -120,6 +123,7 @@ public class CarModelSpecification {
      *
      */
     public void setGearbox(Gearbox gearbox) {
+        if(gearbox == null){throw new IllegalArgumentException("A gearbox cannot be null.");}
         this.gearbox = gearbox;
     }
 
@@ -140,6 +144,7 @@ public class CarModelSpecification {
      *
      */
     public void setSeats(Seats seats) {
+        if(seats == null){throw new IllegalArgumentException("Seats cannot be null.");}
         this.seats = seats;
     }
 
@@ -160,6 +165,7 @@ public class CarModelSpecification {
      *
      */
     public void setAirco(Airco airco) {
+        if(airco == null){throw new IllegalArgumentException("An airco cannot be null.");}
         this.airco = airco;
     }
 
@@ -181,6 +187,7 @@ public class CarModelSpecification {
      *
      */
     public void setWheels(Wheels wheels) {
+        if(wheels == null){throw new IllegalArgumentException("Wheels cannot be null.");}
         this.wheels = wheels;
     }
 
