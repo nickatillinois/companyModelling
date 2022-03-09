@@ -5,7 +5,7 @@ package assemAssist.carOrder;
  *
  * @author SWOP team 10
  */
-public class Body {
+public class Body extends Option{
 
     /**
      * The chosen option for this body.

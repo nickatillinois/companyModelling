@@ -5,7 +5,7 @@ package assemAssist.carOrder;
  *
  * @author SWOP team 10
  */
-public class Seats {
+public class Seats extends Option{
 
     /**
      * The chosen option for this seats.

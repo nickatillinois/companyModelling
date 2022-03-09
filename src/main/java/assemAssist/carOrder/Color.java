@@ -5,7 +5,7 @@ package assemAssist.carOrder;
  *
  * @author SWOP team 10
  */
-public class Color {
+public class Color extends Option{
 
     /**
      * The chosen option for this color.
