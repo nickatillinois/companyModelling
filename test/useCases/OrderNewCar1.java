@@ -22,7 +22,9 @@ public class OrderNewCar1 {
                 wheels);
         String modelName = "jaguar";
         CarModel carModel = new CarModel(modelName, cmf);
-        BodyEnum[] possibleValues = body.getBodyChoice().getDeclaringClass().getEnumConstants();
+        BodyEnum[] possibleValues = BodyEnum.values();
+
+
     }
 
 }
