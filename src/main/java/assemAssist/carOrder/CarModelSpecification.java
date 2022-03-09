@@ -1,6 +1,15 @@
 package assemAssist.carOrder;
 
+/**
+ * Class representing a car model specification.
+ *
+ * @author SWOP Team 10
+ */
 public class CarModelSpecification {
+
+    /**
+     * A string with the model Name of this car model.
+     */
     private Body body;
     private Color color;
     private Engine engine;

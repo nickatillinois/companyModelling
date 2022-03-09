@@ -2,6 +2,11 @@ package assemAssist.carOrder;
 
 import assemAssist.user.GarageHolder;
 
+/**
+ * Class representing a car order.
+ *
+ * @author SWOP Team 10
+ */
 public class CarOrder {
     private GarageHolder garageholder;
     private CarModel carModel;
