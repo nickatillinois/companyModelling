@@ -15,6 +15,21 @@ public class Body extends Option{
     /**
      * Creates a new body option.
      */
+
+    public BodyEnum getBodyChoice() {
+        return bodyChoice;
+    }
+
+    /**
+     * Sets the chosen option for this body to the given body.
+     *
+     * @param bodyChoice the chosen option for this body.
+     * @throws IllegalArgumentException | body is null
+     *
+     */
+    public void setBodyChoice(BodyEnum bodyChoice) {
+        this.bodyChoice = bodyChoice;
+    }
     public Body() {
         super();
     }
