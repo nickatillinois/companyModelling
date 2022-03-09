@@ -77,5 +77,6 @@ public class CarOrder {
         if(carModel == null){throw new IllegalArgumentException("A car model cannot be null.");}
         this.garageholder = garageHolder;
         this.carModel = carModel;
+        this.completed = false;
     }
 }
