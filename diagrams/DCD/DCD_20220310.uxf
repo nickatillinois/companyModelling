@@ -1,0 +1,752 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>14</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>504</x>
+      <y>2072</y>
+      <w>294</w>
+      <h>252</h>
+    </coordinates>
+    <panel_attributes>CarModel
+Specification
+--
+- body : Body
+- color : Color
+- engine : Engine
+- gearbox : Gearbox
+- seats : Seats
+- airco : Airco
+- wheels : Wheels
+- CarModelSpecification()
+
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>504</x>
+      <y>2380</y>
+      <w>294</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>Option {abstract}
+--
+- name : String
+--
++ user(name : String)
+
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>644</x>
+      <y>2310</y>
+      <w>42</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+group=1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>126</x>
+      <y>2520</y>
+      <w>532</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+group=1</panel_attributes>
+    <additional_attributes>360.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>406</x>
+      <y>2520</y>
+      <w>252</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+group=1</panel_attributes>
+    <additional_attributes>160.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>126</x>
+      <y>2520</y>
+      <w>532</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+group=1</panel_attributes>
+    <additional_attributes>360.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>392</x>
+      <y>2520</y>
+      <w>266</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+group=1</panel_attributes>
+    <additional_attributes>170.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>630</x>
+      <y>2520</y>
+      <w>84</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+group=1</panel_attributes>
+    <additional_attributes>10.0;10.0;40.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>630</x>
+      <y>2520</y>
+      <w>98</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+group=1</panel_attributes>
+    <additional_attributes>10.0;10.0;50.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>644</x>
+      <y>2520</y>
+      <w>406</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+group=1</panel_attributes>
+    <additional_attributes>10.0;10.0;270.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>854</x>
+      <y>2576</y>
+      <w>294</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>Wheels
+--
+- name : Enum{comfort, sports}
+--
++ wheels()
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>560</x>
+      <y>2576</y>
+      <w>266</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>Seats
+--
+- name : Enum{lb, lw, vg}
+--
++ seats()
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>280</x>
+      <y>2576</y>
+      <w>266</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>Color
+--
+- name : Enum{r,b,black,white}
+--
++ body()
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>2576</y>
+      <w>266</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>Body
+--
+- name : Enum{sedan, break}
+--
++ body()
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>2702</y>
+      <w>266</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>Engine
+--
+- name : Enum{stand, perf}
+--
++ engine()
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>280</x>
+      <y>2702</y>
+      <w>266</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>Gearbox
+--
+- name : Enum{manual, auto}
+--
++ gearbox()
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>560</x>
+      <y>2702</y>
+      <w>266</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>Airco
+--
+- name : Enum{manual, auto}
+--
++ airco()
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>476</x>
+      <y>1890</y>
+      <w>364</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>CarModel
+--
+- modelName : String
+- specification : CarModelSpecification
+--
++ CarModel()
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>644</x>
+      <y>2016</y>
+      <w>84</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>40.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>700</x>
+      <y>1834</y>
+      <w>112</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>60.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>630</x>
+      <y>1694</y>
+      <w>252</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>CarOrder
+--
+- client : GarageHolder
+- carModel : CarModel
+- isCompleted : boolean
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>546</x>
+      <y>1274</y>
+      <w>504</w>
+      <h>252</h>
+    </coordinates>
+    <panel_attributes>ProductionScheduler
+--
+- time : Time
+- assemblyLine : AssemblyLine
+- productionSchedule : List
+- queueOfCompletedOrders : PriorityQueue&lt;CarOrder&gt;
+--
++ advanceOrders()
++ setEstCompletitionDate()
+- addOrderToQProductionSchedule()
++ getOrdersFromGarageHolder()
++ simulateAdvanceAssemblyLine()
+
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>770</x>
+      <y>1512</y>
+      <w>42</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>952</x>
+      <y>966</y>
+      <w>420</w>
+      <h>196</h>
+    </coordinates>
+    <panel_attributes>CarManufacturingCompany
+--
+- name : String
+- offeredCarModels : List&lt;String&gt;
+--
++ getOrdersFromGarageHolder:  List&lt;String&gt;
++ orderNewCar(orderingForm : List&lt;String&gt;)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>812</x>
+      <y>1148</y>
+      <w>364</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>10.0;90.0;240.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1274</x>
+      <y>1330</y>
+      <w>378</w>
+      <h>238</h>
+    </coordinates>
+    <panel_attributes>AssemblyLine
+--
+- workStations : List&lt;WorkStation&gt;
+- company : CarManufacturingCompany
+--
+- canMove()
++ move()
+- checkAllWorkStations()
++ getTasksFromWorkstations()
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1036</x>
+      <y>1400</y>
+      <w>266</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>170.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>840</x>
+      <y>2128</y>
+      <w>420</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>CarBodyPost
+--
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1274</x>
+      <y>2128</y>
+      <w>420</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>DrivetrainPost
+--
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1708</x>
+      <y>2128</y>
+      <w>420</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>AccessoriesPost
+--
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1036</x>
+      <y>2030</y>
+      <w>462</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>310.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1456</x>
+      <y>2030</y>
+      <w>476</w>
+      <h>126</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;320.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1456</x>
+      <y>2030</y>
+      <w>42</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1274</x>
+      <y>1792</y>
+      <w>420</w>
+      <h>252</h>
+    </coordinates>
+    <panel_attributes>WorkStation{abstract}
+--
+- currentOrder : CarOrder
+- assemblyLine : AssemblyLine
+- List&lt;String&gt; tasks {abstract}
+--
++ getTasksAndStatus()
++ isFinished()
++ getPendingTasks()
++ getInformationFromTask(task) 
++ performAssemblyTask()
+- addAssemblyTasks() {abstract}</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1442</x>
+      <y>1554</y>
+      <w>56</w>
+      <h>266</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>10.0;170.0;20.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1316</x>
+      <y>378</y>
+      <w>294</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>User{abstract}
+--
+- name : String
+--
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1470</x>
+      <y>462</y>
+      <w>756</w>
+      <h>294</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;520.0;190.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1862</x>
+      <y>728</y>
+      <w>378</w>
+      <h>182</h>
+    </coordinates>
+    <panel_attributes>Mechanic
+--
+- currentWorkPost : WorkPost
+- currentAssemblyTask : AssemblyTask
+--
++ performAssemblyTask()
++ selectPost(workPost : WorkStation)
++ selectTask(task : AssemblyTask)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1218</x>
+      <y>686</y>
+      <w>504</w>
+      <h>182</h>
+    </coordinates>
+    <panel_attributes>GarageHolder
+--
++ orderNewCar()
++ getOverviewOfOrders()
++ selectModel(modelName : String).
++ completeOrderingForm(orderingForm : List&lt;String&gt;)
++ stopOverview()
++ cancelOrder()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>770</x>
+      <y>462</y>
+      <w>742</w>
+      <h>308</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>510.0;10.0;10.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1400</x>
+      <y>462</y>
+      <w>112</w>
+      <h>252</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>60.0;10.0;10.0;160.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>630</x>
+      <y>742</y>
+      <w>294</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>Manager
+--
++ advanceAssemblyLine()
++ confirmAdvance(minutes: int)
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1316</x>
+      <y>854</y>
+      <w>56</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>20.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>770</x>
+      <y>826</y>
+      <w>42</w>
+      <h>476</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;320.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1316</x>
+      <y>0</y>
+      <w>294</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>UI
+--
+
+--
+soort login systeem ofzo </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1316</x>
+      <y>182</y>
+      <w>294</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>Controller
+--
+
+--
+login naar oproep naar user
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1456</x>
+      <y>140</y>
+      <w>42</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;32.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1526</x>
+      <y>896</y>
+      <w>714</w>
+      <h>924</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;640.0;490.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1778</x>
+      <y>1834</y>
+      <w>518</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>AssemblyTask
+--
+- isCompleted : boolean
+- workStation : WorkStation
+- component : Option
+- taskDefinition : String
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1680</x>
+      <y>1904</y>
+      <w>126</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>70.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1078</x>
+      <y>294</y>
+      <w>266</w>
+      <h>700</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;480.0;170.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1456</x>
+      <y>322</y>
+      <w>42</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
