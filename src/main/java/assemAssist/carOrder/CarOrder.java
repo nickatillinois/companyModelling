@@ -1,6 +1,7 @@
 package assemAssist.carOrder;
 
 import assemAssist.user.GarageHolder;
+import java.time.LocalDateTime;
 
 /**
  * Class representing a car order.
@@ -8,6 +9,7 @@ import assemAssist.user.GarageHolder;
  * @author SWOP Team 10
  */
 public class CarOrder {
+    private LocalDateTime completionTime;
 
     /**
      * A GarageHolder object representing the client of this order.
@@ -54,7 +56,9 @@ public class CarOrder {
         this.carModel = carModel;
     }
 
-    public boolean isCompleted(){return this.completed;}
+    public boolean isCompleted(){
+        return this.completed;
+    }
 
     /**
      * Sets whether this order is completed to the given boolean.
@@ -62,7 +66,14 @@ public class CarOrder {
      * @param completed Boolean representing whether the order is completed by the car manufacturing company.
      *
      */
-    public void setCompleted(boolean completed){this.completed = completed;}
+    public void setCompleted(boolean completed){
+        this.completed = completed;
+        if (completed)
+            this.completionTime = LocalDateTime.now();
+    }
+    public LocalDateTime getCompletionTime(){
+        return completionTime;
+    }
 
     /**
      * Creates a new car model specification with a given body, color, engine, gearbox, seats, airco, wheels.
@@ -78,5 +89,6 @@ public class CarOrder {
         this.garageholder = garageHolder;
         this.carModel = carModel;
         this.completed = false;
+        this.completionTime = null;
     }
 }
