@@ -90,9 +90,6 @@ public abstract class WorkStation {
         tasks.add(task);
     }
 
-    // TODO implement
-    public void getTaskAndStatus(){}
-
     /**
      * Returns whether the tasks at this work station are all finished.
      *
@@ -106,13 +103,13 @@ public abstract class WorkStation {
     }
 
     /**
-     * Returns a list of the tasks at this work station that are not yet completed.
+     * Returns a list of names of the tasks at this work station that are not yet completed.
      */
-    public List<AssemblyTask> getPendingTasks() {
-        List<AssemblyTask> pendingTasks = new ArrayList<>();
+    public List<String> getPendingTasks() {
+        List<String> pendingTasks = new ArrayList<>();
         if ( this.isFinished() ) { return pendingTasks; }
         for (AssemblyTask task : tasks) {
-            if (!task.getIsCompleted()) { pendingTasks.add(task); }
+            if (!task.getIsCompleted()) { pendingTasks.add(task.getName()); }
         }
         return pendingTasks;
     }
@@ -130,6 +127,7 @@ public abstract class WorkStation {
         return task.getTaskDefinition();
     }
 
+    // TODO necessary?
     /**
      * Completes the given task in this work station.
      *
@@ -141,5 +139,8 @@ public abstract class WorkStation {
             throw new IllegalArgumentException("The given task needs to be part of this work station."); }
         task.setIsCompleted(true);
     }
+
+    // TODO implement or remove
+    public void getTasksAndStatus() {}
 
 }

@@ -18,12 +18,12 @@ public class CarBodyPost extends WorkStation{
         super(currentOrder, assemblyLine);
 
         //add task for body
-        this.addTask(new AssemblyTask(this,
+        this.addTask(new AssemblyTask("body",this,
                 currentOrder.getCarModel().getCarModelSpecification().getBody(),
                 "assemble " + currentOrder.getCarModel().getCarModelSpecification().getBody().toString()));
 
         //add task for paint
-        this.addTask(new AssemblyTask(this,
+        this.addTask(new AssemblyTask("paint",this,
                 currentOrder.getCarModel().getCarModelSpecification().getColor(),
                 "paint the car " + currentOrder.getCarModel().getCarModelSpecification().getColor().toString()));
 
