@@ -9,7 +9,7 @@
       <w>72</w>
       <h>88</h>
     </coordinates>
-    <panel_attributes>:Mechanic</panel_attributes>
+    <panel_attributes>: Mechanic</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -31,7 +31,7 @@
       <w>80</w>
       <h>24</h>
     </coordinates>
-    <panel_attributes>:Controller</panel_attributes>
+    <panel_attributes>: Controller</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -53,7 +53,7 @@
       <w>80</w>
       <h>24</h>
     </coordinates>
-    <panel_attributes>:CarMechanic</panel_attributes>
+    <panel_attributes>: CarMechanic</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -75,7 +75,7 @@
       <w>80</w>
       <h>24</h>
     </coordinates>
-    <panel_attributes>:WorkStation</panel_attributes>
+    <panel_attributes>: WorkStation</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -97,7 +97,7 @@
       <w>88</w>
       <h>24</h>
     </coordinates>
-    <panel_attributes>:AssemblyTask</panel_attributes>
+    <panel_attributes>: AssemblyTask</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -709,7 +709,7 @@ Stop</panel_attributes>
       <w>80</w>
       <h>24</h>
     </coordinates>
-    <panel_attributes>:UI</panel_attributes>
+    <panel_attributes>: UI</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -732,7 +732,7 @@ Stop</panel_attributes>
       <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-turn on system</panel_attributes>
+login</panel_attributes>
     <additional_attributes>190.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -842,7 +842,7 @@ view of tasks</panel_attributes>
     <panel_attributes>alt
 --
 halign=left
-[mechanic wants to continue]
+[mechanic wants to continue working]
 
 
 
