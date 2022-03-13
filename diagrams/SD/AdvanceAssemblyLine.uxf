@@ -165,7 +165,7 @@ lt=&lt;-</panel_attributes>
       <w>182</w>
       <h>28</h>
     </coordinates>
-    <panel_attributes>simulateAdvanceAssamblyLine()
+    <panel_attributes>simulateAdvanceAssemblyLine()
 lt=&lt;-</panel_attributes>
     <additional_attributes>240.0;20.0;10.0;20.0</additional_attributes>
   </element>
@@ -889,7 +889,7 @@ isCompleted()</panel_attributes>
       <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-system is done</panel_attributes>
+present goodbye message</panel_attributes>
     <additional_attributes>10.0;20.0;260.0;20.0</additional_attributes>
   </element>
   <element>

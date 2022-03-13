@@ -234,7 +234,7 @@ getPendingTasks()</panel_attributes>
       <w>224</w>
       <h>32</h>
     </coordinates>
-    <panel_attributes>getTask().isCompleted()
+    <panel_attributes>task.isCompleted()
 lt=&lt;-</panel_attributes>
     <additional_attributes>260.0;20.0;10.0;20.0</additional_attributes>
   </element>
@@ -246,7 +246,7 @@ lt=&lt;-</panel_attributes>
       <w>224</w>
       <h>32</h>
     </coordinates>
-    <panel_attributes>TaskDefinition
+    <panel_attributes>TaskName
 lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;20.0;260.0;20.0</additional_attributes>
   </element>
@@ -261,7 +261,7 @@ lt=&lt;-</panel_attributes>
     <panel_attributes>loop
 --
 halign=left
-[condition]</panel_attributes>
+[for all tasks at current work station]</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -400,7 +400,7 @@ getInformationFromTask(task)</panel_attributes>
       <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-getInformation()</panel_attributes>
+getTaskDefinition()</panel_attributes>
     <additional_attributes>260.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -422,7 +422,7 @@ getInformation()</panel_attributes>
       <w>224</w>
       <h>32</h>
     </coordinates>
-    <panel_attributes>TaskName,SequenceOfActions
+    <panel_attributes>TaskDefinition
 lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;20.0;260.0;20.0</additional_attributes>
   </element>
@@ -434,7 +434,7 @@ lt=&lt;-</panel_attributes>
       <w>216</w>
       <h>32</h>
     </coordinates>
-    <panel_attributes>TaskName,SequenceOfActions
+    <panel_attributes>TaskDefinition
 lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;20.0;250.0;20.0</additional_attributes>
   </element>
@@ -447,7 +447,7 @@ lt=&lt;-</panel_attributes>
       <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-TaskName,SequenceOfActions</panel_attributes>
+TaskDefinition</panel_attributes>
     <additional_attributes>10.0;20.0;230.0;20.0</additional_attributes>
   </element>
   <element>
@@ -456,11 +456,10 @@ TaskName,SequenceOfActions</panel_attributes>
       <x>464</x>
       <y>544</y>
       <w>176</w>
-      <h>40</h>
+      <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-TaskName
-SequenceOfActions</panel_attributes>
+TaskDefinition</panel_attributes>
     <additional_attributes>10.0;20.0;200.0;20.0</additional_attributes>
   </element>
   <element>
@@ -474,7 +473,9 @@ SequenceOfActions</panel_attributes>
     <panel_attributes>loop
 --
 halign=left
-[condition]</panel_attributes>
+
+[as long as there are tasks 
+left to be performed]</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -578,22 +579,24 @@ lt=&lt;-</panel_attributes>
       <w>224</w>
       <h>32</h>
     </coordinates>
-    <panel_attributes>getTask().isCompleted()
+    <panel_attributes>task.isCompleted()
 lt=&lt;-</panel_attributes>
     <additional_attributes>260.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>968</x>
-      <y>688</y>
+      <x>960</x>
+      <y>680</y>
       <w>304</w>
-      <h>120</h>
+      <h>128</h>
     </coordinates>
     <panel_attributes>loop
 --
 halign=left
-[condition]</panel_attributes>
+[for all tasks 
+at current 
+work station]</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -604,7 +607,7 @@ halign=left
       <w>224</w>
       <h>32</h>
     </coordinates>
-    <panel_attributes>TaskName,Status
+    <panel_attributes>TaskName
 lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;20.0;260.0;20.0</additional_attributes>
   </element>
@@ -698,7 +701,7 @@ Stop</panel_attributes>
       <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-</panel_attributes>
+GoodbyeMessage</panel_attributes>
     <additional_attributes>10.0;20.0;200.0;20.0</additional_attributes>
   </element>
   <element>
@@ -768,7 +771,7 @@ give workpost</panel_attributes>
       <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-show tasks</panel_attributes>
+show list of pending tasks</panel_attributes>
     <additional_attributes>10.0;20.0;190.0;20.0</additional_attributes>
   </element>
   <element>
@@ -803,7 +806,7 @@ select task</panel_attributes>
       <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-show task information</panel_attributes>
+show task definition</panel_attributes>
     <additional_attributes>10.0;20.0;190.0;20.0</additional_attributes>
   </element>
   <element>
@@ -828,7 +831,7 @@ indicate that task is done</panel_attributes>
     </coordinates>
     <panel_attributes>receive updated
 lt=&lt;-
-view of tasks</panel_attributes>
+view of pending tasks</panel_attributes>
     <additional_attributes>10.0;20.0;190.0;20.0</additional_attributes>
   </element>
   <element>
