@@ -2,7 +2,6 @@ package assemAssist.workStation;
 import assemAssist.AssemblyLine;
 import assemAssist.AssemblyTask;
 import assemAssist.carOrder.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,10 +12,8 @@ public abstract class WorkStation {
 
     /* A CarOrder object representing the current order at this work station. */
     private CarOrder currentOrder;
-
     /* An AssemblyLine object representing the assembly line this work station is on. */
     private AssemblyLine assemblyLine;
-
     /* A list of AssemblyTask objects representing this work station's list of tasks that need to be completed. */
     private List<AssemblyTask> tasks = new ArrayList<>();
 
@@ -25,11 +22,9 @@ public abstract class WorkStation {
      *
      * @param currentOrder the current order for this work station
      * @param assemblyLine the assembly line this work station is part of
-     * @throws IllegalArgumentException | currentOrder is null
-     *                                  | assemblyLine is null
+     * @throws IllegalArgumentException | assemblyLine is null
      */
     public WorkStation(CarOrder currentOrder, AssemblyLine assemblyLine){
-        if (currentOrder == null) { throw new IllegalArgumentException("The given order can't be null."); }
         if (assemblyLine == null) { throw new IllegalArgumentException("The given assembly line can't be null."); }
 
         this.currentOrder = currentOrder;
@@ -96,28 +91,55 @@ public abstract class WorkStation {
     }
 
     // TODO implement
-    public void getTaskAndStatus(){
+    public void getTaskAndStatus(){}
 
+    /**
+     * Returns whether the tasks at this work station are all finished.
+     *
+     * @return true if all tasks are finished
+     */
+    public boolean isFinished() {
+        for (AssemblyTask task : tasks) {
+            if (!task.getIsCompleted()) { return false; }
+        }
+        return true;
     }
 
-    // TODO implement
-    public void isFinished() {
-
+    /**
+     * Returns a list of the tasks at this work station that are not yet completed.
+     */
+    public List<AssemblyTask> getPendingTasks() {
+        List<AssemblyTask> pendingTasks = new ArrayList<>();
+        if ( this.isFinished() ) { return pendingTasks; }
+        for (AssemblyTask task : tasks) {
+            if (!task.getIsCompleted()) { pendingTasks.add(task); }
+        }
+        return pendingTasks;
     }
 
-    // TODO implement
-    public void getPendingTasks() {
+    /**
+     * Returns the given task's description.
+     *
+     * @param task the AssemblyTask of which the description is needed
+     * @return the description of the given AssemblyTask
+     * @throws IllegalArgumentException | task is null
+     */
+    public String getInformationFromTask(AssemblyTask task) {
+        if (task == null) { throw new IllegalArgumentException("The given task cannot be null."); }
 
+        return task.getTaskDefinition();
     }
 
-    // TODO implement
-    public void getInformationFromTask(AssemblyTask task) {
-
-    }
-
-    // TODO implement
-    public void performAssemblyTask() {
-
+    /**
+     * Completes the given task in this work station.
+     *
+     * @param task the task to be completed
+     */
+    public void performAssemblyTask(AssemblyTask task) {
+        if (task == null) { throw new IllegalArgumentException("The given task cannot be null."); }
+        if (!tasks.contains(task)) {
+            throw new IllegalArgumentException("The given task needs to be part of this work station."); }
+        task.setIsCompleted(true);
     }
 
 }

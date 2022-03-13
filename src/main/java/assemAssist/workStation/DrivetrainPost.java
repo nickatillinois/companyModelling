@@ -1,23 +1,31 @@
 package assemAssist.workStation;
-
 import assemAssist.AssemblyLine;
 import assemAssist.AssemblyTask;
 import assemAssist.carOrder.CarOrder;
 
+/* Class representing a drivetrain post on an assembly line. */
 public class DrivetrainPost extends WorkStation{
 
+    /**
+     * Creates a drivetrain post with the given order as current order, on the given assembly line.
+     *
+     * @param currentOrder the order currently in this post
+     * @param assemblyLine the assembly line this post is part of
+     *
+     * @throws IllegalArgumentException | assemblyLine is null
+     */
     public DrivetrainPost(CarOrder currentOrder, AssemblyLine assemblyLine) {
         super(currentOrder, assemblyLine);
 
         //add task for engine
         this.addTask(new AssemblyTask(this,
                 currentOrder.getCarModel().getCarModelSpecification().getEngine(),
-                new String("insert " + currentOrder.getCarModel().getCarModelSpecification().getEngine().toString())));
+                "insert " + currentOrder.getCarModel().getCarModelSpecification().getEngine().toString()));
 
         //add task for gearbox
         this.addTask(new AssemblyTask(this,
                 currentOrder.getCarModel().getCarModelSpecification().getGearbox(),
-                new String("insert " + currentOrder.getCarModel().getCarModelSpecification().getGearbox().toString())));
+                "insert " + currentOrder.getCarModel().getCarModelSpecification().getGearbox().toString()));
 
     }
 }
