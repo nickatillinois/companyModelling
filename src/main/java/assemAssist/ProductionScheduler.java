@@ -69,7 +69,8 @@ public ProductionScheduler(ArrayList<WorkStation> workStations,CarManufacturingC
         else
             simulatedState.set(0,null);
         if (simulatedState == nullList )
-            nextday();
+            simulatedState.set(0, getProductionSchedule().get(0));
+            assemblyLine.nextDay();
         return simulatedState;
     }
 
@@ -93,9 +94,6 @@ public ProductionScheduler(ArrayList<WorkStation> workStations,CarManufacturingC
     }
     public List<CarOrder> getOrdersFromGarageHolder(GarageHolder garageHolder){
         return productionSchedule.stream().filter(p->p.getGarageholder() == garageHolder).collect(Collectors.toList());
-    }
-    public void nextday(){
-        assemblyLine.nextDay();
     }
 
 }
