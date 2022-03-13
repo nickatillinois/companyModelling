@@ -34,13 +34,6 @@ public class AssemblyLine {
     public void setWorkStations(List<WorkStation> workStations) {
         this.workStations = workStations;
     }
-    public void nextDay(){
-        if(getHoursWorkedToday() <= ENDHOUR - STARTHOUR )
-            setMaxWorkingHoursToday(ENDHOUR - STARTHOUR);
-        else
-            setMaxWorkingHoursToday(ENDHOUR - STARTHOUR-((ENDHOUR - STARTHOUR) - getHoursWorkedToday()));
-        setHoursWorkedToday(0);
-    }
 
     public int getMaxWorkingHoursToday() {
         return maxWorkingHoursToday;
@@ -57,6 +50,15 @@ public class AssemblyLine {
     public void setHoursWorkedToday(int hoursWorkedToday) {
         this.hoursWorkedToday = hoursWorkedToday;
     }
+
+    public void nextDay(){
+        if(getHoursWorkedToday() <= ENDHOUR - STARTHOUR )
+            setMaxWorkingHoursToday(ENDHOUR - STARTHOUR);
+        else
+            setMaxWorkingHoursToday(ENDHOUR - STARTHOUR-((ENDHOUR - STARTHOUR) - getHoursWorkedToday()));
+        setHoursWorkedToday(0);
+    }
+
     public List<CarOrder> getCurrentState(){
         List<CarOrder> currentState  = new ArrayList<>(workStations.size());
         for (int i = 0 ; i < workStations.size(); i++){
@@ -65,6 +67,7 @@ public class AssemblyLine {
         return currentState;
 
     }
+
     public int remainWorkingTime(){
         return ENDHOUR-STARTHOUR-getHoursWorkedToday();
     }

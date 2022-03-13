@@ -279,9 +279,9 @@
     <id>UMLClass</id>
     <coordinates>
       <x>360</x>
-      <y>910</y>
+      <y>890</y>
       <w>360</w>
-      <h>190</h>
+      <h>210</h>
     </coordinates>
     <panel_attributes>ProductionScheduler
 --
@@ -289,12 +289,14 @@
 - productionSchedule : List
 - queueOfCompletedOrders : PriorityQueue&lt;CarOrder&gt;
 --
-+ advanceOrders()
-+ simulateAdvanceAssemblyLine()
-+ addOrderToProductionSchedule()
-+ getOrdersFromGarageHolder()
 + completedCarOrder()
 - addCompletedCarOrder()
++ simulateAdvanceAssemblyLine()
++ advanceOrders()
++ canNotMove()
++ getCurrentState()
++ addOrderToProductionSchedule()
++ getOrdersFromGarageHolder()
 
 
 
@@ -337,11 +339,11 @@
       <x>640</x>
       <y>830</y>
       <w>80</w>
-      <h>100</h>
+      <h>80</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 </panel_attributes>
-    <additional_attributes>10.0;80.0;60.0;10.0</additional_attributes>
+    <additional_attributes>10.0;60.0;60.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -349,17 +351,22 @@
       <x>880</x>
       <y>950</y>
       <w>270</w>
-      <h>140</h>
+      <h>200</h>
     </coordinates>
     <panel_attributes>AssemblyLine
 --
 - workStations : List&lt;WorkStation&gt;
 - company : CarManufacturingCompany
+- maxWorkingHoursToday
+- hoursWorkedToday
 --
-- canMove()
++ nextDay
++ getCurrentState()
++ remainWorkingTime()
++ canMove()
++ canNotMove()
 + move()
-- checkAllWorkStations()
-+ getTasksFromWorkstations()
+
 
 
 </panel_attributes>
@@ -479,13 +486,13 @@
     <id>Relation</id>
     <coordinates>
       <x>1010</x>
-      <y>1080</y>
+      <y>1140</y>
       <w>30</w>
-      <h>150</h>
+      <h>90</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 </panel_attributes>
-    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -604,10 +611,10 @@
       <x>520</x>
       <y>630</y>
       <w>30</w>
-      <h>300</h>
+      <h>280</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;280.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;260.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>

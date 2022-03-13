@@ -80,18 +80,22 @@ public ProductionScheduler(ArrayList<WorkStation> workStations,CarManufacturingC
             return null;
         return assemblyLine.move(productionSchedule.remove(0),timeBetweenToStates).subList(0,2) ;
     }
+
     public List<CarOrder> canNotMove(){
         if (assemblyLine.canMove())
             throw new IllegalCallerException("The caller can move!");
         return assemblyLine.canNotMove();
     }
+
     public List<CarOrder> getCurrentState(){
         return  assemblyLine.getCurrentState();
     }
+
     public void addOrderToProductionSchedule(CarOrder carOrder){
         productionSchedule.add(carOrder);
 
     }
+
     public List<CarOrder> getOrdersFromGarageHolder(GarageHolder garageHolder){
         return productionSchedule.stream().filter(p->p.getGarageholder() == garageHolder).collect(Collectors.toList());
     }
