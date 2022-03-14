@@ -16,6 +16,8 @@ public abstract class WorkStation {
     private AssemblyLine assemblyLine;
     /* A list of AssemblyTask objects representing this work station's list of tasks that need to be completed. */
     private List<AssemblyTask> tasks = new ArrayList<>();
+    /* A list of mechanics currently working on this work station. */
+    private List<String> mechanics;
 
     /**
      * Creates a work station with a given current order and a given assembly line.
@@ -100,6 +102,18 @@ public abstract class WorkStation {
             if (!task.getIsCompleted()) { return false; }
         }
         return true;
+    }
+
+    public void addMechanic(String mech) {
+        mechanics.add(mech);
+    }
+
+    public void removeMechanic(String mech) {
+        mechanics.remove(mech);
+    }
+
+    public List<String> getMechanics() {
+        return mechanics;
     }
 
     /**
