@@ -7,7 +7,7 @@ public class UI {
         Scanner in = new Scanner(System.in);
         int option;
 
-        System.out.println("Welcom to AssemAssist.");
+        System.out.println("Welcome to AssemAssist.");
         while (true){
             System.out.println("You can give here the number corresponding with the " +
                     "option you are: 1 Car Mechanic, 2 Garage Holder or 3 Manager?");
