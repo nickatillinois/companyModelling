@@ -402,34 +402,34 @@
     <id>Relation</id>
     <coordinates>
       <x>750</x>
-      <y>1160</y>
+      <y>1190</y>
       <w>300</w>
-      <h>100</h>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>280.0;10.0;10.0;80.0</additional_attributes>
+    <additional_attributes>280.0;10.0;10.0;50.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>1020</x>
-      <y>1160</y>
+      <y>1190</y>
       <w>290</w>
-      <h>100</h>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;270.0;80.0</additional_attributes>
+    <additional_attributes>10.0;10.0;270.0;50.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>1020</x>
-      <y>1160</y>
+      <y>1190</y>
       <w>30</w>
-      <h>100</h>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -437,7 +437,7 @@
       <x>870</x>
       <y>980</y>
       <w>320</w>
-      <h>190</h>
+      <h>220</h>
     </coordinates>
     <panel_attributes>WorkStation {abstract}
 --
@@ -450,7 +450,9 @@
 + getPendingTasks()
 + getInformationFromTask(task : AssemblyTask) 
 + performAssemblyTask(task : AssemblyTask)
-+ addTask(task : AssemblyTask)</panel_attributes>
++ addTask(task : AssemblyTask)
++ addMechanic(mechanic : String)
++ removeMechanic(mechanic : String)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
