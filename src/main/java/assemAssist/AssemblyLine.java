@@ -8,23 +8,13 @@ import java.util.List;
 
 public class AssemblyLine {
     private List<WorkStation> workStations;
-    private CarManufacturingCompany carManufacturingCompany;
     private int maxWorkingHoursToday = 22-6;
     private int hoursWorkedToday = 0;
     private final int STARTHOUR = 6;
     private final int ENDHOUR = 22;
 
-    public AssemblyLine(ArrayList<WorkStation> workStations, CarManufacturingCompany carManufacturingCompany){
-        this.carManufacturingCompany = carManufacturingCompany;
+    public AssemblyLine(ArrayList<WorkStation> workStations){
         this.workStations = workStations;
-    }
-
-    public CarManufacturingCompany getCarManufacturingCompany() {
-        return carManufacturingCompany;
-    }
-
-    public void setCarManufacturingCompany(CarManufacturingCompany carManufacturingCompany) {
-        this.carManufacturingCompany = carManufacturingCompany;
     }
 
     public List<WorkStation> getWorkStations() {

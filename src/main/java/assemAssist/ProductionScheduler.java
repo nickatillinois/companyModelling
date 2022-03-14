@@ -14,10 +14,10 @@ private AssemblyLine assemblyLine;
 private List<CarOrder>  productionSchedule;
 private PriorityQueue<CarOrder> completedOrders;
 
-public ProductionScheduler(ArrayList<WorkStation> workStations,CarManufacturingCompany carManufacturingCompany){
+public ProductionScheduler(ArrayList<WorkStation> workStations){
     productionSchedule = new ArrayList<>();
     completedOrders = new PriorityQueue<>();
-    this.assemblyLine = new AssemblyLine(workStations,carManufacturingCompany);
+    this.assemblyLine = new AssemblyLine(workStations);
 }
 
     public AssemblyLine getAssemblyLine(){
