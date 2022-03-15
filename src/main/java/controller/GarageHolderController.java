@@ -22,12 +22,12 @@ public class GarageHolderController {
         return availableModels;
     }
 
-    public List<String> selectModel(String model) {
+    public List<String> selectModel(String carModel) {
         List<String> orderingForm = new ArrayList<>();
-        if (model.equals("Jaguar")) {
+        if (carModel.equals("Jaguar")) {
             orderingForm.add("Color: red, blue");
             orderingForm.add("Seats: 2, 4");
-        } else if (model.equals("Jeep")) {
+        } else if (carModel.equals("Jeep")) {
             orderingForm.add("Color: green, blue");
             orderingForm.add("Seats: 4, 6");
         }
