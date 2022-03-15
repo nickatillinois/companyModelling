@@ -3,7 +3,8 @@ package ui;
 import java.util.Scanner;
 
 public class UI {
-    public UI(){
+    public UI(GarageHolderUI garageHolderUI){
+    //public UI(GarageHolderUI garageHolderUI, ManagerUI managerUI, MechanicUI mechanicUI){
         Scanner in = new Scanner(System.in);
         int option;
 
@@ -15,11 +16,11 @@ public class UI {
             if (option == 1)
                 carMechanic();
             else if (option == 2)
-                garageHolder();
+                garageHolderUI.startUI(in);
             else if (option == 3)
                 manager();
             else
-                System.out.println("The option you choose was not valid, please try again.");
+                System.out.println("The option you chose was not valid, please try again.");
 
         }
     }
