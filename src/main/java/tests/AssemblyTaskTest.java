@@ -1,29 +1,31 @@
 package tests;
 
+import org.junit.jupiter.api.Test;
+
 class AssemblyTaskTest {
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getIsCompleted() {
         assert(true);
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void setIsCompleted() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getComponent() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getWorkStation() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getTaskDefinition() {
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void getName() {
     }
 }
