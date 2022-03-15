@@ -7,12 +7,20 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.stream.Collectors;
 
+/**
+ * Class representing a production schedule.
+ */
 public class ProductionScheduler {
 private AssemblyLine assemblyLine;
 private List<CarOrder>  productionSchedule;
 private PriorityQueue<CarOrder> completedOrders;
 private String manager;
 
+    /**
+     * Create a new production schedule af a single assembly line that can be managed by the manager
+     * @param manager
+     * @param assemblyLine
+     */
 public ProductionScheduler(String manager, AssemblyLine assemblyLine){
     productionSchedule = new ArrayList<>();
     completedOrders = new PriorityQueue<>();
@@ -20,14 +28,26 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
     setManager(manager);
 }
 
-
+    /**
+     * This function return the manager that can manage the assembly line.
+     * @return manager
+     */
     public String getManager() {
         return manager;
     }
 
+    /**
+     * Set the manager of the product schedule to the parameter.
+     * @param manager
+     */
     public void setManager(String manager) {
         this.manager = manager;
     }
+
+    /**
+     * This function returns the assembly line on whits this production schedule runs.
+     * @return assemblyLine
+     */
     public AssemblyLine getAssemblyLine(){
         return this.assemblyLine;
     }
