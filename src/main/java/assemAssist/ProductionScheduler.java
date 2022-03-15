@@ -13,13 +13,23 @@ public class ProductionScheduler {
 private AssemblyLine assemblyLine;
 private List<CarOrder>  productionSchedule;
 private PriorityQueue<CarOrder> completedOrders;
+private String manager;
 
-public ProductionScheduler(ArrayList<WorkStation> workStations){
+public ProductionScheduler(String manager, AssemblyLine assemblyLine){
     productionSchedule = new ArrayList<>();
     completedOrders = new PriorityQueue<>();
-    this.assemblyLine = new AssemblyLine(workStations);
+    this.assemblyLine = assemblyLine;
+    setManager(manager);
 }
 
+
+    public String getManager() {
+        return manager;
+    }
+
+    public void setManager(String manager) {
+        this.manager = manager;
+    }
     public AssemblyLine getAssemblyLine(){
         return this.assemblyLine;
     }
