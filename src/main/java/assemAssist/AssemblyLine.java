@@ -65,6 +65,8 @@ public class AssemblyLine {
     public boolean canMove(){
         boolean canMove = true;
         for (WorkStation workStation : workStations){
+            System.out.println(workStation + " isFinished " + workStation.isFinished());
+            System.out.println(workStation.getTasks());
             if(!workStation.isFinished()){
                 canMove = false;
             }
@@ -84,15 +86,17 @@ public class AssemblyLine {
     public List<CarOrder> move(CarOrder carOrder, int timeBetweenToStates){
         setHoursWorkedToday(getHoursWorkedToday() + timeBetweenToStates);
         CarOrder finischedCar = workStations.get(2).getCurrentOrder();
-        finischedCar.setCompleted(true);
+        if (finischedCar !=  null) {
+            finischedCar.setCompleted(true);
+        }
         workStations.get(2).setCurrentOrder(workStations.get(1).getCurrentOrder());
         workStations.get(1).setCurrentOrder(workStations.get(0).getCurrentOrder());
         workStations.get(0).setCurrentOrder(carOrder);
         List<CarOrder> newStateAndFiniched = new ArrayList<>(4);
-        newStateAndFiniched.set(0,carOrder);
-        newStateAndFiniched.set(1,workStations.get(1).getCurrentOrder());
-        newStateAndFiniched.set(2,workStations.get(2).getCurrentOrder());
-        newStateAndFiniched.set(3,finischedCar);
+        newStateAndFiniched.add(carOrder);
+        newStateAndFiniched.add(workStations.get(1).getCurrentOrder());
+        newStateAndFiniched.add(workStations.get(2).getCurrentOrder());
+        newStateAndFiniched.add(finischedCar);
         return newStateAndFiniched;
     }
 

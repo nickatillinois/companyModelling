@@ -39,10 +39,8 @@ public abstract class WorkStation {
      * Sets the current order to the new given order.
      *
      * @param newOrder new current order
-     * @throws IllegalArgumentException | newOrder is null
      */
     public void setCurrentOrder(CarOrder newOrder) {
-        if (newOrder == null) { throw new IllegalArgumentException("The given order can't be null."); }
 
         this.currentOrder = newOrder;
     }
@@ -71,7 +69,9 @@ public abstract class WorkStation {
      */
     public boolean isFinished() {
         for (AssemblyTask task : tasks) {
-            if (!task.getIsCompleted()) { return false; }
+            if (!task.getIsCompleted()) {
+                return false;
+            }
         }
         return true;
     }

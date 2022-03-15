@@ -15,7 +15,6 @@ public class AccessoriesPost extends WorkStation{
         super(currentOrder);
 
         //add task for seats
-        if(getCurrentOrder() != null) {
             this.addTask(new AssemblyTask("seats", this,
                     currentOrder.getCarModel().getCarModelSpecification().getSeats(),
                     "install " + currentOrder.getCarModel().getCarModelSpecification().getSeats().toString()));
@@ -29,6 +28,6 @@ public class AccessoriesPost extends WorkStation{
             this.addTask(new AssemblyTask("wheels", this,
                     currentOrder.getCarModel().getCarModelSpecification().getWheels(),
                     "mount " + currentOrder.getCarModel().getCarModelSpecification().getWheels().toString()));
-        }
+
     }
 }

@@ -13,7 +13,6 @@ public class CarBodyPost extends WorkStation{
      */
     public CarBodyPost(CarOrder currentOrder) {
         super(currentOrder);
-        if(getCurrentOrder() != null) {
             //add task for body
             this.addTask(new AssemblyTask("body", this,
                     currentOrder.getCarModel().getCarModelSpecification().getBody(),
@@ -23,7 +22,7 @@ public class CarBodyPost extends WorkStation{
             this.addTask(new AssemblyTask("paint", this,
                     currentOrder.getCarModel().getCarModelSpecification().getColor(),
                     "paint the car " + currentOrder.getCarModel().getCarModelSpecification().getColor().toString()));
-        }
+
     }
 
 

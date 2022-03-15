@@ -13,7 +13,6 @@ public class DrivetrainPost extends WorkStation{
      */
     public DrivetrainPost(CarOrder currentOrder) {
         super(currentOrder);
-        if(getCurrentOrder() != null) {
             //add task for engine
             this.addTask(new AssemblyTask("engine", this,
                     currentOrder.getCarModel().getCarModelSpecification().getEngine(),
@@ -23,6 +22,6 @@ public class DrivetrainPost extends WorkStation{
             this.addTask(new AssemblyTask("gearbox", this,
                     currentOrder.getCarModel().getCarModelSpecification().getGearbox(),
                     "insert " + currentOrder.getCarModel().getCarModelSpecification().getGearbox().toString()));
-        }
+
     }
 }
