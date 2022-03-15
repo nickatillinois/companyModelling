@@ -48,7 +48,7 @@ public class GarageHolderUI {
 
         List<String> orderingForm;
         while (true) {
-            System.out.print("Choose the car model you want to order:");
+            System.out.println("Choose the car model you want to order:");
             String model = in.next();
             if (availableModels.contains(model)) {
                 System.out.println("The available options for this model are:");
@@ -61,30 +61,41 @@ public class GarageHolderUI {
                 System.out.println("This is not a valid model. Try again.");
             }
         }
-        System.out.println("-------------");
-
-        System.out.println("Select the options for you car order:");
-        List<String> carOptions = new ArrayList<>();
-        for (int i = 0; i < orderingForm.size(); i++) {
-            while(true) {
-                String[] optionsAndName = orderingForm.get(i).split(": ");
-                String optionName = optionsAndName[0];
-                String[] availableOptions = optionsAndName[1].split(", ");
-                System.out.println("Your choice for the " + optionName.toLowerCase() + " is:");
-                String option = in.next();
-                if (Arrays.asList(availableOptions).contains(option)) {
-                    carOptions.add(option);
-                    break;
-                } else {
-                    System.out.println("This is not a valid option for the " + optionName.toLowerCase() + ". Try again.");
+        while(true) {
+            System.out.println("-------------");
+            System.out.println("Press \'q\' to cancel ordering, press \'s\' to select the options for your carorder");
+            String choice = in.next();
+            if (choice.equals("q")) {
+                System.out.println("Canceling your order.");
+                break;
+            } else if (choice.equals("s")) {
+                System.out.println("Select the options for you car order:");
+                List<String> carOptions = new ArrayList<>();
+                for (int i = 0; i < orderingForm.size(); i++) {
+                    while (true) {
+                        String[] optionsAndName = orderingForm.get(i).split(": ");
+                        String optionName = optionsAndName[0];
+                        String[] availableOptions = optionsAndName[1].split(", ");
+                        System.out.println("Your choice for the " + optionName.toLowerCase() + " is:");
+                        String option = in.next();
+                        if (Arrays.asList(availableOptions).contains(option)) {
+                            carOptions.add(option);
+                            break;
+                        } else {
+                            System.out.println("This is not a valid option for the " + optionName.toLowerCase() + ". Try again.");
+                        }
+                    }
                 }
+
+                LocalDate estimatedCompletionDate = garageHolderController.completeOrderingForm(carOptions);
+                System.out.println("You have successfully ordered a car! The estimated completion date is " + estimatedCompletionDate);
+                break;
+            } else {
+                System.out.println("This is not a valid option. Try again.");
             }
         }
 
-        LocalDate estimatedCompletionDate = garageHolderController.completeOrderingForm(carOptions);
-        System.out.println("The estimated completion date is " + estimatedCompletionDate);
-
-
+        System.out.println("-------------");
         System.out.println("Leaving the Garage Holder View");
         System.out.println("-------------");
     }
