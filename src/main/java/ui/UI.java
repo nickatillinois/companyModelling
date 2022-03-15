@@ -3,7 +3,7 @@ package ui;
 import java.util.Scanner;
 
 public class UI {
-    public UI(GarageHolderUI garageHolderUI){
+    public UI(GarageHolderUI garageHolderUI, ManagerUI managerUI){
     //public UI(GarageHolderUI garageHolderUI, ManagerUI managerUI, MechanicUI mechanicUI){
         Scanner in = new Scanner(System.in);
 
@@ -17,7 +17,7 @@ public class UI {
             else if (option.equals("2"))
                 garageHolderUI.startUI(in);
             else if (option.equals("3"))
-                manager();
+                managerUI.startUI(in);
             else
                 System.out.println("The option you chose was not valid, please try again.");
 
@@ -29,15 +29,4 @@ public class UI {
 
     }
 
-    private void garageHolder(){
-        // hier bepaalde routine van de controller oproepen en bepaalde vragen stellen aan de user
-        System.out.println("You are logged out.");
-
-    }
-
-    private void manager(){
-        // hier bepaalde routine van de controller oproepen en bepaalde vragen stellen aan de user
-        System.out.println("You are logged out.");
-
-    }
 }
