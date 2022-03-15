@@ -10,12 +10,9 @@ public class CarBodyPost extends WorkStation{
      * Creates a car body post with the given order as current order, on the given assembly line.
      *
      * @param currentOrder the order currently in this post
-     * @param assemblyLine the assembly line this post is part of
-     *
-     * @throws IllegalArgumentException | assemblyLine is null
      */
-    public CarBodyPost(CarOrder currentOrder, AssemblyLine assemblyLine) {
-        super(currentOrder, assemblyLine);
+    public CarBodyPost(CarOrder currentOrder) {
+        super(currentOrder);
 
         //add task for body
         this.addTask(new AssemblyTask("body",this,

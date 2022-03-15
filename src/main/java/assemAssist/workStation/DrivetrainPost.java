@@ -10,12 +10,9 @@ public class DrivetrainPost extends WorkStation{
      * Creates a drivetrain post with the given order as current order, on the given assembly line.
      *
      * @param currentOrder the order currently in this post
-     * @param assemblyLine the assembly line this post is part of
-     *
-     * @throws IllegalArgumentException | assemblyLine is null
      */
-    public DrivetrainPost(CarOrder currentOrder, AssemblyLine assemblyLine) {
-        super(currentOrder, assemblyLine);
+    public DrivetrainPost(CarOrder currentOrder) {
+        super(currentOrder);
 
         //add task for engine
         this.addTask(new AssemblyTask("engine",this,

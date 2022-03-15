@@ -10,12 +10,9 @@ public class AccessoriesPost extends WorkStation{
      * Creates an accessory post with the given order as current order, on the given assembly line.
      *
      * @param currentOrder the order currently in this post
-     * @param assemblyLine the assembly line this post is part of
-     *
-     * @throws IllegalArgumentException | assemblyLine is null
      */
-    public AccessoriesPost(CarOrder currentOrder, AssemblyLine assemblyLine) {
-        super(currentOrder, assemblyLine);
+    public AccessoriesPost(CarOrder currentOrder) {
+        super(currentOrder);
 
         //add task for seats
         this.addTask(new AssemblyTask("seats", this,
