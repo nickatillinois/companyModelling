@@ -52,7 +52,7 @@ public class AssemblyLine {
     public List<CarOrder> getCurrentState(){
         List<CarOrder> currentState  = new ArrayList<>(workStations.size());
         for (int i = 0 ; i < workStations.size(); i++){
-            currentState.set(i, workStations.get(i).getCurrentOrder());
+            currentState.add( workStations.get(i).getCurrentOrder());
         }
         return currentState;
 

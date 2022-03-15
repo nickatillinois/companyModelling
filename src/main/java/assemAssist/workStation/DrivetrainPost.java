@@ -13,16 +13,16 @@ public class DrivetrainPost extends WorkStation{
      */
     public DrivetrainPost(CarOrder currentOrder) {
         super(currentOrder);
+        if(getCurrentOrder() != null) {
+            //add task for engine
+            this.addTask(new AssemblyTask("engine", this,
+                    currentOrder.getCarModel().getCarModelSpecification().getEngine(),
+                    "insert " + currentOrder.getCarModel().getCarModelSpecification().getEngine().toString()));
 
-        //add task for engine
-        this.addTask(new AssemblyTask("engine",this,
-                currentOrder.getCarModel().getCarModelSpecification().getEngine(),
-                "insert " + currentOrder.getCarModel().getCarModelSpecification().getEngine().toString()));
-
-        //add task for gearbox
-        this.addTask(new AssemblyTask("gearbox",this,
-                currentOrder.getCarModel().getCarModelSpecification().getGearbox(),
-                "insert " + currentOrder.getCarModel().getCarModelSpecification().getGearbox().toString()));
-
+            //add task for gearbox
+            this.addTask(new AssemblyTask("gearbox", this,
+                    currentOrder.getCarModel().getCarModelSpecification().getGearbox(),
+                    "insert " + currentOrder.getCarModel().getCarModelSpecification().getGearbox().toString()));
+        }
     }
 }

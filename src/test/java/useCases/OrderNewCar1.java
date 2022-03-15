@@ -4,6 +4,8 @@ import assemAssist.carOrder.*;
 import assemAssist.user.GarageHolder;
 import org.junit.jupiter.api.Test;
 
+import static org.testng.AssertJUnit.assertEquals;
+
 public class OrderNewCar1 {
 
     private CarOrder carOrder;
@@ -25,6 +27,9 @@ public class OrderNewCar1 {
         BodyEnum[] possibleValues = BodyEnum.values();
 
 
+
     }
+
+
 
 }

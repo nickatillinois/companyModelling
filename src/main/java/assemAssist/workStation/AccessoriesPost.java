@@ -15,19 +15,20 @@ public class AccessoriesPost extends WorkStation{
         super(currentOrder);
 
         //add task for seats
-        this.addTask(new AssemblyTask("seats", this,
-                currentOrder.getCarModel().getCarModelSpecification().getSeats(),
-                "install " + currentOrder.getCarModel().getCarModelSpecification().getSeats().toString()));
+        if(getCurrentOrder() != null) {
+            this.addTask(new AssemblyTask("seats", this,
+                    currentOrder.getCarModel().getCarModelSpecification().getSeats(),
+                    "install " + currentOrder.getCarModel().getCarModelSpecification().getSeats().toString()));
 
-        //add task for airco
-        this.addTask(new AssemblyTask("airco", this,
-                currentOrder.getCarModel().getCarModelSpecification().getAirco(),
-                "install " + currentOrder.getCarModel().getCarModelSpecification().getAirco().toString()));
+            //add task for airco
+            this.addTask(new AssemblyTask("airco", this,
+                    currentOrder.getCarModel().getCarModelSpecification().getAirco(),
+                    "install " + currentOrder.getCarModel().getCarModelSpecification().getAirco().toString()));
 
-        //add task for wheels
-        this.addTask(new AssemblyTask("wheels", this,
-                currentOrder.getCarModel().getCarModelSpecification().getWheels(),
-                "mount " + currentOrder.getCarModel().getCarModelSpecification().getWheels().toString()));
-
+            //add task for wheels
+            this.addTask(new AssemblyTask("wheels", this,
+                    currentOrder.getCarModel().getCarModelSpecification().getWheels(),
+                    "mount " + currentOrder.getCarModel().getCarModelSpecification().getWheels().toString()));
+        }
     }
 }
