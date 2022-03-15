@@ -1,8 +1,11 @@
 package ui;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import controller.GarageHolderController;
+import java.time.LocalDate;
 
 public class GarageHolderUI {
     private GarageHolderController garageHolderController;
@@ -46,7 +49,7 @@ public class GarageHolderUI {
         List<String> orderingForm;
         while (true) {
             System.out.print("Choose the car model you want to order:");
-            String model = in.nextLine();
+            String model = in.next();
             if (availableModels.contains(model)) {
                 System.out.println("The available options for this model are:");
                 orderingForm = garageHolderController.selectModel(model);
@@ -55,9 +58,32 @@ public class GarageHolderUI {
                 }
                 break;
             } else {
-                System.out.println("This is not a valid option. Try again.");
+                System.out.println("This is not a valid model. Try again.");
             }
         }
+        System.out.println("-------------");
+
+        System.out.println("Select the options for you car order:");
+        List<String> carOptions = new ArrayList<>();
+        for (int i = 0; i < orderingForm.size(); i++) {
+            while(true) {
+                String[] optionsAndName = orderingForm.get(i).split(": ");
+                String optionName = optionsAndName[0];
+                String[] availableOptions = optionsAndName[1].split(", ");
+                System.out.println("Your choice for the " + optionName.toLowerCase() + " is:");
+                String option = in.next();
+                if (Arrays.asList(availableOptions).contains(option)) {
+                    carOptions.add(option);
+                    break;
+                } else {
+                    System.out.println("This is not a valid option for the " + optionName.toLowerCase() + ". Try again.");
+                }
+            }
+        }
+
+        LocalDate estimatedCompletionDate = garageHolderController.completeOrderingForm(carOptions);
+        System.out.println("The estimated completion date is " + estimatedCompletionDate);
+
 
         System.out.println("Leaving the Garage Holder View");
         System.out.println("-------------");

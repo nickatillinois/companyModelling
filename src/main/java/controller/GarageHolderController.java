@@ -2,6 +2,7 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDate;
 
 public class GarageHolderController {
 
@@ -23,13 +24,17 @@ public class GarageHolderController {
 
     public List<String> selectModel(String model) {
         List<String> orderingForm = new ArrayList<>();
-        if (model == "Jaguar") {
+        if (model.equals("Jaguar")) {
             orderingForm.add("Color: red, blue");
             orderingForm.add("Seats: 2, 4");
-        } else if (model == "Jeep") {
+        } else if (model.equals("Jeep")) {
             orderingForm.add("Color: green, blue");
             orderingForm.add("Seats: 4, 6");
         }
         return orderingForm;
+    }
+
+    public LocalDate completeOrderingForm(List<String> carOptions) {
+        return LocalDate.now();
     }
 }
