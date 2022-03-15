@@ -1,8 +1,6 @@
 package assemAssist;
 
 import assemAssist.carOrder.CarOrder;
-import assemAssist.user.GarageHolder;
-import assemAssist.workStation.WorkStation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -106,8 +104,11 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
 
     }
 
-    public List<CarOrder> getOrdersFromGarageHolder(GarageHolder garageHolder){
+    public List<CarOrder> getOrdersFromGarageHolder(String garageHolder){
         return productionSchedule.stream().filter(p->p.getGarageholder() == garageHolder).collect(Collectors.toList());
+    }
+    public List<CarOrder> getCompletedOrdersFromGarageHolder(String garageHolder){
+        return completedOrders.stream().filter(p->p.getGarageholder() == garageHolder).collect(Collectors.toList());
     }
 
 }

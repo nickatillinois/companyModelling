@@ -1,7 +1,6 @@
 package useCases;
 
 import assemAssist.carOrder.*;
-import assemAssist.user.GarageHolder;
 import org.junit.jupiter.api.Test;
 
 import static org.testng.AssertJUnit.assertEquals;
@@ -9,7 +8,7 @@ import static org.testng.AssertJUnit.assertEquals;
 public class OrderNewCar1 {
 
     private CarOrder carOrder;
-    private GarageHolder garageHolder;
+    private String garageHolder;
 
     @Test
     public void init() {

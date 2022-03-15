@@ -1,6 +1,5 @@
 package assemAssist.carOrder;
 
-import assemAssist.user.GarageHolder;
 import java.time.LocalDateTime;
 
 /**
@@ -14,7 +13,7 @@ public class CarOrder {
     /**
      * A GarageHolder object representing the client of this order.
      */
-    private GarageHolder garageholder;
+    private String garageholder;
 
     /**
      * A CarModel object representing the Carmodel with specifications of this order.
@@ -33,11 +32,11 @@ public class CarOrder {
      * @throws IllegalArgumentException | garageholder is null
      *
      */
-    public void setGarageholder(GarageHolder garageholder){
+    public void setGarageholder(String garageholder){
         if(garageholder == null){throw new IllegalArgumentException("garageholder cannot be null.");}
         this.garageholder = garageholder;
     }
-    public GarageHolder getGarageholder() {
+    public String getGarageholder() {
         return garageholder;
     }
     public CarModel getCarModel() {
@@ -83,7 +82,7 @@ public class CarOrder {
      * @throws IllegalArgumentException | garageHolder is null
      *                                  | carModel is null
      */
-    public CarOrder(GarageHolder garageHolder, CarModel carModel){
+    public CarOrder(String  garageHolder, CarModel carModel){
         if(garageHolder == null){throw new IllegalArgumentException("A garage holder cannot be null.");}
         if(carModel == null){throw new IllegalArgumentException("A car model cannot be null.");}
         this.garageholder = garageHolder;
