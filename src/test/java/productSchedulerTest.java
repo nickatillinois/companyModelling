@@ -8,7 +8,6 @@ import assemAssist.workStation.AccessoriesPost;
 import assemAssist.workStation.CarBodyPost;
 import assemAssist.workStation.DrivetrainPost;
 import assemAssist.workStation.WorkStation;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -90,6 +89,7 @@ public class productSchedulerTest {
     @Test
     public void TwoOrderAdvanceTest() throws IllegalChoiceException, IllegalModelException {
         Body body = new Body();
+        CarModel.addModel("Jaguar");
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color(),new Engine(),new Gearbox(),new Seats(),new Airco(),new Wheels());
         CarModel carModel = new CarModel("Jaguar",carModelSpecification);
         CarOrder carOrder1 = new CarOrder("Luna",carModel);
@@ -233,9 +233,80 @@ public class productSchedulerTest {
     }
 
     @Test
-    public void addCompletedCarOrder(){
-        
+    public void addCompletedCarOrder() throws IllegalModelException {
+        CarModelSpecification carModelSpecification = new CarModelSpecification(new Body(),new Color(),new Engine(),new Gearbox(),new Seats(),new Airco(),new Wheels());
+        CarModel.addModel("Jaguar");
+        CarModel carModel = new CarModel("Jaguar",carModelSpecification);
+        CarOrder carOrder1 = new CarOrder("Luna",carModel);
+        CarOrder carOrder2 = new CarOrder("Raf", carModel);
+        carOrder1.setCompleted(true);
+        productionScheduler.completedCarOrder(carOrder1);
+        assert(productionScheduler.getCompletedOrders().contains(carOrder1));
+        assert(!productionScheduler.getCompletedOrders().contains(carOrder2));
     }
 
+    @Test
+    public void getOrdersFromGarageHolderTest() throws IllegalModelException {
+        CarModelSpecification carModelSpecification = new CarModelSpecification(new Body(),new Color(),new Engine(),new Gearbox(),new Seats(),new Airco(),new Wheels());
+        CarModel.addModel("Jaguar");
+        CarModel carModel = new CarModel("Jaguar",carModelSpecification);
+        CarOrder carOrder1 = new CarOrder("Luna",carModel);
+        CarOrder carOrder2 = new CarOrder("Raf", carModel);
+        productionScheduler.addOrderToProductionSchedule(carOrder1);
+        productionScheduler.addOrderToProductionSchedule(carOrder2);
+        assert(productionScheduler.getOrdersFromGarageHolder("Luna").contains(carOrder1));
+        assert(!productionScheduler.getOrdersFromGarageHolder("Luna").contains(carOrder2));
+        assert(!productionScheduler.getOrdersFromGarageHolder("Raf").contains(carOrder1));
+        assert(productionScheduler.getOrdersFromGarageHolder("Raf").contains(carOrder2));
+        productionScheduler.advanceOrders(1);
+        assert(productionScheduler.getOrdersFromGarageHolder("Raf").contains(carOrder2));
+        assert(productionScheduler.getOrdersFromGarageHolder("Luna").contains(carOrder1));
 
+    }
+
+    @Test
+    public void getOrdersFromGarageHolderTest2() throws IllegalModelException {
+        CarModelSpecification carModelSpecification = new CarModelSpecification(new Body(), new Color(), new Engine(), new Gearbox(), new Seats(), new Airco(), new Wheels());
+        CarModel.addModel("Jaguar");
+        CarModel carModel = new CarModel("Jaguar", carModelSpecification);
+        CarOrder carOrder1 = new CarOrder("Luna", carModel);
+        CarOrder carOrder2 = new CarOrder("Luna", carModel);
+        productionScheduler.addOrderToProductionSchedule(carOrder1);
+        productionScheduler.completedCarOrder(carOrder2);
+        assert(productionScheduler.getOrdersFromGarageHolder("Luna").contains(carOrder1));
+        assert(!productionScheduler.getOrdersFromGarageHolder("Luna").contains(carOrder2));
+
+    }
+
+    @Test
+    public void getCompletedOrdersFromGarageHolderTest() throws IllegalModelException {
+        CarModelSpecification carModelSpecification = new CarModelSpecification(new Body(), new Color(), new Engine(), new Gearbox(), new Seats(), new Airco(), new Wheels());
+        CarModel.addModel("Jaguar");
+        CarModel carModel = new CarModel("Jaguar", carModelSpecification);
+        CarOrder carOrder1 = new CarOrder("Luna", carModel);
+        CarOrder carOrder2 = new CarOrder("Luna", carModel);
+        productionScheduler.addOrderToProductionSchedule(carOrder1);
+        productionScheduler.completedCarOrder(carOrder2);
+        assert(!productionScheduler.getCompletedOrdersFromGarageHolder("Luna").contains(carOrder1));
+        assert(productionScheduler.getCompletedOrdersFromGarageHolder("Luna").contains(carOrder2));
+    }
+
+    @Test
+    public void getCompletedOrdersFromGarageHolderTest2() throws IllegalModelException {
+        CarModelSpecification carModelSpecification = new CarModelSpecification(new Body(), new Color(), new Engine(), new Gearbox(), new Seats(), new Airco(), new Wheels());
+        CarModel.addModel("Jaguar");
+        CarModel carModel = new CarModel("Jaguar", carModelSpecification);
+        CarOrder carOrder1 = new CarOrder("Luna", carModel);
+        CarOrder carOrder2 = new CarOrder("Luna", carModel);
+        CarOrder carOrder3 = new CarOrder("Raf", carModel);
+        CarOrder carOrder4 = new CarOrder("Raf", carModel);
+        productionScheduler.addOrderToProductionSchedule(carOrder1);
+        productionScheduler.addOrderToProductionSchedule(carOrder3);
+        productionScheduler.completedCarOrder(carOrder2);
+        productionScheduler.completedCarOrder(carOrder4);
+        assert(!productionScheduler.getCompletedOrdersFromGarageHolder("Luna").contains(carOrder1));
+        assert(productionScheduler.getCompletedOrdersFromGarageHolder("Luna").contains(carOrder2));
+        assert(!productionScheduler.getCompletedOrdersFromGarageHolder("Raf").contains(carOrder3));
+        assert(productionScheduler.getCompletedOrdersFromGarageHolder("Raf").contains(carOrder4));
+    }
 }
