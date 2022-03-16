@@ -2,15 +2,19 @@ package assemAssist.workStation;
 
 import assemAssist.AssemblyTask;
 
-/* Class representing an accessories post on an assembly line. */
+/**
+ *  Class representing a accessories post
+ */
 public class AccessoriesPost extends WorkStation{
 
     /**
-     * Creates an accessory post with the given order as current order, on the given assembly line.
+     * Creates an accessory post.
      */
     public AccessoriesPost() { super(); }
 
-
+    /**
+     * Assigns the car options of the current car order to this work station.
+     */
     @Override
     public void newTasks() {
 

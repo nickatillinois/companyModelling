@@ -5,16 +5,21 @@ import assemAssist.carOrder.CarOrder;
 
 import java.util.List;
 
-/* Class representing a drivetrain post on an assembly line. */
+/**
+ *  Class representing a drivetrain post
+ */
 public class DrivetrainPost extends WorkStation{
 
     /**
-     * Creates a drivetrain post with the given order as current order, on the given assembly line.
+     * Creates a drivetrain post.
      */
     public DrivetrainPost() {
         super();
     }
 
+    /**
+     * Assigns the car options of the current car order to this work station.
+     */
     @Override
     public void newTasks() {
 
