@@ -107,7 +107,7 @@ public abstract class WorkStation {
     /**
      * Removes a given name of a mechanic from the list of mechanics working at this workstation.
      * If the given mechanic is not working at this station, the function will return.
-     * @param mechanic
+     * @param mechanic the mechanic that needs to be removed from this work station
      * @throws IllegalArgumentException | mechanic is null
      *                                  | mechanic is the empty string
      */
