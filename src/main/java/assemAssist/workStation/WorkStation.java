@@ -49,7 +49,8 @@ public abstract class WorkStation {
      */
     public void setCurrentOrder(CarOrder newOrder) {
         this.currentOrder = newOrder;
-        newTasks();
+        if (newOrder != null)
+            newTasks();
     }
 
     /**
