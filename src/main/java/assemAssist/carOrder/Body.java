@@ -8,11 +8,6 @@ package assemAssist.carOrder;
 public class Body extends Option{
 
     /**
-     * The chosen option for this body
-     */
-    private String bodyChoice;
-
-    /**
      * Creates a new body option and adds the body choices to choices.
      */
     public Body() {

@@ -8,11 +8,6 @@ package assemAssist.carOrder;
 public class Gearbox extends Option{
 
     /**
-     * The chosen option for this gearbox.
-     */
-    private String gearboxChoice;
-
-    /**
      * Creates a new gearbox option and adds the gearbox choices to choices.
      */
     public Gearbox() {

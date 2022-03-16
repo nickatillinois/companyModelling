@@ -8,11 +8,6 @@ package assemAssist.carOrder;
 public class Engine extends Option{
 
     /**
-     * The chosen option for this engine.
-     */
-    private String engineChoice;
-
-    /**
      * Creates a new engine option and adds the engine choices to choices.
      */
     public Engine() {

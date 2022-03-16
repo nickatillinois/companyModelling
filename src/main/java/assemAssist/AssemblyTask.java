@@ -60,6 +60,7 @@ public class AssemblyTask {
         return taskDefinition;
     }
 
+    /* Returns the name of this assembly task */
     public String getName() {
         return name;
     }

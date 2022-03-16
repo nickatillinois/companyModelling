@@ -8,11 +8,6 @@ package assemAssist.carOrder;
 public class Color extends Option{
 
     /**
-     * The chosen option for this color.
-     */
-    private String colorChoice;
-
-    /**
      * Creates a new color option and adds the color choices to choices.
      */
     public Color() {

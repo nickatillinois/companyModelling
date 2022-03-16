@@ -8,11 +8,6 @@ package assemAssist.carOrder;
 public class Wheels extends Option{
 
     /**
-     * The chosen option for this wheels.
-     */
-    private String wheelsChoice;
-
-    /**
      * Creates a new wheels option and adds the wheels choices to choices.
      */
     public Wheels() {
