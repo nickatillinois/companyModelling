@@ -9,6 +9,8 @@ import java.util.stream.Collectors;
 
 /**
  * Class representing a production schedule.
+ *
+ * @author SWOP Team 10
  */
 public class ProductionScheduler {
 private AssemblyLine assemblyLine;

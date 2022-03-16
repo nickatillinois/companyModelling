@@ -2,7 +2,11 @@ package assemAssist;
 import assemAssist.carOrder.Option;
 import assemAssist.workStation.WorkStation;
 
-/** Class representing an assembly task. */
+/**
+ * Class representing an assembly task.
+ *
+ * @author SWOP Team 10
+ */
 public class AssemblyTask {
 
     /* A string representing the name of this assembly task. */

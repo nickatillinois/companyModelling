@@ -2,10 +2,14 @@ package assemAssist;
 
 import assemAssist.carOrder.CarOrder;
 import assemAssist.workStation.WorkStation;
-
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class representing an assembly line with workstations.
+ *
+ * @author SWOP Team 10
+ */
 public class AssemblyLine {
     private List<WorkStation> workStations;
     private int maxWorkingHoursToday = 22-6;
