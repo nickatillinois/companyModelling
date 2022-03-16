@@ -1,18 +1,10 @@
 package assemAssist.carOrder;
 
-import assemAssist.AssemblyLine;
-import assemAssist.ProductionScheduler;
+
 import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalModelException;
-import assemAssist.workStation.AccessoriesPost;
-import assemAssist.workStation.CarBodyPost;
-import assemAssist.workStation.DrivetrainPost;
-import assemAssist.workStation.WorkStation;
 import org.junit.jupiter.api.*;
-
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class CarOrderTest {
