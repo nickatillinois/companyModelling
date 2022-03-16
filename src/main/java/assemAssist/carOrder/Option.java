@@ -35,7 +35,7 @@ public abstract class Option {
     }
 
     /**
-     * Sets the chosen choice for this kind of caroption to the given choice.
+     * Sets the chosen choice for this kind of car option to the given choice.
      *
      * @param chosenChoice The opted choice for this car option.
      * @throws IllegalArgumentException | chosenChoice is null
@@ -52,6 +52,7 @@ public abstract class Option {
         for(String choice: getChoices()){
             if(choice.equalsIgnoreCase(chosenChoice)){
                 contains = true;
+                break;
             }
         }
         if(!contains) {
