@@ -10,7 +10,9 @@ import java.time.LocalDateTime;
 public class CarOrder {
 
 
-
+    /**
+     * The estimated completion date of this carorder in LocalDateTime format.
+     */
     private LocalDateTime completionTime;
 
     /**
@@ -41,9 +43,21 @@ public class CarOrder {
         if(garageholder == ""){throw new IllegalArgumentException("A garage holder cannot be the empty string.");}
         this.garageholder = garageholder;
     }
+
+    /**
+     * Returns the name of the garage holder of this carOrder.
+     *
+     * @return The name of the garage holder of this carOrder.
+     */
     public String getGarageholder() {
         return garageholder;
     }
+
+    /**
+     * Returns the carmodel of this carOrder.
+     *
+     * @return The carmodel of this carOrder.
+     */
     public CarModel getCarModel() {
         return carModel;
     }

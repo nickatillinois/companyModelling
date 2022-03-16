@@ -10,6 +10,7 @@ import assemAssist.workStation.DrivetrainPost;
 import assemAssist.workStation.WorkStation;
 import org.junit.jupiter.api.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -154,19 +155,12 @@ class CarOrderTest {
         Exception exception4 = assertThrows(IllegalArgumentException.class, () -> {
             carOrder.setCarModel(null);
         });
-        Exception exception5 = assertThrows(IllegalArgumentException.class, () -> {
-            carOrder.setCarModel(carModel);
+        Exception exception6 = assertThrows(IllegalArgumentException.class, () -> {
+            carOrder.setCompletionTime(null);
         });
-
-        carModel.setModelName("Jaguar");
-        assert carModel.getModelName().equalsIgnoreCase("jaguar");
-        assert CarModel.getAvailableModels().size() == 1;
-        CarModel.addModel("Astra");
-        assert CarModel.getAvailableModels().size() == 2;
-        assert carModel.getCarModelSpecification() == carModelSpecification;
-        Exception exception23 = assertThrows(IllegalArgumentException.class, () -> {
-            carModel.setCarModelSpecification(null);
-        });
+        LocalDateTime date = LocalDateTime.now();
+        carOrder.setCompletionTime(date);
+        assert carOrder.getCompletionTime().equals(date);
     }
 
 
