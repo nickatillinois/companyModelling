@@ -3,8 +3,7 @@ package ui;
 import java.util.Scanner;
 
 public class UI {
-    public UI(GarageHolderUI garageHolderUI, ManagerUI managerUI){
-    //public UI(GarageHolderUI garageHolderUI, ManagerUI managerUI, MechanicUI mechanicUI){
+    public UI(GarageHolderUI garageHolderUI, ManagerUI managerUI, MechanicUI mechanicUI){
         Scanner in = new Scanner(System.in);
 
         System.out.println("Welcome to AssemAssist.");
@@ -13,7 +12,7 @@ public class UI {
                     "option you are: 1 Car Mechanic, 2 Garage Holder or 3 Manager?");
             String option = in.next();
             if (option.equals("1"))
-                carMechanic();
+                mechanicUI.startUI(in);
             else if (option.equals("2"))
                 garageHolderUI.startUI(in);
             else if (option.equals("3"))
@@ -23,10 +22,6 @@ public class UI {
 
         }
     }
-    private void carMechanic(){
-        // hier bepaalde routine van de controller oproepen en bepaalde vragen stellen aan de user
-        System.out.println("You are logged out.");
 
-    }
 
 }

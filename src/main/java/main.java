@@ -1,6 +1,8 @@
 import controller.ManagerController;
+import controller.MechanicController;
 import ui.GarageHolderUI;
 import ui.ManagerUI;
+import ui.MechanicUI;
 import ui.UI;
 import controller.GarageHolderController;
 import java.util.Scanner;
@@ -14,6 +16,9 @@ public class main {
         ManagerController managerController = new ManagerController();
         ManagerUI managerUI = new ManagerUI(managerController);
 
-        UI ui = new UI(garageHolderUI, managerUI);
+        MechanicController mechanicController = new MechanicController();
+        MechanicUI mechanicUI = new MechanicUI(mechanicController);
+
+        UI ui = new UI(garageHolderUI, managerUI, mechanicUI);
     }
 }
