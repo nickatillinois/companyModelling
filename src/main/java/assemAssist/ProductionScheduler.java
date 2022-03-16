@@ -106,9 +106,7 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
     public List<CarOrder> advanceOrders(int timeBetweenToStates){
         if (!assemblyLine.canMove())
             return null;
-        List<CarOrder> resultMove = assemblyLine.move(productionSchedule.remove(0),timeBetweenToStates);
-        if (resultMove.get(resultMove.size() - 1) != null)
-        return resultMove.subList(0,2) ;
+        return assemblyLine.move(productionSchedule.remove(0),timeBetweenToStates).subList(0,2) ;
     }
 
     public List<CarOrder> canNotMove(){

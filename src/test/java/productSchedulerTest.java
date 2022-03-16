@@ -8,6 +8,7 @@ import assemAssist.workStation.CarBodyPost;
 import assemAssist.workStation.DrivetrainPost;
 import assemAssist.workStation.WorkStation;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
@@ -22,8 +23,8 @@ public class productSchedulerTest {
     private static CarBodyPost carBodyPost;
     private static DrivetrainPost drivetrainPost;
 
-    @BeforeAll
-    static void init(){
+    @BeforeEach
+    public void init(){
         accessoriesPost = new AccessoriesPost();
         carBodyPost = new CarBodyPost();
         drivetrainPost = new DrivetrainPost();
@@ -184,7 +185,7 @@ public class productSchedulerTest {
         for (AssemblyTask task : assemblyTasks22){
             task.setIsCompleted(true);
         }
-        WorkStation workStation32  = productionScheduler.getAssemblyLine().getWorkStations().get(1);
+        WorkStation workStation32  = productionScheduler.getAssemblyLine().getWorkStations().get(2);
         List<AssemblyTask> assemblyTasks32 = workStation32.getTasks();
         for (AssemblyTask task : assemblyTasks32){
             task.setIsCompleted(true);
@@ -196,6 +197,7 @@ public class productSchedulerTest {
         nullist4.add(carOrder2);
         productionScheduler.advanceOrders(1);
         assertEquals(nullist4,productionScheduler.getCurrentState());
+        assert(carOrder1.isCompleted());
     }
 
     @Test
