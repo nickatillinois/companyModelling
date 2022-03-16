@@ -78,7 +78,7 @@ public class CarModel {
             }
         }
         if(!contains) {
-            throw new IllegalModelException("The given model is currently not offered.");}
+            throw new IllegalModelException("The given model is currently not offered. Please choose an available model or add the model to the list of offered models.");}
         chosenModelName = modelName;
     }
 
@@ -125,7 +125,7 @@ public class CarModel {
             }
         }
         if(!contains) {
-            throw new IllegalModelException("The given model is currently not offered.");}
+            throw new IllegalModelException("The given model is currently not offered. Please choose an available model or add the model to the list of offered models.");}
         this.chosenModelName = modelName;
         this.carModelSpecification = carModelSpecification;
     }

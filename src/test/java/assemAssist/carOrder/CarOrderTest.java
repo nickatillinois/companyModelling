@@ -25,13 +25,14 @@ class CarOrderTest {
     static Color color = new Color();
     static CarModelSpecification carModelSpecification;
     static CarModel carModel;
+    static CarOrder carOrder;
 
     @BeforeAll
     static void init() throws IllegalModelException {
         CarModel.addModel("Jaguar");
         carModelSpecification = new CarModelSpecification(body, color, engine, gearbox, seats, airco, wheels);
         carModel = new CarModel("Jaguar", carModelSpecification);
-
+        carOrder = new CarOrder("Danny Smeets", carModel);
     }
 
     @Test
@@ -122,6 +123,41 @@ class CarOrderTest {
     }
     @Test
     void testMethodsCarModel() throws IllegalModelException {
+        carModel.setModelName("Jaguar");
+        assert carModel.getModelName().equalsIgnoreCase("jaguar");
+        assert CarModel.getAvailableModels().size() == 1;
+        CarModel.addModel("Astra");
+        assert CarModel.getAvailableModels().size() == 2;
+        assert carModel.getCarModelSpecification() == carModelSpecification;
+        Exception exception23 = assertThrows(IllegalArgumentException.class, () -> {
+            carModel.setCarModelSpecification(null);
+        });
+    }
+    @Test
+    void testMethodsCarOrder() throws IllegalModelException {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            carOrder = new CarOrder(null, carModel);
+        });
+        Exception exception2 = assertThrows(IllegalArgumentException.class, () -> {
+            carOrder = new CarOrder("", carModel);
+        });
+        Exception exception3 = assertThrows(IllegalArgumentException.class, () -> {
+            carOrder = new CarOrder("jan decro", null);
+        });
+        assertEquals(carOrder.getGarageholder(), "Danny Smeets");
+        carOrder.setGarageholder("Kirlin Debie");
+        assertEquals(carOrder.getGarageholder(), "Kirlin Debie");
+        assertEquals(carOrder.getCarModel(), carModel);
+        assert !carOrder.isCompleted();
+        carOrder.setCompleted(true);
+        assert carOrder.isCompleted();
+        Exception exception4 = assertThrows(IllegalArgumentException.class, () -> {
+            carOrder.setCarModel(null);
+        });
+        Exception exception5 = assertThrows(IllegalArgumentException.class, () -> {
+            carOrder.setCarModel(carModel);
+        });
+
         carModel.setModelName("Jaguar");
         assert carModel.getModelName().equalsIgnoreCase("jaguar");
         assert CarModel.getAvailableModels().size() == 1;

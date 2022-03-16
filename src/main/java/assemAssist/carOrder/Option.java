@@ -56,7 +56,9 @@ public abstract class Option {
             }
         }
         if(!contains) {
-            throw new IllegalChoiceException("This choice is not available for this option.");}
+            throw new IllegalChoiceException("This choice is not available for this option." +
+                    " Please choose a customization that is available for this option," +
+                    " or add a choice to the list of choices for this option");}
         this.chosenChoice = chosenChoice;
     }
     /**
@@ -79,7 +81,8 @@ public abstract class Option {
      */
     public void addChoice(String choice){
         if(choice == null){throw new IllegalArgumentException("A choice for an option cannot be null.");}
-        if(choice.length() == 0){throw new IllegalArgumentException("A choice for an option cannot be the empty string.");}
+        if(choice.length() == 0){throw new IllegalArgumentException("A choice for an option " +
+                "cannot be the empty string.");}
         if(getChoices().contains(choice)) return;
         choices = choices.plus(choice);
     }
