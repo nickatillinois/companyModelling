@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class ProductionScheduler {
 private AssemblyLine assemblyLine;
 private List<CarOrder>  productionSchedule;
-private PriorityQueue<CarOrder> completedOrders;
+private List<CarOrder> completedOrders;
 private String manager;
 
     /**
@@ -25,7 +25,7 @@ private String manager;
      */
 public ProductionScheduler(String manager, AssemblyLine assemblyLine){
     productionSchedule = new ArrayList<>();
-    completedOrders = new PriorityQueue<>();
+    completedOrders = new ArrayList<>();
     this.assemblyLine = assemblyLine;
     setManager(manager);
 }
@@ -62,18 +62,27 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
         return productionSchedule;
     }
 
-    public PriorityQueue<CarOrder> getCompletedOrders() {
+    /**
+     * This function returns a list of the completed orders!
+     * @return completedOrders
+     */
+    public List<CarOrder> getCompletedOrders() {
         return completedOrders;
     }
 
-    public void completedCarOrder(CarOrder carOrder){
-        if (productionSchedule.contains(carOrder)) {
+    /**
+     * This function will set the car order as completed and add the car order to the complitedCarorder list.
+     * @param carOrder
+     */
+    public void completedCarOrder(CarOrder carOrder) throws NullPointerException{
+        if (carOrder != null) {
             carOrder.setCompleted(true);
             productionSchedule.remove(carOrder);
             addCompletedOrder(carOrder);
         }
         else
-            throw new IllegalArgumentException("The carOrder is not a part of the productionSchedule");
+            throw new NullPointerException("The given carOrder was null!");
+
 
     }
 
@@ -117,31 +126,70 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
         return simulatedState;
     }
 
-    //gaat de advance uitvoeren als het kan
+    /**
+     * This function will advance the assembly line if that is possible and then returns the nuw state
+     * else it return null.
+     * @param timeBetweenToStates
+     * @return new state or null
+     */
     public List<CarOrder> advanceOrders(int timeBetweenToStates){
         if (!assemblyLine.canMove())
             return null;
         return assemblyLine.move(productionSchedule.remove(0),timeBetweenToStates).subList(0,2) ;
     }
 
+    /**
+     * This function returns a list of carOrders that have pending task in his workstation.
+     * @return list of car orders
+     */
     public List<CarOrder> canNotMove(){
         if (assemblyLine.canMove())
             throw new IllegalCallerException("The caller can move!");
         return assemblyLine.canNotMove();
     }
 
+    /**
+     * This function returns a list whit car orders, the car order at index i is in progress in the i'th workstation.
+     * @return list of car orders
+     */
     public List<CarOrder> getCurrentState(){
         return  assemblyLine.getCurrentState();
     }
 
-    public void addOrderToProductionSchedule(CarOrder carOrder){
-        productionSchedule.add(carOrder);
+    /**
+     * This function will add a real car order to the production schedule.
+     * @param carOrder
+     * @throws NullPointerException
+     */
+    public void addOrderToProductionSchedule(CarOrder carOrder) throws NullPointerException{
+        if (carOrder != null)
+            productionSchedule.add(carOrder);
+        else
+            throw new NullPointerException("You can not null to the production schedule.");
 
     }
 
+    /**
+     * This function return a list of carorders of the given garageHolder.
+     * @param garageHolder
+     * @return list of car order
+     */
     public List<CarOrder> getOrdersFromGarageHolder(String garageHolder){
-        return productionSchedule.stream().filter(p->p.getGarageholder() == garageHolder).collect(Collectors.toList());
+        List<CarOrder> orderFromGarageHolder = productionSchedule.stream().
+                filter(p->p.getGarageholder() == garageHolder).collect(Collectors.toList());
+        List<CarOrder> orderInWorkstations = getCurrentState();
+        for (CarOrder order : orderInWorkstations){
+            if (order != null)
+                orderFromGarageHolder.add(order);
+        }
+        return orderFromGarageHolder;
     }
+
+    /**
+     * This function returns a list of completed car orders of the given garage holder.
+     * @param garageHolder
+     * @return list of car orders
+     */
     public List<CarOrder> getCompletedOrdersFromGarageHolder(String garageHolder){
         return completedOrders.stream().filter(p->p.getGarageholder() == garageHolder).collect(Collectors.toList());
     }
