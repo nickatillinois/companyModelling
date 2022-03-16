@@ -3,6 +3,7 @@ import assemAssist.AssemblyTask;
 import assemAssist.ProductionScheduler;
 import assemAssist.carOrder.*;
 import assemAssist.exceptions.IllegalChoiceException;
+import assemAssist.exceptions.IllegalModelException;
 import assemAssist.workStation.AccessoriesPost;
 import assemAssist.workStation.CarBodyPost;
 import assemAssist.workStation.DrivetrainPost;
@@ -58,7 +59,7 @@ public class productSchedulerTest {
     }
 
     @Test
-    public void getCurrentStateOneOrderNoAdvanceTest() throws IllegalChoiceException {
+    public void getCurrentStateOneOrderNoAdvanceTest() throws IllegalChoiceException, IllegalModelException {
         Body body = new Body();
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color(),new Engine(),new Gearbox(),new Seats(),new Airco(),new Wheels());
         CarModel carModel = new CarModel("Jaguar",carModelSpecification);
@@ -72,7 +73,7 @@ public class productSchedulerTest {
     }
 
     @Test
-    public void getCurrentStateOneOrderAdvanceTest() throws IllegalChoiceException {
+    public void getCurrentStateOneOrderAdvanceTest() throws IllegalChoiceException, IllegalModelException {
         Body body = new Body();
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color(),new Engine(),new Gearbox(),new Seats(),new Airco(),new Wheels());
         CarModel carModel = new CarModel("Jaguar",carModelSpecification);
@@ -87,7 +88,7 @@ public class productSchedulerTest {
     }
 
     @Test
-    public void getCurrentStateTwoOrderAdvanceTest() throws IllegalChoiceException {
+    public void getCurrentStateTwoOrderAdvanceTest() throws IllegalChoiceException, IllegalModelException {
         Body body = new Body();
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color(),new Engine(),new Gearbox(),new Seats(),new Airco(),new Wheels());
         CarModel carModel = new CarModel("Jaguar",carModelSpecification);
@@ -124,7 +125,7 @@ public class productSchedulerTest {
     }
 
     @Test
-    public void getCurrentStateFourOrderAdvanceTest() throws IllegalChoiceException {
+    public void getCurrentStateFourOrderAdvanceTest() throws IllegalChoiceException, IllegalModelException {
         Body body = new Body();
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color(),new Engine(),new Gearbox(),new Seats(),new Airco(),new Wheels());
         CarModel carModel = new CarModel("Jaguar",carModelSpecification);
@@ -201,7 +202,7 @@ public class productSchedulerTest {
     }
 
     @Test
-    public void canMoveOneOrderTest() throws IllegalChoiceException {
+    public void canMoveOneOrderTest() throws IllegalChoiceException, IllegalModelException {
         Body body = new Body();
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color(),new Engine(),new Gearbox(),new Seats(),new Airco(),new Wheels());
         CarModel carModel = new CarModel("Jaguar",carModelSpecification);
