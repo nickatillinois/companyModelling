@@ -17,14 +17,9 @@ public abstract class WorkStation {
     private List<String> mechanics;
 
     /**
-     * Creates a work station with a given current order, which can be null.
-     *
-     * @param currentOrder the current order for this work station
+     * Creates a work station.
      */
-    public WorkStation(CarOrder currentOrder){
-
-        this.currentOrder = currentOrder;
-    }
+    public WorkStation() { }
 
     /**
      * Returns the current order that's being worked on in this work station.
@@ -41,9 +36,12 @@ public abstract class WorkStation {
      * @param newOrder new current order
      */
     public void setCurrentOrder(CarOrder newOrder) {
-
-        this.currentOrder = newOrder;
+        currentOrder = newOrder;
+        if (newOrder != null)
+            newTasks();
     }
+
+    public abstract void newTasks();
 
     /* Returns the tasks for this work station. */
     public List<AssemblyTask> getTasks() {

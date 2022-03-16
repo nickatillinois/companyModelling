@@ -8,6 +8,11 @@ import java.time.LocalDateTime;
  * @author SWOP Team 10
  */
 public class CarOrder {
+
+
+    /**
+     * The estimated completion date of this carorder in LocalDateTime format.
+     */
     private LocalDateTime completionTime;
 
     /**
@@ -30,15 +35,29 @@ public class CarOrder {
      *
      * @param garageholder The garageholder for this car order.
      * @throws IllegalArgumentException | garageholder is null
+     *                                  | garageholder is the empty string
      *
      */
     public void setGarageholder(String garageholder){
         if(garageholder == null){throw new IllegalArgumentException("garageholder cannot be null.");}
+        if(garageholder == ""){throw new IllegalArgumentException("A garage holder cannot be the empty string.");}
         this.garageholder = garageholder;
     }
+
+    /**
+     * Returns the name of the garage holder of this carOrder.
+     *
+     * @return The name of the garage holder of this carOrder.
+     */
     public String getGarageholder() {
         return garageholder;
     }
+
+    /**
+     * Returns the carmodel of this carOrder.
+     *
+     * @return The carmodel of this carOrder.
+     */
     public CarModel getCarModel() {
         return carModel;
     }
@@ -70,8 +89,25 @@ public class CarOrder {
         if (completed)
             this.completionTime = LocalDateTime.now();
     }
+
+    /**
+     * Returns the immutable LocalTimeDate of this carOrder.
+     *
+     * @return The immutable LocalTimeDate of this carOrder.
+     */
     public LocalDateTime getCompletionTime(){
-        return completionTime;
+        return this.completionTime;
+    }
+
+    /**
+     * Sets the current LocalTimeDate when this order is estimated to be completed to the given LocalTimeDate.
+     *
+     * @param completionTime The given estimated completion date in LocalTimeDate format.
+     * @throws IllegalArgumentException | completionTime is null
+     */
+    public void setCompletionTime(LocalDateTime completionTime) {
+        if (completionTime == null){throw new IllegalArgumentException("completion time cannot be set to null");}
+        this.completionTime = completionTime;
     }
 
     /**
@@ -80,10 +116,12 @@ public class CarOrder {
      * @param garageHolder The client for the car order.
      * @param carModel The car model for the car order.
      * @throws IllegalArgumentException | garageHolder is null
+     *                                  | garageHolder is the empty string
      *                                  | carModel is null
      */
     public CarOrder(String  garageHolder, CarModel carModel){
         if(garageHolder == null){throw new IllegalArgumentException("A garage holder cannot be null.");}
+        if(garageHolder == ""){throw new IllegalArgumentException("A garage holder cannot be the empty string.");}
         if(carModel == null){throw new IllegalArgumentException("A car model cannot be null.");}
         this.garageholder = garageHolder;
         this.carModel = carModel;

@@ -10,13 +10,14 @@ public class Wheels extends Option{
     /**
      * The chosen option for this wheels.
      */
-    private WheelsEnum wheelsChoice;
+    private String wheelsChoice;
 
     /**
-     * Creates a new wheels option.
+     * Creates a new wheels option and adds the wheels choices to choices.
      */
     public Wheels() {
         super();
+        addChoice("comfort");
+        addChoice("sports (low profile)");
     }
-
 }

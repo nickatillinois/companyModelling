@@ -8,30 +8,16 @@ package assemAssist.carOrder;
 public class Body extends Option{
 
     /**
-     * The chosen option for this body.
+     * The chosen option for this body
      */
-    private BodyEnum bodyChoice;
+    private String bodyChoice;
 
     /**
-     * Creates a new body option.
+     * Creates a new body option and adds the body choices to choices.
      */
-
-    public BodyEnum getBodyChoice() {
-        return bodyChoice;
-    }
-
-    /**
-     * Sets the chosen option for this body to the given body.
-     *
-     * @param bodyChoice the chosen option for this body.
-     * @throws IllegalArgumentException | body is null
-     *
-     */
-    public void setBodyChoice(BodyEnum bodyChoice) {
-        this.bodyChoice = bodyChoice;
-    }
     public Body() {
         super();
+        addChoice("sedan");
+        addChoice("break");
     }
-
 }
