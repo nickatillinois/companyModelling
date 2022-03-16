@@ -48,11 +48,14 @@ public abstract class Option {
                 "an option cannot be null.");}
         if(chosenChoice.length() == 0){throw new IllegalArgumentException("A chosenChoice for " +
                 "an option cannot be the empty string.");}
+        boolean contains = false;
         for(String choice: getChoices()){
-            if(!choice.equalsIgnoreCase(chosenChoice)){
-                throw new IllegalChoiceException("This choice is not available for this option.");
+            if(choice.equalsIgnoreCase(chosenChoice)){
+                contains = true;
             }
         }
+        if(!contains) {
+            throw new IllegalChoiceException("This choice is not available for this option.");}
         this.chosenChoice = chosenChoice;
     }
     /**

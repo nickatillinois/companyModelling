@@ -1,6 +1,7 @@
 import assemAssist.AssemblyLine;
 import assemAssist.ProductionScheduler;
 import assemAssist.carOrder.*;
+import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.workStation.AccessoriesPost;
 import assemAssist.workStation.CarBodyPost;
 import assemAssist.workStation.DrivetrainPost;
@@ -18,6 +19,7 @@ public class productSchedulerTest {
     private static AccessoriesPost accessoriesPost;
     private static CarBodyPost carBodyPost;
     private static DrivetrainPost drivetrainPost;
+
     @BeforeAll
     static void init(){
         accessoriesPost = new AccessoriesPost();
@@ -52,10 +54,9 @@ public class productSchedulerTest {
         assertEquals(productionScheduler.getCurrentState(),nullist);
     }
     @Test
-    public void getCurrentStateOneOrderNoAdvanceTest(){
+    public void getCurrentStateOneOrderNoAdvanceTest() throws IllegalChoiceException {
         Body body = new Body();
-        body.setBodyChoice(BodyEnum.BREACK);
-
+        body.setChosenChoice("break");
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color(),new Engine(),new Gearbox(),new Seats(),new Airco(),new Wheels());
         CarModel carModel = new CarModel("Jaguar",carModelSpecification);
         CarOrder carOrder1 = new CarOrder("Luna",carModel);
@@ -68,9 +69,9 @@ public class productSchedulerTest {
     }
 
     @Test
-    public void getCurrentStateOneOrderAdvanceTest(){
+    public void getCurrentStateOneOrderAdvanceTest() throws IllegalChoiceException {
         Body body = new Body();
-        body.setBodyChoice(BodyEnum.BREACK);
+        body.setChosenChoice("break");
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color(),new Engine(),new Gearbox(),new Seats(),new Airco(),new Wheels());
         CarModel carModel = new CarModel("Jaguar",carModelSpecification);
         CarOrder carOrder1 = new CarOrder("Luna",carModel);
@@ -85,9 +86,9 @@ public class productSchedulerTest {
     }
 
     @Test
-    public void getCurrentStateTwoOrderAdvanceTest(){
+    public void getCurrentStateTwoOrderAdvanceTest() throws IllegalChoiceException {
         Body body = new Body();
-        body.setBodyChoice(BodyEnum.BREACK);
+        body.setChosenChoice("break");
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color(),new Engine(),new Gearbox(),new Seats(),new Airco(),new Wheels());
         CarModel carModel = new CarModel("Jaguar",carModelSpecification);
         CarOrder carOrder1 = new CarOrder("Luna",carModel);
@@ -109,9 +110,9 @@ public class productSchedulerTest {
     }
 
     @Test
-    public void getCurrentStateFourOrderAdvanceTest(){
+    public void getCurrentStateFourOrderAdvanceTest() throws IllegalChoiceException {
         Body body = new Body();
-        body.setBodyChoice(BodyEnum.BREACK);
+        body.setChosenChoice("break");
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color(),new Engine(),new Gearbox(),new Seats(),new Airco(),new Wheels());
         CarModel carModel = new CarModel("Jaguar",carModelSpecification);
         CarOrder carOrder1 = new CarOrder("Luna",carModel);
@@ -147,9 +148,9 @@ public class productSchedulerTest {
     }
 
     @Test
-    public void canMoveOneOrderTest(){
+    public void canMoveOneOrderTest() throws IllegalChoiceException {
         Body body = new Body();
-        body.setBodyChoice(BodyEnum.BREACK);
+        body.setChosenChoice("break");
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color(),new Engine(),new Gearbox(),new Seats(),new Airco(),new Wheels());
         CarModel carModel = new CarModel("Jaguar",carModelSpecification);
         CarOrder carOrder1 = new CarOrder("Luna",carModel);
