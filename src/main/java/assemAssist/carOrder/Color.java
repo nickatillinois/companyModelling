@@ -10,13 +10,16 @@ public class Color extends Option{
     /**
      * The chosen option for this color.
      */
-    private ColorEnum colorChoice;
+    private String colorChoice;
 
     /**
-     * Creates a new color option.
+     * Creates a new color option and adds the color choices to choices.
      */
     public Color() {
         super();
+        addChoice("red");
+        addChoice("blue");
+        addChoice("black");
+        addChoice("white");
     }
-
 }
