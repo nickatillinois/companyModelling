@@ -65,8 +65,6 @@ public class AssemblyLine {
     public boolean canMove(){
         boolean canMove = true;
         for (WorkStation workStation : workStations){
-            System.out.println(workStation + " isFinished " + workStation.isFinished());
-            System.out.println(workStation.getTasks());
             if(!workStation.isFinished()){
                 canMove = false;
             }

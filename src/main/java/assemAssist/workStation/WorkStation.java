@@ -37,7 +37,8 @@ public abstract class WorkStation {
      */
     public void setCurrentOrder(CarOrder newOrder) {
         currentOrder = newOrder;
-        newTasks();
+        if (newOrder != null)
+            newTasks();
     }
 
     public abstract void newTasks();
