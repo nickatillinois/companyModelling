@@ -1,6 +1,8 @@
 package assemAssist.workStation;
 import assemAssist.AssemblyTask;
 import assemAssist.carOrder.*;
+import purecollections.PList;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,17 +11,27 @@ import java.util.List;
  */
 public abstract class WorkStation {
 
-    /* A CarOrder object representing the current order at this work station. */
+    /**
+     *  A CarOrder object representing the current order at this work station.
+     */
     private CarOrder currentOrder;
-    /* A list of AssemblyTask objects representing this work station's list of tasks that need to be completed. */
+
+    /**
+     *  A list of AssemblyTask objects representing this work station's list of tasks that need to be completed.
+     */
     private List<AssemblyTask> tasks = new ArrayList<>();
-    /* A list of mechanics currently working on this work station. */
-    private List<String> mechanics;
+
+    /**
+    * An immutable list of mechanics currently working on this work station.
+    */
+    private PList<String> mechanics;
 
     /**
      * Creates a work station.
      */
-    public WorkStation() { }
+    public WorkStation() {
+        super();
+    }
 
     /**
      * Returns the current order that's being worked on in this work station.
@@ -31,19 +43,24 @@ public abstract class WorkStation {
     }
 
     /**
-     * Sets the current order to the new given order.
+     * Sets the current order to the given order.
      *
      * @param newOrder new current order
+     * @throws IllegalArgumentException | newOrder is null
      */
     public void setCurrentOrder(CarOrder newOrder) {
-        currentOrder = newOrder;
-        if (newOrder != null)
-            newTasks();
+        if (newOrder == null) throw new IllegalArgumentException("newOrder cannot be null.");
+        this.currentOrder = newOrder;
+        newTasks();
     }
 
     public abstract void newTasks();
 
-    /* Returns the tasks for this work station. */
+    /**
+     *  Returns the tasks for this work station.
+     *
+     * @return The tasks for this work station
+     */
     public List<AssemblyTask> getTasks() {
         return tasks;
     }
@@ -56,7 +73,6 @@ public abstract class WorkStation {
      */
     public void addTask(AssemblyTask task){
         if (task == null) { throw new IllegalArgumentException("The given task cannot be null."); }
-
         tasks.add(task);
     }
 
@@ -74,20 +90,52 @@ public abstract class WorkStation {
         return true;
     }
 
+    /**
+     * Adds a given name of a mechanic to the list of mechanics working at this workstation.
+     * @param mechanic
+     * @throws IllegalArgumentException | mechanic is null
+     *                                  | mechanic is the empty string
+     */
     public void addMechanic(String mechanic) {
-        mechanics.add(mechanic);
+        if(mechanic == null){throw new IllegalArgumentException("A mechanic cannot be null.");}
+        if(mechanic.length() == 0){throw new IllegalArgumentException("A mechanic cannot be the empty string.");}
+        mechanics.plus(mechanic);
     }
 
+    /**
+     * Removes a given name of a mechanic from the list of mechanics working at this workstation.
+     * If the given mechanic is not working at this station, the function will return.
+     * @param mechanic
+     * @throws IllegalArgumentException | mechanic is null
+     *                                  | mechanic is the empty string
+     */
     public void removeMechanic(String mechanic) {
-        mechanics.remove(mechanic);
+        if(mechanic == null){throw new IllegalArgumentException("A mechanic cannot be null.");}
+        if(mechanic.length() == 0){throw new IllegalArgumentException("A mechanic cannot be the empty string.");}
+        boolean contains = false;
+        for(String mechanieker: getMechanics()){
+            if(mechanieker.equalsIgnoreCase(mechanic)){
+                contains = true;
+                break;
+            }
+        }
+        if(!contains) return;
+        mechanics.minus(mechanic);
     }
 
-    public List<String> getMechanics() {
+    /**
+     * Returns the PList of containing the names of the mechanics currently working at this work station.
+     *
+     * @return the PList of containing the names of the mechanics currently working at this work station.
+     */
+    public PList<String> getMechanics() {
         return mechanics;
     }
 
     /**
      * Returns a list of names of the tasks at this work station that are not yet completed.
+     *
+     * @return the list of names of the tasks at this work station that are not yet completed.
      */
     public List<String> getPendingTasks() {
         List<String> pendingTasks = new ArrayList<>();
@@ -107,7 +155,6 @@ public abstract class WorkStation {
      */
     public String getInformationFromTask(AssemblyTask task) {
         if (task == null) { throw new IllegalArgumentException("The given task cannot be null."); }
-
         return task.getTaskDefinition();
     }
 
