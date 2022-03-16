@@ -4,6 +4,7 @@ import assemAssist.carOrder.CarOrder;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.PriorityQueue;
 import java.util.stream.Collectors;
 
@@ -176,7 +177,7 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
      */
     public List<CarOrder> getOrdersFromGarageHolder(String garageHolder){
         List<CarOrder> orderFromGarageHolder = productionSchedule.stream().
-                filter(p->p.getGarageholder() == garageHolder).collect(Collectors.toList());
+                filter(p-> Objects.equals(p.getGarageholder(), garageHolder)).collect(Collectors.toList());
         List<CarOrder> orderInWorkstations = getCurrentState();
         for (CarOrder order : orderInWorkstations){
             if (order != null)
@@ -191,7 +192,7 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
      * @return list of car orders
      */
     public List<CarOrder> getCompletedOrdersFromGarageHolder(String garageHolder){
-        return completedOrders.stream().filter(p->p.getGarageholder() == garageHolder).collect(Collectors.toList());
+        return completedOrders.stream().filter(p-> Objects.equals(p.getGarageholder(), garageHolder)).collect(Collectors.toList());
     }
 
 }
