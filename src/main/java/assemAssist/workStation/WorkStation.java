@@ -46,10 +46,8 @@ public abstract class WorkStation {
      * Sets the current order to the given order.
      *
      * @param newOrder new current order
-     * @throws IllegalArgumentException | newOrder is null
      */
     public void setCurrentOrder(CarOrder newOrder) {
-        if (newOrder == null) throw new IllegalArgumentException("A newOrder cannot be null.");
         this.currentOrder = newOrder;
         newTasks();
     }
