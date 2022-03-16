@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Class representing a work station on an assembly line.
+ * Class representing a work station
  */
 public abstract class WorkStation {
 
@@ -49,15 +49,18 @@ public abstract class WorkStation {
      * @throws IllegalArgumentException | newOrder is null
      */
     public void setCurrentOrder(CarOrder newOrder) {
-        if (newOrder == null) throw new IllegalArgumentException("newOrder cannot be null.");
+        if (newOrder == null) throw new IllegalArgumentException("A newOrder cannot be null.");
         this.currentOrder = newOrder;
         newTasks();
     }
 
+    /**
+     *  Assigns the car options of the current car order to this work station
+     */
     public abstract void newTasks();
 
     /**
-     *  Returns the tasks for this work station.
+     * Returns the tasks for this work station.
      *
      * @return The tasks for this work station
      */

@@ -3,15 +3,19 @@ import assemAssist.AssemblyLine;
 import assemAssist.AssemblyTask;
 import assemAssist.carOrder.CarOrder;
 
-/* Class representing a car body post on an assembly line. */
+/**
+ *  Class representing a Car Body post
+ */
 public class CarBodyPost extends WorkStation{
 
     /**
-     * Creates a car body post with the given order as current order, on the given assembly line.
+     * Creates a car body post.
      */
     public CarBodyPost() { super(); }
 
-
+    /**
+     * Assigns the car options of the current car order to this work station.
+     */
     @Override
     public void newTasks() {
 
