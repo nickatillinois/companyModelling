@@ -20,9 +20,9 @@ public class productSchedulerTest {
     private static DrivetrainPost drivetrainPost;
     @BeforeAll
     static void init(){
-        accessoriesPost = new AccessoriesPost(null);
-        carBodyPost = new CarBodyPost(null);
-        drivetrainPost = new DrivetrainPost(null);
+        accessoriesPost = new AccessoriesPost();
+        carBodyPost = new CarBodyPost();
+        drivetrainPost = new DrivetrainPost();
         ArrayList<WorkStation> workStations = new ArrayList<>();
         workStations.add(carBodyPost);
         workStations.add(drivetrainPost);
