@@ -73,7 +73,7 @@ public class productSchedulerTest {
     }
 
     @Test
-    public void getCurrentStateOneOrderAdvanceTest() throws IllegalChoiceException, IllegalModelException {
+    public void OneOrderAdvanceTest() throws IllegalChoiceException, IllegalModelException {
         Body body = new Body();
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color(),new Engine(),new Gearbox(),new Seats(),new Airco(),new Wheels());
         CarModel carModel = new CarModel("Jaguar",carModelSpecification);
@@ -88,7 +88,7 @@ public class productSchedulerTest {
     }
 
     @Test
-    public void getCurrentStateTwoOrderAdvanceTest() throws IllegalChoiceException, IllegalModelException {
+    public void TwoOrderAdvanceTest() throws IllegalChoiceException, IllegalModelException {
         Body body = new Body();
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color(),new Engine(),new Gearbox(),new Seats(),new Airco(),new Wheels());
         CarModel carModel = new CarModel("Jaguar",carModelSpecification);
@@ -125,7 +125,7 @@ public class productSchedulerTest {
     }
 
     @Test
-    public void getCurrentStateFourOrderAdvanceTest() throws IllegalChoiceException, IllegalModelException {
+    public void FourOrderAdvanceTest() throws IllegalChoiceException, IllegalModelException {
         Body body = new Body();
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color(),new Engine(),new Gearbox(),new Seats(),new Airco(),new Wheels());
         CarModel carModel = new CarModel("Jaguar",carModelSpecification);
@@ -213,5 +213,29 @@ public class productSchedulerTest {
         assert(!productionScheduler.getAssemblyLine().canMove());
 
     }
+
+    @Test
+    public void simulateAdvanceAssemblyLineTest() throws IllegalModelException {
+        CarModelSpecification carModelSpecification = new CarModelSpecification(new Body(),new Color(),new Engine(),new Gearbox(),new Seats(),new Airco(),new Wheels());
+        CarModel.addModel("Jaguar");
+        CarModel carModel = new CarModel("Jaguar",carModelSpecification);
+        CarOrder carOrder1 = new CarOrder("Luna",carModel);
+        CarOrder carOrder2 = new CarOrder("Raf", carModel);
+        productionScheduler.addOrderToProductionSchedule(carOrder1);
+        productionScheduler.advanceOrders(1);
+        ArrayList<CarOrder> test = new ArrayList<>();
+        test.add(carOrder2);
+        test.add(carOrder1);
+        test.add(null);
+        productionScheduler.addOrderToProductionSchedule(carOrder2);
+        List<CarOrder> simulation = productionScheduler.simulateAdvanceAssemblyLine();
+        assertEquals(test,simulation );
+    }
+
+    @Test
+    public void addCompletedCarOrder(){
+        
+    }
+
 
 }

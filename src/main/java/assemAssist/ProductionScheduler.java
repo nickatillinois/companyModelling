@@ -52,6 +52,10 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
         return this.assemblyLine;
     }
 
+    /**
+     * This function gifs a list of the orders that wait to be produced in FCFS order.
+     * @return productionSchedule
+     */
     public List<CarOrder> getProductionSchedule() {
         return productionSchedule;
     }
@@ -71,6 +75,11 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
 
     }
 
+    /**
+     * This function will add a carOrder that already is completed to a List of completed Orders.
+     * @param carOrder
+     * @throws NullPointerException
+     */
     private void addCompletedOrder(CarOrder carOrder) throws NullPointerException {
         if (carOrder == null)
             throw new NullPointerException("The carOrder is null");
@@ -80,22 +89,26 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
             throw new IllegalArgumentException("The current carOrder can't be add to the Completed list because he is not completed!");
 
     }
-    //maakt een simulatie
+
+    /**
+     * This function calculate a simulation of an advanced assembly line without knowing of this is possible.
+     * @return simulation
+     */
     public List<CarOrder> simulateAdvanceAssemblyLine() {
         List<CarOrder> currentState = getCurrentState();
         List<CarOrder> nullList = new ArrayList<>(3);
-        nullList.set(0,null);
-        nullList.set(1,null);
-        nullList.set(2,null);
+        nullList.add(null);
+        nullList.add(null);
+        nullList.add(null);
         ArrayList<CarOrder> simulatedState = new ArrayList<>(3);
-        simulatedState.set(2, currentState.get(1));
-        simulatedState.set(1, currentState.get(0));
         if (getProductionSchedule().size() == 0)
-            simulatedState.set(0,null);
+            simulatedState.add(null);
         else if(assemblyLine.remainWorkingTime() >=3 )
-            simulatedState.set(0, getProductionSchedule().get(0));
+            simulatedState.add( getProductionSchedule().get(0));
         else
-            simulatedState.set(0,null);
+            simulatedState.add(null);
+        simulatedState.add( currentState.get(0));
+        simulatedState.add( currentState.get(1));
         if (simulatedState == nullList )
             simulatedState.set(0, getProductionSchedule().get(0));
             assemblyLine.nextDay();
