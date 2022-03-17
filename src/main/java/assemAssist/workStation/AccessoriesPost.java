@@ -12,6 +12,15 @@ public class AccessoriesPost extends WorkStation{
      */
     public AccessoriesPost() { super(); }
 
+
+    /**
+     * Returns the name of the work station.
+     */
+    @Override
+    public String getName() {
+        return "Accessories Post";
+    }
+
     /**
      * Assigns the car options of the current car order to this work station.
      */

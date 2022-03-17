@@ -42,6 +42,17 @@ public class AssemblyLine {
     }
 
     /**
+     * Returns the names of all the workstations in the assembly line.
+     */
+    public List<String> getWorkStationNames() {
+        List<String> workStationNames = new ArrayList();
+        for (int i = 0; i < workStations.size(); i++) {
+            workStationNames.add(workStations.get(i).getName());
+        }
+        return workStationNames;
+    }
+
+    /**
      * This function returns the max working hours of today.
      * @return max working hours
      */
@@ -157,7 +168,7 @@ public class AssemblyLine {
         workStations.get(2).setCurrentOrder(workStations.get(1).getCurrentOrder());
         workStations.get(1).setCurrentOrder(workStations.get(0).getCurrentOrder());
         workStations.get(0).setCurrentOrder(carOrder);
-        List<String> newStateAndFiniched = new ArrayList<>();
+        List<String> newStateAndFinished = new ArrayList<>();
         List<CarOrder> curuntStatus  = getCurrentState();
         for(int i = 0 ; i < curuntStatus.size() ; i++){
             CarOrder carOrder2 = curuntStatus.get(i);
@@ -168,21 +179,21 @@ public class AssemblyLine {
             }
             else
                 s += "No Order in this workstation";
-            newStateAndFiniched.add(s);
+            newStateAndFinished.add(s);
         }
 //        if(carOrder != null)
-//            newStateAndFiniched.add(carOrder.toString().split("\\.")[3].split("@")[0]);
+//            newStateAndFinished.add(carOrder.toString().split("\\.")[3].split("@")[0]);
 //        else
-//            newStateAndFiniched.add("No order");
+//            newStateAndFinished.add("No order");
 //        if (workStations.get(1).getCurrentOrder() != null)
-//            newStateAndFiniched.add(workStations.get(1).getCurrentOrder().toString().split("\\.")[3].split("@")[0]);
+//            newStateAndFinished.add(workStations.get(1).getCurrentOrder().toString().split("\\.")[3].split("@")[0]);
 //        else
-//            newStateAndFiniched.add("No order");
+//            newStateAndFinished.add("No order");
 //        if (workStations.get(2).getCurrentOrder() != null)
-//            newStateAndFiniched.add(workStations.get(2).getCurrentOrder().toString().split("\\.")[3].split("@")[0]);
+//            newStateAndFinished.add(workStations.get(2).getCurrentOrder().toString().split("\\.")[3].split("@")[0]);
 //        else
-//            newStateAndFiniched.add("No order");
-        return newStateAndFiniched;
+//            newStateAndFinished.add("No order");
+        return newStateAndFinished;
     }
 
 

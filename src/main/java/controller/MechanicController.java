@@ -1,19 +1,22 @@
 package controller;
 
+import assemAssist.AssemblyLine;
+import assemAssist.workStation.WorkStation;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class MechanicController {
 
-    public MechanicController() {}
+    private AssemblyLine assemblyLine;
+    private WorkStation workStation;
+
+    public MechanicController(AssemblyLine assemblyLine) {
+        this.assemblyLine = assemblyLine;
+    }
 
     public List<String> getAllWorkPosts() {
-        List<String> workPosts = new ArrayList<>();
-        workPosts.add("Car Body Post");
-        workPosts.add("Drivetrain Post");
-        workPosts.add("Accessories Post");
-
-        return workPosts;
+        return assemblyLine.getWorkStationNames();
     }
 
     public List<String> selectWorkPost(String workPost) {

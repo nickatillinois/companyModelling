@@ -13,6 +13,15 @@ public class CarBodyPost extends WorkStation{
      */
     public CarBodyPost() { super(); }
 
+
+    /**
+     * Returns the name of the work station.
+     */
+    @Override
+    public String getName() {
+        return "Car Body Post";
+    }
+
     /**
      * Assigns the car options of the current car order to this work station.
      */

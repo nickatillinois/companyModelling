@@ -18,6 +18,14 @@ public class DrivetrainPost extends WorkStation{
     }
 
     /**
+     * Returns the name of the work station.
+     */
+    @Override
+    public String getName() {
+        return "Drivetrain Post";
+    }
+
+    /**
      * Assigns the car options of the current car order to this work station.
      */
     @Override
@@ -33,4 +41,6 @@ public class DrivetrainPost extends WorkStation{
                 "insert " + getCurrentOrder().getCarModel().getCarModelSpecification().getGearbox()));
 
     }
+
+
 }

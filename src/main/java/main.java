@@ -23,9 +23,6 @@ public class main {
         GarageHolderController garageHolderController = new GarageHolderController();
         GarageHolderUI garageHolderUI = new GarageHolderUI(garageHolderController);
 
-        MechanicController mechanicController = new MechanicController();
-        MechanicUI mechanicUI = new MechanicUI(mechanicController);
-
         AccessoriesPost accessoriesPost = new AccessoriesPost();
         CarBodyPost carBodyPost = new CarBodyPost();
         DrivetrainPost drivetrainPost = new DrivetrainPost();
@@ -42,6 +39,9 @@ public class main {
 
         ManagerController managerController = new ManagerController(productionScheduler);
         ManagerUI managerUI = new ManagerUI(managerController);
+
+        MechanicController mechanicController = new MechanicController(assemblyLine);
+        MechanicUI mechanicUI = new MechanicUI(mechanicController);
 
         UI ui = new UI(garageHolderUI, managerUI, mechanicUI);
     }

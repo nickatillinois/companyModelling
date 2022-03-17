@@ -54,6 +54,11 @@ public abstract class WorkStation {
     }
 
     /**
+     * Returns the name of the work station.
+     */
+    public abstract String getName();
+
+    /**
      *  Assigns the car options of the current car order to this work station
      */
     public abstract void newTasks();
