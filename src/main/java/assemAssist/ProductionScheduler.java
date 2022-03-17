@@ -195,4 +195,23 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
         return completedOrders.stream().filter(p-> Objects.equals(p.getGarageholder(), garageHolder)).collect(Collectors.toList());
     }
 
+    public List getCurrentAndFutureStatusAndTaskStatus(){
+        List currentAndFutureStatus = new ArrayList<>();
+        List<CarOrder> curuntStatus  = getCurrentState();
+        List<CarOrder> futureStatus  = simulateAdvanceAssemblyLine();
+        List<String> curuntStatusAndTasks = new ArrayList<>();
+        for(int i = 0 ; i < getCurrentState().size() ; i++){
+            CarOrder carOrder = getCurrentState().get(i);
+            String s = getAssemblyLine().getWorkStations().get(i).toString() + "; ";
+            if(carOrder != null) {
+                s += "Model: " + carOrder.getCarModel();
+                getAssemblyLine().getWorkStations().get(i).getTasksAndStatus();
+            }
+            else
+                s += "No Order in this workstation";
+            curuntStatusAndTasks.add(s);
+        }
+        currentAndFutureStatus.add(curuntStatusAndTasks);
+        return currentAndFutureStatus;
+    }
 }

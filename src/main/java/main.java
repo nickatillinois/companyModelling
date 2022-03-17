@@ -23,13 +23,8 @@ public class main {
         GarageHolderController garageHolderController = new GarageHolderController();
         GarageHolderUI garageHolderUI = new GarageHolderUI(garageHolderController);
 
-        ManagerController managerController = new ManagerController();
-        ManagerUI managerUI = new ManagerUI(managerController);
-
         MechanicController mechanicController = new MechanicController();
         MechanicUI mechanicUI = new MechanicUI(mechanicController);
-
-        UI ui = new UI(garageHolderUI, managerUI, mechanicUI);
 
         AccessoriesPost accessoriesPost = new AccessoriesPost();
         CarBodyPost carBodyPost = new CarBodyPost();
@@ -45,5 +40,9 @@ public class main {
 
         CarModel.addModel("Jaguar");
 
+        ManagerController managerController = new ManagerController(productionScheduler);
+        ManagerUI managerUI = new ManagerUI(managerController);
+
+        UI ui = new UI(garageHolderUI, managerUI, mechanicUI);
     }
 }
