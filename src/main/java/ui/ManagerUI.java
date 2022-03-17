@@ -21,27 +21,30 @@ public class ManagerUI {
         System.out.println("The current status of the assembly line is:");
         for (int i = 0; i < currentStatus.size(); i++) {
             String[] workstationStatus = currentStatus.get(i).split(" ; ");
-            System.out.println(workstationStatus[0]);
+            System.out.println(workstationStatus[0].split("\\.")[2].split("@")[0]);
+            if (workstationStatus.length >= 3) {
+                System.out.println("Model options:");
+                String[] modelOptions = workstationStatus[1].split(", ");
+                for (int j = 0; j < modelOptions.length; j++) {
+                    System.out.println(modelOptions[j]);
+                }
 
-            System.out.println("Model options:");
-            String[] modelOptions = workstationStatus[1].split(", ");
-            for (int j = 0; j < modelOptions.length; j++) {
-                System.out.println(modelOptions[j]);
+                System.out.println("Tasks:");
+                String[] tasksStatus = workstationStatus[1].split(", ");
+                for (int j = 0; j < tasksStatus.length; j++) {
+                    System.out.println(tasksStatus[j]);
+                }
             }
-
-            System.out.println("Tasks:");
-            String[] tasksStatus = workstationStatus[2].split(", ");
-            for (int j = 0; j < tasksStatus.length; j++) {
-                System.out.println(tasksStatus[j]);
-            }
+            else
+                System.out.println("No order at this workpost.");
         }
         System.out.println("-------------");
         System.out.println("The future status of the assembly line is:");
         for (int i = 0; i < futureStatus.size(); i++) {
             String[] workstationStatus = futureStatus.get(i).split(" ; ");
-            System.out.println(workstationStatus[0]);
+            System.out.println(workstationStatus[0].split("\\.")[2].split("@")[0]);
 
-            System.out.println("Model options:");
+//            System.out.println("Model options:");
             String[] modelOptions = workstationStatus[1].split(", ");
             for (int j = 0; j < modelOptions.length; j++) {
                 System.out.println(modelOptions[j]);
@@ -55,7 +58,7 @@ public class ManagerUI {
             String confirmation = in.next();
             if (confirmation.equals("a")) {
                 while (true) {
-                    System.out.println("Enter the time spent during the current phase in minutes:");
+                    System.out.println("Enter the time spent during the current phase in hours:");
                     try {
                         int currentPhaseTime = Integer.parseInt(in.next());
                         statusAfterAdvance = managerController.confirmAdvance(currentPhaseTime);
@@ -88,7 +91,7 @@ public class ManagerUI {
                 }
 
                 System.out.println("Tasks:");
-                String[] tasksStatus = workstationStatus[2].split(", ");
+                String[] tasksStatus = workstationStatus[1].split(", ");
                 for (int j = 0; j < tasksStatus.length; j++) {
                     System.out.println(tasksStatus[j]);
                 }

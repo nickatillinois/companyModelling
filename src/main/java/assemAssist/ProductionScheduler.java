@@ -5,7 +5,6 @@ import assemAssist.carOrder.CarOrder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.PriorityQueue;
 import java.util.stream.Collectors;
 
 /**
@@ -133,17 +132,19 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
      * @param timeBetweenToStates
      * @return new state or null
      */
-    public List<CarOrder> advanceOrders(int timeBetweenToStates){
+    public List<String> advanceOrders(int timeBetweenToStates){
         if (!assemblyLine.canMove())
-            return null;
-        return assemblyLine.move(productionSchedule.remove(0),timeBetweenToStates).subList(0,2) ;
+            return canNotMove();
+        if (productionSchedule.isEmpty())
+            return assemblyLine.move(null,timeBetweenToStates);
+        return assemblyLine.move(productionSchedule.remove(0),timeBetweenToStates);
     }
 
     /**
      * This function returns a list of carOrders that have pending task in his workstation.
      * @return list of car orders
      */
-    public List<CarOrder> canNotMove(){
+    public List<String> canNotMove(){
         if (assemblyLine.canMove())
             throw new IllegalCallerException("The caller can move!");
         return assemblyLine.canNotMove();
@@ -200,9 +201,10 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
         List<CarOrder> curuntStatus  = getCurrentState();
         List<CarOrder> futureStatus  = simulateAdvanceAssemblyLine();
         List<String> curuntStatusAndTasks = new ArrayList<>();
-        for(int i = 0 ; i < getCurrentState().size() ; i++){
-            CarOrder carOrder = getCurrentState().get(i);
-            String s = getAssemblyLine().getWorkStations().get(i).toString() + "; ";
+        List<String> futureStatusAndTasks = new ArrayList<>();
+        for(int i = 0 ; i < curuntStatus.size() ; i++){
+            CarOrder carOrder = curuntStatus.get(i);
+            String s = getAssemblyLine().getWorkStations().get(i).toString() + " ; ";
             if(carOrder != null) {
                 s += "Model: " + carOrder.getCarModel();
                 getAssemblyLine().getWorkStations().get(i).getTasksAndStatus();
@@ -212,6 +214,17 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
             curuntStatusAndTasks.add(s);
         }
         currentAndFutureStatus.add(curuntStatusAndTasks);
+        for(int i = 0 ; i < futureStatus.size() ; i++){
+            CarOrder carOrder = futureStatus.get(i);
+            String s = getAssemblyLine().getWorkStations().get(i).toString() + " ; ";
+            if(carOrder != null) {
+                s += "Model: " + carOrder.getCarModel();
+            }
+            else
+                s += "No Order in this workstation";
+            futureStatusAndTasks.add(s);
+        }
+        currentAndFutureStatus.add(futureStatusAndTasks);
         return currentAndFutureStatus;
     }
 }
