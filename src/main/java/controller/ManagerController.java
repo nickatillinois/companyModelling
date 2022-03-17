@@ -1,16 +1,21 @@
 package controller;
 
+import assemAssist.ProductionScheduler;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ManagerController {
-
-    public ManagerController() {}
+    private ProductionScheduler productionScheduler;
+    public ManagerController(ProductionScheduler productionScheduler) {
+        this.productionScheduler = productionScheduler;
+    }
 
     public List<List<String>> newLogin() {
         List currentAndFutureStatus = new ArrayList();
 
         List<String> currentStatus = new ArrayList();
+
         currentStatus.add("Car Body Post ; Model: Jaguar, Color: Green, Seats: 4 ; Assembly Car Body: Done, Paint Car: Pending");
         currentStatus.add("Drivetrain Post ; Model: Jeep, Color: Red, Seats: 4 ; Insert Engine: Done, Insert Gearbox: Done");
         currentStatus.add("Accessories Post ; Model: Jeep, Color: Blue, Seats: 6 ; Install Seats: Done, Install Airco: Pending, Mount Wheels: Pending");

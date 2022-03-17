@@ -175,6 +175,20 @@ public abstract class WorkStation {
     }
 
     // TODO implement or remove
-    public void getTasksAndStatus() {}
+    public String getTasksAndStatus() {
+        String s = "";
+        List<AssemblyTask> assemblyTasks = getTasks();
+        for(AssemblyTask assemblyTask : assemblyTasks){
+            boolean status = assemblyTask.getIsCompleted();
+            s += assemblyTask.getName() + ": ";
+            if (status)
+                s += "done, ";
+            else
+                s += "pending, ";
+
+        }
+        int j = s.length() - 2;
+        return s.substring(0,j);
+    }
 
 }
