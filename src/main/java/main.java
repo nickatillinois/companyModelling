@@ -44,7 +44,6 @@ public class main {
         ProductionScheduler productionScheduler = new ProductionScheduler("Nick",assemblyLine);
 
         CarModel.addModel("Jaguar");
-        
 
     }
 }
