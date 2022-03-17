@@ -15,18 +15,18 @@ public class MechanicUI {
 
     public void startUI(Scanner in) {
         System.out.println("-------------");
-        List<String> workPosts = mechanicController.getAllWorkPosts();
-        System.out.println("The workposts at this assembly line are:");
-        System.out.println(workPosts);
+        List<String> workStations = mechanicController.getAllWorkStations();
+        System.out.println("The work stations at this assembly line are:");
+        System.out.println(workStations);
         List<String> pendingTasks;
         while (true) {
-            System.out.println("Which workpost do you work at?");
-            String workPost = in.nextLine();
-            if (workPosts.contains(workPost)) {
-                pendingTasks = mechanicController.selectWorkPost(workPost);
+            System.out.println("Which work station do you want to work at?");
+            String workStation = in.nextLine();
+            if (workStations.contains(workStation)) {
+                pendingTasks = mechanicController.selectWorkStation(workStation);
                 break;
             } else {
-                System.out.println("This is not a valid workpost. Try again.");
+                System.out.println("This is not a valid work station. Try again.");
             }
         }
 

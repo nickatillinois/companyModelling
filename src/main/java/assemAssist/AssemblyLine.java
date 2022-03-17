@@ -196,6 +196,18 @@ public class AssemblyLine {
         return newStateAndFinished;
     }
 
+    /**
+     * Finds a specific work station and returns this.
+     *
+     */
+    public WorkStation findWorkStation (String workStation) throws IllegalArgumentException{
+        for (int i = 0; i < workStations.size(); i++) {
+            if (workStations.get(i).getName().equals(workStation)){
+                return workStations.get(i);
+            }
+        }
+        throw new IllegalArgumentException("This is not a work station at this assembly line!");
+    }
 
 
 }

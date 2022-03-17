@@ -163,26 +163,32 @@ public abstract class WorkStation {
     /**
      * Returns the given task's description.
      *
-     * @param task the AssemblyTask of which the description is needed
+     * @param taskName the name of the AssemblyTask of which the description is needed
      * @return the description of the given AssemblyTask
-     * @throws IllegalArgumentException | task is null
+     * @throws IllegalArgumentException | taskName is not a valid name of a task at this work station.
      */
-    public String getInformationFromTask(AssemblyTask task) {
-        if (task == null) { throw new IllegalArgumentException("The given task cannot be null."); }
-        return task.getTaskDefinition();
+    public String getInformationFromTask(String taskName) throws IllegalArgumentException{
+        for (int i = 0; i < tasks.size(); i++) {
+            if (tasks.get(i).getName().equals(taskName)) {
+                return tasks.get(i).getTaskDefinition();
+            }
+        }
+        throw new IllegalArgumentException("This is not a task at this work station!");
     }
 
-    // TODO necessary?
     /**
      * Completes the given task in this work station.
      *
-     * @param task the task to be completed
+     * @param taskName the name of the task to be completed
+     * @throws IllegalArgumentException | taskName is not a valid name of a task at this work station.
      */
-    public void performAssemblyTask(AssemblyTask task) {
-        if (task == null) { throw new IllegalArgumentException("The given task cannot be null."); }
-        if (!tasks.contains(task)) {
-            throw new IllegalArgumentException("The given task needs to be part of this work station."); }
-        task.setIsCompleted(true);
+    public void performAssemblyTask(String taskName) throws IllegalArgumentException{
+        for (int i = 0; i < tasks.size(); i++) {
+            if (tasks.get(i).getName().equals(taskName)) {
+                tasks.get(i).setIsCompleted(true);
+            }
+        }
+        throw new IllegalArgumentException("This is not a task at this work station!");
     }
 
 

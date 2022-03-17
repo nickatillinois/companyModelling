@@ -3,7 +3,6 @@ package controller;
 import assemAssist.AssemblyLine;
 import assemAssist.workStation.WorkStation;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MechanicController {
@@ -15,35 +14,41 @@ public class MechanicController {
         this.assemblyLine = assemblyLine;
     }
 
-    public List<String> getAllWorkPosts() {
+    /**
+     * Returns the names of all the work stations that are in the assembly line.
+     * @return List of the names of the work stations.
+     */
+    public List<String> getAllWorkStations() {
         return assemblyLine.getWorkStationNames();
     }
 
-    public List<String> selectWorkPost(String workPost) {
-        List<String> pendingTasks = new ArrayList<>();
-        if (workPost.equals("Car Body Post")) {
-            pendingTasks.add("Assembly Car Body");
-        } else if (workPost.equals("Drivetrain Post")) {
-            pendingTasks.add("Insert Engine");
-        } else if (workPost.equals("Accessories Post")) {
-            pendingTasks.add("Install Seats");
-            pendingTasks.add("Install Airco");
-        }
-        return pendingTasks;
+    /**
+     * Sets the work station at which the mechanic works to the given work station and
+     * returns the pending tasks at this work post.
+     * @param workStation The name of the work station the mechanic wants to work at.
+     * @return List of pending tasks at the given work station
+     */
+    public List<String> selectWorkStation(String workStation) {
+        this.workStation = assemblyLine.findWorkStation(workStation);
+        return this.workStation.getPendingTasks();
     }
 
+    /**
+     * Selects a task and returns the description of this task.
+     * @param task The name of the task to give the description of.
+     * @return Description of the task.
+     */
     public String selectTask (String task) {
-        String taskDefinition = "Fix the task please";
-        return taskDefinition;
+        return workStation.getInformationFromTask(task);
     }
 
+    /**
+     * Finishes the given task and then gives an overview of the pending tasks at the mechanics work station.
+     * @param task The name of the task to be finished.
+     * @return List of pending tasks at the work station.
+     */
     public List<String> finishTask(String task) {
-        List<String> pendingTasks = new ArrayList<>();
-        if (task.equals("Install Seats")) {
-            pendingTasks.add("Install Airco");
-        } else if (task.equals("Install Airco")) {
-            pendingTasks.add("Install Seats");
-        }
-        return pendingTasks;
+        workStation.performAssemblyTask(task);
+        return workStation.getPendingTasks();
     }
 }
