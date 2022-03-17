@@ -397,15 +397,17 @@ completedCarOrders</panel_attributes>
 --
 - assemblyLine : AssemblyLine
 - tasks : List&lt;AssemblyTask&gt;
-- mechanics : List&lt;String&gt;
+- mechanics : PList&lt;String&gt;
 --
-+ isFinished()
-+ getPendingTasks()
-+ getInformationFromTask(task : AssemblyTask) 
-+ performAssemblyTask(task : AssemblyTask)
-+ addTask(task : AssemblyTask)
+_+ newTasks()+_
++ addTask(task AssemblyTask)
++ isFinished(): boolean
 + addMechanic(mechanic : String)
-+ removeMechanic(mechanic : String)</panel_attributes>
++ removeMechanic(mechanic: String)
++ getPendingTasks(): List
++ getInformationFromTask(task : AssemblyTask) : String
++ performAssemblyTask(task : AssemblyTask)
++ getTasksAndStatus()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

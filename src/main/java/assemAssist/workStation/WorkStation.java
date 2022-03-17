@@ -136,6 +136,7 @@ public abstract class WorkStation {
 
     /**
      * Returns a list of names of the tasks at this work station that are not yet completed.
+     * Returns the empty list if all tasks at this work station are finished.
      *
      * @return the list of names of the tasks at this work station that are not yet completed.
      */
