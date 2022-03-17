@@ -1,9 +1,7 @@
 package controller;
 
 import assemAssist.ProductionScheduler;
-import assemAssist.carOrder.CarOrder;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ManagerController {
@@ -12,8 +10,7 @@ public class ManagerController {
         this.productionScheduler = productionScheduler;
     }
 
-    public List<List<String>> newLogin() {
-        System.out.println(productionScheduler.getCurrentAndFutureStatusAndTaskStatus());
+    public List newLogin() {
         return productionScheduler.getCurrentAndFutureStatusAndTaskStatus();
     }
 
