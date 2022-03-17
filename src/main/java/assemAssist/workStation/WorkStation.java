@@ -173,7 +173,7 @@ public abstract class WorkStation {
         task.setIsCompleted(true);
     }
 
-    
+
     public String getTasksAndStatus() {
         String s = "";
         List<AssemblyTask> assemblyTasks = getTasks();
