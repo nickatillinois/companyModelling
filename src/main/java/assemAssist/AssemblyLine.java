@@ -18,22 +18,22 @@ public class AssemblyLine {
     private final int ENDHOUR = 22;
 
     public AssemblyLine(ArrayList<WorkStation> workStations){
-        this.workStations = workStations;
+        setWorkStations(workStations);
     }
 
     public List<WorkStation> getWorkStations() {
         return workStations;
     }
 
-    public void setWorkStations(List<WorkStation> workStations) {
+    private void setWorkStations(List<WorkStation> workStations) {
         this.workStations = workStations;
     }
 
-    public int getMaxWorkingHoursToday() {
+    private int getMaxWorkingHoursToday() {
         return maxWorkingHoursToday;
     }
 
-    public void setMaxWorkingHoursToday(int maxWorkingHoursToday) {
+    private void setMaxWorkingHoursToday(int maxWorkingHoursToday) {
         this.maxWorkingHoursToday = maxWorkingHoursToday;
     }
 
@@ -41,15 +41,18 @@ public class AssemblyLine {
         return hoursWorkedToday;
     }
 
-    public void setHoursWorkedToday(int hoursWorkedToday) {
+    private void setHoursWorkedToday(int hoursWorkedToday) {
         this.hoursWorkedToday = hoursWorkedToday;
     }
 
-    public void nextDay(){
+    public void nextDay() throws IllegalCallerException{
+        for(WorkStation workStation : workStations)
+            if (workStation.getCurrentOrder() != null)
+                throw new IllegalCallerException("There are workstation(s) that are stile working a current order. ");
         if(getHoursWorkedToday() <= ENDHOUR - STARTHOUR )
             setMaxWorkingHoursToday(ENDHOUR - STARTHOUR);
         else
-            setMaxWorkingHoursToday(ENDHOUR - STARTHOUR-((ENDHOUR - STARTHOUR) - getHoursWorkedToday()));
+            setMaxWorkingHoursToday(ENDHOUR - STARTHOUR-(getHoursWorkedToday()-(ENDHOUR - STARTHOUR)));
         setHoursWorkedToday(0);
     }
 
@@ -63,7 +66,7 @@ public class AssemblyLine {
     }
 
     public int remainWorkingTime(){
-        return ENDHOUR-STARTHOUR-getHoursWorkedToday();
+        return getMaxWorkingHoursToday()-getHoursWorkedToday();
     }
 
     public boolean canMove(){
@@ -85,7 +88,10 @@ public class AssemblyLine {
         return canNotMove;
     }
 
-    public List<CarOrder> move(CarOrder carOrder, int timeBetweenToStates){
+    public List<CarOrder> move(CarOrder carOrder, int timeBetweenToStates) throws IllegalCallerException{
+        for(WorkStation workStation : getWorkStations())
+            if(!workStation.isFinished())
+                throw new IllegalCallerException("The assmebly line is stil working at a workpost!");
         setHoursWorkedToday(getHoursWorkedToday() + timeBetweenToStates);
         CarOrder finischedCar = workStations.get(2).getCurrentOrder();
         if (finischedCar !=  null) {
