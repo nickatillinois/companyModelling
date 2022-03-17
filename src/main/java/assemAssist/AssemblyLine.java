@@ -17,7 +17,7 @@ public class AssemblyLine {
     private final int STARTHOUR = 6;
     private final int ENDHOUR = 22;
 
-    public AssemblyLine(ArrayList<WorkStation> workStations){
+    public AssemblyLine(List<WorkStation> workStations){
         setWorkStations(workStations);
     }
 
