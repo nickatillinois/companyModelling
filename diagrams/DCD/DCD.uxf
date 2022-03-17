@@ -356,34 +356,34 @@ completedCarOrders</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>616</x>
-      <y>944</y>
+      <y>960</y>
       <w>240</w>
-      <h>64</h>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>280.0;10.0;10.0;60.0</additional_attributes>
+    <additional_attributes>280.0;10.0;10.0;40.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>832</x>
-      <y>944</y>
+      <y>960</y>
       <w>232</w>
-      <h>64</h>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;270.0;60.0</additional_attributes>
+    <additional_attributes>10.0;10.0;270.0;40.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>832</x>
-      <y>944</y>
+      <y>960</y>
       <w>24</w>
-      <h>64</h>
+      <h>48</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -391,13 +391,14 @@ completedCarOrders</panel_attributes>
       <x>712</x>
       <y>768</y>
       <w>256</w>
-      <h>184</h>
+      <h>200</h>
     </coordinates>
     <panel_attributes>WorkStation {abstract}
 --
 - assemblyLine : AssemblyLine
 - tasks : List&lt;AssemblyTask&gt;
 - mechanics : List&lt;String&gt;
+- name : String
 --
 _+ newTasks()_
 + addTask(task : AssemblyTask)
@@ -448,7 +449,10 @@ workstations</panel_attributes>
       <w>152</w>
       <h>464</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
+    <panel_attributes>lt=&lt;-
+m1=1
+m2=1
+workStation</panel_attributes>
     <additional_attributes>10.0;560.0;170.0;10.0</additional_attributes>
   </element>
   <element>
@@ -493,7 +497,10 @@ m2=2...3
       <w>272</w>
       <h>152</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
+    <panel_attributes>lt=&lt;-
+m1=1
+m2=1
+productionScheduler</panel_attributes>
     <additional_attributes>10.0;170.0;320.0;10.0</additional_attributes>
   </element>
   <element>
@@ -507,7 +514,7 @@ m2=2...3
     <panel_attributes>lt=&lt;-
 m1= 1
 m2= 1
-productionscheduler</panel_attributes>
+productionScheduler</panel_attributes>
     <additional_attributes>10.0;180.0;140.0;10.0</additional_attributes>
   </element>
   <element>
@@ -602,17 +609,6 @@ managerController</panel_attributes>
     <additional_attributes>110.0;10.0;10.0;130.0</additional_attributes>
   </element>
   <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>488</x>
-      <y>312</y>
-      <w>136</w>
-      <h>424</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;510.0;150.0;10.0</additional_attributes>
-  </element>
-  <element>
     <id>UMLClass</id>
     <coordinates>
       <x>720</x>
@@ -656,10 +652,13 @@ managerController</panel_attributes>
     <coordinates>
       <x>864</x>
       <y>320</y>
-      <w>144</w>
+      <w>152</w>
       <h>184</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-</panel_attributes>
+    <panel_attributes>lt=&lt;-
+m1=1
+m2=1
+assemblyLine</panel_attributes>
     <additional_attributes>10.0;210.0;160.0;10.0</additional_attributes>
   </element>
   <element>
