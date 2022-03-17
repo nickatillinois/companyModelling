@@ -157,19 +157,31 @@ public class AssemblyLine {
         workStations.get(2).setCurrentOrder(workStations.get(1).getCurrentOrder());
         workStations.get(1).setCurrentOrder(workStations.get(0).getCurrentOrder());
         workStations.get(0).setCurrentOrder(carOrder);
-        List<String> newStateAndFiniched = new ArrayList<>(4);
-        if(carOrder != null)
-            newStateAndFiniched.add(carOrder.toString().split("\\.")[3].split("@")[0]);
-        else
-            newStateAndFiniched.add("No order");
-        if (workStations.get(1).getCurrentOrder() != null)
-            newStateAndFiniched.add(workStations.get(1).getCurrentOrder().toString().split("\\.")[3].split("@")[0]);
-        else
-            newStateAndFiniched.add("No order");
-        if (workStations.get(2).getCurrentOrder() != null)
-            newStateAndFiniched.add(workStations.get(2).getCurrentOrder().toString().split("\\.")[3].split("@")[0]);
-        else
-            newStateAndFiniched.add("No order");
+        List<String> newStateAndFiniched = new ArrayList<>();
+        List<CarOrder> curuntStatus  = getCurrentState();
+        for(int i = 0 ; i < curuntStatus.size() ; i++){
+            CarOrder carOrder2 = curuntStatus.get(i);
+            String s = getWorkStations().get(i).toString() + " ; ";
+            if(carOrder2 != null) {
+                s += "Model: " + carOrder.getCarModel();
+                getWorkStations().get(i).getTasksAndStatus();
+            }
+            else
+                s += "No Order in this workstation";
+            newStateAndFiniched.add(s);
+        }
+//        if(carOrder != null)
+//            newStateAndFiniched.add(carOrder.toString().split("\\.")[3].split("@")[0]);
+//        else
+//            newStateAndFiniched.add("No order");
+//        if (workStations.get(1).getCurrentOrder() != null)
+//            newStateAndFiniched.add(workStations.get(1).getCurrentOrder().toString().split("\\.")[3].split("@")[0]);
+//        else
+//            newStateAndFiniched.add("No order");
+//        if (workStations.get(2).getCurrentOrder() != null)
+//            newStateAndFiniched.add(workStations.get(2).getCurrentOrder().toString().split("\\.")[3].split("@")[0]);
+//        else
+//            newStateAndFiniched.add("No order");
         return newStateAndFiniched;
     }
 
