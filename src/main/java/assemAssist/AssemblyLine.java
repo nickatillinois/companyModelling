@@ -127,11 +127,12 @@ public class AssemblyLine {
      * This function returns a list of car orders that not is finished at there current workstation.
      * @return list of car orders
      */
-    public List<CarOrder> canNotMove(){
-        List<CarOrder> canNotMove = new ArrayList<>();
+    public List<String> canNotMove(){
+        List<String> canNotMove = new ArrayList<>();
+        canNotMove.add("Blocked");
         for(WorkStation workStation : workStations){
             if (!workStation.isFinished())
-                canNotMove.add(workStation.getCurrentOrder());
+                canNotMove.add(workStation.toString().split("\\.")[2].split("@")[0]);
         }
         return canNotMove;
     }
@@ -144,7 +145,7 @@ public class AssemblyLine {
      * @return list of car orders
      * @throws IllegalCallerException if the assembly line can't move
      */
-    public List<CarOrder> move(CarOrder carOrder, int timeBetweenToStates) throws IllegalCallerException{
+    public List<String> move(CarOrder carOrder, int timeBetweenToStates) throws IllegalCallerException{
         for(WorkStation workStation : getWorkStations())
             if(!workStation.isFinished())
                 throw new IllegalCallerException("The assmebly line is stil working at a workpost!");
@@ -156,11 +157,31 @@ public class AssemblyLine {
         workStations.get(2).setCurrentOrder(workStations.get(1).getCurrentOrder());
         workStations.get(1).setCurrentOrder(workStations.get(0).getCurrentOrder());
         workStations.get(0).setCurrentOrder(carOrder);
-        List<CarOrder> newStateAndFiniched = new ArrayList<>(4);
-        newStateAndFiniched.add(carOrder);
-        newStateAndFiniched.add(workStations.get(1).getCurrentOrder());
-        newStateAndFiniched.add(workStations.get(2).getCurrentOrder());
-        newStateAndFiniched.add(finischedCar);
+        List<String> newStateAndFiniched = new ArrayList<>();
+        List<CarOrder> curuntStatus  = getCurrentState();
+        for(int i = 0 ; i < curuntStatus.size() ; i++){
+            CarOrder carOrder2 = curuntStatus.get(i);
+            String s = getWorkStations().get(i).toString() + " ; ";
+            if(carOrder2 != null) {
+                s += "Model: " + carOrder.getCarModel();
+                getWorkStations().get(i).getTasksAndStatus();
+            }
+            else
+                s += "No Order in this workstation";
+            newStateAndFiniched.add(s);
+        }
+//        if(carOrder != null)
+//            newStateAndFiniched.add(carOrder.toString().split("\\.")[3].split("@")[0]);
+//        else
+//            newStateAndFiniched.add("No order");
+//        if (workStations.get(1).getCurrentOrder() != null)
+//            newStateAndFiniched.add(workStations.get(1).getCurrentOrder().toString().split("\\.")[3].split("@")[0]);
+//        else
+//            newStateAndFiniched.add("No order");
+//        if (workStations.get(2).getCurrentOrder() != null)
+//            newStateAndFiniched.add(workStations.get(2).getCurrentOrder().toString().split("\\.")[3].split("@")[0]);
+//        else
+//            newStateAndFiniched.add("No order");
         return newStateAndFiniched;
     }
 

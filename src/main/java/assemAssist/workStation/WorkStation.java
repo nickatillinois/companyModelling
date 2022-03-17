@@ -174,7 +174,7 @@ public abstract class WorkStation {
         task.setIsCompleted(true);
     }
 
-    // TODO implement or remove
+
     public String getTasksAndStatus() {
         String s = "";
         List<AssemblyTask> assemblyTasks = getTasks();
