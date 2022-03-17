@@ -4,6 +4,15 @@ package assemAssist.carOrder;
 import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalModelException;
 import org.junit.jupiter.api.*;
+import org.testng.Assert;
+import static assemAssist.carOrder.CarModel.*;
+import static assemAssist.carOrder.Airco.*;
+import static assemAssist.carOrder.Body.*;
+import static assemAssist.carOrder.Color.*;
+import static assemAssist.carOrder.Engine.*;
+import static assemAssist.carOrder.Gearbox.*;
+import static assemAssist.carOrder.Seats.*;
+import static assemAssist.carOrder.Wheels.*;
 import java.time.LocalDateTime;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -181,9 +190,9 @@ class CarOrderTest {
     void testMethodsCarModel() throws IllegalModelException {
         carModel.setModelName("Jaguar");
         assert carModel.getModelName().equalsIgnoreCase("jaguar");
-        assert CarModel.getAvailableModels().size() == 1;
+        assert getAvailableModels().size() == 1;
         CarModel.addModel("Astra");
-        assert CarModel.getAvailableModels().size() == 2;
+        assert getAvailableModels().size() == 2;
         assert carModel.getCarModelSpecification() == carModelSpecification;
         Exception exception23 = assertThrows(IllegalArgumentException.class, () -> {
             carModel.setCarModelSpecification(null);
@@ -217,7 +226,175 @@ class CarOrderTest {
         carOrder.setCompletionTime(date);
         assert carOrder.getCompletionTime().equals(date);
     }
-
+    @Test
+    void testAirco() throws IllegalModelException {
+        int size1 = Airco.getAvailableChoices().length;
+        assert size1 == 2;
+        assert airco.getChosenChoice().equalsIgnoreCase("ManuAl");
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            airco = new Airco(null);
+        });
+        Exception exception2 = assertThrows(IllegalArgumentException.class, () -> {
+            airco = new Airco("");
+        });
+        Exception exception3 = assertThrows(IllegalChoiceException.class, () -> {
+            airco = new Airco("red");
+        });
+        Exception exception4 = assertThrows(IllegalArgumentException.class, () -> {
+            airco.setChosenChoice(null);
+        });
+        Exception exception5 = assertThrows(IllegalArgumentException.class, () -> {
+            airco.setChosenChoice("");
+        });
+        Exception exception6 = assertThrows(IllegalChoiceException.class, () -> {
+            airco.setChosenChoice("leather white");
+        });
+    }
+    @Test
+    void testBody() throws IllegalModelException {
+        int size1 = Body.getAvailableChoices().length;
+        assert size1 == 2;
+        assert body.getChosenChoice().equalsIgnoreCase("sedan");
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            body = new Body(null);
+        });
+        Exception exception2 = assertThrows(IllegalArgumentException.class, () -> {
+            body = new Body("");
+        });
+        Exception exception3 = assertThrows(IllegalChoiceException.class, () -> {
+            body = new Body("red");
+        });
+        Exception exception4 = assertThrows(IllegalArgumentException.class, () -> {
+            body.setChosenChoice(null);
+        });
+        Exception exception5 = assertThrows(IllegalArgumentException.class, () -> {
+            body.setChosenChoice("");
+        });
+        Exception exception6 = assertThrows(IllegalChoiceException.class, () -> {
+            body.setChosenChoice("leather white");
+        });
+    }
+    @Test
+    void testColor() throws IllegalModelException {
+        int size1 = Color.getAvailableChoices().length;
+        assert size1 == 4;
+        assert color.getChosenChoice().equalsIgnoreCase("reD");
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            color = new Color(null);
+        });
+        Exception exception2 = assertThrows(IllegalArgumentException.class, () -> {
+            color = new Color("");
+        });
+        Exception exception3 = assertThrows(IllegalChoiceException.class, () -> {
+            color = new Color("manual");
+        });
+        Exception exception4 = assertThrows(IllegalArgumentException.class, () -> {
+            color.setChosenChoice(null);
+        });
+        Exception exception5 = assertThrows(IllegalArgumentException.class, () -> {
+            color.setChosenChoice("");
+        });
+        Exception exception6 = assertThrows(IllegalChoiceException.class, () -> {
+            color.setChosenChoice("leather white");
+        });
+    }
+    @Test
+    void testEngine() throws IllegalModelException, IllegalChoiceException {
+        int size1 = Engine.getAvailableChoices().length;
+        assert size1 == 2;
+        engine.setChosenChoice("standard 2l 4 cilinders");
+        assert engine.getChosenChoice().equalsIgnoreCase("Standard 2l 4 cilinders");
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            engine = new Engine(null);
+        });
+        Exception exception2 = assertThrows(IllegalArgumentException.class, () -> {
+            engine = new Engine("");
+        });
+        Exception exception3 = assertThrows(IllegalChoiceException.class, () -> {
+            engine = new Engine("red");
+        });
+        Exception exception4 = assertThrows(IllegalArgumentException.class, () -> {
+            engine.setChosenChoice(null);
+        });
+        Exception exception5 = assertThrows(IllegalArgumentException.class, () -> {
+            engine.setChosenChoice("");
+        });
+        Exception exception6 = assertThrows(IllegalChoiceException.class, () -> {
+            engine.setChosenChoice("leather white");
+        });
+    }
+    @Test
+    void testGearbox() throws IllegalModelException {
+        int size1 = Gearbox.getAvailableChoices().length;
+        assert size1 == 2;
+        assert gearbox.getChosenChoice().equalsIgnoreCase("6 speed manual");
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            gearbox = new Gearbox(null);
+        });
+        Exception exception2 = assertThrows(IllegalArgumentException.class, () -> {
+            gearbox = new Gearbox("");
+        });
+        Exception exception3 = assertThrows(IllegalChoiceException.class, () -> {
+            gearbox = new Gearbox("red");
+        });
+        Exception exception4 = assertThrows(IllegalArgumentException.class, () -> {
+            gearbox.setChosenChoice(null);
+        });
+        Exception exception5 = assertThrows(IllegalArgumentException.class, () -> {
+            gearbox.setChosenChoice("");
+        });
+        Exception exception6 = assertThrows(IllegalChoiceException.class, () -> {
+            gearbox.setChosenChoice("leather white");
+        });
+    }
+    @Test
+    void testSeats() throws IllegalModelException {
+        int size1 = Seats.getAvailableChoices().length;
+        assert size1 == 3;
+        assert seats.getChosenChoice().equalsIgnoreCase("leather white");
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            seats = new Seats(null);
+        });
+        Exception exception2 = assertThrows(IllegalArgumentException.class, () -> {
+            seats = new Seats("");
+        });
+        Exception exception3 = assertThrows(IllegalChoiceException.class, () -> {
+            seats = new Seats("red");
+        });
+        Exception exception4 = assertThrows(IllegalArgumentException.class, () -> {
+            seats.setChosenChoice(null);
+        });
+        Exception exception5 = assertThrows(IllegalArgumentException.class, () -> {
+            seats.setChosenChoice("");
+        });
+        Exception exception6 = assertThrows(IllegalChoiceException.class, () -> {
+            seats.setChosenChoice("manual");
+        });
+    }
+    @Test
+    void testWheels() throws IllegalModelException {
+        int size1 = Wheels.getAvailableChoices().length;
+        assert size1 == 2;
+        assert wheels.getChosenChoice().equalsIgnoreCase("comfort");
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            wheels = new Wheels(null);
+        });
+        Exception exception2 = assertThrows(IllegalArgumentException.class, () -> {
+            wheels = new Wheels("");
+        });
+        Exception exception3 = assertThrows(IllegalChoiceException.class, () -> {
+            wheels = new Wheels("red");
+        });
+        Exception exception4 = assertThrows(IllegalArgumentException.class, () -> {
+            wheels.setChosenChoice(null);
+        });
+        Exception exception5 = assertThrows(IllegalArgumentException.class, () -> {
+            wheels.setChosenChoice("");
+        });
+        Exception exception6 = assertThrows(IllegalChoiceException.class, () -> {
+            wheels.setChosenChoice("leather white");
+        });
+    }
 
 
 

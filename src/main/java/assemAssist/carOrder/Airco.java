@@ -2,13 +2,6 @@ package assemAssist.carOrder;
 
 
 import assemAssist.exceptions.IllegalChoiceException;
-import purecollections.PList;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Class representing an airco option.
