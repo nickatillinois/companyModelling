@@ -11,15 +11,8 @@ public class CarBodyPost extends WorkStation{
     /**
      * Creates a car body post.
      */
-    public CarBodyPost() { super(); }
-
-
-    /**
-     * Returns the name of the work station.
-     */
-    @Override
-    public String getName() {
-        return "Car Body Post";
+    public CarBodyPost() {
+        super("Car Body Post");
     }
 
     /**

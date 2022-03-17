@@ -27,10 +27,16 @@ public abstract class WorkStation {
     private PList<String> mechanics;
 
     /**
+     * The name of this work station.
+     */
+    private String name;
+
+    /**
      * Creates a work station.
      */
-    public WorkStation() {
+    public WorkStation(String name) {
         super();
+        this.name = name;
     }
 
     /**
@@ -56,7 +62,7 @@ public abstract class WorkStation {
     /**
      * Returns the name of the work station.
      */
-    public abstract String getName();
+    public String getName() {return this.name}
 
     /**
      *  Assigns the car options of the current car order to this work station

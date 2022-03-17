@@ -14,15 +14,7 @@ public class DrivetrainPost extends WorkStation{
      * Creates a drivetrain post.
      */
     public DrivetrainPost() {
-        super();
-    }
-
-    /**
-     * Returns the name of the work station.
-     */
-    @Override
-    public String getName() {
-        return "Drivetrain Post";
+        super("Drivetrain Post");
     }
 
     /**
