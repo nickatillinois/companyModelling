@@ -40,7 +40,7 @@ public class CarOrder {
      */
     public void setGarageholder(String garageholder){
         if(garageholder == null){throw new IllegalArgumentException("garageholder cannot be null.");}
-        if(garageholder == ""){throw new IllegalArgumentException("A garage holder cannot be the empty string.");}
+        if(garageholder.equals("")){throw new IllegalArgumentException("A garage holder cannot be the empty string.");}
         this.garageholder = garageholder;
     }
 
@@ -121,7 +121,7 @@ public class CarOrder {
      */
     public CarOrder(String  garageHolder, CarModel carModel){
         if(garageHolder == null){throw new IllegalArgumentException("A garage holder cannot be null.");}
-        if(garageHolder == ""){throw new IllegalArgumentException("A garage holder cannot be the empty string.");}
+        if(garageHolder.equals("")){throw new IllegalArgumentException("A garage holder cannot be the empty string.");}
         if(carModel == null){throw new IllegalArgumentException("A car model cannot be null.");}
         this.garageholder = garageHolder;
         this.carModel = carModel;

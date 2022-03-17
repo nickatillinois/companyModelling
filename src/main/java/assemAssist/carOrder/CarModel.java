@@ -1,6 +1,5 @@
 package assemAssist.carOrder;
 
-import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalModelException;
 import purecollections.PList;
 
