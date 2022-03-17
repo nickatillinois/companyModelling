@@ -21,7 +21,7 @@ class WorkStationTest {
         carBodyPost = new CarBodyPost();
         drivetrainPost = new DrivetrainPost();
         accessoriesPost = new AccessoriesPost();
-
+        CarModel.addModel("Jaguar");
         Body body = new Body("sedan");
         CarModelSpecification specification = new CarModelSpecification(body,new Color("red"),
                 new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
