@@ -1,20 +1,14 @@
-package assemAssist.carOrder;
-
-
+import assemAssist.carOrder.*;
 import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalModelException;
-import org.junit.jupiter.api.*;
-import org.testng.Assert;
-import static assemAssist.carOrder.CarModel.*;
-import static assemAssist.carOrder.Airco.*;
-import static assemAssist.carOrder.Body.*;
-import static assemAssist.carOrder.Color.*;
-import static assemAssist.carOrder.Engine.*;
-import static assemAssist.carOrder.Gearbox.*;
-import static assemAssist.carOrder.Seats.*;
-import static assemAssist.carOrder.Wheels.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
 import java.time.LocalDateTime;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static assemAssist.carOrder.CarModel.getAvailableModels;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CarOrderTest {
 
