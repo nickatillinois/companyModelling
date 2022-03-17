@@ -59,8 +59,10 @@ public class productSchedulerTest {
 
     @Test
     public void getCurrentStateOneOrderNoAdvanceTest() throws IllegalChoiceException, IllegalModelException {
-        Body body = new Body();
-        CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color(),new Engine(),new Gearbox(),new Seats(),new Airco(),new Wheels());
+        Body body = new Body("sedan");
+        CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
+                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
+                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
         CarModel carModel = new CarModel("Jaguar",carModelSpecification);
         CarOrder carOrder1 = new CarOrder("Luna",carModel);
         productionScheduler.addOrderToProductionSchedule(carOrder1);
@@ -73,8 +75,10 @@ public class productSchedulerTest {
 
     @Test
     public void OneOrderAdvanceTest() throws IllegalChoiceException, IllegalModelException {
-        Body body = new Body();
-        CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color(),new Engine(),new Gearbox(),new Seats(),new Airco(),new Wheels());
+        Body body = new Body("sedan");
+        CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
+                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
+                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
         CarModel carModel = new CarModel("Jaguar",carModelSpecification);
         CarOrder carOrder1 = new CarOrder("Luna",carModel);
         productionScheduler.addOrderToProductionSchedule(carOrder1);
@@ -88,9 +92,11 @@ public class productSchedulerTest {
 
     @Test
     public void TwoOrderAdvanceTest() throws IllegalChoiceException, IllegalModelException {
-        Body body = new Body();
+        Body body = new Body("sedan");
+        CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
+                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
+                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
         CarModel.addModel("Jaguar");
-        CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color(),new Engine(),new Gearbox(),new Seats(),new Airco(),new Wheels());
         CarModel carModel = new CarModel("Jaguar",carModelSpecification);
         CarOrder carOrder1 = new CarOrder("Luna",carModel);
         productionScheduler.addOrderToProductionSchedule(carOrder1);
@@ -126,8 +132,10 @@ public class productSchedulerTest {
 
     @Test
     public void FourOrderAdvanceTest() throws IllegalChoiceException, IllegalModelException {
-        Body body = new Body();
-        CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color(),new Engine(),new Gearbox(),new Seats(),new Airco(),new Wheels());
+        Body body = new Body("sedan");
+        CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
+                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
+                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
         CarModel carModel = new CarModel("Jaguar",carModelSpecification);
         CarOrder carOrder1 = new CarOrder("Luna",carModel);
         productionScheduler.addOrderToProductionSchedule(carOrder1);
@@ -203,8 +211,10 @@ public class productSchedulerTest {
 
     @Test
     public void canMoveOneOrderTest() throws IllegalChoiceException, IllegalModelException {
-        Body body = new Body();
-        CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color(),new Engine(),new Gearbox(),new Seats(),new Airco(),new Wheels());
+        Body body = new Body("sedan");
+        CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
+                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
+                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
         CarModel carModel = new CarModel("Jaguar",carModelSpecification);
         CarOrder carOrder1 = new CarOrder("Luna",carModel);
         productionScheduler.addOrderToProductionSchedule(carOrder1);
@@ -215,8 +225,11 @@ public class productSchedulerTest {
     }
 
     @Test
-    public void simulateAdvanceAssemblyLineTest() throws IllegalModelException {
-        CarModelSpecification carModelSpecification = new CarModelSpecification(new Body(),new Color(),new Engine(),new Gearbox(),new Seats(),new Airco(),new Wheels());
+    public void simulateAdvanceAssemblyLineTest() throws IllegalModelException, IllegalChoiceException {
+        Body body = new Body("sedan");
+        CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
+                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
+                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
         CarModel.addModel("Jaguar");
         CarModel carModel = new CarModel("Jaguar",carModelSpecification);
         CarOrder carOrder1 = new CarOrder("Luna",carModel);
@@ -233,8 +246,11 @@ public class productSchedulerTest {
     }
 
     @Test
-    public void addCompletedCarOrder() throws IllegalModelException {
-        CarModelSpecification carModelSpecification = new CarModelSpecification(new Body(),new Color(),new Engine(),new Gearbox(),new Seats(),new Airco(),new Wheels());
+    public void addCompletedCarOrder() throws IllegalModelException, IllegalChoiceException {
+        Body body = new Body("sedan");
+        CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
+                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
+                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
         CarModel.addModel("Jaguar");
         CarModel carModel = new CarModel("Jaguar",carModelSpecification);
         CarOrder carOrder1 = new CarOrder("Luna",carModel);
@@ -246,8 +262,11 @@ public class productSchedulerTest {
     }
 
     @Test
-    public void getOrdersFromGarageHolderTest() throws IllegalModelException {
-        CarModelSpecification carModelSpecification = new CarModelSpecification(new Body(),new Color(),new Engine(),new Gearbox(),new Seats(),new Airco(),new Wheels());
+    public void getOrdersFromGarageHolderTest() throws IllegalModelException, IllegalChoiceException {
+        Body body = new Body("sedan");
+        CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
+                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
+                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
         CarModel.addModel("Jaguar");
         CarModel carModel = new CarModel("Jaguar",carModelSpecification);
         CarOrder carOrder1 = new CarOrder("Luna",carModel);
@@ -265,8 +284,11 @@ public class productSchedulerTest {
     }
 
     @Test
-    public void getOrdersFromGarageHolderTest2() throws IllegalModelException {
-        CarModelSpecification carModelSpecification = new CarModelSpecification(new Body(), new Color(), new Engine(), new Gearbox(), new Seats(), new Airco(), new Wheels());
+    public void getOrdersFromGarageHolderTest2() throws IllegalModelException, IllegalChoiceException {
+        Body body = new Body("sedan");
+        CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
+                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
+                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
         CarModel.addModel("Jaguar");
         CarModel carModel = new CarModel("Jaguar", carModelSpecification);
         CarOrder carOrder1 = new CarOrder("Luna", carModel);
@@ -279,8 +301,11 @@ public class productSchedulerTest {
     }
 
     @Test
-    public void getCompletedOrdersFromGarageHolderTest() throws IllegalModelException {
-        CarModelSpecification carModelSpecification = new CarModelSpecification(new Body(), new Color(), new Engine(), new Gearbox(), new Seats(), new Airco(), new Wheels());
+    public void getCompletedOrdersFromGarageHolderTest() throws IllegalModelException, IllegalChoiceException {
+        Body body = new Body("sedan");
+        CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
+                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
+                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
         CarModel.addModel("Jaguar");
         CarModel carModel = new CarModel("Jaguar", carModelSpecification);
         CarOrder carOrder1 = new CarOrder("Luna", carModel);
@@ -292,8 +317,11 @@ public class productSchedulerTest {
     }
 
     @Test
-    public void getCompletedOrdersFromGarageHolderTest2() throws IllegalModelException {
-        CarModelSpecification carModelSpecification = new CarModelSpecification(new Body(), new Color(), new Engine(), new Gearbox(), new Seats(), new Airco(), new Wheels());
+    public void getCompletedOrdersFromGarageHolderTest2() throws IllegalModelException, IllegalChoiceException {
+        Body body = new Body("sedan");
+        CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
+                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
+                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
         CarModel.addModel("Jaguar");
         CarModel carModel = new CarModel("Jaguar", carModelSpecification);
         CarOrder carOrder1 = new CarOrder("Luna", carModel);

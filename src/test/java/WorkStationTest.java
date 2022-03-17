@@ -1,4 +1,5 @@
 import assemAssist.carOrder.*;
+import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalModelException;
 import assemAssist.workStation.AccessoriesPost;
 import assemAssist.workStation.CarBodyPost;
@@ -15,13 +16,16 @@ class WorkStationTest {
     static AccessoriesPost accessoriesPost;
 
     @BeforeAll
-    static void init() throws IllegalModelException {
+    static void init() throws IllegalModelException, IllegalChoiceException {
 
         carBodyPost = new CarBodyPost();
         drivetrainPost = new DrivetrainPost();
         accessoriesPost = new AccessoriesPost();
 
-        CarModelSpecification specification = new CarModelSpecification(new Body(),new Color(),new Engine(),new Gearbox(),new Seats(),new Airco(),new Wheels());
+        Body body = new Body("sedan");
+        CarModelSpecification specification = new CarModelSpecification(body,new Color("red"),
+                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
+                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
         CarOrder orderA = new CarOrder("A",new CarModel("Jaguar", specification));
         CarOrder orderB = new CarOrder("B",new CarModel("Jaguar", specification));
 
@@ -30,8 +34,11 @@ class WorkStationTest {
     }
 
     @Test
-    void getCurrentOrder() throws IllegalModelException {
-        CarModelSpecification specification = new CarModelSpecification(new Body(),new Color(),new Engine(),new Gearbox(),new Seats(),new Airco(),new Wheels());
+    void getCurrentOrder() throws IllegalModelException, IllegalChoiceException {
+        Body body = new Body("sedan");
+        CarModelSpecification specification= new CarModelSpecification(body,new Color("red"),
+                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
+                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
         CarOrder orderA = new CarOrder("A",new CarModel("Jaguar", specification));
         CarOrder orderB = new CarOrder("B",new CarModel("Jaguar", specification));
 
@@ -41,8 +48,11 @@ class WorkStationTest {
     }
 
     @Test
-    void setCurrentOrder() throws IllegalModelException {
-        CarModelSpecification specification = new CarModelSpecification(new Body(),new Color(),new Engine(),new Gearbox(),new Seats(),new Airco(),new Wheels());
+    void setCurrentOrder() throws IllegalModelException, IllegalChoiceException {
+        Body body = new Body("sedan");
+        CarModelSpecification specification = new CarModelSpecification(body,new Color("red"),
+                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
+                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
         CarOrder orderC = new CarOrder("C",new CarModel("Jaguar", specification));
 
         accessoriesPost.setCurrentOrder(orderC);

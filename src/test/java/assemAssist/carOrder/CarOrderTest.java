@@ -9,13 +9,76 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CarOrderTest {
 
-    static Body body = new Body();
-    static Airco airco = new Airco();
-    static Wheels wheels = new Wheels();
-    static Seats seats = new Seats();
-    static Gearbox gearbox = new Gearbox();
-    static Engine engine = new Engine();
-    static Color color = new Color();
+    static Body body;
+
+    static {
+        try {
+            body = new Body("sedan");
+        } catch (IllegalChoiceException e) {
+            e.printStackTrace();
+        }
+    }
+
+    static Airco airco;
+
+    static {
+        try {
+            airco = new Airco("manual");
+        } catch (IllegalChoiceException e) {
+            e.printStackTrace();
+        }
+    }
+
+    static Wheels wheels;
+
+    static {
+        try {
+            wheels = new Wheels("comfort");
+        } catch (IllegalChoiceException e) {
+            e.printStackTrace();
+        }
+    }
+
+    static Seats seats;
+
+    static {
+        try {
+            seats = new Seats("leather white");
+        } catch (IllegalChoiceException e) {
+            e.printStackTrace();
+        }
+    }
+
+    static Gearbox gearbox;
+
+    static {
+        try {
+            gearbox = new Gearbox("6 speed manual");
+        } catch (IllegalChoiceException e) {
+            e.printStackTrace();
+        }
+    }
+
+    static Engine engine;
+
+    static {
+        try {
+            engine = new Engine("standard 2l 4 cilinders");
+        } catch (IllegalChoiceException e) {
+            e.printStackTrace();
+        }
+    }
+
+    static Color color;
+
+    static {
+        try {
+            color = new Color("red");
+        } catch (IllegalChoiceException e) {
+            e.printStackTrace();
+        }
+    }
+
     static CarModelSpecification carModelSpecification;
     static CarModel carModel;
     static CarOrder carOrder;

@@ -1,6 +1,7 @@
 package useCases;
 
 import assemAssist.carOrder.*;
+import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalModelException;
 import org.junit.jupiter.api.Test;
 
@@ -12,16 +13,11 @@ public class OrderNewCar1 {
     private String garageHolder;
 
     @Test
-    public void init() throws IllegalModelException {
-        Seats seats = new Seats();
-        Wheels wheels = new Wheels();
-        Gearbox gearbox = new Gearbox();
-        Engine engine = new Engine();
-        Color color = new Color();
-        Body body = new Body();
-        Airco airco = new Airco();
-        CarModelSpecification cmf = new CarModelSpecification(body, color, engine, gearbox, seats, airco,
-                wheels);
+    public void init() throws IllegalModelException, IllegalChoiceException {
+        Body body = new Body("sedan");
+        CarModelSpecification cmf = new CarModelSpecification(body,new Color("red"),
+                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
+                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
         String modelName = "jaguar";
         CarModel carModel = new CarModel(modelName, cmf);
 

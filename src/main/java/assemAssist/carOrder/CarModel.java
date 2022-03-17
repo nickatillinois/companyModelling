@@ -110,7 +110,7 @@ public class CarModel {
      * @param carModelSpecification  The car model specification for the car model.
      * @throws IllegalArgumentException | modelName is null
      *                                  | modelname is the empty string
-     *                                  | carModelSpecificatoin is null
+     *                                  | carModelSpecification is null
      * @throws IllegalModelException    | the given modelName is not in the list of available model names
      */
     public CarModel(String modelName, CarModelSpecification carModelSpecification) throws IllegalModelException {
