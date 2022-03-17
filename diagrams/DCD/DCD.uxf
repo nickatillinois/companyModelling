@@ -356,42 +356,42 @@ completedCarOrders</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>616</x>
-      <y>952</y>
+      <y>944</y>
       <w>240</w>
-      <h>56</h>
+      <h>64</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>280.0;10.0;10.0;50.0</additional_attributes>
+    <additional_attributes>280.0;10.0;10.0;60.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>832</x>
-      <y>952</y>
+      <y>944</y>
       <w>232</w>
-      <h>56</h>
+      <h>64</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;270.0;50.0</additional_attributes>
+    <additional_attributes>10.0;10.0;270.0;60.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>832</x>
-      <y>952</y>
+      <y>944</y>
       <w>24</w>
-      <h>56</h>
+      <h>64</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>712</x>
-      <y>784</y>
+      <y>768</y>
       <w>256</w>
-      <h>176</h>
+      <h>184</h>
     </coordinates>
     <panel_attributes>WorkStation {abstract}
 --
@@ -399,13 +399,18 @@ completedCarOrders</panel_attributes>
 - tasks : List&lt;AssemblyTask&gt;
 - mechanics : List&lt;String&gt;
 --
+_+ newTasks()_
++ addTask(task : AssemblyTask)
 + isFinished()
++ addMechanic(mechanic : String)
++ removeMechanic(mechanic : String)
 + getPendingTasks()
 + getInformationFromTask(task : AssemblyTask) 
 + performAssemblyTask(task : AssemblyTask)
-+ addTask(task : AssemblyTask)
-+ addMechanic(mechanic : String)
-+ removeMechanic(mechanic : String)</panel_attributes>
++ getTasksAndStatus()
+
+
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -414,13 +419,13 @@ completedCarOrders</panel_attributes>
       <x>824</x>
       <y>640</y>
       <w>104</w>
-      <h>160</h>
+      <h>144</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..n
 m2=1
 workstations</panel_attributes>
-    <additional_attributes>10.0;180.0;50.0;10.0</additional_attributes>
+    <additional_attributes>10.0;160.0;50.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -441,24 +446,23 @@ workstations</panel_attributes>
       <x>936</x>
       <y>304</y>
       <w>168</w>
-      <h>496</h>
+      <h>480</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;600.0;190.0;10.0</additional_attributes>
+    <additional_attributes>10.0;580.0;190.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1008</x>
-      <y>832</y>
+      <x>1096</x>
+      <y>816</y>
       <w>160</w>
-      <h>88</h>
+      <h>80</h>
     </coordinates>
     <panel_attributes>AssemblyTask
 --
 - name : String
 - isCompleted : boolean
-- workStation : WorkStation
 - component : Option
 - taskDefinition : String
 
@@ -469,13 +473,17 @@ workstations</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>960</x>
-      <y>856</y>
-      <w>64</w>
-      <h>32</h>
+      <y>848</y>
+      <w>152</w>
+      <h>48</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
-</panel_attributes>
-    <additional_attributes>60.0;20.0;10.0;20.0</additional_attributes>
+    <panel_attributes>lt=-&gt;
+m1=1
+m2=2...3
+
+
+   currentOrder</panel_attributes>
+    <additional_attributes>10.0;20.0;170.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -749,12 +757,12 @@ body, color, engine, gearbox, seats, airco, wheels</panel_attributes>
       <x>488</x>
       <y>736</y>
       <w>240</w>
-      <h>80</h>
+      <h>64</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m1=1
 m2=1
                       currentOrder</panel_attributes>
-    <additional_attributes>280.0;70.0;10.0;10.0</additional_attributes>
+    <additional_attributes>280.0;50.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
