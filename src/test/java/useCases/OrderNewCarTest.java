@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.testng.AssertJUnit.assertEquals;
 
-public class OrderNewCar1 {
+public class OrderNewCarTest {
 
     private CarOrder carOrder;
     private String garageHolder;
