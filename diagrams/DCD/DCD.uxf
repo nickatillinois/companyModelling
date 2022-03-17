@@ -312,7 +312,7 @@ completedCarOrders</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>675</x>
-      <y>1116</y>
+      <y>1161</y>
       <w>162</w>
       <h>54</h>
     </coordinates>
@@ -326,7 +326,7 @@ completedCarOrders</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>864</x>
-      <y>1116</y>
+      <y>1161</y>
       <w>162</w>
       <h>54</h>
     </coordinates>
@@ -341,7 +341,7 @@ completedCarOrders</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>1053</x>
-      <y>1116</y>
+      <y>1161</y>
       <w>180</w>
       <h>54</h>
     </coordinates>
@@ -356,34 +356,34 @@ completedCarOrders</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>693</x>
-      <y>1071</y>
+      <y>1080</y>
       <w>270</w>
-      <h>63</h>
+      <h>99</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>280.0;10.0;10.0;50.0</additional_attributes>
+    <additional_attributes>280.0;10.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>936</x>
-      <y>1071</y>
+      <y>1080</y>
       <w>261</w>
-      <h>63</h>
+      <h>99</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;270.0;50.0</additional_attributes>
+    <additional_attributes>10.0;10.0;270.0;90.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>936</x>
-      <y>1071</y>
+      <y>1080</y>
       <w>27</w>
-      <h>63</h>
+      <h>99</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -391,12 +391,11 @@ completedCarOrders</panel_attributes>
       <x>801</x>
       <y>882</y>
       <w>288</w>
-      <h>198</h>
+      <h>207</h>
     </coordinates>
     <panel_attributes>WorkStation {abstract}
 --
 - assemblyLine : AssemblyLine
-- tasks : List&lt;AssemblyTask&gt;
 - mechanics : PList&lt;String&gt;
 --
 _+ newTasks()+_
@@ -451,33 +450,19 @@ workstations</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1134</x>
+      <x>1224</x>
       <y>936</y>
       <w>180</w>
-      <h>99</h>
+      <h>81</h>
     </coordinates>
     <panel_attributes>AssemblyTask
 --
 - name : String
 - isCompleted : boolean
-- workStation : WorkStation
 - component : Option
 - taskDefinition : String
-
 </panel_attributes>
     <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1080</x>
-      <y>963</y>
-      <w>72</w>
-      <h>36</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-</panel_attributes>
-    <additional_attributes>60.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -758,5 +743,19 @@ m1=1
 m2=1
                       currentOrder</panel_attributes>
     <additional_attributes>280.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1080</x>
+      <y>963</y>
+      <w>162</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=1
+m2=2...3
+  tasks</panel_attributes>
+    <additional_attributes>10.0;20.0;160.0;20.0</additional_attributes>
   </element>
 </diagram>
