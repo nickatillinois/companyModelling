@@ -71,7 +71,7 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
     }
 
     /**
-     * This function will set the car order as completed and add the car order to the complitedCarorder list.
+     * This function will set the car order as completed and add the car order to the completedCarorder list.
      * @param carOrder
      */
     public void completedCarOrder(CarOrder carOrder) throws NullPointerException{
@@ -167,7 +167,7 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
         if (carOrder != null)
             productionSchedule.add(carOrder);
         else
-            throw new NullPointerException("You can not null to the production schedule.");
+            throw new NullPointerException("You can not add null to the production schedule.");
 
     }
 

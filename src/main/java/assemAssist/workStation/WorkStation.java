@@ -1,7 +1,7 @@
 package assemAssist.workStation;
 import assemAssist.AssemblyTask;
 import assemAssist.carOrder.*;
-import purecollections.PList;
+//import purecollections.PList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ public abstract class WorkStation {
     /**
     * An immutable list of mechanics currently working on this work station.
     */
-    private PList<String> mechanics;
+    //private PList<String> mechanics;
 
     /**
      * The name of this work station.
@@ -62,7 +62,7 @@ public abstract class WorkStation {
     /**
      * Returns the name of the work station.
      */
-    public String getName() {return this.name}
+    public String getName() {return this.name;}
 
     /**
      *  Assigns the car options of the current car order to this work station
@@ -109,11 +109,11 @@ public abstract class WorkStation {
      * @throws IllegalArgumentException | mechanic is null
      *                                  | mechanic is the empty string
      */
-    public void addMechanic(String mechanic) {
+    /*public void addMechanic(String mechanic) {
         if(mechanic == null){throw new IllegalArgumentException("A mechanic cannot be null.");}
         if(mechanic.length() == 0){throw new IllegalArgumentException("A mechanic cannot be the empty string.");}
         mechanics.plus(mechanic);
-    }
+    }*/
 
     /**
      * Removes a given name of a mechanic from the list of mechanics working at this workstation.
@@ -122,7 +122,7 @@ public abstract class WorkStation {
      * @throws IllegalArgumentException | mechanic is null
      *                                  | mechanic is the empty string
      */
-    public void removeMechanic(String mechanic) {
+    /*public void removeMechanic(String mechanic) {
         if(mechanic == null){throw new IllegalArgumentException("A mechanic cannot be null.");}
         if(mechanic.length() == 0){throw new IllegalArgumentException("A mechanic cannot be the empty string.");}
         boolean contains = false;
@@ -134,16 +134,16 @@ public abstract class WorkStation {
         }
         if(!contains) return;
         mechanics.minus(mechanic);
-    }
+    }*/
 
     /**
      * Returns the PList of containing the names of the mechanics currently working at this work station.
      *
      * @return the PList of containing the names of the mechanics currently working at this work station.
      */
-    public PList<String> getMechanics() {
+    /* PList<String> getMechanics() {
         return mechanics;
-    }
+    }*/
 
     /**
      * Returns a list of names of the tasks at this work station that are not yet completed.
