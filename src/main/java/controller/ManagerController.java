@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ManagerController {
 
-    private ProductionScheduler productionScheduler;
+    private final ProductionScheduler productionScheduler;
 
     public ManagerController(ProductionScheduler productionScheduler) {
         this.productionScheduler = productionScheduler;

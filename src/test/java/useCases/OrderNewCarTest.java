@@ -5,8 +5,6 @@ import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalModelException;
 import org.junit.jupiter.api.Test;
 
-import static org.testng.AssertJUnit.assertEquals;
-
 public class OrderNewCarTest {
 
     private CarOrder carOrder;

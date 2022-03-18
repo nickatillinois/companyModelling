@@ -15,15 +15,15 @@ import java.util.stream.Collectors;
  * @author SWOP Team 10
  */
 public class ProductionScheduler {
-private AssemblyLine assemblyLine;
-private List<CarOrder>  productionSchedule;
-private List<CarOrder> completedOrders;
+private final AssemblyLine assemblyLine;
+private final List<CarOrder>  productionSchedule;
+private final List<CarOrder> completedOrders;
 private String manager;
 
     /**
      * Create a new production schedule af a single assembly line that can be managed by the manager
-     * @param manager
-     * @param assemblyLine
+     * @param manager | the manager in control
+     * @param assemblyLine | the assemblyline belonging to the production scheduler
      */
 public ProductionScheduler(String manager, AssemblyLine assemblyLine){
     productionSchedule = new ArrayList<>();
@@ -42,7 +42,7 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
 
     /**
      * Set the manager of the product schedule to the parameter.
-     * @param manager
+     * @param manager | the manager of the product schedule
      */
     public void setManager(String manager) {
         this.manager = manager;
@@ -74,7 +74,7 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
 
     /**
      * This function will set the car order as completed and add the car order to the completedCarorder list.
-     * @param carOrder
+     * @param carOrder | the completed car Order
      */
     public void completedCarOrder(CarOrder carOrder) throws NullPointerException{
         if (carOrder != null) {
@@ -90,8 +90,9 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
 
     /**
      * This function will add a carOrder that already is completed to a List of completed Orders.
-     * @param carOrder
-     * @throws NullPointerException
+     * @param carOrder | the completed car order
+     * @throws NullPointerException | carOrder is null
+     * @throws IllegalArgumentException | the given carOrder has not been completed
      */
     private void addCompletedOrder(CarOrder carOrder) throws NullPointerException {
         if (carOrder == null)
@@ -131,7 +132,7 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
     /**
      * This function will advance the assembly line if that is possible and then returns the nuw state
      * else it return null.
-     * @param timeBetweenToStates
+     * @param timeBetweenToStates | time entered by the manager that was consumed
      * @return new state or null
      */
     public List<String> advanceOrders(int timeBetweenToStates){
@@ -162,8 +163,8 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
 
     /**
      * This function will add a real car order to the production schedule.
-     * @param carOrder
-     * @throws NullPointerException
+     * @param carOrder | the car order added to the proction schedule
+     * @throws NullPointerException | car order is null
      */
     public void addOrderToProductionSchedule(CarOrder carOrder) throws NullPointerException, IllegalCompletionDateException {
         if (carOrder != null) {
@@ -177,7 +178,7 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
 
     /**
      * This function return a list of carorders of the given garageHolder.
-     * @param garageHolder
+     * @param garageHolder | the garageholder of whom the carorders are to be found
      * @return list of car order
      */
     public List<CarOrder> getOrdersFromGarageHolder(String garageHolder){
@@ -193,7 +194,7 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
 
     /**
      * This function returns a list of completed car orders of the given garage holder.
-     * @param garageHolder
+     * @param garageHolder | the garage holder of whom the car orders are to be found
      * @return list of car orders
      */
     public List<CarOrder> getCompletedOrdersFromGarageHolder(String garageHolder){
