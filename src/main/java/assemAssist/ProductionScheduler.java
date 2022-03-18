@@ -205,10 +205,6 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
      */
     public List<CarOrder> simulateAdvanceAssemblyLine() {
         List<CarOrder> currentState = getCurrentState();
-        List<CarOrder> nullList = new ArrayList<>(3);
-        nullList.add(null);
-        nullList.add(null);
-        nullList.add(null);
         ArrayList<CarOrder> simulatedState = new ArrayList<>(3);
         if (getProductionSchedule().size() == 0)
             simulatedState.add(null);
@@ -218,9 +214,6 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
             simulatedState.add(null);
         simulatedState.add( currentState.get(0));
         simulatedState.add( currentState.get(1));
-        if (simulatedState == nullList )
-            simulatedState.set(0, getProductionSchedule().get(0));
-            assemblyLine.nextDay();
         return simulatedState;
     }
 
