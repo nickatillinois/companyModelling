@@ -106,10 +106,6 @@ public class GarageHolderUI {
                                 optionString += option;
                             }
                         }
-                        if (optionString.equals("")) {
-                            firstTime = true;
-                            continue;
-                        }
                         if (Arrays.asList(availableOptions).contains(optionString)) {
                             carOptions.add(optionString);
                             break;
