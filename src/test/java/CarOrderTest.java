@@ -1,3 +1,4 @@
+import assemAssist.ProductionScheduler;
 import assemAssist.carOrder.*;
 import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalCompletionDateException;
@@ -7,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 
-import static assemAssist.carOrder.CarModel.getAvailableModels;
+import static assemAssist.ProductionScheduler.getAvailableModels;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -89,7 +90,7 @@ class CarOrderTest {
 
     @BeforeAll
     static void init() throws IllegalModelException {
-        CarModel.addModel("Jaguar");
+        ProductionScheduler.addModel("Jaguar");
         carModelSpecification = new CarModelSpecification(body, color, engine, gearbox, seats, airco, wheels);
         carModel = new CarModel("Jaguar", carModelSpecification);
         carOrder = new CarOrder("Danny Smeets", carModel);
@@ -186,7 +187,7 @@ class CarOrderTest {
         carModel.setModelName("Jaguar");
         assert carModel.getModelName().equalsIgnoreCase("jaguar");
         assert getAvailableModels().size() == 1;
-        CarModel.addModel("Astra");
+        ProductionScheduler.addModel("Astra");
         assert getAvailableModels().size() == 2;
         assert carModel.getCarModelSpecification() == carModelSpecification;
         Exception exception23 = assertThrows(IllegalArgumentException.class, () -> {

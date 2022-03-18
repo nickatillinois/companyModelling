@@ -1,5 +1,6 @@
 package useCases;
 
+import assemAssist.ProductionScheduler;
 import assemAssist.carOrder.*;
 import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalModelException;
@@ -16,7 +17,7 @@ public class OrderNewCarTest {
         CarModelSpecification cmf = new CarModelSpecification(body,new Color("red"),
                 new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
                 new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        CarModel.addModel("Jaguar");
+        ProductionScheduler.addModel("Jaguar");
         String modelName = "jaguar";
         CarModel carModel = new CarModel(modelName, cmf);
         String garageHolder = "john doe";

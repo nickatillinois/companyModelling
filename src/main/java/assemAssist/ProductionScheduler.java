@@ -2,6 +2,7 @@ package assemAssist;
 
 import assemAssist.carOrder.CarOrder;
 import assemAssist.exceptions.IllegalCompletionDateException;
+import purecollections.PList;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -31,7 +32,35 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
     this.assemblyLine = assemblyLine;
     setManager(manager);
 }
+    /**
+     * An immutable PList of available car models
+     *
+     */
+    private static PList<String> availableModels = PList.empty();
 
+    /**
+     * Returns an immutable PList of available car models
+     *
+     * @return an immutable PList of available car models
+     */
+    public static PList<String> getAvailableModels(){
+        return availableModels;
+    }
+
+    /**
+     * Adds the given string of a car model name to the end of the PList of car model names.
+     * If the given string is already in the PList, the string is not added.
+     *
+     * @param model  the string that is added to the PList of existing car models.
+     * @throws IllegalArgumentException | given model name is null
+     *                                  | given model name is the empty string
+     */
+    public static void addModel(String model){
+        if(model == null){throw new IllegalArgumentException("A model name cannot be null.");}
+        if(model.length() == 0){throw new IllegalArgumentException("A model name cannot be the empty string.");}
+        if(ProductionScheduler.getAvailableModels().contains(model)) return;
+        availableModels = availableModels.plus(model);
+    }
     /**
      * This function return the manager that can manage the assembly line.
      * @return manager

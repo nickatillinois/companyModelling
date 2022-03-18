@@ -97,7 +97,7 @@ public class productSchedulerTest {
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
                 new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
                 new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        CarModel.addModel("Jaguar");
+        ProductionScheduler.addModel("Jaguar");
         CarModel carModel = new CarModel("Jaguar",carModelSpecification);
         CarOrder carOrder1 = new CarOrder("Luna",carModel);
         productionScheduler.addOrderToProductionSchedule(carOrder1);
@@ -231,7 +231,7 @@ public class productSchedulerTest {
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
                 new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
                 new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        CarModel.addModel("Jaguar");
+        ProductionScheduler.addModel("Jaguar");
         CarModel carModel = new CarModel("Jaguar",carModelSpecification);
         CarOrder carOrder1 = new CarOrder("Luna",carModel);
         CarOrder carOrder2 = new CarOrder("Raf", carModel);
@@ -252,7 +252,7 @@ public class productSchedulerTest {
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
                 new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
                 new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        CarModel.addModel("Jaguar");
+        ProductionScheduler.addModel("Jaguar");
         CarModel carModel = new CarModel("Jaguar",carModelSpecification);
         CarOrder carOrder1 = new CarOrder("Luna",carModel);
         CarOrder carOrder2 = new CarOrder("Raf", carModel);
@@ -268,7 +268,7 @@ public class productSchedulerTest {
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
                 new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
                 new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        CarModel.addModel("Jaguar");
+        ProductionScheduler.addModel("Jaguar");
         CarModel carModel = new CarModel("Jaguar",carModelSpecification);
         CarOrder carOrder1 = new CarOrder("Luna",carModel);
         CarOrder carOrder2 = new CarOrder("Raf", carModel);
@@ -290,7 +290,7 @@ public class productSchedulerTest {
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
                 new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
                 new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        CarModel.addModel("Jaguar");
+        ProductionScheduler.addModel("Jaguar");
         CarModel carModel = new CarModel("Jaguar", carModelSpecification);
         CarOrder carOrder1 = new CarOrder("Luna", carModel);
         CarOrder carOrder2 = new CarOrder("Luna", carModel);
@@ -307,7 +307,7 @@ public class productSchedulerTest {
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
                 new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
                 new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        CarModel.addModel("Jaguar");
+        ProductionScheduler.addModel("Jaguar");
         CarModel carModel = new CarModel("Jaguar", carModelSpecification);
         CarOrder carOrder1 = new CarOrder("Luna", carModel);
         CarOrder carOrder2 = new CarOrder("Luna", carModel);
@@ -323,7 +323,7 @@ public class productSchedulerTest {
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
                 new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
                 new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        CarModel.addModel("Jaguar");
+        ProductionScheduler.addModel("Jaguar");
         CarModel carModel = new CarModel("Jaguar", carModelSpecification);
         CarOrder carOrder1 = new CarOrder("Luna", carModel);
         CarOrder carOrder2 = new CarOrder("Luna", carModel);

@@ -1,4 +1,5 @@
 import assemAssist.AssemblyTask;
+import assemAssist.ProductionScheduler;
 import assemAssist.carOrder.*;
 import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalModelException;
@@ -48,7 +49,7 @@ class WorkStationTest {
         carBodyPost = new CarBodyPost();
         drivetrainPost = new DrivetrainPost();
         accessoriesPost = new AccessoriesPost();
-        CarModel.addModel("Jaguar");
+        ProductionScheduler.addModel("Jaguar");
         CarModelSpecification specification = new CarModelSpecification(new Body("sedan"),new Color("red"),
                 new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
                 new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));

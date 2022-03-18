@@ -1,5 +1,6 @@
 import assemAssist.AssemblyLine;
 import assemAssist.AssemblyTask;
+import assemAssist.ProductionScheduler;
 import assemAssist.carOrder.*;
 import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalModelException;
@@ -33,7 +34,7 @@ class AssemblyLineTest {
         workStations.add(drivetrainPost);
         workStations.add(accessoriesPost);
         assemblyLine = new AssemblyLine(workStations);
-        CarModel.addModel("Jaguar");
+        ProductionScheduler.addModel("Jaguar");
         Body body = new Body("sedan");
         CarModelSpecification specification = new CarModelSpecification(body,new Color("red"),
                 new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),

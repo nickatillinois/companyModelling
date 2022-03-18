@@ -33,7 +33,7 @@ public class main {
         ProductionScheduler productionScheduler = new ProductionScheduler("Nick",assemblyLine);
         GarageHolderController garageHolderController = new GarageHolderController(productionScheduler);
         GarageHolderUI garageHolderUI = new GarageHolderUI(garageHolderController);
-        CarModel.addModel("Jaguar");
+        ProductionScheduler.addModel("Jaguar");
 
 
         Body body = new Body("sedan");

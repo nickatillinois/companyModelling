@@ -1,5 +1,6 @@
 package assemAssist.carOrder;
 
+import assemAssist.ProductionScheduler;
 import assemAssist.exceptions.IllegalModelException;
 import purecollections.PList;
 
@@ -11,12 +12,6 @@ import purecollections.PList;
 public class CarModel {
 
     /**
-     * An immutable PList of available car models
-     *
-     */
-    private static PList<String> availableModels = PList.empty();
-
-    /**
      * A string with the model Name of this car model.
      */
     private String chosenModelName;
@@ -26,29 +21,7 @@ public class CarModel {
      */
     private CarModelSpecification carModelSpecification;
 
-    /**
-     * Returns an immutable PList of available car models
-     *
-     * @return an immutable PList of available car models
-     */
-    public static PList<String> getAvailableModels(){
-        return availableModels;
-    }
 
-    /**
-     * Adds the given string of a car model name to the end of the PList of car model names.
-     * If the given string is already in the PList, the string is not added.
-     *
-     * @param model  the string that is added to the PList of existing car models.
-     * @throws IllegalArgumentException | given model name is null
-     *                                  | given model name is the empty string
-     */
-    public static void addModel(String model){
-        if(model == null){throw new IllegalArgumentException("A model name cannot be null.");}
-        if(model.length() == 0){throw new IllegalArgumentException("A model name cannot be the empty string.");}
-        if(availableModels.contains(model)) return;
-        availableModels = availableModels.plus(model);
-    }
 
     /**
      * Returns the name of this car model.
@@ -70,7 +43,7 @@ public class CarModel {
         if(modelName == null){throw new IllegalArgumentException("A modelname cannot be null.");}
         if(modelName.length() == 0){throw new IllegalArgumentException("A modelname cannot be the empty string.");}
         boolean contains = false;
-        for(String model: availableModels){
+        for(String model: ProductionScheduler.getAvailableModels()){
             if(model.equalsIgnoreCase(modelName)){
                 contains = true;
                 break;
@@ -117,7 +90,7 @@ public class CarModel {
         if(modelName.length() == 0){throw new IllegalArgumentException("A modelname cannot be the empty string.");}
         if(carModelSpecification == null){throw new IllegalArgumentException("A carModelSpecification cannot be null.");}
         boolean contains = false;
-        for(String model: availableModels){
+        for(String model: ProductionScheduler.getAvailableModels()){
             if(model.equalsIgnoreCase(modelName)){
                 contains = true;
                 break;

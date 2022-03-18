@@ -63,7 +63,7 @@ public class GarageHolderController {
 
     public List<String> wantsToOrder() {
         ArrayList<String> availableModels = new ArrayList<>();
-        availableModels.addAll(CarModel.getAvailableModels());
+        availableModels.addAll(ProductionScheduler.getAvailableModels());
         return availableModels;
     }
 
