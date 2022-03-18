@@ -1,9 +1,12 @@
 package assemAssist;
 
-import assemAssist.carOrder.CarOrder;
+import assemAssist.carOrder.*;
+import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalCompletionDateException;
+import assemAssist.exceptions.IllegalModelException;
 import purecollections.PList;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -258,10 +261,13 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
      * @param carOrder | the car order added to the proction schedule
      * @throws NullPointerException | car order is null
      */
-    public void addOrderToProductionSchedule(CarOrder carOrder) throws NullPointerException, IllegalCompletionDateException {
+    public LocalDate addOrderToProductionSchedule(CarOrder carOrder) throws NullPointerException, IllegalCompletionDateException {
         if (carOrder != null) {
             productionSchedule.add(carOrder);
-            carOrder.setCompletionTime(LocalDateTime.now().plusDays(this.getProductionSchedule().size()/14));
+            int carsToProduceToday = Math.min(assemblyLine.remainWorkingTime() - 2,0);
+            float carsToProduceLater = productionSchedule.size() -carsToProduceToday;
+            int daysNeeded = (int)Math.ceil(carsToProduceLater/14);
+            return LocalDate.now().plusDays(daysNeeded);
         }
         else
             throw new NullPointerException("You can not add null to the production schedule.");
@@ -291,6 +297,15 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
      */
     public List<CarOrder> getCompletedOrdersFromGarageHolder(String garageHolder){
         return completedOrders.stream().filter(p-> Objects.equals(p.getGarageholder(), garageHolder)).collect(Collectors.toList());
+    }
+
+    /**
+     * This function returns a list of pending car orders of the given garage holder.
+     * @param garageHolder | the garage holder of whom the car orders are to be found
+     * @return list of car orders
+     */
+    public List<CarOrder> getPendingOrdersFromGarageHolder(String garageHolder){
+        return productionSchedule.stream().filter(p-> Objects.equals(p.getGarageholder(), garageHolder)).collect(Collectors.toList());
     }
 
     public List<List<String>> getCurrentAndFutureStatusAndTaskStatus(){
@@ -323,5 +338,42 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
         }
         currentAndFutureStatus.add(futureStatusAndTasks);
         return currentAndFutureStatus;
+    }
+
+    public List<List<String>> newLogin(String garageHolder) {
+        List<List<String>> ordersFromGarageHolder = new ArrayList<>();
+        List<String> pendingOrdersStrings = new ArrayList<>();
+        List<String> finishedOrdersStrings = new ArrayList<>();
+        List<CarOrder> pendingOrders = getPendingOrdersFromGarageHolder(garageHolder);
+        List<CarOrder> finishedOrders = getCompletedOrders();
+        for (int i = 0; i < pendingOrders.size(); i++) {
+            pendingOrdersStrings.add(pendingOrders.get(i).getCarModelAndOptions());
+        }
+        for (int i = 0; i < finishedOrders.size(); i++) {
+            finishedOrdersStrings.add(finishedOrders.get(i).getCarModelAndOptions());
+        }
+        ordersFromGarageHolder.add(pendingOrdersStrings);
+        ordersFromGarageHolder.add(finishedOrdersStrings);
+        return ordersFromGarageHolder;
+    }
+
+    public List<String> selectModel(String carModel) {
+        List<String> availableChoices = new ArrayList<>();
+        availableChoices.add("body: " + String.join(", ", getAvailableBodyChoices()));
+        availableChoices.add("color: " + String.join(", ", getAvailableColorChoices()));
+        availableChoices.add("engine: " + String.join(", ", getAvailableEngineChoices()));
+        availableChoices.add("gearbox: " + String.join(", ", getAvailableGearboxChoices()));
+        availableChoices.add("seats: " + String.join(", ", getAvailableSeatsChoices()));
+        availableChoices.add("airco: " + String.join(", ", getAvailableAircoChoices()));
+        availableChoices.add("wheels: " + String.join(", ", getAvailableWheelsChoices()));
+        return availableChoices;
+    }
+
+    public String completeOrderingForm(List<String> carOptions, String garageHolder, String chosenModel) throws IllegalChoiceException, IllegalModelException,
+            IllegalCompletionDateException {
+        CarModelSpecification cmf = new CarModelSpecification(new Body(carOptions.get(0)),new Color(carOptions.get(1)), new Engine(carOptions.get(2)),new Gearbox(carOptions.get(3)), new Seats(carOptions.get(4)),new Airco(carOptions.get(5)),new Wheels(carOptions.get(6)));
+        CarModel carModel = new CarModel(chosenModel, cmf);
+        CarOrder carOrder = new CarOrder(garageHolder, carModel);
+        return addOrderToProductionSchedule(carOrder).toString();
     }
 }
