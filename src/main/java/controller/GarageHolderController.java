@@ -33,13 +33,28 @@ public class GarageHolderController {
         }
         ArrayList<String> pendingOrdersString = new ArrayList<>();
         for (CarOrder carOrder: pendingOrders) {
-            pendingOrdersString.add(carOrder.getCarModel().getModelName() + ", " + carOrder.getCompletionTime().toString());
+            pendingOrdersString.add("Model: " + carOrder.getCarModel().getModelName() + "; Estimated completion date: " + carOrder.getCompletionTime().toString() + "; Options: " +
+                    carOrder.getCarModel().getCarModelSpecification().getBody().getChosenChoice() + ", " +
+                    carOrder.getCarModel().getCarModelSpecification().getColor().getChosenChoice() + ", " +
+                    carOrder.getCarModel().getCarModelSpecification().getEngine().getChosenChoice() + ", " +
+                    carOrder.getCarModel().getCarModelSpecification().getGearbox().getChosenChoice() + ", " +
+                    carOrder.getCarModel().getCarModelSpecification().getSeats().getChosenChoice() + ", " +
+                    carOrder.getCarModel().getCarModelSpecification().getAirco().getChosenChoice() + ", " +
+                    carOrder.getCarModel().getCarModelSpecification().getWheels().getChosenChoice());
         }
         ArrayList<String> finishedOrdersString = new ArrayList<>();
-        for (CarOrder carOrder: finishedOrders) {
-           finishedOrdersString.add(carOrder.getCarModel().getModelName() + ", " + carOrder.getCompletionTime().toString());
-        }
         finishedOrders.sort(Comparator.comparing(CarOrder::getCompletionTime));
+        for (CarOrder carOrder: finishedOrders) {
+           finishedOrdersString.add("Model: " + carOrder.getCarModel().getModelName() + "; Estimated completion date: " + carOrder.getCompletionTime().toString() + "; Options: " +
+                   carOrder.getCarModel().getCarModelSpecification().getBody().getChosenChoice() + ", " +
+                   carOrder.getCarModel().getCarModelSpecification().getColor().getChosenChoice() + ", " +
+                   carOrder.getCarModel().getCarModelSpecification().getEngine().getChosenChoice() + ", " +
+                   carOrder.getCarModel().getCarModelSpecification().getGearbox().getChosenChoice() + ", " +
+                   carOrder.getCarModel().getCarModelSpecification().getSeats().getChosenChoice() + ", " +
+                   carOrder.getCarModel().getCarModelSpecification().getAirco().getChosenChoice() + ", " +
+                   carOrder.getCarModel().getCarModelSpecification().getWheels().getChosenChoice());
+        }
+
         List<List<String>> overview = new ArrayList<>();
         overview.add(pendingOrdersString);
         overview.add(finishedOrdersString);
