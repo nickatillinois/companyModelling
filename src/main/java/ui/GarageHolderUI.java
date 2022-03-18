@@ -56,7 +56,7 @@ public class GarageHolderUI {
 
         List<String> orderingForm;
         while (true) {
-            System.out.println("Choose the car model you want to order:");
+            System.out.println("Enter the car model name you want to order:");
             String model = in.next();
             boolean contains = false;
             for (String modelName: availableModels) {
@@ -87,14 +87,33 @@ public class GarageHolderUI {
                 System.out.println("Select the options for you car order:");
                 List<String> carOptions = new ArrayList<>();
                 for (int i = 0; i < orderingForm.size(); i++) {
+                    boolean firstTime = false;
                     while (true) {
+
                         String[] optionsAndName = orderingForm.get(i).split(": ");
                         String optionName = optionsAndName[0];
                         String[] availableOptions = optionsAndName[1].split(", ");
-                        System.out.println("Your choice for the " + optionName.toLowerCase() + " is:");
-                        String option = in.nextLine();
-                        if (Arrays.asList(availableOptions).contains(option)) {
-                            carOptions.add(option);
+                        if(!firstTime){
+                        System.out.println("Your choice for the " + optionName.toLowerCase() + " is:");}
+                        String optionString = "";
+                        String option = "";
+                        boolean loop = true;
+                        while(loop)
+                        {
+                            option = in.nextLine();
+                            if(option.equals("")) {
+                                break;
+                            }
+                            else {
+                                optionString += option;
+                            }
+                        }
+                        if(optionString.equals("")) {
+                            firstTime = true;
+                            continue;
+                        }
+                        if (Arrays.asList(availableOptions).contains(optionString)) {
+                            carOptions.add(optionString);
                             break;
                         } else {
                             System.out.println("This is not a valid option for the " + optionName.toLowerCase() + ". Try again.");
