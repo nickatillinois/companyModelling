@@ -135,7 +135,7 @@ public class CarOrder {
     }
 
     public String getCarModelAndOptions () {
-        String modelAndOptions = "Model: " + carModel.getModelName() + " ; ";
+        String modelAndOptions = "model: " + carModel.getModelName() + ", ";
         modelAndOptions += carModel.getCarModelSpecificationStrings();
         return modelAndOptions;
     }

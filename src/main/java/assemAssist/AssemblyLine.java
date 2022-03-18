@@ -143,7 +143,7 @@ public class AssemblyLine {
         canNotMove.add("Blocked");
         for(WorkStation workStation : workStations){
             if (!workStation.isFinished())
-                canNotMove.add(workStation.toString().split("\\.")[2].split("@")[0]);
+                canNotMove.add(workStation.getName());
         }
         return canNotMove;
     }

@@ -67,7 +67,7 @@ class AssemblyLineTest {
         assemblyLine.move(null,2);
         assertEquals(22, assemblyLine.getHoursWorkedToday());
         assemblyLine.nextDay();
-        assertEquals((22-6)-(22-(22-6)),assemblyLine.remainWorkingTime());
+        assertEquals((22-6),assemblyLine.remainWorkingTime());
     }
 
     @Test
@@ -99,14 +99,18 @@ class AssemblyLineTest {
     @Test
     void canNotMove() {
         assemblyLine.getWorkStations().get(0).setCurrentOrder(orderA);
-        List<CarOrder> cannotmove = new ArrayList<>();
-        cannotmove.add(orderA);
+        List<String> cannotmove = new ArrayList<>();
+        cannotmove.add("Blocked");
+        cannotmove.add("Car Body Post");
         assertEquals(cannotmove,assemblyLine.canNotMove());
         assemblyLine.getWorkStations().get(1).setCurrentOrder(orderA);
         assemblyLine.getWorkStations().get(0).setCurrentOrder(orderB);
         for(AssemblyTask assemblyTask : assemblyLine.getWorkStations().get(0).getTasks())
             assemblyTask.setIsCompleted(true);
-        assertEquals(cannotmove,assemblyLine.canNotMove());
+        List<String> cannotmove2 = new ArrayList<>();
+        cannotmove2.add("Blocked");
+        cannotmove2.add("Drivetrain Post");
+        assertEquals(cannotmove2,assemblyLine.canNotMove());
     }
 
     @Test
