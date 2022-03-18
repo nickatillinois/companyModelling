@@ -60,14 +60,20 @@ class AssemblyLineTest {
         assertEquals(0,assemblyLine.getHoursWorkedToday());
         assemblyLine.move(orderA,2);
         assertEquals(2,assemblyLine.getHoursWorkedToday());
+        for(AssemblyTask assemblyTask : assemblyLine.getWorkStations().get(0).getTasks())
+            assemblyTask.setIsCompleted(true);
         assemblyLine.move(null, 16);
         assertEquals(18,assemblyLine.getHoursWorkedToday());
+        for(AssemblyTask assemblyTask : assemblyLine.getWorkStations().get(1).getTasks())
+            assemblyTask.setIsCompleted(true);
         assemblyLine.move(null, 2);
         assertEquals(20, assemblyLine.getHoursWorkedToday());
+        for(AssemblyTask assemblyTask : assemblyLine.getWorkStations().get(2).getTasks())
+            assemblyTask.setIsCompleted(true);
         assemblyLine.move(null,2);
         assertEquals(22, assemblyLine.getHoursWorkedToday());
         assemblyLine.nextDay();
-        assertEquals((22-6),assemblyLine.remainWorkingTime());
+        assertEquals((22-6)-(22-(22-6)),assemblyLine.remainWorkingTime());
     }
 
     @Test

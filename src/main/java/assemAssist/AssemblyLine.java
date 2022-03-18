@@ -91,7 +91,7 @@ public class AssemblyLine {
     public void nextDay() throws IllegalCallerException{
         for(WorkStation workStation : workStations)
             if (workStation.getCurrentOrder() != null)
-                throw new IllegalCallerException("There are workstation(s) that are stile working a current order. ");
+                throw new IllegalCallerException("There are workstation(s) that are still working a current order. ");
         if(getHoursWorkedToday() <= ENDHOUR - STARTHOUR )
             setMaxWorkingHoursToday(ENDHOUR - STARTHOUR);
         else
