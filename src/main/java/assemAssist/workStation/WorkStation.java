@@ -1,7 +1,7 @@
 package assemAssist.workStation;
 import assemAssist.AssemblyTask;
 import assemAssist.carOrder.*;
-//import purecollections.PList;
+import purecollections.PList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +24,7 @@ public abstract class WorkStation {
     /**
     * An immutable list of mechanics currently working on this work station.
     */
+    private List<String> mechanics = new ArrayList<>();
     //private PList<String> mechanics;
 
     /**
@@ -84,7 +85,7 @@ public abstract class WorkStation {
      * @param task the task to be added
      * @throws IllegalArgumentException | task is null
      */
-    public void addTask(AssemblyTask task){
+    void addTask(AssemblyTask task){
         if (task == null) { throw new IllegalArgumentException("The given task cannot be null."); }
         tasks.add(task);
     }
@@ -105,15 +106,15 @@ public abstract class WorkStation {
 
     /**
      * Adds a given name of a mechanic to the list of mechanics working at this workstation.
-     * @param mechanic
+     * @param mechanic the mechanic that will be added to the list of mechanics for this work station
      * @throws IllegalArgumentException | mechanic is null
      *                                  | mechanic is the empty string
      */
-    /*public void addMechanic(String mechanic) {
+    public void addMechanic(String mechanic) {
         if(mechanic == null){throw new IllegalArgumentException("A mechanic cannot be null.");}
         if(mechanic.length() == 0){throw new IllegalArgumentException("A mechanic cannot be the empty string.");}
-        mechanics.plus(mechanic);
-    }*/
+        mechanics.add(mechanic);
+    }
 
     /**
      * Removes a given name of a mechanic from the list of mechanics working at this workstation.
@@ -122,7 +123,7 @@ public abstract class WorkStation {
      * @throws IllegalArgumentException | mechanic is null
      *                                  | mechanic is the empty string
      */
-    /*public void removeMechanic(String mechanic) {
+    public void removeMechanic(String mechanic) {
         if(mechanic == null){throw new IllegalArgumentException("A mechanic cannot be null.");}
         if(mechanic.length() == 0){throw new IllegalArgumentException("A mechanic cannot be the empty string.");}
         boolean contains = false;
@@ -133,17 +134,17 @@ public abstract class WorkStation {
             }
         }
         if(!contains) return;
-        mechanics.minus(mechanic);
-    }*/
+        mechanics.remove(mechanic);
+    }
 
     /**
      * Returns the PList of containing the names of the mechanics currently working at this work station.
      *
      * @return the PList of containing the names of the mechanics currently working at this work station.
      */
-    /* PList<String> getMechanics() {
+    public List<String> getMechanics() {
         return mechanics;
-    }*/
+    }
 
     /**
      * Returns a list of names of the tasks at this work station that are not yet completed.
@@ -186,6 +187,7 @@ public abstract class WorkStation {
         for (int i = 0; i < tasks.size(); i++) {
             if (tasks.get(i).getName().equals(taskName)) {
                 tasks.get(i).setIsCompleted(true);
+                return;
             }
         }
         throw new IllegalArgumentException("This is not a task at this work station!");

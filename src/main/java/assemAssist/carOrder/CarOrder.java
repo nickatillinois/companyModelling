@@ -3,6 +3,7 @@ package assemAssist.carOrder;
 import assemAssist.exceptions.IllegalCompletionDateException;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  * Class representing a car order.
