@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+
+import assemAssist.exceptions.IllegalChoiceException;
+import assemAssist.exceptions.IllegalCompletionDateException;
+import assemAssist.exceptions.IllegalModelException;
 import controller.GarageHolderController;
 import java.time.LocalDate;
 
@@ -14,14 +18,18 @@ public class GarageHolderUI {
         this.garageHolderController = garageHolderController;
     }
 
-    public void startUI(Scanner in) {
-
-        System.out.println("Your previous orders are:");
-        List<String> overViewOfOrders = garageHolderController.newLogin();
-        for (int i = 0; i < overViewOfOrders.size(); i++) {
-            System.out.println(overViewOfOrders.get(i));
+    public void startUI(Scanner in) throws IllegalModelException, IllegalChoiceException, IllegalCompletionDateException {
+        System.out.println("Enter your first name lastname, e.g. 'Tom Smets'");
+        String name = in.next() + " " + in.next();
+        List<List<String>> overViewOfOrders = garageHolderController.newLogin(name);
+        System.out.println("Your pending orders are:");
+        for (String pending: overViewOfOrders.get(0)) {
+            System.out.println(pending);
         }
-
+        System.out.println("Your finished orders are:");
+        for (String finished: overViewOfOrders.get(1)) {
+            System.out.println(finished);
+        }
         System.out.println("-------------");
 
         List<String> availableModels;
@@ -50,7 +58,14 @@ public class GarageHolderUI {
         while (true) {
             System.out.println("Choose the car model you want to order:");
             String model = in.next();
-            if (availableModels.contains(model)) {
+            boolean contains = false;
+            for (String modelName: availableModels) {
+                if(modelName.equalsIgnoreCase(model)){
+                    contains = true;
+                    break;
+                }
+            }
+            if (contains) {
                 System.out.println("The available options for this model are:");
                 orderingForm = garageHolderController.selectModel(model);
                 for (int i = 0; i < orderingForm.size(); i++) {
@@ -77,7 +92,7 @@ public class GarageHolderUI {
                         String optionName = optionsAndName[0];
                         String[] availableOptions = optionsAndName[1].split(", ");
                         System.out.println("Your choice for the " + optionName.toLowerCase() + " is:");
-                        String option = in.next();
+                        String option = in.nextLine();
                         if (Arrays.asList(availableOptions).contains(option)) {
                             carOptions.add(option);
                             break;
@@ -87,7 +102,7 @@ public class GarageHolderUI {
                     }
                 }
 
-                LocalDate estimatedCompletionDate = garageHolderController.completeOrderingForm(carOptions);
+                String estimatedCompletionDate = garageHolderController.completeOrderingForm(carOptions);
                 System.out.println("You have successfully ordered a car! The estimated completion date is " + estimatedCompletionDate);
                 break;
             } else {

@@ -1,7 +1,9 @@
 package assemAssist;
 
 import assemAssist.carOrder.CarOrder;
+import assemAssist.exceptions.IllegalCompletionDateException;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -163,9 +165,11 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
      * @param carOrder
      * @throws NullPointerException
      */
-    public void addOrderToProductionSchedule(CarOrder carOrder) throws NullPointerException{
-        if (carOrder != null)
+    public void addOrderToProductionSchedule(CarOrder carOrder) throws NullPointerException, IllegalCompletionDateException {
+        if (carOrder != null) {
             productionSchedule.add(carOrder);
+            carOrder.setCompletionTime(LocalDateTime.now().plusDays(this.getProductionSchedule().size()/14));
+        }
         else
             throw new NullPointerException("You can not add null to the production schedule.");
 

@@ -1,6 +1,9 @@
 import assemAssist.AssemblyLine;
 import assemAssist.ProductionScheduler;
 import assemAssist.carOrder.CarModel;
+import assemAssist.exceptions.IllegalChoiceException;
+import assemAssist.exceptions.IllegalCompletionDateException;
+import assemAssist.exceptions.IllegalModelException;
 import assemAssist.workStation.AccessoriesPost;
 import assemAssist.workStation.CarBodyPost;
 import assemAssist.workStation.DrivetrainPost;
@@ -18,22 +21,18 @@ import java.util.List;
 
 public class main {
 
-    public static void main(String[] args) {
-        GarageHolderController garageHolderController = new GarageHolderController();
-        GarageHolderUI garageHolderUI = new GarageHolderUI(garageHolderController);
-
-        AccessoriesPost accessoriesPost = new AccessoriesPost();
+    public static void main(String[] args) throws IllegalModelException, IllegalChoiceException, IllegalCompletionDateException {
         CarBodyPost carBodyPost = new CarBodyPost();
         DrivetrainPost drivetrainPost = new DrivetrainPost();
         List<WorkStation> workStations = new ArrayList<>();
         workStations.add(carBodyPost);
         workStations.add(drivetrainPost);
+        AccessoriesPost accessoriesPost = new AccessoriesPost();
         workStations.add(accessoriesPost);
-
         AssemblyLine assemblyLine = new AssemblyLine(workStations);
-
         ProductionScheduler productionScheduler = new ProductionScheduler("Nick",assemblyLine);
-
+        GarageHolderController garageHolderController = new GarageHolderController(productionScheduler);
+        GarageHolderUI garageHolderUI = new GarageHolderUI(garageHolderController);
         CarModel.addModel("Jaguar");
 
         ManagerController managerController = new ManagerController(productionScheduler);

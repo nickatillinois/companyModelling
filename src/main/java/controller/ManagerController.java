@@ -5,7 +5,9 @@ import assemAssist.ProductionScheduler;
 import java.util.List;
 
 public class ManagerController {
+
     private ProductionScheduler productionScheduler;
+
     public ManagerController(ProductionScheduler productionScheduler) {
         this.productionScheduler = productionScheduler;
     }

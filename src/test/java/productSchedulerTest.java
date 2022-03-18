@@ -3,6 +3,7 @@ import assemAssist.AssemblyTask;
 import assemAssist.ProductionScheduler;
 import assemAssist.carOrder.*;
 import assemAssist.exceptions.IllegalChoiceException;
+import assemAssist.exceptions.IllegalCompletionDateException;
 import assemAssist.exceptions.IllegalModelException;
 import assemAssist.workStation.AccessoriesPost;
 import assemAssist.workStation.CarBodyPost;
@@ -58,7 +59,7 @@ public class productSchedulerTest {
     }
 
     @Test
-    public void getCurrentStateOneOrderNoAdvanceTest() throws IllegalChoiceException, IllegalModelException {
+    public void getCurrentStateOneOrderNoAdvanceTest() throws IllegalChoiceException, IllegalModelException, IllegalCompletionDateException {
         Body body = new Body("sedan");
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
                 new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
@@ -74,7 +75,7 @@ public class productSchedulerTest {
     }
 
     @Test
-    public void OneOrderAdvanceTest() throws IllegalChoiceException, IllegalModelException {
+    public void OneOrderAdvanceTest() throws IllegalChoiceException, IllegalModelException, IllegalCompletionDateException {
         Body body = new Body("sedan");
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
                 new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
@@ -91,7 +92,7 @@ public class productSchedulerTest {
     }
 
     @Test
-    public void TwoOrderAdvanceTest() throws IllegalChoiceException, IllegalModelException {
+    public void TwoOrderAdvanceTest() throws IllegalChoiceException, IllegalModelException, IllegalCompletionDateException {
         Body body = new Body("sedan");
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
                 new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
@@ -131,7 +132,7 @@ public class productSchedulerTest {
     }
 
     @Test
-    public void FourOrderAdvanceTest() throws IllegalChoiceException, IllegalModelException {
+    public void FourOrderAdvanceTest() throws IllegalChoiceException, IllegalModelException, IllegalCompletionDateException {
         Body body = new Body("sedan");
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
                 new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
@@ -210,7 +211,7 @@ public class productSchedulerTest {
     }
 
     @Test
-    public void canMoveOneOrderTest() throws IllegalChoiceException, IllegalModelException {
+    public void canMoveOneOrderTest() throws IllegalChoiceException, IllegalModelException, IllegalCompletionDateException {
         Body body = new Body("sedan");
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
                 new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
@@ -225,7 +226,7 @@ public class productSchedulerTest {
     }
 
     @Test
-    public void simulateAdvanceAssemblyLineTest() throws IllegalModelException, IllegalChoiceException {
+    public void simulateAdvanceAssemblyLineTest() throws IllegalModelException, IllegalChoiceException, IllegalCompletionDateException {
         Body body = new Body("sedan");
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
                 new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
@@ -262,7 +263,7 @@ public class productSchedulerTest {
     }
 
     @Test
-    public void getOrdersFromGarageHolderTest() throws IllegalModelException, IllegalChoiceException {
+    public void getOrdersFromGarageHolderTest() throws IllegalModelException, IllegalChoiceException, IllegalCompletionDateException {
         Body body = new Body("sedan");
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
                 new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
@@ -284,7 +285,7 @@ public class productSchedulerTest {
     }
 
     @Test
-    public void getOrdersFromGarageHolderTest2() throws IllegalModelException, IllegalChoiceException {
+    public void getOrdersFromGarageHolderTest2() throws IllegalModelException, IllegalChoiceException, IllegalCompletionDateException {
         Body body = new Body("sedan");
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
                 new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
@@ -301,7 +302,7 @@ public class productSchedulerTest {
     }
 
     @Test
-    public void getCompletedOrdersFromGarageHolderTest() throws IllegalModelException, IllegalChoiceException {
+    public void getCompletedOrdersFromGarageHolderTest() throws IllegalModelException, IllegalChoiceException, IllegalCompletionDateException {
         Body body = new Body("sedan");
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
                 new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
@@ -317,7 +318,7 @@ public class productSchedulerTest {
     }
 
     @Test
-    public void getCompletedOrdersFromGarageHolderTest2() throws IllegalModelException, IllegalChoiceException {
+    public void getCompletedOrdersFromGarageHolderTest2() throws IllegalModelException, IllegalChoiceException, IllegalCompletionDateException {
         Body body = new Body("sedan");
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
                 new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),

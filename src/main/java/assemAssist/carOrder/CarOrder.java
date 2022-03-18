@@ -1,5 +1,7 @@
 package assemAssist.carOrder;
 
+import assemAssist.exceptions.IllegalCompletionDateException;
+
 import java.time.LocalDateTime;
 
 /**
@@ -104,9 +106,11 @@ public class CarOrder {
      *
      * @param completionTime The given estimated completion date in LocalTimeDate format.
      * @throws IllegalArgumentException | completionTime is null
+     * //@throws IllegalCompletionDateException | given time is in the past
      */
-    public void setCompletionTime(LocalDateTime completionTime) {
+    public void setCompletionTime(LocalDateTime completionTime) throws IllegalCompletionDateException {
         if (completionTime == null){throw new IllegalArgumentException("completion time cannot be set to null");}
+        //if (completionTime.isBefore(LocalDateTime.now())){throw new IllegalCompletionDateException("completion time cannot be set in the past");}
         this.completionTime = completionTime;
     }
 

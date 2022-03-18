@@ -1,5 +1,6 @@
 import assemAssist.carOrder.*;
 import assemAssist.exceptions.IllegalChoiceException;
+import assemAssist.exceptions.IllegalCompletionDateException;
 import assemAssist.exceptions.IllegalModelException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -193,7 +194,7 @@ class CarOrderTest {
         });
     }
     @Test
-    void testMethodsCarOrder() throws IllegalModelException {
+    void testMethodsCarOrder() throws IllegalModelException, IllegalCompletionDateException {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             carOrder = new CarOrder(null, carModel);
         });
