@@ -191,6 +191,17 @@ public class CarModelSpecification {
         this.wheels = wheels;
     }
 
+    public String getStrings() {
+        String s = "body: " + body.getChosenChoice() + ", ";
+        s += "color: " + color.getChosenChoice() + ", ";
+        s += "engine: " + engine.getChosenChoice() + ", ";
+        s += "gearbox: " + gearbox.getChosenChoice() + ", ";
+        s += "seats: " + seats.getChosenChoice() + ", ";
+        s += "airco: " + airco.getChosenChoice() + ", ";
+        s += "wheels: " + wheels.getChosenChoice();
+        return s;
+    }
+
     /**
      * Creates a new car model specification with a given body, color, engine, gearbox, seats, airco, wheels.
      *

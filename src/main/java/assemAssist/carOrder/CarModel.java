@@ -128,4 +128,8 @@ public class CarModel {
         this.chosenModelName = modelName;
         this.carModelSpecification = carModelSpecification;
     }
+
+    public String getCarModelSpecificationStrings() {
+        return carModelSpecification.getStrings();
+    }
 }

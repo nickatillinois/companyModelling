@@ -21,7 +21,7 @@ public class ManagerUI {
         System.out.println("The current status of the assembly line is:");
         for (int i = 0; i < currentStatus.size(); i++) {
             String[] workstationStatus = currentStatus.get(i).split(" ; ");
-            System.out.println(workstationStatus[0].split("\\.")[2].split("@")[0]);
+            System.out.println(workstationStatus[0]);
             if (workstationStatus.length >= 3) {
                 System.out.println("Model options:");
                 String[] modelOptions = workstationStatus[1].split(", ");
@@ -36,15 +36,15 @@ public class ManagerUI {
                 }
             }
             else
-                System.out.println("No order at this workpost.");
+                System.out.println("No order at this work station.");
         }
         System.out.println("-------------");
         System.out.println("The future status of the assembly line is:");
         for (int i = 0; i < futureStatus.size(); i++) {
             String[] workstationStatus = futureStatus.get(i).split(" ; ");
-            System.out.println(workstationStatus[0].split("\\.")[2].split("@")[0]);
+            System.out.println(workstationStatus[0]);
 
-//            System.out.println("Model options:");
+            System.out.println("Model options:");
             String[] modelOptions = workstationStatus[1].split(", ");
             for (int j = 0; j < modelOptions.length; j++) {
                 System.out.println(modelOptions[j]);
@@ -88,12 +88,6 @@ public class ManagerUI {
                 String[] modelOptions = workstationStatus[1].split(", ");
                 for (int j = 0; j < modelOptions.length; j++) {
                     System.out.println(modelOptions[j]);
-                }
-
-                System.out.println("Tasks:");
-                String[] tasksStatus = workstationStatus[1].split(", ");
-                for (int j = 0; j < tasksStatus.length; j++) {
-                    System.out.println(tasksStatus[j]);
                 }
             }
         }

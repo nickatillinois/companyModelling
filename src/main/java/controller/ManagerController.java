@@ -12,7 +12,7 @@ public class ManagerController {
         this.productionScheduler = productionScheduler;
     }
 
-    public List newLogin() {
+    public List<List<String>> newLogin() {
         return productionScheduler.getCurrentAndFutureStatusAndTaskStatus();
     }
 

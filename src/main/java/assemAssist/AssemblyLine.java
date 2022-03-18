@@ -152,30 +152,29 @@ public class AssemblyLine {
      * This function will push an order to the next workstation and return a list of 4 orders with on the i place
      * the order in workstation i and on the 4 place the order that is finished complete.
      * @param carOrder new car order for workstation 1
-     * @param timeBetweenToStates time necessary to complete this phase.
+     * @param timeBetweenTwoStates time necessary to complete this phase.
      * @return list of car orders
      * @throws IllegalCallerException if the assembly line can't move
      */
-    public List<String> move(CarOrder carOrder, int timeBetweenToStates) throws IllegalCallerException{
+    public List<String> move(CarOrder carOrder, int timeBetweenTwoStates) throws IllegalCallerException{
         for(WorkStation workStation : getWorkStations())
             if(!workStation.isFinished())
                 throw new IllegalCallerException("The assmebly line is stil working at a workpost!");
-        setHoursWorkedToday(getHoursWorkedToday() + timeBetweenToStates);
-        CarOrder finischedCar = workStations.get(2).getCurrentOrder();
-        if (finischedCar !=  null) {
-            finischedCar.setCompleted(true);
+        setHoursWorkedToday(getHoursWorkedToday() + timeBetweenTwoStates);
+        CarOrder finishedCar = workStations.get(2).getCurrentOrder();
+        if (finishedCar !=  null) {
+            finishedCar.setCompleted(true);
         }
         workStations.get(2).setCurrentOrder(workStations.get(1).getCurrentOrder());
         workStations.get(1).setCurrentOrder(workStations.get(0).getCurrentOrder());
         workStations.get(0).setCurrentOrder(carOrder);
         List<String> newStateAndFinished = new ArrayList<>();
-        List<CarOrder> curuntStatus  = getCurrentState();
-        for(int i = 0 ; i < curuntStatus.size() ; i++){
-            CarOrder carOrder2 = curuntStatus.get(i);
-            String s = getWorkStations().get(i).toString() + " ; ";
+        List<CarOrder> currentStatus  = getCurrentState();
+        for(int i = 0 ; i < currentStatus.size() ; i++){
+            CarOrder carOrder2 = currentStatus.get(i);
+            String s = getWorkStations().get(i).getName() + " ; ";
             if(carOrder2 != null) {
-                s += "Model: " + carOrder.getCarModel();
-                getWorkStations().get(i).getTasksAndStatus();
+                s += carOrder2.getCarModelAndOptions();
             }
             else
                 s += "No Order in this workstation";

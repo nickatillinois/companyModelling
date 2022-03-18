@@ -133,4 +133,10 @@ public class CarOrder {
         this.completed = false;
         this.completionTime = null;
     }
+
+    public String getCarModelAndOptions () {
+        String modelAndOptions = "Model: " + carModel.getModelName() + " ; ";
+        modelAndOptions += carModel.getCarModelSpecificationStrings();
+        return modelAndOptions;
+    }
 }

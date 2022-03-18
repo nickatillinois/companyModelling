@@ -132,15 +132,15 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
     /**
      * This function will advance the assembly line if that is possible and then returns the nuw state
      * else it return null.
-     * @param timeBetweenToStates | time entered by the manager that was consumed
+     * @param timeBetweenTwoStates | time entered by the manager that was consumed
      * @return new state or null
      */
-    public List<String> advanceOrders(int timeBetweenToStates){
+    public List<String> advanceOrders(int timeBetweenTwoStates){
         if (!assemblyLine.canMove())
             return canNotMove();
         if (productionSchedule.isEmpty())
-            return assemblyLine.move(null,timeBetweenToStates);
-        return assemblyLine.move(productionSchedule.remove(0),timeBetweenToStates);
+            return assemblyLine.move(null,timeBetweenTwoStates);
+        return assemblyLine.move(productionSchedule.remove(0),timeBetweenTwoStates);
     }
 
     /**
@@ -201,29 +201,29 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
         return completedOrders.stream().filter(p-> Objects.equals(p.getGarageholder(), garageHolder)).collect(Collectors.toList());
     }
 
-    public List getCurrentAndFutureStatusAndTaskStatus(){
+    public List<List<String>> getCurrentAndFutureStatusAndTaskStatus(){
         List currentAndFutureStatus = new ArrayList<>();
-        List<CarOrder> curuntStatus  = getCurrentState();
+        List<CarOrder> currentStatus  = getCurrentState();
         List<CarOrder> futureStatus  = simulateAdvanceAssemblyLine();
-        List<String> curuntStatusAndTasks = new ArrayList<>();
+        List<String> currentStatusAndTasks = new ArrayList<>();
         List<String> futureStatusAndTasks = new ArrayList<>();
-        for(int i = 0 ; i < curuntStatus.size() ; i++){
-            CarOrder carOrder = curuntStatus.get(i);
-            String s = getAssemblyLine().getWorkStations().get(i).toString() + " ; ";
+        for(int i = 0 ; i < currentStatus.size() ; i++){
+            CarOrder carOrder = currentStatus.get(i);
+            String s = getAssemblyLine().getWorkStations().get(i).getName() + " ; ";
             if(carOrder != null) {
-                s += "Model: " + carOrder.getCarModel();
-                getAssemblyLine().getWorkStations().get(i).getTasksAndStatus();
+                s += carOrder.getCarModelAndOptions() + " ; ";
+                s += getAssemblyLine().getWorkStations().get(i).getTasksAndStatus();
             }
             else
                 s += "No Order in this workstation";
-            curuntStatusAndTasks.add(s);
+            currentStatusAndTasks.add(s);
         }
-        currentAndFutureStatus.add(curuntStatusAndTasks);
+        currentAndFutureStatus.add(currentStatusAndTasks);
         for(int i = 0 ; i < futureStatus.size() ; i++){
             CarOrder carOrder = futureStatus.get(i);
-            String s = getAssemblyLine().getWorkStations().get(i).toString() + " ; ";
+            String s = getAssemblyLine().getWorkStations().get(i).getName() + " ; ";
             if(carOrder != null) {
-                s += "Model: " + carOrder.getCarModel();
+                s += carOrder.getCarModelAndOptions();
             }
             else
                 s += "No Order in this workstation";
