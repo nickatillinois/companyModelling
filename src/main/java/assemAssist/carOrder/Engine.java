@@ -1,5 +1,6 @@
 package assemAssist.carOrder;
 
+import assemAssist.ProductionScheduler;
 import assemAssist.exceptions.IllegalChoiceException;
 
 /**
@@ -9,14 +10,7 @@ import assemAssist.exceptions.IllegalChoiceException;
  */
 public class Engine extends Option{
 
-    /**
-     * Returns an array of available engine choices.
-     *
-     * @return an array of available engine choices.
-     */
-    public static String[] getAvailableChoices(){
-        return new String[]{"standard 2l 4 cilinders", "performance 2.5l 6 cilinders"};
-    }
+
 
     /**
      * Creates a new body option and sets the given customization choice.
@@ -33,7 +27,7 @@ public class Engine extends Option{
         if(chosenChoice.length() == 0){throw new IllegalArgumentException("A chosenChoice for " +
                 "an engine option cannot be the empty string.");}
         boolean contains = false;
-        for(String choice: getAvailableChoices()){
+        for(String choice: ProductionScheduler.getAvailableEngineChoices()){
             if(choice.equalsIgnoreCase(chosenChoice)){
                 contains = true;
                 break;
@@ -60,7 +54,7 @@ public class Engine extends Option{
         if(chosenChoice.length() == 0){throw new IllegalArgumentException("A chosenChoice for " +
                 "an engine option cannot be the empty string.");}
         boolean contains = false;
-        for(String choice: getAvailableChoices()){
+        for(String choice: ProductionScheduler.getAvailableEngineChoices()){
             if(choice.equalsIgnoreCase(chosenChoice)){
                 contains = true;
                 break;

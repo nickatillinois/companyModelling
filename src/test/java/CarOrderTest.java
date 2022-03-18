@@ -224,7 +224,7 @@ class CarOrderTest {
     }
     @Test
     void testAirco() throws IllegalModelException {
-        int size1 = Airco.getAvailableChoices().length;
+        int size1 = ProductionScheduler.getAvailableAircoChoices().length;
         assert size1 == 2;
         assert airco.getChosenChoice().equalsIgnoreCase("ManuAl");
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
@@ -248,7 +248,7 @@ class CarOrderTest {
     }
     @Test
     void testBody() throws IllegalModelException {
-        int size1 = Body.getAvailableChoices().length;
+        int size1 = ProductionScheduler.getAvailableBodyChoices().length;
         assert size1 == 2;
         assert body.getChosenChoice().equalsIgnoreCase("sedan");
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
@@ -272,7 +272,7 @@ class CarOrderTest {
     }
     @Test
     void testColor() throws IllegalModelException {
-        int size1 = Color.getAvailableChoices().length;
+        int size1 = ProductionScheduler.getAvailableColorChoices().length;
         assert size1 == 4;
         assert color.getChosenChoice().equalsIgnoreCase("reD");
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
@@ -296,7 +296,7 @@ class CarOrderTest {
     }
     @Test
     void testEngine() throws IllegalModelException, IllegalChoiceException {
-        int size1 = Engine.getAvailableChoices().length;
+        int size1 = ProductionScheduler.getAvailableEngineChoices().length;
         assert size1 == 2;
         engine.setChosenChoice("standard 2l 4 cilinders");
         assert engine.getChosenChoice().equalsIgnoreCase("Standard 2l 4 cilinders");
@@ -321,7 +321,7 @@ class CarOrderTest {
     }
     @Test
     void testGearbox() throws IllegalModelException {
-        int size1 = Gearbox.getAvailableChoices().length;
+        int size1 = ProductionScheduler.getAvailableGearboxChoices().length;
         assert size1 == 2;
         assert gearbox.getChosenChoice().equalsIgnoreCase("6 speed manual");
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
@@ -345,7 +345,7 @@ class CarOrderTest {
     }
     @Test
     void testSeats() throws IllegalModelException {
-        int size1 = Seats.getAvailableChoices().length;
+        int size1 = ProductionScheduler.getAvailableSeatsChoices().length;
         assert size1 == 3;
         assert seats.getChosenChoice().equalsIgnoreCase("leather white");
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
@@ -369,7 +369,7 @@ class CarOrderTest {
     }
     @Test
     void testWheels() throws IllegalModelException {
-        int size1 = Wheels.getAvailableChoices().length;
+        int size1 = ProductionScheduler.getAvailableWheelsChoices().length;
         assert size1 == 2;
         assert wheels.getChosenChoice().equalsIgnoreCase("comfort");
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {

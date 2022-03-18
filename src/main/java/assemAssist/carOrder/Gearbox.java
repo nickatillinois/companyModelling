@@ -1,5 +1,6 @@
 package assemAssist.carOrder;
 
+import assemAssist.ProductionScheduler;
 import assemAssist.exceptions.IllegalChoiceException;
 
 /**
@@ -9,17 +10,10 @@ import assemAssist.exceptions.IllegalChoiceException;
  */
 public class Gearbox extends Option{
 
-    /**
-     * Returns an array of available gearbox choices.
-     *
-     * @return an array of available gearbox choices.
-     */
-    public static String[] getAvailableChoices(){
-        return new String[]{"6 speed manual", "5 speed automatic"};
-    }
+
 
     /**
-     * Creates a new body option and sets the given customization choice.
+     * Creates a new gearbox option and sets the given customization choice.
      *
      * @param chosenChoice the given customization choice.
      * @throws IllegalArgumentException | chosenChoice is null
@@ -33,7 +27,7 @@ public class Gearbox extends Option{
         if(chosenChoice.length() == 0){throw new IllegalArgumentException("A chosenChoice for " +
                 "a gearbox option cannot be the empty string.");}
         boolean contains = false;
-        for(String choice: getAvailableChoices()){
+        for(String choice: ProductionScheduler.getAvailableGearboxChoices()){
             if(choice.equalsIgnoreCase(chosenChoice)){
                 contains = true;
                 break;
@@ -60,7 +54,7 @@ public class Gearbox extends Option{
         if(chosenChoice.length() == 0){throw new IllegalArgumentException("A chosenChoice for " +
                 "a gearbox option cannot be the empty string.");}
         boolean contains = false;
-        for(String choice: getAvailableChoices()){
+        for(String choice: ProductionScheduler.getAvailableGearboxChoices()){
             if(choice.equalsIgnoreCase(chosenChoice)){
                 contains = true;
                 break;

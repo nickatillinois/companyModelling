@@ -1,6 +1,7 @@
 package assemAssist.carOrder;
 
 
+import assemAssist.ProductionScheduler;
 import assemAssist.exceptions.IllegalChoiceException;
 
 /**
@@ -9,15 +10,6 @@ import assemAssist.exceptions.IllegalChoiceException;
  * @author SWOP team 10
  */
 public class Airco extends Option{
-
-    /**
-     * Returns an array of available airco choices.
-     *
-     * @return an array of available airco choices.
-     */
-    public static String[] getAvailableChoices(){
-        return new String[]{"manual", "automatic climate control"};
-    }
 
     /**
      * Creates a new airco option and sets the given customization choice.
@@ -34,7 +26,7 @@ public class Airco extends Option{
         if(chosenChoice.length() == 0){throw new IllegalArgumentException("A chosenChoice for " +
                 "an airco option cannot be the empty string.");}
         boolean contains = false;
-        for(String choice: getAvailableChoices()){
+        for(String choice: ProductionScheduler.getAvailableAircoChoices()){
             if(choice.equalsIgnoreCase(chosenChoice)){
                 contains = true;
                 break;
@@ -61,7 +53,7 @@ public class Airco extends Option{
         if(chosenChoice.length() == 0){throw new IllegalArgumentException("A chosenChoice for " +
                 "an airco option cannot be the empty string.");}
         boolean contains = false;
-        for(String choice: getAvailableChoices()){
+        for(String choice: ProductionScheduler.getAvailableAircoChoices()){
             if(choice.equalsIgnoreCase(chosenChoice)){
                 contains = true;
                 break;

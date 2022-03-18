@@ -72,7 +72,7 @@ public class GarageHolderController {
         List<String> orderingForm = new ArrayList<>();
 
         String bodyString = "";
-        Set<String> bodies = new HashSet<>(Arrays.asList(Body.getAvailableChoices()));
+        Set<String> bodies = new HashSet<>(Arrays.asList(ProductionScheduler.getAvailableBodyChoices()));
         Iterator<String> iterator7 = bodies.iterator();
         while (iterator7.hasNext()) {
             String name = iterator7.next();
@@ -87,7 +87,7 @@ public class GarageHolderController {
 
 
         String colorString = "";
-        Set<String> colors = new HashSet<>(Arrays.asList(Color.getAvailableChoices()));
+        Set<String> colors = new HashSet<>(Arrays.asList(ProductionScheduler.getAvailableColorChoices()));
         Iterator<String> iterator = colors.iterator();
         while (iterator.hasNext()) {
             String name = iterator.next();
@@ -101,7 +101,7 @@ public class GarageHolderController {
         orderingForm.add("Color: " + colorString);
 
         String engineString = "";
-        Set<String> engines = new HashSet<>(Arrays.asList(Engine.getAvailableChoices()));
+        Set<String> engines = new HashSet<>(Arrays.asList(ProductionScheduler.getAvailableEngineChoices()));
         Iterator<String> iterator2 = engines.iterator();
         while (iterator2.hasNext()) {
             String name = iterator2.next();
@@ -115,7 +115,7 @@ public class GarageHolderController {
         orderingForm.add("Engine: " + engineString);
 
         String gearboxString = "";
-        Set<String> gears = new HashSet<>(Arrays.asList(Gearbox.getAvailableChoices()));
+        Set<String> gears = new HashSet<>(Arrays.asList(ProductionScheduler.getAvailableGearboxChoices()));
         Iterator<String> iterator3 = gears.iterator();
         while (iterator3.hasNext()) {
             String name = iterator3.next();
@@ -129,7 +129,7 @@ public class GarageHolderController {
         orderingForm.add("GearBox: " + gearboxString);
 
         String seatsString = "";
-        Set<String> seats = new HashSet<>(Arrays.asList(Seats.getAvailableChoices()));
+        Set<String> seats = new HashSet<>(Arrays.asList(ProductionScheduler.getAvailableSeatsChoices()));
         Iterator<String> iterator4 = seats.iterator();
         while (iterator4.hasNext()) {
             String name = iterator4.next();
@@ -143,7 +143,7 @@ public class GarageHolderController {
         orderingForm.add("Seats: " + seatsString);
 
         String aircoString = "";
-        Set<String> aircos = new HashSet<>(Arrays.asList(Airco.getAvailableChoices()));
+        Set<String> aircos = new HashSet<>(Arrays.asList(ProductionScheduler.getAvailableSeatsChoices()));
         Iterator<String> iterator6 = aircos.iterator();
         while (iterator6.hasNext()) {
             String name = iterator6.next();
@@ -157,7 +157,7 @@ public class GarageHolderController {
         orderingForm.add("Airco: " + aircoString);
 
         String wheelsString = "";
-        Set<String> wheels = new HashSet<>(Arrays.asList(Wheels.getAvailableChoices()));
+        Set<String> wheels = new HashSet<>(Arrays.asList(ProductionScheduler.getAvailableWheelsChoices()));
         Iterator<String> iterator5 = wheels.iterator();
         while (iterator5.hasNext()) {
             String name = iterator5.next();

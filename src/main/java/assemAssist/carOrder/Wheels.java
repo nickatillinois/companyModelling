@@ -1,5 +1,6 @@
 package assemAssist.carOrder;
 
+import assemAssist.ProductionScheduler;
 import assemAssist.exceptions.IllegalChoiceException;
 
 /**
@@ -9,14 +10,7 @@ import assemAssist.exceptions.IllegalChoiceException;
  */
 public class Wheels extends Option{
 
-    /**
-     * Returns an array of available wheels choices.
-     *
-     * @return an array of available wheels choices.
-     */
-    public static String[] getAvailableChoices(){
-        return new String[]{"comfort", "sports (low profile)"};
-    }
+
 
     /**
      * Creates a new body option and sets the given customization choice.
@@ -33,7 +27,7 @@ public class Wheels extends Option{
         if(chosenChoice.length() == 0){throw new IllegalArgumentException("A chosenChoice for " +
                 "a wheels option cannot be the empty string.");}
         boolean contains = false;
-        for(String choice: getAvailableChoices()){
+        for(String choice: ProductionScheduler.getAvailableWheelsChoices()){
             if(choice.equalsIgnoreCase(chosenChoice)){
                 contains = true;
                 break;
@@ -60,7 +54,7 @@ public class Wheels extends Option{
         if(chosenChoice.length() == 0){throw new IllegalArgumentException("A chosenChoice for " +
                 "a wheels option cannot be the empty string.");}
         boolean contains = false;
-        for(String choice: getAvailableChoices()){
+        for(String choice: ProductionScheduler.getAvailableWheelsChoices()){
             if(choice.equalsIgnoreCase(chosenChoice)){
                 contains = true;
                 break;

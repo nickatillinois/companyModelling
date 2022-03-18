@@ -48,6 +48,69 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
     }
 
     /**
+     * Returns an array of available airco choices.
+     *
+     * @return an array of available airco choices.
+     */
+    public static String[] getAvailableAircoChoices(){
+        return new String[]{"manual", "automatic climate control"};
+    }
+
+    /**
+     * Returns an array of available body choices.
+     *
+     * @return an array of available body choices.
+     */
+    public static String[] getAvailableBodyChoices(){
+        return new String[]{"sedan", "break"};
+    }
+
+    /**
+     * Returns an array of available color choices.
+     *
+     * @return an array of available color choices.
+     */
+    public static String[] getAvailableColorChoices(){
+        return new String[]{"red", "blue", "black", "white"};
+    }
+
+    /**
+     * Returns an array of available engine choices.
+     *
+     * @return an array of available engine choices.
+     */
+    public static String[] getAvailableEngineChoices(){
+        return new String[]{"standard 2l 4 cilinders", "performance 2.5l 6 cilinders"};
+    }
+
+    /**
+     * Returns an array of available gearbox choices.
+     *
+     * @return an array of available gearbox choices.
+     */
+    public static String[] getAvailableGearboxChoices(){
+        return new String[]{"6 speed manual", "5 speed automatic"};
+    }
+
+    /**
+     * Returns an array of available seats choices.
+     *
+     * @return an array of available seats choices.
+     */
+    public static String[] getAvailableSeatsChoices(){
+        return new String[]{"leather black", "leather white", "vinyl grey"};
+    }
+
+    /**
+     * Returns an array of available wheels choices.
+     *
+     * @return an array of available wheels choices.
+     */
+    public static String[] getAvailableWheelsChoices(){
+        return new String[]{"comfort", "sports (low profile)"};
+    }
+
+    /**
      * Adds the given string of a car model name to the end of the PList of car model names.
      * If the given string is already in the PList, the string is not added.
      *

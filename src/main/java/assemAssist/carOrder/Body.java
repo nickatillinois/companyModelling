@@ -1,5 +1,6 @@
 package assemAssist.carOrder;
 
+import assemAssist.ProductionScheduler;
 import assemAssist.exceptions.IllegalChoiceException;
 
 /**
@@ -10,14 +11,7 @@ import assemAssist.exceptions.IllegalChoiceException;
 public class Body extends Option{
 
 
-    /**
-     * Returns an array of available body choices.
-     *
-     * @return an array of available body choices.
-     */
-    public static String[] getAvailableChoices(){
-        return new String[]{"sedan", "break"};
-    }
+
 
     /**
      * Creates a new body option and sets the given customization choice.
@@ -34,7 +28,7 @@ public class Body extends Option{
         if(chosenChoice.length() == 0){throw new IllegalArgumentException("A chosenChoice for " +
                 "a body option cannot be the empty string.");}
         boolean contains = false;
-        for(String choice: getAvailableChoices()){
+        for(String choice: ProductionScheduler.getAvailableBodyChoices()){
             if(choice.equalsIgnoreCase(chosenChoice)){
                 contains = true;
                 break;
@@ -61,7 +55,7 @@ public class Body extends Option{
         if(chosenChoice.length() == 0){throw new IllegalArgumentException("A chosenChoice for " +
                 "a body option cannot be the empty string.");}
         boolean contains = false;
-        for(String choice: getAvailableChoices()){
+        for(String choice: ProductionScheduler.getAvailableBodyChoices()){
             if(choice.equalsIgnoreCase(chosenChoice)){
                 contains = true;
                 break;
