@@ -493,15 +493,15 @@ m2=2...3
     <id>Relation</id>
     <coordinates>
       <x>312</x>
-      <y>312</y>
+      <y>336</y>
       <w>272</w>
-      <h>152</h>
+      <h>128</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
 m2=1
 productionScheduler</panel_attributes>
-    <additional_attributes>10.0;170.0;320.0;10.0</additional_attributes>
+    <additional_attributes>10.0;140.0;320.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -523,14 +523,17 @@ productionScheduler</panel_attributes>
       <x>520</x>
       <y>240</y>
       <w>312</w>
-      <h>80</h>
+      <h>104</h>
     </coordinates>
     <panel_attributes>GarageHolderController
 --
-+newLogin() : List&lt;String&gt;
-+wantsToOrder() : List&lt;String&gt;
-+selectModel(String model) : List&lt;String&gt;
-+completeOrderingForm(List&lt;String&gt; carOptions) : LocalDate
+- String garageHolder
+- String chosenModel
+--
++ newLogin(String garageholder): List&lt;List&lt;String&gt;&gt;
++ wantsToOrder() : List&lt;String&gt;
++ selectModel(String model) : List&lt;String&gt;
++ completeOrderingForm(List&lt;String&gt; carOptions) : String
 </panel_attributes>
     <additional_attributes/>
   </element>

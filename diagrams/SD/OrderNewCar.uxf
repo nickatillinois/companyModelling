@@ -596,7 +596,7 @@ lt=&lt;-</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>1040</x>
-      <y>285</y>
+      <y>280</y>
       <w>75</w>
       <h>15</h>
     </coordinates>
@@ -607,12 +607,12 @@ lt=&lt;-</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1075</x>
-      <y>295</y>
+      <y>290</y>
       <w>15</w>
-      <h>510</h>
+      <h>515</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;1000.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;1010.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -656,18 +656,18 @@ lt=&lt;-
     <id>Relation</id>
     <coordinates>
       <x>1220</x>
-      <y>295</y>
+      <y>290</y>
       <w>15</w>
-      <h>510</h>
+      <h>515</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;1000.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;1010.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
       <x>1185</x>
-      <y>285</y>
+      <y>280</y>
       <w>75</w>
       <h>15</h>
     </coordinates>
@@ -729,7 +729,7 @@ halign=left
     <id>UMLGeneric</id>
     <coordinates>
       <x>1270</x>
-      <y>285</y>
+      <y>280</y>
       <w>75</w>
       <h>15</h>
     </coordinates>
@@ -740,12 +740,12 @@ halign=left
     <id>Relation</id>
     <coordinates>
       <x>1305</x>
-      <y>295</y>
+      <y>290</y>
       <w>15</w>
-      <h>510</h>
+      <h>515</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;1000.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;1010.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
