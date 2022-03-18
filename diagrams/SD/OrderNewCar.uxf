@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>9</zoom_level>
+  <zoom_level>5</zoom_level>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>171</x>
-      <y>0</y>
-      <w>1629</w>
-      <h>1062</h>
+      <x>360</x>
+      <y>240</y>
+      <w>1000</w>
+      <h>590</h>
     </coordinates>
     <panel_attributes>Order New Car</panel_attributes>
     <additional_attributes/>
@@ -15,10 +15,10 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>828</x>
-      <y>162</y>
-      <w>18</w>
-      <h>144</h>
+      <x>750</x>
+      <y>315</y>
+      <w>10</w>
+      <h>80</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -26,10 +26,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>828</x>
-      <y>126</y>
-      <w>27</w>
-      <h>918</h>
+      <x>750</x>
+      <y>295</y>
+      <w>15</w>
+      <h>510</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;1000.0</additional_attributes>
@@ -37,101 +37,58 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>837</x>
-      <y>153</y>
-      <w>252</w>
-      <h>54</h>
+      <x>755</x>
+      <y>310</y>
+      <w>185</w>
+      <h>30</h>
     </coordinates>
-    <panel_attributes>getOverviewOfOrders()
+    <panel_attributes>getOrdersFromGarageHolder(name)
 
 lt=&lt;-
 </panel_attributes>
-    <additional_attributes>260.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>350.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1026</x>
-      <y>108</y>
-      <w>108</w>
-      <h>27</h>
-    </coordinates>
-    <panel_attributes>: GarageHolder</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1071</x>
-      <y>126</y>
-      <w>27</w>
-      <h>918</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;1000.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>1071</x>
-      <y>171</y>
-      <w>18</w>
-      <h>117</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>1611</x>
-      <y>108</y>
-      <w>135</w>
-      <h>27</h>
+      <x>890</x>
+      <y>280</y>
+      <w>75</w>
+      <h>15</h>
     </coordinates>
     <panel_attributes>: ProductionScheduler</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>1674</x>
-      <y>216</y>
-      <w>18</w>
-      <h>45</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>Relation</id>
     <coordinates>
-      <x>1674</x>
-      <y>126</y>
-      <w>27</w>
-      <h>918</h>
+      <x>925</x>
+      <y>290</y>
+      <w>20</w>
+      <h>515</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;1000.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>1296</x>
-      <y>108</y>
-      <w>171</w>
-      <h>27</h>
-    </coordinates>
-    <panel_attributes>: CarManufacturingCompany</panel_attributes>
-    <additional_attributes/>
+    <additional_attributes>10.0;10.0;20.0;1010.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1377</x>
-      <y>126</y>
-      <w>27</w>
-      <h>918</h>
+      <x>755</x>
+      <y>375</y>
+      <w>185</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>overView: List&lt;CarOrder&gt;
+lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;20.0;350.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>575</x>
+      <y>295</y>
+      <w>15</w>
+      <h>510</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;1000.0</additional_attributes>
@@ -139,97 +96,12 @@ lt=&lt;-
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1080</x>
-      <y>171</y>
-      <w>315</w>
-      <h>45</h>
+      <x>580</x>
+      <y>305</y>
+      <w>180</w>
+      <h>25</h>
     </coordinates>
-    <panel_attributes>getOrdersFromGarageHolder(garageHolder)
-lt=&lt;-
-</panel_attributes>
-    <additional_attributes>330.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>1377</x>
-      <y>189</y>
-      <w>18</w>
-      <h>81</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1386</x>
-      <y>198</y>
-      <w>306</w>
-      <h>45</h>
-    </coordinates>
-    <panel_attributes>getOrdersFromGarageHolder(garageHolder)
-lt=&lt;-
-</panel_attributes>
-    <additional_attributes>320.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1386</x>
-      <y>243</y>
-      <w>306</w>
-      <h>36</h>
-    </coordinates>
-    <panel_attributes>overView: List&lt;String&gt;
-lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;20.0;320.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1080</x>
-      <y>252</y>
-      <w>315</w>
-      <h>36</h>
-    </coordinates>
-    <panel_attributes>overView: List&lt;String&gt;
-lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;20.0;330.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>837</x>
-      <y>270</y>
-      <w>252</w>
-      <h>36</h>
-    </coordinates>
-    <panel_attributes>overView: List&lt;String&gt;
-lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;20.0;260.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>513</x>
-      <y>126</y>
-      <w>27</w>
-      <h>918</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;1000.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>522</x>
-      <y>144</y>
-      <w>324</w>
-      <h>54</h>
-    </coordinates>
-    <panel_attributes>newLogin()
-
+    <panel_attributes>newLogin(string name)
 lt=&lt;-
 </panel_attributes>
     <additional_attributes>340.0;20.0;10.0;20.0</additional_attributes>
@@ -237,10 +109,10 @@ lt=&lt;-
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>288</x>
-      <y>45</y>
-      <w>108</w>
-      <h>99</h>
+      <x>430</x>
+      <y>250</y>
+      <w>60</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>Garage Holder</panel_attributes>
     <additional_attributes/>
@@ -248,10 +120,10 @@ lt=&lt;-
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>792</x>
-      <y>108</y>
-      <w>99</w>
-      <h>27</h>
+      <x>730</x>
+      <y>285</y>
+      <w>55</w>
+      <h>15</h>
     </coordinates>
     <panel_attributes>: Controller</panel_attributes>
     <additional_attributes/>
@@ -259,22 +131,22 @@ lt=&lt;-
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>522</x>
-      <y>288</y>
-      <w>324</w>
-      <h>36</h>
+      <x>580</x>
+      <y>385</y>
+      <w>180</w>
+      <h>20</h>
     </coordinates>
-    <panel_attributes>overViewOfOrders: List&lt;String&gt;
+    <panel_attributes>overView: List&lt;List&lt;String&gt;&gt;
 lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;20.0;340.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>522</x>
-      <y>387</y>
-      <w>324</w>
-      <h>54</h>
+      <x>580</x>
+      <y>440</y>
+      <w>180</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>wantsToOrder()
 
@@ -285,95 +157,21 @@ lt=&lt;-
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>828</x>
-      <y>405</y>
-      <w>18</w>
-      <h>81</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>1071</x>
-      <y>414</y>
-      <w>18</w>
-      <h>54</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>837</x>
-      <y>396</y>
-      <w>252</w>
-      <h>45</h>
-    </coordinates>
-    <panel_attributes>orderNewCar()
-lt=&lt;-
-</panel_attributes>
-    <additional_attributes>260.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>1377</x>
-      <y>432</y>
-      <w>18</w>
-      <h>27</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1080</x>
-      <y>414</y>
-      <w>315</w>
-      <h>45</h>
-    </coordinates>
-    <panel_attributes>getCarModels()
-lt=&lt;-
-</panel_attributes>
-    <additional_attributes>330.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1080</x>
-      <y>441</y>
-      <w>315</w>
-      <h>45</h>
-    </coordinates>
-    <panel_attributes>models: List&lt;String&gt;
-lt=&lt;-
-</panel_attributes>
-    <additional_attributes>10.0;20.0;330.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>837</x>
+      <x>750</x>
       <y>450</y>
-      <w>252</w>
+      <w>10</w>
       <h>45</h>
     </coordinates>
-    <panel_attributes>models: List&lt;String&gt;
-lt=&lt;-
-</panel_attributes>
-    <additional_attributes>10.0;20.0;260.0;20.0</additional_attributes>
+    <panel_attributes/>
+    <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>522</x>
-      <y>468</y>
-      <w>324</w>
-      <h>45</h>
+      <x>580</x>
+      <y>485</y>
+      <w>180</w>
+      <h>25</h>
     </coordinates>
     <panel_attributes>availableModels: List&lt;String&gt;
 lt=&lt;-
@@ -383,10 +181,10 @@ lt=&lt;-
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>828</x>
-      <y>531</y>
-      <w>18</w>
-      <h>45</h>
+      <x>750</x>
+      <y>520</y>
+      <w>10</w>
+      <h>25</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -394,10 +192,10 @@ lt=&lt;-
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>522</x>
-      <y>513</y>
-      <w>324</w>
-      <h>45</h>
+      <x>580</x>
+      <y>510</y>
+      <w>180</w>
+      <h>25</h>
     </coordinates>
     <panel_attributes>selectModel(String carModel)
 lt=&lt;-
@@ -407,58 +205,10 @@ lt=&lt;-
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>837</x>
-      <y>522</y>
-      <w>252</w>
-      <h>45</h>
-    </coordinates>
-    <panel_attributes>selectModel(modelName: String)
-lt=&lt;-
-</panel_attributes>
-    <additional_attributes>260.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>1071</x>
-      <y>540</y>
-      <w>18</w>
-      <h>27</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>1377</x>
-      <y>666</y>
-      <w>18</w>
-      <h>45</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>837</x>
-      <y>549</y>
-      <w>252</w>
-      <h>45</h>
-    </coordinates>
-    <panel_attributes>orderingForm: List&lt;String&gt;
-lt=&lt;-
-</panel_attributes>
-    <additional_attributes>10.0;20.0;260.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>522</x>
-      <y>558</y>
-      <w>324</w>
-      <h>45</h>
+      <x>580</x>
+      <y>535</y>
+      <w>180</w>
+      <h>25</h>
     </coordinates>
     <panel_attributes>orderingForm: List&lt;String&gt;
 lt=&lt;-
@@ -468,10 +218,10 @@ lt=&lt;-
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>522</x>
-      <y>630</y>
-      <w>324</w>
-      <h>45</h>
+      <x>580</x>
+      <y>575</y>
+      <w>180</w>
+      <h>25</h>
     </coordinates>
     <panel_attributes>completeOrderingForm(List&lt;String&gt; carOptions)
 lt=&lt;-
@@ -481,10 +231,10 @@ lt=&lt;-
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>828</x>
-      <y>648</y>
-      <w>18</w>
-      <h>99</h>
+      <x>750</x>
+      <y>585</y>
+      <w>10</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -492,23 +242,23 @@ lt=&lt;-
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>837</x>
-      <y>639</y>
-      <w>252</w>
-      <h>45</h>
+      <x>755</x>
+      <y>580</y>
+      <w>185</w>
+      <h>25</h>
     </coordinates>
-    <panel_attributes>completeOrderingForm(List&lt;Strings&gt;)
+    <panel_attributes>addOrderToProductionSchedule(CarOrder carOrder)
 lt=&lt;-
 </panel_attributes>
-    <additional_attributes>260.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>350.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1071</x>
-      <y>657</y>
-      <w>18</w>
-      <h>72</h>
+      <x>930</x>
+      <y>590</y>
+      <w>10</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -516,86 +266,36 @@ lt=&lt;-
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1080</x>
-      <y>648</y>
-      <w>306</w>
-      <h>45</h>
+      <x>935</x>
+      <y>605</y>
+      <w>380</w>
+      <h>25</h>
     </coordinates>
-    <panel_attributes>orderNewCar(orderingForm: List&lt;String&gt;)
+    <panel_attributes>getCompletionTime()
 lt=&lt;-
 </panel_attributes>
-    <additional_attributes>320.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;740.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1386</x>
-      <y>657</y>
-      <w>306</w>
-      <h>45</h>
-    </coordinates>
-    <panel_attributes>orderNewCar(orderingForm: List&lt;String&gt;)
-lt=&lt;-
-</panel_attributes>
-    <additional_attributes>320.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>1674</x>
-      <y>675</y>
-      <w>18</w>
-      <h>27</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1386</x>
-      <y>684</y>
-      <w>306</w>
-      <h>45</h>
+      <x>755</x>
+      <y>620</y>
+      <w>185</w>
+      <h>25</h>
     </coordinates>
     <panel_attributes>estimatedCompletionDate:  Time
 lt=&lt;-
 </panel_attributes>
-    <additional_attributes>10.0;20.0;320.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;350.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1080</x>
-      <y>693</y>
-      <w>315</w>
-      <h>45</h>
-    </coordinates>
-    <panel_attributes>estimatedCompletionDate:  Time
-lt=&lt;-
-</panel_attributes>
-    <additional_attributes>10.0;20.0;330.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>837</x>
-      <y>711</y>
-      <w>252</w>
-      <h>45</h>
-    </coordinates>
-    <panel_attributes>estimatedCompletionDate:  Time
-lt=&lt;-
-</panel_attributes>
-    <additional_attributes>10.0;20.0;260.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>522</x>
-      <y>729</y>
-      <w>324</w>
-      <h>54</h>
+      <x>580</x>
+      <y>630</y>
+      <w>180</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>estimatedCompletionDate:  
 LocalDate
@@ -606,10 +306,10 @@ lt=&lt;-
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>297</x>
-      <y>126</y>
-      <w>27</w>
-      <h>918</h>
+      <x>455</x>
+      <y>295</y>
+      <w>15</w>
+      <h>510</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;1000.0</additional_attributes>
@@ -617,10 +317,10 @@ lt=&lt;-
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>459</x>
-      <y>108</y>
-      <w>117</w>
-      <h>27</h>
+      <x>545</x>
+      <y>285</y>
+      <w>65</w>
+      <h>15</h>
     </coordinates>
     <panel_attributes>: GarageHolderUI</panel_attributes>
     <additional_attributes/>
@@ -628,10 +328,10 @@ lt=&lt;-
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>513</x>
-      <y>153</y>
-      <w>18</w>
-      <h>846</h>
+      <x>575</x>
+      <y>310</y>
+      <w>10</w>
+      <h>470</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -639,10 +339,10 @@ lt=&lt;-
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>297</x>
-      <y>144</y>
-      <w>18</w>
-      <h>882</h>
+      <x>455</x>
+      <y>305</y>
+      <w>10</w>
+      <h>490</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -650,10 +350,10 @@ lt=&lt;-
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>306</x>
-      <y>135</y>
-      <w>225</w>
-      <h>36</h>
+      <x>460</x>
+      <y>300</y>
+      <w>125</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 login</panel_attributes>
@@ -662,10 +362,10 @@ login</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>306</x>
-      <y>297</y>
-      <w>225</w>
-      <h>45</h>
+      <x>460</x>
+      <y>390</y>
+      <w>125</w>
+      <h>25</h>
     </coordinates>
     <panel_attributes>give overview pending and
 lt=&lt;-
@@ -675,10 +375,10 @@ completed orders</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>180</x>
-      <y>342</y>
-      <w>1584</w>
-      <h>711</h>
+      <x>390</x>
+      <y>415</y>
+      <w>940</w>
+      <h>395</h>
     </coordinates>
     <panel_attributes>alt
 --
@@ -730,10 +430,10 @@ wants to leave]</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>306</x>
-      <y>369</y>
-      <w>225</w>
-      <h>45</h>
+      <x>460</x>
+      <y>430</y>
+      <w>125</w>
+      <h>25</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 indicates he wants
@@ -743,10 +443,10 @@ to place a new car order</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>306</x>
-      <y>477</y>
-      <w>225</w>
-      <h>45</h>
+      <x>460</x>
+      <y>490</y>
+      <w>125</w>
+      <h>25</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 shows list of available
@@ -756,10 +456,10 @@ models</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>306</x>
-      <y>504</y>
-      <w>225</w>
-      <h>45</h>
+      <x>460</x>
+      <y>505</y>
+      <w>125</w>
+      <h>25</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 
@@ -769,10 +469,10 @@ choose car model</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>306</x>
-      <y>567</y>
-      <w>225</w>
-      <h>36</h>
+      <x>460</x>
+      <y>540</y>
+      <w>125</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 display ordering form</panel_attributes>
@@ -781,10 +481,10 @@ display ordering form</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>306</x>
-      <y>621</y>
-      <w>225</w>
-      <h>36</h>
+      <x>460</x>
+      <y>570</y>
+      <w>125</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 fill in ordering form</panel_attributes>
@@ -793,10 +493,10 @@ fill in ordering form</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>306</x>
-      <y>855</y>
-      <w>225</w>
-      <h>36</h>
+      <x>460</x>
+      <y>700</y>
+      <w>125</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 leave overview</panel_attributes>
@@ -805,10 +505,10 @@ leave overview</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>306</x>
-      <y>945</y>
-      <w>225</w>
-      <h>36</h>
+      <x>460</x>
+      <y>750</y>
+      <w>125</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 cancel overview</panel_attributes>
@@ -817,10 +517,10 @@ cancel overview</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>306</x>
-      <y>981</y>
-      <w>225</w>
-      <h>36</h>
+      <x>460</x>
+      <y>770</y>
+      <w>125</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 leave overview</panel_attributes>
@@ -829,10 +529,10 @@ leave overview</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>198</x>
-      <y>603</y>
-      <w>1584</w>
-      <h>297</h>
+      <x>400</x>
+      <y>560</y>
+      <w>920</w>
+      <h>165</h>
     </coordinates>
     <panel_attributes>alt
 --
@@ -858,10 +558,10 @@ cancels order]</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>306</x>
-      <y>828</y>
-      <w>225</w>
-      <h>36</h>
+      <x>460</x>
+      <y>685</y>
+      <w>125</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 cancels order</panel_attributes>
@@ -870,15 +570,205 @@ cancels order</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>306</x>
-      <y>747</y>
-      <w>225</w>
-      <h>54</h>
+      <x>460</x>
+      <y>640</y>
+      <w>125</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>display estimated
 completion date and
 leave overview
 lt=&lt;-</panel_attributes>
     <additional_attributes>10.0;20.0;230.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>925</x>
+      <y>320</y>
+      <w>10</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1040</x>
+      <y>285</y>
+      <w>75</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>_CarModel_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1075</x>
+      <y>295</y>
+      <w>15</w>
+      <h>510</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;1000.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>755</x>
+      <y>445</y>
+      <w>330</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>getAvailableModels()
+
+lt=&lt;-
+</panel_attributes>
+    <additional_attributes>640.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1075</x>
+      <y>455</y>
+      <w>10</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>755</x>
+      <y>480</y>
+      <w>330</w>
+      <h>25</h>
+    </coordinates>
+    <panel_attributes>availableModels: PList&lt;String&gt;
+lt=&lt;-
+</panel_attributes>
+    <additional_attributes>10.0;20.0;640.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1220</x>
+      <y>295</y>
+      <w>15</w>
+      <h>510</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;1000.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1185</x>
+      <y>285</y>
+      <w>75</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>_Option {abstract}_</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>755</x>
+      <y>515</y>
+      <w>475</w>
+      <h>25</h>
+    </coordinates>
+    <panel_attributes>getAvailableChoices()
+lt=&lt;-
+</panel_attributes>
+    <additional_attributes>930.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1220</x>
+      <y>520</y>
+      <w>10</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>755</x>
+      <y>530</y>
+      <w>475</w>
+      <h>25</h>
+    </coordinates>
+    <panel_attributes>choices: String[]
+lt=&lt;-
+</panel_attributes>
+    <additional_attributes>10.0;20.0;930.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>745</x>
+      <y>505</y>
+      <w>490</w>
+      <h>45</h>
+    </coordinates>
+    <panel_attributes>loop
+--
+halign=left
+[all options]</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1270</x>
+      <y>285</y>
+      <w>75</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>: CarOrder</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1305</x>
+      <y>295</y>
+      <w>15</w>
+      <h>510</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;1000.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1305</x>
+      <y>600</y>
+      <w>10</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>935</x>
+      <y>590</y>
+      <w>380</w>
+      <h>25</h>
+    </coordinates>
+    <panel_attributes>setCompletionTime(LocalDateTime time)
+lt=&lt;-
+</panel_attributes>
+    <additional_attributes>740.0;20.0;10.0;20.0</additional_attributes>
   </element>
 </diagram>
