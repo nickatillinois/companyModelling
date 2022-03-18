@@ -362,11 +362,11 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
         return availableChoices;
     }
 
-    public String completeOrderingForm(List<String> carOptions, String garageHolder, String chosenModel) throws IllegalChoiceException, IllegalModelException,
+    public LocalDate completeOrderingForm(List<String> carOptions, String garageHolder, String chosenModel) throws IllegalChoiceException, IllegalModelException,
             IllegalCompletionDateException {
         CarModelSpecification cmf = new CarModelSpecification(new Body(carOptions.get(0)),new Color(carOptions.get(1)), new Engine(carOptions.get(2)),new Gearbox(carOptions.get(3)), new Seats(carOptions.get(4)),new Airco(carOptions.get(5)),new Wheels(carOptions.get(6)));
         CarModel carModel = new CarModel(chosenModel, cmf);
         CarOrder carOrder = new CarOrder(garageHolder, carModel);
-        return addOrderToProductionSchedule(carOrder).toString();
+        return addOrderToProductionSchedule(carOrder);
     }
 }

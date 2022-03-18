@@ -34,6 +34,6 @@ public class GarageHolderController {
     }
 
     public String completeOrderingForm(List<String> carOptions) throws IllegalChoiceException, IllegalModelException, IllegalCompletionDateException {
-        return productionScheduler.completeOrderingForm(carOptions, this.garageHolder, this.chosenModel);
+        return productionScheduler.completeOrderingForm(carOptions, this.garageHolder, this.chosenModel).toString();
     }
 }
