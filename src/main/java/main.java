@@ -1,4 +1,5 @@
 import assemAssist.AssemblyLine;
+import assemAssist.AssemblyTask;
 import assemAssist.ProductionScheduler;
 import assemAssist.carOrder.*;
 import assemAssist.exceptions.IllegalChoiceException;
@@ -36,22 +37,37 @@ public class main {
         ProductionScheduler.addModel("Jaguar");
 
 
-        Body body = new Body("sedan");
-        CarModelSpecification cmf = new CarModelSpecification(body,new Color("red"),
+        //DEMO
+        CarModelSpecification cmf = new CarModelSpecification(new Body("sedan"),new Color("red"),
                 new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
                 new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
         String modelName = "jaguar";
         CarModel carModel = new CarModel(modelName, cmf);
-        String garageHolder = "john doe";
+        String garageHolder = "Nick Degelin";
         CarOrder carOrder1 = new CarOrder(garageHolder, carModel);
-        Body body2 = new Body("sedan");
-        CarModelSpecification cmf2 = new CarModelSpecification(body,new Color("red"),
+
+        CarModelSpecification cmf2 = new CarModelSpecification(new Body("sedan"),new Color("blue"),
                 new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
                 new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        CarModel carModel2 = new CarModel(modelName, cmf);
-        CarOrder carOrder2 = new CarOrder(garageHolder, carModel);
-        productionScheduler.addOrderToProductionSchedule(carOrder1);
-        productionScheduler.addOrderToProductionSchedule(carOrder2);
+        CarModel carModel2 = new CarModel(modelName, cmf2);
+        CarOrder carOrder2 = new CarOrder(garageHolder, carModel2);
+
+        String garageHolder2 = "Raf Sablon";
+        CarModelSpecification cmf3 = new CarModelSpecification(new Body("sedan"),new Color("blue"),
+                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
+                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
+        CarModel carModel3 = new CarModel(modelName, cmf3);
+        CarOrder carOrder3 = new CarOrder(garageHolder2, carModel3);
+        productionScheduler.getAssemblyLine().getWorkStations().get(0).setCurrentOrder(carOrder3);
+        productionScheduler.getAssemblyLine().getWorkStations().get(1).setCurrentOrder(carOrder2);
+        productionScheduler.getAssemblyLine().getWorkStations().get(2).setCurrentOrder(carOrder1);
+        for (AssemblyTask task :productionScheduler.getAssemblyLine().getWorkStations().get(2).getTasks()){
+            task.setIsCompleted(true);
+        }
+        for (AssemblyTask task :productionScheduler.getAssemblyLine().getWorkStations().get(1).getTasks()){
+            task.setIsCompleted(true);
+        }
+        // Tot hier DEMO
 
 
         ManagerController managerController = new ManagerController(productionScheduler);

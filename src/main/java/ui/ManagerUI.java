@@ -29,11 +29,11 @@ public class ManagerUI {
                     System.out.println(modelOptions[j]);
                 }
 
-                System.out.println("Tasks:");
+/*                System.out.println("Tasks:");
                 String[] tasksStatus = workstationStatus[1].split(", ");
                 for (int j = 0; j < tasksStatus.length; j++) {
                     System.out.println(tasksStatus[j]);
-                }
+                }*/
             }
             else
                 System.out.println("No order at this work station.");

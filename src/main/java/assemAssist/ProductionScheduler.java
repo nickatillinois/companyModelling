@@ -4,6 +4,7 @@ import assemAssist.carOrder.*;
 import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalCompletionDateException;
 import assemAssist.exceptions.IllegalModelException;
+import assemAssist.workStation.WorkStation;
 import purecollections.PList;
 
 import java.time.LocalDate;
@@ -298,7 +299,13 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
      * @return list of car orders
      */
     public List<CarOrder> getPendingOrdersFromGarageHolder(String garageHolder){
-        return productionSchedule.stream().filter(p-> Objects.equals(p.getGarageholder(), garageHolder)).collect(Collectors.toList());
+        List<CarOrder> pending = productionSchedule.stream().filter(p-> Objects.equals(p.getGarageholder(), garageHolder)).collect(Collectors.toList());
+        for(WorkStation workStation : getAssemblyLine().getWorkStations()){
+            if (workStation.getCurrentOrder() != null)
+                if (Objects.equals(workStation.getCurrentOrder().getGarageholder(), garageHolder))
+                    pending.add( workStation.getCurrentOrder());
+        }
+        return pending;
     }
 
     public List<List<String>> getCurrentAndFutureStatusAndTaskStatus(){
