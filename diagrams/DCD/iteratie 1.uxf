@@ -787,6 +787,23 @@ m1=1
 m2=1
                       currentOrder</panel_attributes>
     <additional_attributes>260.0;50.0;10.0;10.0</additional_attributes>
+<<<<<<< HEAD:diagrams/DCD/iteratie 1.uxf
+=======
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>128</x>
+      <y>744</y>
+      <w>248</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=0..n
+m2=1
+productionSchedule</panel_attributes>
+    <additional_attributes>290.0;80.0;10.0;10.0</additional_attributes>
+>>>>>>> 2b1a2519e9e8449ca73b99efae1fa9d7cd15b2ad:diagrams/DCD/DCD.uxf
   </element>
   <element>
     <id>Relation</id>

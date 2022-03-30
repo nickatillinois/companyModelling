@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"swop"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"assemAssist"},{"l":"assemAssist.carOrder"},{"l":"assemAssist.exceptions"},{"l":"assemAssist.workStation"},{"l":"controller"},{"l":"ui"},{"l":"useCases"}];updateSearchResults();
