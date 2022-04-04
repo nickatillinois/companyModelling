@@ -30,11 +30,7 @@ public class PerformAssemblyTasksTest {
         CarModelSpecification cmf = new CarModelSpecification(body,new Color("red"),
                 new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
                 new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        AccessoriesPost accessoriesPost = new AccessoriesPost();
-        CarBodyPost carBodyPost = new CarBodyPost();
-        DrivetrainPost drivetrainPost = new DrivetrainPost();
-        List<WorkStation> workStationList = List.of(accessoriesPost,carBodyPost,drivetrainPost);
-        AssemblyLine assemblyLine = new AssemblyLine(workStationList);
+        AssemblyLine assemblyLine = new AssemblyLine();
         ProductionScheduler productionScheduler = new ProductionScheduler("frank", assemblyLine);
         ProductionScheduler.addModel("Jaguar");
         String modelName = "jaguar";

@@ -30,10 +30,7 @@ public class productSchedulerTest {
         carBodyPost = new CarBodyPost();
         drivetrainPost = new DrivetrainPost();
         ArrayList<WorkStation> workStations = new ArrayList<>();
-        workStations.add(carBodyPost);
-        workStations.add(drivetrainPost);
-        workStations.add(accessoriesPost);
-        assemblyLine = new AssemblyLine(workStations);
+        assemblyLine = new AssemblyLine();
         productionScheduler = new ProductionScheduler("Nick",assemblyLine);
     }
 
