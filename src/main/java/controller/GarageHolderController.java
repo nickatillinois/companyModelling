@@ -36,4 +36,15 @@ public class GarageHolderController {
     public String completeOrderingForm(List<String> carOptions) throws IllegalChoiceException, IllegalModelException, IllegalCompletionDateException {
         return productionScheduler.completeOrderingForm(carOptions, this.garageHolder, this.chosenModel).toString();
     }
+
+    public List<String> viewDetails(int carID, String garageHolderName) throws IllegalArgumentException {
+        if (carID != 1) {
+            throw new IllegalArgumentException("This is not a valid carID");
+        } else {
+            List<String> details = new ArrayList<>();
+            details.add("Model: Jaguar");
+            details.add("Color: Green");
+            return details;
+        }
+    }
 }
