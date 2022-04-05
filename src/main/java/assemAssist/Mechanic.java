@@ -6,8 +6,8 @@ import java.util.List;
 
 public class Mechanic {
 
-    private ProductionScheduler productionScheduler;
-    private AssemblyLine assemblyLine;
+    private final ProductionScheduler productionScheduler;
+    private final AssemblyLine assemblyLine;
     private WorkStation workStation;
 
     public Mechanic(ProductionScheduler productionScheduler, AssemblyLine assemblyLine) {
