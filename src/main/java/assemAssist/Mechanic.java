@@ -2,7 +2,6 @@ package assemAssist;
 
 import assemAssist.workStation.WorkStation;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Mechanic {
@@ -11,23 +10,32 @@ public class Mechanic {
     private AssemblyLine assemblyLine;
     private WorkStation workStation;
 
-    public List<String> getAllWorkStations() {
-        return null;
+    public Mechanic(ProductionScheduler productionScheduler, AssemblyLine assemblyLine) {
+        this.productionScheduler = productionScheduler;
+        this.assemblyLine = assemblyLine;
     }
 
-    public List<String> selectWorkStation() {
-        return null;
+    public List<String> getAllWorkStations() {
+        return assemblyLine.getWorkStationNames();
+    }
+
+    public List<String> selectWorkStation(String workStationName) {
+        WorkStation workStation = assemblyLine.findWorkStation(workStationName);
+        this.workStation = workStation;
+        return workStation.getPendingTasks();
     }
 
     public String selectTask(String taskName) {
-        return null;
+        return workStation.getInformationFromTask(taskName);
     }
 
     public List<String> finishTask(String taskName, int timeWorked) {
-        return null;
+        workStation.performAssemblyTask(taskName);
+        productionScheduler.advanceOrders(timeWorked);
+        return workStation.getPendingTasks();
     }
 
     public List<String> getCurrentStateAssembly() {
-        return null;
+        return assemblyLine.getCurrentStateString();
     }
 }

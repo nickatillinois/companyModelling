@@ -122,6 +122,14 @@ public class AssemblyLine {
 
     }
 
+    public List<String> getCurrentStateString() {
+        List<String> currentState  = new ArrayList<>(workStations.size());
+        for (int i = 0 ; i < workStations.size(); i++){
+            currentState.add(workStations.get(i).getName() + " ; " + workStations.get(i).getTasksAndStatus());
+        }
+        return currentState;
+    }
+
     /**
      * This function calculated and returns the remaining working hours
      * @return remain working hours

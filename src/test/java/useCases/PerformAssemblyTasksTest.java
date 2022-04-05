@@ -1,6 +1,7 @@
 package useCases;
 
 import assemAssist.AssemblyLine;
+import assemAssist.Mechanic;
 import assemAssist.ProductionScheduler;
 import assemAssist.carOrder.*;
 import assemAssist.exceptions.IllegalChoiceException;
@@ -40,7 +41,7 @@ public class PerformAssemblyTasksTest {
 
         UI ui = new UI(new GarageHolderUI(new GarageHolderController(productionScheduler)),
                        new ManagerUI(new ManagerController(productionScheduler)),
-                       new MechanicUI(new MechanicController(assemblyLine)));
+                       new MechanicUI(new MechanicController(new Mechanic(productionScheduler, assemblyLine))));
 
 
     }

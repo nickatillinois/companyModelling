@@ -1,5 +1,6 @@
 import assemAssist.AssemblyLine;
 import assemAssist.AssemblyTask;
+import assemAssist.Mechanic;
 import assemAssist.ProductionScheduler;
 import assemAssist.carOrder.*;
 import assemAssist.exceptions.IllegalChoiceException;
@@ -55,11 +56,12 @@ public class main {
         }
         // Tot hier DEMO
 
+        Mechanic mechanic = new Mechanic(productionScheduler, assemblyLine);
 
         ManagerController managerController = new ManagerController(productionScheduler);
         ManagerUI managerUI = new ManagerUI(managerController);
 
-        MechanicController mechanicController = new MechanicController(assemblyLine);
+        MechanicController mechanicController = new MechanicController(mechanic);
         MechanicUI mechanicUI = new MechanicUI(mechanicController);
 
         UI ui = new UI(garageHolderUI, managerUI, mechanicUI);

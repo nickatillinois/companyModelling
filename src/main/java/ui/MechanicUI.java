@@ -48,7 +48,7 @@ public class MechanicUI {
                 if (workStationNumber >= workStations.size()) {
                     System.out.println("This is not a valid option. Try again.");
                 } else {
-                    List<String> pendingTasks = mechanicController.selectWorkStation(workStation);
+                    List<String> pendingTasks = mechanicController.selectWorkStation(workStations.get(workStationNumber));
                     performTasksUI(pendingTasks);
                     break;
                 }
@@ -66,12 +66,8 @@ public class MechanicUI {
         for (int i = 0; i < currentStatus.size(); i++) {
             String[] workstationStatus = currentStatus.get(i).split(" ; ");
             System.out.println(workstationStatus[0]);
-            if (workstationStatus.length >= 3) {
-                System.out.println("Model options:");
-                String[] modelOptions = workstationStatus[1].split(", ");
-                for (int j = 0; j < modelOptions.length; j++) {
-                    System.out.println(modelOptions[j]);
-                }
+            if (workstationStatus.length >= 2) {
+                System.out.println(workstationStatus[1]);
             }
             else
                 System.out.println("No order at this work station.");
@@ -100,7 +96,7 @@ public class MechanicUI {
                             if (taskNumber >= pendingTasks.size()) {
                                 System.out.println("This is not a valid option. Try again.");
                             } else {
-                                performSpecificTaskUI(pendingTasks.get(taskNumber));
+                                pendingTasks = performSpecificTaskUI(pendingTasks.get(taskNumber));
                                 break;
                             }
                         } catch (NumberFormatException e) {

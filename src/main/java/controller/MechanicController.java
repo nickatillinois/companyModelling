@@ -27,7 +27,7 @@ public class MechanicController {
      * @return List of pending tasks at the given work station
      */
     public List<String> selectWorkStation(String workStation) {
-        return mechanic.selectWorkStation();
+        return mechanic.selectWorkStation(workStation);
     }
 
     /**

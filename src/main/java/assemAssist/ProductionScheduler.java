@@ -224,12 +224,12 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
      * @param timeBetweenTwoStates | time entered by the manager that was consumed
      * @return new state or null
      */
-    public List<String> advanceOrders(int timeBetweenTwoStates){
+    public void advanceOrders(int timeBetweenTwoStates){
         if (!assemblyLine.canMove())
-            return canNotMove();
+            return;
         if (productionSchedule.isEmpty())
-            return assemblyLine.move(null,timeBetweenTwoStates);
-        return assemblyLine.move(productionSchedule.remove(0),timeBetweenTwoStates);
+            assemblyLine.move(null,timeBetweenTwoStates);
+        assemblyLine.move(productionSchedule.remove(0),timeBetweenTwoStates);
     }
 
     /**
