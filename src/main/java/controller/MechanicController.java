@@ -1,17 +1,15 @@
 package controller;
 
-import assemAssist.AssemblyLine;
-import assemAssist.workStation.WorkStation;
+import assemAssist.Mechanic;
 
 import java.util.List;
 
 public class MechanicController {
 
-    private AssemblyLine assemblyLine;
-    private WorkStation workStation;
+    private Mechanic mechanic;
 
-    public MechanicController(AssemblyLine assemblyLine) {
-        this.assemblyLine = assemblyLine;
+    public MechanicController(Mechanic mechanic) {
+        this.mechanic = mechanic;
     }
 
     /**
@@ -19,7 +17,7 @@ public class MechanicController {
      * @return List of the names of the work stations.
      */
     public List<String> getAllWorkStations() {
-        return assemblyLine.getWorkStationNames();
+        return mechanic.getAllWorkStations();
     }
 
     /**
@@ -29,8 +27,7 @@ public class MechanicController {
      * @return List of pending tasks at the given work station
      */
     public List<String> selectWorkStation(String workStation) {
-        this.workStation = assemblyLine.findWorkStation(workStation);
-        return this.workStation.getPendingTasks();
+        return mechanic.selectWorkStation();
     }
 
     /**
@@ -39,7 +36,7 @@ public class MechanicController {
      * @return Description of the task.
      */
     public String selectTask (String task) {
-        return workStation.getInformationFromTask(task);
+        return mechanic.selectTask(task);
     }
 
     /**
@@ -47,8 +44,11 @@ public class MechanicController {
      * @param task The name of the task to be finished.
      * @return List of pending tasks at the work station.
      */
-    public List<String> finishTask(String task) {
-        workStation.performAssemblyTask(task);
-        return workStation.getPendingTasks();
+    public List<String> finishTask(String task, int timeWorked) {
+        return mechanic.finishTask(task, timeWorked);
+    }
+
+    public List<String> getCurrentStateAssembly() {
+        return mechanic.getCurrentStateAssembly();
     }
 }
