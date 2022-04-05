@@ -1,6 +1,9 @@
 package assemAssist;
 
 import assemAssist.carOrder.CarOrder;
+import assemAssist.workStation.AccessoriesPost;
+import assemAssist.workStation.CarBodyPost;
+import assemAssist.workStation.DrivetrainPost;
 import assemAssist.workStation.WorkStation;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +22,16 @@ public class AssemblyLine {
 
     /**
      * This will create a new assembly line en initialise it.
-     * @param workStations list of the workstatioin of the new assembly line!
      */
-    public AssemblyLine(List<WorkStation> workStations){
+    public AssemblyLine(){
+
+        CarBodyPost carBodyPost = new CarBodyPost();
+        DrivetrainPost drivetrainPost = new DrivetrainPost();
+        List<WorkStation> workStations = new ArrayList<>();
+        workStations.add(carBodyPost);
+        workStations.add(drivetrainPost);
+        AccessoriesPost accessoriesPost = new AccessoriesPost();
+        workStations.add(accessoriesPost);
         setWorkStations(workStations);
     }
 

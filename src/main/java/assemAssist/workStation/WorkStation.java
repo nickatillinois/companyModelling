@@ -210,4 +210,17 @@ public abstract class WorkStation {
         return s.substring(0,j);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        WorkStation that = (WorkStation) o;
+
+        if (currentOrder != null ? !currentOrder.equals(that.currentOrder) : that.currentOrder != null) return false;
+        if (!tasks.equals(that.tasks)) return false;
+        if (!mechanics.equals(that.mechanics)) return false;
+        return name.equals(that.name);
+    }
+
 }

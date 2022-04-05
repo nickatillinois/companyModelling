@@ -18,22 +18,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class AssemblyLineTest {
     static AssemblyLine assemblyLine;
-    static CarBodyPost carBodyPost;
-    static DrivetrainPost drivetrainPost;
-    static AccessoriesPost accessoriesPost;
     static CarOrder orderA;
     static CarOrder orderB;
 
     @BeforeEach
     void setUp() throws IllegalChoiceException, IllegalModelException {
-        carBodyPost = new CarBodyPost();
-        drivetrainPost = new DrivetrainPost();
-        accessoriesPost = new AccessoriesPost();
-        ArrayList<WorkStation> workStations = new ArrayList<>();
-        workStations.add(carBodyPost);
-        workStations.add(drivetrainPost);
-        workStations.add(accessoriesPost);
-        assemblyLine = new AssemblyLine(workStations);
+        assemblyLine = new AssemblyLine();
         ProductionScheduler.addModel("Jaguar");
         Body body = new Body("sedan");
         CarModelSpecification specification = new CarModelSpecification(body,new Color("red"),
@@ -48,9 +38,9 @@ class AssemblyLineTest {
     @Test
     void getWorkStations() {
         ArrayList<WorkStation> workStationstest = new ArrayList<>();
-        workStationstest.add(carBodyPost);
-        workStationstest.add(drivetrainPost);
-        workStationstest.add(accessoriesPost);
+        workStationstest.add(new CarBodyPost());
+        workStationstest.add(new DrivetrainPost());
+        workStationstest.add(new AccessoriesPost());
         assertEquals(workStationstest,assemblyLine.getWorkStations());
     }
 
