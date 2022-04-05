@@ -47,7 +47,7 @@ public class ManagerController {
     }
 
     public List<String> selectSchedulingAlgorithm(String algorithmName) {
-        if (!algorithmName.equals("Selection Batch")) {
+        if (algorithmName.equals("Specification Batch")) {
             List<String> batches = new ArrayList<>();
             batches.add("Body, color, wheels");
             batches.add("seats, Airco");
