@@ -451,7 +451,7 @@ m2=1
       <x>63</x>
       <y>392</y>
       <w>259</w>
-      <h>91</h>
+      <h>105</h>
     </coordinates>
     <panel_attributes>Company
 --
@@ -461,7 +461,7 @@ m2=1
 + getSchedulingAlgorithms()
 + selectSchedulingAlgorithm(algorithmName : String)
 + selectBatchSet(batchOptions : List&lt;String&gt;)
-</panel_attributes>
++ selectModel(String carModel)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -470,13 +470,14 @@ m2=1
       <x>63</x>
       <y>588</y>
       <w>147</w>
-      <h>56</h>
+      <h>70</h>
     </coordinates>
     <panel_attributes>Catalog
 --
 + getModels()
 + getModelSpecification()
 + addModel()
++ getModel(name String)
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -484,14 +485,14 @@ m2=1
     <id>Relation</id>
     <coordinates>
       <x>126</x>
-      <y>476</y>
+      <y>490</y>
       <w>49</w>
-      <h>126</h>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 catalog
 m1=1</panel_attributes>
-    <additional_attributes>10.0;160.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -523,34 +524,34 @@ m1=1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>126</x>
-      <y>637</y>
+      <y>651</y>
       <w>119</w>
-      <h>105</h>
+      <h>91</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 carModelSpecification
-m1=1</panel_attributes>
-    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
+m1=1..n</panel_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>259</x>
-      <y>476</y>
+      <y>490</y>
       <w>259</w>
-      <h>245</h>
+      <h>231</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..n
 completedCarOrders</panel_attributes>
-    <additional_attributes>330.0;330.0;330.0;230.0;10.0;230.0;10.0;10.0</additional_attributes>
+    <additional_attributes>330.0;310.0;330.0;210.0;10.0;210.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>35</x>
       <y>728</y>
-      <w>203</w>
+      <w>238</w>
       <h>91</h>
     </coordinates>
     <panel_attributes>CarModelSpecification
@@ -558,11 +559,10 @@ completedCarOrders</panel_attributes>
 - constraints : List&lt;tuple&lt;string&gt; &gt;
 - availableOptions: Map&lt;String,List&lt;String&gt; &gt;
 --
-+ getAvailableOptions()
 + isValidCombo()
 + addOption()
 + addConstraint()
-+ removeConstrain()
++ removeConstraint()
 </panel_attributes>
     <additional_attributes/>
   </element>
