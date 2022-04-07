@@ -1,16 +1,16 @@
 package controller;
 
-import assemAssist.ProductionScheduler;
+import assemAssist.Company;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ManagerController {
 
-    private final ProductionScheduler productionScheduler;
+    private final Company company;
 
-    public ManagerController(ProductionScheduler productionScheduler) {
-        this.productionScheduler = productionScheduler;
+    public ManagerController(Company company) {
+        this.company = company;
     }
 
     /* public List<List<String>> newLogin() {
@@ -39,25 +39,14 @@ public class ManagerController {
     }
 
     public List<String> adaptSchedulingAlgorithm() {
-        List<String> availableSchedulingAlgorithms = new ArrayList<>();
-        availableSchedulingAlgorithms.add("FIFO");
-        availableSchedulingAlgorithms.add("Specification Batch");
-
-        return availableSchedulingAlgorithms;
+        return company.getProductionScheduler().getSchedulingAlgorithms();
     }
 
-    public List<String> selectSchedulingAlgorithm(String algorithmName) {
-        if (algorithmName.equals("Specification Batch")) {
-            List<String> batches = new ArrayList<>();
-            batches.add("Body, color, wheels");
-            batches.add("seats, Airco");
-            return batches;
-        } else {
-            return null;
-        }
+    public List<List<String>> selectSchedulingAlgorithm(String algorithmName) {
+      return company.getProductionScheduler().selectSchedulingAlgorithm(algorithmName);
     }
 
-    public void selectBatchSet (String batchSet) {
-        return;
+    public void selectBatchSet (List<String> batchSet) {
+        company.getProductionScheduler().selectBatchSet(batchSet);
     }
 }

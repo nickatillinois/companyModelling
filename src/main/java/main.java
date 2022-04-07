@@ -1,7 +1,4 @@
-import assemAssist.AssemblyLine;
-import assemAssist.AssemblyTask;
-import assemAssist.Mechanic;
-import assemAssist.ProductionScheduler;
+import assemAssist.*;
 import assemAssist.carOrder.*;
 import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalCompletionDateException;
@@ -18,13 +15,14 @@ public class main {
 
     public static void main(String[] args) throws IllegalModelException, IllegalChoiceException, IllegalCompletionDateException {
         AssemblyLine assemblyLine = new AssemblyLine();
-        ProductionScheduler productionScheduler = new ProductionScheduler("Nick",assemblyLine);
+        ProductionScheduler productionScheduler = new ProductionScheduler(assemblyLine);
+        Company company = new Company(productionScheduler);
         GarageHolderController garageHolderController = new GarageHolderController(productionScheduler);
         GarageHolderUI garageHolderUI = new GarageHolderUI(garageHolderController);
-        ProductionScheduler.addModel("Jaguar");
 
 
-        //DEMO
+
+        /*//DEMO
         CarModelSpecification cmf = new CarModelSpecification(new Body("sedan"),new Color("red"),
                 new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
                 new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
@@ -54,11 +52,11 @@ public class main {
         for (AssemblyTask task :productionScheduler.getAssemblyLine().getWorkStations().get(1).getTasks()){
             task.setIsCompleted(true);
         }
-        // Tot hier DEMO
+        // Tot hier DEMO*/
 
         Mechanic mechanic = new Mechanic(productionScheduler, assemblyLine);
 
-        ManagerController managerController = new ManagerController(productionScheduler);
+        ManagerController managerController = new ManagerController(company);
         ManagerUI managerUI = new ManagerUI(managerController);
 
         MechanicController mechanicController = new MechanicController(mechanic);

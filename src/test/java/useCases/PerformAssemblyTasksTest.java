@@ -1,6 +1,7 @@
 package useCases;
 
 import assemAssist.AssemblyLine;
+import assemAssist.Company;
 import assemAssist.Mechanic;
 import assemAssist.ProductionScheduler;
 import assemAssist.carOrder.*;
@@ -40,7 +41,7 @@ public class PerformAssemblyTasksTest {
         CarOrder carOrder = new CarOrder(garageHolder, carModel);
 
         UI ui = new UI(new GarageHolderUI(new GarageHolderController(productionScheduler)),
-                       new ManagerUI(new ManagerController(productionScheduler)),
+                       new ManagerUI(new ManagerController(new Company(productionScheduler))),
                        new MechanicUI(new MechanicController(new Mechanic(productionScheduler, assemblyLine))));
 
 
