@@ -22,19 +22,16 @@ import java.util.stream.Collectors;
 public class ProductionScheduler {
 private final AssemblyLine assemblyLine;
 private final List<CarOrder>  productionSchedule;
-private final List<CarOrder> completedOrders;
 private String manager;
 
     /**
      * Create a new production schedule af a single assembly line that can be managed by the manager
-     * @param manager | the manager in control
      * @param assemblyLine | the assemblyline belonging to the production scheduler
      */
-public ProductionScheduler(String manager, AssemblyLine assemblyLine){
+public ProductionScheduler( AssemblyLine assemblyLine){
     productionSchedule = new ArrayList<>();
-    completedOrders = new ArrayList<>();
     this.assemblyLine = assemblyLine;
-    setManager(manager);
+
 }
     /**
      * An immutable PList of available car models
@@ -161,46 +158,6 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
     }
 
     /**
-     * This function returns a list of the completed orders!
-     * @return completedOrders
-     */
-    public List<CarOrder> getCompletedOrders() {
-        return completedOrders;
-    }
-
-    /**
-     * This function will set the car order as completed and add the car order to the completedCarorder list.
-     * @param carOrder | the completed car Order
-     */
-    public void completedCarOrder(CarOrder carOrder) throws NullPointerException{
-        if (carOrder != null) {
-            carOrder.setCompleted(true);
-            productionSchedule.remove(carOrder);
-            addCompletedOrder(carOrder);
-        }
-        else
-            throw new NullPointerException("The given carOrder was null!");
-
-
-    }
-
-    /**
-     * This function will add a carOrder that already is completed to a List of completed Orders.
-     * @param carOrder | the completed car order
-     * @throws NullPointerException | carOrder is null
-     * @throws IllegalArgumentException | the given carOrder has not been completed
-     */
-    private void addCompletedOrder(CarOrder carOrder) throws NullPointerException {
-        if (carOrder == null)
-            throw new NullPointerException("The carOrder is null");
-        if (carOrder.isCompleted())
-            completedOrders.add(carOrder);
-        else
-            throw new IllegalArgumentException("The current carOrder can't be add to the Completed list because he is not completed!");
-
-    }
-
-    /**
      * This function calculate a simulation of an advanced assembly line without knowing of this is possible.
      * @return simulation
      */
@@ -285,15 +242,6 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
     }
 
     /**
-     * This function returns a list of completed car orders of the given garage holder.
-     * @param garageHolder | the garage holder of whom the car orders are to be found
-     * @return list of car orders
-     */
-    public List<CarOrder> getCompletedOrdersFromGarageHolder(String garageHolder){
-        return completedOrders.stream().filter(p-> Objects.equals(p.getGarageholder(), garageHolder)).collect(Collectors.toList());
-    }
-
-    /**
      * This function returns a list of pending car orders of the given garage holder.
      * @param garageHolder | the garage holder of whom the car orders are to be found
      * @return list of car orders
@@ -307,56 +255,7 @@ public ProductionScheduler(String manager, AssemblyLine assemblyLine){
         }
         return pending;
     }
-
-    public List<List<String>> getCurrentAndFutureStatusAndTaskStatus(){
-        List currentAndFutureStatus = new ArrayList<>();
-        List<CarOrder> currentStatus  = getCurrentState();
-        List<CarOrder> futureStatus  = simulateAdvanceAssemblyLine();
-        List<String> currentStatusAndTasks = new ArrayList<>();
-        List<String> futureStatusAndTasks = new ArrayList<>();
-        for(int i = 0 ; i < currentStatus.size() ; i++){
-            CarOrder carOrder = currentStatus.get(i);
-            String s = getAssemblyLine().getWorkStations().get(i).getName() + " ; ";
-            if(carOrder != null) {
-                s += carOrder.getCarModelAndOptions() + " ; ";
-                s += getAssemblyLine().getWorkStations().get(i).getTasksAndStatus();
-            }
-            else
-                s += "No Order in this workstation";
-            currentStatusAndTasks.add(s);
-        }
-        currentAndFutureStatus.add(currentStatusAndTasks);
-        for(int i = 0 ; i < futureStatus.size() ; i++){
-            CarOrder carOrder = futureStatus.get(i);
-            String s = getAssemblyLine().getWorkStations().get(i).getName() + " ; ";
-            if(carOrder != null) {
-                s += carOrder.getCarModelAndOptions();
-            }
-            else
-                s += "No Order in this workstation";
-            futureStatusAndTasks.add(s);
-        }
-        currentAndFutureStatus.add(futureStatusAndTasks);
-        return currentAndFutureStatus;
-    }
-
-    public List<List<String>> newLogin(String garageHolder) {
-        List<List<String>> ordersFromGarageHolder = new ArrayList<>();
-        List<String> pendingOrdersStrings = new ArrayList<>();
-        List<String> finishedOrdersStrings = new ArrayList<>();
-        List<CarOrder> pendingOrders = getPendingOrdersFromGarageHolder(garageHolder);
-        List<CarOrder> finishedOrders = getCompletedOrders();
-        for (int i = 0; i < pendingOrders.size(); i++) {
-            pendingOrdersStrings.add(pendingOrders.get(i).getCarModelAndOptions());
-        }
-        for (int i = 0; i < finishedOrders.size(); i++) {
-            finishedOrdersStrings.add(finishedOrders.get(i).getCarModelAndOptions());
-        }
-        ordersFromGarageHolder.add(pendingOrdersStrings);
-        ordersFromGarageHolder.add(finishedOrdersStrings);
-        return ordersFromGarageHolder;
-    }
-
+    
     public List<String> selectModel(String carModel) {
         List<String> availableChoices = new ArrayList<>();
         availableChoices.add("body: " + String.join(", ", getAvailableBodyChoices()));
