@@ -35,18 +35,6 @@ public class productSchedulerTest {
     }
 
     @Test
-    public void getManagerTest(){
-        assertEquals(productionScheduler.getManager(),"Nick");
-    }
-
-    @Test
-    public void setManagerTest(){
-        assertEquals(productionScheduler.getManager(),"Nick");
-        productionScheduler.setManager("Raf");
-        assertEquals(productionScheduler.getManager(),"Raf");
-    }
-
-    @Test
     public void getCurrentStateNoOrdersTest(){
         ArrayList<CarOrder> nullist = new ArrayList<>(3);
         nullist.add(null);
@@ -94,7 +82,7 @@ public class productSchedulerTest {
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
                 new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
                 new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        ProductionScheduler.addModel("Jaguar");
+        /*ProductionScheduler.addModel("Jaguar");*/
         CarModel carModel = new CarModel("Jaguar",carModelSpecification);
         CarOrder carOrder1 = new CarOrder("Luna",carModel);
         productionScheduler.addOrderToProductionSchedule(carOrder1);
@@ -145,9 +133,9 @@ public class productSchedulerTest {
         nullist.add(null);
         nullist.add(null);
         assertEquals(productionScheduler.getCurrentState(),nullist);
-        int hoursWorkedToday1 = productionScheduler.getAssemblyLine().getHoursWorkedToday();
+        int hoursWorkedToday1 = productionScheduler.getAssemblyLine().getMinutesWorkedToday();
         productionScheduler.advanceOrders(1);
-        int hoursWorkedToday2 = productionScheduler.getAssemblyLine().getHoursWorkedToday();
+        int hoursWorkedToday2 = productionScheduler.getAssemblyLine().getMinutesWorkedToday();
         assertEquals(hoursWorkedToday1,hoursWorkedToday2);
         assertEquals(productionScheduler.getCurrentState(),nullist);
         ArrayList<CarOrder> nullist2 = new ArrayList<>(3);
@@ -228,7 +216,7 @@ public class productSchedulerTest {
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
                 new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
                 new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        ProductionScheduler.addModel("Jaguar");
+        /*ProductionScheduler.addModel("Jaguar");*/
         CarModel carModel = new CarModel("Jaguar",carModelSpecification);
         CarOrder carOrder1 = new CarOrder("Luna",carModel);
         CarOrder carOrder2 = new CarOrder("Raf", carModel);
@@ -249,7 +237,7 @@ public class productSchedulerTest {
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
                 new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
                 new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        ProductionScheduler.addModel("Jaguar");
+       /* ProductionScheduler.addModel("Jaguar");*/
         CarModel carModel = new CarModel("Jaguar",carModelSpecification);
         CarOrder carOrder1 = new CarOrder("Luna",carModel);
         CarOrder carOrder2 = new CarOrder("Raf", carModel);
@@ -271,7 +259,7 @@ public class productSchedulerTest {
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
                 new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
                 new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        ProductionScheduler.addModel("Jaguar");
+        /*ProductionScheduler.addModel("Jaguar");*/
         CarModel carModel = new CarModel("Jaguar", carModelSpecification);
         CarOrder carOrder1 = new CarOrder("Luna", carModel);
         CarOrder carOrder2 = new CarOrder("Luna", carModel);
