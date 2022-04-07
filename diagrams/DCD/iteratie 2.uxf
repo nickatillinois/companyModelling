@@ -95,7 +95,7 @@ productionSchedule
 - hoursWorkedToday
 --
 + nextDay
-+ getCurrentState()
++ getCurrentState() : String
 + remainWorkingTime()
 + canMove()
 + canNotMove()
