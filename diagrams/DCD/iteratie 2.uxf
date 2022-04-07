@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>11</zoom_level>
+  <zoom_level>7</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>682</x>
-      <y>1298</y>
-      <w>231</w>
-      <h>77</h>
+      <x>469</x>
+      <y>847</y>
+      <w>147</w>
+      <h>49</h>
     </coordinates>
     <panel_attributes>CarModel
 --
@@ -21,10 +21,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>660</x>
-      <y>1078</y>
-      <w>275</w>
-      <h>132</h>
+      <x>455</x>
+      <y>707</y>
+      <w>175</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>CarOrder
 --
@@ -40,10 +40,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>803</x>
-      <y>704</y>
-      <w>396</w>
-      <h>253</h>
+      <x>546</x>
+      <y>469</y>
+      <w>252</w>
+      <h>161</h>
     </coordinates>
     <panel_attributes>ProductionScheduler
 --
@@ -69,10 +69,10 @@ schedulingAlgorithms : List&lt;String&gt;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>880</x>
-      <y>946</y>
-      <w>165</w>
-      <h>154</h>
+      <x>595</x>
+      <y>623</y>
+      <w>105</w>
+      <h>98</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..n
@@ -84,10 +84,10 @@ productionSchedule
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1430</x>
-      <y>759</y>
-      <w>297</w>
-      <h>198</h>
+      <x>945</x>
+      <y>504</y>
+      <w>189</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes>AssemblyLine
 --
@@ -95,12 +95,12 @@ productionSchedule
 - hoursWorkedToday
 --
 + nextDay
-+ getCurrentState() : String
++ getCurrentState()
 + remainWorkingTime()
 + canMove()
 + canNotMove()
 + move()
-+ findWorkStation (name : String)
+
 
 
 </panel_attributes>
@@ -109,10 +109,10 @@ productionSchedule
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1397</x>
-      <y>1078</y>
-      <w>396</w>
-      <h>253</h>
+      <x>924</x>
+      <y>707</y>
+      <w>252</w>
+      <h>161</h>
     </coordinates>
     <panel_attributes>WorkStation {abstract}
 --
@@ -127,7 +127,7 @@ _+ newTasks()_
 + removeMechanic(mechanic : String)
 + getPendingTasks() : List&lt;String&gt;
 + getInformationFromTask(task : AssemblyTask) : String
-+ performAssemblyTask(task : String)
++ performAssemblyTask(task : AssemblyTask)
 + getTasksAndStatus() : String
 
 
@@ -137,10 +137,10 @@ _+ newTasks()_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1573</x>
-      <y>946</y>
-      <w>121</w>
-      <h>154</h>
+      <x>1036</x>
+      <y>623</y>
+      <w>77</w>
+      <h>98</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..n
@@ -151,10 +151,10 @@ workstations</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1056</x>
-      <y>0</y>
-      <w>121</w>
-      <h>33</h>
+      <x>707</x>
+      <y>21</y>
+      <w>77</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>UI
 </panel_attributes>
@@ -163,10 +163,10 @@ workstations</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1749</x>
-      <y>660</y>
-      <w>110</w>
-      <h>440</h>
+      <x>1148</x>
+      <y>441</y>
+      <w>70</w>
+      <h>280</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
@@ -177,10 +177,10 @@ workStation</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1958</x>
-      <y>1144</y>
-      <w>220</w>
-      <h>110</h>
+      <x>1281</x>
+      <y>749</y>
+      <w>140</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>AssemblyTask
 --
@@ -195,10 +195,10 @@ workStation</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1782</x>
-      <y>1188</y>
-      <w>198</w>
-      <h>55</h>
+      <x>1169</x>
+      <y>777</y>
+      <w>126</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m1=
@@ -210,10 +210,10 @@ m2=1..n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>187</x>
-      <y>484</y>
-      <w>99</w>
-      <h>121</h>
+      <x>154</x>
+      <y>329</y>
+      <w>63</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
@@ -223,10 +223,10 @@ company</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>132</x>
-      <y>330</y>
-      <w>429</w>
-      <h>165</h>
+      <x>119</x>
+      <y>231</y>
+      <w>273</w>
+      <h>105</h>
     </coordinates>
     <panel_attributes>GarageHolderController
 --
@@ -243,10 +243,10 @@ company</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>770</x>
-      <y>341</y>
-      <w>385</w>
-      <h>110</h>
+      <x>525</x>
+      <y>238</y>
+      <w>245</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>ManagerController
 --
@@ -259,27 +259,27 @@ company</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1386</x>
-      <y>330</y>
-      <w>440</w>
-      <h>132</h>
+      <x>917</x>
+      <y>231</y>
+      <w>245</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>MechanicController
 --
-+ getAllWorkStations() : List&lt;String&gt;
-+ selectWorkStation(workStation : String) : List&lt;String&gt;
-+ selectTask(task : String) : String
-+ finishTask(task : String, timeWorked : Integer) : List&lt;String&gt;
++ getAllWorkPosts() : List&lt;String&gt;
++ selectWorkPost(String workPost) : List&lt;String&gt;
++ selectTask(String task) : String
++ finishTask(String task, int timeWorked) : List&lt;String&gt;
 + getCurrentStateAssembly() : List&lt;String&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1573</x>
-      <y>198</y>
-      <w>165</w>
-      <h>154</h>
+      <x>1036</x>
+      <y>147</y>
+      <w>105</w>
+      <h>98</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m2=1
@@ -289,10 +289,10 @@ mechanicController</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>495</x>
-      <y>231</y>
-      <w>187</w>
-      <h>121</h>
+      <x>350</x>
+      <y>168</y>
+      <w>119</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m1=
@@ -303,10 +303,10 @@ garageHolderController</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1056</x>
-      <y>231</y>
-      <w>154</w>
-      <h>132</h>
+      <x>707</x>
+      <y>168</y>
+      <w>98</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m2= 1
@@ -316,10 +316,10 @@ managerController</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>484</x>
-      <y>187</y>
-      <w>231</w>
-      <h>55</h>
+      <x>343</x>
+      <y>140</y>
+      <w>147</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>GarageHolderUI
 --
@@ -329,10 +329,10 @@ managerController</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>946</x>
-      <y>187</y>
-      <w>231</w>
-      <h>55</h>
+      <x>637</x>
+      <y>140</y>
+      <w>147</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>ManagerUI
 --
@@ -342,10 +342,10 @@ managerController</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1474</x>
-      <y>154</y>
-      <w>231</w>
-      <h>55</h>
+      <x>973</x>
+      <y>119</y>
+      <w>147</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>MechanicUI
 --
@@ -355,10 +355,10 @@ managerController</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1188</x>
-      <y>660</y>
-      <w>330</w>
-      <h>99</h>
+      <x>791</x>
+      <y>441</y>
+      <w>210</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
@@ -369,10 +369,10 @@ productionscheduler</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1144</x>
-      <y>22</y>
-      <w>462</w>
-      <h>154</h>
+      <x>763</x>
+      <y>35</y>
+      <w>294</w>
+      <h>98</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
@@ -382,10 +382,10 @@ mechanicUI</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>594</x>
-      <y>22</y>
-      <w>495</w>
-      <h>187</h>
+      <x>413</x>
+      <y>35</y>
+      <w>315</w>
+      <h>119</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
@@ -395,10 +395,10 @@ garageHolderUI</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1100</x>
-      <y>22</y>
-      <w>110</w>
-      <h>187</h>
+      <x>735</x>
+      <y>35</y>
+      <w>70</w>
+      <h>119</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1= 1
@@ -408,10 +408,10 @@ managerUI</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1188</x>
-      <y>836</y>
-      <w>264</w>
-      <h>55</h>
+      <x>791</x>
+      <y>553</y>
+      <w>168</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m2=1
@@ -421,10 +421,10 @@ assemblyLine</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>792</x>
-      <y>1199</y>
-      <w>99</w>
-      <h>121</h>
+      <x>539</x>
+      <y>784</y>
+      <w>63</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m2=1
@@ -434,10 +434,10 @@ m2=1
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>924</x>
-      <y>1111</y>
-      <w>495</w>
-      <h>55</h>
+      <x>623</x>
+      <y>728</y>
+      <w>315</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m1=
@@ -448,10 +448,10 @@ m2=1
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>44</x>
-      <y>583</y>
-      <w>407</w>
-      <h>198</h>
+      <x>63</x>
+      <y>392</y>
+      <w>259</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>Company
 --
@@ -461,61 +461,58 @@ m2=1
 + getSchedulingAlgorithms()
 + selectSchedulingAlgorithm(algorithmName : String)
 + selectBatchSet(batchOptions : List&lt;String&gt;)
-+ selectModel(String carModel)
-+ addOrderToProductionScheduler()
-+ getAvailableModels()</panel_attributes>
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>44</x>
-      <y>891</y>
-      <w>231</w>
-      <h>110</h>
+      <x>63</x>
+      <y>588</y>
+      <w>147</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>Catalog
 --
 + getModels()
 + getModelSpecification()
 + addModel()
-+ getModel(name String)
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>143</x>
-      <y>770</y>
-      <w>77</w>
-      <h>143</h>
+      <x>126</x>
+      <y>476</y>
+      <w>49</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 catalog
 m1=1</panel_attributes>
-    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;160.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>440</x>
-      <y>440</y>
-      <w>462</w>
-      <h>198</h>
+      <x>315</x>
+      <y>301</y>
+      <w>294</w>
+      <h>126</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-company 
+company
 m1=1</panel_attributes>
     <additional_attributes>10.0;150.0;400.0;150.0;400.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>440</x>
-      <y>693</y>
-      <w>385</w>
-      <h>55</h>
+      <x>315</x>
+      <y>462</y>
+      <w>245</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 productionScheduler
@@ -525,73 +522,74 @@ m1=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>143</x>
-      <y>990</y>
-      <w>187</w>
-      <h>143</h>
+      <x>126</x>
+      <y>637</y>
+      <w>119</w>
+      <h>105</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 carModelSpecification
-m1=1..n</panel_attributes>
-    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+m1=1</panel_attributes>
+    <additional_attributes>10.0;130.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>352</x>
-      <y>770</y>
-      <w>407</w>
-      <h>330</h>
+      <x>259</x>
+      <y>476</y>
+      <w>259</w>
+      <h>245</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..n
 completedCarOrders</panel_attributes>
-    <additional_attributes>330.0;280.0;330.0;180.0;10.0;180.0;10.0;10.0</additional_attributes>
+    <additional_attributes>330.0;330.0;330.0;230.0;10.0;230.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
-      <y>1111</y>
-      <w>374</w>
-      <h>143</h>
+      <x>35</x>
+      <y>728</y>
+      <w>203</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>CarModelSpecification
 --
 - constraints : List&lt;tuple&lt;string&gt; &gt;
 - availableOptions: Map&lt;String,List&lt;String&gt; &gt;
 --
++ getAvailableOptions()
 + isValidCombo()
 + addOption()
 + addConstraint()
-+ removeConstraint()
++ removeConstrain()
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1430</x>
-      <y>539</y>
-      <w>440</w>
-      <h>132</h>
+      <x>945</x>
+      <y>364</y>
+      <w>238</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>Mechanic
 --
-+ getAllWorkStations() : List&lt;String&gt;
-+ selectWorkStation(String workStation) : List&lt;String&gt;
-+ selectTask(task : String) : String
-+ finishTask(task : String, timeWorked : Integer) : List&lt;String&gt;
++ getAllWorkPosts() : List&lt;String&gt;
++ selectWorkPost(String workPost) : List&lt;String&gt;
++ selectTask(String task) : String
++ finishTask(String task int timeWorked) : List&lt;String&gt;
 + getCurrentStateAssembly() : List&lt;String&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1573</x>
-      <y>451</y>
-      <w>99</w>
-      <h>110</h>
+      <x>1036</x>
+      <y>308</y>
+      <w>63</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 mechanic
@@ -601,10 +599,10 @@ m1=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1573</x>
-      <y>660</y>
-      <w>121</w>
-      <h>121</h>
+      <x>1036</x>
+      <y>441</y>
+      <w>77</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
@@ -615,10 +613,10 @@ assemblyLine</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1397</x>
-      <y>1397</y>
-      <w>110</w>
-      <h>33</h>
+      <x>924</x>
+      <y>910</y>
+      <w>70</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>CarBodyPost</panel_attributes>
     <additional_attributes/>
@@ -626,10 +624,10 @@ assemblyLine</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1529</x>
-      <y>1397</y>
-      <w>110</w>
-      <h>33</h>
+      <x>1008</x>
+      <y>910</y>
+      <w>70</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>DrivetrainPost</panel_attributes>
     <additional_attributes/>
@@ -637,10 +635,10 @@ assemblyLine</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1661</x>
-      <y>1397</y>
-      <w>121</w>
-      <h>33</h>
+      <x>1092</x>
+      <y>910</y>
+      <w>77</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>AccessoriesPost</panel_attributes>
     <additional_attributes/>
@@ -648,10 +646,10 @@ assemblyLine</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1595</x>
-      <y>1320</y>
-      <w>143</w>
-      <h>99</h>
+      <x>1050</x>
+      <y>861</y>
+      <w>91</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;110.0;70.0</additional_attributes>
@@ -659,10 +657,10 @@ assemblyLine</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1573</x>
-      <y>1320</y>
-      <w>55</w>
-      <h>99</h>
+      <x>1036</x>
+      <y>861</y>
+      <w>35</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>30.0;10.0;10.0;70.0</additional_attributes>
@@ -670,55 +668,12 @@ assemblyLine</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1452</x>
-      <y>1320</y>
-      <w>176</w>
-      <h>99</h>
+      <x>959</x>
+      <y>861</y>
+      <w>112</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>140.0;10.0;10.0;70.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLNote</id>
-    <coordinates>
-      <x>990</x>
-      <y>462</y>
-      <w>198</w>
-      <h>77</h>
-    </coordinates>
-    <panel_attributes>strategy design toepassen
-op de verschillende sorting
-algorithms?
-bg=yellow</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLNote</id>
-    <coordinates>
-      <x>759</x>
-      <y>242</y>
-      <w>154</w>
-      <h>77</h>
-    </coordinates>
-    <panel_attributes>voor de statistics
-een observer design
-pattern?
-bg=yellow</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLNote</id>
-    <coordinates>
-      <x>1815</x>
-      <y>737</y>
-      <w>154</w>
-      <h>77</h>
-    </coordinates>
-    <panel_attributes>voor het checken of
-alle taken vervuld zijn
-een observer design
-pattern?
-bg=yellow</panel_attributes>
-    <additional_attributes/>
   </element>
 </diagram>
