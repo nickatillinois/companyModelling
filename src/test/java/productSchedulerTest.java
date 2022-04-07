@@ -31,7 +31,7 @@ public class productSchedulerTest {
         drivetrainPost = new DrivetrainPost();
         ArrayList<WorkStation> workStations = new ArrayList<>();
         assemblyLine = new AssemblyLine();
-        productionScheduler = new ProductionScheduler("Nick",assemblyLine);
+        productionScheduler = new ProductionScheduler(assemblyLine);
     }
 
     @Test
@@ -244,22 +244,6 @@ public class productSchedulerTest {
     }
 
     @Test
-    public void addCompletedCarOrder() throws IllegalModelException, IllegalChoiceException {
-        Body body = new Body("sedan");
-        CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
-                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
-                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        ProductionScheduler.addModel("Jaguar");
-        CarModel carModel = new CarModel("Jaguar",carModelSpecification);
-        CarOrder carOrder1 = new CarOrder("Luna",carModel);
-        CarOrder carOrder2 = new CarOrder("Raf", carModel);
-        carOrder1.setCompleted(true);
-        productionScheduler.completedCarOrder(carOrder1);
-        assert(productionScheduler.getCompletedOrders().contains(carOrder1));
-        assert(!productionScheduler.getCompletedOrders().contains(carOrder2));
-    }
-
-    @Test
     public void getOrdersFromGarageHolderTest() throws IllegalModelException, IllegalChoiceException, IllegalCompletionDateException {
         Body body = new Body("sedan");
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
@@ -292,13 +276,13 @@ public class productSchedulerTest {
         CarOrder carOrder1 = new CarOrder("Luna", carModel);
         CarOrder carOrder2 = new CarOrder("Luna", carModel);
         productionScheduler.addOrderToProductionSchedule(carOrder1);
-        productionScheduler.completedCarOrder(carOrder2);
+        //productionScheduler.completedCarOrder(carOrder2);
         assert(productionScheduler.getOrdersFromGarageHolder("Luna").contains(carOrder1));
         assert(!productionScheduler.getOrdersFromGarageHolder("Luna").contains(carOrder2));
 
     }
 
-    @Test
+/*    @Test
     public void getCompletedOrdersFromGarageHolderTest() throws IllegalModelException, IllegalChoiceException, IllegalCompletionDateException {
         Body body = new Body("sedan");
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
@@ -312,9 +296,9 @@ public class productSchedulerTest {
         productionScheduler.completedCarOrder(carOrder2);
         assert(!productionScheduler.getCompletedOrdersFromGarageHolder("Luna").contains(carOrder1));
         assert(productionScheduler.getCompletedOrdersFromGarageHolder("Luna").contains(carOrder2));
-    }
+    }*/
 
-    @Test
+/*    @Test
     public void getCompletedOrdersFromGarageHolderTest2() throws IllegalModelException, IllegalChoiceException, IllegalCompletionDateException {
         Body body = new Body("sedan");
         CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
@@ -334,5 +318,5 @@ public class productSchedulerTest {
         assert(productionScheduler.getCompletedOrdersFromGarageHolder("Luna").contains(carOrder2));
         assert(!productionScheduler.getCompletedOrdersFromGarageHolder("Raf").contains(carOrder3));
         assert(productionScheduler.getCompletedOrdersFromGarageHolder("Raf").contains(carOrder4));
-    }
+    }*/
 }

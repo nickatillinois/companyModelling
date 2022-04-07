@@ -34,114 +34,6 @@ public ProductionScheduler( AssemblyLine assemblyLine){
 
 }
     /**
-     * An immutable PList of available car models
-     *
-     */
-    private static PList<String> availableModels = PList.empty();
-
-    /**
-     * Returns an immutable PList of available car models
-     *
-     * @return an immutable PList of available car models
-     */
-    public static PList<String> getAvailableModels(){
-        return availableModels;
-    }
-
-    /**
-     * Returns an array of available airco choices.
-     *
-     * @return an array of available airco choices.
-     */
-    public static String[] getAvailableAircoChoices(){
-        return new String[]{"manual", "automatic climate control"};
-    }
-
-    /**
-     * Returns an array of available body choices.
-     *
-     * @return an array of available body choices.
-     */
-    public static String[] getAvailableBodyChoices(){
-        return new String[]{"sedan", "break"};
-    }
-
-    /**
-     * Returns an array of available color choices.
-     *
-     * @return an array of available color choices.
-     */
-    public static String[] getAvailableColorChoices(){
-        return new String[]{"red", "blue", "black", "white"};
-    }
-
-    /**
-     * Returns an array of available engine choices.
-     *
-     * @return an array of available engine choices.
-     */
-    public static String[] getAvailableEngineChoices(){
-        return new String[]{"standard 2l 4 cilinders", "performance 2.5l 6 cilinders"};
-    }
-
-    /**
-     * Returns an array of available gearbox choices.
-     *
-     * @return an array of available gearbox choices.
-     */
-    public static String[] getAvailableGearboxChoices(){
-        return new String[]{"6 speed manual", "5 speed automatic"};
-    }
-
-    /**
-     * Returns an array of available seats choices.
-     *
-     * @return an array of available seats choices.
-     */
-    public static String[] getAvailableSeatsChoices(){
-        return new String[]{"leather black", "leather white", "vinyl grey"};
-    }
-
-    /**
-     * Returns an array of available wheels choices.
-     *
-     * @return an array of available wheels choices.
-     */
-    public static String[] getAvailableWheelsChoices(){
-        return new String[]{"comfort", "sports (low profile)"};
-    }
-
-    /**
-     * Adds the given string of a car model name to the end of the PList of car model names.
-     * If the given string is already in the PList, the string is not added.
-     *
-     * @param model  the string that is added to the PList of existing car models.
-     * @throws IllegalArgumentException | given model name is null
-     *                                  | given model name is the empty string
-     */
-    public static void addModel(String model){
-        if(model == null){throw new IllegalArgumentException("A model name cannot be null.");}
-        if(model.length() == 0){throw new IllegalArgumentException("A model name cannot be the empty string.");}
-        if(ProductionScheduler.getAvailableModels().contains(model)) return;
-        availableModels = availableModels.plus(model);
-    }
-    /**
-     * This function return the manager that can manage the assembly line.
-     * @return manager
-     */
-    public String getManager() {
-        return manager;
-    }
-
-    /**
-     * Set the manager of the product schedule to the parameter.
-     * @param manager | the manager of the product schedule
-     */
-    public void setManager(String manager) {
-        this.manager = manager;
-    }
-
-    /**
      * This function returns the assembly line on whits this production schedule runs.
      * @return assemblyLine
      */
@@ -179,7 +71,6 @@ public ProductionScheduler( AssemblyLine assemblyLine){
      * This function will advance the assembly line if that is possible and then returns the nuw state
      * else it return null.
      * @param timeBetweenTwoStates | time entered by the manager that was consumed
-     * @return new state or null
      */
     public void advanceOrders(int timeBetweenTwoStates){
         if (!assemblyLine.canMove())
@@ -255,24 +146,5 @@ public ProductionScheduler( AssemblyLine assemblyLine){
         }
         return pending;
     }
-    
-    public List<String> selectModel(String carModel) {
-        List<String> availableChoices = new ArrayList<>();
-        availableChoices.add("body: " + String.join(", ", getAvailableBodyChoices()));
-        availableChoices.add("color: " + String.join(", ", getAvailableColorChoices()));
-        availableChoices.add("engine: " + String.join(", ", getAvailableEngineChoices()));
-        availableChoices.add("gearbox: " + String.join(", ", getAvailableGearboxChoices()));
-        availableChoices.add("seats: " + String.join(", ", getAvailableSeatsChoices()));
-        availableChoices.add("airco: " + String.join(", ", getAvailableAircoChoices()));
-        availableChoices.add("wheels: " + String.join(", ", getAvailableWheelsChoices()));
-        return availableChoices;
-    }
 
-    public LocalDate completeOrderingForm(List<String> carOptions, String garageHolder, String chosenModel) throws IllegalChoiceException, IllegalModelException,
-            IllegalCompletionDateException {
-        CarModelSpecification cmf = new CarModelSpecification(new Body(carOptions.get(0)),new Color(carOptions.get(1)), new Engine(carOptions.get(2)),new Gearbox(carOptions.get(3)), new Seats(carOptions.get(4)),new Airco(carOptions.get(5)),new Wheels(carOptions.get(6)));
-        CarModel carModel = new CarModel(chosenModel, cmf);
-        CarOrder carOrder = new CarOrder(garageHolder, carModel);
-        return addOrderToProductionSchedule(carOrder);
-    }
 }
