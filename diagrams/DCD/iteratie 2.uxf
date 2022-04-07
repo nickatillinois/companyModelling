@@ -99,7 +99,7 @@ productionSchedule
 + canMove()
 + canNotMove()
 + move()
-
++ findWorkStation(name : String)
 
 
 </panel_attributes>
@@ -109,9 +109,9 @@ productionSchedule
     <id>UMLClass</id>
     <coordinates>
       <x>889</x>
-      <y>686</y>
+      <y>672</y>
       <w>252</w>
-      <h>161</h>
+      <h>175</h>
     </coordinates>
     <panel_attributes>WorkStation {abstract}
 --
@@ -128,7 +128,7 @@ _+ newTasks()_
 + getInformationFromTask(task : AssemblyTask) : String
 + performAssemblyTask(task : AssemblyTask)
 + getTasksAndStatus() : String
-
++ getFinishedTasks() : List&lt;String&gt;
 
 </panel_attributes>
     <additional_attributes/>
@@ -139,13 +139,13 @@ _+ newTasks()_
       <x>1001</x>
       <y>602</y>
       <w>77</w>
-      <h>98</h>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..n
 m2=
 workstations</panel_attributes>
-    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -165,13 +165,13 @@ workstations</panel_attributes>
       <x>1113</x>
       <y>420</y>
       <w>70</w>
-      <h>280</h>
+      <h>266</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
 m2=
 workStation</panel_attributes>
-    <additional_attributes>10.0;380.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;360.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -232,11 +232,11 @@ company</panel_attributes>
 - String garageHolder
 - String chosenModel
 --
-+ newLogin(String garageholder): List&lt;List&lt;String&gt;&gt;
++ newLogin(garageholder : String): List&lt;List&lt;String&gt; &gt;
 + wantsToOrder() : List&lt;String&gt;
-+ selectModel(String model) : List&lt;String&gt;
-+ completeOrderingForm(List&lt;String&gt; carOptions) : String
-+ viewDetails(int CarId) : List&lt;String&gt;</panel_attributes>
++ selectModel(model : String) : List&lt;String&gt;
++ completeOrderingForm(carOptions : List&lt;String&gt;) : String
++ viewDetails(carId : Integer) : List&lt;String&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -260,15 +260,15 @@ company</panel_attributes>
     <coordinates>
       <x>882</x>
       <y>210</y>
-      <w>245</w>
+      <w>280</w>
       <h>84</h>
     </coordinates>
     <panel_attributes>MechanicController
 --
-+ getAllWorkPosts() : List&lt;String&gt;
-+ selectWorkPost(String workPost) : List&lt;String&gt;
-+ selectTask(String task) : String
-+ finishTask(String task, int timeWorked) : List&lt;String&gt;
++ getAllWorkStations() : List&lt;String&gt;
++ selectWorkStation(workPost : String) : List&lt;String&gt;
++ selectTask(task : String) : String
++ finishTask(task : String, timeWorked : Integer) : List&lt;String&gt;
 + getCurrentStateAssembly() : List&lt;String&gt;</panel_attributes>
     <additional_attributes/>
   </element>
@@ -450,7 +450,7 @@ m2=1
       <x>28</x>
       <y>371</y>
       <w>259</w>
-      <h>91</h>
+      <h>119</h>
     </coordinates>
     <panel_attributes>Company
 --
@@ -460,7 +460,8 @@ m2=1
 + getSchedulingAlgorithms()
 + selectSchedulingAlgorithm(algorithmName : String)
 + selectBatchSet(batchOptions : List&lt;String&gt;)
-</panel_attributes>
++ getAvailableModels() : 
++ addOrderToProductionSchedule()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -483,14 +484,14 @@ m2=1
     <id>Relation</id>
     <coordinates>
       <x>91</x>
-      <y>455</y>
+      <y>483</y>
       <w>49</w>
-      <h>126</h>
+      <h>98</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 catalog
 m1=1</panel_attributes>
-    <additional_attributes>10.0;160.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -535,14 +536,14 @@ m1=1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>224</x>
-      <y>455</y>
+      <y>483</y>
       <w>259</w>
-      <h>245</h>
+      <h>217</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..n
 completedCarOrders</panel_attributes>
-    <additional_attributes>330.0;330.0;330.0;230.0;10.0;230.0;10.0;10.0</additional_attributes>
+    <additional_attributes>330.0;290.0;330.0;190.0;10.0;190.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -557,7 +558,6 @@ completedCarOrders</panel_attributes>
 - constraints : List&lt;tuple&lt;string&gt; &gt;
 - availableOptions: Map&lt;String,List&lt;String&gt; &gt;
 --
-+ getAvailableOptions()
 + isValidCombo()
 + addOption()
 + addConstraint()
@@ -570,15 +570,15 @@ completedCarOrders</panel_attributes>
     <coordinates>
       <x>910</x>
       <y>343</y>
-      <w>238</w>
+      <w>280</w>
       <h>84</h>
     </coordinates>
     <panel_attributes>Mechanic
 --
-+ getAllWorkPosts() : List&lt;String&gt;
-+ selectWorkPost(String workPost) : List&lt;String&gt;
-+ selectTask(String task) : String
-+ finishTask(String task int timeWorked) : List&lt;String&gt;
++ getAllWorkStations() : List&lt;String&gt;
++ selectWorkStation(workPost : String) : List&lt;String&gt;
++ selectTask(task : String) : String
++ finishTask(task : String, timeWorked : Integer) : List&lt;String&gt;
 + getCurrentStateAssembly() : List&lt;String&gt;</panel_attributes>
     <additional_attributes/>
   </element>
@@ -674,5 +674,48 @@ assemblyLine</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>140.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>728</x>
+      <y>294</y>
+      <w>105</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>state/strategy pattern
+voor de verschillende
+scheduling algorithms
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>427</x>
+      <y>294</y>
+      <w>98</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>observer pattern
+om statistics te
+updaten constant
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1155</x>
+      <y>469</y>
+      <w>105</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>observer om de
+assembly line auto-
+matisch verder te
+schuiven indien nodig
+bg=yellow</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
