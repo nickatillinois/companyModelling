@@ -61,7 +61,7 @@ public class ManagerUI {
                     if (chosenAlgorithmNumber >= schedulingAlgorithms.size()) {
                         System.out.println("This is not a valid option. Try again.");
                     } else {
-                        List<String> notification = managerController.selectSchedulingAlgorithm(schedulingAlgorithms.get(chosenAlgorithmNumber));
+                        List<List<String>> notification = managerController.selectSchedulingAlgorithm(schedulingAlgorithms.get(chosenAlgorithmNumber));
                         if (notification == null) {
                             System.out.println("The scheduling algorithm has been changed to " + schedulingAlgorithms.get(chosenAlgorithmNumber));
                         } else {
@@ -76,7 +76,7 @@ public class ManagerUI {
         }
     }
 
-    private void specificationBatchUI(List<String> batches) {
+    private void specificationBatchUI(List<List<String>> batches) {
         System.out.println("The batches you can select are:");
         for (int i = 0; i < batches.size(); i++) {
             System.out.println(i + ". " + batches.get(i));
