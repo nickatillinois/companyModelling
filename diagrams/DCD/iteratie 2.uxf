@@ -251,8 +251,8 @@ company</panel_attributes>
 --
 + checkStatistics()
 + adaptSchedulingAlgorithm()
-+ selectSchedulingAlgorithm(String algorithmName)
-+ selectBatchSet(List&lt;String&gt; batchOptions)</panel_attributes>
++ selectSchedulingAlgorithm(algorithmName : String)
++ selectBatchSet(batchOptions : List&lt;String&gt;)</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -531,7 +531,7 @@ m1=1</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;-
 carModelSpecification
-m1=1</panel_attributes>
+m1=1..n</panel_attributes>
     <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
   </element>
   <element>
@@ -676,48 +676,5 @@ assemblyLine</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>140.0;10.0;10.0;70.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLNote</id>
-    <coordinates>
-      <x>777</x>
-      <y>350</y>
-      <w>105</w>
-      <h>49</h>
-    </coordinates>
-    <panel_attributes>state/strategy pattern
-voor de verschillende
-scheduling algorithms
-bg=yellow</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLNote</id>
-    <coordinates>
-      <x>476</x>
-      <y>350</y>
-      <w>98</w>
-      <h>49</h>
-    </coordinates>
-    <panel_attributes>observer pattern
-om statistics te
-updaten constant
-bg=yellow</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLNote</id>
-    <coordinates>
-      <x>1204</x>
-      <y>525</y>
-      <w>105</w>
-      <h>49</h>
-    </coordinates>
-    <panel_attributes>observer om de
-assembly line auto-
-matisch verder te
-schuiven indien nodig
-bg=yellow</panel_attributes>
-    <additional_attributes/>
   </element>
 </diagram>
