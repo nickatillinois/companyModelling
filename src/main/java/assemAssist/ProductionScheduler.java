@@ -31,7 +31,7 @@ private static final String SECONDALGORITHM = "Specification Batch";
 public ProductionScheduler( AssemblyLine assemblyLine){
     fifoProductionSchedule = new ArrayList<>();
     this.assemblyLine = assemblyLine;
-     schedulingAlgorithms = new ArrayList<String>();
+     schedulingAlgorithms = new ArrayList<>();
     schedulingAlgorithms.add(FIRSTALGORITHM);
     schedulingAlgorithms.add(SECONDALGORITHM);
     if (getSchedulingAlgorithms().contains(FIRSTALGORITHM))
@@ -39,6 +39,15 @@ public ProductionScheduler( AssemblyLine assemblyLine){
     else
         throw new IllegalArgumentException("The algorithm you will be set is not a valid one!");
 }
+
+    /**
+     * This function will change the algorithm of the production schedule. If the algorithm is "FIFO" the production
+     * schedule is updated.
+     * @param algorithm is the name of the new selected algorithm
+     * @return null if the algorithm is "FIFO"
+     *       | return the list of batch of options if the algorithm is "Specification Batch".
+     * @throws IllegalArgumentException if the algorithm is not one of the possible algorithms then it throws an exception.
+     */
     public List<List<String>> selectSchedulingAlgorithm(String algorithm) throws IllegalArgumentException{
     if (getSchedulingAlgorithms().contains(algorithm)){
         setAlgorithm(algorithm);
@@ -60,12 +69,22 @@ public ProductionScheduler( AssemblyLine assemblyLine){
         return null;
     }
 
+    /**
+     * @return a list of a list of options where for there are more than 3 orders with the same set of options.
+     */
     private List<List<String>> specificBatchAlgorithm(){
     //TODO gaat kijken welke carOrders allemaal dezelfde options hebben. Indien deze niet bestaan return null
     return null;
     }
 
-    public void selectBatchSet(List<String> options){
+    /**
+     * This function will update the production schedule and place the orders with the same options in the front of
+     * the schedule the other orders are scheduled in "FIFO".
+     * @param options is the list of options where for al the cars will be produced first.
+     * @throws IllegalCallerException throws this exception if the methode is called with a set of options that not
+     *                              | have more than 2 car orders.
+     */
+    public void selectBatchSet(List<String> options) throws IllegalCallerException{
         List<CarOrder> carOrderWithSameOptions = new ArrayList<>();
         List<CarOrder> otherCarOrders = new ArrayList<>();
         for (CarOrder carOrder : fifoProductionSchedule){
@@ -84,6 +103,7 @@ public ProductionScheduler( AssemblyLine assemblyLine){
     }
 
     /**
+     * This function returns a list of the possible scheduling algorithms.
      * @return the list of possible scheduling algorithms.
      */
     public List<String> getSchedulingAlgorithms(){
@@ -109,26 +129,9 @@ public ProductionScheduler( AssemblyLine assemblyLine){
     }
 
     /**
-     * This function calculate a simulation of an advanced assembly line without knowing of this is possible.
-     * @return simulation
-     */
-    public List<CarOrder> simulateAdvanceAssemblyLine() {
-        List<CarOrder> currentState = getCurrentState();
-        ArrayList<CarOrder> simulatedState = new ArrayList<>(3);
-        if (getProductionSchedule().size() == 0)
-            simulatedState.add(null);
-        else if(assemblyLine.remainWorkingTime() >=3 )
-            simulatedState.add( getProductionSchedule().get(0));
-        else
-            simulatedState.add(null);
-        simulatedState.add( currentState.get(0));
-        simulatedState.add( currentState.get(1));
-        return simulatedState;
-    }
-
-    /**
      * This function will advance the assembly line if that is possible and then returns the nuw state
-     * else it return null.
+     * else it returns null. If the scheduling algorithm is "Specification Batch" than it will check of al the orders
+     * with the same options set are produced if this is true the scheduling algorithm is changed to "FIFO"
      * @param timeBetweenTwoStates | time entered by the manager that was consumed
      */
     public void advanceOrders(int timeBetweenTwoStates){
@@ -145,18 +148,9 @@ public ProductionScheduler( AssemblyLine assemblyLine){
         }
     }
 
-/*    *//**
-     * This function returns a list of carOrders that have pending task in his workstation.
-     * @return list of car orders
-     *//*
-    public List<String> canNotMove(){
-        if (assemblyLine.canMove())
-            throw new IllegalCallerException("The caller can move!");
-        return assemblyLine.canNotMove();
-    }*/
 
     /**
-     * This function returns a list whit car orders, the car order at index i is in progress in the i'th workstation.
+     * This function returns a list whit car orders, the car order at index i is in progress in the workstation.
      * @return list of car orders
      */
     public List<CarOrder> getCurrentState(){
@@ -227,7 +221,7 @@ public ProductionScheduler( AssemblyLine assemblyLine){
     }
 
     /**
-     * @return The current algorithm
+     * @return The current scheduling algorithm
      */
     public String getAlgorithm() {
         return algorithm;

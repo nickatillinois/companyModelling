@@ -210,26 +210,7 @@ public class productSchedulerTest {
 
     }
 
-    @Test
-    public void simulateAdvanceAssemblyLineTest() throws IllegalModelException, IllegalChoiceException, IllegalCompletionDateException {
-        Body body = new Body("sedan");
-        CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
-                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
-                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        /*ProductionScheduler.addModel("Jaguar");*/
-        CarModel carModel = new CarModel("Jaguar",carModelSpecification);
-        CarOrder carOrder1 = new CarOrder("Luna",carModel);
-        CarOrder carOrder2 = new CarOrder("Raf", carModel);
-        productionScheduler.addOrderToProductionSchedule(carOrder1);
-        productionScheduler.advanceOrders(1);
-        ArrayList<CarOrder> test = new ArrayList<>();
-        test.add(carOrder2);
-        test.add(carOrder1);
-        test.add(null);
-        productionScheduler.addOrderToProductionSchedule(carOrder2);
-        List<CarOrder> simulation = productionScheduler.simulateAdvanceAssemblyLine();
-        assertEquals(test,simulation );
-    }
+
 
     @Test
     public void getOrdersFromGarageHolderTest() throws IllegalModelException, IllegalChoiceException, IllegalCompletionDateException {
