@@ -1,4 +1,4 @@
-package main.java.assemAssist;
+package assemAssist;
 
 import assemAssist.exceptions.IllegalModelException;
 

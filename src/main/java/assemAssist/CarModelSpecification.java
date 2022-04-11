@@ -1,4 +1,4 @@
-package main.java.assemAssist;
+package assemAssist;
 
 import java.util.List;
 import java.util.Map;

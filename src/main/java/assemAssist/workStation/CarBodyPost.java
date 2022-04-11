@@ -1,7 +1,7 @@
 package assemAssist.workStation;
 import assemAssist.AssemblyLine;
 import assemAssist.AssemblyTask;
-import assemAssist.carOrder.CarOrder;
+import assemAssist.CarOrder;
 
 /**
  *  Class representing a Car Body post
