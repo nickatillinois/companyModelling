@@ -1,9 +1,6 @@
 package assemAssist.workStation;
-import assemAssist.AssemblyLine;
-import assemAssist.AssemblyTask;
-import assemAssist.carOrder.CarOrder;
 
-import java.util.List;
+import assemAssist.AssemblyTask;
 
 /**
  *  Class representing a drivetrain post
@@ -25,12 +22,11 @@ public class DrivetrainPost extends WorkStation{
 
         //add task for engine
         this.addTask(new AssemblyTask("engine",
-                getCurrentOrder().getCarModel().getCarModelSpecification().getEngine(),
-                "insert " + getCurrentOrder().getCarModel().getCarModelSpecification().getEngine().getChosenChoice()));
+                "insertl " + getCurrentOrder().getCarModel().getSpecification().get("engine")));
+
         //add task for gearbox
         this.addTask(new AssemblyTask("gearbox",
-                getCurrentOrder().getCarModel().getCarModelSpecification().getGearbox(),
-                "insert " + getCurrentOrder().getCarModel().getCarModelSpecification().getGearbox().getChosenChoice()));
+                "install " + getCurrentOrder().getCarModel().getSpecification().get("gearbox")));
 
     }
 

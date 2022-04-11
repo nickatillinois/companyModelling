@@ -1,6 +1,6 @@
 package assemAssist.workStation;
 import assemAssist.AssemblyTask;
-import assemAssist.carOrder.*;
+import assemAssist.CarOrder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -168,9 +168,9 @@ public abstract class WorkStation {
      * @throws IllegalArgumentException | taskName is not a valid name of a task at this work station.
      */
     public String getInformationFromTask(String taskName) throws IllegalArgumentException{
-        for (int i = 0; i < tasks.size(); i++) {
-            if (tasks.get(i).getName().equals(taskName)) {
-                return tasks.get(i).getTaskDefinition();
+        for (AssemblyTask task : tasks) {
+            if (task.getName().equals(taskName)) {
+                return task.getTaskDefinition();
             }
         }
         throw new IllegalArgumentException("This is not a task at this work station!");
@@ -183,9 +183,9 @@ public abstract class WorkStation {
      * @throws IllegalArgumentException | taskName is not a valid name of a task at this work station.
      */
     public void performAssemblyTask(String taskName) throws IllegalArgumentException{
-        for (int i = 0; i < tasks.size(); i++) {
-            if (tasks.get(i).getName().equals(taskName)) {
-                tasks.get(i).setIsCompleted(true);
+        for (AssemblyTask task : tasks) {
+            if (task.getName().equals(taskName)) {
+                task.setIsCompleted(true);
                 return;
             }
         }

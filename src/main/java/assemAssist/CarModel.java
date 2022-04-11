@@ -26,4 +26,5 @@ public class CarModel {
     public String getChosenModelName() {
         return modelName;
     }
+
 }
