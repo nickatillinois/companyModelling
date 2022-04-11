@@ -1,7 +1,6 @@
 package assemAssist.workStation;
 import assemAssist.AssemblyTask;
 import assemAssist.carOrder.*;
-import purecollections.PList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +21,8 @@ public abstract class WorkStation {
     private List<AssemblyTask> tasks = new ArrayList<>();
 
     /**
-    * An immutable list of mechanics currently working on this work station.
-    */
+     * An immutable list of mechanics currently working on this work station.
+     */
     private List<String> mechanics = new ArrayList<>();
     //private PList<String> mechanics;
 

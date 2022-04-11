@@ -2,7 +2,7 @@ package assemAssist.carOrder;
 
 import assemAssist.ProductionScheduler;
 import assemAssist.exceptions.IllegalModelException;
-import purecollections.PList;
+
 
 /**
  * Class representing a car model with a modelname and a car model specification.
