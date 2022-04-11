@@ -1,12 +1,10 @@
 package main.java.assemAssist;
 
-import assemAssist.exceptions.IllegalModelException;
-
 import java.util.List;
 import java.util.Map;
 
 /**
- * Class representing a car model with a modelname and a car model specification.
+ * Class representing a car model with a modelName and a car model specification.
  *
  * @author SWOP Team 10
  */
@@ -28,13 +26,12 @@ public class CarModelSpecification {
      * @param modelName The name for the car model.
      * @param carModelSpecification  The car model specification for the car model.
      * @throws IllegalArgumentException | modelName is null
-     *                                  | modelname is the empty string
+     *                                  | modelName is the empty string
      *                                  | carModelSpecification is null
-     * @throws IllegalModelException    | the given modelName is not in the list of available model names
      */
-    public CarModelSpecification(String modelName, Map<String, List<String>> carModelSpecification) throws IllegalModelException {
-        if(modelName == null){throw new IllegalArgumentException("A modelname cannot be null.");}
-        if(modelName.length() == 0){throw new IllegalArgumentException("A modelname cannot be the empty string.");}
+    public CarModelSpecification(String modelName, Map<String, List<String>> carModelSpecification)  {
+        if(modelName == null){throw new IllegalArgumentException("A modelName cannot be null.");}
+        if(modelName.length() == 0){throw new IllegalArgumentException("A modelName cannot be the empty string.");}
         if(carModelSpecification == null){throw new IllegalArgumentException("A carModelSpecification cannot be null.");}
         this.modelName = modelName;
         this.carModelSpecification = carModelSpecification;
@@ -55,9 +52,9 @@ public class CarModelSpecification {
      * @throws IllegalArgumentException | modelName is null
      *                                  | modelName is the empty string
      */
-    public void setModelName(String modelName) throws IllegalModelException {
-        if(modelName == null){throw new IllegalArgumentException("A modelname cannot be null.");}
-        if(modelName.length() == 0){throw new IllegalArgumentException("A modelname cannot be the empty string.");}
+    public void setModelName(String modelName) {
+        if(modelName == null){throw new IllegalArgumentException("A modelName cannot be null.");}
+        if(modelName.length() == 0){throw new IllegalArgumentException("A modelName cannot be the empty string.");}
         this.modelName = modelName;
     }
 
@@ -66,7 +63,7 @@ public class CarModelSpecification {
      *
      * @return The car model specification of this car model.
      */
-    public Map<String, List<String>> getCarModelSpecification() {
+    public Map<String, List<String>> getSpecifications() {
         return carModelSpecification;
     }
 
@@ -76,7 +73,7 @@ public class CarModelSpecification {
      * @param carModelSpecification The car model specification for this car model.
      * @throws IllegalArgumentException | carModelSpecification is null
      */
-    public void setCarModelSpecification(Map<String, List<String>> carModelSpecification) throws IllegalModelException {
+    public void setCarModelSpecification(Map<String, List<String>> carModelSpecification)  {
         if(carModelSpecification == null){throw new IllegalArgumentException("A car model specification cannot be null.");}
         this.carModelSpecification = carModelSpecification;
     }
@@ -90,14 +87,13 @@ public class CarModelSpecification {
     public String toString() {
         return "CarModelSpecification{" +
                 "modelName='" + modelName + '\'' +
-                ", carModelSpecification=" + carModelSpecification +
+                ", carModelSpecification=" + getCarModelSpecificationString() +
                 '}';
     }
-}
     public String getCarModelSpecificationString(){
     	StringBuilder sb = new StringBuilder();
     	for(String key : carModelSpecification.keySet()){
-    		sb.append(key + ": " + carModelSpecification.get(key).toString() + "\n");
+    		sb.append(key).append(": ").append(carModelSpecification.get(key).toString()).append("\n");
     	}
     	return sb.toString();
     }
