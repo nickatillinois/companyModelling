@@ -2,7 +2,7 @@ package assemAssist;
 
 import assemAssist.exceptions.IllegalConstraintException;
 import assemAssist.exceptions.IllegalModelException;
-import assemAssist.restriction.Inspector;
+import assemAssist.constraint.Inspector;
 
 import java.util.Map;
 

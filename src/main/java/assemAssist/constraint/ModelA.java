@@ -1,4 +1,4 @@
-package assemAssist.restriction;
+package assemAssist.constraint;
 
 import assemAssist.CarModel;
 import assemAssist.Catalog;

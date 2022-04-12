@@ -1,7 +1,6 @@
-package assemAssist.restriction;
+package assemAssist.constraint;
 
 import assemAssist.CarModel;
-import assemAssist.Catalog;
 import assemAssist.exceptions.IllegalConstraintException;
 import assemAssist.exceptions.IllegalModelException;
 

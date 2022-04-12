@@ -175,7 +175,7 @@ public class CarOrder {
         this.orderingTime = LocalDateTime.now();
     }
 
-    public boolean isValid() throws IllegalConstraintException, IllegalModelException {
+    public boolean isValidCarModel() throws IllegalConstraintException, IllegalModelException {
         return this.carModel.inspect();
     }
 
