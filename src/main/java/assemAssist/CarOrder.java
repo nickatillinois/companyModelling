@@ -4,6 +4,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import assemAssist.exceptions.IllegalCompletionDateException;
+import assemAssist.exceptions.IllegalConstraintException;
+import assemAssist.exceptions.IllegalModelException;
 
 
 /**
@@ -135,6 +137,13 @@ public class CarOrder {
         this.completionTime = completionTime;
     }
 
+    public void setEstCompletionTime(LocalDateTime estCompletionTime) throws IllegalCompletionDateException {
+
+        if (estCompletionTime == null){throw new IllegalArgumentException("estCompletion time cannot be set to null");}
+        //if (completionTime.isBefore(LocalDateTime.now())){throw new IllegalCompletionDateException("completion time cannot be set in the past");}
+        this.estCompletionTime = estCompletionTime;
+    }
+
 
     public int getOrderID(){
         return this.ID;
@@ -151,21 +160,27 @@ public class CarOrder {
      *                                  | garageHolder is the empty string
      *                                  | carModel is null
      */
-    public CarOrder(String  garageHolder, CarModel carModel){
+    public CarOrder(String  garageHolder, CarModel carModel, LocalDateTime estCompletionTime) throws IllegalArgumentException {
         if(garageHolder == null){throw new IllegalArgumentException("A garage holder cannot be null.");}
         if(garageHolder.equals("")){throw new IllegalArgumentException("A garage holder cannot be the empty string.");}
         if(carModel == null){throw new IllegalArgumentException("A car model cannot be null.");}
+
         this.garageholder = garageHolder;
         this.carModel = carModel;
         this.completed = false;
         this.completionTime = null;
+        this.estCompletionTime = estCompletionTime;
         counter++;
         this.ID = counter;
         this.orderingTime = LocalDateTime.now();
     }
 
+    public boolean isValid() throws IllegalConstraintException, IllegalModelException {
+        return this.carModel.inspect();
+    }
+
     public String getCarModelAndOptions() {
-        String modelAndOptions = "model: " + carModel.getChosenModelName() + ", ";
+        String modelAndOptions = "model: " + carModel.getModelName() + ", ";
         modelAndOptions += carModel.getChosenOptions();
         return modelAndOptions;
     }

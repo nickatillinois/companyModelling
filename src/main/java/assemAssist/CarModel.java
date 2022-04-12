@@ -1,12 +1,16 @@
 package assemAssist;
 
+import assemAssist.exceptions.IllegalConstraintException;
+import assemAssist.exceptions.IllegalModelException;
+import assemAssist.restriction.Inspector;
+
 import java.util.Map;
 
 public class CarModel {
     private String modelName;
     private Map<String, String> chosenOptions;
 
-    public String getChosenModelName() {
+    public String getModelName() {
         return modelName;
     }
 
@@ -15,6 +19,9 @@ public class CarModel {
         this.chosenOptions = chosenOptions;
     }
 
+    public boolean inspect() throws IllegalConstraintException, IllegalModelException {
+        return new Inspector(this).inspect();
+    }
     public Map<String, String> getChosenOptions() {
         return chosenOptions;
     }

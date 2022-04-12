@@ -149,8 +149,7 @@ public class CarModelSpecification {
      * @return A deep copy of this car model specification.
      */
     public CarModelSpecification deepCopy(){
-        CarModelSpecification copy = new CarModelSpecification(this.modelName, this.availableOptions);
-        return copy;
+        return new CarModelSpecification(this.modelName, this.availableOptions);
     }
 
     /**
