@@ -1,6 +1,5 @@
 package assemAssist;
 
-import assemAssist.carOrder.*;
 import assemAssist.exceptions.IllegalCompletionDateException;
 import assemAssist.workStation.WorkStation;
 
@@ -26,11 +25,10 @@ private static final String SECONDALGORITHM = "Specification Batch";
 
     /**
      * Create a new production schedule af a single assembly line that can be managed by the manager
-     * @param assemblyLine | the assemblyline belonging to the production scheduler
      */
-public ProductionScheduler( AssemblyLine assemblyLine){
+public ProductionScheduler(){
     fifoProductionSchedule = new ArrayList<>();
-    this.assemblyLine = assemblyLine;
+    this.assemblyLine = new AssemblyLine();
      schedulingAlgorithms = new ArrayList<>();
     schedulingAlgorithms.add(FIRSTALGORITHM);
     schedulingAlgorithms.add(SECONDALGORITHM);

@@ -1,6 +1,8 @@
 package assemAssist;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+
 import assemAssist.exceptions.IllegalCompletionDateException;
 
 
@@ -11,18 +13,29 @@ import assemAssist.exceptions.IllegalCompletionDateException;
  */
 public class CarOrder {
 
-
-    static int counter = 0;
+    private static int counter = 0;
 
     /**
      * The order's unique identifier.
      */
     private final int ID;
 
+
     /**
      * The estimated completion date of this carorder in LocalDateTime format.
      */
+    private LocalDateTime estCompletionTime;
+
+    /**
+     * The effective completion date of this carorder in LocalDateTime format.
+     */
     private LocalDateTime completionTime;
+
+    /**
+     * The timestamp of ordering this carorder in LocalDateTime format.
+     */
+    private LocalDateTime orderingTime;
+
 
     /**
      * A GarageHolder object representing the client of this order.
@@ -125,7 +138,7 @@ public class CarOrder {
     }
 
 
-    public int getID(){
+    public int getOrderID(){
         return this.ID;
     }
 
@@ -150,6 +163,7 @@ public class CarOrder {
         this.completionTime = null;
         counter++;
         this.ID = counter;
+        this.orderingTime = LocalDateTime.now();
     }
 
     public String getCarModelAndOptions () {
@@ -169,4 +183,19 @@ public class CarOrder {
         return ID == carOrder.ID;
     }
 
+    public ArrayList<String> getPendingOrderDetails(){
+        ArrayList<String> orderDetails = new ArrayList<>();
+        orderDetails.add("Specifications: " + getCarModelAndOptions ());
+        orderDetails.add("orderTime: " + orderingTime.toString());
+        orderDetails.add("estProdTime: " + estCompletionTime.toString());
+        return orderDetails;
+    }
+
+    public ArrayList<String> getCompletedOrderDetails(){
+        ArrayList<String> orderDetails = new ArrayList<>();
+        orderDetails.add("Specifications: " + getCarModelAndOptions ());
+        orderDetails.add("orderTime: " + orderingTime.toString());
+        orderDetails.add("completionTime: " + completionTime.toString());
+        return orderDetails;
+    }
 }

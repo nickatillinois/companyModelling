@@ -11,7 +11,7 @@ import java.util.*;
  */
 public class Catalog {
 
-    private HashSet<CarModelSpecification> availableModels = new HashSet<>();
+    private static HashSet<CarModelSpecification> availableModels = new HashSet<>();
     public Catalog() {
         createStandardModels();
     }
@@ -49,7 +49,7 @@ public class Catalog {
     }
     /** A method that returns a string representation of a given car model */
     public String getModelSpecification(String modelName) throws IllegalModelException {
-        return getModel(modelName).getCarModelSpecificationString();
+        return getModel(modelName).toString();
     }
 
     /**
@@ -63,7 +63,7 @@ public class Catalog {
 
     public Map<String, HashSet<String>> getModelSpecifications(String modelName) throws IllegalModelException {
         CarModelSpecification model = getModel(modelName);
-        return model.getSpecifications();
+        return model.getAvailableOptions();
     }
 
     private void createStandardModels(){
