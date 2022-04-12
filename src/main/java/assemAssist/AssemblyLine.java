@@ -1,6 +1,6 @@
 package assemAssist;
 
-import assemAssist.carOrder.CarOrder;
+import assemAssist.CarOrder;
 import assemAssist.workStation.AccessoriesPost;
 import assemAssist.workStation.CarBodyPost;
 import assemAssist.workStation.DrivetrainPost;
@@ -25,13 +25,10 @@ public class AssemblyLine {
      */
     public AssemblyLine(){
 
-        CarBodyPost carBodyPost = new CarBodyPost();
-        DrivetrainPost drivetrainPost = new DrivetrainPost();
         List<WorkStation> workStations = new ArrayList<>();
-        workStations.add(carBodyPost);
-        workStations.add(drivetrainPost);
-        AccessoriesPost accessoriesPost = new AccessoriesPost();
-        workStations.add(accessoriesPost);
+        CarBodyPost carBodyPost = new CarBodyPost(); workStations.add(carBodyPost);
+        DrivetrainPost drivetrainPost = new DrivetrainPost(); workStations.add(drivetrainPost);
+        AccessoriesPost accessoriesPost = new AccessoriesPost(); workStations.add(accessoriesPost);
         setWorkStations(workStations);
     }
 

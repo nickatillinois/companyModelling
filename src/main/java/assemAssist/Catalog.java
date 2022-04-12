@@ -68,6 +68,7 @@ public class Catalog {
         CarModelSpecification model = getModel(modelName);
         return model.getSpecifications();
     }
+
     private void createStandardModels(){
         HashMap<String, List<String>> A = new HashMap<>();
         A.put("Body", new ArrayList<>() {{
@@ -106,73 +107,73 @@ public class Catalog {
         this.addModel(new CarModelSpecification("A", A));
 
         HashMap<String, List<String>> B = new HashMap<>();
-        A.put("Body", new ArrayList<>() {{
+        B.put("Body", new ArrayList<>() {{
             add("Sedan");
             add("Break");
             add("Sport");
         }});
-        A.put("Color", new ArrayList<>() {{
+        B.put("Color", new ArrayList<>() {{
             add("red");
             add("blue");
             add("green");
             add("yellow");
         }});
-        A.put("Engine", new ArrayList<>() {{
+        B.put("Engine", new ArrayList<>() {{
             add("V4");
             add("V6");
             add("V8");
         }});
-        A.put("Gearbox", new ArrayList<>() {{
+        B.put("Gearbox", new ArrayList<>() {{
             add("6 manual");
             add("5 manual");
         }});
-        A.put("Seats", new ArrayList<>() {{
+        B.put("Seats", new ArrayList<>() {{
             add("leather white");
             add("leather black");
             add("vinyl grey");
         }});
-        A.put("Airco", new ArrayList<>() {{
+        B.put("Airco", new ArrayList<>() {{
             add("Manual");
             add("Automatic");
         }});
-        A.put("Wheels", new ArrayList<>() {{
+        B.put("Wheels", new ArrayList<>() {{
             add("winter");
             add("comfort");
             add("sports");
         }});
-        A.put("Spoiler", new ArrayList<>() {{
+        B.put("Spoiler", new ArrayList<>() {{
             add("low");
         }});
         this.addModel(new CarModelSpecification("B", B));
 
         HashMap<String, List<String>> C = new HashMap<>();
-        A.put("Body", new ArrayList<>() {{
+        C.put("Body", new ArrayList<>() {{
             add("Sport");
         }});
-        A.put("Color", new ArrayList<>() {{
+        C.put("Color", new ArrayList<>() {{
             add("black");
             add("white");
         }});
-        A.put("Engine", new ArrayList<>() {{
+        C.put("Engine", new ArrayList<>() {{
             add("V6");
             add("V8");
         }});
-        A.put("Gearbox", new ArrayList<>() {{
+        C.put("Gearbox", new ArrayList<>() {{
             add("6 manual");
         }});
-        A.put("Seats", new ArrayList<>() {{
+        C.put("Seats", new ArrayList<>() {{
             add("leather white");
             add("leather black");
         }});
-        A.put("Airco", new ArrayList<>() {{
+        C.put("Airco", new ArrayList<>() {{
             add("Manual");
             add("Automatic");
         }});
-        A.put("Wheels", new ArrayList<>() {{
+        C.put("Wheels", new ArrayList<>() {{
             add("winter");
             add("sports");
         }});
-        A.put("Spoiler", new ArrayList<>() {{
+        C.put("Spoiler", new ArrayList<>() {{
             add("low");
             add("high");
         }});
