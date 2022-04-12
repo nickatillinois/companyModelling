@@ -1,10 +1,10 @@
 package assemAssist;
 
-import assemAssist.CarOrder;
 import assemAssist.workStation.AccessoriesPost;
 import assemAssist.workStation.CarBodyPost;
 import assemAssist.workStation.DrivetrainPost;
 import assemAssist.workStation.WorkStation;
+
 import java.util.ArrayList;
 import java.util.List;
 

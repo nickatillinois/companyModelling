@@ -2,10 +2,7 @@ package assemAssist;
 
 import assemAssist.exceptions.IllegalModelException;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Class representing a catalog of the products offered by the car manufacturing company.
@@ -14,7 +11,7 @@ import java.util.Map;
  */
 public class Catalog {
 
-    private ArrayList<CarModelSpecification> availableModels = new ArrayList<>();
+    private HashSet<CarModelSpecification> availableModels = new HashSet<>();
     public Catalog() {
         createStandardModels();
     }
@@ -24,12 +21,12 @@ public class Catalog {
      *
      * @return The available car models in the catalog.
      */
-    public ArrayList<CarModelSpecification> getAvailableModels() {
+    public HashSet<CarModelSpecification> getAvailableModels() {
         return availableModels;
     }
 
-    public ArrayList<String> getAvailableModelNames() {
-        ArrayList<String> names = new ArrayList<>();
+    public HashSet<String> getAvailableModelNames() {
+        HashSet<String> names = new HashSet<>();    // Set of all available model names
         for (CarModelSpecification model : availableModels) {
             names.add(model.getModelName());
         }
@@ -56,7 +53,7 @@ public class Catalog {
     }
 
     /**
-     * Adds the given car model to the list of car models in the catalog.
+     * Adds the given car model to the set of car models in the catalog.
      *
      * @param model The name of new car model.
      */
@@ -64,116 +61,116 @@ public class Catalog {
         availableModels.add(model);
     }
 
-    public Map<String, List<String>> getModelSpecifications(String modelName) throws IllegalModelException {
+    public Map<String, HashSet<String>> getModelSpecifications(String modelName) throws IllegalModelException {
         CarModelSpecification model = getModel(modelName);
         return model.getSpecifications();
     }
 
     private void createStandardModels(){
-        HashMap<String, List<String>> A = new HashMap<>();
-        A.put("Body", new ArrayList<>() {{
+        HashMap<String, HashSet<String>> A = new HashMap<>();
+        A.put("Body", new HashSet<>() {{
             add("Sedan");
             add("Break");
         }});
-        A.put("Color", new ArrayList<>() {{
+        A.put("Color", new HashSet<>() {{
             add("red");
             add("blue");
             add("black");
             add("white");
         }});
-        A.put("Engine", new ArrayList<>() {{
+        A.put("Engine", new HashSet<>() {{
             add("V4");
             add("V6");
         }});
-        A.put("Gearbox", new ArrayList<>() {{
+        A.put("Gearbox", new HashSet<>() {{
             add("6 manual");
             add("5 manual");
             add("5 automatic");
         }});
-        A.put("Seats", new ArrayList<>() {{
+        A.put("Seats", new HashSet<>() {{
             add("leather white");
             add("leather black");
             add("vinyl grey");
         }});
-        A.put("Airco", new ArrayList<>() {{
+        A.put("Airco", new HashSet<>() {{
             add("Manual");
             add("Automatic");
         }});
-        A.put("Wheels", new ArrayList<>() {{
+        A.put("Wheels", new HashSet<>() {{
             add("winter");
             add("comfort");
             add("sports");
         }});
         this.addModel(new CarModelSpecification("A", A));
 
-        HashMap<String, List<String>> B = new HashMap<>();
-        B.put("Body", new ArrayList<>() {{
+        HashMap<String, HashSet<String>> B = new HashMap<>();
+        B.put("Body", new HashSet<>() {{
             add("Sedan");
             add("Break");
             add("Sport");
         }});
-        B.put("Color", new ArrayList<>() {{
+        B.put("Color", new HashSet<>() {{
             add("red");
             add("blue");
             add("green");
             add("yellow");
         }});
-        B.put("Engine", new ArrayList<>() {{
+        B.put("Engine", new HashSet<>() {{
             add("V4");
             add("V6");
             add("V8");
         }});
-        B.put("Gearbox", new ArrayList<>() {{
+        B.put("Gearbox", new HashSet<>() {{
             add("6 manual");
             add("5 manual");
         }});
-        B.put("Seats", new ArrayList<>() {{
+        B.put("Seats", new HashSet<>() {{
             add("leather white");
             add("leather black");
             add("vinyl grey");
         }});
-        B.put("Airco", new ArrayList<>() {{
+        B.put("Airco", new HashSet<>() {{
             add("Manual");
             add("Automatic");
         }});
-        B.put("Wheels", new ArrayList<>() {{
+        B.put("Wheels", new HashSet<>() {{
             add("winter");
             add("comfort");
             add("sports");
         }});
-        B.put("Spoiler", new ArrayList<>() {{
+        B.put("Spoiler", new HashSet<>() {{
             add("low");
         }});
         this.addModel(new CarModelSpecification("B", B));
 
-        HashMap<String, List<String>> C = new HashMap<>();
-        C.put("Body", new ArrayList<>() {{
+        HashMap<String, HashSet<String>> C = new HashMap<>();
+        C.put("Body", new HashSet<>() {{
             add("Sport");
         }});
-        C.put("Color", new ArrayList<>() {{
+        C.put("Color", new HashSet<>() {{
             add("black");
             add("white");
         }});
-        C.put("Engine", new ArrayList<>() {{
+        C.put("Engine", new HashSet<>() {{
             add("V6");
             add("V8");
         }});
-        C.put("Gearbox", new ArrayList<>() {{
+        C.put("Gearbox", new HashSet<>() {{
             add("6 manual");
         }});
-        C.put("Seats", new ArrayList<>() {{
+        C.put("Seats", new HashSet<>() {{
             add("leather white");
             add("leather black");
         }});
-        C.put("Airco", new ArrayList<>() {{
+        C.put("Airco", new HashSet<>() {{
             add("Manual");
             add("Automatic");
         }});
-        C.put("Wheels", new ArrayList<>() {{
+        C.put("Wheels", new HashSet<>() {{
             add("winter");
             add("sports");
         }});
-        C.put("Spoiler", new ArrayList<>() {{
+        C.put("Spoiler", new HashSet<>() {{
             add("low");
             add("high");
         }});

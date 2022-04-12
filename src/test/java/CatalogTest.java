@@ -1,6 +1,6 @@
 package java;
 
-import main.java.assemAssist.Catalog;
+import assemAssist.Catalog;
 
 import static org.junit.jupiter.api.Assertions.*;
 

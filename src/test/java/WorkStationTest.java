@@ -1,6 +1,5 @@
 import assemAssist.AssemblyTask;
 import assemAssist.CarModel;
-import assemAssist.ProductionScheduler;
 import assemAssist.CarOrder;
 import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalModelException;
@@ -11,7 +10,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.testng.AssertJUnit.assertNull;
 
 class WorkStationTest {
 

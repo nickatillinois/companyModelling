@@ -1,5 +1,6 @@
 package assemAssist;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -18,7 +19,7 @@ public class CarModelSpecification {
     /**
      * A map containing the options for this car model's components.
      */
-    private Map<String, List<String>> carModelSpecification;
+    private Map<String, HashSet<String>> carModelSpecification;
 
     /**
      * Creates a new car model with a given name and a given car model specification
@@ -29,7 +30,7 @@ public class CarModelSpecification {
      *                                  | modelName is the empty string
      *                                  | carModelSpecification is null
      */
-    public CarModelSpecification(String modelName, Map<String, List<String>> carModelSpecification)  {
+    public CarModelSpecification(String modelName, Map<String, HashSet<String>> carModelSpecification)  {
         if(modelName == null){throw new IllegalArgumentException("A modelName cannot be null.");}
         if(modelName.length() == 0){throw new IllegalArgumentException("A modelName cannot be the empty string.");}
         if(carModelSpecification == null){throw new IllegalArgumentException("A carModelSpecification cannot be null.");}
@@ -63,7 +64,7 @@ public class CarModelSpecification {
      *
      * @return The car model specification of this car model.
      */
-    public Map<String, List<String>> getSpecifications() {
+    public Map<String, HashSet<String>> getSpecifications() {
         return carModelSpecification;
     }
 
@@ -73,7 +74,7 @@ public class CarModelSpecification {
      * @param carModelSpecification The car model specification for this car model.
      * @throws IllegalArgumentException | carModelSpecification is null
      */
-    public void setCarModelSpecification(Map<String, List<String>> carModelSpecification)  {
+    public void setCarModelSpecification(Map<String, HashSet<String>> carModelSpecification)  {
         if(carModelSpecification == null){throw new IllegalArgumentException("A car model specification cannot be null.");}
         this.carModelSpecification = carModelSpecification;
     }
