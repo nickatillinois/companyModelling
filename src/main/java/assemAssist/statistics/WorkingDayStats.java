@@ -1,8 +1,10 @@
 package assemAssist.statistics;
 
 import assemAssist.observer.StatisticsObservable;
+import assemAssist.observer.StatisticsObserver;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class WorkingDayStats extends Stats {
 
