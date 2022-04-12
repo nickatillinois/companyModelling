@@ -29,7 +29,7 @@ public abstract class WorkStation {
     /**
      * The name of this work station.
      */
-    private String name;
+    private final String name;
 
     /**
      * Creates a work station.
@@ -56,6 +56,7 @@ public abstract class WorkStation {
     public void setCurrentOrder(CarOrder newOrder) {
         this.currentOrder = newOrder;
         if (newOrder != null)
+            tasks.clear();
             newTasks();
     }
 
@@ -158,6 +159,14 @@ public abstract class WorkStation {
             if (!task.getIsCompleted()) { pendingTasks.add(task.getName()); }
         }
         return pendingTasks;
+    }
+
+    public List<String> getFinishedTasks() {
+        List<String> finishedTasks = new ArrayList<>();
+        for (AssemblyTask task : tasks) {
+            if (task.getIsCompleted()) { finishedTasks.add(task.getName()); }
+        }
+        return finishedTasks;
     }
 
     /**

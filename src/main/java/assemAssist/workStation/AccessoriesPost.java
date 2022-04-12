@@ -21,13 +21,17 @@ public class AccessoriesPost extends WorkStation{
         //add task for seats
         this.addTask(new AssemblyTask("seats",
                 "install " + getCurrentOrder().getCarModel().getSpecification().get("seats") + " seats"));
-
         //add task for airco
         this.addTask(new AssemblyTask("airco",
                 "install " + getCurrentOrder().getCarModel().getSpecification().get("airco") + " airco"));
         //add task for wheels
         this.addTask(new AssemblyTask("wheels",
-                "wheels " + getCurrentOrder().getCarModel().getSpecification().get("wheels") + " wheels"));
+                "mount " + getCurrentOrder().getCarModel().getSpecification().get("wheels") + " wheels"));
+        //add task for spoiler, IF there needs to be one
+        if (getCurrentOrder().getCarModel().getSpecification().get("spoiler") != null) {
+            this.addTask(new AssemblyTask("spoiler",
+                    "install " + getCurrentOrder().getCarModel().getSpecification().get("spoiler") + " spoiler"));
+        }
     }
 
 }

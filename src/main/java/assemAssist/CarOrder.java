@@ -1,6 +1,12 @@
 package assemAssist;
 
+<<<<<<< HEAD
 import java.time.LocalDateTime;
+=======
+import assemAssist.exceptions.IllegalCompletionDateException;
+import java.time.LocalDateTime;
+import java.util.Objects;
+>>>>>>> 95f6332ad3ff91e7be51bdeec5b1773bcf9107e5
 
 /**
  * Class representing a car order.
@@ -9,6 +15,7 @@ import java.time.LocalDateTime;
  */
 public class CarOrder {
 
+<<<<<<< HEAD
 
     static int counter = 0;
 
@@ -17,6 +24,9 @@ public class CarOrder {
      */
     private final int ID;
 
+=======
+    private int id;
+>>>>>>> 95f6332ad3ff91e7be51bdeec5b1773bcf9107e5
 
     /**
      * The estimated completion date of this carorder in LocalDateTime format.
@@ -26,7 +36,11 @@ public class CarOrder {
     /**
      * A GarageHolder object representing the client of this order.
      */
+<<<<<<< HEAD
     private String garageholder;
+=======
+    private String garageHolder;
+>>>>>>> 95f6332ad3ff91e7be51bdeec5b1773bcf9107e5
 
     /**
      * A CarModel object representing the Carmodel with specifications of this order.
@@ -49,7 +63,11 @@ public class CarOrder {
     public void setGarageholder(String garageholder){
         if(garageholder == null){throw new IllegalArgumentException("garageholder cannot be null.");}
         if(garageholder.equals("")){throw new IllegalArgumentException("A garage holder cannot be the empty string.");}
+<<<<<<< HEAD
         this.garageholder = garageholder;
+=======
+        this.garageHolder = garageholder;
+>>>>>>> 95f6332ad3ff91e7be51bdeec5b1773bcf9107e5
     }
 
     /**
@@ -58,7 +76,19 @@ public class CarOrder {
      * @return The name of the garage holder of this carOrder.
      */
     public String getGarageholder() {
+<<<<<<< HEAD
         return garageholder;
+=======
+        return garageHolder;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return this.id;
+>>>>>>> 95f6332ad3ff91e7be51bdeec5b1773bcf9107e5
     }
 
     /**
@@ -111,17 +141,27 @@ public class CarOrder {
      * Sets the current LocalTimeDate when this order is estimated to be completed to the given LocalTimeDate.
      *
      * @param completionTime The given estimated completion date in LocalTimeDate format.
+<<<<<<< HEAD
      */
     public void setCompletionTime(LocalDateTime completionTime) {
+=======
+     * @throws IllegalArgumentException | completionTime is null
+     * //@throws IllegalCompletionDateException | given time is in the past
+     */
+    public void setCompletionTime(LocalDateTime completionTime) throws IllegalCompletionDateException {
+>>>>>>> 95f6332ad3ff91e7be51bdeec5b1773bcf9107e5
         if (completionTime == null){throw new IllegalArgumentException("completion time cannot be set to null");}
         //if (completionTime.isBefore(LocalDateTime.now())){throw new IllegalCompletionDateException("completion time cannot be set in the past");}
         this.completionTime = completionTime;
     }
 
+<<<<<<< HEAD
     public int getID(){
         return this.ID;
     }
 
+=======
+>>>>>>> 95f6332ad3ff91e7be51bdeec5b1773bcf9107e5
     /**
      * Creates a new car model specification with a given body, color, engine, gearbox, seats, airco, wheels.
      *
@@ -131,6 +171,7 @@ public class CarOrder {
      *                                  | garageHolder is the empty string
      *                                  | carModel is null
      */
+<<<<<<< HEAD
     public CarOrder(String  garageHolder, CarModel carModel){
         if(garageHolder == null){throw new IllegalArgumentException("A garage holder cannot be null.");}
         if(garageHolder.equals("")){throw new IllegalArgumentException("A garage holder cannot be the empty string.");}
@@ -141,6 +182,17 @@ public class CarOrder {
         this.completionTime = null;
         counter++;
         this.ID = counter;
+=======
+    public CarOrder(String  garageHolder, CarModel carModel, int id){
+        if(garageHolder == null){throw new IllegalArgumentException("A garage holder cannot be null.");}
+        if(garageHolder.equals("")){throw new IllegalArgumentException("A garage holder cannot be the empty string.");}
+        if(carModel == null){throw new IllegalArgumentException("A car model cannot be null.");}
+        this.garageHolder = garageHolder;
+        this.carModel = carModel;
+        this.completed = false;
+        this.completionTime = null;
+        this.id = id;
+>>>>>>> 95f6332ad3ff91e7be51bdeec5b1773bcf9107e5
     }
 
     public String getCarModelAndOptions () {
@@ -148,4 +200,19 @@ public class CarOrder {
         modelAndOptions += carModel.getChosenOptions();
         return modelAndOptions;
     }
+<<<<<<< HEAD
 }
+=======
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        CarOrder carOrder = (CarOrder) o;
+
+        return id == carOrder.id;
+    }
+
+}
+>>>>>>> 95f6332ad3ff91e7be51bdeec5b1773bcf9107e5

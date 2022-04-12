@@ -22,7 +22,7 @@ public class DrivetrainPost extends WorkStation{
 
         //add task for engine
         this.addTask(new AssemblyTask("engine",
-                "insertl " + getCurrentOrder().getCarModel().getSpecification().get("engine")));
+                "insert " + getCurrentOrder().getCarModel().getSpecification().get("engine")));
 
         //add task for gearbox
         this.addTask(new AssemblyTask("gearbox",
