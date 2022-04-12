@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Inspector {
 
     /**
-     * The restrictions the restriction checker holds.
+     * List of constraints that the inspector validates.
      */
     private static ArrayList<Constraint> constraints;
     private CarModel carModel;
@@ -43,7 +43,7 @@ public class Inspector {
      *
      * @param constraint The constraint to be added to the list of constraints
      */
-    public void addRestriction(Constraint constraint) {
+    public void addConstraint(Constraint constraint) {
         if (constraint == null) throw new IllegalArgumentException("A constraint cannot be null");
         constraints.add(constraint);
     }
