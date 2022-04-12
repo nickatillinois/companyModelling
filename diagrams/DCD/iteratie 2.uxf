@@ -612,9 +612,6 @@ completedCarOrders</panel_attributes>
 + hashCode(): int
 
 
-            --TO DO : constraints--
-
-
 </panel_attributes>
     <additional_attributes/>
   </element>
