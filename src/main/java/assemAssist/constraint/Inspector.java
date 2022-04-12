@@ -19,10 +19,11 @@ public class Inspector {
      */
     public Inspector(CarModel carModel) throws IllegalConstraintException {
         constraints = new ArrayList<Constraint>();
-        addConstraints();
         this.carModel = carModel;
+        addConstraints();
     }
     private void addConstraints() {
+        constraints.add(new ModelExists());
         constraints.add(new ModelA());
         constraints.add(new ModelB());
         constraints.add(new ModelC());
