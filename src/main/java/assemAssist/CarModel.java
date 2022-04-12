@@ -4,27 +4,28 @@ import java.util.Map;
 
 public class CarModel {
     private String modelName;
-    private Map<String, String> specification;
+    private Map<String, String> chosenOptions;
 
-    public CarModel(String modelName, Map<String, String> specification) {
-        this.modelName = modelName;
-        this.specification = specification;
-    }
-
-
-    public Map<String, String> getSpecification() {
-        return specification;
-    }
-
-    public String getChosenOptions() {
-        StringBuilder sb = new StringBuilder();
-        for (String key : specification.keySet()) {
-            sb.append(key).append(": ").append(specification.get(key)).append("\n");
-        }
-        return sb.toString();
-    }
     public String getChosenModelName() {
         return modelName;
     }
+
+    public CarModel(String modelName, Map<String, String> chosenOptions) {
+        this.modelName = modelName;
+        this.chosenOptions = chosenOptions;
+    }
+
+    public Map<String, String> getChosenOptions() {
+        return chosenOptions;
+    }
+
+    public String getChosenOptionsString() {
+        StringBuilder sb = new StringBuilder();
+        for (String key : chosenOptions.keySet()) {
+            sb.append(key).append(": ").append(chosenOptions.get(key)).append("\n");
+        }
+        return sb.toString();
+    }
+
 
 }

@@ -52,6 +52,13 @@ public class Catalog {
         return getModel(modelName).toString();
     }
 
+
+
+    public Map<String, HashSet<String>> getModelSpecifications(String modelName) throws IllegalModelException {
+        CarModelSpecification model = getModel(modelName);
+        return model.getAvailableOptions();
+    }
+
     /**
      * Adds the given car model to the set of car models in the catalog.
      *
@@ -59,11 +66,6 @@ public class Catalog {
      */
     public void addModel(CarModelSpecification model){
         availableModels.add(model);
-    }
-
-    public Map<String, HashSet<String>> getModelSpecifications(String modelName) throws IllegalModelException {
-        CarModelSpecification model = getModel(modelName);
-        return model.getAvailableOptions();
     }
 
     private void createStandardModels(){

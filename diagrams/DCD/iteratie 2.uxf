@@ -35,8 +35,10 @@ fontsize=10
     </coordinates>
     <panel_attributes>CarModel
 --
-- chosenModelName : String
-- chosenOptions : List&lt;string&gt;
+- modelName : String
+- chosenOptions : Map&lt;String, String&gt;
+--
++ getChosenOptionsString(): String
 
 
 </panel_attributes>
@@ -48,7 +50,7 @@ fontsize=10
       <x>600</x>
       <y>980</y>
       <w>250</w>
-      <h>120</h>
+      <h>170</h>
     </coordinates>
     <panel_attributes>CarOrder
 --
@@ -57,8 +59,13 @@ _ -counter: int_
 - garageHolder: String
 - completed : Boolean
 - completionTime : LocalDateTime
+- estCompletionTime: LocalDateTime
+- orderingTime: LocalDateTime
 --
-+ setModelOptions()
++ getCarModelAndOptions(): String
++ getPendingOrderDetails(): List&lt;String&gt;
++ getCompletedOrderDetails(): List&lt;String&gt;
++ equals(a: Object): boolean
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -446,14 +453,14 @@ assemblyLine</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>720</x>
-      <y>1090</y>
+      <y>1140</y>
       <w>80</w>
-      <h>110</h>
+      <h>60</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m2=1
   carModel</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -507,8 +514,8 @@ m2=1
 --
 + getAvailableModelNames(): Set&lt;String&gt;
 - getModel(modelName: String): CarModelSpecification
-+ getModelSpecification(modelName: String): String
-+ getModelSpecifications(modelName: String): Map&lt;String, Set&lt;String&gt;&gt;
++ getModelSpecificationString(modelName: String): String
++ getOptions(modelName: String): Map&lt;String, Set&lt;String&gt;&gt;
 + addModel(CarModelSpecification model)
 - createStandardModels()
 </panel_attributes>
@@ -585,23 +592,24 @@ completedCarOrders</panel_attributes>
       <x>0</x>
       <y>1010</y>
       <w>290</w>
-      <h>180</h>
+      <h>210</h>
     </coordinates>
     <panel_attributes>CarModelSpecification
 --
 - modelName: String
 - availableOptions: Map&lt;String,Set&lt;String&gt; &gt;
 --
-+ isValidCombo()
-+ addOption(component: String, option: String)
-+ addComponent(component: String, options: Set)
 + toString(): String
 + getAvailableOptionsString(): String
++ addOption(component: String, option: String)
++ addComponent(component: String, options: Set)
 + removeOption(component: String, option: String)
 + removeComponent(component: String)
 + deepCopy(): CarModelSpecification
 + equals(a: Object): boolean
 + hashCode(): ints
+
+            --TO DO : constraints--
 
 
 </panel_attributes>

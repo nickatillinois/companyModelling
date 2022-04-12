@@ -20,11 +20,15 @@ public class CarOrder {
      */
     private final int ID;
 
+    /**
+     * A GarageHolder object representing the client of this order.
+     */
+    private String garageholder;
 
     /**
-     * The estimated completion date of this carorder in LocalDateTime format.
+     * A boolean representing whether this order was completed by the car manufacturing company.
      */
-    private LocalDateTime estCompletionTime;
+    private boolean completed;
 
     /**
      * The effective completion date of this carorder in LocalDateTime format.
@@ -32,26 +36,20 @@ public class CarOrder {
     private LocalDateTime completionTime;
 
     /**
+     * The estimated completion date of this carorder in LocalDateTime format.
+     */
+    private LocalDateTime estCompletionTime;
+
+    /**
      * The timestamp of ordering this carorder in LocalDateTime format.
      */
     private LocalDateTime orderingTime;
-
-
-    /**
-     * A GarageHolder object representing the client of this order.
-     */
-    private String garageholder;
-
 
     /**
      * A CarModel object representing the Carmodel with specifications of this order.
      */
     private CarModel carModel;
 
-    /**
-     * A boolean representing whether this order was completed by the car manufacturing company.
-     */
-    private boolean completed;
 
     /**
      * Sets the garage holder of this car order to the given garage holder.
@@ -166,21 +164,10 @@ public class CarOrder {
         this.orderingTime = LocalDateTime.now();
     }
 
-    public String getCarModelAndOptions () {
+    public String getCarModelAndOptions() {
         String modelAndOptions = "model: " + carModel.getChosenModelName() + ", ";
         modelAndOptions += carModel.getChosenOptions();
         return modelAndOptions;
-    }
-
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        CarOrder carOrder = (CarOrder) o;
-
-        return ID == carOrder.ID;
     }
 
     public ArrayList<String> getPendingOrderDetails(){
@@ -197,5 +184,13 @@ public class CarOrder {
         orderDetails.add("orderTime: " + orderingTime.toString());
         orderDetails.add("completionTime: " + completionTime.toString());
         return orderDetails;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CarOrder carOrder = (CarOrder) o;
+        return ID == carOrder.ID;
     }
 }
