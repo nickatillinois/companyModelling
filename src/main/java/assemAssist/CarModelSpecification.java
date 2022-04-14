@@ -16,6 +16,7 @@ public class CarModelSpecification {
      */
     private String modelName;
 
+    private final int standardTaskTime;
     /**
      * A map containing the options for this car model's components.
      */
@@ -25,12 +26,14 @@ public class CarModelSpecification {
      * Creates a new car model with a given name and a given car model specification
      *
      * @param modelName The name for the car model.
+     * @param standardTaskTime
      * @param availableOptions  The car model specification for the car model.
      * @throws IllegalArgumentException | modelName is null
      *                                  | modelName is the empty string
      *                                  | carModelSpecification is null
      */
-    public CarModelSpecification(String modelName, Map<String, HashSet<String>> availableOptions)  {
+    public CarModelSpecification(String modelName, int standardTaskTime, Map<String, HashSet<String>> availableOptions)  {
+        this.standardTaskTime = standardTaskTime;
         if(modelName == null){throw new IllegalArgumentException("A modelName cannot be null.");}
         if(modelName.length() == 0){throw new IllegalArgumentException("A modelName cannot be the empty string.");}
         if(availableOptions == null){throw new IllegalArgumentException("A carModelSpecification cannot be null.");}
@@ -46,6 +49,9 @@ public class CarModelSpecification {
         return modelName;
     }
 
+    public int getStandardTaskTime() {
+        return standardTaskTime;
+    }
     /**
      * Sets the name of this car model to the given name.
      *
@@ -149,7 +155,7 @@ public class CarModelSpecification {
      * @return A deep copy of this car model specification.
      */
     public CarModelSpecification deepCopy(){
-        return new CarModelSpecification(this.modelName, this.availableOptions);
+        return new CarModelSpecification(this.modelName, standardTaskTime, this.availableOptions);
     }
 
     /**

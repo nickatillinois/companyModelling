@@ -1,7 +1,9 @@
+package java;
+
 import assemAssist.AssemblyLine;
 import assemAssist.AssemblyTask;
+import assemAssist.CarOrder;
 import assemAssist.ProductionScheduler;
-import assemAssist.carOrder.*;
 import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalModelException;
 import assemAssist.workStation.AccessoriesPost;

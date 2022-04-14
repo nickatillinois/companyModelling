@@ -103,7 +103,7 @@ public class Catalog {
             add("comfort");
             add("sports");
         }});
-        this.addModel(new CarModelSpecification("A", A));
+        this.addModel(new CarModelSpecification("A", 50, A));
 
         HashMap<String, HashSet<String>> B = new HashMap<>();
         B.put("Body", new HashSet<>() {{
@@ -143,7 +143,7 @@ public class Catalog {
         B.put("Spoiler", new HashSet<>() {{
             add("low");
         }});
-        this.addModel(new CarModelSpecification("B", B));
+        this.addModel(new CarModelSpecification("B", 70, B));
 
         HashMap<String, HashSet<String>> C = new HashMap<>();
         C.put("Body", new HashSet<>() {{
@@ -176,6 +176,6 @@ public class Catalog {
             add("low");
             add("high");
         }});
-        this.addModel(new CarModelSpecification("C", C));
+        this.addModel(new CarModelSpecification("C", 60, C));
     }
 }
