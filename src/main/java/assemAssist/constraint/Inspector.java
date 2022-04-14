@@ -23,10 +23,7 @@ public class Inspector {
         addConstraints();
     }
     private void addConstraints() {
-        constraints.add(new ModelExists());
-        constraints.add(new ModelA());
-        constraints.add(new ModelB());
-        constraints.add(new ModelC());
+        constraints.add(new Model());
         constraints.add(new RequiredComponent());
         constraints.add(new EngineAirco());
         constraints.add(new SportBody());
