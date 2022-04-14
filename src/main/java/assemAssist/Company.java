@@ -1,5 +1,7 @@
 package assemAssist;
 
+import assemAssist.etc.CompletedCarOrderComparator;
+import assemAssist.etc.PendingCarOrderComparator;
 import assemAssist.exceptions.IllegalModelException;
 
 import java.util.ArrayList;
@@ -36,25 +38,39 @@ public class Company {
      * @return a set of CarOrders that are completed and ordered by the given garage holder
      * @param name the garage holder to get the completed CarOrders for
      */
-    public HashSet<CarOrder> getCompletedOrdersFromGaragHolder(String name) {
-        HashSet<CarOrder> orders = new HashSet<CarOrder>();
+    private ArrayList<CarOrder> getCompletedOrdersFromGaragHolder(String name) {
+        ArrayList<CarOrder> orders = new ArrayList<CarOrder>();
         for (CarOrder carOrder : this.completedCarOrders) {
             if (carOrder.getGarageholder().equals(name)) {
                 orders.add(carOrder);
             }
         }
+        CompletedCarOrderComparator comparator = new CompletedCarOrderComparator();
+        // sort the orders by the comparator
+        orders.sort(comparator);
         return orders;
     }
     // return the pending orders of a given garage holder
-    public HashSet<CarOrder> getPendingOrdersFromGaragHolder(String name) {
-        HashSet<CarOrder> orders = new HashSet<CarOrder>();
+    private ArrayList<CarOrder> getPendingOrdersFromGaragHolder(String name) {
+        ArrayList<CarOrder> orders = new ArrayList<CarOrder>();
         for (CarOrder carOrder : this.productionScheduler.getPendingOrders()) {
             if (carOrder.getGarageholder().equals(name)) {
                 orders.add(carOrder);
             }
         }
+        PendingCarOrderComparator comparator = new PendingCarOrderComparator();
+        // sort the orders by the comparator
+        orders.sort(comparator);
         return orders;
     }
+
+    public ArrayList<CarOrder>[] getOrdersFromGarageHolder(String name) {
+        ArrayList<CarOrder>[] orders = new ArrayList[2];
+        orders[0] = getPendingOrdersFromGaragHolder(name);
+        orders[1] = getCompletedOrdersFromGaragHolder(name);
+       return orders;
+    }
+
 
     // return order details
     public ArrayList<String> getPendingOrderDetails(int ID) {

@@ -37,6 +37,10 @@ public class CarOrder {
      */
     private LocalDateTime completionTime;
 
+    public LocalDateTime getEstCompletionTime() {
+        return estCompletionTime;
+    }
+
     /**
      * The estimated completion date of this carorder in LocalDateTime format.
      */
