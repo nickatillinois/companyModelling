@@ -189,7 +189,7 @@ public class CarOrder {
         return modelAndOptions;
     }
 
-    public ArrayList<String> getPendingOrderDetails(){
+    private ArrayList<String> getPendingOrderDetails(){
         ArrayList<String> orderDetails = new ArrayList<>();
         orderDetails.add("Specifications: " + getCarModelAndOptions ());
         orderDetails.add("orderTime: " + orderingTime.toString());
@@ -197,12 +197,20 @@ public class CarOrder {
         return orderDetails;
     }
 
-    public ArrayList<String> getCompletedOrderDetails(){
+    private ArrayList<String> getCompletedOrderDetails(){
         ArrayList<String> orderDetails = new ArrayList<>();
         orderDetails.add("Specifications: " + getCarModelAndOptions ());
         orderDetails.add("orderTime: " + orderingTime.toString());
         orderDetails.add("completionTime: " + completionTime.toString());
         return orderDetails;
+    }
+    public ArrayList<String> getOrderDetails(){
+        if(completed){
+            return getCompletedOrderDetails();
+        }
+        else{
+            return getPendingOrderDetails();
+        }
     }
 
     @Override

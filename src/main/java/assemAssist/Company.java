@@ -42,7 +42,7 @@ public class Company {
     private ArrayList<CarOrder> getCompletedOrdersFromGaragHolder(String name) {
         ArrayList<CarOrder> orders = new ArrayList<CarOrder>();
         for (CarOrder carOrder : this.completedCarOrders) {
-            if (carOrder.getGarageholder().equals(name)) {
+            if (carOrder.getGarageholder().equalsIgnoreCase(name)) {
                 orders.add(carOrder);
             }
         }
@@ -55,7 +55,7 @@ public class Company {
     private ArrayList<CarOrder> getPendingOrdersFromGaragHolder(String name) {
         ArrayList<CarOrder> orders = new ArrayList<CarOrder>();
         for (CarOrder carOrder : this.productionScheduler.getPendingOrders()) {
-            if (carOrder.getGarageholder().equals(name)) {
+            if (carOrder.getGarageholder().equalsIgnoreCase(name)) {
                 orders.add(carOrder);
             }
         }
@@ -79,13 +79,13 @@ public class Company {
         for (CarOrder carOrder : pendingOrders) {
             // verwijder isCompleted check als werkt
             if (carOrder.getOrderID() == ID && !carOrder.isCompleted()) {
-                return carOrder.getPendingOrderDetails();
+                return carOrder.getOrderDetails();
             }
         }
         for (CarOrder carOrder : completedOrders) {
             // verwijder isCompleted check als werkt
             if (carOrder.getOrderID() == ID && carOrder.isCompleted()) {
-                return carOrder.getCompletedOrderDetails();
+                return carOrder.getOrderDetails();
             }
         }
         throw new OrderNotFoundException("ID: " + Integer.toString(ID) + " was not found in pending or completed orders");
