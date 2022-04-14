@@ -3,6 +3,7 @@ package assemAssist;
 import assemAssist.etc.CompletedCarOrderComparator;
 import assemAssist.etc.PendingCarOrderComparator;
 import assemAssist.exceptions.IllegalModelException;
+import assemAssist.exceptions.OrderNotFoundException;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -72,26 +73,22 @@ public class Company {
     }
 
 
-    // return order details
-    public ArrayList<String> getPendingOrderDetails(int ID) {
+    public ArrayList<String> getOrderDetails(int ID) throws OrderNotFoundException {
         ArrayList<CarOrder> pendingOrders = productionScheduler.getPendingOrders();
+        ArrayList<CarOrder> completedOrders = getCompletedCarOrders();
         for (CarOrder carOrder : pendingOrders) {
             // verwijder isCompleted check als werkt
             if (carOrder.getOrderID() == ID && !carOrder.isCompleted()) {
                 return carOrder.getPendingOrderDetails();
             }
         }
-        return null;
-    }
-    public ArrayList<String> getCompletedOrderDetails(int ID) {
-        ArrayList<CarOrder> completedOrders = getCompletedCarOrders();
         for (CarOrder carOrder : completedOrders) {
             // verwijder isCompleted check als werkt
             if (carOrder.getOrderID() == ID && carOrder.isCompleted()) {
-                return carOrder.getPendingOrderDetails();
+                return carOrder.getCompletedOrderDetails();
             }
         }
-        return null;
+        throw new OrderNotFoundException("ID: " + Integer.toString(ID) + " was not found in pending or completed orders");
     }
     public HashSet<String> getAvailableModels() {
         return catalog.getAvailableModelNames();

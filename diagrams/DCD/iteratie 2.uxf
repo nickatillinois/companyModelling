@@ -484,15 +484,14 @@ m2=1
       <x>660</x>
       <y>795</y>
       <w>615</w>
-      <h>285</h>
+      <h>315</h>
     </coordinates>
     <panel_attributes>Company
 --
 - getCompletedOrdersFromGaragHolder(name : String): List&lt;CarOrder&gt;
 - getPendingOrdersFromGaragHolder(name : String): List&lt;CarOrder&gt;
 + getOrdersFromGarageHolder(name: String): List&lt;CarOrder&gt;[]
-+ getPendingOrderDetails(int ID): List&lt;String&gt;
-+ getCompletedOrderDetails(int ID): List&lt;String&gt;
++ getOrderDetails(int ID): List&lt;String&gt;
 + getAvailableModels(): Set&lt;String&gt;
 + selectModelString(name : String) : String
 + selectModel(name : String) : Map&lt;String, Set&lt;String&gt;&gt;
@@ -528,14 +527,14 @@ m2=1
     <id>Relation</id>
     <coordinates>
       <x>855</x>
-      <y>1065</y>
+      <y>1095</y>
       <w>90</w>
-      <h>165</h>
+      <h>135</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 catalog
 m1=1</panel_attributes>
-    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -580,14 +579,14 @@ m1=1..n</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1245</x>
-      <y>1065</y>
+      <y>1095</y>
       <w>450</w>
-      <h>435</h>
+      <h>405</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..n
 completedCarOrders</panel_attributes>
-    <additional_attributes>260.0;270.0;260.0;170.0;10.0;170.0;10.0;10.0</additional_attributes>
+    <additional_attributes>260.0;250.0;260.0;150.0;10.0;150.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
