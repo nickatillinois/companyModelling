@@ -174,7 +174,7 @@ lt=&lt;-
       <h>42</h>
     </coordinates>
     <panel_attributes>availableModels : 
-List&lt; Map&lt; String, List&lt;String&gt;&gt;&gt;
+Set&lt;String&gt;
 lt=&lt;.
 </panel_attributes>
     <additional_attributes>10.0;20.0;340.0;20.0</additional_attributes>
@@ -592,7 +592,7 @@ lt=&lt;-
       <h>42</h>
     </coordinates>
     <panel_attributes>availableModels : 
-List&lt; Map&lt; String, List&lt;String&gt;&gt;&gt;
+Set&lt;String&gt;
 lt=&lt;.
 </panel_attributes>
     <additional_attributes>10.0;20.0;360.0;20.0</additional_attributes>
@@ -652,7 +652,7 @@ lt=&lt;-
       <h>35</h>
     </coordinates>
     <panel_attributes>availableOptions : 
-Map&lt; String, List&lt;String&gt;&gt;
+Map&lt;String, HashSet&lt;String&gt;&gt;
 lt=&lt;.</panel_attributes>
     <additional_attributes>10.0;20.0;360.0;20.0</additional_attributes>
   </element>
@@ -664,7 +664,7 @@ lt=&lt;.</panel_attributes>
       <w>105</w>
       <h>21</h>
     </coordinates>
-    <panel_attributes>: CarOrderSpecification</panel_attributes>
+    <panel_attributes>: CarModelSpecification</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -775,7 +775,7 @@ lt=&lt;.</panel_attributes>
       <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-getModels()</panel_attributes>
+getAvailableModels()</panel_attributes>
     <additional_attributes>250.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -809,7 +809,7 @@ getModels()</panel_attributes>
       <h>28</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-getAvailableOptions()</panel_attributes>
+getModelName()</panel_attributes>
     <additional_attributes>210.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -821,8 +821,8 @@ getAvailableOptions()</panel_attributes>
       <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
-availableOptions : 
-Map&lt; String, List&lt;String&gt;&gt;</panel_attributes>
+name : 
+String</panel_attributes>
     <additional_attributes>10.0;20.0;210.0;20.0</additional_attributes>
   </element>
   <element>
@@ -830,13 +830,13 @@ Map&lt; String, List&lt;String&gt;&gt;</panel_attributes>
     <coordinates>
       <x>791</x>
       <y>329</y>
-      <w>182</w>
+      <w>168</w>
       <h>35</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 availableModels : 
-List&lt; Map&lt; String, List&lt;String&gt;&gt;&gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;240.0;20.0</additional_attributes>
+Set&lt;String&gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLFrame</id>
@@ -860,7 +860,7 @@ halign=left
       <w>182</w>
       <h>35</h>
     </coordinates>
-    <panel_attributes>getModel(name : String)
+    <panel_attributes>getModelSpecifications(name : String)
 lt=&lt;-
 </panel_attributes>
     <additional_attributes>240.0;20.0;10.0;20.0</additional_attributes>
@@ -898,7 +898,7 @@ lt=&lt;-
       <h>42</h>
     </coordinates>
     <panel_attributes>availableOptions : 
-Map&lt; String, List&lt;String&gt;&gt;
+Map&lt;String, HashSet&lt;String&gt;&gt;
 lt=&lt;.
 </panel_attributes>
     <additional_attributes>10.0;20.0;210.0;20.0</additional_attributes>
@@ -912,7 +912,7 @@ lt=&lt;.
       <h>42</h>
     </coordinates>
     <panel_attributes>availableOptions : 
-Map&lt; String, List&lt;String&gt;&gt;
+Map&lt;String, HashSet&lt;String&gt;&gt;
 lt=&lt;.
 </panel_attributes>
     <additional_attributes>10.0;20.0;240.0;20.0</additional_attributes>
@@ -1083,15 +1083,15 @@ lt=&lt;.</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>959</x>
-      <y>308</y>
-      <w>196</w>
-      <h>63</h>
+      <x>945</x>
+      <y>294</y>
+      <w>203</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>loop
 --
 halign=left
-[all options]</panel_attributes>
+[all Specifications]</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
