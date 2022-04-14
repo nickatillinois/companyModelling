@@ -17,8 +17,8 @@ public class Inspector {
     /**
      * Creates a new inspector.
      */
-    public Inspector(CarModel carModel) throws IllegalConstraintException {
-        constraints = new ArrayList<Constraint>();
+    public Inspector(CarModel carModel)  {
+        constraints = new ArrayList<>();
         this.carModel = carModel;
         addConstraints();
     }

@@ -921,11 +921,11 @@ m1=0..n</panel_attributes>
     <coordinates>
       <x>836</x>
       <y>968</y>
-      <w>374</w>
-      <h>726</h>
+      <w>770</w>
+      <h>715</h>
     </coordinates>
     <panel_attributes>lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;10.0;100.0;10.0;100.0;580.0;320.0;580.0;320.0;640.0</additional_attributes>
+    <additional_attributes>10.0;10.0;100.0;10.0;100.0;580.0;680.0;580.0;680.0;630.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>

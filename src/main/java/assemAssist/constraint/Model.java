@@ -23,6 +23,7 @@ public class Model extends Constraint{
         for (String availableModelName : catalog.getAvailableModelNames()) {
             if (availableModelName.equalsIgnoreCase(modelName)) {
                 containsModelName = true;
+                break;
             }
         }
         if (!containsModelName) {
@@ -36,6 +37,7 @@ public class Model extends Constraint{
                 for (String availableKey : model.keySet()) {
                     if (availableKey.equalsIgnoreCase(key)) {
                         containsKey = true;
+                        break;
                     }
                 }
                 if (!containsKey) {
