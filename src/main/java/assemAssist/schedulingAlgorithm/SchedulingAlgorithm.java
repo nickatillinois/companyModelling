@@ -6,5 +6,5 @@ import java.time.LocalDate;
 
 public abstract class SchedulingAlgorithm {
 
-    protected abstract LocalDate addOrderToProductionSchedule(CarOrder order);
+    public abstract LocalDate addOrderToProductionSchedule(CarOrder order);
 }

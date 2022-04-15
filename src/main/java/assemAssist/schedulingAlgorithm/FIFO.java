@@ -8,7 +8,7 @@ public class FIFO extends SchedulingAlgorithm {
 
 
     @Override
-    protected LocalDate addOrderToProductionSchedule(CarOrder order) {
+    public LocalDate addOrderToProductionSchedule(CarOrder order) {
         return null;
     }
 }

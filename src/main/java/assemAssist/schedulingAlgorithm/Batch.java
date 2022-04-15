@@ -8,7 +8,7 @@ public class Batch extends SchedulingAlgorithm{
 
 
     @Override
-    protected LocalDate addOrderToProductionSchedule(CarOrder order) {
+    public LocalDate addOrderToProductionSchedule(CarOrder order) {
         return null;
     }
 }
