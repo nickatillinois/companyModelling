@@ -6,9 +6,14 @@ import assemAssist.exceptions.IllegalModelException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public abstract class SchedulingAlgorithm {
     List<CarOrder> carOrderList = new ArrayList<>();
+
+    public abstract List<String> posibleBatch();
+
+    public abstract void selectBatch(String selectBatch);
 
     public abstract CarOrder getNextCarOrder();
 

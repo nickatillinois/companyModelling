@@ -9,6 +9,16 @@ public class FIFO extends SchedulingAlgorithm {
     String name = "FIFO";
 
     @Override
+    public List<String> posibleBatch() {
+        return null;
+    }
+
+    @Override
+    public void selectBatch(String selectBatch) {
+        throw new  IllegalCallerException("This algoritme contains no batches.");
+    }
+
+    @Override
     public CarOrder getNextCarOrder() {
         if (carOrderList.isEmpty())
                 return null;

@@ -33,8 +33,12 @@ public ProductionScheduler(){
 }
 
 
-    public void selectSchedulingAlgorithm(SchedulingAlgorithm algorithm) throws IllegalArgumentException{
-        setSchedulingAlgorithm(algorithm);
+    public void selectSchedulingAlgorithm(String algorithm) throws IllegalArgumentException{
+        for (SchedulingAlgorithm algorithm1 : schedulers )
+            if (Objects.equals(algorithm, algorithm1.getName()))
+                setSchedulingAlgorithm(algorithm1);
+        if (!Objects.equals(getSchedulingAlgorithm().getName(), algorithm))
+            throw new IllegalArgumentException("This is not a valid argument!");
     }
 
     /**
@@ -177,10 +181,6 @@ public ProductionScheduler(){
         }
         return pending;
     }
-
-
-
-
 
     /**
      * @return The current scheduling algorithm

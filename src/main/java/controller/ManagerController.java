@@ -14,15 +14,6 @@ public class ManagerController {
         this.company = company;
     }
 
-    /* public List<List<String>> newLogin() {
-        return productionScheduler.getCurrentAndFutureStatusAndTaskStatus();
-    }
-
-    public List<String> confirmAdvance(int currentPhaseTime) {
-        List<String> MoveOrNot = productionScheduler.advanceOrders(currentPhaseTime);
-
-        return MoveOrNot;
-    }*/
 
     public List<String> checkStatistics() {
         List<String> statistics = new ArrayList<>();
@@ -43,11 +34,17 @@ public class ManagerController {
         return company.getProductionScheduler().getSchedulingAlgorithms();
     }
 
-    public List<List<String>> selectSchedulingAlgorithm( String algorithmName) {
-      return company.getProductionScheduler().selectSchedulingAlgorithm(algorithmName);
+    public List<String> selectSchedulingAlgorithm( String algorithmName) {
+        company.getProductionScheduler().selectSchedulingAlgorithm(algorithmName);
+        return company.getProductionScheduler().getSchedulingAlgorithm().posibleBatch();
     }
 
-    public void selectBatchSet (List<String> batchSet) {
-        company.getProductionScheduler().selectBatchSet(batchSet);
+    public void selectBatchSet (String batchSet) {
+        try{
+            company.getProductionScheduler().getSchedulingAlgorithm().selectBatch(batchSet);
+        }
+        catch (Exception e) {
+            throw new IllegalArgumentException("This is not a vallid batch set.");
+        }
     }
 }
