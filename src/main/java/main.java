@@ -18,8 +18,8 @@ public class main {
 
     public static void main(String[] args) throws IllegalModelException, IllegalChoiceException, IllegalCompletionDateException {
         AssemblyLine assemblyLine = new AssemblyLine();
-        ProductionScheduler productionScheduler = new ProductionScheduler(assemblyLine);
-        Company company = new Company(productionScheduler);
+        ProductionScheduler productionScheduler = new ProductionScheduler();
+        Company company = new Company();
         GarageHolderController garageHolderController = new GarageHolderController(productionScheduler);
         GarageHolderUI garageHolderUI = new GarageHolderUI(garageHolderController);
 

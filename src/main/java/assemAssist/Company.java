@@ -7,6 +7,7 @@ import assemAssist.exceptions.OrderNotFoundException;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 
 public class Company {
@@ -52,21 +53,16 @@ public class Company {
         return orders;
     }
     // return the pending orders of a given garage holder
-    private ArrayList<CarOrder> getPendingOrdersFromGaragHolder(String name) {
-        ArrayList<CarOrder> orders = new ArrayList<CarOrder>();
-        for (CarOrder carOrder : this.productionScheduler.getPendingOrders()) {
-            if (carOrder.getGarageholder().equalsIgnoreCase(name)) {
-                orders.add(carOrder);
-            }
-        }
+    private List<CarOrder> getPendingOrdersFromGaragHolder(String name) {
+        List<CarOrder> orders = getProductionScheduler().getPendingOrdersFromGarageHolder(name);
         PendingCarOrderComparator comparator = new PendingCarOrderComparator();
         // sort the orders by the comparator
         orders.sort(comparator);
         return orders;
     }
 
-    public ArrayList<CarOrder>[] getOrdersFromGarageHolder(String name) {
-        ArrayList<CarOrder>[] orders = new ArrayList[2];
+    public List<CarOrder>[] getOrdersFromGarageHolder(String name) {
+        List<CarOrder>[] orders = new java.util.List[2];
         orders[0] = getPendingOrdersFromGaragHolder(name);
         orders[1] = getCompletedOrdersFromGaragHolder(name);
        return orders;
@@ -74,7 +70,7 @@ public class Company {
 
 
     public ArrayList<String> getOrderDetails(int ID) throws OrderNotFoundException {
-        ArrayList<CarOrder> pendingOrders = productionScheduler.getPendingOrders();
+        ArrayList<CarOrder> pendingOrders = (ArrayList<CarOrder>) productionScheduler.getPendingOrders();
         ArrayList<CarOrder> completedOrders = getCompletedCarOrders();
         for (CarOrder carOrder : pendingOrders) {
             // verwijder isCompleted check als werkt

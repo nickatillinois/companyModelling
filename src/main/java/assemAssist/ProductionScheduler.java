@@ -172,7 +172,7 @@ public ProductionScheduler(){
      * @param garageHolder | the garage holder of whom the car orders are to be found
      * @return list of car orders
      */
-    private List<CarOrder> getPendingOrdersFromGarageHolder(String garageHolder){
+    public List<CarOrder> getPendingOrdersFromGarageHolder(String garageHolder){
         List<CarOrder> pending = new ArrayList<>();
         for(WorkStation workStation : getAssemblyLine().getWorkStations()){
             if (workStation.getCurrentOrder() != null)
@@ -196,5 +196,12 @@ public ProductionScheduler(){
         if (!schedulers.contains(schedulingAlgorithm))
             throw new IllegalArgumentException("This is not a valid scheduling algorithm");
         this.schedulingAlgorithm = schedulingAlgorithm;
+    }
+    public List<CarOrder> getPendingOrders(){
+        ArrayList<CarOrder> pending = new ArrayList<>();
+        for (WorkStation workStation : getAssemblyLine().getWorkStations())
+            if (workStation.getCurrentOrder() != null)
+                pending.add(workStation.getCurrentOrder());
+        return pending;
     }
 }
