@@ -1,15 +1,18 @@
-import assemAssist.*;
-import assemAssist.carOrder.*;
+import assemAssist.AssemblyLine;
+import assemAssist.Company;
+import assemAssist.Mechanic;
+import assemAssist.CarOrder;
+import assemAssist.ProductionScheduler;
 import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalCompletionDateException;
 import assemAssist.exceptions.IllegalModelException;
+import controller.GarageHolderController;
 import controller.ManagerController;
 import controller.MechanicController;
 import ui.GarageHolderUI;
 import ui.ManagerUI;
 import ui.MechanicUI;
 import ui.UI;
-import controller.GarageHolderController;
 
 public class main {
 

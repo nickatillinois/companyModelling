@@ -1,6 +1,7 @@
 package controller;
 
 import assemAssist.Company;
+import assemAssist.schedulingAlgorithm.SchedulingAlgorithm;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +43,7 @@ public class ManagerController {
         return company.getProductionScheduler().getSchedulingAlgorithms();
     }
 
-    public List<List<String>> selectSchedulingAlgorithm(String algorithmName) {
+    public List<List<String>> selectSchedulingAlgorithm( String algorithmName) {
       return company.getProductionScheduler().selectSchedulingAlgorithm(algorithmName);
     }
 

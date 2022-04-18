@@ -1,7 +1,12 @@
 package assemAssist;
 
 import assemAssist.exceptions.IllegalCompletionDateException;
+import assemAssist.exceptions.IllegalConstraintException;
+import assemAssist.exceptions.IllegalModelException;
+import assemAssist.schedulingAlgorithm.Batch;
+import assemAssist.schedulingAlgorithm.FIFO;
 import assemAssist.workStation.WorkStation;
+import assemAssist.schedulingAlgorithm.SchedulingAlgorithm;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -16,77 +21,47 @@ import java.util.stream.Collectors;
  */
 public class ProductionScheduler {
 private final AssemblyLine assemblyLine;
-private final List<CarOrder> fifoProductionSchedule;
-private List<CarOrder> productionSchedule;
-private final ArrayList<String> schedulingAlgorithms;
-private String algorithm;
-private static final String FIRSTALGORITHM = "FIFO";
-private static final String SECONDALGORITHM = "Specification Batch";
-
+private SchedulingAlgorithm schedulingAlgorithm = new FIFO();
+private final ArrayList<SchedulingAlgorithm> schedulers = new ArrayList<>();
     /**
      * Create a new production schedule af a single assembly line that can be managed by the manager
      */
 public ProductionScheduler(){
-    fifoProductionSchedule = new ArrayList<>();
+    schedulers.add(new FIFO());
+    schedulers.add(new Batch());
     this.assemblyLine = new AssemblyLine();
-     schedulingAlgorithms = new ArrayList<>();
-    schedulingAlgorithms.add(FIRSTALGORITHM);
-    schedulingAlgorithms.add(SECONDALGORITHM);
-    if (getSchedulingAlgorithms().contains(FIRSTALGORITHM))
-        setAlgorithm(FIRSTALGORITHM);
-    else
-        throw new IllegalArgumentException("The algorithm you will be set is not a valid one!");
 }
 
-    /**
-     * This function will change the algorithm of the production schedule. If the algorithm is "FIFO" the production
-     * schedule is updated.
-     * @param algorithm is the name of the new selected algorithm
-     * @return null if the algorithm is "FIFO"
-     *       | return the list of batch of options if the algorithm is "Specification Batch".
-     * @throws IllegalArgumentException if the algorithm is not one of the possible algorithms then it throws an exception.
-     */
-    public List<List<String>> selectSchedulingAlgorithm(String algorithm) throws IllegalArgumentException{
-    if (getSchedulingAlgorithms().contains(algorithm)){
-        setAlgorithm(algorithm);
-        if (getAlgorithm().equals(FIRSTALGORITHM)){
-            productionSchedule = fifoProductionSchedule;
-        }
-        else if (getAlgorithm().equals(SECONDALGORITHM)){
-            List<List<String>> listOfBatchOptions = specificBatchAlgorithm();
-            if (listOfBatchOptions == null) {
-                productionSchedule = fifoProductionSchedule;
-                setAlgorithm(FIRSTALGORITHM);
-            }
-            else
-                return listOfBatchOptions;
-        }
-    else
-        throw new IllegalArgumentException("The given algorithm is not valid!");
-    }
-        return null;
+
+    public void selectSchedulingAlgorithm(SchedulingAlgorithm algorithm) throws IllegalArgumentException{
+        setSchedulingAlgorithm(algorithm);
     }
 
     /**
      * @return a list of a list of options where for there are more than 3 orders with the same set of options.
-     */
+     *//*
     private List<List<String>> specificBatchAlgorithm(){
     //TODO gaat kijken welke carOrders allemaal dezelfde options hebben. Indien deze niet bestaan return null
     return null;
-    }
+    }*/
 
-    /**
+/*
+    */
+/**
      * This function will update the production schedule and place the orders with the same options in the front of
      * the schedule the other orders are scheduled in "FIFO".
      * @param options is the list of options where for al the cars will be produced first.
      * @throws IllegalCallerException throws this exception if the methode is called with a set of options that not
      *                              | have more than 2 car orders.
-     */
+     *//*
+
     public void selectBatchSet(List<String> options) throws IllegalCallerException{
         List<CarOrder> carOrderWithSameOptions = new ArrayList<>();
         List<CarOrder> otherCarOrders = new ArrayList<>();
         for (CarOrder carOrder : fifoProductionSchedule){
-            if(true /*options == carOrder.getCarModel().getOptions()*/){
+            if(true */
+/*options == carOrder.getCarModel().getOptions()*//*
+){
                 //TODO deze conditie invullen
                 carOrderWithSameOptions.add(carOrder);
             }
@@ -99,13 +74,17 @@ public ProductionScheduler(){
         setAlgorithm(SECONDALGORITHM);
         productionSchedule = carOrderWithSameOptions;
     }
+*/
 
     /**
      * This function returns a list of the possible scheduling algorithms.
      * @return the list of possible scheduling algorithms.
      */
     public List<String> getSchedulingAlgorithms(){
-        return schedulingAlgorithms;
+        List<String> algorithms = new ArrayList<>();
+        for( SchedulingAlgorithm schedulingAlgorithm : schedulers)
+            algorithms.add(schedulingAlgorithm.getName());
+        return algorithms;
 }
 
 
@@ -122,8 +101,8 @@ public ProductionScheduler(){
      * algorithm.
      * @return productionSchedule
      */
-    public List<CarOrder> getProductionSchedule() {
-        return productionSchedule;
+    private List<CarOrder> getProductionSchedule() {
+        return schedulingAlgorithm.getProductionSchedule();
     }
 
     /**
@@ -135,13 +114,10 @@ public ProductionScheduler(){
     public void advanceOrders(int timeBetweenTwoStates){
         if (!assemblyLine.canMove())
             return;
-        if (productionSchedule.equals(fifoProductionSchedule))
-            selectSchedulingAlgorithm(FIRSTALGORITHM);
-        if (productionSchedule.isEmpty())
+        if (getProductionSchedule().isEmpty())
             assemblyLine.move(null,timeBetweenTwoStates);
         else {
-            CarOrder carOrder= productionSchedule.remove(0);
-            fifoProductionSchedule.remove(carOrder);
+            CarOrder carOrder = schedulingAlgorithm.getNextCarOrder();
             assemblyLine.move(carOrder, timeBetweenTwoStates);
         }
     }
@@ -160,12 +136,14 @@ public ProductionScheduler(){
      * @param carOrder | the car order added to the proction schedule
      * @throws NullPointerException | car order is null
      */
-    public LocalDate addOrderToProductionSchedule(CarOrder carOrder) throws NullPointerException, IllegalCompletionDateException {
+    public LocalDate addOrderToProductionSchedule(CarOrder carOrder) throws NullPointerException, IllegalCompletionDateException, IllegalConstraintException, IllegalModelException {
         if (carOrder != null) {
-            productionSchedule.add(carOrder);
+            schedulingAlgorithm.addOrderToProductionSchedule(carOrder);
             int carsToProduceToday = Math.min(assemblyLine.remainWorkingTime() - 2,0);
-            float carsToProduceLater = productionSchedule.size() -carsToProduceToday;
-            int daysNeeded = (int)Math.ceil(carsToProduceLater/14);
+            float carsToProduceLater = getProductionSchedule().size() -carsToProduceToday;
+            int daysNeeded = 0;
+            if (carsToProduceLater != 0 )
+                daysNeeded = (int)Math.ceil(carsToProduceLater/14);
             return LocalDate.now().plusDays(daysNeeded);
         }
         else
@@ -179,13 +157,8 @@ public ProductionScheduler(){
      * @return list of car order
      */
     public List<CarOrder> getOrdersFromGarageHolder(String garageHolder){
-        List<CarOrder> orderFromGarageHolder = productionSchedule.stream().
+        List<CarOrder> orderFromGarageHolder = schedulingAlgorithm.getProductionSchedule().stream().
                 filter(p-> Objects.equals(p.getGarageholder(), garageHolder)).collect(Collectors.toList());
-        List<CarOrder> orderInWorkstations = getCurrentState();
-        for (CarOrder order : orderInWorkstations){
-            if (order != null)
-                orderFromGarageHolder.add(order);
-        }
         orderFromGarageHolder.addAll(getPendingOrdersFromGarageHolder(garageHolder));
         return orderFromGarageHolder;
     }
@@ -196,7 +169,7 @@ public ProductionScheduler(){
      * @return list of car orders
      */
     private List<CarOrder> getPendingOrdersFromGarageHolder(String garageHolder){
-        List<CarOrder> pending = productionSchedule.stream().filter(p-> Objects.equals(p.getGarageholder(), garageHolder)).collect(Collectors.toList());
+        List<CarOrder> pending = new ArrayList<>();
         for(WorkStation workStation : getAssemblyLine().getWorkStations()){
             if (workStation.getCurrentOrder() != null)
                 if (Objects.equals(workStation.getCurrentOrder().getGarageholder(), garageHolder))
@@ -206,22 +179,22 @@ public ProductionScheduler(){
     }
 
 
-    /**
-     * @param algorithm the selected algorithm
-     * @throws IllegalArgumentException if the algorithm is not valid!
-     */
-    public void setAlgorithm(String algorithm) throws IllegalArgumentException {
-        if (getSchedulingAlgorithms().contains(algorithm))
-            this.algorithm = algorithm;
-        else
-            throw new IllegalArgumentException("The algorithm you will be set is not a valid one!");
 
-    }
+
 
     /**
      * @return The current scheduling algorithm
      */
-    public String getAlgorithm() {
-        return algorithm;
+    public SchedulingAlgorithm getSchedulingAlgorithm() {
+        return schedulingAlgorithm;
+    }
+    /**
+     * @param schedulingAlgorithm selected algorithm
+     * @throws IllegalArgumentException if the algorithm is not valid!
+     */
+    public void setSchedulingAlgorithm(SchedulingAlgorithm schedulingAlgorithm) throws IllegalArgumentException {
+        if (!schedulers.contains(schedulingAlgorithm))
+            throw new IllegalArgumentException("This is not a valid scheduling algorithm");
+        this.schedulingAlgorithm = schedulingAlgorithm;
     }
 }
