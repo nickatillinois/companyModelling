@@ -1,5 +1,7 @@
 package assemAssist;
 
+import assemAssist.observer.StatisticsObservable;
+import assemAssist.observer.StatisticsObserver;
 import assemAssist.workStation.AccessoriesPost;
 import assemAssist.workStation.CarBodyPost;
 import assemAssist.workStation.DrivetrainPost;
@@ -13,7 +15,7 @@ import java.util.List;
  *
  * @author SWOP Team 10
  */
-public class AssemblyLine {
+public class AssemblyLine implements StatisticsObservable {
     private List<WorkStation> workStations;
     private int minutesWorkedToday = 0;
     private final int STARTHOUR = 6;
@@ -198,6 +200,7 @@ public class AssemblyLine {
                 s += "No Order in this workstation";
             newStateAndFinished.add(s);
         }
+        notifyObservers();
         return newStateAndFinished;
     }
 
@@ -214,5 +217,18 @@ public class AssemblyLine {
         throw new IllegalArgumentException("This is not a work station at this assembly line!");
     }
 
+    public void addObserver(StatisticsObserver observer) {
+        observers.add(observer);
+    }
+
+    public void removeObserver(StatisticsObserver observer) {
+        observers.remove(observer);
+    }
+
+    public void notifyObservers() {
+        for (StatisticsObserver observer : observers) {
+            observer.update();
+        }
+    }
 
 }

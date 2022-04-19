@@ -1,7 +1,4 @@
-package java;
-
 import assemAssist.ProductionScheduler;
-import assemAssist.carOrder.*;
 import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalCompletionDateException;
 import assemAssist.exceptions.IllegalModelException;
