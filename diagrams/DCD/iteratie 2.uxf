@@ -28,7 +28,7 @@ fontsize=10
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1452</x>
+      <x>1793</x>
       <y>1309</y>
       <w>231</w>
       <h>88</h>
@@ -48,7 +48,7 @@ bg=green
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1430</x>
+      <x>1771</x>
       <y>1078</y>
       <w>275</w>
       <h>209</h>
@@ -77,7 +77,7 @@ bg=green
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1485</x>
+      <x>1826</x>
       <y>704</y>
       <w>583</w>
       <h>220</h>
@@ -105,7 +105,7 @@ schedulingAlgorithms : List&lt;String&gt;
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1650</x>
+      <x>1991</x>
       <y>913</y>
       <w>132</w>
       <h>187</h>
@@ -120,7 +120,7 @@ productionSchedule
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2200</x>
+      <x>2541</x>
       <y>759</y>
       <w>297</w>
       <h>176</h>
@@ -145,7 +145,7 @@ productionSchedule
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2167</x>
+      <x>2508</x>
       <y>1056</y>
       <w>396</w>
       <h>275</h>
@@ -173,7 +173,7 @@ _+ newTasks()_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2343</x>
+      <x>2684</x>
       <y>924</y>
       <w>99</w>
       <h>154</h>
@@ -187,7 +187,7 @@ workStations</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1826</x>
+      <x>2167</x>
       <y>0</y>
       <w>121</w>
       <h>33</h>
@@ -199,7 +199,7 @@ workStations</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2519</x>
+      <x>2860</x>
       <y>660</y>
       <w>88</w>
       <h>418</h>
@@ -213,7 +213,7 @@ workStation</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2717</x>
+      <x>3058</x>
       <y>1144</y>
       <w>220</w>
       <h>110</h>
@@ -231,7 +231,7 @@ workStation</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2552</x>
+      <x>2893</x>
       <y>1188</y>
       <w>187</w>
       <h>44</h>
@@ -246,7 +246,7 @@ m2=1..n
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>957</x>
+      <x>1298</x>
       <y>484</y>
       <w>77</w>
       <h>121</h>
@@ -259,7 +259,7 @@ company</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>902</x>
+      <x>1243</x>
       <y>330</y>
       <w>429</w>
       <h>165</h>
@@ -279,7 +279,7 @@ company</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1540</x>
+      <x>1881</x>
       <y>341</y>
       <w>385</w>
       <h>110</h>
@@ -295,7 +295,7 @@ company</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2156</x>
+      <x>2497</x>
       <y>330</y>
       <w>440</w>
       <h>132</h>
@@ -312,7 +312,7 @@ company</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2343</x>
+      <x>2684</x>
       <y>198</y>
       <w>121</w>
       <h>154</h>
@@ -325,7 +325,7 @@ mechanicController</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1265</x>
+      <x>1606</x>
       <y>231</y>
       <w>143</w>
       <h>121</h>
@@ -339,7 +339,7 @@ garageHolderController</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1826</x>
+      <x>2167</x>
       <y>231</y>
       <w>121</w>
       <h>132</h>
@@ -352,7 +352,7 @@ managerController</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1254</x>
+      <x>1595</x>
       <y>187</y>
       <w>231</w>
       <h>55</h>
@@ -365,7 +365,7 @@ managerController</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1716</x>
+      <x>2057</x>
       <y>187</y>
       <w>231</w>
       <h>55</h>
@@ -378,7 +378,7 @@ managerController</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2244</x>
+      <x>2585</x>
       <y>154</y>
       <w>231</w>
       <h>55</h>
@@ -391,7 +391,7 @@ managerController</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2057</x>
+      <x>2398</x>
       <y>660</y>
       <w>231</w>
       <h>88</h>
@@ -405,7 +405,7 @@ productionScheduler</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1914</x>
+      <x>2255</x>
       <y>22</y>
       <w>451</w>
       <h>154</h>
@@ -418,7 +418,7 @@ mechanicUI</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1364</x>
+      <x>1705</x>
       <y>22</y>
       <w>495</w>
       <h>187</h>
@@ -431,7 +431,7 @@ garageHolderUI</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1870</x>
+      <x>2211</x>
       <y>22</y>
       <w>88</w>
       <h>187</h>
@@ -444,7 +444,7 @@ managerUI</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2057</x>
+      <x>2398</x>
       <y>836</y>
       <w>165</w>
       <h>44</h>
@@ -457,7 +457,7 @@ assemblyLine</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1562</x>
+      <x>1903</x>
       <y>1276</y>
       <w>88</w>
       <h>55</h>
@@ -470,7 +470,7 @@ m2=1
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1694</x>
+      <x>2035</x>
       <y>1111</y>
       <w>495</w>
       <h>44</h>
@@ -484,7 +484,7 @@ m2=1
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>770</x>
+      <x>1111</x>
       <y>583</y>
       <w>451</w>
       <h>231</h>
@@ -512,7 +512,7 @@ bg=yellow
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>770</x>
+      <x>1111</x>
       <y>880</y>
       <w>363</w>
       <h>110</h>
@@ -532,7 +532,7 @@ bg=green
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>913</x>
+      <x>1254</x>
       <y>803</y>
       <w>66</w>
       <h>99</h>
@@ -545,7 +545,7 @@ m1=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1210</x>
+      <x>1551</x>
       <y>440</y>
       <w>462</w>
       <h>187</h>
@@ -558,7 +558,7 @@ m1=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1210</x>
+      <x>1551</x>
       <y>693</y>
       <w>297</w>
       <h>44</h>
@@ -571,7 +571,7 @@ m1=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>913</x>
+      <x>1254</x>
       <y>979</y>
       <w>143</w>
       <h>154</h>
@@ -584,7 +584,7 @@ m1=1..n</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1199</x>
+      <x>1540</x>
       <y>803</y>
       <w>330</w>
       <h>297</h>
@@ -597,7 +597,7 @@ completedCarOrders</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>770</x>
+      <x>1111</x>
       <y>1111</y>
       <w>319</w>
       <h>231</h>
@@ -626,7 +626,7 @@ bg=green
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2200</x>
+      <x>2541</x>
       <y>539</y>
       <w>440</w>
       <h>132</h>
@@ -643,7 +643,7 @@ bg=green
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2343</x>
+      <x>2684</x>
       <y>451</y>
       <w>77</w>
       <h>110</h>
@@ -656,7 +656,7 @@ m1=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2343</x>
+      <x>2684</x>
       <y>660</y>
       <w>99</w>
       <h>121</h>
@@ -670,7 +670,7 @@ assemblyLine</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2167</x>
+      <x>2508</x>
       <y>1397</y>
       <w>110</w>
       <h>22</h>
@@ -681,7 +681,7 @@ assemblyLine</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2299</x>
+      <x>2640</x>
       <y>1397</y>
       <w>110</w>
       <h>22</h>
@@ -692,7 +692,7 @@ assemblyLine</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2431</x>
+      <x>2772</x>
       <y>1397</y>
       <w>121</w>
       <h>22</h>
@@ -703,7 +703,7 @@ assemblyLine</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2365</x>
+      <x>2706</x>
       <y>1320</y>
       <w>143</w>
       <h>99</h>
@@ -714,7 +714,7 @@ assemblyLine</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2343</x>
+      <x>2684</x>
       <y>1320</y>
       <w>55</w>
       <h>99</h>
@@ -725,7 +725,7 @@ assemblyLine</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2222</x>
+      <x>2563</x>
       <y>1320</y>
       <w>176</w>
       <h>99</h>
@@ -736,7 +736,7 @@ assemblyLine</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1452</x>
+      <x>1793</x>
       <y>1496</y>
       <w>231</w>
       <h>88</h>
@@ -754,7 +754,7 @@ bg=green
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1419</x>
+      <x>1760</x>
       <y>1672</y>
       <w>297</w>
       <h>88</h>
@@ -772,7 +772,7 @@ bg=green
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1144</x>
+      <x>1485</x>
       <y>1661</y>
       <w>231</w>
       <h>22</h>
@@ -786,7 +786,7 @@ bg=green
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1144</x>
+      <x>1485</x>
       <y>1749</y>
       <w>231</w>
       <h>22</h>
@@ -799,7 +799,7 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1760</x>
+      <x>2101</x>
       <y>1661</y>
       <w>231</w>
       <h>22</h>
@@ -813,7 +813,7 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1760</x>
+      <x>2101</x>
       <y>1749</y>
       <w>231</w>
       <h>22</h>
@@ -827,7 +827,7 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1408</x>
+      <x>1749</x>
       <y>1672</y>
       <w>33</w>
       <h>33</h>
@@ -838,7 +838,7 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1408</x>
+      <x>1749</x>
       <y>1716</y>
       <w>33</w>
       <h>33</h>
@@ -849,7 +849,7 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1364</x>
+      <x>1705</x>
       <y>1749</y>
       <w>77</w>
       <h>33</h>
@@ -860,7 +860,7 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1749</x>
+      <x>2090</x>
       <y>1661</y>
       <w>33</w>
       <h>33</h>
@@ -871,7 +871,7 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1705</x>
+      <x>2046</x>
       <y>1749</y>
       <w>77</w>
       <h>33</h>
@@ -882,7 +882,7 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1705</x>
+      <x>2046</x>
       <y>1661</y>
       <w>77</w>
       <h>33</h>
@@ -893,7 +893,7 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1364</x>
+      <x>1705</x>
       <y>1661</y>
       <w>77</w>
       <h>33</h>
@@ -904,7 +904,7 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1551</x>
+      <x>1892</x>
       <y>1573</y>
       <w>88</w>
       <h>121</h>
@@ -917,18 +917,19 @@ m1=0..n</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1551</x>
+      <x>1892</x>
       <y>1386</y>
-      <w>33</w>
+      <w>66</w>
       <h>132</h>
     </coordinates>
-    <panel_attributes>lt=&lt;.</panel_attributes>
+    <panel_attributes>lt=&lt;.
+&lt;&lt;use&gt;&gt;</panel_attributes>
     <additional_attributes>10.0;100.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1122</x>
+      <x>1463</x>
       <y>968</y>
       <w>770</w>
       <h>715</h>
@@ -939,7 +940,7 @@ m1=0..n</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1584</x>
+      <x>1925</x>
       <y>1386</y>
       <w>88</w>
       <h>132</h>
@@ -952,7 +953,7 @@ m2=1
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>396</x>
+      <x>737</x>
       <y>550</y>
       <w>231</w>
       <h>66</h>
@@ -966,20 +967,20 @@ m2=1
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>616</x>
-      <y>594</y>
+      <x>957</x>
+      <y>583</y>
       <w>176</w>
       <h>44</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1..n
 statistics</panel_attributes>
-    <additional_attributes>10.0;10.0;140.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;140.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>286</x>
+      <x>627</x>
       <y>660</y>
       <w>176</w>
       <h>55</h>
@@ -991,7 +992,7 @@ statistics</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>495</x>
+      <x>836</x>
       <y>660</y>
       <w>176</w>
       <h>55</h>
@@ -1003,7 +1004,7 @@ statistics</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>495</x>
+      <x>836</x>
       <y>605</y>
       <w>110</w>
       <h>77</h>
@@ -1014,7 +1015,7 @@ statistics</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>418</x>
+      <x>759</x>
       <y>605</y>
       <w>110</w>
       <h>77</h>
@@ -1025,7 +1026,7 @@ statistics</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>605</x>
+      <x>946</x>
       <y>253</y>
       <w>198</w>
       <h>55</h>
@@ -1042,7 +1043,7 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>594</x>
+      <x>935</x>
       <y>297</y>
       <w>33</w>
       <h>88</h>
@@ -1053,33 +1054,32 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>506</x>
+      <x>847</x>
       <y>363</y>
       <w>165</w>
       <h>33</h>
     </coordinates>
     <panel_attributes>CompletedCarOrderComparator
---
 bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>715</x>
+      <x>1056</x>
       <y>363</y>
       <w>165</w>
       <h>33</h>
     </coordinates>
     <panel_attributes>PendingCarOrderComparator
---
+
 bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>792</x>
+      <x>1133</x>
       <y>297</y>
       <w>33</w>
       <h>88</h>
@@ -1090,7 +1090,7 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>792</x>
+      <x>1133</x>
       <y>264</y>
       <w>88</w>
       <h>341</h>
@@ -1101,7 +1101,7 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
+      <x>341</x>
       <y>308</y>
       <w>253</w>
       <h>88</h>
@@ -1118,7 +1118,7 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>264</x>
+      <x>638</x>
       <y>308</y>
       <w>110</w>
       <h>66</h>
@@ -1134,7 +1134,7 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>99</x>
+      <x>440</x>
       <y>385</y>
       <w>1529</w>
       <h>341</h>
@@ -1145,18 +1145,18 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>308</x>
+      <x>682</x>
       <y>363</y>
-      <w>231</w>
+      <w>198</w>
       <h>209</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;120.0;190.0;120.0;190.0;170.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0;160.0;120.0;160.0;170.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1826</x>
+      <x>2167</x>
       <y>473</y>
       <w>319</w>
       <h>66</h>
@@ -1169,7 +1169,7 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1859</x>
+      <x>2200</x>
       <y>528</y>
       <w>99</w>
       <h>77</h>
@@ -1180,7 +1180,7 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2002</x>
+      <x>2343</x>
       <y>528</y>
       <w>110</w>
       <h>77</h>
@@ -1191,7 +1191,7 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2002</x>
+      <x>2343</x>
       <y>583</y>
       <w>176</w>
       <h>55</h>
@@ -1203,7 +1203,7 @@ bg=green</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1782</x>
+      <x>2123</x>
       <y>583</y>
       <w>176</w>
       <h>55</h>
@@ -1215,7 +1215,7 @@ bg=green</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1683</x>
+      <x>2024</x>
       <y>484</y>
       <w>165</w>
       <h>242</h>
@@ -1225,5 +1225,16 @@ m1=1
 m2=
 schedulingAlgorithm</panel_attributes>
     <additional_attributes>130.0;20.0;10.0;20.0;10.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>583</x>
+      <y>330</y>
+      <w>77</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;10.0;50.0;10.0</additional_attributes>
   </element>
 </diagram>
