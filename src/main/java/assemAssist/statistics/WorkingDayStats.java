@@ -22,11 +22,11 @@ public class WorkingDayStats extends Stats {
     }
 
     @Override
-    public void update() {
+    public void update(String event) {
         //wanneer het een nieuwe dag is
         // TODO implementeer if voorwaarde
         // TODO connectie nodig van statistics naar assemblyline? idk
-        if ( true ) {
+        if ( event.equals("next day") ) {
             days += 1;
             lastTwoDays.replace("2 days ago",lastTwoDays.get("1 day ago"));
             lastTwoDays.replace("1 day ago",carsToday);
@@ -34,7 +34,7 @@ public class WorkingDayStats extends Stats {
         }
         //wanneer er een nieuwe order is gefinished
         // TODO implementeer if voorwaarde
-        if ( true ) {
+        if ( event.equals("order completed") ) {
             totalCars += 1;
             carsToday += 1;
             average = totalCars / days;

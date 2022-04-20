@@ -200,9 +200,11 @@ public class AssemblyLine implements StatisticsObservable {
                 s += "No Order in this workstation";
             newStateAndFinished.add(s);
         }
-        notifyObservers();
         return newStateAndFinished;
     }
+    // TODO add observer for next day
+    // TODO add observer when order is completed
+    // (kan pas wanneer nextday hierin is toegevoegd)
 
     /**
      * Finds a specific work station and returns this.
@@ -225,9 +227,9 @@ public class AssemblyLine implements StatisticsObservable {
         observers.remove(observer);
     }
 
-    public void notifyObservers() {
+    public void notifyObservers(String event) {
         for (StatisticsObserver observer : observers) {
-            observer.update();
+            observer.update(event);
         }
     }
 

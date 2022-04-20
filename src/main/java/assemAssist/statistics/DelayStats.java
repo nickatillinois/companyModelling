@@ -23,7 +23,7 @@ public class DelayStats extends Stats{
     }
 
     @Override
-    public void update() {
+    public void update(String event) {
 
     }
 }
