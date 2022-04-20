@@ -43,44 +43,6 @@ public ProductionScheduler(){
             throw new IllegalArgumentException("This is not a valid argument!");
     }
 
-    /**
-     * @return a list of a list of options where for there are more than 3 orders with the same set of options.
-     *//*
-    private List<List<String>> specificBatchAlgorithm(){
-    //TODO gaat kijken welke carOrders allemaal dezelfde options hebben. Indien deze niet bestaan return null
-    return null;
-    }*/
-
-/*
-    */
-/**
-     * This function will update the production schedule and place the orders with the same options in the front of
-     * the schedule the other orders are scheduled in "FIFO".
-     * @param options is the list of options where for al the cars will be produced first.
-     * @throws IllegalCallerException throws this exception if the methode is called with a set of options that not
-     *                              | have more than 2 car orders.
-     *//*
-
-    public void selectBatchSet(List<String> options) throws IllegalCallerException{
-        List<CarOrder> carOrderWithSameOptions = new ArrayList<>();
-        List<CarOrder> otherCarOrders = new ArrayList<>();
-        for (CarOrder carOrder : fifoProductionSchedule){
-            if(true */
-/*options == carOrder.getCarModel().getOptions()*//*
-){
-                //TODO deze conditie invullen
-                carOrderWithSameOptions.add(carOrder);
-            }
-            else
-                otherCarOrders.add(carOrder);
-        }
-        if (carOrderWithSameOptions.size() < 3)
-            throw new IllegalCallerException("The methode was called without a valid options there are not 3 or more cars with this set of options");
-        carOrderWithSameOptions.addAll(otherCarOrders);
-        setAlgorithm(SECONDALGORITHM);
-        productionSchedule = carOrderWithSameOptions;
-    }
-*/
 
     /**
      * This function returns a list of the possible scheduling algorithms.
@@ -199,6 +161,7 @@ public ProductionScheduler(){
             throw new IllegalArgumentException("This is not a valid scheduling algorithm");
         this.schedulingAlgorithm = schedulingAlgorithm;
     }
+
     public List<CarOrder> getPendingOrders(){
         ArrayList<CarOrder> pending = new ArrayList<>();
         for (WorkStation workStation : getAssemblyLine().getWorkStations())
