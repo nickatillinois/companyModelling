@@ -16,9 +16,6 @@ import java.util.List;
  * @author SWOP Team 10
  */
 public class AssemblyLine implements StatisticsObservable {
-
-
-
     private List<WorkStation> workStations;
     private int minutesWorkedToday = 0;
     private final int STARTHOUR = 6;
@@ -203,9 +200,11 @@ public class AssemblyLine implements StatisticsObservable {
                 s += "No Order in this workstation";
             newStateAndFinished.add(s);
         }
-        notifyObservers();
         return newStateAndFinished;
     }
+    // TODO add observer for next day
+    // TODO add observer when order is completed
+    // (kan pas wanneer nextday hierin is toegevoegd)
 
     /**
      * Finds a specific work station and returns this.
@@ -220,21 +219,17 @@ public class AssemblyLine implements StatisticsObservable {
         throw new IllegalArgumentException("This is not a work station at this assembly line!");
     }
 
-
-    @Override
     public void addObserver(StatisticsObserver observer) {
         observers.add(observer);
     }
 
-    @Override
     public void removeObserver(StatisticsObserver observer) {
         observers.remove(observer);
     }
 
-    @Override
-    public void notifyObservers() {
+    public void notifyObservers(String event) {
         for (StatisticsObserver observer : observers) {
-            observer.update();
+            observer.update(event);
         }
     }
 

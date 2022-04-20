@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import assemAssist.exceptions.IllegalCompletionDateException;
 import assemAssist.exceptions.IllegalConstraintException;
 import assemAssist.exceptions.IllegalModelException;
+import assemAssist.observer.StatisticsObservable;
+import assemAssist.observer.StatisticsObserver;
 
 
 /**
@@ -13,7 +15,7 @@ import assemAssist.exceptions.IllegalModelException;
  *
  * @author SWOP Team 10
  */
-public class CarOrder {
+public class CarOrder implements StatisticsObservable {
 
     private static int counter = 0;
 
@@ -116,6 +118,7 @@ public class CarOrder {
         this.completed = completed;
         if (completed)
             this.completionTime = LocalDateTime.now();
+        notifyObservers("order completed");
     }
 
     /**
@@ -220,4 +223,19 @@ public class CarOrder {
         CarOrder carOrder = (CarOrder) o;
         return ID == carOrder.ID;
     }
+
+    public void addObserver(StatisticsObserver observer) {
+        observers.add(observer);
+    }
+
+    public void removeObserver(StatisticsObserver observer) {
+        observers.remove(observer);
+    }
+
+    public void notifyObservers(String event) {
+        for (StatisticsObserver observer : observers) {
+            observer.update(event);
+        }
+    }
+
 }

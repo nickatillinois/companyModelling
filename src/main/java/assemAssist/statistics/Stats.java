@@ -4,8 +4,13 @@ import assemAssist.observer.StatisticsObservable;
 import assemAssist.observer.StatisticsObserver;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public abstract class Stats implements StatisticsObserver {
+
+    private double average;
+    private double median;
 
     public Stats(ArrayList<StatisticsObservable> subjects) {
         for (StatisticsObservable subject : subjects) {
@@ -13,5 +18,30 @@ public abstract class Stats implements StatisticsObserver {
         }
     }
 
+    public double getAverage() {
+        return average;
+    }
+
+    public double getMedian() {
+        return median;
+    }
+
+    void setAverage(double average) {
+        this.average = average;
+    }
+
+    void setMedian(double median) {
+        this.median = median;
+    }
+
+    public double getMedian(List<Integer> numbers) {
+        Collections.sort(numbers);
+        int n = numbers.size();
+        if (n % 2 == 0) {
+            return (numbers.get(n/2) + numbers.get(n/2 + 1)) / 2 - 1;
+        } else {
+            return numbers.get((n + 1)/2 - 1);
+        }
+    }
 
 }
