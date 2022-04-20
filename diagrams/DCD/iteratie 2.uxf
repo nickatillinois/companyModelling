@@ -270,7 +270,7 @@ company</panel_attributes>
 + newLogin(garageholder : String): List&lt;List&lt;String&gt; &gt;
 + wantsToOrder() : List&lt;String&gt;
 + selectModel(model : String) : List&lt;String&gt;
-+ completeOrderingForm(carOptions : List&lt;String&gt;) : String
++ completeOrderingForm(carOptions : List&lt;String&gt;) : LocalDate
 + viewDetails(carId : Integer) : List&lt;String&gt;</panel_attributes>
     <additional_attributes/>
   </element>
@@ -607,6 +607,7 @@ completedCarOrders</panel_attributes>
 - availableOptions: Map&lt;String,Set&lt;String&gt; &gt;
 --
 + toString(): String
++ getAvailableOptions() :  Map&lt;String,Set&lt;String&gt; &gt;
 + getAvailableOptionsString(): String
 + addOption(component: String, option: String)
 + addComponent(component: String, options: Set)
