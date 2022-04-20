@@ -1,27 +1,19 @@
 package controller;
 
-import assemAssist.ProductionScheduler;
+import assemAssist.Company;
+import assemAssist.schedulingAlgorithm.SchedulingAlgorithm;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ManagerController {
 
-    private final ProductionScheduler productionScheduler;
+    private final Company company;
 
-    public ManagerController(ProductionScheduler productionScheduler) {
-        this.productionScheduler = productionScheduler;
+    public ManagerController(Company company) {
+        this.company = company;
     }
 
-    /* public List<List<String>> newLogin() {
-        return productionScheduler.getCurrentAndFutureStatusAndTaskStatus();
-    }
-
-    public List<String> confirmAdvance(int currentPhaseTime) {
-        List<String> MoveOrNot = productionScheduler.advanceOrders(currentPhaseTime);
-
-        return MoveOrNot;
-    }*/
 
     public List<String> checkStatistics() {
         List<String> statistics = new ArrayList<>();
@@ -39,25 +31,20 @@ public class ManagerController {
     }
 
     public List<String> adaptSchedulingAlgorithm() {
-        List<String> availableSchedulingAlgorithms = new ArrayList<>();
-        availableSchedulingAlgorithms.add("FIFO");
-        availableSchedulingAlgorithms.add("Specification Batch");
-
-        return availableSchedulingAlgorithms;
+        return company.getProductionScheduler().getSchedulingAlgorithms();
     }
 
-    public List<String> selectSchedulingAlgorithm(String algorithmName) {
-        if (algorithmName.equals("Specification Batch")) {
-            List<String> batches = new ArrayList<>();
-            batches.add("Body, color, wheels");
-            batches.add("seats, Airco");
-            return batches;
-        } else {
-            return null;
-        }
+    public List<String> selectSchedulingAlgorithm( String algorithmName) {
+        company.getProductionScheduler().selectSchedulingAlgorithm(algorithmName);
+        return company.getProductionScheduler().getSchedulingAlgorithm().posibleBatch();
     }
 
     public void selectBatchSet (String batchSet) {
-        return;
+        try{
+            company.getProductionScheduler().getSchedulingAlgorithm().selectBatch(batchSet);
+        }
+        catch (Exception e) {
+            throw new IllegalArgumentException("This is not a vallid batch set.");
+        }
     }
 }

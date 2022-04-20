@@ -1,7 +1,6 @@
 package assemAssist.workStation;
 import assemAssist.AssemblyTask;
-import assemAssist.carOrder.*;
-import purecollections.PList;
+import assemAssist.CarOrder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,15 +21,15 @@ public abstract class WorkStation {
     private List<AssemblyTask> tasks = new ArrayList<>();
 
     /**
-    * An immutable list of mechanics currently working on this work station.
-    */
+     * An immutable list of mechanics currently working on this work station.
+     */
     private List<String> mechanics = new ArrayList<>();
     //private PList<String> mechanics;
 
     /**
      * The name of this work station.
      */
-    private String name;
+    private final String name;
 
     /**
      * Creates a work station.
@@ -57,6 +56,7 @@ public abstract class WorkStation {
     public void setCurrentOrder(CarOrder newOrder) {
         this.currentOrder = newOrder;
         if (newOrder != null)
+            tasks.clear();
             newTasks();
     }
 
@@ -161,6 +161,14 @@ public abstract class WorkStation {
         return pendingTasks;
     }
 
+    public List<String> getFinishedTasks() {
+        List<String> finishedTasks = new ArrayList<>();
+        for (AssemblyTask task : tasks) {
+            if (task.getIsCompleted()) { finishedTasks.add(task.getName()); }
+        }
+        return finishedTasks;
+    }
+
     /**
      * Returns the given task's description.
      *
@@ -169,9 +177,9 @@ public abstract class WorkStation {
      * @throws IllegalArgumentException | taskName is not a valid name of a task at this work station.
      */
     public String getInformationFromTask(String taskName) throws IllegalArgumentException{
-        for (int i = 0; i < tasks.size(); i++) {
-            if (tasks.get(i).getName().equals(taskName)) {
-                return tasks.get(i).getTaskDefinition();
+        for (AssemblyTask task : tasks) {
+            if (task.getName().equals(taskName)) {
+                return task.getTaskDefinition();
             }
         }
         throw new IllegalArgumentException("This is not a task at this work station!");
@@ -183,10 +191,10 @@ public abstract class WorkStation {
      * @param taskName the name of the task to be completed
      * @throws IllegalArgumentException | taskName is not a valid name of a task at this work station.
      */
-    public void performAssemblyTask(String taskName) throws IllegalArgumentException{
-        for (int i = 0; i < tasks.size(); i++) {
-            if (tasks.get(i).getName().equals(taskName)) {
-                tasks.get(i).setIsCompleted(true);
+    public void performAssemblyTask(String taskName,int time) throws IllegalArgumentException{
+        for (AssemblyTask task : tasks) {
+            if (task.getName().equals(taskName)) {
+                task.setIsCompleted(true);
                 return;
             }
         }

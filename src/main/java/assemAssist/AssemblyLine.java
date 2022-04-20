@@ -1,10 +1,12 @@
 package assemAssist;
 
-import assemAssist.carOrder.CarOrder;
+import assemAssist.observer.StatisticsObservable;
+import assemAssist.observer.StatisticsObserver;
 import assemAssist.workStation.AccessoriesPost;
 import assemAssist.workStation.CarBodyPost;
 import assemAssist.workStation.DrivetrainPost;
 import assemAssist.workStation.WorkStation;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,25 +15,22 @@ import java.util.List;
  *
  * @author SWOP Team 10
  */
-public class AssemblyLine {
+public class AssemblyLine implements StatisticsObservable {
     private List<WorkStation> workStations;
-    private int maxWorkingHoursToday = 22-6;
-    private int hoursWorkedToday = 0;
+    private int minutesWorkedToday = 0;
     private final int STARTHOUR = 6;
     private final int ENDHOUR = 22;
+    private int maxWorkingMinutesToday = (ENDHOUR-STARTHOUR)*60;
 
     /**
      * This will create a new assembly line en initialise it.
      */
     public AssemblyLine(){
 
-        CarBodyPost carBodyPost = new CarBodyPost();
-        DrivetrainPost drivetrainPost = new DrivetrainPost();
         List<WorkStation> workStations = new ArrayList<>();
-        workStations.add(carBodyPost);
-        workStations.add(drivetrainPost);
-        AccessoriesPost accessoriesPost = new AccessoriesPost();
-        workStations.add(accessoriesPost);
+        CarBodyPost carBodyPost = new CarBodyPost(); workStations.add(carBodyPost);
+        DrivetrainPost drivetrainPost = new DrivetrainPost(); workStations.add(drivetrainPost);
+        AccessoriesPost accessoriesPost = new AccessoriesPost(); workStations.add(accessoriesPost);
         setWorkStations(workStations);
     }
 
@@ -55,58 +54,61 @@ public class AssemblyLine {
      * Returns the names of all the workstations in the assembly line.
      */
     public List<String> getWorkStationNames() {
-        List<String> workStationNames = new ArrayList();
-        for (int i = 0; i < workStations.size(); i++) {
-            workStationNames.add(workStations.get(i).getName());
+        List<String> workStationNames = new ArrayList<>();
+        for (WorkStation workStation : workStations) {
+            workStationNames.add(workStation.getName());
         }
         return workStationNames;
     }
 
     /**
-     * This function returns the max working hours of today.
-     * @return max working hours
+     * This function returns the max working minutes of today.
+     * @return max working minutes
      */
-    private int getMaxWorkingHoursToday() {
-        return maxWorkingHoursToday;
+    private int getMaxWorkingMinutesToday() {
+        return maxWorkingMinutesToday;
     }
 
     /**
-     * This function set the max working hours to the new value
-     * @param maxWorkingHoursToday update max working hours
+     * This function set the max working minutes to the new value
+     * @param maxWorkingMinutesToday update max working minutes
      */
-    private void setMaxWorkingHoursToday(int maxWorkingHoursToday) {
-        this.maxWorkingHoursToday = maxWorkingHoursToday;
+    private void setMaxWorkingMinutesToday(int maxWorkingMinutesToday) {
+        this.maxWorkingMinutesToday = maxWorkingMinutesToday;
     }
 
     /**
-     * This function returns the hours that are already worked to day
-     * @return hours worked today
+     * This function returns the minutes that are already worked to day
+     * @return minutes worked today
      */
-    public int getHoursWorkedToday() {
-        return hoursWorkedToday;
+    public int getMinutesWorkedToday() {
+        return minutesWorkedToday;
     }
 
     /**
-     * This function will update the working hours of this day.
-     * @param hoursWorkedToday working hours today
+     * This function will update the working minutes of this day.
+     * @param minutesWorkedToday working minutes today
      */
-    private void setHoursWorkedToday(int hoursWorkedToday) {
-        this.hoursWorkedToday = hoursWorkedToday;
+    private void setMinutesWorkedToday(int minutesWorkedToday) {
+        this.minutesWorkedToday = minutesWorkedToday;
     }
 
     /**
-     * This function wil set the working hours today to zero en update the hours that can be worked next day
+     * This function wil set the working minutes today to zero en update the minutes that can be worked next day
      * @throws IllegalCallerException if workstations are not done with their tasks.
+     * @throws IllegalStateException if the delay is more than 8 hours
      */
-    public void nextDay() throws IllegalCallerException{
+    public void nextDay() throws IllegalCallerException, IllegalStateException{
         for(WorkStation workStation : workStations)
             if (workStation.getCurrentOrder() != null)
                 throw new IllegalCallerException("There are workstation(s) that are still working a current order. ");
-        if(getHoursWorkedToday() <= ENDHOUR - STARTHOUR )
-            setMaxWorkingHoursToday(ENDHOUR - STARTHOUR);
+        if(getMinutesWorkedToday() <= getMaxWorkingMinutesToday())
+            setMaxWorkingMinutesToday((ENDHOUR - STARTHOUR) * 60);
+        else if ((getMinutesWorkedToday() - getMaxWorkingMinutesToday() > (8 * 60)))
+            throw new IllegalStateException("The delay of today is over 8 hours that is not possible!");
         else
-            setMaxWorkingHoursToday(ENDHOUR - STARTHOUR-(getHoursWorkedToday()-(ENDHOUR - STARTHOUR)));
-        setHoursWorkedToday(0);
+            setMaxWorkingMinutesToday((ENDHOUR - STARTHOUR)*60-(getMinutesWorkedToday()-getMaxWorkingMinutesToday()));
+        setMinutesWorkedToday(0);
     }
 
     /**
@@ -115,8 +117,8 @@ public class AssemblyLine {
      */
     public List<CarOrder> getCurrentState(){
         List<CarOrder> currentState  = new ArrayList<>(workStations.size());
-        for (int i = 0 ; i < workStations.size(); i++){
-            currentState.add( workStations.get(i).getCurrentOrder());
+        for (WorkStation workStation : workStations) {
+            currentState.add(workStation.getCurrentOrder());
         }
         return currentState;
 
@@ -124,18 +126,18 @@ public class AssemblyLine {
 
     public List<String> getCurrentStateString() {
         List<String> currentState  = new ArrayList<>(workStations.size());
-        for (int i = 0 ; i < workStations.size(); i++){
-            currentState.add(workStations.get(i).getName() + " ; " + workStations.get(i).getTasksAndStatus());
+        for (WorkStation workStation : workStations) {
+            currentState.add(workStation.getName() + " ; " + workStation.getTasksAndStatus());
         }
         return currentState;
     }
 
     /**
      * This function calculated and returns the remaining working hours
-     * @return remain working hours
+     * @return remain working minutes
      */
     public int remainWorkingTime(){
-        return getMaxWorkingHoursToday()-getHoursWorkedToday();
+        return getMaxWorkingMinutesToday()-getMinutesWorkedToday();
     }
 
     /**
@@ -178,7 +180,7 @@ public class AssemblyLine {
         for(WorkStation workStation : getWorkStations())
             if(!workStation.isFinished())
                 throw new IllegalCallerException("The assmebly line is stil working at a workpost!");
-        setHoursWorkedToday(getHoursWorkedToday() + timeBetweenTwoStates);
+        setMinutesWorkedToday(getMinutesWorkedToday() + timeBetweenTwoStates);
         CarOrder finishedCar = workStations.get(2).getCurrentOrder();
         if (finishedCar !=  null) {
             finishedCar.setCompleted(true);
@@ -198,33 +200,37 @@ public class AssemblyLine {
                 s += "No Order in this workstation";
             newStateAndFinished.add(s);
         }
-//        if(carOrder != null)
-//            newStateAndFinished.add(carOrder.toString().split("\\.")[3].split("@")[0]);
-//        else
-//            newStateAndFinished.add("No order");
-//        if (workStations.get(1).getCurrentOrder() != null)
-//            newStateAndFinished.add(workStations.get(1).getCurrentOrder().toString().split("\\.")[3].split("@")[0]);
-//        else
-//            newStateAndFinished.add("No order");
-//        if (workStations.get(2).getCurrentOrder() != null)
-//            newStateAndFinished.add(workStations.get(2).getCurrentOrder().toString().split("\\.")[3].split("@")[0]);
-//        else
-//            newStateAndFinished.add("No order");
         return newStateAndFinished;
     }
+    // TODO add observer for next day
+    // TODO add observer when order is completed
+    // (kan pas wanneer nextday hierin is toegevoegd)
 
     /**
      * Finds a specific work station and returns this.
      *
      */
     public WorkStation findWorkStation (String workStation) throws IllegalArgumentException{
-        for (int i = 0; i < workStations.size(); i++) {
-            if (workStations.get(i).getName().equals(workStation)){
-                return workStations.get(i);
+        for (WorkStation station : workStations) {
+            if (station.getName().equals(workStation)) {
+                return station;
             }
         }
         throw new IllegalArgumentException("This is not a work station at this assembly line!");
     }
 
+    public void addObserver(StatisticsObserver observer) {
+        observers.add(observer);
+    }
+
+    public void removeObserver(StatisticsObserver observer) {
+        observers.remove(observer);
+    }
+
+    public void notifyObservers(String event) {
+        for (StatisticsObserver observer : observers) {
+            observer.update(event);
+        }
+    }
 
 }

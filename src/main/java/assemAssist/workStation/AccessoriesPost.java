@@ -12,6 +12,7 @@ public class AccessoriesPost extends WorkStation{
      */
     public AccessoriesPost() { super("Accessories Post"); }
 
+
     /**
      * Assigns the car options of the current car order to this work station.
      */
@@ -20,19 +21,18 @@ public class AccessoriesPost extends WorkStation{
 
         //add task for seats
         this.addTask(new AssemblyTask("seats",
-                getCurrentOrder().getCarModel().getCarModelSpecification().getSeats(),
-                "install " + getCurrentOrder().getCarModel().getCarModelSpecification().getSeats().getChosenChoice() + " seats"));
-
+                "install " + getCurrentOrder().getCarModel().getChosenOptions().get("seats") + " seats"));
         //add task for airco
         this.addTask(new AssemblyTask("airco",
-                getCurrentOrder().getCarModel().getCarModelSpecification().getAirco(),
-                "install " + getCurrentOrder().getCarModel().getCarModelSpecification().getAirco().getChosenChoice() + " airco"));
-
+                "install " + getCurrentOrder().getCarModel().getChosenOptions().get("airco") + " airco"));
         //add task for wheels
         this.addTask(new AssemblyTask("wheels",
-                getCurrentOrder().getCarModel().getCarModelSpecification().getWheels(),
-                "mount " + getCurrentOrder().getCarModel().getCarModelSpecification().getWheels().getChosenChoice() + " wheels"));
-
+                "mount " + getCurrentOrder().getCarModel().getChosenOptions().get("wheels") + " wheels"));
+        //add task for spoiler, IF there needs to be one
+        if (getCurrentOrder().getCarModel().getChosenOptions().get("spoiler") != null) {
+            this.addTask(new AssemblyTask("spoiler",
+                    "install " + getCurrentOrder().getCarModel().getChosenOptions().get("spoiler") + " spoiler"));
+        }
     }
 
 }

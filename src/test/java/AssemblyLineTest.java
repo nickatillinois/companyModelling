@@ -1,7 +1,9 @@
+package java;
+
 import assemAssist.AssemblyLine;
 import assemAssist.AssemblyTask;
+import assemAssist.CarOrder;
 import assemAssist.ProductionScheduler;
-import assemAssist.carOrder.*;
 import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalModelException;
 import assemAssist.workStation.AccessoriesPost;
@@ -24,7 +26,7 @@ class AssemblyLineTest {
     @BeforeEach
     void setUp() throws IllegalChoiceException, IllegalModelException {
         assemblyLine = new AssemblyLine();
-        ProductionScheduler.addModel("Jaguar");
+       /* ProductionScheduler.addModel("Jaguar");*/
         Body body = new Body("sedan");
         CarModelSpecification specification = new CarModelSpecification(body,new Color("red"),
                 new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
@@ -47,23 +49,23 @@ class AssemblyLineTest {
     @Test
     void nextDay() {
         assemblyLine.nextDay();
-        assertEquals(0,assemblyLine.getHoursWorkedToday());
-        assemblyLine.move(orderA,2);
-        assertEquals(2,assemblyLine.getHoursWorkedToday());
+        assertEquals(0,assemblyLine.getMinutesWorkedToday());
+        assemblyLine.move(orderA,120);
+        assertEquals(120,assemblyLine.getMinutesWorkedToday());
         for(AssemblyTask assemblyTask : assemblyLine.getWorkStations().get(0).getTasks())
             assemblyTask.setIsCompleted(true);
-        assemblyLine.move(null, 16);
-        assertEquals(18,assemblyLine.getHoursWorkedToday());
+        assemblyLine.move(null, 16*60);
+        assertEquals(18*60,assemblyLine.getMinutesWorkedToday());
         for(AssemblyTask assemblyTask : assemblyLine.getWorkStations().get(1).getTasks())
             assemblyTask.setIsCompleted(true);
-        assemblyLine.move(null, 2);
-        assertEquals(20, assemblyLine.getHoursWorkedToday());
+        assemblyLine.move(null, 2*60);
+        assertEquals(20*60, assemblyLine.getMinutesWorkedToday());
         for(AssemblyTask assemblyTask : assemblyLine.getWorkStations().get(2).getTasks())
             assemblyTask.setIsCompleted(true);
-        assemblyLine.move(null,2);
-        assertEquals(22, assemblyLine.getHoursWorkedToday());
+        assemblyLine.move(null,2*60);
+        assertEquals(22*60, assemblyLine.getMinutesWorkedToday());
         assemblyLine.nextDay();
-        assertEquals((22-6)-(22-(22-6)),assemblyLine.remainWorkingTime());
+        assertEquals(((22-6)-(22-(22-6))*60),assemblyLine.remainWorkingTime());
     }
 
     @Test

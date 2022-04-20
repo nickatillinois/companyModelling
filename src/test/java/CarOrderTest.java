@@ -1,5 +1,4 @@
 import assemAssist.ProductionScheduler;
-import assemAssist.carOrder.*;
 import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalCompletionDateException;
 import assemAssist.exceptions.IllegalModelException;
@@ -8,7 +7,6 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 
-import static assemAssist.ProductionScheduler.getAvailableModels;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 

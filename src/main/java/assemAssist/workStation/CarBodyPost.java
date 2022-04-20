@@ -1,7 +1,6 @@
 package assemAssist.workStation;
-import assemAssist.AssemblyLine;
+
 import assemAssist.AssemblyTask;
-import assemAssist.carOrder.CarOrder;
 
 /**
  *  Class representing a Car Body post
@@ -23,13 +22,13 @@ public class CarBodyPost extends WorkStation{
 
         //add task for body
         this.addTask(new AssemblyTask("body",
-                getCurrentOrder().getCarModel().getCarModelSpecification().getBody(),
-                "assemble " + getCurrentOrder().getCarModel().getCarModelSpecification().getBody().getChosenChoice()));
+                "assemble " + getCurrentOrder().getCarModel().getChosenOptions().get("body") + " body"));
+
 
         //add task for paint
         this.addTask(new AssemblyTask("paint",
-                getCurrentOrder().getCarModel().getCarModelSpecification().getColor(),
-                "paint the car " + getCurrentOrder().getCarModel().getCarModelSpecification().getColor().getChosenChoice()));
+                "paint the car " + getCurrentOrder().getCarModel().getChosenOptions().get("color")));
+
 
     }
 

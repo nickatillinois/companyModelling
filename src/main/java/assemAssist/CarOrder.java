@@ -1,9 +1,12 @@
-package assemAssist.carOrder;
-
-import assemAssist.exceptions.IllegalCompletionDateException;
+package assemAssist;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
+import java.util.ArrayList;
+
+import assemAssist.exceptions.IllegalCompletionDateException;
+import assemAssist.exceptions.IllegalConstraintException;
+import assemAssist.exceptions.IllegalModelException;
+
 
 /**
  * Class representing a car order.
@@ -12,11 +15,12 @@ import java.util.Objects;
  */
 public class CarOrder {
 
+    private static int counter = 0;
 
     /**
-     * The estimated completion date of this carorder in LocalDateTime format.
+     * The order's unique identifier.
      */
-    private LocalDateTime completionTime;
+    private final int ID;
 
     /**
      * A GarageHolder object representing the client of this order.
@@ -24,14 +28,34 @@ public class CarOrder {
     private String garageholder;
 
     /**
+     * A boolean representing whether this order was completed by the car manufacturing company.
+     */
+    private boolean completed;
+
+    /**
+     * The effective completion date of this carorder in LocalDateTime format.
+     */
+    private LocalDateTime completionTime;
+
+    public LocalDateTime getEstCompletionTime() {
+        return estCompletionTime;
+    }
+
+    /**
+     * The estimated completion date of this carorder in LocalDateTime format.
+     */
+    private LocalDateTime estCompletionTime;
+
+    /**
+     * The timestamp of ordering this carorder in LocalDateTime format.
+     */
+    private LocalDateTime orderingTime;
+
+    /**
      * A CarModel object representing the Carmodel with specifications of this order.
      */
     private CarModel carModel;
 
-    /**
-     * A boolean representing whether this order was completed by the car manufacturing company.
-     */
-    private boolean completed;
 
     /**
      * Sets the garage holder of this car order to the given garage holder.
@@ -54,6 +78,7 @@ public class CarOrder {
      */
     public String getGarageholder() {
         return garageholder;
+
     }
 
     /**
@@ -106,14 +131,29 @@ public class CarOrder {
      * Sets the current LocalTimeDate when this order is estimated to be completed to the given LocalTimeDate.
      *
      * @param completionTime The given estimated completion date in LocalTimeDate format.
-     * @throws IllegalArgumentException | completionTime is null
-     * //@throws IllegalCompletionDateException | given time is in the past
+
      */
+
     public void setCompletionTime(LocalDateTime completionTime) throws IllegalCompletionDateException {
+
         if (completionTime == null){throw new IllegalArgumentException("completion time cannot be set to null");}
         //if (completionTime.isBefore(LocalDateTime.now())){throw new IllegalCompletionDateException("completion time cannot be set in the past");}
         this.completionTime = completionTime;
     }
+
+    public void setEstCompletionTime(LocalDateTime estCompletionTime) throws IllegalCompletionDateException {
+
+        if (estCompletionTime == null){throw new IllegalArgumentException("estCompletion time cannot be set to null");}
+        //if (completionTime.isBefore(LocalDateTime.now())){throw new IllegalCompletionDateException("completion time cannot be set in the past");}
+        this.estCompletionTime = estCompletionTime;
+    }
+
+
+    public int getOrderID(){
+        return this.ID;
+    }
+
+
 
     /**
      * Creates a new car model specification with a given body, color, engine, gearbox, seats, airco, wheels.
@@ -124,19 +164,60 @@ public class CarOrder {
      *                                  | garageHolder is the empty string
      *                                  | carModel is null
      */
-    public CarOrder(String  garageHolder, CarModel carModel){
+    public CarOrder(String  garageHolder, CarModel carModel, LocalDateTime estCompletionTime) throws IllegalArgumentException {
         if(garageHolder == null){throw new IllegalArgumentException("A garage holder cannot be null.");}
         if(garageHolder.equals("")){throw new IllegalArgumentException("A garage holder cannot be the empty string.");}
         if(carModel == null){throw new IllegalArgumentException("A car model cannot be null.");}
+
         this.garageholder = garageHolder;
         this.carModel = carModel;
         this.completed = false;
         this.completionTime = null;
+        this.estCompletionTime = estCompletionTime;
+        counter++;
+        this.ID = counter;
+        this.orderingTime = LocalDateTime.now();
     }
 
-    public String getCarModelAndOptions () {
+    public boolean isValidCarModel() throws IllegalConstraintException, IllegalModelException {
+        return this.carModel.inspect();
+    }
+
+    public String getCarModelAndOptions() {
         String modelAndOptions = "model: " + carModel.getModelName() + ", ";
-        modelAndOptions += carModel.getCarModelSpecificationStrings();
+        modelAndOptions += carModel.getChosenOptions();
         return modelAndOptions;
+    }
+
+    private ArrayList<String> getPendingOrderDetails(){
+        ArrayList<String> orderDetails = new ArrayList<>();
+        orderDetails.add("Specifications: " + getCarModelAndOptions ());
+        orderDetails.add("orderTime: " + orderingTime.toString());
+        orderDetails.add("estProdTime: " + estCompletionTime.toString());
+        return orderDetails;
+    }
+
+    private ArrayList<String> getCompletedOrderDetails(){
+        ArrayList<String> orderDetails = new ArrayList<>();
+        orderDetails.add("Specifications: " + getCarModelAndOptions ());
+        orderDetails.add("orderTime: " + orderingTime.toString());
+        orderDetails.add("completionTime: " + completionTime.toString());
+        return orderDetails;
+    }
+    public ArrayList<String> getOrderDetails(){
+        if(completed){
+            return getCompletedOrderDetails();
+        }
+        else{
+            return getPendingOrderDetails();
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CarOrder carOrder = (CarOrder) o;
+        return ID == carOrder.ID;
     }
 }

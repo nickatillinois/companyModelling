@@ -1,6 +1,6 @@
 import assemAssist.AssemblyTask;
-import assemAssist.ProductionScheduler;
-import assemAssist.carOrder.*;
+import assemAssist.CarModel;
+import assemAssist.CarOrder;
 import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalModelException;
 import assemAssist.workStation.AccessoriesPost;
@@ -10,7 +10,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.testng.AssertJUnit.assertNull;
 
 class WorkStationTest {
 
@@ -18,41 +17,13 @@ class WorkStationTest {
     static DrivetrainPost drivetrainPost;
     static AccessoriesPost accessoriesPost;
 
-    boolean equals(CarOrder order1, CarOrder order2) {
-        if ( !order1.getGarageholder().equals(order2.getGarageholder()) ) return false;
-        else if ( order1.isCompleted() != order2.isCompleted() ) return false;
-        else return equals(order1.getCarModel(),order2.getCarModel());
-    }
-
-    boolean equals(CarModel model1, CarModel model2) {
-        if ( !model1.getModelName().equals(model2.getModelName()) ) return false;
-        else return equals(model1.getCarModelSpecification(),model2.getCarModelSpecification());
-    }
-
-    boolean equals(CarModelSpecification spec1, CarModelSpecification spec2) {
-        if (!equals(spec1.getAirco(),spec2.getAirco())) return false;
-        if (!equals(spec1.getBody(),spec2.getBody())) return false;
-        if (!equals(spec1.getColor(),spec2.getColor())) return false;
-        if (!equals(spec1.getEngine(),spec2.getEngine())) return false;
-        if (!equals(spec1.getGearbox(),spec2.getGearbox())) return false;
-        if (!equals(spec1.getSeats(),spec2.getSeats())) return false;
-        return equals(spec1.getWheels(), spec2.getWheels());
-    }
-
-    boolean equals(Option op1, Option op2) {
-        return op1.getChosenChoice().equals(op2.getChosenChoice());
-    }
-
     @BeforeEach
     void init() throws IllegalModelException, IllegalChoiceException {
 
         carBodyPost = new CarBodyPost();
         drivetrainPost = new DrivetrainPost();
         accessoriesPost = new AccessoriesPost();
-        ProductionScheduler.addModel("Jaguar");
-        CarModelSpecification specification = new CarModelSpecification(new Body("sedan"),new Color("red"),
-                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
-                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
+
         CarOrder orderA = new CarOrder("A",new CarModel("Jaguar", specification));
         CarOrder orderB = new CarOrder("B",new CarModel("Jaguar", specification));
 
