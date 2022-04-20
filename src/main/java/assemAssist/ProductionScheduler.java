@@ -90,19 +90,6 @@ public ProductionScheduler(){
         }
     }
 
-
-/*
-    */
-/**
-     * This function returns a list whit car orders, the car order at index i is in progress in the workstation.
-     * @return list of car orders
-     *//*
-
-    public List<CarOrder> getCurrentState(){
-        return  assemblyLine.getCurrentState();
-    }
-*/
-
     /**
      * This function will add a real car order to the production schedule.
      * @param carOrder | the car order added to the proction schedule
@@ -156,6 +143,7 @@ public ProductionScheduler(){
     public SchedulingAlgorithm getSchedulingAlgorithm() {
         return schedulingAlgorithm;
     }
+
     /**
      * @param schedulingAlgorithm selected algorithm
      * @throws IllegalArgumentException if the algorithm is not valid!
