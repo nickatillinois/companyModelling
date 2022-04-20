@@ -17,6 +17,15 @@ public class GarageHolderUI {
         this.garageHolderController = garageHolderController;
     }
 
+    /**
+     * Starts the UI for the Garage Holder, once the user selected that they are a garage holder. It asks the name
+     * of the user and gives its pending and finished orders. Then it asks whether the user wants to order a new car,
+     * check the details of a specific order or leave the overview and starts the relevant sub-UI-method.
+     * @param in Scanner used to ask input from the user. Gets initialised for the GarageHolderUI class.
+     * @throws IllegalModelException
+     * @throws IllegalChoiceException
+     * @throws IllegalCompletionDateException
+     */
     public void startUI(Scanner in) throws IllegalModelException, IllegalChoiceException, IllegalCompletionDateException {
         this.in = in;
         System.out.println("Enter your first name lastname, e.g. 'Tom Smets'");
@@ -53,9 +62,14 @@ public class GarageHolderUI {
         System.out.println("-------------");
     }
 
+    /**
+     * Handles the case where the user wants to check the details of a certain order. It asks for the ID and returns the
+     * details if possible.
+     * @param name Name of the user (that is a garage holder).
+     */
     private void checkDetailsUI(String name){
         while (true) {
-            System.out.println("Give the ID of the car order you want to order");
+            System.out.println("Give the ID of the car order you want to check the details of");
             String carIDString = in.next();
             try{
                 int carID = Integer.parseInt(carIDString);
@@ -74,6 +88,13 @@ public class GarageHolderUI {
         }
     }
 
+    /**
+     * Handles the case when the user wants order a new car. Once they selected a model, the ordering form is completed
+     * by a submethod for the UI.
+     * @throws IllegalModelException
+     * @throws IllegalChoiceException
+     * @throws IllegalCompletionDateException
+     */
     private void orderCarUI() throws IllegalModelException, IllegalChoiceException, IllegalCompletionDateException {
         List<String> availableModels;
 
@@ -105,8 +126,15 @@ public class GarageHolderUI {
 
     }
 
+    /**
+     * This method shows the available options for the chosen car model and then asks the user whether they want to select
+     * the options. This is then handled by a specific subroutine.
+     * @param model
+     * @throws IllegalModelException
+     * @throws IllegalChoiceException
+     * @throws IllegalCompletionDateException
+     */
     private void completeOrderingFormUI(String model) throws IllegalModelException, IllegalChoiceException, IllegalCompletionDateException {
-
         List<String> orderingForm = garageHolderController.selectModel(model);
         List<String[]> orderingFormArrays = new ArrayList<>();
         for (String s : orderingForm) {
@@ -149,6 +177,15 @@ public class GarageHolderUI {
         }
     }
 
+    /**
+     * Lets the user select the options specified in the ordering form for the car model selected. Once the options are
+     * selected, this car is ordered in the system.
+     * @param orderingForm The ordering form for the car model that was selected. This gives all the options one can choose
+     *                     for the car model.
+     * @throws IllegalModelException
+     * @throws IllegalChoiceException
+     * @throws IllegalCompletionDateException
+     */
     private void selectOptionsUI(List<String[]> orderingForm) throws IllegalModelException, IllegalChoiceException, IllegalCompletionDateException {
         System.out.println("Select the options for you car order:");
         List<String> carOptions = new ArrayList<>();
