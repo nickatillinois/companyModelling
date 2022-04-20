@@ -1,5 +1,6 @@
 import assemAssist.AssemblyTask;
 import assemAssist.CarModel;
+import assemAssist.CarModelSpecification;
 import assemAssist.CarOrder;
 import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalModelException;
@@ -23,6 +24,7 @@ class WorkStationTest {
         carBodyPost = new CarBodyPost();
         drivetrainPost = new DrivetrainPost();
         accessoriesPost = new AccessoriesPost();
+
 
         CarOrder orderA = new CarOrder("A",new CarModel("Jaguar", specification));
         CarOrder orderB = new CarOrder("B",new CarModel("Jaguar", specification));
