@@ -69,23 +69,19 @@ public class Company {
     }
 
 
-    public ArrayList<String> getOrderDetails(int ID) throws OrderNotFoundException {
-        ArrayList<CarOrder> pendingOrders = (ArrayList<CarOrder>) productionScheduler.getPendingOrders();
-        ArrayList<CarOrder> completedOrders = getCompletedCarOrders();
+    public ArrayList<String> getOrderDetails(int ID, String garageHolder) throws OrderNotFoundException {
+        ArrayList<CarOrder> pendingOrders = (ArrayList<CarOrder>) this.getOrdersFromGarageHolder(garageHolder)[0];
+        ArrayList<CarOrder> completedOrders = (ArrayList<CarOrder>) this.getOrdersFromGarageHolder(garageHolder)[1];
+        pendingOrders.addAll(completedOrders);
         for (CarOrder carOrder : pendingOrders) {
             // verwijder isCompleted check als werkt
-            if (carOrder.getOrderID() == ID && !carOrder.isCompleted()) {
+            if (carOrder.getOrderID() == ID ) {
                 return carOrder.getOrderDetails();
             }
         }
-        for (CarOrder carOrder : completedOrders) {
-            // verwijder isCompleted check als werkt
-            if (carOrder.getOrderID() == ID && carOrder.isCompleted()) {
-                return carOrder.getOrderDetails();
-            }
-        }
-        throw new OrderNotFoundException("ID: " + Integer.toString(ID) + " was not found in pending or completed orders");
+        throw new OrderNotFoundException("ID: " + Integer.toString(ID) + " was not found in pending or completed orders from this garageholder.");
     }
+
     public HashSet<String> getAvailableModels() {
         return catalog.getAvailableModelNames();
     }
