@@ -271,7 +271,7 @@ company</panel_attributes>
 + wantsToOrder() : List&lt;String&gt;
 + selectModel(model : String) : List&lt;String&gt;
 + completeOrderingForm(carOptions : List&lt;String&gt;) : LocalDate
-+ viewDetails(carId : Integer) : List&lt;String&gt;</panel_attributes>
++ viewDetails(carId : Integer, String garageHolder) : List&lt;String&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -492,7 +492,7 @@ m2=1
 - getCompletedOrdersFromGaragHolder(name : String): List&lt;CarOrder&gt;
 - getPendingOrdersFromGaragHolder(name : String): List&lt;CarOrder&gt;
 + getOrdersFromGarageHolder(name: String): List&lt;CarOrder&gt;[]
-+ getOrderDetails(int ID): List&lt;String&gt;
++ getOrderDetails(int ID, String garageHolder): List&lt;String&gt;
 + getAvailableModels(): Set&lt;String&gt;
 + selectModelString(name : String) : String
 + selectModel(name : String) : Map&lt;String, Set&lt;String&gt;&gt;
