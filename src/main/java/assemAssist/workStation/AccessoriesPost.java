@@ -12,6 +12,7 @@ public class AccessoriesPost extends WorkStation{
      */
     public AccessoriesPost() { super("Accessories Post"); }
 
+
     /**
      * Assigns the car options of the current car order to this work station.
      */

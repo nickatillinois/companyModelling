@@ -191,7 +191,7 @@ public abstract class WorkStation {
      * @param taskName the name of the task to be completed
      * @throws IllegalArgumentException | taskName is not a valid name of a task at this work station.
      */
-    public void performAssemblyTask(String taskName) throws IllegalArgumentException{
+    public void performAssemblyTask(String taskName,int time) throws IllegalArgumentException{
         for (AssemblyTask task : tasks) {
             if (task.getName().equals(taskName)) {
                 task.setIsCompleted(true);
