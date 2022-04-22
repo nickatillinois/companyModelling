@@ -1,6 +1,7 @@
 package assemAssist;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 import assemAssist.exceptions.IllegalCompletionDateException;
@@ -118,7 +119,10 @@ public class CarOrder implements StatisticsObservable {
         this.completed = completed;
         if (completed)
             this.completionTime = LocalDateTime.now();
-        notifyObservers("order completed");
+        if (!estCompletionTime.isEqual(completionTime)) {
+            long delayInMinutes = ChronoUnit.MINUTES.between(estCompletionTime,completionTime);
+            notifyObservers("order completed", delayInMinutes);
+        }
     }
 
     /**
@@ -232,9 +236,9 @@ public class CarOrder implements StatisticsObservable {
         observers.remove(observer);
     }
 
-    public void notifyObservers(String event) {
+    public void notifyObservers(String event, long delay) {
         for (StatisticsObserver observer : observers) {
-            observer.update(event);
+            observer.update(event, delay);
         }
     }
 

@@ -3,9 +3,7 @@ package assemAssist.statistics;
 import assemAssist.observer.StatisticsObservable;
 import assemAssist.observer.StatisticsObserver;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public abstract class Stats implements StatisticsObserver {
 
@@ -34,7 +32,7 @@ public abstract class Stats implements StatisticsObserver {
         this.median = median;
     }
 
-    public double getMedian(List<Integer> numbers) {
+    double getMedian(List<Integer> numbers) {
         Collections.sort(numbers);
         int n = numbers.size();
         if (n % 2 == 0) {
@@ -43,5 +41,7 @@ public abstract class Stats implements StatisticsObserver {
             return numbers.get((n + 1)/2 - 1);
         }
     }
+
+    public abstract Map<String,Double> getStatistics();
 
 }

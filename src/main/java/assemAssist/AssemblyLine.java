@@ -7,6 +7,7 @@ import assemAssist.workStation.CarBodyPost;
 import assemAssist.workStation.DrivetrainPost;
 import assemAssist.workStation.WorkStation;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -227,9 +228,9 @@ public class AssemblyLine implements StatisticsObservable {
         observers.remove(observer);
     }
 
-    public void notifyObservers(String event) {
+    public void notifyObservers(String event, long delay) {
         for (StatisticsObserver observer : observers) {
-            observer.update(event);
+            observer.update(event,delay);
         }
     }
 

@@ -11,13 +11,12 @@ import java.util.Set;
 
 public class DelayStats extends Stats{
 
-    // TODO betere representatie zoeken voor deze data
-    private int delay;
+    private long delay;
     private int ordersDelayed;
-    private Set<Double> delays;
-    private LocalDateTime lastDelay;
+    private Set<Long> delays;
+    private long lastDelay;
     private LocalDate lastDelayDate;
-    private LocalDateTime sLastDelay;
+    private long sLastDelay;
     private LocalDate sLastDelayDate;
 
     public DelayStats(ArrayList<StatisticsObservable> subjects) {
@@ -25,10 +24,32 @@ public class DelayStats extends Stats{
     }
 
     @Override
-    public void update(String event) {
-        if ( event.equals("order completed" ) ) {
+    public Map<String, Double> getStatistics() {
+        return null;
+    }
 
+    @Override
+    public void update(String event, long newDelay) {
+        if ( event.equals("order completed") ) {
+            // add newDelay to delay
+            delay += newDelay;
+            // add 1 to ordersdelayed
+            ordersDelayed += 1;
+            // add new delay to set of all delays
+            delays.add(newDelay);
+            // move last delay to second to last delay and update lastdelay
+            sLastDelay = lastDelay;
+            sLastDelayDate = lastDelayDate;
+            lastDelay = newDelay;
+            lastDelayDate = LocalDate.now();
+            // adjust median and average
+            setAverage(delay / ordersDelayed);
+            setMedian(0);
         }
     }
-    // TODO moet die carorder meegegeven worden? anders kan je niet aan de waarden
+
+
+
+
+
 }

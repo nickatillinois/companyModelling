@@ -3,6 +3,7 @@ package assemAssist.statistics;
 import assemAssist.observer.StatisticsObservable;
 import assemAssist.observer.StatisticsObserver;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 public class WorkingDayStats extends Stats {
@@ -20,7 +21,12 @@ public class WorkingDayStats extends Stats {
     }
 
     @Override
-    public void update(String event) {
+    public Map<String, Double> getStatistics() {
+        return null;
+    }
+
+    @Override
+    public void update(String event, long delay) {
         //wanneer het een nieuwe dag is
         if ( event.equals("next day") ) {
             days += 1;
@@ -37,7 +43,8 @@ public class WorkingDayStats extends Stats {
         }
     }
 
-
-
+    public Map<String,Integer> getLastTwoDays() {
+        return lastTwoDays;
+    }
 
 }
