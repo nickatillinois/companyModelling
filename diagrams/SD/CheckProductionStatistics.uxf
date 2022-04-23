@@ -37,7 +37,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>720</x>
+      <x>752</x>
       <y>304</y>
       <w>24</w>
       <h>296</h>
@@ -48,35 +48,13 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>688</x>
+      <x>712</x>
       <y>288</y>
       <w>80</w>
       <h>24</h>
     </coordinates>
     <panel_attributes>: Company</panel_attributes>
     <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1048</x>
-      <y>304</y>
-      <w>24</w>
-      <h>296</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;350.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1248</x>
-      <y>304</y>
-      <w>24</w>
-      <h>296</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;350.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
@@ -176,7 +154,7 @@ statistics</panel_attributes>
       <x>200</x>
       <y>336</y>
       <w>16</w>
-      <h>240</h>
+      <h>144</h>
     </coordinates>
     <panel_attributes/>
     <additional_attributes/>
@@ -230,7 +208,7 @@ system stops</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>720</x>
+      <x>752</x>
       <y>360</y>
       <w>16</w>
       <h>96</h>
@@ -241,7 +219,7 @@ system stops</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>848</x>
+      <x>896</x>
       <y>288</y>
       <w>80</w>
       <h>24</h>
@@ -252,7 +230,7 @@ system stops</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>880</x>
+      <x>928</x>
       <y>304</y>
       <w>24</w>
       <h>296</h>
@@ -263,7 +241,7 @@ system stops</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>880</x>
+      <x>928</x>
       <y>368</y>
       <w>16</w>
       <h>80</h>
@@ -274,12 +252,15 @@ system stops</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>112</x>
-      <y>208</y>
-      <w>1224</w>
-      <h>400</h>
+      <x>712</x>
+      <y>320</y>
+      <w>256</w>
+      <h>160</h>
     </coordinates>
-    <panel_attributes>Check Production Statistics</panel_attributes>
+    <panel_attributes>loop
+--
+halign=left
+[for all statistics]</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -288,10 +269,11 @@ system stops</panel_attributes>
       <x>368</x>
       <y>336</y>
       <w>176</w>
-      <h>32</h>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-checkStatistics()</panel_attributes>
+checkStatistics
+(fromLastXDays : int)</panel_attributes>
     <additional_attributes>200.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -299,153 +281,25 @@ checkStatistics()</panel_attributes>
     <coordinates>
       <x>536</x>
       <y>344</y>
-      <w>200</w>
-      <h>32</h>
+      <w>232</w>
+      <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-getStatistics()</panel_attributes>
-    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>728</x>
-      <y>352</y>
-      <w>168</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-getWorkStations()</panel_attributes>
-    <additional_attributes>190.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>1048</x>
-      <y>376</y>
-      <w>16</w>
-      <h>72</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>888</x>
-      <y>360</y>
-      <w>176</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-getTasksAndStatus()</panel_attributes>
-    <additional_attributes>200.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>1248</x>
-      <y>384</y>
-      <w>16</w>
-      <h>16</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1056</x>
-      <y>368</y>
-      <w>208</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-getIsCompleted()</panel_attributes>
-    <additional_attributes>240.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1056</x>
-      <y>408</y>
-      <w>208</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-getName()</panel_attributes>
-    <additional_attributes>240.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1056</x>
-      <y>384</y>
-      <w>208</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-isCompleted : Boolean</panel_attributes>
-    <additional_attributes>10.0;20.0;240.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>1248</x>
-      <y>424</y>
-      <w>16</w>
-      <h>16</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1056</x>
-      <y>424</y>
-      <w>208</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-name : String</panel_attributes>
-    <additional_attributes>10.0;20.0;240.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>888</x>
-      <y>432</y>
-      <w>176</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-tasksAndStatus : String</panel_attributes>
-    <additional_attributes>10.0;20.0;200.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>728</x>
-      <y>432</y>
-      <w>168</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-stateAssembly</panel_attributes>
-    <additional_attributes>10.0;20.0;190.0;20.0</additional_attributes>
+getStatistics
+(fromLastXDays : int)</panel_attributes>
+    <additional_attributes>270.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>536</x>
       <y>440</y>
-      <w>200</w>
+      <w>232</w>
       <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
-stateAssembly</panel_attributes>
-    <additional_attributes>10.0;20.0;230.0;20.0</additional_attributes>
+statistics : List&lt;String&gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;270.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -456,7 +310,7 @@ stateAssembly</panel_attributes>
       <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
-stateAssembly</panel_attributes>
+statistics : List&lt;String&gt;</panel_attributes>
     <additional_attributes>10.0;20.0;200.0;20.0</additional_attributes>
   </element>
   <element>
@@ -469,7 +323,54 @@ stateAssembly</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;-
 give overview of
-assembly line</panel_attributes>
+production statistics</panel_attributes>
     <additional_attributes>10.0;20.0;190.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>128</x>
+      <y>216</y>
+      <w>880</w>
+      <h>408</h>
+    </coordinates>
+    <panel_attributes>Check Production Statistics</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>760</x>
+      <y>352</y>
+      <w>184</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+getStatistics
+(fromLastXDays : int)</panel_attributes>
+    <additional_attributes>210.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>760</x>
+      <y>432</y>
+      <w>184</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+statistics : List&lt;String&gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;210.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>200</x>
+      <y>512</y>
+      <w>16</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes/>
   </element>
 </diagram>
