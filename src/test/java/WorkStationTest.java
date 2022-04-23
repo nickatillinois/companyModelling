@@ -1,7 +1,4 @@
-import assemAssist.AssemblyTask;
-import assemAssist.CarModel;
-import assemAssist.CarModelSpecification;
-import assemAssist.CarOrder;
+import assemAssist.*;
 import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalModelException;
 import assemAssist.workStation.AccessoriesPost;
@@ -24,37 +21,24 @@ class WorkStationTest {
         carBodyPost = new CarBodyPost();
         drivetrainPost = new DrivetrainPost();
         accessoriesPost = new AccessoriesPost();
-
-        CarModelSpecification specification;
-        CarOrder orderA = new CarOrder("A",new CarModel("Jaguar", specification));
-        CarOrder orderB = new CarOrder("B",new CarModel("Jaguar", specification));
+/*
+        Catalog catalog = new Catalog();
+        CarOrder orderA = new CarOrder("A",new CarModel("Jaguar", ));
+        CarOrder orderB = new CarOrder("B",new CarModel("Jaguar", ));
 
         carBodyPost.setCurrentOrder(orderA);
         drivetrainPost.setCurrentOrder(orderB);
+ */
     }
 
     @Test
     void getCurrentOrder() throws IllegalModelException, IllegalChoiceException {
-        CarModelSpecification specification= new CarModelSpecification(new Body("sedan"),new Color("red"),
-                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
-                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        CarOrder orderA = new CarOrder("A",new CarModel("Jaguar", specification));
-        CarOrder orderB = new CarOrder("B",new CarModel("Jaguar", specification));
 
-        assert(equals(carBodyPost.getCurrentOrder(),orderA));
-        assert(equals(drivetrainPost.getCurrentOrder(),orderB));
-        assertNull(accessoriesPost.getCurrentOrder());
     }
 
     @Test
     void setCurrentOrder() throws IllegalModelException, IllegalChoiceException {
-        CarModelSpecification specification = new CarModelSpecification(new Body("sedan"),new Color("red"),
-                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
-                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        CarOrder orderC = new CarOrder("C",new CarModel("Jaguar", specification));
 
-        accessoriesPost.setCurrentOrder(orderC);
-        assert(equals(accessoriesPost.getCurrentOrder(),orderC));
     }
 
     @Test
@@ -76,15 +60,7 @@ class WorkStationTest {
 
     @Test
     void newTaskDefinitionAfterChangingOrder() throws IllegalChoiceException, IllegalModelException {
-        CarModelSpecification specification= new CarModelSpecification(new Body("sedan"),new Color("red"),
-                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
-                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        CarOrder orderA = new CarOrder("A",new CarModel("Jaguar", specification));
-        accessoriesPost.setCurrentOrder(orderA);
 
-        assert(accessoriesPost.getTasks().get(0).getTaskDefinition().equals("install leather white seats"));
-        assert(accessoriesPost.getTasks().get(1).getTaskDefinition().equals("install manual airco"));
-        assert(accessoriesPost.getTasks().get(2).getTaskDefinition().equals("mount comfort wheels"));
 
     }
 
@@ -94,8 +70,8 @@ class WorkStationTest {
         assertFalse(carBodyPost.isFinished());
         assertFalse(drivetrainPost.isFinished());
 
-        carBodyPost.performAssemblyTask("body");
-        carBodyPost.performAssemblyTask("paint");
+        carBodyPost.performAssemblyTask("body",60);
+        carBodyPost.performAssemblyTask("paint",60);
         assert(carBodyPost.isFinished());
         assertFalse(drivetrainPost.isFinished());
 
@@ -130,10 +106,10 @@ class WorkStationTest {
         List<String> pendingDP = List.of("engine","gearbox");
         assert(drivetrainPost.getPendingTasks().equals(pendingDP));
 
-        carBodyPost.performAssemblyTask("body");
+        carBodyPost.performAssemblyTask("body",60);
         List<String> pendingCBPupdated = List.of("paint");
         assert(carBodyPost.getPendingTasks().equals(pendingCBPupdated));
-        carBodyPost.performAssemblyTask("paint");
+        carBodyPost.performAssemblyTask("paint",60);
         pendingCBPupdated = List.of();
         assert(carBodyPost.getPendingTasks().equals(pendingCBPupdated));
     }
@@ -145,7 +121,7 @@ class WorkStationTest {
         String statusDP = drivetrainPost.getTasksAndStatus();
         assert(statusDP.equals("engine: pending, gearbox: pending"));
 
-        carBodyPost.performAssemblyTask("body");
+        carBodyPost.performAssemblyTask("body",60);
         statusCBP = carBodyPost.getTasksAndStatus();
         assert(statusCBP.equals("body: done, paint: pending"));
     }

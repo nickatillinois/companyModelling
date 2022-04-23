@@ -11,7 +11,7 @@ public abstract class Stats implements StatisticsObserver {
     private Map<String,Double> statsPerDay = new HashMap<String,Double>();
 
 
-    public Stats(ArrayList<StatisticsObservable> subjects) {
+    public Stats(List<StatisticsObservable> subjects) {
         for (StatisticsObservable subject : subjects) {
             subject.addObserver(this);
         }
@@ -50,7 +50,7 @@ public abstract class Stats implements StatisticsObserver {
         }
     }
 
-    public abstract Map<String,Double> getStatistics(int fromXLastDays);
+    public abstract List<String> getStatistics(int fromXLastDays);
 
 
 }

@@ -30,7 +30,7 @@ public class Mechanic {
     }
 
     public List<String> finishTask(String taskName, int timeWorked) {
-        workStation.performAssemblyTask(taskName);
+        workStation.performAssemblyTask(taskName,timeWorked);
         productionScheduler.advanceOrders(timeWorked);
         return workStation.getPendingTasks();
     }

@@ -1,3 +1,6 @@
+import assemAssist.CarModel;
+import assemAssist.CarModelSpecification;
+import assemAssist.CarOrder;
 import assemAssist.ProductionScheduler;
 import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalCompletionDateException;
@@ -12,75 +15,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class CarOrderTest {
 
-    static Body body;
-
-    static {
-        try {
-            body = new Body("sedan");
-        } catch (IllegalChoiceException e) {
-            e.printStackTrace();
-        }
-    }
-
-    static Airco airco;
-
-    static {
-        try {
-            airco = new Airco("manual");
-        } catch (IllegalChoiceException e) {
-            e.printStackTrace();
-        }
-    }
-
-    static Wheels wheels;
-
-    static {
-        try {
-            wheels = new Wheels("comfort");
-        } catch (IllegalChoiceException e) {
-            e.printStackTrace();
-        }
-    }
-
-    static Seats seats;
-
-    static {
-        try {
-            seats = new Seats("leather white");
-        } catch (IllegalChoiceException e) {
-            e.printStackTrace();
-        }
-    }
-
-    static Gearbox gearbox;
-
-    static {
-        try {
-            gearbox = new Gearbox("6 speed manual");
-        } catch (IllegalChoiceException e) {
-            e.printStackTrace();
-        }
-    }
-
-    static Engine engine;
-
-    static {
-        try {
-            engine = new Engine("standard 2l 4 cilinders");
-        } catch (IllegalChoiceException e) {
-            e.printStackTrace();
-        }
-    }
-
-    static Color color;
-
-    static {
-        try {
-            color = new Color("red");
-        } catch (IllegalChoiceException e) {
-            e.printStackTrace();
-        }
-    }
 
     static CarModelSpecification carModelSpecification;
     static CarModel carModel;

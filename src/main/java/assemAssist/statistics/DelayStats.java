@@ -4,20 +4,25 @@ import assemAssist.observer.StatisticsObservable;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class DelayStats extends Stats{
 
-    public DelayStats(ArrayList<StatisticsObservable> subjects) {
+    public DelayStats(List<StatisticsObservable> subjects) {
         super(subjects);
     }
 
     @Override
-    public Map<String, Double> getStatistics(int fromXLastDays) {
-        return null;
+    public List<String> getStatistics(int fromXLastDays) {
+        List<String> statistics = new ArrayList<>();
+        statistics.add("average" + getAverage());
+        statistics.add("median" + getMedian());
+
+        for (int i = 1; i<fromXLastDays; i++) {
+            statistics.add("last delay" +
+                    getStatsPerDay().get(LocalDate.now().minusDays(i).toString()));
+        }
+        return statistics;
     }
 
     @Override

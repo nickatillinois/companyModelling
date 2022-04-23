@@ -6,16 +6,22 @@ import java.util.*;
 
 public class WorkingDayStats extends Stats {
 
-    public WorkingDayStats(ArrayList<StatisticsObservable> subjects) {
+    public WorkingDayStats(List<StatisticsObservable> subjects) {
         super(subjects);
         addStats(LocalDate.now().toString(),0.0);
     }
 
     @Override
-    public Map<String, Double> getStatistics(int fromXLastDays) {
+    public List<String> getStatistics(int fromXLastDays) {
+        List<String> statistics = new ArrayList<>();
+        statistics.add("average" + getAverage());
+        statistics.add("median" + getMedian());
 
-
-        return null;
+        for (int i = 1; i<fromXLastDays; i++) {
+            statistics.add("cars produced " + i + " day(s) ago" +
+                    getStatsPerDay().get(LocalDate.now().minusDays(i).toString()));
+        }
+        return statistics;
     }
 
     // TODO check of dit nt gewoon een copy aanpast

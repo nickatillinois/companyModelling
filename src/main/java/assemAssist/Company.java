@@ -94,4 +94,12 @@ public class Company {
     public Map<String, HashSet<String>> selectModel(String model) throws IllegalModelException {
         return catalog.getModelSpecifications(model);
     }
+
+    public List<String> getStatistics(int fromXLastDays) {
+        List<String> result = new ArrayList<>();
+        for (Stats stat : statistics) {
+            result.addAll(stat.getStatistics(fromXLastDays));
+        }
+        return result;
+    }
 }

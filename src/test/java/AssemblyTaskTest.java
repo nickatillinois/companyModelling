@@ -1,6 +1,4 @@
 import assemAssist.AssemblyTask;
-import assemAssist.carOrder.Color;
-import assemAssist.carOrder.Seats;
 import assemAssist.exceptions.IllegalChoiceException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,8 +10,8 @@ class AssemblyTaskTest {
 
     @BeforeEach
     void init() throws IllegalChoiceException {
-        task1 = new AssemblyTask("paint",new Color("blue"),"paint the car blue");
-        task2 = new AssemblyTask("seats",new Seats("leather black"),"install leather black seats");
+        task1 = new AssemblyTask("paint","paint the car blue");
+        task2 = new AssemblyTask("seats","install leather black seats");
     }
 
     @Test
@@ -26,12 +24,6 @@ class AssemblyTaskTest {
         task2.setIsCompleted(true);
         assert(task1.getIsCompleted());
         assert(task2.getIsCompleted());
-    }
-
-    @Test
-    void getComponent() {
-        assert(task1.getComponent().getChosenChoice().equals("blue"));
-        assert(task2.getComponent().getChosenChoice().equals("leather black"));
     }
 
     @Test
