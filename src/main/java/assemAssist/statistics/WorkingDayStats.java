@@ -1,50 +1,32 @@
 package assemAssist.statistics;
 
 import assemAssist.observer.StatisticsObservable;
-import assemAssist.observer.StatisticsObserver;
-
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.*;
 
 public class WorkingDayStats extends Stats {
 
-    private Map<String,Integer> lastTwoDays = new HashMap<String,Integer>();
-    private int totalCars;
-    private int carsToday;
-    private int days;
-    private List<Integer> carsProducedPerDay = new ArrayList<>();
-
     public WorkingDayStats(ArrayList<StatisticsObservable> subjects) {
         super(subjects);
-        lastTwoDays.put("1 day ago",0);
-        lastTwoDays.put("2 days ago",0);
+        addStats(LocalDate.now().toString(),0.0);
     }
 
     @Override
-    public Map<String, Double> getStatistics() {
+    public Map<String, Double> getStatistics(int fromXLastDays) {
+
+
         return null;
     }
 
+    // TODO check of dit nt gewoon een copy aanpast
     @Override
-    public void update(String event, long delay) {
-        //wanneer het een nieuwe dag is
-        if ( event.equals("next day") ) {
-            days += 1;
-            lastTwoDays.replace("2 days ago",lastTwoDays.get("1 day ago"));
-            lastTwoDays.replace("1 day ago",carsToday);
-            carsToday = 0;
+    public void update(double delay) {
+        Map<String,Double> stats = getStatsPerDay();
+        if (stats.containsKey(LocalDate.now().toString())) {
+            stats.replace(LocalDate.now().toString(), stats.get(LocalDate.now().toString()) + 1);
+        } else {
+            stats.put(LocalDate.now().toString(),1.0);
         }
-        //wanneer er een nieuwe order is gefinished
-        if ( event.equals("order completed") ) {
-            totalCars += 1;
-            carsToday += 1;
-            double newAverage = totalCars / days; setAverage(newAverage);
-            double newMedian = getMedian(carsProducedPerDay); setMedian(newMedian);
-        }
-    }
-
-    public Map<String,Integer> getLastTwoDays() {
-        return lastTwoDays;
     }
 
 }

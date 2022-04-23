@@ -4,6 +4,6 @@ import java.time.LocalDateTime;
 
 public interface StatisticsObserver {
 
-    public void update(String event, long delay);
+    void update(double delay);
 
 }

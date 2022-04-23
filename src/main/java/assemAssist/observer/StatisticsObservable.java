@@ -12,5 +12,5 @@ public interface StatisticsObservable {
 
     public void removeObserver(StatisticsObserver observer);
 
-    public void notifyObservers(String event, long delay);
+    public void notifyObservers(double delay);
 }

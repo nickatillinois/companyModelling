@@ -1,13 +1,9 @@
 package assemAssist;
 
-import assemAssist.observer.StatisticsObservable;
-import assemAssist.observer.StatisticsObserver;
 import assemAssist.workStation.AccessoriesPost;
 import assemAssist.workStation.CarBodyPost;
 import assemAssist.workStation.DrivetrainPost;
 import assemAssist.workStation.WorkStation;
-
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +12,7 @@ import java.util.List;
  *
  * @author SWOP Team 10
  */
-public class AssemblyLine implements StatisticsObservable {
+public class AssemblyLine {
     private List<WorkStation> workStations;
     private int minutesWorkedToday = 0;
     private final int STARTHOUR = 6;
@@ -203,9 +199,6 @@ public class AssemblyLine implements StatisticsObservable {
         }
         return newStateAndFinished;
     }
-    // TODO add observer for next day
-    // TODO add observer when order is completed
-    // (kan pas wanneer nextday hierin is toegevoegd)
 
     /**
      * Finds a specific work station and returns this.
@@ -218,20 +211,6 @@ public class AssemblyLine implements StatisticsObservable {
             }
         }
         throw new IllegalArgumentException("This is not a work station at this assembly line!");
-    }
-
-    public void addObserver(StatisticsObserver observer) {
-        observers.add(observer);
-    }
-
-    public void removeObserver(StatisticsObserver observer) {
-        observers.remove(observer);
-    }
-
-    public void notifyObservers(String event, long delay) {
-        for (StatisticsObserver observer : observers) {
-            observer.update(event,delay);
-        }
     }
 
 }

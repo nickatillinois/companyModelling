@@ -119,10 +119,8 @@ public class CarOrder implements StatisticsObservable {
         this.completed = completed;
         if (completed)
             this.completionTime = LocalDateTime.now();
-        if (!estCompletionTime.isEqual(completionTime)) {
-            long delayInMinutes = ChronoUnit.MINUTES.between(estCompletionTime,completionTime);
-            notifyObservers("order completed", delayInMinutes);
-        }
+        double delayInMinutes = ChronoUnit.MINUTES.between(estCompletionTime,completionTime);
+        notifyObservers(delayInMinutes);
     }
 
     /**
@@ -236,9 +234,9 @@ public class CarOrder implements StatisticsObservable {
         observers.remove(observer);
     }
 
-    public void notifyObservers(String event, long delay) {
+    public void notifyObservers(double delay) {
         for (StatisticsObserver observer : observers) {
-            observer.update(event, delay);
+            observer.update(delay);
         }
     }
 

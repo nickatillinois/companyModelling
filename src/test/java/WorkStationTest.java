@@ -25,7 +25,7 @@ class WorkStationTest {
         drivetrainPost = new DrivetrainPost();
         accessoriesPost = new AccessoriesPost();
 
-
+        CarModelSpecification specification;
         CarOrder orderA = new CarOrder("A",new CarModel("Jaguar", specification));
         CarOrder orderB = new CarOrder("B",new CarModel("Jaguar", specification));
 

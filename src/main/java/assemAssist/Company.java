@@ -4,6 +4,8 @@ import assemAssist.etc.CompletedCarOrderComparator;
 import assemAssist.etc.PendingCarOrderComparator;
 import assemAssist.exceptions.IllegalModelException;
 import assemAssist.exceptions.OrderNotFoundException;
+import assemAssist.statistics.Stats;
+import assemAssist.statistics.WorkingDayStats;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -14,6 +16,7 @@ public class Company {
     private final ProductionScheduler productionScheduler;
     private Catalog catalog;
     private ArrayList<CarOrder> completedCarOrders;
+    private List<Stats> statistics;
 
     public Company(){
         this.productionScheduler = new ProductionScheduler();
