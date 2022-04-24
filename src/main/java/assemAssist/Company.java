@@ -4,6 +4,7 @@ import assemAssist.etc.CompletedCarOrderComparator;
 import assemAssist.etc.PendingCarOrderComparator;
 import assemAssist.exceptions.IllegalModelException;
 import assemAssist.exceptions.OrderNotFoundException;
+import assemAssist.statistics.DelayStats;
 import assemAssist.statistics.Stats;
 import assemAssist.statistics.WorkingDayStats;
 
@@ -22,6 +23,9 @@ public class Company {
         this.productionScheduler = new ProductionScheduler();
         this.catalog = new Catalog();
         this.completedCarOrders = new ArrayList<CarOrder>();
+        //statistics aanmaken
+        //statistics.add(new WorkingDayStats());
+        //statistics.add(new DelayStats());
     }
 
     public ProductionScheduler getProductionScheduler() {

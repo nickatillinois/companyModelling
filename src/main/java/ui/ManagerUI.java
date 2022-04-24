@@ -37,7 +37,7 @@ public class ManagerUI {
     }
 
     private void statisticsUI(){
-        List<String> statistics = managerController.checkStatistics();
+        List<String> statistics = managerController.checkStatistics(2);
         for (String statistic : statistics) {
             System.out.println(statistic);
         }
