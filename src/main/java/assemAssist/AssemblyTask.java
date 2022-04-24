@@ -7,11 +7,17 @@ package assemAssist;
  */
 public class AssemblyTask {
 
-    /* A string representing the name of this assembly task. */
+    /**
+     *  A string representing the name of the component this assembly task works on.
+     */
     private final String name;
-    /* A boolean representing whether this assembly task is completed. */
+    /**
+     * A boolean representing whether this assembly task is completed.
+     */
     private boolean isCompleted;
-    /* A string containing this task's description. */
+    /**
+     * A string containing this task's description.
+     */
     private final String taskDefinition;
 
     /**
@@ -48,12 +54,16 @@ public class AssemblyTask {
         this.isCompleted = isCompleted;
     }
 
-    /* Returns the task definition belonging to this task. */
+    /**
+     * Returns the task definition belonging to this task.
+     */
     public String getTaskDefinition(){
         return taskDefinition;
     }
 
-    /* Returns the name of this assembly task */
+    /**
+     * Returns the name of this assembly task, representing the component it works on.
+     */
     public String getName() {
         return name;
     }

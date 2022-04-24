@@ -3,7 +3,7 @@ package assemAssist.workStation;
 import assemAssist.AssemblyTask;
 
 /**
- *  Class representing a drivetrain post
+ *  Class representing a Drivetrain Post
  */
 public class DrivetrainPost extends WorkStation{
 
@@ -15,7 +15,7 @@ public class DrivetrainPost extends WorkStation{
     }
 
     /**
-     * Assigns the car options of the current car order to this work station.
+     *  Assigns the car options of the current car order to this work station and creates new tasks to be completed.
      */
     @Override
     public void newTasks() {

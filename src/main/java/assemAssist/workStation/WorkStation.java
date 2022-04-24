@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Class representing a work station
+ * Class representing a single work station.
  */
 public abstract class WorkStation {
 
@@ -21,10 +21,9 @@ public abstract class WorkStation {
     private List<AssemblyTask> tasks = new ArrayList<>();
 
     /**
-     * An immutable list of mechanics currently working on this work station.
+     * A list of mechanics currently working at this work station.
      */
     private List<String> mechanics = new ArrayList<>();
-    //private PList<String> mechanics;
 
     /**
      * The name of this work station.
@@ -33,6 +32,8 @@ public abstract class WorkStation {
 
     /**
      * Creates a work station.
+     *
+     * @param name the name for this work station.
      */
     public WorkStation(String name) {
         super();
@@ -61,19 +62,19 @@ public abstract class WorkStation {
     }
 
     /**
-     * Returns the name of the work station.
+     * Returns the name of this work station.
      */
     public String getName() {return this.name;}
 
     /**
-     *  Assigns the car options of the current car order to this work station
+     *  Assigns the car options of the current car order to this work station and creates new tasks to be completed.
      */
     public abstract void newTasks();
 
     /**
-     * Returns the tasks for this work station.
+     * Returns the list of tasks for this work station.
      *
-     * @return The tasks for this work station
+     * @return the tasks for this work station
      */
     public List<AssemblyTask> getTasks() {
         return tasks;
@@ -105,7 +106,8 @@ public abstract class WorkStation {
     }
 
     /**
-     * Adds a given name of a mechanic to the list of mechanics working at this workstation.
+     * Adds a given mechanic's name to the list of mechanics working at this workstation.
+     *
      * @param mechanic the mechanic that will be added to the list of mechanics for this work station
      * @throws IllegalArgumentException | mechanic is null
      *                                  | mechanic is the empty string
@@ -119,6 +121,7 @@ public abstract class WorkStation {
     /**
      * Removes a given name of a mechanic from the list of mechanics working at this workstation.
      * If the given mechanic is not working at this station, the function will return.
+     *
      * @param mechanic the mechanic that needs to be removed from this work station
      * @throws IllegalArgumentException | mechanic is null
      *                                  | mechanic is the empty string
@@ -127,8 +130,8 @@ public abstract class WorkStation {
         if(mechanic == null){throw new IllegalArgumentException("A mechanic cannot be null.");}
         if(mechanic.length() == 0){throw new IllegalArgumentException("A mechanic cannot be the empty string.");}
         boolean contains = false;
-        for(String mechanieker: getMechanics()){
-            if(mechanieker.equalsIgnoreCase(mechanic)){
+        for(String mech : getMechanics()){
+            if(mech.equalsIgnoreCase(mechanic)){
                 contains = true;
                 break;
             }
@@ -138,16 +141,16 @@ public abstract class WorkStation {
     }
 
     /**
-     * Returns the PList of containing the names of the mechanics currently working at this work station.
+     * Returns the list containing the names of the mechanics currently working at this work station.
      *
-     * @return the PList of containing the names of the mechanics currently working at this work station.
+     * @return the list containing the names of the mechanics currently working at this work station.
      */
     public List<String> getMechanics() {
         return mechanics;
     }
 
     /**
-     * Returns a list of names of the tasks at this work station that are not yet completed.
+     * Returns a list of names of tasks at this work station that are not yet completed.
      * Returns the empty list if all tasks at this work station are finished.
      *
      * @return the list of names of the tasks at this work station that are not yet completed.
@@ -161,6 +164,12 @@ public abstract class WorkStation {
         return pendingTasks;
     }
 
+    /**
+     * Returns a list of names of tasks at this work station that are completed.
+     * Returns the empty list if no tasks at this work station are finished.
+     *
+     * @return the list of names of the tasks at this work station that are finished
+     */
     public List<String> getFinishedTasks() {
         List<String> finishedTasks = new ArrayList<>();
         for (AssemblyTask task : tasks) {
@@ -186,9 +195,10 @@ public abstract class WorkStation {
     }
 
     /**
-     * Completes the given task in this work station.
+     * Completes the given task at this work station.
      *
      * @param taskName the name of the task to be completed
+     * @param time the time it took to complete the given task
      * @throws IllegalArgumentException | taskName is not a valid name of a task at this work station.
      */
     public void performAssemblyTask(String taskName,int time) throws IllegalArgumentException{
@@ -201,7 +211,11 @@ public abstract class WorkStation {
         throw new IllegalArgumentException("This is not a task at this work station!");
     }
 
-
+    /**
+     * Returns a string containing all the different tasks at this work station and their current status.
+     *
+     * @return a string with all the tasks at this work station and their current status
+     */
     public String getTasksAndStatus() {
         String s = "";
         List<AssemblyTask> assemblyTasks = getTasks();

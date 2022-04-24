@@ -226,14 +226,34 @@ public class CarOrder implements StatisticsObservable {
         return ID == carOrder.ID;
     }
 
+    /**
+     * Adds the given observer to the list of observers.
+     *
+     * @param observer the observer to be added
+     * @throws IllegalArgumentException | observer is null
+     */
     public void addObserver(StatisticsObserver observer) {
+        if (observer == null) { throw new IllegalArgumentException("The given observer cannot be null."); }
         observers.add(observer);
     }
 
+    /**
+     * Removes the given observer to the list of observers.
+     *
+     * @param observer the observer to be removed
+     * @throws IllegalArgumentException | observer is null
+     *                                  | observer is not in the list of observers
+     */
     public void removeObserver(StatisticsObserver observer) {
+        if (observer == null) { throw new IllegalArgumentException("The given observer cannot be null."); }
         observers.remove(observer);
     }
 
+    /**
+     * Notifies the observers for the statistics class with the given value.
+     *
+     * @param delay the given value
+     */
     public void notifyObservers(double delay) {
         for (StatisticsObserver observer : observers) {
             observer.update(delay);
