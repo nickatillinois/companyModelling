@@ -2,13 +2,12 @@ package assemAssist.statistics;
 
 import assemAssist.observer.StatisticsObservable;
 import assemAssist.observer.StatisticsObserver;
-import org.junit.jupiter.params.shadow.com.univocity.parsers.annotations.Copy;
 
 import java.util.*;
 
 public abstract class Stats implements StatisticsObserver {
 
-    private Map<String,Double> statsPerDay = new HashMap<String,Double>();
+    private Map<String,List<Double>> statsPerDay = new HashMap<>();
 
 
     public Stats(List<StatisticsObservable> subjects) {
@@ -17,16 +16,19 @@ public abstract class Stats implements StatisticsObserver {
         }
     }
 
-    public Map<String, Double> getStatsPerDay() {
+    public Map<String, List<Double>> getStatsPerDay() {
         return statsPerDay;
     }
 
-    public void addStats(String key, Double value) {
-        statsPerDay.put(key,value);
+    public void addStats(String key, List<Double> values) {
+        statsPerDay.put(key,values);
     }
 
     public double getAverage() {
-        List<Double> numbers = (List<Double>) statsPerDay.values();
+        List<Double> numbers = new ArrayList<>();
+        for (List<Double> doubles : statsPerDay.values()) {
+            numbers.addAll(doubles);
+        }
         double average = 0;
 
         for (double num : numbers) {
@@ -36,7 +38,10 @@ public abstract class Stats implements StatisticsObserver {
     }
 
     public double getMedian() {
-        List<Double> numbers = (List<Double>) statsPerDay.values();
+        List<Double> numbers = new ArrayList<>();
+        for (List<Double> doubles : statsPerDay.values()) {
+            numbers.addAll(doubles);
+        }
         return calculateMedian(numbers);
     }
 

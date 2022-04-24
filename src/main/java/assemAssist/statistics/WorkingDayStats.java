@@ -8,7 +8,6 @@ public class WorkingDayStats extends Stats {
 
     public WorkingDayStats(List<StatisticsObservable> subjects) {
         super(subjects);
-        addStats(LocalDate.now().toString(),0.0);
     }
 
     @Override
@@ -19,19 +18,18 @@ public class WorkingDayStats extends Stats {
 
         for (int i = 1; i<fromXLastDays; i++) {
             statistics.add("cars produced " + i + " day(s) ago" +
-                    getStatsPerDay().get(LocalDate.now().minusDays(i).toString()));
+                    getStatsPerDay().get(LocalDate.now().minusDays(i).toString()).get(0));
         }
         return statistics;
     }
 
-    // TODO check of dit nt gewoon een copy aanpast
     @Override
     public void update(double delay) {
-        Map<String,Double> stats = getStatsPerDay();
+        Map<String,List<Double>> stats = getStatsPerDay();
         if (stats.containsKey(LocalDate.now().toString())) {
-            stats.replace(LocalDate.now().toString(), stats.get(LocalDate.now().toString()) + 1);
+            stats.replace(LocalDate.now().toString(), List.of(stats.get(LocalDate.now().toString()).get(0) + 1));
         } else {
-            stats.put(LocalDate.now().toString(),1.0);
+            stats.put(LocalDate.now().toString(),List.of(1.0));
         }
     }
 
