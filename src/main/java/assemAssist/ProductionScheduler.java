@@ -35,6 +35,11 @@ public ProductionScheduler(){
 }
 
 
+    /**
+     * This function wil set the scheduling algorithme
+     * @param algorithm the algorithm you will set
+     * @throws IllegalArgumentException if the algorithm is not valid.
+     */
     public void selectSchedulingAlgorithm(String algorithm) throws IllegalArgumentException{
         for (SchedulingAlgorithm algorithm1 : schedulers )
             if (Objects.equals(algorithm, algorithm1.getName()))
@@ -154,6 +159,10 @@ public ProductionScheduler(){
         this.schedulingAlgorithm = schedulingAlgorithm;
     }
 
+    /**
+     * Gives a list of pending orders in the work stations.
+     * @return the pending orders in the workstations of the assembly line
+     */
     public List<CarOrder> getPendingOrders(){
         ArrayList<CarOrder> pending = new ArrayList<>();
         for (WorkStation workStation : getAssemblyLine().getWorkStations())
