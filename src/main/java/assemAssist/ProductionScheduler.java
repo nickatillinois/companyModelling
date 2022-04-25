@@ -93,28 +93,12 @@ public ProductionScheduler(){
             CarOrder carOrder = schedulingAlgorithm.getNextCarOrder();
             assemblyLine.move(carOrder, timeBetweenTwoStates);
         }
-    }
-
-    /**
-     * This function will add a real car order to the production schedule.
-     * @param carOrder | the car order added to the proction schedule
-     * @throws NullPointerException | car order is null
-     */
-    public LocalDate addOrderToProductionSchedule(CarOrder carOrder) throws NullPointerException, IllegalCompletionDateException, IllegalConstraintException, IllegalModelException {
-        if (carOrder != null) {
-            schedulingAlgorithm.addOrderToProductionSchedule(carOrder);
-            int carsToProduceToday = Math.min(assemblyLine.remainWorkingTime() - 2,0);
-            float carsToProduceLater = getProductionSchedule().size() -carsToProduceToday;
-            int daysNeeded = 0;
-            if (carsToProduceLater != 0 )
-                daysNeeded = (int)Math.ceil(carsToProduceLater/14);
-            return LocalDate.now().plusDays(daysNeeded);
-        }
-        else
-            throw new NullPointerException("You can not add null to the production schedule.");
+        if (Objects.equals(schedulingAlgorithm.getName(), "Specification Batch"))
+            if (schedulingAlgorithm.getProductionSchedule() == schedulers.get(0).getProductionSchedule())
+                selectSchedulingAlgorithm("FIFO");
 
     }
-
+    
     /**
      * This function return a list of carorders of the given garageHolder.
      * @param garageHolder | the garageholder of whom the carorders are to be found
