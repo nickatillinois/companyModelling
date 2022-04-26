@@ -64,23 +64,4 @@ public class FIFO extends SchedulingAlgorithm {
         return carOrderList;
     }
 
-    /**
-     * This function add a new car order to the car order list.
-     *
-     * @param order new carOrder
-     * @throws IllegalConstraintException If the car model is not a valid confirmation.
-     * @throws IllegalModelException
-     */
-    @Override
-    public void addOrderToProductionSchedule(CarOrder order) throws IllegalConstraintException, IllegalModelException {
-        if (order.isValidCarModel())
-            carOrderList.add(order);
-            //TODO set the estimate complition time
-
-        else
-            throw new IllegalConstraintException("This car order has not a valid car model!");
-
-    }
-
-
 }
