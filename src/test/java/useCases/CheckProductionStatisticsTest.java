@@ -1,4 +1,4 @@
-package useCases;
+package java.useCases;
 
 import assemAssist.AssemblyLine;
 import assemAssist.Company;
@@ -34,7 +34,7 @@ public class CheckProductionStatisticsTest {
         ProductionScheduler productionScheduler = new ProductionScheduler();
         Company company = new Company();
         AssemblyLine assemblyLine = new AssemblyLine();
-        new UI( new GarageHolderUI( new GarageHolderController(productionScheduler)),
+        new UI( new GarageHolderUI( new GarageHolderController(company)),
                 new ManagerUI(      new ManagerController(company)),
                 new MechanicUI(     new MechanicController( new Mechanic(productionScheduler,assemblyLine) )));
     }

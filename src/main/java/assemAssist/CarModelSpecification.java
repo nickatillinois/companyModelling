@@ -49,7 +49,7 @@ public class CarModelSpecification {
         return modelName;
     }
 
-    public int getStandardTaskTime() {
+    public int getStandardWorkStationTime() {
         return standardTaskTime;
     }
     /**

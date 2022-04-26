@@ -65,7 +65,7 @@ class CarOrderTest {
         assertEquals("A", carOrderA.getCarModel().getModelName());
         assertEquals("B", carOrderB.getCarModel().getModelName());
         assertEquals("C", carOrderC.getCarModel().getModelName());
-        assertEquals(50, company.getCatalog().getModel("A").getStandardTaskTime());
+        assertEquals(50, company.getCatalog().getModel("A").getStandardWorkStationTime());
         assertEquals(1, carOrderA.getOrderID());
         assertEquals(2, carOrderB.getOrderID());
         assertTrue(carOrderA.isValidCarModel());

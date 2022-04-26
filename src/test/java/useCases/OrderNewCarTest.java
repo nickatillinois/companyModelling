@@ -12,7 +12,7 @@ public class OrderNewCarTest {
     private CarOrder carOrder;
     private String garageHolder;
 
-    @Test
+    /*@Test
     public void init() throws IllegalModelException, IllegalChoiceException {
         Body body = new Body("sedan");
         CarModelSpecification cmf = new CarModelSpecification(body,new Color("red"),
@@ -26,7 +26,7 @@ public class OrderNewCarTest {
 
 
 
-    }
+    }*/
 
 
 
