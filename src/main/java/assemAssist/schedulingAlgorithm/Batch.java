@@ -2,6 +2,8 @@ package assemAssist.schedulingAlgorithm;
 
 import assemAssist.CarModel;
 import assemAssist.CarOrder;
+import assemAssist.exceptions.IllegalConstraintException;
+import assemAssist.exceptions.IllegalModelException;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -100,5 +102,36 @@ public class Batch extends SchedulingAlgorithm{
         }
 
         return null;
+    }
+    /**
+     * This function add a new car order to the car order list.
+     *
+     * @param order new carOrder
+     * @throws IllegalConstraintException If the car model is not a valid confirmation.
+     * @throws IllegalModelException
+     */
+    @Override
+    public void addOrderToProductionSchedule(CarOrder order) throws IllegalConstraintException, IllegalModelException {
+        if (order.isValidCarModel()) {
+            carOrderList.add(order);
+            int workingTime = catalog.getModel(order.getCarModel().getModelName()).getStandardWorkStationTime() * 3;
+            boolean before = true;
+            if (carOrderList != null){
+                for( CarOrder order1 : getProductionSchedule()){
+                    if (order == order1)
+                        before = false;
+                    if (before)
+                        workingTime = workingTime + catalog.getModel(order1.getCarModel().getModelName()).getStandardWorkStationTime();
+                    else
+                        return;
+                }
+            }
+            order.setEstCompletionTime(order.getOrderingTime().pl);
+
+        }
+
+        else
+            throw new IllegalConstraintException("This car order has not a valid car model!");
+
     }
 }

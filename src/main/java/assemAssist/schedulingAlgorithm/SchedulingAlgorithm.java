@@ -1,6 +1,7 @@
 package assemAssist.schedulingAlgorithm;
 
 import assemAssist.CarOrder;
+import assemAssist.Catalog;
 import assemAssist.exceptions.IllegalConstraintException;
 import assemAssist.exceptions.IllegalModelException;
 
@@ -12,6 +13,8 @@ public abstract class SchedulingAlgorithm {
      * This is the list af al car orders that are waiting to be produced.
      */
     List<CarOrder> carOrderList = new ArrayList<>();
+
+    Catalog catalog = new Catalog();
 
     /**
      * This function gives a list of possible batch of options where for there are more than three car order with that
@@ -50,11 +53,5 @@ public abstract class SchedulingAlgorithm {
      * @throws IllegalConstraintException If the car model is not a valid confirmation.
      * @throws IllegalModelException
      */
-    public  void addOrderToProductionSchedule(CarOrder order) throws IllegalConstraintException, IllegalModelException {
-        if (order.isValidCarModel())
-            carOrderList.add(order);
-        //TODO set the estimate complition time
-        else
-            throw new IllegalConstraintException("This car order has not a valid car model!");
-    }
+    public abstract void addOrderToProductionSchedule(CarOrder order) throws IllegalConstraintException, IllegalModelException ;
 }

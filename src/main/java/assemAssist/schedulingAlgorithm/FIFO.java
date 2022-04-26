@@ -1,6 +1,9 @@
 package assemAssist.schedulingAlgorithm;
 
 import assemAssist.CarOrder;
+import assemAssist.Catalog;
+import assemAssist.exceptions.IllegalConstraintException;
+import assemAssist.exceptions.IllegalModelException;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -10,6 +13,7 @@ public class FIFO extends SchedulingAlgorithm {
      * The name of the scheduling Algorithm
      */
     String name = "FIFO";
+
 
 
     /**
@@ -58,6 +62,24 @@ public class FIFO extends SchedulingAlgorithm {
     @Override
     public List<CarOrder> getProductionSchedule() {
         return carOrderList;
+    }
+
+    /**
+     * This function add a new car order to the car order list.
+     *
+     * @param order new carOrder
+     * @throws IllegalConstraintException If the car model is not a valid confirmation.
+     * @throws IllegalModelException
+     */
+    @Override
+    public void addOrderToProductionSchedule(CarOrder order) throws IllegalConstraintException, IllegalModelException {
+        if (order.isValidCarModel())
+            carOrderList.add(order);
+            //TODO set the estimate complition time
+
+        else
+            throw new IllegalConstraintException("This car order has not a valid car model!");
+
     }
 
 

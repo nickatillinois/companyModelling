@@ -1,6 +1,7 @@
 package assemAssist;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
@@ -38,21 +39,21 @@ public class CarOrder implements StatisticsObservable {
     /**
      * The effective completion date of this carorder in LocalDate format.
      */
-    private LocalDate completionTime;
+    private LocalDateTime completionTime;
 
     /**
      * The estimated completion date of this carorder in LocalDate format.
      */
-    private LocalDate estCompletionTime;
+    private LocalDateTime estCompletionTime;
 
-    public LocalDate getOrderingTime() {
+    public LocalDateTime getOrderingTime() {
         return orderingTime;
     }
 
     /**
      * The timestamp of ordering this carorder in LocalDate format.
      */
-    private final LocalDate orderingTime;
+    private final LocalDateTime orderingTime;
 
     /**
      * A CarModel object representing the Carmodel with specifications of this order.
@@ -68,7 +69,7 @@ public class CarOrder implements StatisticsObservable {
      *                                  | garageHolder is the empty string
      *                                  | carModel is null
      */
-    public CarOrder(String  garageHolder, CarModel carModel, LocalDate estCompletionTime) throws IllegalArgumentException {
+    public CarOrder(String  garageHolder, CarModel carModel) throws IllegalArgumentException {
         if(garageHolder == null){throw new IllegalArgumentException("A garage holder cannot be null.");}
         if(garageHolder.equals("")){throw new IllegalArgumentException("A garage holder cannot be the empty string.");}
         if(carModel == null){throw new IllegalArgumentException("A car model cannot be null.");}
@@ -77,13 +78,12 @@ public class CarOrder implements StatisticsObservable {
         this.carModel = carModel;
         this.completed = false;
         this.completionTime = null;
-        this.estCompletionTime = estCompletionTime;
         counter++;
         this.ID = counter;
-        this.orderingTime = LocalDate.now();
+        this.orderingTime = LocalDateTime.now();
     }
 
-    public LocalDate getEstCompletionTime() {
+    public LocalDateTime getEstCompletionTime() {
         return estCompletionTime;
     }
     /**
@@ -146,7 +146,7 @@ public class CarOrder implements StatisticsObservable {
     public void setCompleted(boolean completed){
         this.completed = completed;
         if (completed)
-            this.completionTime = LocalDate.now();
+            this.completionTime = LocalDateTime.now();
         double delayInMinutes = ChronoUnit.MINUTES.between(estCompletionTime,completionTime);
         notifyObservers(delayInMinutes);
     }
@@ -156,7 +156,7 @@ public class CarOrder implements StatisticsObservable {
      *
      * @return The immutable LocalTimeDate of this carOrder.
      */
-    public LocalDate getCompletionTime(){
+    public LocalDateTime getCompletionTime(){
         return this.completionTime;
     }
 
@@ -167,14 +167,14 @@ public class CarOrder implements StatisticsObservable {
 
      */
 
-    public void setCompletionTime(LocalDate completionTime) throws IllegalCompletionDateException {
+    public void setCompletionTime(LocalDateTime completionTime) throws IllegalCompletionDateException {
 
         if (completionTime == null){throw new IllegalArgumentException("completion time cannot be set to null");}
         //if (completionTime.isBefore(LocalDate.now())){throw new IllegalCompletionDateException("completion time cannot be set in the past");}
         this.completionTime = completionTime;
     }
 
-    public void setEstCompletionTime(LocalDate estCompletionTime) throws IllegalCompletionDateException {
+    public void setEstCompletionTime(LocalDateTime estCompletionTime) throws IllegalCompletionDateException {
 
         if (estCompletionTime == null){throw new IllegalArgumentException("estCompletion time cannot be set to null");}
         //if (completionTime.isBefore(LocalDate.now())){throw new IllegalCompletionDateException("completion time cannot be set in the past");}
