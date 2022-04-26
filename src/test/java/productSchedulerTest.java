@@ -1,3 +1,6 @@
+
+package java;
+
 import assemAssist.AssemblyLine;
 import assemAssist.AssemblyTask;
 import assemAssist.ProductionScheduler;
@@ -16,7 +19,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.testng.AssertJUnit.assertEquals;
+
 public class productSchedulerTest {
     private static ProductionScheduler productionScheduler;
     private static AssemblyLine assemblyLine;

@@ -27,12 +27,6 @@ class AssemblyLineTest {
     void setUp() throws IllegalChoiceException, IllegalModelException {
         assemblyLine = new AssemblyLine();
        /* ProductionScheduler.addModel("Jaguar");*/
-        Body body = new Body("sedan");
-        CarModelSpecification specification = new CarModelSpecification(body,new Color("red"),
-                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
-                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        orderA = new CarOrder("A",new CarModel("Jaguar", specification));
-        orderB = new CarOrder("B",new CarModel("Jaguar", specification));
 
 
     }

@@ -25,6 +25,7 @@ public class ProductionScheduler {
 private final AssemblyLine assemblyLine;
 private SchedulingAlgorithm schedulingAlgorithm = new FIFO();
 private final ArrayList<SchedulingAlgorithm> schedulers = new ArrayList<>();
+
     /**
      * Create a new production schedule af a single assembly line that can be managed by the manager
      */

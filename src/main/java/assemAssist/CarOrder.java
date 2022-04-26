@@ -1,6 +1,6 @@
 package assemAssist;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
@@ -36,30 +36,56 @@ public class CarOrder implements StatisticsObservable {
     private boolean completed;
 
     /**
-     * The effective completion date of this carorder in LocalDateTime format.
+     * The effective completion date of this carorder in LocalDate format.
      */
-    private LocalDateTime completionTime;
+    private LocalDate completionTime;
 
-    public LocalDateTime getEstCompletionTime() {
-        return estCompletionTime;
+    /**
+     * The estimated completion date of this carorder in LocalDate format.
+     */
+    private LocalDate estCompletionTime;
+
+    public LocalDate getOrderingTime() {
+        return orderingTime;
     }
 
     /**
-     * The estimated completion date of this carorder in LocalDateTime format.
+     * The timestamp of ordering this carorder in LocalDate format.
      */
-    private LocalDateTime estCompletionTime;
-
-    /**
-     * The timestamp of ordering this carorder in LocalDateTime format.
-     */
-    private LocalDateTime orderingTime;
+    private final LocalDate orderingTime;
 
     /**
      * A CarModel object representing the Carmodel with specifications of this order.
      */
     private CarModel carModel;
 
+    /**
+     * Creates a new car model specification with a given body, color, engine, gearbox, seats, airco, wheels.
+     *
+     * @param garageHolder The client for the car order.
+     * @param carModel The car model for the car order.
+     * @throws IllegalArgumentException | garageHolder is null
+     *                                  | garageHolder is the empty string
+     *                                  | carModel is null
+     */
+    public CarOrder(String  garageHolder, CarModel carModel, LocalDate estCompletionTime) throws IllegalArgumentException {
+        if(garageHolder == null){throw new IllegalArgumentException("A garage holder cannot be null.");}
+        if(garageHolder.equals("")){throw new IllegalArgumentException("A garage holder cannot be the empty string.");}
+        if(carModel == null){throw new IllegalArgumentException("A car model cannot be null.");}
 
+        this.garageholder = garageHolder;
+        this.carModel = carModel;
+        this.completed = false;
+        this.completionTime = null;
+        this.estCompletionTime = estCompletionTime;
+        counter++;
+        this.ID = counter;
+        this.orderingTime = LocalDate.now();
+    }
+
+    public LocalDate getEstCompletionTime() {
+        return estCompletionTime;
+    }
     /**
      * Sets the garage holder of this car order to the given garage holder.
      *
@@ -105,6 +131,8 @@ public class CarOrder implements StatisticsObservable {
         this.carModel = carModel;
     }
 
+
+
     public boolean isCompleted(){
         return this.completed;
     }
@@ -118,7 +146,7 @@ public class CarOrder implements StatisticsObservable {
     public void setCompleted(boolean completed){
         this.completed = completed;
         if (completed)
-            this.completionTime = LocalDateTime.now();
+            this.completionTime = LocalDate.now();
         double delayInMinutes = ChronoUnit.MINUTES.between(estCompletionTime,completionTime);
         notifyObservers(delayInMinutes);
     }
@@ -128,7 +156,7 @@ public class CarOrder implements StatisticsObservable {
      *
      * @return The immutable LocalTimeDate of this carOrder.
      */
-    public LocalDateTime getCompletionTime(){
+    public LocalDate getCompletionTime(){
         return this.completionTime;
     }
 
@@ -139,17 +167,17 @@ public class CarOrder implements StatisticsObservable {
 
      */
 
-    public void setCompletionTime(LocalDateTime completionTime) throws IllegalCompletionDateException {
+    public void setCompletionTime(LocalDate completionTime) throws IllegalCompletionDateException {
 
         if (completionTime == null){throw new IllegalArgumentException("completion time cannot be set to null");}
-        //if (completionTime.isBefore(LocalDateTime.now())){throw new IllegalCompletionDateException("completion time cannot be set in the past");}
+        //if (completionTime.isBefore(LocalDate.now())){throw new IllegalCompletionDateException("completion time cannot be set in the past");}
         this.completionTime = completionTime;
     }
 
-    public void setEstCompletionTime(LocalDateTime estCompletionTime) throws IllegalCompletionDateException {
+    public void setEstCompletionTime(LocalDate estCompletionTime) throws IllegalCompletionDateException {
 
         if (estCompletionTime == null){throw new IllegalArgumentException("estCompletion time cannot be set to null");}
-        //if (completionTime.isBefore(LocalDateTime.now())){throw new IllegalCompletionDateException("completion time cannot be set in the past");}
+        //if (completionTime.isBefore(LocalDate.now())){throw new IllegalCompletionDateException("completion time cannot be set in the past");}
         this.estCompletionTime = estCompletionTime;
     }
 
@@ -160,29 +188,7 @@ public class CarOrder implements StatisticsObservable {
 
 
 
-    /**
-     * Creates a new car model specification with a given body, color, engine, gearbox, seats, airco, wheels.
-     *
-     * @param garageHolder The client for the car order.
-     * @param carModel The car model for the car order.
-     * @throws IllegalArgumentException | garageHolder is null
-     *                                  | garageHolder is the empty string
-     *                                  | carModel is null
-     */
-    public CarOrder(String  garageHolder, CarModel carModel, LocalDateTime estCompletionTime) throws IllegalArgumentException {
-        if(garageHolder == null){throw new IllegalArgumentException("A garage holder cannot be null.");}
-        if(garageHolder.equals("")){throw new IllegalArgumentException("A garage holder cannot be the empty string.");}
-        if(carModel == null){throw new IllegalArgumentException("A car model cannot be null.");}
 
-        this.garageholder = garageHolder;
-        this.carModel = carModel;
-        this.completed = false;
-        this.completionTime = null;
-        this.estCompletionTime = estCompletionTime;
-        counter++;
-        this.ID = counter;
-        this.orderingTime = LocalDateTime.now();
-    }
 
     public boolean isValidCarModel() throws IllegalConstraintException, IllegalModelException {
         return this.carModel.inspect();

@@ -1,7 +1,8 @@
 package useCases;
 
+import assemAssist.CarOrder;
 import assemAssist.ProductionScheduler;
-import assemAssist.carOrder.*;
+import assemAssist.CarOrder;
 import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalModelException;
 import org.junit.jupiter.api.Test;
