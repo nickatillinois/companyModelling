@@ -1,3 +1,5 @@
+package classTests;
+
 import assemAssist.*;
 import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalModelException;

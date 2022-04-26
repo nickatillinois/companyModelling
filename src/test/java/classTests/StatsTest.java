@@ -1,4 +1,4 @@
-package java;
+package classTests;
 
 import assemAssist.observer.StatisticsObservable;
 import assemAssist.statistics.DelayStats;

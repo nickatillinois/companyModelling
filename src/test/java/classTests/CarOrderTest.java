@@ -1,4 +1,4 @@
-package java;
+package classTests;
 
 import assemAssist.CarModel;
 import assemAssist.CarOrder;
@@ -7,8 +7,6 @@ import assemAssist.exceptions.IllegalConstraintException;
 import assemAssist.exceptions.IllegalModelException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Map;
 
@@ -30,17 +28,17 @@ class CarOrderTest {
         // add some pending orders to the company
         Map<String, String> legalAOptions = Map.of("body", "sedan", "color", "red", "engine", "v4", "gearbox", " 6 manual", "seats", "leather white", "airco", "manual", "wheels", "winter");
         CarModel carModelA = new CarModel("A", legalAOptions);
-        LocalDate estCompletionDateA = LocalDate.now().plusWeeks(1);
+        LocalDateTime estCompletionDateA = LocalDateTime.now().plusWeeks(1);
         carOrderA = new CarOrder("Danny Smeets", carModelA, estCompletionDateA);
 
         Map<String, String> legalBOptions = Map.of("body", "sedan", "color", "red", "engine", "v4", "gearbox", " 6 manual", "seats", "leather white", "airco", "manual", "wheels", "winter", "spoiler", "low");
         CarModel carModelB = new CarModel("B", legalBOptions);
-        LocalDate estCompletionDateB = LocalDate.now().plusWeeks(2);
+        LocalDateTime estCompletionDateB = LocalDateTime.now().plusWeeks(2);
         carOrderB = new CarOrder("Sandy Smeets", carModelB, estCompletionDateB);
 
         Map<String, String> legalCOptions = Map.of("body", "sport", "color", "black", "engine", "v6", "gearbox", " 6 manual", "seats", "leather white", "airco", "manual", "wheels", "winter", "spoiler", "low");
         CarModel carModelC = new CarModel("C", legalCOptions);
-        LocalDate estCompletionDateC = LocalDate.now().plusWeeks(3);
+        LocalDateTime estCompletionDateC = LocalDateTime.now().plusWeeks(3);
         carOrderC = new CarOrder("Kim Smeets", carModelC, estCompletionDateC);
 
         // complete order C

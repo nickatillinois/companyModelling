@@ -1,4 +1,4 @@
-package java;
+package classTests;
 
 import assemAssist.Catalog;
 

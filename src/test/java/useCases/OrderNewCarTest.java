@@ -1,4 +1,4 @@
-package useCases;
+package java.useCases;
 
 import assemAssist.CarOrder;
 import assemAssist.ProductionScheduler;
