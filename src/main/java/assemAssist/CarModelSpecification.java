@@ -1,8 +1,8 @@
 package assemAssist;
 
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Objects;
+import java.util.TreeMap;
 
 /**
  * Class representing a car model with a modelName and a car model specification.
@@ -20,7 +20,7 @@ public class CarModelSpecification {
     /**
      * A map containing the options for this car model's components.
      */
-    private Map<String, HashSet<String>> availableOptions;
+    private TreeMap<String, HashSet<String>> availableOptions;
 
     /**
      * Creates a new car model with a given name and a given car model specification
@@ -32,7 +32,7 @@ public class CarModelSpecification {
      *                                  | modelName is the empty string
      *                                  | carModelSpecification is null
      */
-    public CarModelSpecification(String modelName, int standardTaskTime, Map<String, HashSet<String>> availableOptions)  {
+    public CarModelSpecification(String modelName, int standardTaskTime, TreeMap<String, HashSet<String>> availableOptions)  {
         this.standardTaskTime = standardTaskTime;
         if(modelName == null){throw new IllegalArgumentException("A modelName cannot be null.");}
         if(modelName.length() == 0){throw new IllegalArgumentException("A modelName cannot be the empty string.");}
@@ -70,7 +70,7 @@ public class CarModelSpecification {
      *
      * @return The car model specification of this car model.
      */
-    public Map<String, HashSet<String>> getAvailableOptions() {
+    public TreeMap<String, HashSet<String>> getAvailableOptions() {
         return availableOptions;
     }
 
@@ -80,7 +80,7 @@ public class CarModelSpecification {
      * @param availableOptions The car model specification for this car model.
      * @throws IllegalArgumentException | carModelSpecification is null
      */
-    public void setAvailableOptions(Map<String, HashSet<String>> availableOptions)  {
+    public void setAvailableOptions(TreeMap<String, HashSet<String>> availableOptions)  {
         if(availableOptions == null){throw new IllegalArgumentException("A car model specification cannot be null.");}
         this.availableOptions = availableOptions;
     }

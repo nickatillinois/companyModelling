@@ -54,7 +54,7 @@ public class Catalog {
 
 
 
-    public Map<String, HashSet<String>> getModelSpecifications(String modelName) throws IllegalModelException {
+    public TreeMap<String, HashSet<String>> getModelSpecifications(String modelName) throws IllegalModelException {
         CarModelSpecification model = getModel(modelName);
         return model.getAvailableOptions();
     }
@@ -69,7 +69,7 @@ public class Catalog {
     }
 
     private void createStandardModels(){
-        HashMap<String, HashSet<String>> A = new HashMap<>();
+        TreeMap<String, HashSet<String>> A = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         A.put("Body", new HashSet<>() {{
             add("Sedan");
             add("Break");
@@ -105,7 +105,7 @@ public class Catalog {
         }});
         this.addModel(new CarModelSpecification("A", 50, A));
 
-        HashMap<String, HashSet<String>> B = new HashMap<>();
+        TreeMap<String, HashSet<String>> B = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         B.put("Body", new HashSet<>() {{
             add("Sedan");
             add("Break");
@@ -145,7 +145,7 @@ public class Catalog {
         }});
         this.addModel(new CarModelSpecification("B", 70, B));
 
-        HashMap<String, HashSet<String>> C = new HashMap<>();
+        TreeMap<String, HashSet<String>> C = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         C.put("Body", new HashSet<>() {{
             add("Sport");
         }});

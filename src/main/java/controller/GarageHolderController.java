@@ -5,10 +5,7 @@ import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalCompletionDateException;
 import assemAssist.exceptions.IllegalModelException;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class GarageHolderController {
 
@@ -28,13 +25,13 @@ public class GarageHolderController {
         return company.getAvailableModels();
     }
 
-    public Map<String, HashSet<String>> selectModel(String carModel) throws IllegalModelException {
+    public TreeMap<String, HashSet<String>> selectModel(String carModel) throws IllegalModelException {
         this.chosenModel = carModel;
         return company.selectModel(carModel);
     }
 
     public String completeOrderingForm(List<String> carOptions) throws IllegalChoiceException, IllegalModelException, IllegalCompletionDateException {
-        return company.completeOrderingForm((Map<String, String>) carOptions, this.garageHolder, this.chosenModel);
+        return company.completeOrderingForm((TreeMap<String, String>) carOptions, this.garageHolder, this.chosenModel);
     }
 
     public List<String> viewDetails(int carID, String garageHolderName) throws IllegalArgumentException {

@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
+import java.util.TreeMap;
 
 public class Company {
     private final ProductionScheduler productionScheduler;
@@ -118,7 +118,7 @@ public class Company {
     public String selectModelString(String model) throws IllegalModelException {
         return catalog.getModelSpecification(model);
     }
-    public Map<String, HashSet<String>> selectModel(String model) throws IllegalModelException {
+    public TreeMap<String, HashSet<String>> selectModel(String model) throws IllegalModelException {
         return catalog.getModelSpecifications(model);
     }
 
@@ -152,7 +152,7 @@ public class Company {
 
     }
 
-    public String completeOrderingForm(Map<String, String> chosenOptions, String garageHolder, String chosenModel) {
+    public String completeOrderingForm(TreeMap<String, String> chosenOptions, String garageHolder, String chosenModel) {
         // create a new car model
         CarModel carModel = new CarModel(chosenModel, chosenOptions);
         // create a new car order

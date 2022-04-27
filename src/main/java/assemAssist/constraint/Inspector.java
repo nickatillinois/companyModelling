@@ -12,6 +12,7 @@ public class Inspector {
      * List of constraints that the inspector validates.
      */
     private static ArrayList<Constraint> constraints;
+    private static boolean initialized = false;
     private CarModel carModel;
 
     /**
@@ -20,7 +21,10 @@ public class Inspector {
     public Inspector(CarModel carModel) throws IllegalConstraintException {
         constraints = new ArrayList<>();
         this.carModel = carModel;
-        addConstraints();
+        if (!initialized) {
+            addConstraints();
+            initialized = true;
+        }
     }
     private void addConstraints() throws IllegalConstraintException {
         constraints.add(new Model());

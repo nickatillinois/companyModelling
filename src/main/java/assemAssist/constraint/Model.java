@@ -6,7 +6,7 @@ import assemAssist.exceptions.IllegalConstraintException;
 import assemAssist.exceptions.IllegalModelException;
 
 import java.util.HashSet;
-import java.util.Map;
+import java.util.TreeMap;
 
 public class Model extends Constraint{
 
@@ -29,12 +29,11 @@ public class Model extends Constraint{
         if (!containsModelName) {
             throw new IllegalModelException("Model name " + modelName + " is not in the catalog.");
         }
-        Map<String, HashSet<String>> model = catalog.getModelSpecifications(modelName);
+        TreeMap<String, HashSet<String>> model = catalog.getModelSpecifications(modelName);
         // check if the chosen specifications are in the model
             for (String key : chosenSpecifications.getChosenOptions().keySet()) {
                 // every key in chosenOptions must be in model, ignore case of key
                 boolean containsKey = false;
-                key = key.toLowerCase();
                 for (String availableKey : model.keySet()) {
                     if (availableKey.equalsIgnoreCase(key)) {
                         containsKey = true;

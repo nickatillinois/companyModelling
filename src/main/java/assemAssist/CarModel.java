@@ -4,17 +4,18 @@ import assemAssist.exceptions.IllegalConstraintException;
 import assemAssist.exceptions.IllegalModelException;
 import assemAssist.constraint.Inspector;
 
-import java.util.Map;
+import java.util.TreeMap;
+
 
 public class CarModel {
     private String modelName;
-    private Map<String, String> chosenOptions;
+    private TreeMap<String, String> chosenOptions;
 
     public String getModelName() {
         return modelName;
     }
 
-    public CarModel(String modelName, Map<String, String> chosenOptions) {
+    public CarModel(String modelName, TreeMap<String, String> chosenOptions) {
         this.modelName = modelName;
         this.chosenOptions = chosenOptions;
     }
@@ -22,7 +23,7 @@ public class CarModel {
     public boolean inspect() throws IllegalConstraintException, IllegalModelException {
         return new Inspector(this).inspect();
     }
-    public Map<String, String> getChosenOptions() {
+    public TreeMap<String, String> getChosenOptions() {
         return chosenOptions;
     }
 
