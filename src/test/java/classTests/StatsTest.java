@@ -71,19 +71,27 @@ class StatsTest {
         List<String> statistics = new ArrayList<>();
         statistics.add("the average of completed cars in a day is 11.0");
         statistics.add("the median of completed cars in a day is 11.5");
-        assertEquals(workingDayStats.getStatistics(0),statistics);
-
-        // TODO testen voor 2
+        assertEquals(workingDayStats.getStatistics(0,LocalDate.of(2022,4,25)),statistics);
+        statistics.add("cars produced 1 day(s) ago: 10.0");
+        assertEquals(workingDayStats.getStatistics(1,LocalDate.of(2022,4,25)),statistics);
+        statistics.add("cars produced 2 day(s) ago: 13.0");
+        assertEquals(workingDayStats.getStatistics(2,LocalDate.of(2022,4,25)),statistics);
     }
 
     @Test
     void getStatisticsDelayStats() {
         List<String> statistics = new ArrayList<>();
-        statistics.add("the average of completed cars in a day is 7.0");
-        statistics.add("the median of completed cars in a day is 6.5");
-        assertEquals(delayStats.getStatistics(0),statistics);
-
-        // TODO testen voor 2
+        statistics.add("the average delay on a car is 7.0");
+        statistics.add("the median delay on a car is 6.5");
+        assertEquals(delayStats.getStatistics(0,LocalDate.of(2022,4,25)),statistics);
+        statistics.add("the last delay was on 2022-04-24: 12.0 minutes");
+        assertEquals(delayStats.getStatistics(1,LocalDate.of(2022,4,25)),statistics);
+        statistics.add("the 2nd to last delay was on 2022-04-24: 3.0 minutes");
+        assertEquals(delayStats.getStatistics(2,LocalDate.of(2022,4,25)),statistics);
+        statistics.add("the 3rd last delay was on 2022-04-22: 6.0 minutes");
+        assertEquals(delayStats.getStatistics(3,LocalDate.of(2022,4,25)),statistics);
+        statistics.add("the 4th last delay was on 2022-04-20: 7.0 minutes");
+        assertEquals(delayStats.getStatistics(4,LocalDate.of(2022,4,25)),statistics);
     }
 
     @Test
@@ -108,6 +116,39 @@ class StatsTest {
         delayStats.addStats(LocalDate.of(2022,4,25).toString(),List.of(5.0));
         stats2.put(LocalDate.of(2022,4,25).toString(),List.of(5.0));
         assertEquals(delayStats.getStatsPerDay(),stats2);
+    }
+
+    @Test
+    void updateWorkingDayStats() {
+        Map<String,List<Double>> statistics = new HashMap<>();
+        statistics.put(LocalDate.of(2022,4,24).toString(),List.of(10.0));
+        statistics.put(LocalDate.of(2022,4,23).toString(),List.of(13.0));
+        statistics.put(LocalDate.of(2022,4,22).toString(),List.of(16.0));
+        statistics.put(LocalDate.of(2022,4,21).toString(),List.of(18.0));
+        statistics.put(LocalDate.of(2022,4,20).toString(),List.of(0.0));
+        statistics.put(LocalDate.of(2022,4,19).toString(),List.of(9.0));
+        assertEquals(workingDayStats.getStatsPerDay(),statistics);
+        workingDayStats.update(0.0);
+        statistics.put(LocalDate.now().toString(),List.of(1.0));
+        assertEquals(workingDayStats.getStatsPerDay(),statistics);
+        workingDayStats.update(0.0);
+        statistics.replace(LocalDate.now().toString(),List.of(2.0));
+        assertEquals(workingDayStats.getStatsPerDay(),statistics);
+    }
+
+    @Test
+    void updateDelayStats() {
+        Map<String,List<Double>> statistics = new HashMap<>();
+        statistics.put(LocalDate.of(2022,4,24).toString(),List.of(12.0,3.0));
+        statistics.put(LocalDate.of(2022,4,22).toString(),List.of(6.0));
+        statistics.put(LocalDate.of(2022,4,20).toString(),List.of(7.0));
+        assertEquals(delayStats.getStatsPerDay(),statistics);
+        delayStats.update(15.0);
+        statistics.put(LocalDate.now().toString(),List.of(15.0));
+        assertEquals(delayStats.getStatsPerDay(),statistics);
+        delayStats.update(10.0);
+        statistics.replace(LocalDate.now().toString(),List.of(15.0,10.0));
+        assertEquals(delayStats.getStatsPerDay(),statistics);
     }
 
 

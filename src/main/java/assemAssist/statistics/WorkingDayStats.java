@@ -23,17 +23,19 @@ public class WorkingDayStats extends Stats {
      * the last number of days, specified by the given value.
      *
      * @param fromXLastDays the number of days this method will return statistics from
+     * @param date the date statistics need to be calculated on
      * @return a list of statistics in string form
      */
     @Override
-    public List<String> getStatistics(int fromXLastDays) {
+    public List<String> getStatistics(int fromXLastDays, LocalDate date) {
         List<String> statistics = new ArrayList<>();
         statistics.add("the average of completed cars in a day is " + getAverage());
         statistics.add("the median of completed cars in a day is " + getMedian());
 
-        for (int i = 1; i<fromXLastDays; i++) {
-            statistics.add("cars produced " + i + " day(s) ago" +
-                    getStatsPerDay().get(LocalDate.now().minusDays(i).toString()).get(0));
+        for (int i = 0; i<fromXLastDays; i++) {
+            int daysAgo = i + 1;
+            statistics.add("cars produced " + daysAgo + " day(s) ago: " +
+                    getStatsPerDay().get(date.minusDays(i+1).toString()).get(0));
         }
         return statistics;
     }

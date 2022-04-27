@@ -7,6 +7,7 @@ import assemAssist.exceptions.OrderNotFoundException;
 import assemAssist.schedulingAlgorithm.SchedulingAlgorithm;
 import assemAssist.statistics.Stats;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -126,7 +127,7 @@ public class Company {
     public List<String> getStatistics(int fromXLastDays) {
         List<String> result = new ArrayList<>();
         for (Stats stat : statistics) {
-            result.addAll(stat.getStatistics(fromXLastDays));
+            result.addAll(stat.getStatistics(fromXLastDays, LocalDate.now()));
         }
         return result;
     }
