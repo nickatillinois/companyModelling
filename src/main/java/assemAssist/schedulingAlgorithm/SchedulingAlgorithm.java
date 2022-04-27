@@ -3,6 +3,7 @@ package assemAssist.schedulingAlgorithm;
 import assemAssist.CarOrder;
 import assemAssist.Catalog;
 import assemAssist.exceptions.*;
+import org.junit.jupiter.api.function.Executable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,8 +28,9 @@ public abstract class SchedulingAlgorithm {
      * Set the batch to the new batch
      *
      * @param selectBatch the batch that you will select
+     * @return
      */
-    public abstract void selectBatch(String selectBatch);
+    public abstract Executable selectBatch(String selectBatch);
 
     /**
      * This function gives the car order that will be the next for the assembly line
@@ -51,15 +53,7 @@ public abstract class SchedulingAlgorithm {
      */
     public abstract List<CarOrder> getProductionSchedule();
 
-    /**
-     * This function add a new car order to the car order list.
-     *
-     * @param order new carOrder
-     * @throws IllegalConstraintException If the car model is not a valid confirmation.
-     * @throws IllegalModelException
-     */
-  /*  public abstract void addOrderToProductionSchedule(CarOrder order) throws IllegalConstraintException, IllegalModelException, IllegalCompletionDateException;
-*/
+
     /**
      * This function add a new car order to the car order list.
      *

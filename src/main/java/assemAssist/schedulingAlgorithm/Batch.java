@@ -1,12 +1,9 @@
 package assemAssist.schedulingAlgorithm;
 
-import assemAssist.CarModel;
 import assemAssist.CarOrder;
-import assemAssist.exceptions.IllegalCompletionDateException;
-import assemAssist.exceptions.IllegalConstraintException;
-import assemAssist.exceptions.IllegalModelException;
+import assemAssist.exceptions.*;
+import org.junit.jupiter.api.function.Executable;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -57,8 +54,9 @@ public class Batch extends SchedulingAlgorithm{
     /**
      * This function will set the batch to the new value en the production schedule will be updated.
      * @param batch the new batch
+     * @return
      */
-    public void selectBatch(String batch){
+    public Executable selectBatch(String batch){
         this.batch = batch;
         productionSchedule  =new ArrayList<>();
         List<CarOrder> fifo = new ArrayList<>();
@@ -70,6 +68,7 @@ public class Batch extends SchedulingAlgorithm{
         }
         productionSchedule.addAll(fifo);
 
+        return null;
     }
 
     /**
@@ -102,6 +101,38 @@ public class Batch extends SchedulingAlgorithm{
             }
         }
 
-        return null;
+        return batchs;
+    }
+    /**
+     * This function add a new car order to the car order list.
+     *
+     * @param order new carOrder
+     * @throws IllegalConstraintException If the car model is not a valid confirmation.
+     * @throws IllegalModelException
+     */
+
+    public void addOrderToProductionSchedule(CarOrder order) throws IllegalConstraintException, IllegalModelException, IllegalCompletionDateException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+        try{
+            order.isValidCarModel();
+            carOrderList.add(order);
+            selectBatch(getBatch());
+            int workingTime = catalog.getModel(order.getCarModel().getModelName()).getStandardWorkStationTime() * 3;
+            boolean before = true;
+            if (carOrderList != null && batch != null) {
+                for (CarOrder order1 : getProductionSchedule()) {
+                    if (order == order1)
+                        before = false;
+                    if (before)
+                        workingTime = workingTime + catalog.getModel(order1.getCarModel().getModelName()).getStandardWorkStationTime();
+                    else
+                        return;
+                }
+            }
+            order.setEstCompletionTime(order.getOrderingTime().plusMinutes(workingTime));
+
+        }
+        catch (Exception e) {
+            throw e;
+        }
     }
 }

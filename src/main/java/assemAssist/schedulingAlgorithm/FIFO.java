@@ -1,11 +1,8 @@
 package assemAssist.schedulingAlgorithm;
 
 import assemAssist.CarOrder;
-import assemAssist.Catalog;
-import assemAssist.exceptions.IllegalConstraintException;
-import assemAssist.exceptions.IllegalModelException;
+import org.junit.jupiter.api.function.Executable;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public class FIFO extends SchedulingAlgorithm {
@@ -30,9 +27,10 @@ public class FIFO extends SchedulingAlgorithm {
     /**
      * @param selectBatch the batch that you will select
      * @throws IllegalCallerException this methode can not be called in this algorithm
+     * @return
      */
     @Override
-    public void selectBatch(String selectBatch) throws IllegalCallerException{
+    public Executable selectBatch(String selectBatch) throws IllegalCallerException{
         throw new  IllegalCallerException("This algoritme contains no batches.");
     }
 
