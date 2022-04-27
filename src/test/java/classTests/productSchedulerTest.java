@@ -85,4 +85,37 @@ public class productSchedulerTest {
         expected.remove(carOrderA);
         assertEquals(expected, productionScheduler.getSchedulingAlgorithm().getProductionSchedule());
     }
+
+    @Test
+    public void getOrdersFromGaragHolder() throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+        productionScheduler.getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderA);
+        productionScheduler.getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderB);
+        productionScheduler.getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderC);
+        List<CarOrder> carOrderList = new ArrayList<>();
+        carOrderList.add(carOrderA);
+        assertEquals(carOrderList,productionScheduler.getOrdersFromGarageHolder("Danny Smeets"));
+        assertEquals(new ArrayList<>(), productionScheduler.getPendingOrdersFromGarageHolder("Danny Smeets"));
+        productionScheduler.advanceOrders(50);
+        assertEquals(carOrderList,productionScheduler.getOrdersFromGarageHolder("Danny Smeets"));
+        assertEquals(carOrderList, productionScheduler.getPendingOrdersFromGarageHolder("Danny Smeets"));
+    }
+
+    @Test
+    public void getPendingOrders() throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+        productionScheduler.getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderA);
+        productionScheduler.getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderB);
+        productionScheduler.getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderC);
+        List<CarOrder> carOrderList = new ArrayList<>();
+        carOrderList.add(carOrderA);
+        assertEquals(new ArrayList<>(), productionScheduler.getPendingOrders());
+        productionScheduler.advanceOrders(50);
+        assertEquals(carOrderList, productionScheduler.getPendingOrders());
+
+    }
+
+    @Test
+    public void selectAlgorithm(){
+        productionScheduler.selectSchedulingAlgorithm("Specification Batch");
+        assertEquals("Specification Batch", productionScheduler.getSchedulingAlgorithm().getName());
+    }
 }
