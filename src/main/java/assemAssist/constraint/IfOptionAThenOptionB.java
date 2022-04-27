@@ -12,7 +12,7 @@ public class IfOptionAThenOptionB extends Constraint {
 
     // set of lists of each 2 elements implying that option A leads to option B
     // if the array contains more than two elements, that indicates that the first element implicates the latter two.
-    private static HashSet<ArrayList<String>> pairs = new HashSet<>();
+    private static final HashSet<ArrayList<String>> pairs = new HashSet<>();
 
     protected IfOptionAThenOptionB() throws IllegalConstraintException {
         super();
@@ -92,13 +92,21 @@ public class IfOptionAThenOptionB extends Constraint {
         }
        // for each pair in pairs, check if the first element is in the set of chosen options
         for (ArrayList<String> pair : pairs) {
+            boolean pairOK;
             if (chosenOptionsSet.contains(pair.get(0))) {
-                // check if the other elements of pair are in chosenSpecifications.getChosenOptions().keySet()
+                pairOK = false;
+                // check if one of the other elements is in the set of chosen options
                 for (int i = 1; i < pair.size(); i++) {
-                    if (!chosenSpecifications.getChosenOptions().containsKey(pair.get(i))) {
-                        throw new OptionAThenOptionBException("Option" + pair.get(0) + ", implies" + pair.get(i) + ". But " + pair.get(i) + " is not in the chosen options.");
-
+                    if (chosenOptionsSet.contains(pair.get(i))) {
+                        pairOK = true;
+                        break;
                     }
+                }
+                if (!pairOK) {
+                    // take a set consisting of the elements in pair and remove the first element
+                    HashSet<String> pairImplied = new HashSet<>(pair);
+                    pairImplied.remove(pair.get(0));
+                    throw new OptionAThenOptionBException("Option " + pair.get(0) + " implies one of the following options: " + pairImplied.stream().toList());
                 }
             }
         }

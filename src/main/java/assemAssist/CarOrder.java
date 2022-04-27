@@ -7,6 +7,7 @@ import assemAssist.observer.StatisticsObserver;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 /**
@@ -26,7 +27,7 @@ public class CarOrder implements StatisticsObservable {
     /**
      * A GarageHolder object representing the client of this order.
      */
-    private String garageholder;
+    private String garageHolder;
 
     /**
      * A boolean representing whether this order was completed by the car manufacturing company.
@@ -34,12 +35,12 @@ public class CarOrder implements StatisticsObservable {
     private boolean completed;
 
     /**
-     * The effective completion date of this carorder in LocalDate format.
+     * The effective completion date of this car order in LocalDate format.
      */
     private LocalDateTime completionTime;
 
     /**
-     * The estimated completion date of this carorder in LocalDate format.
+     * The estimated completion date of this car order in LocalDate format.
      */
     private LocalDateTime estCompletionTime;
 
@@ -48,12 +49,12 @@ public class CarOrder implements StatisticsObservable {
     }
 
     /**
-     * The timestamp of ordering this carorder in LocalDate format.
+     * The timestamp of ordering this car order in LocalDate format.
      */
     private final LocalDateTime orderingTime;
 
     /**
-     * A CarModel object representing the Carmodel with specifications of this order.
+     * A CarModel object representing the car model with specifications of this order.
      */
     private CarModel carModel;
 
@@ -71,7 +72,7 @@ public class CarOrder implements StatisticsObservable {
         if(garageHolder.equals("")){throw new IllegalArgumentException("A garage holder cannot be the empty string.");}
         if(carModel == null){throw new IllegalArgumentException("A car model cannot be null.");}
 
-        this.garageholder = garageHolder;
+        this.garageHolder = garageHolder;
         this.carModel = carModel;
         this.completed = false;
         this.completionTime = null;
@@ -86,15 +87,15 @@ public class CarOrder implements StatisticsObservable {
     /**
      * Sets the garage holder of this car order to the given garage holder.
      *
-     * @param garageholder The garageholder for this car order.
-     * @throws IllegalArgumentException | garageholder is null
-     *                                  | garageholder is the empty string
+     * @param garageHolder The garage holder for this car order.
+     * @throws IllegalArgumentException | garageHolder is null
+     *                                  | garageHolder is the empty string
      *
      */
-    public void setGarageholder(String garageholder){
-        if(garageholder == null){throw new IllegalArgumentException("garageholder cannot be null.");}
-        if(garageholder.equals("")){throw new IllegalArgumentException("A garage holder cannot be the empty string.");}
-        this.garageholder = garageholder;
+    public void setGarageHolder(String garageHolder){
+        if(garageHolder == null){throw new IllegalArgumentException("A garage holder cannot be null.");}
+        if(garageHolder.equals("")){throw new IllegalArgumentException("A garage holder cannot be the empty string.");}
+        this.garageHolder = garageHolder;
     }
 
     /**
@@ -102,15 +103,15 @@ public class CarOrder implements StatisticsObservable {
      *
      * @return The name of the garage holder of this carOrder.
      */
-    public String getGarageholder() {
-        return garageholder;
+    public String getGarageHolder() {
+        return garageHolder;
 
     }
 
     /**
-     * Returns the carmodel of this carOrder.
+     * Returns the car model of this carOrder.
      *
-     * @return The carmodel of this carOrder.
+     * @return The car model of this carOrder.
      */
     public CarModel getCarModel() {
         return carModel;
@@ -124,7 +125,9 @@ public class CarOrder implements StatisticsObservable {
      *
      */
     public void setCarModel(CarModel carModel) {
-        if(carModel == null){throw new IllegalArgumentException("carModel cannot be null.");}
+        if(carModel == null){throw new IllegalArgumentException("A car model cannot be null.");}
+        if(carModel.getModelName() == null){throw new IllegalArgumentException("A car model cannot be null.");}
+        if(Objects.equals(carModel.getModelName(), "")){throw new IllegalArgumentException("A car model cannot be the empty string.");}
         this.carModel = carModel;
     }
 
@@ -166,14 +169,14 @@ public class CarOrder implements StatisticsObservable {
 
     public void setCompletionTime(LocalDateTime completionTime) {
 
-        if (completionTime == null){throw new IllegalArgumentException("completion time cannot be set to null");}
+        if (completionTime == null){throw new IllegalArgumentException("A completion time cannot be null.");}
         //if (completionTime.isBefore(LocalDate.now())){throw new IllegalCompletionDateException("completion time cannot be set in the past");}
         this.completionTime = completionTime;
     }
 
     public void setEstCompletionTime(LocalDateTime estCompletionTime) {
 
-        if (estCompletionTime == null){throw new IllegalArgumentException("estCompletion time cannot be set to null");}
+        if (estCompletionTime == null){throw new IllegalArgumentException("An estimated completion time cannot be null.");}
         //if (completionTime.isBefore(LocalDate.now())){throw new IllegalCompletionDateException("completion time cannot be set in the past");}
         this.estCompletionTime = estCompletionTime;
     }
@@ -200,8 +203,11 @@ public class CarOrder implements StatisticsObservable {
     private ArrayList<String> getPendingOrderDetails(){
         ArrayList<String> orderDetails = new ArrayList<>();
         orderDetails.add("Specifications: " + getCarModelAndOptions ());
+        if(this.estCompletionTime == null){
+            throw new IllegalArgumentException("The given car order's estimated completion time is still set to 'null'");
+        }
         orderDetails.add("orderTime: " + orderingTime.toString());
-        orderDetails.add("estProdTime: " + estCompletionTime.toString());
+        orderDetails.add("estProdTime: " + estCompletionTime);
         return orderDetails;
     }
 

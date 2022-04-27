@@ -12,7 +12,7 @@ public class IfOptionThenComponent extends Constraint {
 
     // set of lists of each 2 elements implying that option leads to Component.
     // if the array contains more than two elements, that indicates that the first element implicates the latter two.
-    private static HashSet<ArrayList<String>> pairs = new HashSet<>();
+    private static final HashSet<ArrayList<String>> pairs = new HashSet<>();
 
     protected IfOptionThenComponent() throws IllegalConstraintException {
         super();
@@ -78,7 +78,7 @@ public class IfOptionThenComponent extends Constraint {
         // for each pair in pairs, check if the set of chosen options contains the pair
         for (ArrayList<String> pair : pairs) {
             if (chosenOptionsSet.contains(pair.get(0)) && !chosenOptionsSet.contains(pair.get(1))) {
-                throw new OptionThenComponentException("Option" + pair.get(0) + ", implies component" + pair.get(1) + ". But component" + pair.get(1) + " is not chosen.");
+                throw new OptionThenComponentException("Option: " + pair.get(0) + " implies component: " + pair.get(1) + ". But component: " + pair.get(1) + " is not chosen.");
             }
         }
         return true;

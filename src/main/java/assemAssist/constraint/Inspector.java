@@ -12,7 +12,7 @@ public class Inspector {
      */
     private static ArrayList<Constraint> constraints;
     private static boolean initialized = false;
-    private CarModel carModel;
+    private final CarModel carModel;
 
     /**
      * Creates a new inspector.
