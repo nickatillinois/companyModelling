@@ -6,7 +6,7 @@ import assemAssist.exceptions.IllegalModelException;
 import assemAssist.exceptions.OrderNotFoundException;
 import assemAssist.statistics.Stats;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -156,15 +156,14 @@ public class Company {
         // create a new car model
         CarModel carModel = new CarModel(chosenModel, chosenOptions);
         // create a new car order
-        // TODO uit comment halen hieronder
-        // CarOrder carOrder = new CarOrder(garageHolder, carModel, null);
+        CarOrder carOrder = new CarOrder(garageHolder, carModel);
         return garageHolder;
     }
 
     // TODO implement
-    public LocalDate addOrderToProductionSchedule(CarOrder order) {
+    public LocalDateTime addOrderToProductionSchedule(CarOrder order) {
         // stuur order naar production schedule
-        return LocalDate.now();
+        return LocalDateTime.now();
     }
 
 }

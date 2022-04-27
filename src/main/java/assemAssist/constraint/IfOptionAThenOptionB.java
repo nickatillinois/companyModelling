@@ -27,8 +27,10 @@ public class IfOptionAThenOptionB extends Constraint {
                 throw new IllegalConstraintException("Given list contains null strings.");
             }
             // each string in pair must be distinct
-            ArrayList<String> distinct_set = (ArrayList<String>) pair.stream().distinct().toList();
-            if (distinct_set.size() != pair.size()) {
+            // get only the distinct strings
+            // take each string in pair and add it to the set in lower case
+            HashSet<String> distinct = new HashSet<>(pair.stream().map(String::toLowerCase).collect(ArrayList::new, ArrayList::add, ArrayList::addAll));
+            if (pair.size() != distinct.size()) {
                 throw new IllegalConstraintException("Given list contains duplicate strings.");
             }
         }

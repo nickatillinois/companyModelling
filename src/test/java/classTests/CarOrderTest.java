@@ -29,27 +29,24 @@ class CarOrderTest {
         // add some pending orders to the company
         Map<String, String> legalAOptions = Map.of("body", "sedan", "color", "red", "engine", "v4", "gearbox", " 6 manual", "seats", "leather white", "airco", "manual", "wheels", "winter");
         CarModel carModelA = new CarModel("A", legalAOptions);
-        LocalDateTime estCompletionDateA = LocalDateTime.now().plusWeeks(1);
-        carOrderA = new CarOrder("Danny Smeets", carModelA, estCompletionDateA);
+        carOrderA = new CarOrder("Danny Smeets", carModelA);
 
         Map<String, String> legalBOptions = Map.of("body", "sedan", "color", "red", "engine", "v4", "gearbox", " 6 manual", "seats", "leather white", "airco", "manual", "wheels", "winter", "spoiler", "low");
         CarModel carModelB = new CarModel("B", legalBOptions);
-        LocalDateTime estCompletionDateB = LocalDateTime.now().plusWeeks(2);
-        carOrderB = new CarOrder("Sandy Smeets", carModelB, estCompletionDateB);
+        carOrderB = new CarOrder("Sandy Smeets", carModelB);
 
         Map<String, String> legalCOptions = Map.of("body", "sport", "color", "black", "engine", "v6", "gearbox", " 6 manual", "seats", "leather white", "airco", "manual", "wheels", "winter", "spoiler", "low");
         CarModel carModelC = new CarModel("C", legalCOptions);
         LocalDateTime estCompletionDateC = LocalDateTime.now().plusWeeks(3);
-        carOrderC = new CarOrder("Kim Smeets", carModelC, estCompletionDateC);
+        carOrderC = new CarOrder("Kim Smeets", carModelC);
 
         // complete order C
-        carOrderC.setCompleted(true);
 
     }
 
     @Test
     void exceptionsTest() throws IllegalArgumentException {
-        assertThrows(IllegalArgumentException.class, () -> new CarOrder(null, null, null));
+        assertThrows(IllegalArgumentException.class, () -> new CarOrder(null, null));
     }
     @Test
     void testGettersCarOrder() throws IllegalModelException, IllegalConstraintException {
@@ -59,8 +56,6 @@ class CarOrderTest {
         assertEquals(3, carOrderC.getOrderID());
         assertFalse(carOrderA.isCompleted());
         assertFalse(carOrderB.isCompleted());
-        assertTrue(carOrderC.isCompleted());
-        assertEquals(carOrderA.getOrderingTime().getDayOfMonth(), LocalDateTime.now().getDayOfMonth());
         assertEquals("A", carOrderA.getCarModel().getModelName());
         assertEquals("B", carOrderB.getCarModel().getModelName());
         assertEquals("C", carOrderC.getCarModel().getModelName());

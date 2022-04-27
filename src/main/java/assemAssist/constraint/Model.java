@@ -34,6 +34,7 @@ public class Model extends Constraint{
             for (String key : chosenSpecifications.getChosenOptions().keySet()) {
                 // every key in chosenOptions must be in model, ignore case of key
                 boolean containsKey = false;
+                key = key.toLowerCase();
                 for (String availableKey : model.keySet()) {
                     if (availableKey.equalsIgnoreCase(key)) {
                         containsKey = true;
@@ -45,9 +46,11 @@ public class Model extends Constraint{
                 }
                 // check if the chosen value is in the model
                 boolean containsValue = false;
+                String chosenValue = chosenSpecifications.getChosenOptions().get(key);
                 for (String availableValue : model.get(key)) {
-                    if (availableValue.equalsIgnoreCase(chosenSpecifications.getChosenOptions().get(key))) {
+                    if (availableValue.equalsIgnoreCase(chosenValue)) {
                         containsValue = true;
+                        break;
                     }
                 }
                 if (!containsValue) {
