@@ -30,7 +30,7 @@ private final ArrayList<SchedulingAlgorithm> schedulers = new ArrayList<>();
      * Create a new production schedule af a single assembly line that can be managed by the manager
      */
 public ProductionScheduler(){
-    schedulers.add(new FIFO());
+    schedulers.add(schedulingAlgorithm);
     schedulers.add(new Batch());
     this.assemblyLine = new AssemblyLine();
 }
@@ -60,7 +60,9 @@ public ProductionScheduler(){
             algorithms.add(schedulingAlgorithm.getName());
         return algorithms;
 }
-
+    public List<SchedulingAlgorithm> getSchedulers(){
+        return schedulers;
+    }
 
     /**
      * This function returns the assembly line on whits this production schedule runs.
@@ -75,7 +77,7 @@ public ProductionScheduler(){
      * current algorithm.
      * @return productionSchedule
      */
-    private List<CarOrder> getProductionSchedule() {
+     List<CarOrder> getProductionSchedule() {
         return schedulingAlgorithm.getProductionSchedule();
     }
 

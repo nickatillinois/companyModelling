@@ -1,294 +1,88 @@
 
 package classTests;
 
-import assemAssist.AssemblyLine;
-import assemAssist.AssemblyTask;
-import assemAssist.ProductionScheduler;
-import assemAssist.CarOrder.*;
-import assemAssist.exceptions.IllegalChoiceException;
-import assemAssist.exceptions.IllegalCompletionDateException;
-import assemAssist.exceptions.IllegalModelException;
-import assemAssist.workStation.AccessoriesPost;
-import assemAssist.workStation.CarBodyPost;
-import assemAssist.workStation.DrivetrainPost;
-import assemAssist.workStation.WorkStation;
+import assemAssist.*;
+import assemAssist.exceptions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeMap;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class productSchedulerTest {
     private static ProductionScheduler productionScheduler;
-    private static AssemblyLine assemblyLine;
-    private static AccessoriesPost accessoriesPost;
-    private static CarBodyPost carBodyPost;
-    private static DrivetrainPost drivetrainPost;
+    static CarOrder carOrderA;
+    static CarOrder carOrderB;
+    static CarOrder carOrderC;
 
-/*    @BeforeEach
-    public void init(){
-        accessoriesPost = new AccessoriesPost();
-        carBodyPost = new CarBodyPost();
-        drivetrainPost = new DrivetrainPost();
-        ArrayList<WorkStation> workStations = new ArrayList<>();
-        assemblyLine = new AssemblyLine();
-        productionScheduler = new ProductionScheduler(assemblyLine);
+    @BeforeEach
+    public void init() {
+        productionScheduler = new ProductionScheduler();
+        TreeMap<String, String> legalAOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        legalAOptions.put("color", "red");
+        legalAOptions.put("body", "sedan");
+        legalAOptions.put("engine", "v4");
+        legalAOptions.put("seats", "leather white");
+        legalAOptions.put("airco", "manual");
+        legalAOptions.put("gearbox", "6 manual");
+        legalAOptions.put("wheels", "winter");
+        CarModel carModelA = new CarModel("A", legalAOptions);
+        carOrderA = new CarOrder("Danny Smeets", carModelA);
+        TreeMap<String, String> legalBOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        legalBOptions.put("color", "red");
+        legalBOptions.put("body", "sedan");
+        legalBOptions.put("engine", "v4");
+        legalBOptions.put("seats", "leather white");
+        legalBOptions.put("airco", "manual");
+        legalBOptions.put("gearbox", "6 manual");
+        legalBOptions.put("wheels", "winter");
+        legalBOptions.put("spoiler", "low");
+        CarModel carModelB = new CarModel("B", legalBOptions);
+        carOrderB = new CarOrder("Sandy Smeets", carModelB);
+        TreeMap<String, String> legalCOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        legalCOptions.put("color", "black");
+        legalCOptions.put("body", "sport");
+        legalCOptions.put("engine", "v6");
+        legalCOptions.put("seats", "leather white");
+        legalCOptions.put("airco", "manual");
+        legalCOptions.put("gearbox", "6 manual");
+        legalCOptions.put("wheels", "winter");
+        legalCOptions.put("spoiler", "low");
+        CarModel carModelC = new CarModel("C", legalCOptions);
+        carOrderC = new CarOrder("Kim Smeets", carModelC);
     }
 
     @Test
-    public void getCurrentStateNoOrdersTest(){
-        ArrayList<CarOrder> nullist = new ArrayList<>(3);
-        nullist.add(null);
-        nullist.add(null);
-        nullist.add(null);
-        assertEquals(productionScheduler.getCurrentState(),nullist);
+    public void getCurrentSchedulingAlgorithm() {
+        assertEquals(productionScheduler.getSchedulingAlgorithm().getName(), "FIFO");
+        assertEquals(productionScheduler.getSchedulingAlgorithm().getName(), productionScheduler.getSchedulingAlgorithms().get(0));
     }
 
     @Test
-    public void getCurrentStateOneOrderNoAdvanceTest() throws IllegalChoiceException, IllegalModelException, IllegalCompletionDateException {
-        Body body = new Body("sedan");
-        CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
-                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
-                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        CarModel carModel = new CarModel("Jaguar",carModelSpecification);
-        CarOrder carOrder1 = new CarOrder("Luna",carModel);
-        productionScheduler.addOrderToProductionSchedule(carOrder1);
-        ArrayList<CarOrder> nullist = new ArrayList<>(3);
-        nullist.add(null);
-        nullist.add(null);
-        nullist.add(null);
-        assertEquals(productionScheduler.getCurrentState(),nullist);
+    public void setCurrentSchedulingAlgorithm() {
+        assertEquals("FIFO", productionScheduler.getSchedulingAlgorithm().getName());
+        productionScheduler.setSchedulingAlgorithm(productionScheduler.getSchedulers().get(1));
+        assertEquals("Specification Batch", productionScheduler.getSchedulingAlgorithm().getName());
+        assertEquals(productionScheduler.getSchedulers().get(1), productionScheduler.getSchedulingAlgorithm());
     }
 
     @Test
-    public void OneOrderAdvanceTest() throws IllegalChoiceException, IllegalModelException, IllegalCompletionDateException {
-        Body body = new Body("sedan");
-        CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
-                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
-                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        CarModel carModel = new CarModel("Jaguar",carModelSpecification);
-        CarOrder carOrder1 = new CarOrder("Luna",carModel);
-        productionScheduler.addOrderToProductionSchedule(carOrder1);
-        productionScheduler.advanceOrders(1);
-        ArrayList<CarOrder> nullist = new ArrayList<>(3);
-        nullist.add(carOrder1);
-        nullist.add(null);
-        nullist.add(null);
-        assertEquals(productionScheduler.getCurrentState(),nullist);
+    public void getProductionSchedule() throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+        productionScheduler.getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderA);
+        productionScheduler.getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderB);
+        productionScheduler.getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderC);
+        List<CarOrder> expected = new ArrayList<>();
+        expected.add(carOrderA);
+        expected.add(carOrderB);
+        expected.add(carOrderC);
+        assertEquals(expected, productionScheduler.getSchedulingAlgorithm().getProductionSchedule());
+        productionScheduler.advanceOrders(50);
+        expected.remove(carOrderA);
+        assertEquals(expected, productionScheduler.getSchedulingAlgorithm().getProductionSchedule());
     }
-
-    @Test
-    public void TwoOrderAdvanceTest() throws IllegalChoiceException, IllegalModelException, IllegalCompletionDateException {
-        Body body = new Body("sedan");
-        CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
-                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
-                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        *//*ProductionScheduler.addModel("Jaguar");*//*
-        CarModel carModel = new CarModel("Jaguar",carModelSpecification);
-        CarOrder carOrder1 = new CarOrder("Luna",carModel);
-        productionScheduler.addOrderToProductionSchedule(carOrder1);
-        CarOrder carOrder2 = new CarOrder("Luna",carModel);
-        productionScheduler.addOrderToProductionSchedule(carOrder2);
-        productionScheduler.advanceOrders(1);
-        ArrayList<CarOrder> nullist = new ArrayList<>(3);
-        nullist.add(carOrder1);
-        nullist.add(null);
-        nullist.add(null);
-        assertEquals(productionScheduler.getCurrentState(),nullist);
-        productionScheduler.advanceOrders(1);
-        ArrayList<CarOrder> nullist2 = new ArrayList<>(3);
-        nullist2.add(carOrder1);
-        nullist2.add(null);
-        nullist2.add(null);
-        assertEquals(productionScheduler.getCurrentState(),nullist2);
-        WorkStation workStation  = productionScheduler.getAssemblyLine().getWorkStations().get(0);
-        List<AssemblyTask> assemblyTasks = workStation.getTasks();
-        for (AssemblyTask task : assemblyTasks){
-            task.setIsCompleted(true);
-        }
-        assertEquals(productionScheduler.getCurrentState(),nullist2);
-        productionScheduler.advanceOrders(1);
-        ArrayList<CarOrder> nullist3 = new ArrayList<>(3);
-        nullist3.add(carOrder2);
-        nullist3.add(carOrder1);
-        nullist3.add(null);
-        assertEquals(productionScheduler.getCurrentState(),nullist3);
-
-
-    }
-
-    @Test
-    public void FourOrderAdvanceTest() throws IllegalChoiceException, IllegalModelException, IllegalCompletionDateException {
-        Body body = new Body("sedan");
-        CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
-                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
-                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        CarModel carModel = new CarModel("Jaguar",carModelSpecification);
-        CarOrder carOrder1 = new CarOrder("Luna",carModel);
-        productionScheduler.addOrderToProductionSchedule(carOrder1);
-        CarOrder carOrder2 = new CarOrder("Luna",carModel);
-        productionScheduler.addOrderToProductionSchedule(carOrder2);
-        productionScheduler.advanceOrders(1);
-        ArrayList<CarOrder> nullist = new ArrayList<>(3);
-        nullist.add(carOrder1);
-        nullist.add(null);
-        nullist.add(null);
-        assertEquals(productionScheduler.getCurrentState(),nullist);
-        int hoursWorkedToday1 = productionScheduler.getAssemblyLine().getMinutesWorkedToday();
-        productionScheduler.advanceOrders(1);
-        int hoursWorkedToday2 = productionScheduler.getAssemblyLine().getMinutesWorkedToday();
-        assertEquals(hoursWorkedToday1,hoursWorkedToday2);
-        assertEquals(productionScheduler.getCurrentState(),nullist);
-        ArrayList<CarOrder> nullist2 = new ArrayList<>(3);
-        nullist2.add(carOrder2);
-        nullist2.add(carOrder1);
-        nullist2.add(null);
-        WorkStation workStation  = productionScheduler.getAssemblyLine().getWorkStations().get(0);
-        List<AssemblyTask> assemblyTasks = workStation.getTasks();
-        for (AssemblyTask task : assemblyTasks){
-            task.setIsCompleted(true);
-        }
-        assertEquals(productionScheduler.getCurrentState(),nullist);
-        productionScheduler.advanceOrders(1);
-        assertEquals(nullist2,productionScheduler.getCurrentState());
-        CarOrder carOrder3 = new CarOrder("Luna",carModel);
-        productionScheduler.addOrderToProductionSchedule(carOrder3);
-        CarOrder carOrder4 = new CarOrder("Luna",carModel);
-        productionScheduler.addOrderToProductionSchedule(carOrder4);
-        WorkStation workStation1  = productionScheduler.getAssemblyLine().getWorkStations().get(0);
-        List<AssemblyTask> assemblyTasks1 = workStation1.getTasks();
-        for (AssemblyTask task : assemblyTasks1){
-            task.setIsCompleted(true);
-        }
-        WorkStation workStation2  = productionScheduler.getAssemblyLine().getWorkStations().get(1);
-        List<AssemblyTask> assemblyTasks2 = workStation2.getTasks();
-        for (AssemblyTask task : assemblyTasks2){
-            task.setIsCompleted(true);
-        }
-        productionScheduler.advanceOrders(1);
-        ArrayList<CarOrder> nullist3 = new ArrayList<>(3);
-        nullist3.add(carOrder3);
-        nullist3.add(carOrder2);
-        nullist3.add(carOrder1);
-        assertEquals(productionScheduler.getCurrentState(), nullist3);
-        WorkStation workStation12  = productionScheduler.getAssemblyLine().getWorkStations().get(0);
-        List<AssemblyTask> assemblyTasks12 = workStation12.getTasks();
-        for (AssemblyTask task : assemblyTasks12){
-            task.setIsCompleted(true);
-        }
-        WorkStation workStation22  = productionScheduler.getAssemblyLine().getWorkStations().get(1);
-        List<AssemblyTask> assemblyTasks22 = workStation22.getTasks();
-        for (AssemblyTask task : assemblyTasks22){
-            task.setIsCompleted(true);
-        }
-        WorkStation workStation32  = productionScheduler.getAssemblyLine().getWorkStations().get(2);
-        List<AssemblyTask> assemblyTasks32 = workStation32.getTasks();
-        for (AssemblyTask task : assemblyTasks32){
-            task.setIsCompleted(true);
-        }
-        assertEquals(nullist3,productionScheduler.getCurrentState());
-        ArrayList<CarOrder> nullist4 = new ArrayList<>(3);
-        nullist4.add(carOrder4);
-        nullist4.add(carOrder3);
-        nullist4.add(carOrder2);
-        productionScheduler.advanceOrders(1);
-        assertEquals(nullist4,productionScheduler.getCurrentState());
-        assert(carOrder1.isCompleted());
-    }
-
-    @Test
-    public void canMoveOneOrderTest() throws IllegalChoiceException, IllegalModelException, IllegalCompletionDateException {
-        Body body = new Body("sedan");
-        CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
-                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
-                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        CarModel carModel = new CarModel("Jaguar",carModelSpecification);
-        CarOrder carOrder1 = new CarOrder("Luna",carModel);
-        productionScheduler.addOrderToProductionSchedule(carOrder1);
-        assert(productionScheduler.getAssemblyLine().canMove());
-        productionScheduler.advanceOrders(1);
-        assert(!productionScheduler.getAssemblyLine().canMove());
-
-    }*/
-
-
-
-  /*  @Test
-    public void getOrdersFromGarageHolderTest() throws IllegalModelException, IllegalChoiceException, IllegalCompletionDateException {
-        Body body = new Body("sedan");
-        CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
-                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
-                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-       *//* ProductionScheduler.addModel("Jaguar");*//*
-        CarModel carModel = new CarModel("Jaguar",carModelSpecification);
-        CarOrder carOrder1 = new CarOrder("Luna",carModel);
-        CarOrder carOrder2 = new CarOrder("Raf", carModel);
-        productionScheduler.addOrderToProductionSchedule(carOrder1);
-        productionScheduler.addOrderToProductionSchedule(carOrder2);
-        assert(productionScheduler.getOrdersFromGarageHolder("Luna").contains(carOrder1));
-        assert(!productionScheduler.getOrdersFromGarageHolder("Luna").contains(carOrder2));
-        assert(!productionScheduler.getOrdersFromGarageHolder("Raf").contains(carOrder1));
-        assert(productionScheduler.getOrdersFromGarageHolder("Raf").contains(carOrder2));
-        productionScheduler.advanceOrders(1);
-        assert(productionScheduler.getOrdersFromGarageHolder("Raf").contains(carOrder2));
-        assert(productionScheduler.getOrdersFromGarageHolder("Luna").contains(carOrder1));
-
-    }
-
-    @Test
-    public void getOrdersFromGarageHolderTest2() throws IllegalModelException, IllegalChoiceException, IllegalCompletionDateException {
-        Body body = new Body("sedan");
-        CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
-                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
-                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        *//*ProductionScheduler.addModel("Jaguar");*//*
-        CarModel carModel = new CarModel("Jaguar", carModelSpecification);
-        CarOrder carOrder1 = new CarOrder("Luna", carModel);
-        CarOrder carOrder2 = new CarOrder("Luna", carModel);
-        productionScheduler.addOrderToProductionSchedule(carOrder1);
-        //productionScheduler.completedCarOrder(carOrder2);
-        assert(productionScheduler.getOrdersFromGarageHolder("Luna").contains(carOrder1));
-        assert(!productionScheduler.getOrdersFromGarageHolder("Luna").contains(carOrder2));
-
-    }*/
-
-/*    @Test
-    public void getCompletedOrdersFromGarageHolderTest() throws IllegalModelException, IllegalChoiceException, IllegalCompletionDateException {
-        Body body = new Body("sedan");
-        CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
-                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
-                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        ProductionScheduler.addModel("Jaguar");
-        CarModel carModel = new CarModel("Jaguar", carModelSpecification);
-        CarOrder carOrder1 = new CarOrder("Luna", carModel);
-        CarOrder carOrder2 = new CarOrder("Luna", carModel);
-        productionScheduler.addOrderToProductionSchedule(carOrder1);
-        productionScheduler.completedCarOrder(carOrder2);
-        assert(!productionScheduler.getCompletedOrdersFromGarageHolder("Luna").contains(carOrder1));
-        assert(productionScheduler.getCompletedOrdersFromGarageHolder("Luna").contains(carOrder2));
-    }*/
-
-/*    @Test
-    public void getCompletedOrdersFromGarageHolderTest2() throws IllegalModelException, IllegalChoiceException, IllegalCompletionDateException {
-        Body body = new Body("sedan");
-        CarModelSpecification carModelSpecification = new CarModelSpecification(body,new Color("red"),
-                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
-                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        ProductionScheduler.addModel("Jaguar");
-        CarModel carModel = new CarModel("Jaguar", carModelSpecification);
-        CarOrder carOrder1 = new CarOrder("Luna", carModel);
-        CarOrder carOrder2 = new CarOrder("Luna", carModel);
-        CarOrder carOrder3 = new CarOrder("Raf", carModel);
-        CarOrder carOrder4 = new CarOrder("Raf", carModel);
-        productionScheduler.addOrderToProductionSchedule(carOrder1);
-        productionScheduler.addOrderToProductionSchedule(carOrder3);
-        productionScheduler.completedCarOrder(carOrder2);
-        productionScheduler.completedCarOrder(carOrder4);
-        assert(!productionScheduler.getCompletedOrdersFromGarageHolder("Luna").contains(carOrder1));
-        assert(productionScheduler.getCompletedOrdersFromGarageHolder("Luna").contains(carOrder2));
-        assert(!productionScheduler.getCompletedOrdersFromGarageHolder("Raf").contains(carOrder3));
-        assert(productionScheduler.getCompletedOrdersFromGarageHolder("Raf").contains(carOrder4));
-    }*/
 }
