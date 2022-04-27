@@ -103,8 +103,7 @@ class CarOrderTest {
             illegalOrder.isValidCarModel();
         }
         catch (IllegalModelException e) {
-            System.out.println("IllegalModelException thrown");
-            // test passes
+            assertEquals("IllegalModelException", e.getClass().getSimpleName());
         }
     }
 
@@ -124,10 +123,8 @@ class CarOrderTest {
             carOrderNoBody.isValidCarModel();
         }
         catch (IllegalConstraintException | OptionThenComponentException | OptionAThenOptionBException | RequiredComponentException e) {
-            System.out.println("IllegalConstraintException thrown");
-            // test passes
+            assertEquals("RequiredComponentException", e.getClass().getSimpleName());
         }
-        assertThrows(IllegalConstraintException.class, carOrderNoBody::isValidCarModel);
     }
 
 
