@@ -39,7 +39,7 @@ public class Catalog {
      * @param modelName The name of the car model.
      * @return The car model with the given name.
      */
-    private CarModelSpecification getModel(String modelName) throws IllegalModelException {
+    public CarModelSpecification getModel(String modelName) throws IllegalModelException {
         for (CarModelSpecification model : availableModels) {
             if (model.getModelName().equals(modelName)) {
                 return model;
