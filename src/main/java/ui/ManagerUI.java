@@ -77,6 +77,7 @@ public class ManagerUI {
     }
 
     private void specificationBatchUI(List<String> batches) {
+        if (!batches.isEmpty()){
         System.out.println("The batches you can select are:");
         for (int i = 0; i < batches.size(); i++) {
             System.out.println(i + ". " + batches.get(i));
@@ -96,6 +97,6 @@ public class ManagerUI {
             } catch (NumberFormatException e) {
                 System.out.println("This is not a valid option. Try again.");
             }
-        }
+        }}
     }
 }
