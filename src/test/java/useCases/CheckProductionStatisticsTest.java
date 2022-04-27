@@ -4,7 +4,6 @@ import assemAssist.AssemblyLine;
 import assemAssist.Company;
 import assemAssist.Mechanic;
 import assemAssist.ProductionScheduler;
-import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalCompletionDateException;
 import assemAssist.exceptions.IllegalModelException;
 import controller.GarageHolderController;
@@ -27,7 +26,7 @@ public class CheckProductionStatisticsTest {
     }
 
     @Test
-    public void checkProductionStatistics() throws IllegalCompletionDateException, IllegalModelException, IllegalChoiceException {
+    public void checkProductionStatistics() throws IllegalCompletionDateException, IllegalModelException{
         ProductionScheduler productionScheduler = new ProductionScheduler();
         Company company = new Company();
         AssemblyLine assemblyLine = new AssemblyLine();

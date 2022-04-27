@@ -167,10 +167,10 @@ public class CarOrder implements StatisticsObservable {
 
      */
 
-    public void setCompletionTime(LocalDateTime completionTime) {
+    public void setCompletionTime(LocalDateTime completionTime) throws IllegalCompletionDateException {
 
         if (completionTime == null){throw new IllegalArgumentException("A completion time cannot be null.");}
-        //if (completionTime.isBefore(LocalDate.now())){throw new IllegalCompletionDateException("completion time cannot be set in the past");}
+        if (completionTime.isBefore(LocalDateTime.now())){throw new IllegalCompletionDateException("completion time cannot be set in the past");}
         this.completionTime = completionTime;
     }
 

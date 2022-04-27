@@ -1,23 +1,5 @@
 package classTests;
 
-import assemAssist.AssemblyLine;
-import assemAssist.AssemblyTask;
-import assemAssist.CarOrder;
-import assemAssist.ProductionScheduler;
-import assemAssist.exceptions.IllegalChoiceException;
-import assemAssist.exceptions.IllegalModelException;
-import assemAssist.workStation.AccessoriesPost;
-import assemAssist.workStation.CarBodyPost;
-import assemAssist.workStation.DrivetrainPost;
-import assemAssist.workStation.WorkStation;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 class AssemblyLineTest {
     /*
     static AssemblyLine assemblyLine;

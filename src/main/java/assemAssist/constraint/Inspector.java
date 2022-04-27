@@ -11,7 +11,6 @@ public class Inspector {
      * List of constraints that the inspector validates.
      */
     private static ArrayList<Constraint> constraints;
-    private static boolean initialized = false;
     private final CarModel carModel;
 
     /**
@@ -20,10 +19,7 @@ public class Inspector {
     public Inspector(CarModel carModel) throws IllegalConstraintException {
         constraints = new ArrayList<>();
         this.carModel = carModel;
-        if (!initialized) {
-            addConstraints();
-            initialized = true;
-        }
+        addConstraints();
     }
     private void addConstraints() throws IllegalConstraintException {
         constraints.add(new Model());
@@ -80,8 +76,8 @@ public class Inspector {
     /**
      * Function that accepts a list of 1 option string followed by 1 option string, so that the first element implies
      * the second element and vice versa.
-     * For example, if the first element is "wheels", and the second element is "Green",
-     * then a wheels implies a Green color and vice versa.
+     * For example, if the first element is "sedan", and the second element is "Green",
+     * then a sedan body implies a Green color and vice versa.
      * @param pair A list of two option strings
      * @throws IllegalConstraintException thrown if:
      *                                   - the list doesn't have 2 elements
@@ -95,19 +91,5 @@ public class Inspector {
                 ((IfOptionAThenOptionB) constraint).addOptionAAndOptionBPair(pair);
             }
         }
-    }
-
-
-
-
-
-    /**
-     * Adds a constraint to the list of constraints.
-     *
-     * @param constraint The constraint to be added to the list of constraints
-     */
-    public void addConstraint(Constraint constraint) {
-        if (constraint == null) throw new IllegalArgumentException("A constraint cannot be null");
-        constraints.add(constraint);
     }
 }

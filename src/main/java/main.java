@@ -1,9 +1,7 @@
 import assemAssist.AssemblyLine;
 import assemAssist.Company;
 import assemAssist.Mechanic;
-import assemAssist.CarOrder;
 import assemAssist.ProductionScheduler;
-import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalCompletionDateException;
 import assemAssist.exceptions.IllegalModelException;
 import controller.GarageHolderController;
@@ -16,7 +14,7 @@ import ui.UI;
 
 public class main {
 
-    public static void main(String[] args) throws IllegalModelException, IllegalChoiceException, IllegalCompletionDateException {
+    public static void main(String[] args) throws IllegalModelException, IllegalCompletionDateException {
         AssemblyLine assemblyLine = new AssemblyLine();
         ProductionScheduler productionScheduler = new ProductionScheduler();
         Company company = new Company();

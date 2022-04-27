@@ -1,7 +1,6 @@
 package controller;
 
 import assemAssist.Company;
-import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalCompletionDateException;
 import assemAssist.exceptions.IllegalModelException;
 
@@ -30,7 +29,7 @@ public class GarageHolderController {
         return company.selectModel(carModel);
     }
 
-    public String completeOrderingForm(List<String> carOptions) throws IllegalChoiceException, IllegalModelException, IllegalCompletionDateException {
+    public String completeOrderingForm(List<String> carOptions) throws IllegalModelException, IllegalCompletionDateException {
         return company.completeOrderingForm((TreeMap<String, String>) carOptions, this.garageHolder, this.chosenModel);
     }
 

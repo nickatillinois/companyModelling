@@ -16,8 +16,9 @@ public class IfOptionThenComponent extends Constraint {
 
     protected IfOptionThenComponent() throws IllegalConstraintException {
         super();
-        addCurrentPairs();
-
+        if(pairs.size() == 0) {
+            addCurrentPairs();
+        }
     }
 
     protected void addOptionThenComponentPair(ArrayList<String> pair) throws IllegalConstraintException {
@@ -68,16 +69,17 @@ public class IfOptionThenComponent extends Constraint {
         if (chosenSpecifications == null) {
             throw new IllegalArgumentException("Chosen specifications is null");
         }
-        // for eac key in chosenSpecifications, get the value
+        // for each key in chosenSpecifications, get the value
         // create a set of Strings of the values
         HashSet<String> chosenOptionsSet = new HashSet<>();
         for (String key : chosenSpecifications.getChosenOptions().keySet()) {
             String value = chosenSpecifications.getChosenOptions().get(key);
             chosenOptionsSet.add(value);
         }
+
         // for each pair in pairs, check if the set of chosen options contains the pair
         for (ArrayList<String> pair : pairs) {
-            if (chosenOptionsSet.contains(pair.get(0)) && !chosenOptionsSet.contains(pair.get(1))) {
+            if (chosenOptionsSet.contains(pair.get(0)) && !chosenSpecifications.getChosenOptions().containsKey(pair.get(1))) {
                 throw new OptionThenComponentException("Option: " + pair.get(0) + " implies component: " + pair.get(1) + ". But component: " + pair.get(1) + " is not chosen.");
             }
         }

@@ -16,7 +16,9 @@ public class IfOptionAThenOptionB extends Constraint {
 
     protected IfOptionAThenOptionB() throws IllegalConstraintException {
         super();
-        addCurrentPairs();
+        if(pairs.size() == 0) {
+            addCurrentPairs();
+        }
     }
 
     protected void addOptionAThenOptionBPair(ArrayList<String> pair) throws IllegalConstraintException {

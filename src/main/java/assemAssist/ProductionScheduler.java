@@ -1,16 +1,10 @@
 package assemAssist;
 
-import assemAssist.exceptions.IllegalCompletionDateException;
-import assemAssist.exceptions.IllegalConstraintException;
-import assemAssist.exceptions.IllegalModelException;
-import assemAssist.observer.StatisticsObservable;
-import assemAssist.observer.StatisticsObserver;
 import assemAssist.schedulingAlgorithm.Batch;
 import assemAssist.schedulingAlgorithm.FIFO;
 import assemAssist.workStation.WorkStation;
 import assemAssist.schedulingAlgorithm.SchedulingAlgorithm;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;

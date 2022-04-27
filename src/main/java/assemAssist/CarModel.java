@@ -7,8 +7,10 @@ import java.util.TreeMap;
 
 
 public class CarModel {
-    private String modelName;
-    private TreeMap<String, String> chosenOptions;
+
+
+    private final String modelName;
+    private final TreeMap<String, String> chosenOptions;
 
     public String getModelName() {
         return modelName;
@@ -33,6 +35,5 @@ public class CarModel {
         }
         return sb.toString();
     }
-
 
 }

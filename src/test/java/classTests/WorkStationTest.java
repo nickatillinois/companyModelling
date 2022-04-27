@@ -1,7 +1,6 @@
 package classTests;
 
 import assemAssist.*;
-import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalModelException;
 import assemAssist.workStation.AccessoriesPost;
 import assemAssist.workStation.CarBodyPost;
@@ -18,7 +17,7 @@ class WorkStationTest {
     static AccessoriesPost accessoriesPost;
 
     @BeforeEach
-    void init() throws IllegalModelException, IllegalChoiceException {
+    void init() throws IllegalModelException {
 
         carBodyPost = new CarBodyPost();
         drivetrainPost = new DrivetrainPost();
@@ -34,12 +33,12 @@ class WorkStationTest {
     }
 
     @Test
-    void getCurrentOrder() throws IllegalModelException, IllegalChoiceException {
+    void getCurrentOrder() throws IllegalModelException {
 
     }
 
     @Test
-    void setCurrentOrder() throws IllegalModelException, IllegalChoiceException {
+    void setCurrentOrder() throws IllegalModelException {
 
     }
 
@@ -61,7 +60,7 @@ class WorkStationTest {
     }
 
     @Test
-    void newTaskDefinitionAfterChangingOrder() throws IllegalChoiceException, IllegalModelException {
+    void newTaskDefinitionAfterChangingOrder() throws IllegalModelException {
 
 
     }

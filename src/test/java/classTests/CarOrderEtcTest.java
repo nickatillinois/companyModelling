@@ -3,11 +3,13 @@ package classTests;
 import assemAssist.CarModel;
 import assemAssist.CarOrder;
 import assemAssist.Company;
+import assemAssist.constraint.Inspector;
 import assemAssist.exceptions.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.TreeMap;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,7 +27,7 @@ class CarOrderTest {
         // add some pending orders to the company
         TreeMap<String, String> legalAOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         legalAOptions.put("color", "red");
-        legalAOptions.put("body", "sedan");
+        legalAOptions.put("body", "break");
         legalAOptions.put("engine", "v4");
         legalAOptions.put("seats", "leather white");
         legalAOptions.put("airco", "manual");
@@ -65,6 +67,8 @@ class CarOrderTest {
         }
         catch (IllegalArgumentException e) {
             assertEquals("A completion time cannot be null.", e.getMessage());
+        } catch (IllegalCompletionDateException e) {
+            e.printStackTrace();
         }
         try {
             carOrderA.setEstCompletionTime(null);
@@ -77,7 +81,7 @@ class CarOrderTest {
 
         TreeMap<String, String> legalBOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         legalBOptions.put("color", "red");
-        legalBOptions.put("body", "sedan");
+        legalBOptions.put("body", "break");
         legalBOptions.put("engine", "v4");
         legalBOptions.put("seats", "leather white");
         legalBOptions.put("airco", "manual");
@@ -100,10 +104,6 @@ class CarOrderTest {
         assertNotEquals(carOrderA, carOrderB);
     }
 
-    @Test
-    void exceptionsTest() throws IllegalArgumentException {
-        assertThrows(IllegalArgumentException.class, () -> new CarOrder(null, null));
-    }
     @Test
     void testGettersCarOrder() throws IllegalModelException {
         assertEquals(carOrderA.getGarageHolder(), "Danny Smeets");
@@ -133,7 +133,7 @@ class CarOrderTest {
     void testIllegalName() throws IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         TreeMap<String, String> illegalOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         illegalOptions.put("color", "red");
-        illegalOptions.put("body", "sedan");
+        illegalOptions.put("body", "break");
         illegalOptions.put("engine", "v4");
         illegalOptions.put("seats", "leather white");
         illegalOptions.put("airco", "manual");
@@ -152,23 +152,26 @@ class CarOrderTest {
     }
 
     @Test
-    void testNoBody() throws IllegalModelException {
+    void testNoWheels() throws IllegalModelException {
         TreeMap<String, String> noBodyOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
-        noBodyOptions.put("color", "red");
-        noBodyOptions.put("engine", "v4");
-        noBodyOptions.put("seats", "leather white");
-        noBodyOptions.put("airco", "manual");
-        noBodyOptions.put("gearbox", "6 manual");
-        noBodyOptions.put("wheels", "winter");
+        noBodyOptions.put("Color", "red");
+        noBodyOptions.put("Body", "sedan");
+        noBodyOptions.put("Engine", "v4");
+        noBodyOptions.put("Seats", "leather white");
+        noBodyOptions.put("Airco", "manual");
+        noBodyOptions.put("Gearbox", "6 manual");
         CarModel carModelA = new CarModel("A", noBodyOptions);
         CarOrder carOrderNoBody = new CarOrder("Danny Smeets", carModelA);
         // test if it throws an IllegalConstraintException, if so catch it and test passes
+        boolean gotError = false;
         try {
             carOrderNoBody.isValidCarModel();
         }
         catch (IllegalConstraintException | OptionThenComponentException | OptionAThenOptionBException | RequiredComponentException e) {
             assertEquals("RequiredComponentException", e.getClass().getSimpleName());
+            gotError = true;
         }
+        assertTrue(gotError);
     }
 
     @Test
@@ -233,7 +236,7 @@ class CarOrderTest {
     }
 
         @Test
-        void testCarModelAndOptions(){
+        void testCarModelAndOptions() throws IllegalCompletionDateException {
             TreeMap<String, String> options = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
             options.put("color", "red");
             options.put("body", "sedan");
@@ -272,5 +275,94 @@ class CarOrderTest {
             }
             order.setCompleted(true);
             assertTrue(order.isCompleted());
+            System.out.println(order.getCarModel().getChosenOptionsString());
         }
+
+        @Test
+        void testAddOptionAAndBPair() throws IllegalConstraintException {
+            TreeMap<String, String> options = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+            options.put("color", "red");
+            options.put("body", "sedan");
+            options.put("engine", "v6");
+            options.put("seats", "leather white");
+            options.put("airco", "manual");
+            options.put("gearbox", "6 manual");
+            options.put("wheels", "winter");
+            CarModel model = new CarModel("A", options);
+            ArrayList<String> AAndB = new ArrayList<>();
+            AAndB.add("green");
+            AAndB.add("sedan");
+            new Inspector(model).addOptionAAndOptionBPair(AAndB);
+            CarOrder order = new CarOrder("A", model);
+            boolean gotError = false;
+            try{
+                order.isValidCarModel();
+            }
+            catch(Exception e){
+                assertEquals("OptionAThenOptionBException", e.getClass().getSimpleName());
+                gotError = true;
+            }
+            assertTrue(gotError);
+        }
+
+        @Test
+    void testAddOptionThenComponentPair() throws IllegalConstraintException {
+            TreeMap<String, String> options = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+            options.put("color", "green");
+            options.put("body", "sedan");
+            options.put("engine", "v6");
+            options.put("seats", "leather white");
+            options.put("airco", "manual");
+            options.put("gearbox", "6 manual");
+            options.put("wheels", "winter");
+            CarModel model = new CarModel("B", options);
+            ArrayList<String> AAndB = new ArrayList<>();
+            AAndB.add("green");
+            AAndB.add("spoiler");
+            new Inspector(model).addOptionThenComponentPair(AAndB);
+            CarOrder order = new CarOrder("A", model);
+            boolean gotError = false;
+            try{
+                order.isValidCarModel();
+            }
+            catch(Exception e){
+                assertEquals("OptionThenComponentException", e.getClass().getSimpleName());
+                gotError = true;
+            }
+            assertTrue(gotError);
+        }
+
+        @Test
+    void addIllegalConstraintTest() {
+        TreeMap<String, String> options = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        options.put("color", "green");
+        options.put("body", "sedan");
+        options.put("engine", "v6");
+        options.put("seats", "leather white");
+        options.put("airco", "manual");
+        options.put("gearbox", "6 manual");
+        options.put("wheels", "winter");
+        CarModel model = new CarModel("B", options);
+        ArrayList<String> AAndB = new ArrayList<>();
+        AAndB.add("green");
+        try{
+            new Inspector(model).addOptionAThenOptionBPair(AAndB);
+        }
+        catch(Exception e){
+            assertEquals("IllegalConstraintException", e.getClass().getSimpleName());
+        }
+        CarOrder order = new CarOrder("A", model);
+        boolean gotError = false;
+        try{
+            order.setCompletionTime(LocalDateTime.now().minusDays(1));
+        }
+        catch(Exception e){
+            assertEquals("IllegalCompletionDateException", e.getClass().getSimpleName());
+            gotError = true;
+        }
+        assertTrue(gotError);
+
+    }
+
+
 }

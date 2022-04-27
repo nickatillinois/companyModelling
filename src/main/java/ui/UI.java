@@ -1,13 +1,12 @@
 package ui;
 
-import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalCompletionDateException;
 import assemAssist.exceptions.IllegalModelException;
 
 import java.util.Scanner;
 
 public class UI {
-    public UI(GarageHolderUI garageHolderUI, ManagerUI managerUI, MechanicUI mechanicUI) throws IllegalModelException, IllegalChoiceException, IllegalCompletionDateException {
+    public UI(GarageHolderUI garageHolderUI, ManagerUI managerUI, MechanicUI mechanicUI) throws IllegalModelException, IllegalCompletionDateException {
         Scanner in = new Scanner(System.in);
 
         System.out.println("Welcome to AssemAssist.");

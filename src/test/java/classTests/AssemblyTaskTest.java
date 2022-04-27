@@ -1,7 +1,6 @@
 package classTests;
 
 import assemAssist.AssemblyTask;
-import assemAssist.exceptions.IllegalChoiceException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +10,7 @@ class AssemblyTaskTest {
     static AssemblyTask task2;
 
     @BeforeEach
-    void init() throws IllegalChoiceException {
+    void init() {
         task1 = new AssemblyTask("paint","paint the car blue");
         task2 = new AssemblyTask("seats","install leather black seats");
     }
