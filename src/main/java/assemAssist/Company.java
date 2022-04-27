@@ -8,6 +8,7 @@ import assemAssist.statistics.DelayStats;
 import assemAssist.statistics.Stats;
 import assemAssist.statistics.WorkingDayStats;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -106,4 +107,11 @@ public class Company {
         }
         return result;
     }
+
+    // TODO implement
+    public LocalDate addOrderToProductionSchedule(CarOrder order) {
+        // stuur order naar production schedule
+        return LocalDate.now();
+    }
+
 }

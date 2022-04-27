@@ -1,5 +1,3 @@
-package java;
-
 import assemAssist.AssemblyLine;
 import assemAssist.AssemblyTask;
 import assemAssist.CarOrder;
@@ -19,6 +17,8 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AssemblyLineTest {
+
+    /*
     static AssemblyLine assemblyLine;
     static CarOrder orderA;
     static CarOrder orderB;
@@ -26,7 +26,6 @@ class AssemblyLineTest {
     @BeforeEach
     void setUp() throws IllegalChoiceException, IllegalModelException {
         assemblyLine = new AssemblyLine();
-       /* ProductionScheduler.addModel("Jaguar");*/
         Body body = new Body("sedan");
         CarModelSpecification specification = new CarModelSpecification(body,new Color("red"),
                 new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
@@ -132,4 +131,5 @@ class AssemblyLineTest {
         assert(orderA.isCompleted());
 
     }
+    */
 }
