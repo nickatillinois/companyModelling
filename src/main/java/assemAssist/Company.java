@@ -6,6 +6,7 @@ import assemAssist.exceptions.IllegalModelException;
 import assemAssist.exceptions.OrderNotFoundException;
 import assemAssist.statistics.Stats;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -128,8 +129,6 @@ public class Company {
         }
         return result;
     }
-<<<<<<< HEAD
-=======
 
     public ArrayList<String[]>[] newLogin(String garageHolder) {
         // create an array of 2 lists each containing a number of arrays of strings
@@ -157,7 +156,8 @@ public class Company {
         // create a new car model
         CarModel carModel = new CarModel(chosenModel, chosenOptions);
         // create a new car order
-        CarOrder carOrder = new CarOrder(garageHolder, carModel, null);
+        // TODO uit comment halen hieronder
+        // CarOrder carOrder = new CarOrder(garageHolder, carModel, null);
         return garageHolder;
     }
 
@@ -167,5 +167,4 @@ public class Company {
         return LocalDate.now();
     }
 
->>>>>>> parent of a6819f7 (Revert "Merge remote-tracking branch 'origin/main'")
 }

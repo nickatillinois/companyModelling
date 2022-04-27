@@ -19,7 +19,7 @@ import ui.UI;
 import java.util.List;
 
 public class PerformAssemblyTasksTest {
-
+/*
     @Test
     public void performTasksTest() throws IllegalChoiceException, IllegalModelException, IllegalCompletionDateException {
 
@@ -40,5 +40,5 @@ public class PerformAssemblyTasksTest {
                        new MechanicUI(new MechanicController(new Mechanic(productionScheduler, assemblyLine))));
 
 
-    }
+    }*/
 }

@@ -16,16 +16,13 @@ import ui.GarageHolderUI;
 import ui.ManagerUI;
 import ui.MechanicUI;
 import ui.UI;
-
 import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 
 public class CheckProductionStatisticsTest {
 
     @BeforeAll
     static void init() {
-        InputStream sysInBackup = System.in; // backup System.in to restore it later
-        ByteArrayInputStream in = new ByteArrayInputStream("3".getBytes());
+        ByteArrayInputStream in = new ByteArrayInputStream("3\ns".getBytes());
         System.setIn(in);
     }
 
@@ -34,7 +31,7 @@ public class CheckProductionStatisticsTest {
         ProductionScheduler productionScheduler = new ProductionScheduler();
         Company company = new Company();
         AssemblyLine assemblyLine = new AssemblyLine();
-        new UI( new GarageHolderUI( new GarageHolderController(productionScheduler)),
+        new UI( new GarageHolderUI( new GarageHolderController(company)),
                 new ManagerUI(      new ManagerController(company)),
                 new MechanicUI(     new MechanicController( new Mechanic(productionScheduler,assemblyLine) )));
     }

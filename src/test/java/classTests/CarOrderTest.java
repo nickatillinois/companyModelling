@@ -14,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CarOrderTest {
 
+    /*
     static Company company;
     static CarOrder carOrderA;
     static CarOrder carOrderB;
@@ -69,5 +70,5 @@ class CarOrderTest {
         assertTrue(carOrderA.isValidCarModel());
         assertTrue(carOrderB.isValidCarModel());
         assertTrue(carOrderC.isValidCarModel());
-    }
+    }*/
 }

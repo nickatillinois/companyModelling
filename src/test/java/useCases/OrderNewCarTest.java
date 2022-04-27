@@ -1,13 +1,13 @@
 package useCases;
 
 import assemAssist.ProductionScheduler;
-import assemAssist.carOrder.*;
 import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalModelException;
 import org.junit.jupiter.api.Test;
 
 public class OrderNewCarTest {
 
+    /*
     private CarOrder carOrder;
     private String garageHolder;
 
@@ -28,5 +28,5 @@ public class OrderNewCarTest {
     }
 
 
-
+*/
 }
