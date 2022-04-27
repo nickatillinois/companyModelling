@@ -1,7 +1,9 @@
 package controller;
 
 import assemAssist.Company;
+import assemAssist.schedulingAlgorithm.SchedulingAlgorithm;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ManagerController {
@@ -19,7 +21,7 @@ public class ManagerController {
 
     public List<String> selectSchedulingAlgorithm( String algorithmName) {
         company.getProductionScheduler().selectSchedulingAlgorithm(algorithmName);
-        return company.getProductionScheduler().getSchedulingAlgorithm().possibleBatch();
+        return company.getProductionScheduler().getSchedulingAlgorithm().posibleBatch();
     }
 
     public void selectBatchSet (String batchSet) {

@@ -1,5 +1,3 @@
-package classTests;
-
 import assemAssist.AssemblyTask;
 import assemAssist.exceptions.IllegalChoiceException;
 import org.junit.jupiter.api.BeforeEach;

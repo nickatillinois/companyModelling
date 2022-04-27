@@ -1,5 +1,6 @@
 package controller;
 
+import assemAssist.CarOrder;
 import assemAssist.Company;
 import assemAssist.ProductionScheduler;
 import assemAssist.exceptions.IllegalChoiceException;
@@ -7,35 +8,42 @@ import assemAssist.exceptions.IllegalCompletionDateException;
 import assemAssist.exceptions.IllegalModelException;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 
 public class GarageHolderController {
 
+    private final Company company;
     private String garageHolder;
     private String chosenModel;
-    private Company company;
 
 
     public GarageHolderController(Company company) {
         this.company = company;
     }
-    public ArrayList<String[]>[] newLogin(String garageHolder) {
+    public List<List<String>> newLogin(String garageHolder) {
         this.garageHolder = garageHolder;
-        return this.company.newLogin(garageHolder);
-    }
-    public HashSet<String> wantsToOrder() {
-        return company.getAvailableModels();
+        List<List<String>> orders = new ArrayList<>();
+        //return company.getOrdersFromGarageHolder(garageHolder);
+        //^omzetten naar list<list<string>>
+        return orders;
     }
 
-    public Map<String, HashSet<String>> selectModel(String carModel) throws IllegalModelException {
+    public List<String> wantsToOrder() {
+        return new ArrayList<>(company.getAvailableModels());
+    }
+
+    public List<String> selectModel(String carModel) throws IllegalModelException {
         this.chosenModel = carModel;
-        return company.selectModel(carModel);
+        List<String> model = new ArrayList<>();
+        //return company.selectModel(carModel);
+        //^omzetten naar list<string>
+        return model;
     }
 
+    // TODO implement
     public String completeOrderingForm(List<String> carOptions) throws IllegalChoiceException, IllegalModelException, IllegalCompletionDateException {
-        return company.completeOrderingForm((Map<String, String>) carOptions, this.garageHolder, this.chosenModel);
+        // company.addOrderToProductionSchedule(new CarOrder());
+        return " ";
     }
 
     public List<String> viewDetails(int carID, String garageHolderName) throws IllegalArgumentException {

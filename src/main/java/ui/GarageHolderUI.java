@@ -5,7 +5,9 @@ import assemAssist.exceptions.IllegalCompletionDateException;
 import assemAssist.exceptions.IllegalModelException;
 import controller.GarageHolderController;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class GarageHolderUI {
     private final GarageHolderController garageHolderController;
@@ -28,17 +30,14 @@ public class GarageHolderUI {
         this.in = in;
         System.out.println("Enter your first name lastname, e.g. 'Tom Smets'");
         String name = in.next() + " " + in.next();
-        ArrayList<String[]>[] overViewOfOrders = garageHolderController.newLogin(name);
+        List<List<String>> overViewOfOrders = garageHolderController.newLogin(name);
         System.out.println("Your pending orders are:");
-        for (String[] order : overViewOfOrders[0]) {
-            // Prints the elements of the order in a nice way.
-            System.out.println(" | " + "ID: " + order[0] + " | est. completion date: " + order[1] + " | ");
+        for (String pending: overViewOfOrders.get(0)) {
+            System.out.println(pending);
         }
-
         System.out.println("Your finished orders are:");
-        for (String[] order : overViewOfOrders[1]) {
-            // Prints the elements of the order in a nice way.
-            System.out.println(" | " + "ID: " + order[0] + " | est. completion date: " + order[1] + " | ");
+        for (String finished: overViewOfOrders.get(1)) {
+            System.out.println(finished);
         }
         System.out.println("-------------");
 
@@ -100,7 +99,7 @@ public class GarageHolderUI {
         List<String> availableModels;
 
         System.out.println("The available car models are:");
-        availableModels = (List<String>) garageHolderController.wantsToOrder();
+        availableModels = garageHolderController.wantsToOrder();
         for (String availableModel : availableModels) {
             System.out.println(availableModel);
         }
@@ -136,9 +135,22 @@ public class GarageHolderUI {
      * @throws IllegalCompletionDateException
      */
     private void completeOrderingFormUI(String model) throws IllegalModelException, IllegalChoiceException, IllegalCompletionDateException {
-        Map<String, HashSet<String>> orderingForm = garageHolderController.selectModel(model);
+        List<String> orderingForm = garageHolderController.selectModel(model);
+        List<String[]> orderingFormArrays = new ArrayList<>();
+        for (String s : orderingForm) {
+            String[] optionsAndName = s.split(": ");
+            String optionName = optionsAndName[0];
+            String[] availableOptions = optionsAndName[1].split(", ");
+            List<String> availableOptionsList = new ArrayList<>();
+            availableOptionsList.add(optionName);
+            for (String option : availableOptions) {
+                availableOptionsList.add(option);
+            }
+            String[] optionsAndNameArray = new String[availableOptionsList.size()];
+            optionsAndNameArray = availableOptionsList.toArray(optionsAndNameArray);
+            orderingFormArrays.add(optionsAndNameArray);
+        }
         System.out.println("The available options for this model are:");
-        List<String[]> orderingFormArrays = null;
         for (String[] option : orderingFormArrays){
             String toPrint = option[0] + ": ";
             for (int i = 1; i<option.length; i++){

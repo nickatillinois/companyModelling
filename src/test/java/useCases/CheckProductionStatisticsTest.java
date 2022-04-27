@@ -1,4 +1,4 @@
-package java.useCases;
+package useCases;
 
 import assemAssist.AssemblyLine;
 import assemAssist.Company;
