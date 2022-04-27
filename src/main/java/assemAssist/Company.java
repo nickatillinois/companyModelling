@@ -4,6 +4,7 @@ import assemAssist.etc.CompletedCarOrderComparator;
 import assemAssist.etc.PendingCarOrderComparator;
 import assemAssist.exceptions.IllegalModelException;
 import assemAssist.exceptions.OrderNotFoundException;
+import assemAssist.schedulingAlgorithm.SchedulingAlgorithm;
 import assemAssist.statistics.Stats;
 
 import java.time.LocalDateTime;
@@ -139,7 +140,7 @@ public class Company {
         List<CarOrder>[] orders = this.getOrdersFromGarageHolder(garageHolder);
         List<CarOrder> pendingOrders = orders[0];
         List<CarOrder> completedOrders = orders[1];
-        // take the ID and the estimated completition date from each pending order
+        // take the ID and the estimated completion date from each pending order
         for (CarOrder carOrder : pendingOrders) {
             pendingOrdersString.add(new String[]{Integer.toString(carOrder.getOrderID()), carOrder.getEstCompletionTime().toString()});
         }
@@ -149,7 +150,18 @@ public class Company {
         }
         // return the result
         return result;
+    }
 
+    public List<String> getSchedulingsAlgorithms() {
+        return this.productionScheduler.getSchedulingAlgorithms();
+    }
+
+    public void selectSchedulingAlgorithm(String algorithmName) {
+        for (SchedulingAlgorithm algo : this.productionScheduler.getSchedulers()) {
+            if (algo.getName().equalsIgnoreCase(algorithmName)) {
+                this.productionScheduler.setSchedulingAlgorithm(algo);
+            }
+        }
     }
 
     public String completeOrderingForm(TreeMap<String, String> chosenOptions, String garageHolder, String chosenModel) {
