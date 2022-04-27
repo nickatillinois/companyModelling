@@ -28,8 +28,8 @@ public class WorkingDayStats extends Stats {
     @Override
     public List<String> getStatistics(int fromXLastDays) {
         List<String> statistics = new ArrayList<>();
-        statistics.add("the average of completed cars in a day is " + getAverage());
-        statistics.add("the median of completed cars in a day is " + getMedian());
+        statistics.add("average" + getAverage());
+        statistics.add("median" + getMedian());
 
         for (int i = 1; i<fromXLastDays; i++) {
             statistics.add("cars produced " + i + " day(s) ago" +

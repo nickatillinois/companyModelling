@@ -87,7 +87,7 @@ public abstract class Stats implements StatisticsObserver {
         int n = numbers.size();
         if (n == 0) { return 0; }
         if (n % 2 == 0) {
-            return (numbers.get(n/2 - 1) + numbers.get(n/2)) / 2;
+            return (numbers.get(n/2) + numbers.get(n/2 + 1)) / 2 - 1;
         } else {
             return numbers.get((n + 1)/2 - 1);
         }

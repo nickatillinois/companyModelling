@@ -1,7 +1,5 @@
 package controller;
 
-import assemAssist.CarOrder;
-import assemAssist.Company;
 import assemAssist.ProductionScheduler;
 import assemAssist.exceptions.IllegalChoiceException;
 import assemAssist.exceptions.IllegalCompletionDateException;
@@ -12,38 +10,31 @@ import java.util.List;
 
 public class GarageHolderController {
 
-    private final Company company;
+    private final ProductionScheduler productionScheduler;
     private String garageHolder;
     private String chosenModel;
 
 
-    public GarageHolderController(Company company) {
-        this.company = company;
+    public GarageHolderController(ProductionScheduler productionScheduler) {
+        this.productionScheduler = productionScheduler;
     }
     public List<List<String>> newLogin(String garageHolder) {
         this.garageHolder = garageHolder;
-        List<List<String>> orders = new ArrayList<>();
-        //return company.getOrdersFromGarageHolder(garageHolder);
-        //^omzetten naar list<list<string>>
-        return orders;
+        return this.productionScheduler.newLogin(garageHolder);
     }
-
     public List<String> wantsToOrder() {
-        return new ArrayList<>(company.getAvailableModels());
+        ArrayList<String> availableModels = new ArrayList<>();
+        availableModels.addAll(ProductionScheduler.getAvailableModels());
+        return availableModels;
     }
 
-    public List<String> selectModel(String carModel) throws IllegalModelException {
+    public List<String> selectModel(String carModel) {
         this.chosenModel = carModel;
-        List<String> model = new ArrayList<>();
-        //return company.selectModel(carModel);
-        //^omzetten naar list<string>
-        return model;
+        return productionScheduler.selectModel(carModel);
     }
 
-    // TODO implement
     public String completeOrderingForm(List<String> carOptions) throws IllegalChoiceException, IllegalModelException, IllegalCompletionDateException {
-        // company.addOrderToProductionSchedule(new CarOrder());
-        return " ";
+        return productionScheduler.completeOrderingForm(carOptions, this.garageHolder, this.chosenModel).toString();
     }
 
     public List<String> viewDetails(int carID, String garageHolderName) throws IllegalArgumentException {

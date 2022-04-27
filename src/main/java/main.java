@@ -20,7 +20,7 @@ public class main {
         AssemblyLine assemblyLine = new AssemblyLine();
         ProductionScheduler productionScheduler = new ProductionScheduler();
         Company company = new Company();
-        GarageHolderController garageHolderController = new GarageHolderController(company);
+        GarageHolderController garageHolderController = new GarageHolderController(productionScheduler);
         GarageHolderUI garageHolderUI = new GarageHolderUI(garageHolderController);
 
 
