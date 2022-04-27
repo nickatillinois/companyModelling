@@ -50,7 +50,7 @@ public class Company {
     private ArrayList<CarOrder> getCompletedOrdersFromGarageHolder(String name) {
         ArrayList<CarOrder> orders = new ArrayList<>();
         for (CarOrder carOrder : this.completedCarOrders) {
-            if (carOrder.getGarageholder().equalsIgnoreCase(name)) {
+            if (carOrder.getGarageHolder().equalsIgnoreCase(name)) {
                 orders.add(carOrder);
             }
         }

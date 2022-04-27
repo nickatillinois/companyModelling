@@ -107,7 +107,7 @@ public ProductionScheduler(){
      */
     public List<CarOrder> getOrdersFromGarageHolder(String garageHolder){
         List<CarOrder> orderFromGarageHolder = schedulingAlgorithm.getProductionSchedule().stream().
-                filter(p-> Objects.equals(p.getGarageholder(), garageHolder)).collect(Collectors.toList());
+                filter(p-> Objects.equals(p.getGarageHolder(), garageHolder)).collect(Collectors.toList());
         orderFromGarageHolder.addAll(getPendingOrdersFromGarageHolder(garageHolder));
         return orderFromGarageHolder;
     }
@@ -121,7 +121,7 @@ public ProductionScheduler(){
         List<CarOrder> pending = new ArrayList<>();
         for(WorkStation workStation : getAssemblyLine().getWorkStations()){
             if (workStation.getCurrentOrder() != null)
-                if (Objects.equals(workStation.getCurrentOrder().getGarageholder(), garageHolder))
+                if (Objects.equals(workStation.getCurrentOrder().getGarageHolder(), garageHolder))
                     pending.add( workStation.getCurrentOrder());
         }
         return pending;

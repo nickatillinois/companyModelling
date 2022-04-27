@@ -17,12 +17,13 @@ public class FIFO extends SchedulingAlgorithm {
 
 
     /**
-     * @return nothing
+     * @return null
      * @throws IllegalCallerException can not be operated in this algorithm
+     *
      */
     @Override
     public List<String> possibleBatch() throws IllegalCallerException {
-        throw new IllegalCallerException("This algorithm can not return possible batches");
+        return null;
 
     }
 
