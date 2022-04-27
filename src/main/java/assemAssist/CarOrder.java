@@ -1,15 +1,12 @@
 package assemAssist;
 
-import java.time.LocalDate;
+import assemAssist.exceptions.*;
+import assemAssist.observer.StatisticsObservable;
+import assemAssist.observer.StatisticsObserver;
+
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-
-import assemAssist.exceptions.IllegalCompletionDateException;
-import assemAssist.exceptions.IllegalConstraintException;
-import assemAssist.exceptions.IllegalModelException;
-import assemAssist.observer.StatisticsObservable;
-import assemAssist.observer.StatisticsObserver;
 
 
 /**
@@ -167,14 +164,14 @@ public class CarOrder implements StatisticsObservable {
 
      */
 
-    public void setCompletionTime(LocalDateTime completionTime) throws IllegalCompletionDateException {
+    public void setCompletionTime(LocalDateTime completionTime) {
 
         if (completionTime == null){throw new IllegalArgumentException("completion time cannot be set to null");}
         //if (completionTime.isBefore(LocalDate.now())){throw new IllegalCompletionDateException("completion time cannot be set in the past");}
         this.completionTime = completionTime;
     }
 
-    public void setEstCompletionTime(LocalDateTime estCompletionTime) throws IllegalCompletionDateException {
+    public void setEstCompletionTime(LocalDateTime estCompletionTime) {
 
         if (estCompletionTime == null){throw new IllegalArgumentException("estCompletion time cannot be set to null");}
         //if (completionTime.isBefore(LocalDate.now())){throw new IllegalCompletionDateException("completion time cannot be set in the past");}
@@ -190,7 +187,7 @@ public class CarOrder implements StatisticsObservable {
 
 
 
-    public boolean isValidCarModel() throws IllegalConstraintException, IllegalModelException {
+    public boolean isValidCarModel() throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         return this.carModel.inspect();
     }
 

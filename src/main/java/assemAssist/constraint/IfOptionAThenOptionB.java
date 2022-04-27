@@ -2,6 +2,7 @@ package assemAssist.constraint;
 
 import assemAssist.CarModel;
 import assemAssist.exceptions.IllegalConstraintException;
+import assemAssist.exceptions.OptionAThenOptionBException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -78,11 +79,11 @@ public class IfOptionAThenOptionB extends Constraint {
     }
 
     @Override
-    protected boolean isValidCombo(CarModel chosenSpecifications) throws IllegalArgumentException {
+    protected boolean isValidCombo(CarModel chosenSpecifications) throws IllegalArgumentException, OptionAThenOptionBException {
         if (chosenSpecifications == null) {
             throw new IllegalArgumentException("Chosen specifications is null");
         }
-        // for eac key in chosenSpecifications, get the value
+        // for each key in chosenSpecifications, get the value
         // create a set of Strings of the values
         HashSet<String> chosenOptionsSet = new HashSet<>();
         for (String key : chosenSpecifications.getChosenOptions().keySet()) {
@@ -92,9 +93,12 @@ public class IfOptionAThenOptionB extends Constraint {
        // for each pair in pairs, check if the first element is in the set of chosen options
         for (ArrayList<String> pair : pairs) {
             if (chosenOptionsSet.contains(pair.get(0))) {
-                // check if the second element is in chosenSpecifications.getChosenOptions().keySet()
-                if (!chosenSpecifications.getChosenOptions().containsKey(pair.get(1))) {
-                    return false;
+                // check if the other elements of pair are in chosenSpecifications.getChosenOptions().keySet()
+                for (int i = 1; i < pair.size(); i++) {
+                    if (!chosenSpecifications.getChosenOptions().containsKey(pair.get(i))) {
+                        throw new OptionAThenOptionBException("Option" + pair.get(0) + ", implies" + pair.get(i) + ". But " + pair.get(i) + " is not in the chosen options.");
+
+                    }
                 }
             }
         }

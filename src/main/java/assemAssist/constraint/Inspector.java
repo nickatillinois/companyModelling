@@ -1,8 +1,7 @@
 package assemAssist.constraint;
 
 import assemAssist.CarModel;
-import assemAssist.exceptions.IllegalConstraintException;
-import assemAssist.exceptions.IllegalModelException;
+import assemAssist.exceptions.*;
 
 import java.util.ArrayList;
 
@@ -32,8 +31,10 @@ public class Inspector {
         constraints.add(new IfOptionAThenOptionB());
         constraints.add(new IfOptionThenComponent());
     }
-    public boolean inspect() throws IllegalConstraintException, IllegalModelException {
+    public boolean inspect() throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         for (Constraint constraint : constraints) {
+            System.out.println(constraint.getClass().getSimpleName());
+            System.out.println(constraints.size());
             if(!constraint.isValidCombo(this.carModel)) {
                 return false;
             }

@@ -1,8 +1,7 @@
 package assemAssist.constraint;
 
 import assemAssist.CarModel;
-import assemAssist.exceptions.IllegalConstraintException;
-import assemAssist.exceptions.IllegalModelException;
+import assemAssist.exceptions.*;
 
 /**
  * Class representing a restriction.
@@ -24,6 +23,6 @@ public abstract class Constraint {
      * @throws IllegalConstraintException | the chosen specifications are not in line with the constraints
      * @return True if the chosen specifications are in line with the constraints, false otherwise.
      */
-    protected abstract boolean isValidCombo(CarModel chosenSpecifications) throws IllegalArgumentException, IllegalConstraintException, IllegalModelException;
+    protected abstract boolean isValidCombo(CarModel chosenSpecifications) throws IllegalArgumentException, IllegalConstraintException, IllegalModelException, RequiredComponentException, OptionAThenOptionBException, OptionThenComponentException;
 
 }

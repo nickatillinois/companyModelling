@@ -37,7 +37,7 @@ public ProductionScheduler(){
 
 
     /**
-     * This function wil set the scheduling algorithme
+     * This function wil set the scheduling algorithm
      * @param algorithm the algorithm you will set
      * @throws IllegalArgumentException if the algorithm is not valid.
      */
@@ -71,8 +71,8 @@ public ProductionScheduler(){
     }
 
     /**
-     * This function gifs a list of the orders that wait to be produced in the order she get produced with the current
-     * algorithm.
+     * This function gives a list of the orders that wait to be produced in the order they are to be produced in the
+     * current algorithm.
      * @return productionSchedule
      */
     private List<CarOrder> getProductionSchedule() {
@@ -101,8 +101,8 @@ public ProductionScheduler(){
     }
     
     /**
-     * This function return a list of carorders of the given garageHolder.
-     * @param garageHolder | the garageholder of whom the carorders are to be found
+     * This function return a list of car orders of the given garageHolder.
+     * @param garageHolder | the garage holder of whom the car orders are to be found
      * @return list of car order
      */
     public List<CarOrder> getOrdersFromGarageHolder(String garageHolder){

@@ -3,8 +3,7 @@ package classTests;
 import assemAssist.CarModel;
 import assemAssist.CarOrder;
 import assemAssist.Company;
-import assemAssist.exceptions.IllegalConstraintException;
-import assemAssist.exceptions.IllegalModelException;
+import assemAssist.exceptions.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -14,14 +13,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CarOrderTest {
 
-
     static Company company;
     static CarOrder carOrderA;
     static CarOrder carOrderB;
     static CarOrder carOrderC;
-
-
-
 
     @BeforeAll
     static void init() {
@@ -59,9 +54,6 @@ class CarOrderTest {
         legalCOptions.put("spoiler", "low");
         CarModel carModelC = new CarModel("C", legalCOptions);
         carOrderC = new CarOrder("Kim Smeets", carModelC);
-
-        // complete order C
-
     }
 
     @Test
@@ -69,7 +61,7 @@ class CarOrderTest {
         assertThrows(IllegalArgumentException.class, () -> new CarOrder(null, null));
     }
     @Test
-    void testGettersCarOrder() throws IllegalModelException, IllegalConstraintException {
+    void testGettersCarOrder() throws IllegalModelException {
         assertEquals(carOrderA.getGarageholder(), "Danny Smeets");
         assertEquals(carOrderB.getGarageholder(), "Sandy Smeets");
         assertEquals(carOrderC.getGarageholder(), "Kim Smeets");
@@ -80,10 +72,63 @@ class CarOrderTest {
         assertEquals("B", carOrderB.getCarModel().getModelName());
         assertEquals("C", carOrderC.getCarModel().getModelName());
         assertEquals(50, company.getCatalog().getModel("A").getStandardWorkStationTime());
+        assertEquals(70, company.getCatalog().getModel("B").getStandardWorkStationTime());
+        assertEquals(60, company.getCatalog().getModel("C").getStandardWorkStationTime());
         assertEquals(1, carOrderA.getOrderID());
         assertEquals(2, carOrderB.getOrderID());
+    }
+
+    @Test
+    void testLegalModels() throws IllegalModelException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         assertTrue(carOrderA.isValidCarModel());
         assertTrue(carOrderB.isValidCarModel());
         assertTrue(carOrderC.isValidCarModel());
     }
+
+    @Test
+    void testIllegalName() throws IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+        TreeMap<String, String> illegalOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        illegalOptions.put("color", "red");
+        illegalOptions.put("body", "sedan");
+        illegalOptions.put("engine", "v4");
+        illegalOptions.put("seats", "leather white");
+        illegalOptions.put("airco", "manual");
+        illegalOptions.put("gearbox", "6 manual");
+        illegalOptions.put("wheels", "winter");
+        illegalOptions.put("spoiler", "low");
+        CarModel illegalModel = new CarModel("illegal", illegalOptions);
+        CarOrder illegalOrder = new CarOrder("illegal", illegalModel);
+        // test if it throws an IllegalModelException, if so catch it and test passes
+        try {
+            illegalOrder.isValidCarModel();
+        }
+        catch (IllegalModelException e) {
+            System.out.println("IllegalModelException thrown");
+            // test passes
+        }
+    }
+
+    @Test
+    void testNoBody() throws IllegalModelException {
+        TreeMap<String, String> noBodyOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        noBodyOptions.put("color", "red");
+        noBodyOptions.put("engine", "v4");
+        noBodyOptions.put("seats", "leather white");
+        noBodyOptions.put("airco", "manual");
+        noBodyOptions.put("gearbox", "6 manual");
+        noBodyOptions.put("wheels", "winter");
+        CarModel carModelA = new CarModel("A", noBodyOptions);
+        CarOrder carOrderNoBody = new CarOrder("Danny Smeets", carModelA);
+        // test if it throws an IllegalConstraintException, if so catch it and test passes
+        try {
+            carOrderNoBody.isValidCarModel();
+        }
+        catch (IllegalConstraintException | OptionThenComponentException | OptionAThenOptionBException | RequiredComponentException e) {
+            System.out.println("IllegalConstraintException thrown");
+            // test passes
+        }
+        assertThrows(IllegalConstraintException.class, carOrderNoBody::isValidCarModel);
+    }
+
+
 }

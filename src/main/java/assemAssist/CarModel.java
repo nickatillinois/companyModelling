@@ -1,7 +1,6 @@
 package assemAssist;
 
-import assemAssist.exceptions.IllegalConstraintException;
-import assemAssist.exceptions.IllegalModelException;
+import assemAssist.exceptions.*;
 import assemAssist.constraint.Inspector;
 
 import java.util.TreeMap;
@@ -20,7 +19,7 @@ public class CarModel {
         this.chosenOptions = chosenOptions;
     }
 
-    public boolean inspect() throws IllegalConstraintException, IllegalModelException {
+    public boolean inspect() throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         return new Inspector(this).inspect();
     }
     public TreeMap<String, String> getChosenOptions() {

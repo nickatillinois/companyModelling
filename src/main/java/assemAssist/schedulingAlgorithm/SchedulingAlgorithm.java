@@ -2,9 +2,7 @@ package assemAssist.schedulingAlgorithm;
 
 import assemAssist.CarOrder;
 import assemAssist.Catalog;
-import assemAssist.exceptions.IllegalCompletionDateException;
-import assemAssist.exceptions.IllegalConstraintException;
-import assemAssist.exceptions.IllegalModelException;
+import assemAssist.exceptions.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,8 +68,9 @@ public abstract class SchedulingAlgorithm {
      * @throws IllegalModelException
      */
 
-    public void addOrderToProductionSchedule(CarOrder order) throws IllegalConstraintException, IllegalModelException, IllegalCompletionDateException {
-        if (order.isValidCarModel()) {
+    public void addOrderToProductionSchedule(CarOrder order) throws IllegalConstraintException, IllegalModelException, IllegalCompletionDateException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+        try{
+            order.isValidCarModel();
             carOrderList.add(order);
             int workingTime = catalog.getModel(order.getCarModel().getModelName()).getStandardWorkStationTime() * 3;
             boolean before = true;
@@ -87,8 +86,9 @@ public abstract class SchedulingAlgorithm {
             }
             order.setEstCompletionTime(order.getOrderingTime().plusMinutes(workingTime));
 
-        } else
-            throw new IllegalConstraintException("This car order has not a valid car model!");
-
+        }
+        catch (Exception e) {
+            throw e;
+        }
     }
 }

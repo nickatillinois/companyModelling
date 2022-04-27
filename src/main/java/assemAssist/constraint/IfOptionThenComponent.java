@@ -2,6 +2,7 @@ package assemAssist.constraint;
 
 import assemAssist.CarModel;
 import assemAssist.exceptions.IllegalConstraintException;
+import assemAssist.exceptions.OptionThenComponentException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -63,7 +64,7 @@ public class IfOptionThenComponent extends Constraint {
     }
 
     @Override
-    protected boolean isValidCombo(CarModel chosenSpecifications) throws IllegalArgumentException {
+    protected boolean isValidCombo(CarModel chosenSpecifications) throws IllegalArgumentException, OptionThenComponentException {
         if (chosenSpecifications == null) {
             throw new IllegalArgumentException("Chosen specifications is null");
         }
@@ -77,7 +78,7 @@ public class IfOptionThenComponent extends Constraint {
         // for each pair in pairs, check if the set of chosen options contains the pair
         for (ArrayList<String> pair : pairs) {
             if (chosenOptionsSet.contains(pair.get(0)) && !chosenOptionsSet.contains(pair.get(1))) {
-                return false;
+                throw new OptionThenComponentException("Option" + pair.get(0) + ", implies component" + pair.get(1) + ". But component" + pair.get(1) + " is not chosen.");
             }
         }
         return true;
