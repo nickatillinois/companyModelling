@@ -7,6 +7,7 @@ import assemAssist.schedulingAlgorithm.Batch;
 import assemAssist.schedulingAlgorithm.FIFO;
 import assemAssist.schedulingAlgorithm.SchedulingAlgorithm;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -24,8 +25,8 @@ class SchedulingAlgorithmTest {
     static CarOrder carOrderD;
     static CarOrder carOrderE;
 
-    @BeforeAll
-    static void init() throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+    @BeforeEach
+    public void init() throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         fifo = new FIFO();
         batch = new Batch();
         TreeMap<String, String> legalAOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
@@ -111,9 +112,5 @@ class SchedulingAlgorithmTest {
         assertEquals(bachlist,batch.getProductionSchedule());
 
 
-    }
-
-    @Test
-    void addOrderToProductionSchedule() {
     }
 }
