@@ -1204,8 +1204,7 @@ schedulingAlgorithm</panel_attributes>
       <w>168</w>
       <h>56</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-&gt;
-m1=1
+    <panel_attributes>lt=-&gt;
 m2=1..n
 </panel_attributes>
     <additional_attributes>10.0;20.0;100.0;20.0</additional_attributes>
