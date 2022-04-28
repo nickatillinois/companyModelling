@@ -10,6 +10,7 @@ import assemAssist.statistics.WorkingDayStats;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -179,22 +180,34 @@ public class Company {
     }
 
     public ArrayList<String[]>[] newLogin(String garageHolder) {
+        if (garageHolder == null) {
+            throw new IllegalArgumentException("Garage holder name cannot be null.");
+        }
+        if (garageHolder.isEmpty()) {
+            throw new IllegalArgumentException("Garage holder name cannot be empty.");
+        }
+        if(garageHolder.trim().length() <= 0) {
+            throw new IllegalArgumentException("Garage holder name cannot be whitespace.");
+        }
         // create an array of 2 lists each containing a number of arrays of strings
         ArrayList<String[]>[] result = new ArrayList[2];
-        ArrayList<String[]> pendingOrdersString = result[0];
-        ArrayList<String[]> completedOrdersString = result[1];
+        ArrayList<String[]> pendingOrdersString = new ArrayList<>();
+        ArrayList<String[]> completedOrdersString = new ArrayList<>();
         // get the pending and completed orders from this garage holder
         List<CarOrder>[] orders = this.getOrdersFromGarageHolder(garageHolder);
         List<CarOrder> pendingOrders = orders[0];
         List<CarOrder> completedOrders = orders[1];
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         // take the ID and the estimated completion date from each pending order
         for (CarOrder carOrder : pendingOrders) {
-            pendingOrdersString.add(new String[]{Integer.toString(carOrder.getOrderID()), carOrder.getEstCompletionTime().toString()});
+            pendingOrdersString.add(new String[]{Integer.toString(carOrder.getOrderID()), carOrder.getEstCompletionTime().format(formatter)});
         }
         // take the ID and the completion date from each completed order
         for (CarOrder carOrder : completedOrders) {
-            completedOrdersString.add(new String[]{Integer.toString(carOrder.getOrderID()), carOrder.getCompletionTime().toString()});
+            completedOrdersString.add(new String[]{Integer.toString(carOrder.getOrderID()), carOrder.getCompletionTime().format(formatter)});
         }
+        result[0] = pendingOrdersString;
+        result[1] = completedOrdersString;
         // return the result
         return result;
     }

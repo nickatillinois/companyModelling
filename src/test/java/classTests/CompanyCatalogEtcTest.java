@@ -9,12 +9,11 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.TreeMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CompanyCatalogTest {
+public class CompanyCatalogEtcTest {
 
 
     static Company company;
@@ -42,7 +41,6 @@ public class CompanyCatalogTest {
         legalAOptions.put("wheels", "winter");
         CarModel carModelA = new CarModel("A", legalAOptions);
         carOrderA = new CarOrder("Danny Smeets", carModelA);
-        carOrderA.setEstCompletionTime(LocalDateTime.now().plusDays(5));
         TreeMap<String, String> legalBOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         legalBOptions.put("color", "red");
         legalBOptions.put("body", "break");
@@ -67,6 +65,8 @@ public class CompanyCatalogTest {
         carOrderC = new CarOrder("Kim Smeets", carModelC);
 
         company.addOrderToProductionSchedule(carOrderA);
+        carOrderA.setEstCompletionTime(LocalDateTime.now().plusDays(1));
+        System.out.println(carOrderA.getEstCompletionTime());
         company.addOrderToProductionSchedule(carOrderB);
         company.addOrderToProductionSchedule(carOrderC);
         company.getProductionScheduler().advanceOrders(50);
@@ -254,6 +254,50 @@ public class CompanyCatalogTest {
         System.out.println(orderDetails);
         //List<String> statistics = company.getStatistics(1);
         //System.out.println(statistics);
+    }
+
+    @Test
+    void testNewLogin() throws IllegalArgumentException, IllegalModelException, IllegalConstraintException, IllegalCompletionDateException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException, OrderNotFoundException {
+        boolean got_error = false;
+        try{
+            company.newLogin(null);
+        }
+        catch (IllegalArgumentException e){
+            assertEquals("Garage holder name cannot be null.", e.getMessage());
+            got_error = true;
+        }
+        assertTrue(got_error);
+        got_error = false;
+        try{
+            company.newLogin("");
+        }
+        catch (IllegalArgumentException e){
+            assertEquals("Garage holder name cannot be empty.", e.getMessage());
+            got_error = true;
+        }
+        assertTrue(got_error);
+        got_error = false;
+        try{
+            company.newLogin(" ");
+        }
+        catch (IllegalArgumentException e){
+            assertEquals("Garage holder name cannot be whitespace.", e.getMessage());
+            got_error = true;
+        }
+        assertTrue(got_error);
+        System.out.println("---------------------New Login---------------------");
+        // print the two lists returned by the newLogin method
+        ArrayList<String[]>[] login = company.newLogin("kim Smeets");
+        // print the first list
+        System.out.println("The first list is: ");
+        for (String[] s : login[0]){
+            System.out.println(s[0] + " " + s[1]);
+        }
+        // print the second list
+        System.out.println("The second list is: ");
+        for (String[] s : login[1]){
+            System.out.println(s[0] + " " + s[1]);
+        }
     }
 
 
