@@ -97,6 +97,7 @@ public abstract class Stats implements StatisticsObserver {
      * @param fromXLastDays the number of days this method will return statistics from
      * @param date the date statistics need to be calculated on
      * @return a list of statistics in string form
+     * @throws IllegalArgumentException if the given integer is higher than the amount of statistics in the system
      */
     public abstract List<String> getStatistics(int fromXLastDays, LocalDate date);
 

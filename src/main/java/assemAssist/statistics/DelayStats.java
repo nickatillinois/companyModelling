@@ -23,9 +23,13 @@ public class DelayStats extends Stats{
      * @param fromXLastDays the number of days this method will return statistics from
      * @param date the date statistics need to be calculated on
      * @return a list of statistics in string form
+     * @throws IllegalArgumentException if the given integer is higher than the amount of statistics in the system
      */
     @Override
     public List<String> getStatistics(int fromXLastDays, LocalDate date) {
+        if (getStatsPerDay().size() < fromXLastDays) {
+            throw new IllegalArgumentException("The system only contains data for the past " + getStatsPerDay().size() + " days!");
+        }
         List<String> statistics = new ArrayList<>();
         statistics.add("the average delay on a car is " + getAverage());
         statistics.add("the median delay on a car is " + getMedian());
