@@ -34,14 +34,11 @@ public class GarageHolderController {
         return company.completeOrderingForm(chosenOptions, this.garageHolder, this.chosenModel);
     }
 
-    public List<String> viewDetails(int carID, String garageHolderName) throws IllegalArgumentException {
-        if (carID != 1) {
-            throw new IllegalArgumentException("This is not a valid carID");
+    public List<String> viewDetails(int carID, String garageHolderName) throws IllegalArgumentException, OrderNotFoundException {
+        if (carID <= 0) {
+            throw new IllegalArgumentException("Car ID cannot be less than or equal to 0");
         } else {
-            List<String> details = new ArrayList<>();
-            details.add("Model: Jaguar");
-            details.add("Color: Green");
-            return details;
+            return company.getOrderDetails(carID, garageHolderName);
         }
     }
 }

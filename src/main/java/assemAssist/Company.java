@@ -246,5 +246,4 @@ public class Company {
         return carOrder.getEstCompletionTime().format(formatter);
     }
 
-
 }

@@ -3,6 +3,7 @@ package assemAssist;
 import assemAssist.exceptions.*;
 import assemAssist.observer.StatisticsObservable;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -202,19 +203,26 @@ public class CarOrder implements StatisticsObservable {
     private ArrayList<String> getPendingOrderDetails(){
         ArrayList<String> orderDetails = new ArrayList<>();
         orderDetails.add("Specifications: " + getCarModelAndOptions ());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedOrderTime = orderingTime.format(formatter);
+        String formattedEstProdTime = estCompletionTime.format(formatter);
         if(this.estCompletionTime == null){
             throw new IllegalArgumentException("The given car order's estimated completion time is still set to 'null'");
         }
-        orderDetails.add("orderTime: " + orderingTime.toString());
-        orderDetails.add("estProdTime: " + estCompletionTime);
+        orderDetails.add("orderTime: " + formattedOrderTime);
+        orderDetails.add("estProdTime: " + formattedEstProdTime);
         return orderDetails;
     }
 
     private ArrayList<String> getCompletedOrderDetails(){
         ArrayList<String> orderDetails = new ArrayList<>();
+        // format orderingTime in a more readable format
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedOrderTime = orderingTime.format(formatter);
+        String formattedCompletionTime = completionTime.format(formatter);
         orderDetails.add("Specifications: " + getCarModelAndOptions ());
-        orderDetails.add("orderTime: " + orderingTime.toString());
-        orderDetails.add("completionTime: " + completionTime.toString());
+        orderDetails.add("orderTime: " + formattedOrderTime);
+        orderDetails.add("completionTime: " + formattedCompletionTime);
         return orderDetails;
     }
     public ArrayList<String> getOrderDetails(){

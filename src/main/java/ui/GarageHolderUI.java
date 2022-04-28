@@ -74,15 +74,29 @@ public class GarageHolderUI {
                 int carID = Integer.parseInt(carIDString);
                 try{
                     List<String> details = garageHolderController.viewDetails(carID, name);
-                    for (String detail : details) {
-                        System.out.println(detail);
+                    // Prints the details of the order in a nice way.
+                    System.out.println("-------------");
+                    System.out.println(" | " + details.get(0) + " | ");
+                    System.out.println(" | " + details.get(1) + " | ");
+                    System.out.println(" | " + details.get(2) + " | ");
+                } catch (Exception e) {
+                    if(e instanceof OrderNotFoundException){
+                        System.out.println("We could not find an order with this ID.");}
+                    else if(e instanceof IllegalArgumentException){
+                        System.out.println("This is not a valid ID.");}
                     }
-                    break;
-                } catch (IllegalArgumentException e) {
-                    System.out.println("This is not a valid ID. Try again");
-                }
             } catch (NumberFormatException e) {
                 System.out.println("This is not a valid ID. Try again");
+            }
+            // Asks the user if he wants to check the details of another order.
+            System.out.println("Do you want to check the details of another order? (y/n)");
+            char nextstep = in.next().charAt(0);
+            if (nextstep == 'n') {
+                break;}
+            else if (nextstep == 'y') {
+            }
+            else {
+                System.out.println("This is not a valid option.");
             }
         }
     }
@@ -143,9 +157,9 @@ public class GarageHolderUI {
         for (String option : orderingFormList.keySet()) {
             System.out.println(option + ":");
             i = 0;
-            System.out.println("Press \'q\' to skip this component, press \'s\' to select it.");
+            System.out.println("Press \'x\' to skip this component, press \'s\' to select it, or press \'q\' to cancel");
             String choice = in.next();
-            if (choice.equalsIgnoreCase("q")) {
+            if (choice.equalsIgnoreCase("x")) {
                 continue;
             } else if (choice.equalsIgnoreCase("s")) {
                 for(String value : orderingFormList.get(option)){
@@ -158,7 +172,11 @@ public class GarageHolderUI {
                     String optionValue = orderingFormList.get(option)[optionNumber];
                     selectedOptions.put(option, optionValue);
                 }
-            }else {
+            } else if (choice.equalsIgnoreCase("q")) {
+                System.out.println("Cancelling order");
+                return;
+            }
+            else {
                 System.out.println("This is not a valid option.");
             }
         }
