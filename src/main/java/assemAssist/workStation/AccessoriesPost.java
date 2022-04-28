@@ -21,17 +21,17 @@ public class AccessoriesPost extends WorkStation{
     public void newTasks() {
         //add task for seats
         this.addTask(new AssemblyTask("seats",
-                "install " + getCurrentOrder().getCarModel().getChosenOptions().get("seats") + " seats"));
+                "install " + getCurrentOrder().getCarModel().getChosenOptions().get("Seats").toLowerCase() + " seats"));
         //add task for airco
         this.addTask(new AssemblyTask("airco",
-                "install " + getCurrentOrder().getCarModel().getChosenOptions().get("airco") + " airco"));
+                "install " + getCurrentOrder().getCarModel().getChosenOptions().get("Airco").toLowerCase() + " airco"));
         //add task for wheels
         this.addTask(new AssemblyTask("wheels",
-                "mount " + getCurrentOrder().getCarModel().getChosenOptions().get("wheels") + " wheels"));
+                "mount " + getCurrentOrder().getCarModel().getChosenOptions().get("Wheels").toLowerCase() + " wheels"));
         //add task for spoiler, IF there needs to be one
-        if (getCurrentOrder().getCarModel().getChosenOptions().get("spoiler") != null) {
+        if (getCurrentOrder().getCarModel().getChosenOptions().get("Spoiler") != null) {
             this.addTask(new AssemblyTask("spoiler",
-                    "install " + getCurrentOrder().getCarModel().getChosenOptions().get("spoiler") + " spoiler"));
+                    "install " + getCurrentOrder().getCarModel().getChosenOptions().get("spoiler").toLowerCase() + " spoiler"));
         }
     }
 

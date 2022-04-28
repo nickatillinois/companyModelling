@@ -22,10 +22,10 @@ public class CarBodyPost extends WorkStation{
 
         //add task for body
         this.addTask(new AssemblyTask("body",
-                "assemble " + getCurrentOrder().getCarModel().getChosenOptions().get("body") + " body"));
+                "assemble " + getCurrentOrder().getCarModel().getChosenOptions().get("Body").toLowerCase() + " body"));
         //add task for paint
         this.addTask(new AssemblyTask("paint",
-                "paint the car " + getCurrentOrder().getCarModel().getChosenOptions().get("color")));
+                "paint the car " + getCurrentOrder().getCarModel().getChosenOptions().get("Color").toLowerCase()));
 
 
     }

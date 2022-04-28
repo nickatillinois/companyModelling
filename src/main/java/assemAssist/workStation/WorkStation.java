@@ -5,6 +5,7 @@ import assemAssist.observer.TaskObservable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Class representing a single work station.
@@ -242,7 +243,7 @@ public abstract class WorkStation implements TaskObservable {
 
         WorkStation that = (WorkStation) o;
 
-        if (currentOrder != null ? !currentOrder.equals(that.currentOrder) : that.currentOrder != null) return false;
+        if (!Objects.equals(currentOrder, that.currentOrder)) return false;
         if (!tasks.equals(that.tasks)) return false;
         if (!mechanics.equals(that.mechanics)) return false;
         return name.equals(that.name);
