@@ -1,6 +1,7 @@
 package assemAssist.workStation;
 import assemAssist.AssemblyTask;
 import assemAssist.CarOrder;
+import assemAssist.observer.TaskObservable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 /**
  * Class representing a single work station.
  */
-public abstract class WorkStation {
+public abstract class WorkStation implements TaskObservable {
 
     /**
      *  A CarOrder object representing the current order at this work station.
@@ -206,6 +207,7 @@ public abstract class WorkStation {
         for (AssemblyTask task : tasks) {
             if (task.getName().equals(taskName)) {
                 task.setIsCompleted(true);
+                notifyObservers(time);
                 return;
             }
         }

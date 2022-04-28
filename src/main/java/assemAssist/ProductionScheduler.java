@@ -1,5 +1,6 @@
 package assemAssist;
 
+import assemAssist.observer.TaskObserver;
 import assemAssist.schedulingAlgorithm.Batch;
 import assemAssist.schedulingAlgorithm.FIFO;
 import assemAssist.workStation.WorkStation;
@@ -15,19 +16,19 @@ import java.util.stream.Collectors;
  *
  * @author SWOP Team 10
  */
-public class ProductionScheduler {
-private final AssemblyLine assemblyLine;
-private SchedulingAlgorithm schedulingAlgorithm = new FIFO();
-private final ArrayList<SchedulingAlgorithm> schedulers = new ArrayList<>();
+    public class ProductionScheduler implements TaskObserver {
+    private final AssemblyLine assemblyLine;
+    private SchedulingAlgorithm schedulingAlgorithm = new FIFO();
+    private final ArrayList<SchedulingAlgorithm> schedulers = new ArrayList<>();
 
-    /**
-     * Create a new production schedule af a single assembly line that can be managed by the manager
-     */
-public ProductionScheduler(){
-    schedulers.add(schedulingAlgorithm);
-    schedulers.add(new Batch());
-    this.assemblyLine = new AssemblyLine();
-}
+        /**
+         * Create a new production schedule af a single assembly line that can be managed by the manager
+         */
+    public ProductionScheduler(){
+        schedulers.add(schedulingAlgorithm);
+        schedulers.add(new Batch());
+        this.assemblyLine = new AssemblyLine();
+    }
 
 
     /**
@@ -152,4 +153,10 @@ public ProductionScheduler(){
         return pending;
     }
 
+    /**
+     * Updates the observer when a task is finished.
+     */
+    public void update(int time) {
+        advanceOrders(time);
+    }
 }
