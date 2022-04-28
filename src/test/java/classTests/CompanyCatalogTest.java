@@ -252,8 +252,8 @@ public class CompanyCatalogTest {
     void testStatistics() throws OrderNotFoundException {
         ArrayList<String> orderDetails = company.getOrderDetails(1, "Danny Smeets");
         System.out.println(orderDetails);
-        List<String> statistics = company.getStatistics(1);
-        System.out.println(statistics);
+        //List<String> statistics = company.getStatistics(1);
+        //System.out.println(statistics);
     }
 
 
