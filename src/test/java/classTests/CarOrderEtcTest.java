@@ -160,9 +160,9 @@ class CarOrderTest {
         noBodyOptions.put("Airco", "manual");
         noBodyOptions.put("Gearbox", "6 manual");
         CarModel carModelA = new CarModel("A", noBodyOptions);
-        CarOrder carOrderNoBody = new CarOrder("Danny Smeets", carModelA);
+        assertThrows(RequiredComponentException.class, () ->  new CarOrder("Danny Smeets", carModelA));
         // test if it throws an IllegalConstraintException, if so catch it and test passes
-        boolean gotError = false;
+        /*boolean gotError = false;
         try {
             carOrderNoBody.isValidCarModel(carOrderNoBody.getCarModel());
         }
@@ -170,7 +170,7 @@ class CarOrderTest {
             assertEquals("RequiredComponentException", e.getClass().getSimpleName());
             gotError = true;
         }
-        assertTrue(gotError);
+        assertTrue(gotError);*/
     }
 
     @Test
