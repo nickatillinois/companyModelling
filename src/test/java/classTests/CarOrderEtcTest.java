@@ -7,12 +7,12 @@ import assemAssist.constraint.Inspector;
 import assemAssist.exceptions.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
+import static org.junit.jupiter.api.Assertions.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
-import static org.junit.jupiter.api.Assertions.*;
+
 
 class CarOrderTest {
 

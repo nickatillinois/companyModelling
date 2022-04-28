@@ -45,7 +45,7 @@ public class Company {
 
     /**
      * Returns a set of CarOrders that are completed and ordered by the given garage holder.
-     * The set is ordered by the completion date (most recent first).
+     * The set is sorted by the completion date (most recent first).
      *
      * @return set of CarOrders that are completed and ordered by the given garage holder
      * @param name the garage holder to get the completed CarOrders for
@@ -80,13 +80,25 @@ public class Company {
 
 
     /**
-     * Returns an array consisting of two elements. The first element is a set of CarOrders that are pending
-     * , the second element is a set of CarOrders that are completed, both specific to the given garage holder
+     * Returns an array specific to the given garage holder consisting of two elements.
+     * The first element is a list of CarOrders that are pending.
+     * The second element is a list of CarOrders that are completed.
+     * The first element is sorted by the estimated completion date (most recent first).
+     * The second element is sorted by the completion date (most recent first).
      *
      * @return set of CarOrders that are pending or completed and ordered by the given garage holder
      * @param name the garage holder to get the pending and completed CarOrders for
      */
     public List<CarOrder>[] getOrdersFromGarageHolder(String name) {
+        if (name == null) {
+            throw new IllegalArgumentException("Garage holder name cannot be null.");
+        }
+        if (name.isEmpty()) {
+            throw new IllegalArgumentException("Garage holder name cannot be empty.");
+        }
+        if(name.trim().length() <= 0) {
+            throw new IllegalArgumentException("Garage holder name cannot be whitespace.");
+        }
         List<CarOrder>[] orders = new java.util.List[2];
         orders[0] = getPendingOrdersFromGarageHolder(name);
         orders[1] = getCompletedOrdersFromGarageHolder(name);
@@ -104,6 +116,18 @@ public class Company {
      * @param garageHolder the garage holder who ordered the order belonging to the given ID
      */
     public ArrayList<String> getOrderDetails(int ID, String garageHolder) throws OrderNotFoundException {
+        if(ID <= 0) {
+            throw new IllegalArgumentException("ID must be strictly positive.");
+        }
+        if (garageHolder == null) {
+            throw new IllegalArgumentException("Garage holder name cannot be null.");
+        }
+        if (garageHolder.isEmpty()) {
+            throw new IllegalArgumentException("Garage holder name cannot be empty.");
+        }
+        if(garageHolder.trim().length() <= 0) {
+            throw new IllegalArgumentException("Garage holder name cannot be whitespace.");
+        }
         ArrayList<CarOrder> pendingOrders = (ArrayList<CarOrder>) this.getOrdersFromGarageHolder(garageHolder)[0];
         ArrayList<CarOrder> completedOrders = (ArrayList<CarOrder>) this.getOrdersFromGarageHolder(garageHolder)[1];
         pendingOrders.addAll(completedOrders);
@@ -118,14 +142,35 @@ public class Company {
     public HashSet<String> getAvailableModels() {
         return catalog.getAvailableModelNames();
     }
-    public String selectModelString(String model) throws IllegalModelException {
+    public String selectModelString(String model) throws IllegalModelException, IllegalArgumentException {
+        if (model == null) {
+            throw new IllegalArgumentException("Model name cannot be null.");
+        }
+        if (model.isEmpty()) {
+            throw new IllegalArgumentException("Model name cannot be empty.");
+        }
+        if(model.trim().length() <= 0) {
+            throw new IllegalArgumentException("Model name cannot be whitespace.");
+        }
         return catalog.getModelSpecification(model);
     }
     public TreeMap<String, HashSet<String>> selectModel(String model) throws IllegalModelException {
+        if (model == null) {
+            throw new IllegalArgumentException("Model name cannot be null.");
+        }
+        if (model.isEmpty()) {
+            throw new IllegalArgumentException("Model name cannot be empty.");
+        }
+        if(model.trim().length() <= 0) {
+            throw new IllegalArgumentException("Model name cannot be whitespace.");
+        }
         return catalog.getModelSpecifications(model);
     }
 
     public List<String> getStatistics(int fromXLastDays) {
+        if(fromXLastDays <= 0) {
+            throw new IllegalArgumentException("fromXLastDays must be strictly positive.");
+        }
         List<String> result = new ArrayList<>();
         for (Stats stat : statistics) {
             result.addAll(stat.getStatistics(fromXLastDays, LocalDate.now()));
@@ -168,7 +213,7 @@ public class Company {
 
     public LocalDateTime addOrderToProductionSchedule(CarOrder order) throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         if(order == null) {
-            throw new IllegalArgumentException("Order cannot be null");
+            throw new IllegalArgumentException("Order cannot be null.");
         }
         this.productionScheduler.getSchedulingAlgorithm().addOrderToProductionSchedule(order);
         return LocalDateTime.now();
