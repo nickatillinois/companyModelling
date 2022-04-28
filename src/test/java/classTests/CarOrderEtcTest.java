@@ -22,7 +22,7 @@ class CarOrderTest {
     static CarOrder carOrderC;
 
     @BeforeAll
-    static void init() {
+    static void init() throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         company = new Company();
         // add some pending orders to the company
         TreeMap<String, String> legalAOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
@@ -124,13 +124,13 @@ class CarOrderTest {
 
     @Test
     void testLegalModels() throws IllegalModelException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
-        assertTrue(carOrderA.isValidCarModel());
-        assertTrue(carOrderB.isValidCarModel());
-        assertTrue(carOrderC.isValidCarModel());
+        assertTrue(carOrderA.isValidCarModel(carOrderA.getCarModel()));
+        assertTrue(carOrderB.isValidCarModel(carOrderB.getCarModel()));
+        assertTrue(carOrderC.isValidCarModel(carOrderC.getCarModel()));
     }
 
     @Test
-    void testIllegalName() throws IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+    void testIllegalName() throws IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException, IllegalModelException {
         TreeMap<String, String> illegalOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         illegalOptions.put("color", "red");
         illegalOptions.put("body", "break");
@@ -141,10 +141,9 @@ class CarOrderTest {
         illegalOptions.put("wheels", "winter");
         illegalOptions.put("spoiler", "low");
         CarModel illegalModel = new CarModel("illegal", illegalOptions);
-        CarOrder illegalOrder = new CarOrder("illegal", illegalModel);
         // test if it throws an IllegalModelException, if so catch it and test passes
         try {
-            illegalOrder.isValidCarModel();
+            CarOrder illegalOrder = new CarOrder("illegal", illegalModel);
         }
         catch (IllegalModelException e) {
             assertEquals("IllegalModelException", e.getClass().getSimpleName());
@@ -152,7 +151,7 @@ class CarOrderTest {
     }
 
     @Test
-    void testNoWheels() throws IllegalModelException {
+    void testNoWheels() throws IllegalModelException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         TreeMap<String, String> noBodyOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         noBodyOptions.put("Color", "red");
         noBodyOptions.put("Body", "sedan");
@@ -165,7 +164,7 @@ class CarOrderTest {
         // test if it throws an IllegalConstraintException, if so catch it and test passes
         boolean gotError = false;
         try {
-            carOrderNoBody.isValidCarModel();
+            carOrderNoBody.isValidCarModel(carOrderNoBody.getCarModel());
         }
         catch (IllegalConstraintException | OptionThenComponentException | OptionAThenOptionBException | RequiredComponentException e) {
             assertEquals("RequiredComponentException", e.getClass().getSimpleName());
@@ -186,10 +185,10 @@ class CarOrderTest {
         illegalOptions.put("wheels", "winter");
         illegalOptions.put("spoiler", "low");
         CarModel illegalModel = new CarModel("B", illegalOptions);
-        CarOrder illegalOrder = new CarOrder("A", illegalModel);
+
         // test if it throws an IllegalConstraintException, if so catch it and test passes
         try {
-            illegalOrder.isValidCarModel();
+            CarOrder illegalOrder = new CarOrder("A", illegalModel);
         }
         catch (IllegalConstraintException | OptionThenComponentException | OptionAThenOptionBException | RequiredComponentException e) {
             assertEquals("OptionAThenOptionBException", e.getClass().getSimpleName());
@@ -207,10 +206,10 @@ class CarOrderTest {
         illegalOptions.put("gearbox", "6 manual");
         illegalOptions.put("wheels", "winter");
         CarModel illegalModel = new CarModel("B", illegalOptions);
-        CarOrder illegalOrder = new CarOrder("B", illegalModel);
+
         // test if it throws an IllegalConstraintException, if so catch it and test passes
         try {
-            illegalOrder.isValidCarModel();
+            CarOrder illegalOrder = new CarOrder("B", illegalModel);
         }
         catch (IllegalConstraintException | OptionThenComponentException | OptionAThenOptionBException | RequiredComponentException e) {
             assertEquals("OptionThenComponentException", e.getClass().getSimpleName());
@@ -227,16 +226,16 @@ class CarOrderTest {
         illegalOptions.put("gearbox", "6 manual");
         illegalOptions.put("wheels", "winter");
         CarModel illegalModel = new CarModel("A", illegalOptions);
-        CarOrder illegalOrder = new CarOrder("Ai", illegalModel);
+
         try {
-            illegalOrder.isValidCarModel();
+            CarOrder illegalOrder = new CarOrder("Ai", illegalModel);
         } catch (IllegalConstraintException | OptionThenComponentException | OptionAThenOptionBException | RequiredComponentException e) {
             assertEquals("RequiredComponentException", e.getClass().getSimpleName());
         }
     }
 
         @Test
-        void testCarModelAndOptions() throws IllegalCompletionDateException {
+        void testCarModelAndOptions() throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
             TreeMap<String, String> options = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
             options.put("color", "red");
             options.put("body", "sedan");
@@ -293,10 +292,10 @@ class CarOrderTest {
             AAndB.add("green");
             AAndB.add("sedan");
             new Inspector(model).addOptionAAndOptionBPair(AAndB);
-            CarOrder order = new CarOrder("A", model);
+
             boolean gotError = false;
             try{
-                order.isValidCarModel();
+                CarOrder order = new CarOrder("A", model);
             }
             catch(Exception e){
                 assertEquals("OptionAThenOptionBException", e.getClass().getSimpleName());
@@ -320,10 +319,9 @@ class CarOrderTest {
             AAndB.add("green");
             AAndB.add("spoiler");
             new Inspector(model).addOptionThenComponentPair(AAndB);
-            CarOrder order = new CarOrder("A", model);
             boolean gotError = false;
             try{
-                order.isValidCarModel();
+                CarOrder order = new CarOrder("A", model);
             }
             catch(Exception e){
                 assertEquals("OptionThenComponentException", e.getClass().getSimpleName());
@@ -333,7 +331,7 @@ class CarOrderTest {
         }
 
         @Test
-    void addIllegalConstraintTest() {
+    void addIllegalConstraintTest() throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         TreeMap<String, String> options = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         options.put("color", "green");
         options.put("body", "sedan");

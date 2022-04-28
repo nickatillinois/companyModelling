@@ -90,16 +90,16 @@ public class IfOptionAThenOptionB extends Constraint {
         HashSet<String> chosenOptionsSet = new HashSet<>();
         for (String key : chosenSpecifications.getChosenOptions().keySet()) {
             String value = chosenSpecifications.getChosenOptions().get(key);
-            chosenOptionsSet.add(value);
+            chosenOptionsSet.add(value.toLowerCase());
         }
        // for each pair in pairs, check if the first element is in the set of chosen options
         for (ArrayList<String> pair : pairs) {
             boolean pairOK;
-            if (chosenOptionsSet.contains(pair.get(0))) {
+            if (chosenOptionsSet.contains(pair.get(0).toLowerCase())) {
                 pairOK = false;
                 // check if one of the other elements is in the set of chosen options
                 for (int i = 1; i < pair.size(); i++) {
-                    if (chosenOptionsSet.contains(pair.get(i))) {
+                    if (chosenOptionsSet.contains(pair.get(i).toLowerCase())) {
                         pairOK = true;
                         break;
                     }

@@ -113,7 +113,7 @@ public class Batch extends SchedulingAlgorithm{
 
     public void addOrderToProductionSchedule(CarOrder order) throws IllegalConstraintException, IllegalModelException, IllegalCompletionDateException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         try{
-            order.isValidCarModel();
+            //order.isValidCarModel();
             carOrderList.add(order);
             selectBatch(getBatch());
             int workingTime = catalog.getModel(order.getCarModel().getModelName()).getStandardWorkStationTime() * 3;

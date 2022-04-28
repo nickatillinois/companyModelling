@@ -65,11 +65,11 @@ public class CarOrder implements StatisticsObservable {
      *                                  | garageHolder is the empty string
      *                                  | carModel is null
      */
-    public CarOrder(String  garageHolder, CarModel carModel) throws IllegalArgumentException {
+    public CarOrder(String  garageHolder, CarModel carModel) throws IllegalArgumentException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         if(garageHolder == null){throw new IllegalArgumentException("A garage holder cannot be null.");}
         if(garageHolder.equals("")){throw new IllegalArgumentException("A garage holder cannot be the empty string.");}
         if(carModel == null){throw new IllegalArgumentException("A car model cannot be null.");}
-
+        isValidCarModel(carModel);
         this.garageHolder = garageHolder;
         this.carModel = carModel;
         this.completed = false;
@@ -189,8 +189,8 @@ public class CarOrder implements StatisticsObservable {
 
 
 
-    public boolean isValidCarModel() throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
-        return this.carModel.inspect();
+    public boolean isValidCarModel(CarModel carModel) throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+        return carModel.inspect();
     }
 
     public String getCarModelAndOptions() {

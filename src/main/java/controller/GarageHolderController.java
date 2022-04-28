@@ -30,8 +30,8 @@ public class GarageHolderController {
         return company.selectModel(carModel);
     }
 
-    public String completeOrderingForm(List<String> carOptions) throws IllegalModelException, IllegalCompletionDateException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
-        return company.completeOrderingForm((TreeMap<String, String>) carOptions, this.garageHolder, this.chosenModel);
+    public String completeOrderingForm(TreeMap<String, String> chosenOptions) throws IllegalArgumentException, IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+        return company.completeOrderingForm(chosenOptions, this.garageHolder, this.chosenModel);
     }
 
     public List<String> viewDetails(int carID, String garageHolderName) throws IllegalArgumentException {

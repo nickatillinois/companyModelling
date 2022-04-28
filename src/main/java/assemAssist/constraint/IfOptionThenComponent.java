@@ -74,13 +74,13 @@ public class IfOptionThenComponent extends Constraint {
         HashSet<String> chosenOptionsSet = new HashSet<>();
         for (String key : chosenSpecifications.getChosenOptions().keySet()) {
             String value = chosenSpecifications.getChosenOptions().get(key);
-            chosenOptionsSet.add(value);
+            chosenOptionsSet.add(value.toLowerCase());
         }
 
         // for each pair in pairs, check if the set of chosen options contains the pair
         for (ArrayList<String> pair : pairs) {
-            if (chosenOptionsSet.contains(pair.get(0)) && !chosenSpecifications.getChosenOptions().containsKey(pair.get(1))) {
-                throw new OptionThenComponentException("Option: " + pair.get(0) + " implies component: " + pair.get(1) + ". But component: " + pair.get(1) + " is not chosen.");
+            if (chosenOptionsSet.contains(pair.get(0).toLowerCase()) && !chosenSpecifications.getChosenOptions().containsKey(pair.get(1).toLowerCase())) {
+                throw new OptionThenComponentException("Option " + pair.get(0) + " implies component " + pair.get(1) + ". But component " + pair.get(1) + " is not chosen.");
             }
         }
         return true;

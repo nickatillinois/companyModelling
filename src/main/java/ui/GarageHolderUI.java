@@ -3,6 +3,7 @@ package ui;
 import assemAssist.exceptions.*;
 import controller.GarageHolderController;
 
+import javax.swing.text.html.Option;
 import java.util.*;
 
 public class GarageHolderUI {
@@ -93,10 +94,9 @@ public class GarageHolderUI {
      * @throws IllegalCompletionDateException
      */
     private void orderCarUI() throws IllegalModelException, IllegalCompletionDateException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
-        List<String> availableModels;
+        HashSet<String> availableModels = garageHolderController.wantsToOrder();
 
         System.out.println("The available car models are:");
-        availableModels = (List<String>) garageHolderController.wantsToOrder();
         for (String availableModel : availableModels) {
             System.out.println(availableModel);
         }
@@ -131,65 +131,57 @@ public class GarageHolderUI {
      * @throws IllegalCompletionDateException
      */
     private void completeOrderingFormUI(String model) throws IllegalModelException, IllegalCompletionDateException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
-        Map<String, HashSet<String>> orderingForm = garageHolderController.selectModel(model);
+        TreeMap<String, HashSet<String>> orderingForm = garageHolderController.selectModel(model);
+        TreeMap<String, String[]> orderingFormList = new TreeMap<String, String[]>(String.CASE_INSENSITIVE_ORDER);
+        for (String option : orderingForm.keySet()) {
+            String[] options = orderingForm.get(option).toArray(new String[0]);
+            orderingFormList.put(option, options);
+        }
         System.out.println("The available options for this model are:");
-        List<String[]> orderingFormArrays = null;
-        for (String[] option : orderingFormArrays){
-            String toPrint = option[0] + ": ";
-            for (int i = 1; i<option.length; i++){
-                toPrint += i + ". " + option[i];
-                if (i != option.length-1) {
-                    toPrint += ", ";
-                }
-            }
-            System.out.println(toPrint);
-        }
-        while(true) {
-            System.out.println("-------------");
-            System.out.println("Press \'q\' to cancel ordering, press \'s\' to select the options for your car order.");
+        TreeMap<String, String> selectedOptions = new TreeMap<>();
+        int i;
+        for (String option : orderingFormList.keySet()) {
+            System.out.println(option + ":");
+            i = 0;
+            System.out.println("Press \'q\' to skip this component, press \'s\' to select it.");
             String choice = in.next();
-            if (choice.equals("q")) {
-                System.out.println("Canceling your order.");
-                break;
-            } else if (choice.equals("s")) {
-                selectOptionsUI(orderingFormArrays);
-                break;
-            } else {
-                System.out.println("This is not a valid option. Try again.");
-            }
-        }
-    }
-
-    /**
-     * Lets the user select the options specified in the ordering form for the car model selected. Once the options are
-     * selected, this car is ordered in the system.
-     * @param orderingForm The ordering form for the car model that was selected. This gives all the options one can choose
-     *                     for the car model.
-     * @throws IllegalModelException
-     * @throws IllegalCompletionDateException
-     */
-    private void selectOptionsUI(List<String[]> orderingForm) throws IllegalModelException, IllegalCompletionDateException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
-        System.out.println("Select the options for you car order:");
-        List<String> carOptions = new ArrayList<>();
-        for (String[] option : orderingForm) {
-            while (true) {
-                System.out.println("Type the number of your choice for the " + option[0].toLowerCase() + ":");
-                String chosenOptionString = in.next();
-                try {
-                    int chosenOption = Integer.parseInt(chosenOptionString);
-                    if (chosenOption >= option.length) {
-                        System.out.println("This is not a valid option. Try again.");
-                    } else {
-                        carOptions.add(option[chosenOption]);
-                        break;
-                    }
-                } catch (NumberFormatException e) {
-                    System.out.println("This is not a valid option. Try again.");
+            if (choice.equalsIgnoreCase("q")) {
+                continue;
+            } else if (choice.equalsIgnoreCase("s")) {
+                for(String value : orderingFormList.get(option)){
+                    System.out.println("\t" + i + ": " + value);
+                    i++;
                 }
+                System.out.println("Enter the number of the option you want to select:");
+                int optionNumber = in.nextInt();
+                if (optionNumber >= 0 && optionNumber < orderingFormList.get(option).length) {
+                    String optionValue = orderingFormList.get(option)[optionNumber];
+                    selectedOptions.put(option, optionValue);
+                }
+            }else {
+                System.out.println("This is not a valid option.");
             }
         }
-
-        String estimatedCompletionDate = garageHolderController.completeOrderingForm(carOptions);
-        System.out.println("You have successfully ordered a car! The estimated completion date is " + estimatedCompletionDate);
+        try {
+            String estimatedCompletionDate = garageHolderController.completeOrderingForm(selectedOptions);
+            System.out.println("You have successfully ordered a car! The estimated completion date is " + estimatedCompletionDate);
+        }
+        catch (IllegalModelException | OptionAThenOptionBException | OptionThenComponentException | RequiredComponentException e){
+            System.out.println(e.getMessage());
+            System.out.println("No order was placed.");
+        }
+        System.out.println("Press \'q\' to cancel ordering, press \'s\' to place a new order.");
+        String nextstep = in.next();
+        if (nextstep.equals("q")) {
+            System.out.println("-------------");
+            System.out.println("Leaving the Ordering Form");
+            System.out.println("-------------");
+            return;
+        } else if (nextstep.equals("s")) {
+            System.out.println("-------------");
+            System.out.println("Ordering a new car");
+            System.out.println("-------------");
+            orderCarUI();
+        }
     }
 }

@@ -241,7 +241,9 @@ public class Company {
         for (Stats stat : statistics) {
             carOrder.addObserver(stat);
         }
-        return carOrder.getEstCompletionTime().toString();
+        // format carOrder.getEstCompletionTime() in a nice way
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        return carOrder.getEstCompletionTime().format(formatter);
     }
 
 

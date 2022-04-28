@@ -21,7 +21,7 @@ public class productSchedulerTest {
     static CarOrder carOrderC;
 
     @BeforeEach
-    public void init() {
+    public void init() throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         productionScheduler = new ProductionScheduler();
         TreeMap<String, String> legalAOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         legalAOptions.put("color", "red");
