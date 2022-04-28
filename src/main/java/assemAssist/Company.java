@@ -5,7 +5,9 @@ import assemAssist.etc.PendingCarOrderComparator;
 import assemAssist.exceptions.IllegalModelException;
 import assemAssist.exceptions.OrderNotFoundException;
 import assemAssist.schedulingAlgorithm.SchedulingAlgorithm;
+import assemAssist.statistics.DelayStats;
 import assemAssist.statistics.Stats;
+import assemAssist.statistics.WorkingDayStats;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -18,15 +20,15 @@ public class Company {
     private final ProductionScheduler productionScheduler;
     private Catalog catalog;
     private ArrayList<CarOrder> completedCarOrders;
-    private List<Stats> statistics;
+    private List<Stats> statistics = new ArrayList<>();
 
     public Company(){
         this.productionScheduler = new ProductionScheduler();
         this.catalog = new Catalog();
         this.completedCarOrders = new ArrayList<CarOrder>();
         //statistics aanmaken
-        //statistics.add(new WorkingDayStats());
-        //statistics.add(new DelayStats());
+        statistics.add(new WorkingDayStats());
+        statistics.add(new DelayStats());
     }
 
     public ProductionScheduler getProductionScheduler() {
@@ -170,6 +172,9 @@ public class Company {
         CarModel carModel = new CarModel(chosenModel, chosenOptions);
         // create a new car order
         CarOrder carOrder = new CarOrder(garageHolder, carModel);
+        for (Stats stat : statistics) {
+            carOrder.addObserver(stat);
+        }
         return garageHolder;
     }
 

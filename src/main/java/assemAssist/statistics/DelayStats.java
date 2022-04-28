@@ -11,11 +11,9 @@ public class DelayStats extends Stats{
 
     /**
      * Creates a delay statistic.
-     *
-     * @param subjects list of observables
      */
-    public DelayStats(List<StatisticsObservable> subjects) {
-        super(subjects);
+    public DelayStats() {
+        super();
     }
 
     /**

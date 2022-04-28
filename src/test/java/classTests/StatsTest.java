@@ -1,6 +1,5 @@
 package classTests;
 
-import assemAssist.observer.StatisticsObservable;
 import assemAssist.statistics.DelayStats;
 import assemAssist.statistics.WorkingDayStats;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,9 +21,8 @@ class StatsTest {
 
     @BeforeEach
     void init() {
-        List<StatisticsObservable> observables = new ArrayList<>();
-        workingDayStats = new WorkingDayStats(observables);
-        delayStats = new DelayStats(observables);
+        workingDayStats = new WorkingDayStats();
+        delayStats = new DelayStats();
 
         workingDayStats.addStats(LocalDate.of(2022,4,24).toString(),List.of(10.0));
         workingDayStats.addStats(LocalDate.of(2022,4,23).toString(),List.of(13.0));

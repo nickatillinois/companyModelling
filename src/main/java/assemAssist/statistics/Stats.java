@@ -19,14 +19,8 @@ public abstract class Stats implements StatisticsObserver {
 
     /**
      * Creates a statistic with the given observables.
-     *
-     * @param subjects a list of StatisticsObservables
      */
-    public Stats(List<StatisticsObservable> subjects) {
-        for (StatisticsObservable subject : subjects) {
-            subject.addObserver(this);
-        }
-    }
+    public Stats() {}
 
     /**
      * Returns the map representing the statistics day by day.

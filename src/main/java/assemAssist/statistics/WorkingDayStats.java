@@ -11,11 +11,9 @@ public class WorkingDayStats extends Stats {
 
     /**
      * Creates working day statistics.
-     *
-     * @param subjects list of observables
      */
-    public WorkingDayStats(List<StatisticsObservable> subjects) {
-        super(subjects);
+    public WorkingDayStats() {
+        super();
     }
 
     /**
