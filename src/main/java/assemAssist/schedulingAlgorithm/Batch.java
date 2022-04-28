@@ -125,7 +125,7 @@ public class Batch extends SchedulingAlgorithm{
                     if (before)
                         workingTime = workingTime + catalog.getModel(order1.getCarModel().getModelName()).getStandardWorkStationTime();
                     else
-                        return;
+                        break;
                 }
             }
             order.setEstCompletionTime(order.getOrderingTime().plusMinutes(workingTime));

@@ -110,7 +110,15 @@ class SchedulingAlgorithmTest {
         bachlist.add(carOrderC);
         batch.selectBatch(carOrderB.getCarModel().getChosenOptionsString());
         assertEquals(bachlist,batch.getProductionSchedule());
+    }
 
-
+    @Test
+    void addOrder() throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+        SchedulingAlgorithm fifo = new FIFO();
+        fifo.addOrderToProductionSchedule(carOrderA);
+        assertTrue(fifo.getProductionSchedule().contains(carOrderA));
+        SchedulingAlgorithm batch = new Batch();
+        batch.addOrderToProductionSchedule(carOrderA);
+        assertTrue(fifo.getProductionSchedule().contains(carOrderA));
     }
 }
