@@ -38,34 +38,6 @@ class StatsTest {
     }
 
     @Test
-    void getAverageWorkingDayStats() {
-        assertEquals(workingDayStats.getAverage(),11.0);
-        workingDayStats.addStats(LocalDate.of(2022,4,25).toString(),List.of(4.0));
-        assertEquals(workingDayStats.getAverage(),10.0);
-    }
-
-    @Test
-    void getAverageDelayStats() {
-        assertEquals(delayStats.getAverage(),3.5);
-        delayStats.addStats(LocalDate.of(2022,4,25).toString(),List.of(8.0));
-        assertEquals(delayStats.getAverage(),4.0);
-    }
-
-    @Test
-    void getMedianWorkingDayStats() {
-        assertEquals(workingDayStats.getMedian(),11.5);
-        workingDayStats.addStats(LocalDate.of(2022,4,25).toString(),List.of(4.0));
-        assertEquals(workingDayStats.getMedian(),10.0);
-    }
-
-    @Test
-    void getMedianDelayStats() {
-        assertEquals(delayStats.getMedian(),1.5);
-        delayStats.addStats(LocalDate.of(2022,4,25).toString(),List.of(10.0));
-        assertEquals(delayStats.getMedian(),3.0);
-    }
-
-    @Test
     void getStatisticsWorkingDayStats() {
         List<String> statistics = new ArrayList<>();
         statistics.add("the average of completed cars in a day is 11.0");

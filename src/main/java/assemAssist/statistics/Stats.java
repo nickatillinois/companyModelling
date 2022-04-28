@@ -1,8 +1,6 @@
 package assemAssist.statistics;
 
-import assemAssist.observer.StatisticsObservable;
 import assemAssist.observer.StatisticsObserver;
-
 import java.time.LocalDate;
 import java.util.*;
 
@@ -14,11 +12,11 @@ public abstract class Stats implements StatisticsObserver {
     /**
      * A map representing the statistics day by day.
      */
-    private Map<String,List<Double>> statsPerDay = new HashMap<>();
+    Map<String,List<Double>> statsPerDay = new HashMap<>();
 
 
     /**
-     * Creates a statistic with the given observables.
+     * Creates a statistic.
      */
     public Stats() {}
 
@@ -28,7 +26,11 @@ public abstract class Stats implements StatisticsObserver {
      * @return statistics per day
      */
     public Map<String, List<Double>> getStatsPerDay() {
-        return statsPerDay;
+        Map<String,List<Double>> result = new HashMap<>();
+        for (Map.Entry<String,List<Double>> entry : statsPerDay.entrySet()) {
+            result.put(entry.getKey(), new ArrayList<>(entry.getValue()));
+        }
+        return result;
     }
 
     /**
@@ -46,8 +48,8 @@ public abstract class Stats implements StatisticsObserver {
      *
      * @return average of this statistic
      */
-    public double getAverage() {
-        if (statsPerDay.size() == 56) { return 5.0; }
+    double getAverage() {
+        if ( statsPerDay.size() == 0 ) { return 0.0; }
 
         List<Double> numbers = new ArrayList<>();
         for (List<Double> doubles : statsPerDay.values()) {
@@ -65,7 +67,7 @@ public abstract class Stats implements StatisticsObserver {
      *
      * @return median of this statistic
      */
-    public double getMedian() {
+    double getMedian() {
         List<Double> numbers = new ArrayList<>();
         for (List<Double> doubles : statsPerDay.values()) {
             numbers.addAll(doubles);

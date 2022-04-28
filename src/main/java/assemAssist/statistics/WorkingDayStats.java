@@ -1,6 +1,5 @@
 package assemAssist.statistics;
 
-import assemAssist.observer.StatisticsObservable;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -27,8 +26,8 @@ public class WorkingDayStats extends Stats {
      */
     @Override
     public List<String> getStatistics(int fromXLastDays, LocalDate date) {
-        if (getStatsPerDay().size() < fromXLastDays) {
-            throw new IllegalArgumentException("The system only contains data for the past " + getStatsPerDay().size() + " days!");
+        if (statsPerDay.size() < fromXLastDays) {
+            throw new IllegalArgumentException("The system only contains data for the past " + statsPerDay.size() + " days!");
         }
         List<String> statistics = new ArrayList<>();
         statistics.add("the average of completed cars in a day is " + getAverage());
@@ -37,7 +36,7 @@ public class WorkingDayStats extends Stats {
         for (int i = 0; i<fromXLastDays; i++) {
             int daysAgo = i + 1;
             statistics.add("cars produced " + daysAgo + " day(s) ago: " +
-                    getStatsPerDay().get(date.minusDays(i+1).toString()).get(0));
+                    statsPerDay.get(date.minusDays(i+1).toString()).get(0));
         }
         return statistics;
     }
@@ -49,7 +48,7 @@ public class WorkingDayStats extends Stats {
      */
     @Override
     public void update(double delay) {
-        Map<String,List<Double>> stats = getStatsPerDay();
+        Map<String,List<Double>> stats = statsPerDay;
         if (stats.containsKey(LocalDate.now().toString())) {
             stats.replace(LocalDate.now().toString(), List.of(stats.get(LocalDate.now().toString()).get(0) + 1));
         } else {

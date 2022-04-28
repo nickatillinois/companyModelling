@@ -1,6 +1,5 @@
 package assemAssist.statistics;
 
-import assemAssist.observer.StatisticsObservable;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -28,7 +27,7 @@ public class DelayStats extends Stats{
     @Override
     public List<String> getStatistics(int fromXLastDays, LocalDate date) {
         if (getStatsPerDay().size() < fromXLastDays) {
-            throw new IllegalArgumentException("The system only contains data for the past " + getStatsPerDay().size() + " days!");
+            throw new IllegalArgumentException("The system only contains data for the past " + statsPerDay.size() + " days!");
         }
         List<String> statistics = new ArrayList<>();
         statistics.add("the average delay on a car is " + getAverage());
@@ -47,7 +46,7 @@ public class DelayStats extends Stats{
                 text = "the 3rd last delay was on ";
             } else { text = "the " + daysAgo + "th last delay was on "; }
 
-            Set<String> delayDates = getStatsPerDay().keySet(); List<String> dates = delayDates.stream().toList();
+            Set<String> delayDates = statsPerDay.keySet(); List<String> dates = delayDates.stream().toList();
 
             int day = 0;
             int last = i+1;
@@ -72,13 +71,12 @@ public class DelayStats extends Stats{
      */
     private Map<String, List<Double>> onlyDelays() {
         Map<String,List<Double>> result = new HashMap<>();
-        for (Map.Entry<String,List<Double>> entry : getStatsPerDay().entrySet()) {
-            result.put(entry.getKey(), new ArrayList<Double>(entry.getValue()));
+        for (Map.Entry<String,List<Double>> entry : statsPerDay.entrySet()) {
+            result.put(entry.getKey(), new ArrayList<>(entry.getValue()));
         }
 
         for ( String date : result.keySet() ) {
             List<Double> numbers = new ArrayList<>(List.copyOf(result.get(date)));
-            Double zero = 0.0;
             while (numbers.contains(0.0)) {
                 numbers.remove(0.0);
             }
@@ -94,10 +92,10 @@ public class DelayStats extends Stats{
      */
     @Override
     public void update(double newDelay) {
-        if (getStatsPerDay().containsKey(LocalDate.now().toString())) {
-            List<Double> newValues = new ArrayList<>(getStatsPerDay().get(LocalDate.now().toString()));
+        if (statsPerDay.containsKey(LocalDate.now().toString())) {
+            List<Double> newValues = new ArrayList<>(statsPerDay.get(LocalDate.now().toString()));
             newValues.add(newDelay);
-            getStatsPerDay().replace(LocalDate.now().toString(),newValues);
+            statsPerDay.replace(LocalDate.now().toString(),newValues);
         } else {
             addStats(LocalDate.now().toString(), List.of(newDelay));
         }
