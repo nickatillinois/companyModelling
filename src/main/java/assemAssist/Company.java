@@ -2,8 +2,7 @@ package assemAssist;
 
 import assemAssist.etc.CompletedCarOrderComparator;
 import assemAssist.etc.PendingCarOrderComparator;
-import assemAssist.exceptions.IllegalModelException;
-import assemAssist.exceptions.OrderNotFoundException;
+import assemAssist.exceptions.*;
 import assemAssist.schedulingAlgorithm.SchedulingAlgorithm;
 import assemAssist.statistics.DelayStats;
 import assemAssist.statistics.Stats;
@@ -155,17 +154,6 @@ public class Company {
         return result;
     }
 
-    public List<String> getSchedulingsAlgorithms() {
-        return this.productionScheduler.getSchedulingAlgorithms();
-    }
-
-    public void selectSchedulingAlgorithm(String algorithmName) {
-        for (SchedulingAlgorithm algo : this.productionScheduler.getSchedulers()) {
-            if (algo.getName().equalsIgnoreCase(algorithmName)) {
-                this.productionScheduler.setSchedulingAlgorithm(algo);
-            }
-        }
-    }
 
     public String completeOrderingForm(TreeMap<String, String> chosenOptions, String garageHolder, String chosenModel) {
         // create a new car model
@@ -178,9 +166,11 @@ public class Company {
         return garageHolder;
     }
 
-    // TODO implement
-    public LocalDateTime addOrderToProductionSchedule(CarOrder order) {
-        // stuur order naar production schedule
+    public LocalDateTime addOrderToProductionSchedule(CarOrder order) throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+        if(order == null) {
+            throw new IllegalArgumentException("Order cannot be null");
+        }
+        this.productionScheduler.getSchedulingAlgorithm().addOrderToProductionSchedule(order);
         return LocalDateTime.now();
     }
 

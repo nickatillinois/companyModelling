@@ -1,7 +1,7 @@
 package assemAssist.schedulingAlgorithm;
 
 import assemAssist.CarOrder;
-import org.junit.jupiter.api.function.Executable;
+import java.lang.reflect.Executable;
 
 import java.util.List;
 
