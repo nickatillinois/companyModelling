@@ -12,8 +12,10 @@ public class GarageHolderController {
     private String chosenModel;
     private Company company;
 
-
     public GarageHolderController(Company company) {
+        if(company == null) {
+            throw new IllegalArgumentException("Company cannot be null");
+        }
         this.company = company;
     }
     public ArrayList<String[]>[] newLogin(String garageHolder) {

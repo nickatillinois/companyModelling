@@ -1,7 +1,5 @@
-import assemAssist.AssemblyLine;
 import assemAssist.Company;
 import assemAssist.Mechanic;
-import assemAssist.ProductionScheduler;
 import assemAssist.exceptions.IllegalCompletionDateException;
 import assemAssist.exceptions.IllegalModelException;
 import controller.GarageHolderController;
@@ -15,12 +13,15 @@ import ui.UI;
 public class main {
 
     public static void main(String[] args) throws IllegalModelException, IllegalCompletionDateException {
-        AssemblyLine assemblyLine = new AssemblyLine();
-        ProductionScheduler productionScheduler = new ProductionScheduler();
         Company company = new Company();
         GarageHolderController garageHolderController = new GarageHolderController(company);
         GarageHolderUI garageHolderUI = new GarageHolderUI(garageHolderController);
-
+        Mechanic mechanic = new Mechanic(company.getProductionScheduler(), company.getProductionScheduler().getAssemblyLine());
+        MechanicController mechanicController = new MechanicController(mechanic);
+        MechanicUI mechanicUI = new MechanicUI(mechanicController);
+        ManagerController managerController = new ManagerController(company);
+        ManagerUI managerUI = new ManagerUI(managerController);
+        UI ui = new UI(garageHolderUI, managerUI, mechanicUI);
 
 
         /*//DEMO
@@ -55,14 +56,7 @@ public class main {
         }
         // Tot hier DEMO*/
 
-        Mechanic mechanic = new Mechanic(productionScheduler, assemblyLine);
 
-        ManagerController managerController = new ManagerController(company);
-        ManagerUI managerUI = new ManagerUI(managerController);
 
-        MechanicController mechanicController = new MechanicController(mechanic);
-        MechanicUI mechanicUI = new MechanicUI(mechanicController);
-
-        UI ui = new UI(garageHolderUI, managerUI, mechanicUI);
     }
 }
