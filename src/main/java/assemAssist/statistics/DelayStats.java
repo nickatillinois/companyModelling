@@ -32,6 +32,7 @@ public class DelayStats extends Stats{
         statistics.add("the average delay on a car is " + getAverage());
         statistics.add("the median delay on a car is " + getMedian());
 
+        Map<String,List<Double>> statsOnlyDelays = onlyDelays();
 
         for (int i = 0; i<fromXLastDays; i++) {
             int daysAgo = i + 1;
@@ -49,17 +50,39 @@ public class DelayStats extends Stats{
             int day = 0;
             int last = i+1;
             while (last > 0) {
-                if (getStatsPerDay().get(dates.get(day)).size() >= last) {
-                    statistics.add(text + dates.get(day) + ": " + getStatsPerDay().get(dates.get(day)).get(last-1) + " minutes");
+                if (statsOnlyDelays.get(dates.get(day)).size() >= last) {
+                    statistics.add(text + dates.get(day) + ": " + statsOnlyDelays.get(dates.get(day)).get(last-1) + " minutes");
                     last = 0;
                 } else {
-                    last -= getStatsPerDay().get(dates.get(day)).size();
+                    last -= statsOnlyDelays.get(dates.get(day)).size();
                     day++;
                 }
             }
 
         }
         return statistics;
+    }
+
+    /**
+     * Removes the statistics for completed car orders that have no delay.
+     *
+     * @return values for this statistics that are not zero
+     */
+    private Map<String, List<Double>> onlyDelays() {
+        Map<String,List<Double>> result = new HashMap<>();
+        for (Map.Entry<String,List<Double>> entry : getStatsPerDay().entrySet()) {
+            result.put(entry.getKey(), new ArrayList<Double>(entry.getValue()));
+        }
+
+        for ( String date : result.keySet() ) {
+            List<Double> numbers = new ArrayList<>(List.copyOf(result.get(date)));
+            Double zero = 0.0;
+            while (numbers.contains(0.0)) {
+                numbers.remove(0.0);
+            }
+            result.put(date,numbers);
+        }
+        return result;
     }
 
     /**
