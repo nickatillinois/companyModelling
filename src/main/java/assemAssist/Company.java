@@ -214,9 +214,28 @@ public class Company {
 
 
     public String completeOrderingForm(TreeMap<String, String> chosenOptions, String garageHolder, String chosenModel) throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
-        // create a new car model
+        if(chosenOptions == null) {
+            throw new IllegalArgumentException("chosenOptions cannot be null.");
+        }
+        if(garageHolder == null) {
+            throw new IllegalArgumentException("garageHolder cannot be null.");
+        }
+        if(garageHolder.isEmpty()) {
+            throw new IllegalArgumentException("garageHolder cannot be empty.");
+        }
+        if(garageHolder.trim().length() <= 0) {
+            throw new IllegalArgumentException("garageHolder cannot be whitespace.");
+        }
+        if(chosenModel == null) {
+            throw new IllegalArgumentException("chosenModel cannot be null.");
+        }
+        if(chosenModel.isEmpty()) {
+            throw new IllegalArgumentException("chosenModel cannot be empty.");
+        }
+        if(chosenModel.trim().length() <= 0) {
+            throw new IllegalArgumentException("chosenModel cannot be whitespace.");
+        }
         CarModel carModel = new CarModel(chosenModel, chosenOptions);
-        // create a new car order
         CarOrder carOrder = new CarOrder(garageHolder, carModel);
         this.productionScheduler.getSchedulingAlgorithm().addOrderToProductionSchedule(carOrder);
         for (Stats stat : statistics) {

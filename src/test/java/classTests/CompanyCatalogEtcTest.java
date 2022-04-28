@@ -63,7 +63,6 @@ public class CompanyCatalogEtcTest {
         legalCOptions.put("spoiler", "low");
         CarModel carModelC = new CarModel("C", legalCOptions);
         carOrderC = new CarOrder("Kim Smeets", carModelC);
-        company.completeOrderingForm(legalAOptions,"Danny Smeets","A");
         //company.addOrderToProductionSchedule(carOrderA);
         carOrderD = new CarOrder("Tanya Smeets", carModelC);
         carOrderE = new CarOrder("Kimberly Smeets", carModelC);
@@ -74,6 +73,7 @@ public class CompanyCatalogEtcTest {
         System.out.println(carOrderA.getEstCompletionTime());
         // company.addOrderToProductionSchedule(carOrderB);
         // company.addOrderToProductionSchedule(carOrderC);
+        company.completeOrderingForm(legalAOptions,"Danny Smeets","B");
         company.completeOrderingForm(legalBOptions,"Sandy Smeets","B");
         company.completeOrderingForm(legalCOptions,"Kim Smeets","C");
         company.getProductionScheduler().advanceOrders(50);
@@ -174,7 +174,7 @@ public class CompanyCatalogEtcTest {
             got_error = true;
         }
         assertTrue(got_error);
-        ArrayList<String> orderDetails = company.getOrderDetails(1, "Danny Smeets");
+        ArrayList<String> orderDetails = company.getOrderDetails(7, "Danny Smeets");
         System.out.println(orderDetails);
         got_error = false;
         try{
@@ -243,7 +243,7 @@ public class CompanyCatalogEtcTest {
         assertTrue(got_error);
         got_error = false;
         try{
-            company.getStatistics(0);
+            company.getStatistics(-1);
         }
         catch (IllegalArgumentException e){
             assertEquals("fromXLastDays must be strictly positive.", e.getMessage());
@@ -255,7 +255,7 @@ public class CompanyCatalogEtcTest {
             company.completeOrderingForm(null,null,null);
         }
         catch (IllegalArgumentException | IllegalCompletionDateException | IllegalConstraintException | IllegalModelException | OptionThenComponentException | OptionAThenOptionBException | RequiredComponentException e){
-            assertEquals("Order cannot be null.", e.getMessage());
+            assertEquals("chosenOptions cannot be null.", e.getMessage());
             got_error = true;
         }
         assertTrue(got_error);
@@ -263,7 +263,7 @@ public class CompanyCatalogEtcTest {
 
     @Test
     void testStatistics() throws OrderNotFoundException {
-        ArrayList<String> orderDetails = company.getOrderDetails(1, "Danny Smeets");
+        ArrayList<String> orderDetails = company.getOrderDetails(7, "Danny Smeets");
         System.out.println(orderDetails);
         List<String> statistics = company.getStatistics(0);
         System.out.println(statistics);
