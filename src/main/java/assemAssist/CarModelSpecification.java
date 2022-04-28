@@ -26,18 +26,20 @@ public class CarModelSpecification {
      * Creates a new car model with a given name and a given car model specification
      *
      * @param modelName The name for the car model.
-     * @param standardTaskTime
+     * @param standardTaskTime The standard workstation time for this car model.
      * @param availableOptions  The car model specification for the car model.
      * @throws IllegalArgumentException | modelName is null
      *                                  | modelName is the empty string
      *                                  | carModelSpecification is null
      */
     public CarModelSpecification(String modelName, int standardTaskTime, TreeMap<String, HashSet<String>> availableOptions)  {
-        this.standardTaskTime = standardTaskTime;
         if(modelName == null){throw new IllegalArgumentException("A modelName cannot be null.");}
         if(modelName.length() == 0){throw new IllegalArgumentException("A modelName cannot be the empty string.");}
-        if(availableOptions == null){throw new IllegalArgumentException("A carModelSpecification cannot be null.");}
+        if(modelName.trim().length() <= 0){throw new IllegalArgumentException("A modelName cannot be whitespace.");}
+        if(standardTaskTime <= 0){throw new IllegalArgumentException("A standard task time must be greater than 0.");}
+        if(availableOptions == null){throw new IllegalArgumentException("A car model specification cannot be null.");}
         this.modelName = modelName;
+        this.standardTaskTime = standardTaskTime;
         this.availableOptions = availableOptions;
     }
     /**
@@ -52,6 +54,7 @@ public class CarModelSpecification {
     public int getStandardWorkStationTime() {
         return standardTaskTime;
     }
+
     /**
      * Sets the name of this car model to the given name.
      *
@@ -62,6 +65,7 @@ public class CarModelSpecification {
     public void setModelName(String modelName) {
         if(modelName == null){throw new IllegalArgumentException("A modelName cannot be null.");}
         if(modelName.length() == 0){throw new IllegalArgumentException("A modelName cannot be the empty string.");}
+        if(modelName.trim().length() <= 0){throw new IllegalArgumentException("A modelName cannot be whitespace.");}
         this.modelName = modelName;
     }
 
@@ -113,7 +117,16 @@ public class CarModelSpecification {
      *
      */
     public void addOption(String component, String option){
-    	availableOptions.get(component).add(option);
+        if(component == null){throw new IllegalArgumentException("A component cannot be null.");}
+        if(component.length() == 0){throw new IllegalArgumentException("A component cannot be the empty string.");}
+        if(component.trim().length() <= 0){throw new IllegalArgumentException("A component cannot be whitespace.");}
+        if(option == null){throw new IllegalArgumentException("An option cannot be null.");}
+        if(option.length() == 0){throw new IllegalArgumentException("An option cannot be the empty string.");}
+        if(option.trim().length() <= 0){throw new IllegalArgumentException("An option cannot be whitespace.");}
+        if(!availableOptions.containsKey(component)){
+            availableOptions.put(component, new HashSet<String>());
+        }
+        availableOptions.get(component).add(option);
     }
 
     /**
@@ -125,7 +138,11 @@ public class CarModelSpecification {
      *
      */
     public void addComponent(String component, HashSet<String> options){
-    	availableOptions.put(component, options);
+        if(component == null){throw new IllegalArgumentException("A component cannot be null.");}
+        if(component.length() == 0){throw new IllegalArgumentException("A component cannot be the empty string.");}
+        if(component.trim().length() <= 0){throw new IllegalArgumentException("A component cannot be whitespace.");}
+        if(options == null){throw new IllegalArgumentException("There must be at least one option for the given component.");}
+        availableOptions.put(component, options);
     }
 
     /**
@@ -136,7 +153,16 @@ public class CarModelSpecification {
      *
      */
     public void removeOption(String component, String option){
-    	availableOptions.get(component).remove(option);
+        if(component == null){throw new IllegalArgumentException("A component cannot be null.");}
+        if(component.length() == 0){throw new IllegalArgumentException("A component cannot be the empty string.");}
+        if(component.trim().length() <= 0){throw new IllegalArgumentException("A component cannot be whitespace.");}
+        if(option == null){throw new IllegalArgumentException("An option cannot be null.");}
+        if(option.length() == 0){throw new IllegalArgumentException("An option cannot be the empty string.");}
+        if(option.trim().length() <= 0){throw new IllegalArgumentException("An option cannot be whitespace.");}
+        if(!availableOptions.containsKey(component)){
+            throw new IllegalArgumentException("The given component does not exist.");
+        }
+        availableOptions.get(component).remove(option);
     }
 
     /**
@@ -146,7 +172,13 @@ public class CarModelSpecification {
      *
      */
     public void removeComponent(String component){
-    	availableOptions.remove(component);
+        if(component == null){throw new IllegalArgumentException("A component cannot be null.");}
+        if(component.length() == 0){throw new IllegalArgumentException("A component cannot be the empty string.");}
+        if(component.trim().length() <= 0){throw new IllegalArgumentException("A component cannot be whitespace.");}
+        if(!availableOptions.containsKey(component)){
+            throw new IllegalArgumentException("The given component does not exist.");
+        }
+        availableOptions.remove(component);
     }
 
     /**
