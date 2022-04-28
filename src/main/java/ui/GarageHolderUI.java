@@ -1,7 +1,6 @@
 package ui;
 
-import assemAssist.exceptions.IllegalCompletionDateException;
-import assemAssist.exceptions.IllegalModelException;
+import assemAssist.exceptions.*;
 import controller.GarageHolderController;
 
 import java.util.*;
@@ -22,7 +21,7 @@ public class GarageHolderUI {
      * @throws IllegalModelException
      * @throws IllegalCompletionDateException
      */
-    public void startUI(Scanner in) throws IllegalModelException, IllegalCompletionDateException {
+    public void startUI(Scanner in) throws IllegalModelException, IllegalCompletionDateException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         this.in = in;
         System.out.println("Enter your first name lastname, e.g. 'Tom Smets'");
         String name = in.next() + " " + in.next();
@@ -93,7 +92,7 @@ public class GarageHolderUI {
      * @throws IllegalModelException
      * @throws IllegalCompletionDateException
      */
-    private void orderCarUI() throws IllegalModelException, IllegalCompletionDateException {
+    private void orderCarUI() throws IllegalModelException, IllegalCompletionDateException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         List<String> availableModels;
 
         System.out.println("The available car models are:");
@@ -131,7 +130,7 @@ public class GarageHolderUI {
      * @throws IllegalModelException
      * @throws IllegalCompletionDateException
      */
-    private void completeOrderingFormUI(String model) throws IllegalModelException, IllegalCompletionDateException {
+    private void completeOrderingFormUI(String model) throws IllegalModelException, IllegalCompletionDateException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         Map<String, HashSet<String>> orderingForm = garageHolderController.selectModel(model);
         System.out.println("The available options for this model are:");
         List<String[]> orderingFormArrays = null;
@@ -169,7 +168,7 @@ public class GarageHolderUI {
      * @throws IllegalModelException
      * @throws IllegalCompletionDateException
      */
-    private void selectOptionsUI(List<String[]> orderingForm) throws IllegalModelException, IllegalCompletionDateException {
+    private void selectOptionsUI(List<String[]> orderingForm) throws IllegalModelException, IllegalCompletionDateException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         System.out.println("Select the options for you car order:");
         List<String> carOptions = new ArrayList<>();
         for (String[] option : orderingForm) {

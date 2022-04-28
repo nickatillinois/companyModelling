@@ -63,7 +63,8 @@ public class CompanyCatalogEtcTest {
         legalCOptions.put("spoiler", "low");
         CarModel carModelC = new CarModel("C", legalCOptions);
         carOrderC = new CarOrder("Kim Smeets", carModelC);
-        company.addOrderToProductionSchedule(carOrderA);
+        company.completeOrderingForm(legalAOptions,"Danny Smeets","A");
+        //company.addOrderToProductionSchedule(carOrderA);
         carOrderD = new CarOrder("Tanya Smeets", carModelC);
         carOrderE = new CarOrder("Kimberly Smeets", carModelC);
         carOrderF = new CarOrder("Vanessa Smeets", carModelC);
@@ -71,8 +72,10 @@ public class CompanyCatalogEtcTest {
         carOrderE.setEstCompletionTime(LocalDateTime.now().minusDays(2));
         carOrderF.setEstCompletionTime(LocalDateTime.now().minusDays(3));
         System.out.println(carOrderA.getEstCompletionTime());
-        company.addOrderToProductionSchedule(carOrderB);
-        company.addOrderToProductionSchedule(carOrderC);
+        // company.addOrderToProductionSchedule(carOrderB);
+        // company.addOrderToProductionSchedule(carOrderC);
+        company.completeOrderingForm(legalBOptions,"Sandy Smeets","B");
+        company.completeOrderingForm(legalCOptions,"Kim Smeets","C");
         company.getProductionScheduler().advanceOrders(50);
         // add some completed orders
         carOrderD = new CarOrder("Kim Smeets", carModelC);
@@ -249,7 +252,7 @@ public class CompanyCatalogEtcTest {
         assertTrue(got_error);
         got_error = false;
         try{
-            company.addOrderToProductionSchedule(null);
+            company.completeOrderingForm(null,null,null);
         }
         catch (IllegalArgumentException | IllegalCompletionDateException | IllegalConstraintException | IllegalModelException | OptionThenComponentException | OptionAThenOptionBException | RequiredComponentException e){
             assertEquals("Order cannot be null.", e.getMessage());

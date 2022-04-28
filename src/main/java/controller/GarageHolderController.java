@@ -1,8 +1,7 @@
 package controller;
 
 import assemAssist.Company;
-import assemAssist.exceptions.IllegalCompletionDateException;
-import assemAssist.exceptions.IllegalModelException;
+import assemAssist.exceptions.*;
 
 import java.util.*;
 
@@ -31,7 +30,7 @@ public class GarageHolderController {
         return company.selectModel(carModel);
     }
 
-    public String completeOrderingForm(List<String> carOptions) throws IllegalModelException, IllegalCompletionDateException {
+    public String completeOrderingForm(List<String> carOptions) throws IllegalModelException, IllegalCompletionDateException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         return company.completeOrderingForm((TreeMap<String, String>) carOptions, this.garageHolder, this.chosenModel);
     }
 

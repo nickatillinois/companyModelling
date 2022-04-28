@@ -1,7 +1,6 @@
 import assemAssist.Company;
 import assemAssist.Mechanic;
-import assemAssist.exceptions.IllegalCompletionDateException;
-import assemAssist.exceptions.IllegalModelException;
+import assemAssist.exceptions.*;
 import controller.GarageHolderController;
 import controller.ManagerController;
 import controller.MechanicController;
@@ -12,7 +11,7 @@ import ui.UI;
 
 public class main {
 
-    public static void main(String[] args) throws IllegalModelException, IllegalCompletionDateException {
+    public static void main(String[] args) throws IllegalModelException, IllegalCompletionDateException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         Company company = new Company();
         GarageHolderController garageHolderController = new GarageHolderController(company);
         GarageHolderUI garageHolderUI = new GarageHolderUI(garageHolderController);

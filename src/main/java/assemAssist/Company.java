@@ -213,23 +213,17 @@ public class Company {
     }
 
 
-    public String completeOrderingForm(TreeMap<String, String> chosenOptions, String garageHolder, String chosenModel) {
+    public String completeOrderingForm(TreeMap<String, String> chosenOptions, String garageHolder, String chosenModel) throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         // create a new car model
         CarModel carModel = new CarModel(chosenModel, chosenOptions);
         // create a new car order
         CarOrder carOrder = new CarOrder(garageHolder, carModel);
+        this.productionScheduler.getSchedulingAlgorithm().addOrderToProductionSchedule(carOrder);
         for (Stats stat : statistics) {
             carOrder.addObserver(stat);
         }
-        return garageHolder;
+        return carOrder.getEstCompletionTime().toString();
     }
 
-    public LocalDateTime addOrderToProductionSchedule(CarOrder order) throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
-        if(order == null) {
-            throw new IllegalArgumentException("Order cannot be null.");
-        }
-        this.productionScheduler.getSchedulingAlgorithm().addOrderToProductionSchedule(order);
-        return order.getEstCompletionTime();
-    }
 
 }

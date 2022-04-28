@@ -1,26 +1,35 @@
 package useCases;
 
+import assemAssist.AssemblyLine;
+import assemAssist.Company;
+import assemAssist.ProductionScheduler;
+import assemAssist.exceptions.IllegalCompletionDateException;
+import assemAssist.exceptions.IllegalModelException;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayInputStream;
+
 public class PerformAssemblyTasksTest {
-/*
+
+    @BeforeAll
+    static void init() {
+        ByteArrayInputStream in = new ByteArrayInputStream("3\ns".getBytes());
+        System.setIn(in);
+    }
+
     @Test
-    public void performTasksTest() throws IllegalChoiceException, IllegalModelException, IllegalCompletionDateException {
-
-        Body body = new Body("sedan");
-        CarModelSpecification cmf = new CarModelSpecification(body,new Color("red"),
-                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
-                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
+    public void checkProductionStatistics() throws IllegalCompletionDateException, IllegalModelException {
+        ProductionScheduler productionScheduler = new ProductionScheduler();
+        Company company = new Company();
+        //CarModel model = new CarModel();
+        //CarOrder orderA = new CarOrder();
+        //company.setCompletedCarOrders();
         AssemblyLine assemblyLine = new AssemblyLine();
-        ProductionScheduler productionScheduler = new ProductionScheduler("frank", assemblyLine);
-        ProductionScheduler.addModel("Jaguar");
-        String modelName = "jaguar";
-        CarModel carModel = new CarModel(modelName, cmf);
-        String garageHolder = "john doe";
-        CarOrder carOrder = new CarOrder(garageHolder, carModel);
+/*        new UI( new GarageHolderUI( new GarageHolderController(company)),
+                new ManagerUI(      new ManagerController(company)),
+                new MechanicUI(     new MechanicController( new Mechanic(productionScheduler,assemblyLine) )));
+*/
+    }
 
-        UI ui = new UI(new GarageHolderUI(new GarageHolderController(productionScheduler)),
-                       new ManagerUI(new ManagerController(new Company(productionScheduler))),
-                       new MechanicUI(new MechanicController(new Mechanic(productionScheduler, assemblyLine))));
-
-
-    }*/
 }
