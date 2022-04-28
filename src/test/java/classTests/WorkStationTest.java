@@ -62,7 +62,7 @@ class WorkStationTest {
         chosenOptionsC.put("Airco", "Manual");
         chosenOptionsC.put("Wheels", "sports");
         chosenOptionsC.put("spoiler", "high");
-        orderB = new CarOrder("C", new CarModel("C", chosenOptionsC));
+        orderC = new CarOrder("C", new CarModel("C", chosenOptionsC));
 
         carBodyPost.setCurrentOrder(orderA);
         drivetrainPost.setCurrentOrder(orderB);

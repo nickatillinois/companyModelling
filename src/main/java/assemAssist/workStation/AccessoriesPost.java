@@ -29,7 +29,7 @@ public class AccessoriesPost extends WorkStation{
         this.addTask(new AssemblyTask("wheels",
                 "mount " + getCurrentOrder().getCarModel().getChosenOptions().get("Wheels").toLowerCase() + " wheels"));
         //add task for spoiler, IF there needs to be one
-        if (getCurrentOrder().getCarModel().getChosenOptions().get("Spoiler") != null) {
+        if (getCurrentOrder().getCarModel().getChosenOptions().get("spoiler") != null) {
             this.addTask(new AssemblyTask("spoiler",
                     "install " + getCurrentOrder().getCarModel().getChosenOptions().get("spoiler").toLowerCase() + " spoiler"));
         }
