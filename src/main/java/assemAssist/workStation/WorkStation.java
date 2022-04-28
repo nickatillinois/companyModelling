@@ -232,7 +232,9 @@ public abstract class WorkStation implements TaskObservable {
                 s += "pending, ";
 
         }
-        int j = s.length() - 2;
+        int j = s.length();
+        if (j >= 2)
+            j -= 2;
         return s.substring(0,j);
     }
 

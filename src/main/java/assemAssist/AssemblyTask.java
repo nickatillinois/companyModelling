@@ -67,4 +67,16 @@ public class AssemblyTask {
     public String getName() {
         return name;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        AssemblyTask assemblyTask = (AssemblyTask) o;
+        return name == assemblyTask.getName() && taskDefinition == assemblyTask.getTaskDefinition();
+    }
 }

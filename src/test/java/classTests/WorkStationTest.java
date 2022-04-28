@@ -8,6 +8,7 @@ import assemAssist.workStation.DrivetrainPost;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.TreeMap;
@@ -84,19 +85,20 @@ class WorkStationTest {
 
     @Test
     void getTasksTest() {
-        for (AssemblyTask task : carBodyPost.getTasks() ) {
-            assert(task.getName().equals("body")
-                    || task.getName().equals("paint"));
-        }
-        for (AssemblyTask task : drivetrainPost.getTasks() ) {
-            assert(task.getName().equals("engine")
-                    || task.getName().equals("gearbox"));
-        }
-        for (AssemblyTask task : accessoriesPost.getTasks() ) {
-            assert(task.getName().equals("seats")
-                    || task.getName().equals("airco")
-                    || task.getName().equals("wheels") );
-        }
+        List<AssemblyTask> carBodyPostTasks = List.of(new AssemblyTask("body", "assemble sedan body"), new AssemblyTask("paint", "paint the car blue"));
+        assertEquals(carBodyPostTasks, carBodyPost.getTasks());
+
+        List<AssemblyTask> drivetrainTasks = new ArrayList<>();
+        drivetrainTasks.add(new AssemblyTask("engine", "insert V8"));
+        drivetrainTasks.add(new AssemblyTask("gearbox", "install 6 manual"));
+        assertEquals(drivetrainTasks, drivetrainPost.getTasks());
+
+        List<AssemblyTask> accessoriesTasks = new ArrayList<>();
+        accessoriesTasks.add(new AssemblyTask("seats", "install leather black seats"));
+        accessoriesTasks.add(new AssemblyTask("airco", "install manual airco"));
+        accessoriesTasks.add(new AssemblyTask("wheels", "mount sports wheels"));
+        accessoriesTasks.add(new AssemblyTask("spoiler", "install high spoiler"));
+        assertEquals(accessoriesTasks, accessoriesPost.getTasks());
     }
 
     @Test
