@@ -471,7 +471,7 @@ m2=1
       <x>684</x>
       <y>477</y>
       <w>315</w>
-      <h>189</h>
+      <h>144</h>
     </coordinates>
     <panel_attributes>Company
 --
@@ -514,14 +514,14 @@ bg=green
     <id>Relation</id>
     <coordinates>
       <x>747</x>
-      <y>657</y>
+      <y>612</y>
       <w>54</w>
-      <h>81</h>
+      <h>126</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 catalog
 m1=1</panel_attributes>
-    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -566,14 +566,14 @@ m1=1..n</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>981</x>
-      <y>657</y>
+      <y>612</y>
       <w>252</w>
-      <h>243</h>
+      <h>288</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..n
 completedCarOrders</panel_attributes>
-    <additional_attributes>240.0;250.0;240.0;150.0;10.0;150.0;10.0;10.0</additional_attributes>
+    <additional_attributes>240.0;300.0;240.0;200.0;10.0;200.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
