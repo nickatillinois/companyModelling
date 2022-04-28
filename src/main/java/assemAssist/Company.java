@@ -72,7 +72,7 @@ public class Company {
      * @param name the garage holder to get the pending CarOrders for
      */
     private List<CarOrder> getPendingOrdersFromGarageHolder(String name) {
-        List<CarOrder> orders = getProductionScheduler().getPendingOrdersFromGarageHolder(name);
+        List<CarOrder> orders = getProductionScheduler().getOrdersFromGarageHolder(name);
         PendingCarOrderComparator comparator = new PendingCarOrderComparator();
         // sort the orders by the comparator
         orders.sort(comparator);
@@ -169,7 +169,7 @@ public class Company {
     }
 
     public List<String> getStatistics(int fromXLastDays) {
-        if(fromXLastDays <= 0) {
+        if(fromXLastDays < 0) {
             throw new IllegalArgumentException("fromXLastDays must be strictly positive.");
         }
         List<String> result = new ArrayList<>();
@@ -229,7 +229,7 @@ public class Company {
             throw new IllegalArgumentException("Order cannot be null.");
         }
         this.productionScheduler.getSchedulingAlgorithm().addOrderToProductionSchedule(order);
-        return LocalDateTime.now();
+        return order.getEstCompletionTime();
     }
 
 }

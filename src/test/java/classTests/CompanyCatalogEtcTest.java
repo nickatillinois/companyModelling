@@ -9,10 +9,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.TreeMap;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -66,9 +63,13 @@ public class CompanyCatalogEtcTest {
         legalCOptions.put("spoiler", "low");
         CarModel carModelC = new CarModel("C", legalCOptions);
         carOrderC = new CarOrder("Kim Smeets", carModelC);
-
         company.addOrderToProductionSchedule(carOrderA);
-        carOrderA.setEstCompletionTime(LocalDateTime.now().plusDays(1));
+        carOrderD = new CarOrder("Tanya Smeets", carModelC);
+        carOrderE = new CarOrder("Kimberly Smeets", carModelC);
+        carOrderF = new CarOrder("Vanessa Smeets", carModelC);
+        carOrderD.setEstCompletionTime(LocalDateTime.now().minusDays(1));
+        carOrderE.setEstCompletionTime(LocalDateTime.now().minusDays(2));
+        carOrderF.setEstCompletionTime(LocalDateTime.now().minusDays(3));
         System.out.println(carOrderA.getEstCompletionTime());
         company.addOrderToProductionSchedule(carOrderB);
         company.addOrderToProductionSchedule(carOrderC);
@@ -77,11 +78,17 @@ public class CompanyCatalogEtcTest {
         carOrderD = new CarOrder("Kim Smeets", carModelC);
         carOrderE = new CarOrder("Kim Smeets", carModelC);
         carOrderF = new CarOrder("Kim Smeets", carModelC);
-        carOrderD.setCompletionTime(LocalDateTime.now().plusDays(7));
-        carOrderE.setCompletionTime(LocalDateTime.now().plusDays(9));
-        carOrderF.setCompletionTime(LocalDateTime.now().plusDays(8));
+
+
+
+        carOrderD.setEstCompletionTime(LocalDateTime.now().plusDays(7));
+        carOrderE.setEstCompletionTime(LocalDateTime.now().plusDays(9));
+        carOrderF.setEstCompletionTime(LocalDateTime.now().plusDays(8));
 
         ArrayList<CarOrder> completedOrders = new ArrayList<>();
+        carOrderD.setCompleted(true);
+        carOrderE.setCompleted(true);
+        carOrderF.setCompleted(true);
         completedOrders.add(carOrderD);
         completedOrders.add(carOrderE);
         completedOrders.add(carOrderF);
@@ -123,11 +130,11 @@ public class CompanyCatalogEtcTest {
         assertEquals(2, company.getOrdersFromGarageHolder("Sandy Smeets").length);
         assertEquals(2, company.getOrdersFromGarageHolder("Danny Smeets").length);
         assertEquals(0, company.getOrdersFromGarageHolder("Sandy Smeets")[1].size());
-        //assertEquals(1, company.getOrdersFromGarageHolder("Sandy Smeets")[0].size());
+        assertEquals(1, company.getOrdersFromGarageHolder("Sandy Smeets")[0].size());
         assertEquals(0, company.getOrdersFromGarageHolder("Danny Smeets")[1].size());
-        //assertEquals(1, company.getOrdersFromGarageHolder("Danny Smeets")[0].size());
+        assertEquals(1, company.getOrdersFromGarageHolder("Danny Smeets")[0].size());
         assertEquals(3, company.getOrdersFromGarageHolder("Kim Smeets")[1].size());
-        //assertEquals(1, company.getOrdersFromGarageHolder("Kim Smeets")[0].size());
+        assertEquals(1, company.getOrdersFromGarageHolder("Kim Smeets")[0].size());
         got_error = false;
         try{
             company.getOrderDetails(0, null);
@@ -255,8 +262,8 @@ public class CompanyCatalogEtcTest {
     void testStatistics() throws OrderNotFoundException {
         ArrayList<String> orderDetails = company.getOrderDetails(1, "Danny Smeets");
         System.out.println(orderDetails);
-        //List<String> statistics = company.getStatistics(1);
-        //System.out.println(statistics);
+        List<String> statistics = company.getStatistics(0);
+        System.out.println(statistics);
     }
 
     @Test
