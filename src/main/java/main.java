@@ -16,7 +16,7 @@ public class main {
         Company company = new Company();
         GarageHolderController garageHolderController = new GarageHolderController(company);
         GarageHolderUI garageHolderUI = new GarageHolderUI(garageHolderController);
-        Mechanic mechanic = new Mechanic(company.getProductionScheduler(), company.getProductionScheduler().getAssemblyLine());
+        Mechanic mechanic = new Mechanic(company.getProductionScheduler().getAssemblyLine());
         MechanicController mechanicController = new MechanicController(mechanic);
         MechanicUI mechanicUI = new MechanicUI(mechanicController);
         ManagerController managerController = new ManagerController(company);

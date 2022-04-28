@@ -6,12 +6,10 @@ import java.util.List;
 
 public class Mechanic {
 
-    private final ProductionScheduler productionScheduler;
     private final AssemblyLine assemblyLine;
     private WorkStation workStation;
 
-    public Mechanic(ProductionScheduler productionScheduler, AssemblyLine assemblyLine) {
-        this.productionScheduler = productionScheduler;
+    public Mechanic(AssemblyLine assemblyLine) {
         this.assemblyLine = assemblyLine;
     }
 
@@ -31,7 +29,6 @@ public class Mechanic {
 
     public List<String> finishTask(String taskName, int timeWorked) {
         workStation.performAssemblyTask(taskName,timeWorked);
-        productionScheduler.advanceOrders(timeWorked);
         return workStation.getPendingTasks();
     }
 
