@@ -5,6 +5,7 @@ import assemAssist.exceptions.*;
 import assemAssist.workStation.AccessoriesPost;
 import assemAssist.workStation.CarBodyPost;
 import assemAssist.workStation.DrivetrainPost;
+import assemAssist.workStation.WorkStation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -149,7 +150,9 @@ class WorkStationTest {
 
     @Test
     void getFinishedTasksTest() {
-
+        carBodyPost.performAssemblyTask("body", 60);
+        List<String> finishedCBP = List.of("body");
+        assertEquals(finishedCBP, carBodyPost.getFinishedTasks());
     }
 
     @Test
