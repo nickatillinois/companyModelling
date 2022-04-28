@@ -37,14 +37,18 @@ public class CheckProductionStatisticsTest {
         company.completeOrderingForm(legalAOptions,"Luna Van den Bergh","A");
         company.completeOrderingForm(legalAOptions,"Luna Van den Bergh","A");
         company.completeOrderingForm(legalAOptions,"Luna Van den Bergh","A");
-/*        productionScheduler.advanceOrders(60);
+
+        // TODO complete alle tasks telkens
+
+
+        productionScheduler.advanceOrders(60);
         productionScheduler.advanceOrders(60);
         productionScheduler.advanceOrders(60); // first one done: delay = 0
         productionScheduler.advanceOrders(90); // second one done: delay = 30
         productionScheduler.advanceOrders(70); // third one done: delay = 40
-*/        new UI( new GarageHolderUI( new GarageHolderController(company)),
+        new UI( new GarageHolderUI( new GarageHolderController(company)),
                 new ManagerUI(      new ManagerController(company)),
-                new MechanicUI(     new MechanicController( new Mechanic(productionScheduler,assemblyLine) )));
+                new MechanicUI(     new MechanicController( new Mechanic(assemblyLine) )));
 
     }
 }

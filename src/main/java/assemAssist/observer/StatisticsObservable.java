@@ -19,7 +19,12 @@ public interface StatisticsObservable {
      * @param observer the observer to be added
      * @throws IllegalArgumentException | observer is null
      */
-    void addObserver(StatisticsObserver observer);
+    default void addObserver(StatisticsObserver observer) {
+        if (observer == null) {
+            throw new IllegalArgumentException("An observer cannot be null.");
+        }
+        observers.add(observer);
+    }
 
     /**
      * Removes the given observer to the list of observers.
@@ -28,12 +33,21 @@ public interface StatisticsObservable {
      * @throws IllegalArgumentException | observer is null
      *                                  | observer is not in the list of observers
      */
-    void removeObserver(StatisticsObserver observer);
+    default void removeObserver(StatisticsObserver observer) {
+        if (observer == null) {
+            throw new IllegalArgumentException("An observer cannot be null.");
+        }
+        observers.remove(observer);
+    }
 
     /**
      * Notifies the observers for the statistics class with the given value.
      *
      * @param delay the given value
      */
-    void notifyObservers(double delay);
+    default void notifyObservers(double delay) {
+        for (StatisticsObserver observer : observers) {
+            observer.update(delay);
+        }
+    }
 }
