@@ -3,6 +3,8 @@ package assemAssist;
 import assemAssist.etc.CompletedCarOrderComparator;
 import assemAssist.etc.PendingCarOrderComparator;
 import assemAssist.exceptions.*;
+import assemAssist.observer.TaskObserver;
+import assemAssist.schedulingAlgorithm.SchedulingAlgorithm;
 import assemAssist.statistics.DelayStats;
 import assemAssist.statistics.Stats;
 import assemAssist.statistics.WorkingDayStats;
@@ -14,7 +16,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.TreeMap;
 
-public class Company {
+public class Company implements TaskObserver {
     private final ProductionScheduler productionScheduler;
     private final Catalog catalog;
     private ArrayList<CarOrder> completedCarOrders;
@@ -41,6 +43,7 @@ public class Company {
     public void setCompletedCarOrders(ArrayList<CarOrder> completedCarOrders) {
         this.completedCarOrders = completedCarOrders;
     }
+
 
     /**
      * Returns a set of CarOrders that are completed and ordered by the given garage holder.
@@ -244,4 +247,13 @@ public class Company {
         return carOrder.getEstCompletionTime().format(formatter);
     }
 
+    /**
+     * Updates the observer when a task is finished.
+     */
+    public void update(int time) {
+        CarOrder finishedOrder = productionScheduler.advanceOrders(time);
+        if (finishedOrder != null) {
+            completedCarOrders.add(finishedOrder);
+        }
+    }
 }
