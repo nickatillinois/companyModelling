@@ -76,7 +76,7 @@ public class AssemblyTask {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        AssemblyTask assemblyTask = (AssemblyTask) o;
-        return name == assemblyTask.getName() && taskDefinition == assemblyTask.getTaskDefinition();
+        AssemblyTask that = (AssemblyTask) o;
+        return name == that.getName() && taskDefinition == that.getTaskDefinition();
     }
 }

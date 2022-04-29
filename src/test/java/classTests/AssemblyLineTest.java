@@ -1,27 +1,73 @@
 package classTests;
 
+import assemAssist.*;
+import assemAssist.exceptions.*;
+import assemAssist.workStation.AccessoriesPost;
+import assemAssist.workStation.CarBodyPost;
+import assemAssist.workStation.DrivetrainPost;
+import assemAssist.workStation.WorkStation;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.TreeMap;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 class AssemblyLineTest {
-    /*
+
     static AssemblyLine assemblyLine;
     static CarOrder orderA;
     static CarOrder orderB;
+    static CarOrder orderC;
 
     @BeforeEach
-    void setUp() throws IllegalChoiceException, IllegalModelException {
+    void init() throws IllegalModelException, IllegalConstraintException, OptionAThenOptionBException, OptionThenComponentException, RequiredComponentException {
         assemblyLine = new AssemblyLine();
-       // ProductionScheduler.addModel("Jaguar");
-        Body body = new Body("sedan");
-        CarModelSpecification specification = new CarModelSpecification(body,new Color("red"),
-                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
-                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        orderA = new CarOrder("A",new CarModel("Jaguar", specification));
-        orderB = new CarOrder("B",new CarModel("Jaguar", specification));
 
+        Catalog catalog = new Catalog();
 
+        TreeMap<String, String> chosenOptionsA = new TreeMap<>();
+        chosenOptionsA.put("Body", "Sedan");
+        chosenOptionsA.put("Color", "blue");
+        chosenOptionsA.put("Engine", "V4");
+        chosenOptionsA.put("Gearbox", "5 manual");
+        chosenOptionsA.put("Seats", "leather white");
+        chosenOptionsA.put("Airco", "Manual");
+        chosenOptionsA.put("Wheels", "comfort");
+        orderA = new CarOrder("A", new CarModel("A", chosenOptionsA));
+        orderA.setEstCompletionTime(LocalDateTime.now());
+
+        TreeMap<String, String> chosenOptionsB = new TreeMap<>();
+        chosenOptionsB.put("Body", "Sport");
+        chosenOptionsB.put("Color", "yellow");
+        chosenOptionsB.put("Engine", "V8");
+        chosenOptionsB.put("Gearbox", "6 manual");
+        chosenOptionsB.put("Seats", "vinyl grey");
+        chosenOptionsB.put("Airco", "Manual");
+        chosenOptionsB.put("Wheels", "sports");
+        chosenOptionsB.put("spoiler", "low");
+        orderB = new CarOrder("B", new CarModel("B", chosenOptionsB));
+        orderB.setEstCompletionTime(LocalDateTime.now());
+
+        TreeMap<String, String> chosenOptionsC = new TreeMap<>();
+        chosenOptionsC.put("Body", "Sport");
+        chosenOptionsC.put("Color", "black");
+        chosenOptionsC.put("Engine", "V6");
+        chosenOptionsC.put("Gearbox", "6 manual");
+        chosenOptionsC.put("Seats", "leather black");
+        chosenOptionsC.put("Airco", "Manual");
+        chosenOptionsC.put("Wheels", "sports");
+        chosenOptionsC.put("spoiler", "high");
+        orderC = new CarOrder("C", new CarModel("C", chosenOptionsC));
+        orderC.setEstCompletionTime(LocalDateTime.now());
     }
 
     @Test
-    void getWorkStations() {
+    void getWorkStationsTest() {
         ArrayList<WorkStation> workStationstest = new ArrayList<>();
         workStationstest.add(new CarBodyPost());
         workStationstest.add(new DrivetrainPost());
@@ -30,7 +76,21 @@ class AssemblyLineTest {
     }
 
     @Test
-    void nextDay() {
+    void getWorkStationNamesTest() {
+        List<String> workStationNames = new ArrayList<>();
+        workStationNames.add("Car Body Post");
+        workStationNames.add("Drivetrain Post");
+        workStationNames.add("Accessories Post");
+        assertEquals(workStationNames, assemblyLine.getWorkStationNames());
+    }
+
+    @Test
+    void getMinutesWorkedTodayTest() {
+
+    }
+
+    @Test
+    void nextDayTest() {
         assemblyLine.nextDay();
         assertEquals(0,assemblyLine.getMinutesWorkedToday());
         assemblyLine.move(orderA,120);
@@ -48,11 +108,11 @@ class AssemblyLineTest {
         assemblyLine.move(null,2*60);
         assertEquals(22*60, assemblyLine.getMinutesWorkedToday());
         assemblyLine.nextDay();
-        assertEquals(((22-6)-(22-(22-6))*60),assemblyLine.remainWorkingTime());
+        assertEquals(((22-6)-(22-(22-6)))*60,assemblyLine.remainingWorkingTime());
     }
 
     @Test
-    void getCurrentState() {
+    void getCurrentStateTest() {
         ArrayList<CarOrder> test = new ArrayList<>();
         test.add(null);
         test.add(null);
@@ -67,9 +127,31 @@ class AssemblyLineTest {
 
     }
 
+    @Test
+    void getCurrentStateStringTest() {
+        ArrayList<String> test = new ArrayList<>();
+        test.add("Car Body Post ; ");
+        test.add("Drivetrain Post ; ");
+        test.add("Accessories Post ; ");
+        assertEquals(test, assemblyLine.getCurrentStateString());
+
+        ArrayList<String> test2 = new ArrayList<>();
+        test2.add("Car Body Post ; body: pending, paint: pending");
+        test2.add("Drivetrain Post ; ");
+        test2.add("Accessories Post ; ");
+        assemblyLine.getWorkStations().get(0).setCurrentOrder(orderA);
+        assertEquals(test2,assemblyLine.getCurrentStateString());
+
+        ArrayList<String> test3 = new ArrayList<>();
+        test3.add("Car Body Post ; body: done, paint: pending");
+        test3.add("Drivetrain Post ; ");
+        test3.add("Accessories Post ; ");
+        assemblyLine.getWorkStations().get(0).performAssemblyTask("body", 60);
+        assertEquals(test3,assemblyLine.getCurrentStateString());
+    }
 
     @Test
-    void canMove() {
+    void canMoveTest() {
         assemblyLine.getWorkStations().get(0).setCurrentOrder(orderA);
         assert(!assemblyLine.canMove());
         for(AssemblyTask assemblyTask : assemblyLine.getWorkStations().get(0).getTasks())
@@ -78,42 +160,33 @@ class AssemblyLineTest {
     }
 
     @Test
-    void canNotMove() {
-        assemblyLine.getWorkStations().get(0).setCurrentOrder(orderA);
-        List<String> cannotmove = new ArrayList<>();
-        cannotmove.add("Blocked");
-        cannotmove.add("Car Body Post");
-        assertEquals(cannotmove,assemblyLine.canNotMove());
-        assemblyLine.getWorkStations().get(1).setCurrentOrder(orderA);
-        assemblyLine.getWorkStations().get(0).setCurrentOrder(orderB);
-        for(AssemblyTask assemblyTask : assemblyLine.getWorkStations().get(0).getTasks())
-            assemblyTask.setIsCompleted(true);
-        List<String> cannotmove2 = new ArrayList<>();
-        cannotmove2.add("Blocked");
-        cannotmove2.add("Drivetrain Post");
-        assertEquals(cannotmove2,assemblyLine.canNotMove());
-    }
-
-    @Test
-    void move() {
+    void moveTest() { // also tests the method assemblyline.remainingWorkingTime()
         assemblyLine.getWorkStations().get(1).setCurrentOrder(orderA);
         assemblyLine.getWorkStations().get(0).setCurrentOrder(orderB);
         for(AssemblyTask assemblyTask : assemblyLine.getWorkStations().get(0).getTasks())
             assemblyTask.setIsCompleted(true);
         for(AssemblyTask assemblyTask : assemblyLine.getWorkStations().get(1).getTasks())
             assemblyTask.setIsCompleted(true);
-        assemblyLine.move(null, 1);
-        assertEquals(22-6-1,assemblyLine.remainWorkingTime());
+        assemblyLine.move(null, 60);
+        assertEquals((22-6-1)*60,assemblyLine.remainingWorkingTime());
         assertEquals(orderA, assemblyLine.getWorkStations().get(2).getCurrentOrder());
         for(AssemblyTask assemblyTask : assemblyLine.getWorkStations().get(1).getTasks())
             assemblyTask.setIsCompleted(true);
         for(AssemblyTask assemblyTask : assemblyLine.getWorkStations().get(2).getTasks())
             assemblyTask.setIsCompleted(true);
-        assemblyLine.move(null,1);
-        assertEquals(22-6-2,assemblyLine.remainWorkingTime());
+        assemblyLine.move(null,1*60);
+        assertEquals((22-6-2)*60,assemblyLine.remainingWorkingTime());
         assertEquals(orderB, assemblyLine.getWorkStations().get(2).getCurrentOrder());
         assert(orderA.isCompleted());
 
     }
-    */
+
+    @Test
+    void findWorkStationTest() {
+        assertEquals(new DrivetrainPost(), assemblyLine.findWorkStation("Drivetrain Post"));
+        assertEquals(new CarBodyPost(), assemblyLine.findWorkStation("Car Body Post"));
+        assertEquals(new AccessoriesPost(), assemblyLine.findWorkStation("Accessories Post"));
+        assertThrows(IllegalArgumentException.class, () -> assemblyLine.findWorkStation("foo"));
+    }
+
 }

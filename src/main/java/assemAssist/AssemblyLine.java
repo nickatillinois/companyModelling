@@ -121,6 +121,11 @@ public class AssemblyLine {
 
     }
 
+    /**
+     * Returns the name of all the workstation in the assembly line along with the tasks at the workstation and
+     * their current status.
+     * @return List of strings in the format "NameOfWorkstation ; TaskName1, TaskStatus1; ...; TaskNameN, TaskStatusN"
+     */
     public List<String> getCurrentStateString() {
         List<String> currentState  = new ArrayList<>(workStations.size());
         for (WorkStation workStation : workStations) {
@@ -133,7 +138,7 @@ public class AssemblyLine {
      * This function calculated and returns the remaining working hours
      * @return remain working minutes
      */
-    public int remainWorkingTime(){
+    public int remainingWorkingTime(){
         return getMaxWorkingMinutesToday()-getMinutesWorkedToday();
     }
 
@@ -152,20 +157,6 @@ public class AssemblyLine {
     }
 
     /**
-     * This function returns a list of car orders that not is finished at there current workstation.
-     * @return list of car orders
-     */
-    public List<String> canNotMove(){
-        List<String> canNotMove = new ArrayList<>();
-        canNotMove.add("Blocked");
-        for(WorkStation workStation : workStations){
-            if (!workStation.isFinished())
-                canNotMove.add(workStation.getName());
-        }
-        return canNotMove;
-    }
-
-    /**
      * This function will push an order to the next workstation and return a list of 4 orders with on the i place
      * the order in workstation i and on the 4 place the order that is finished complete.
      * @param carOrder new car order for workstation 1
@@ -176,7 +167,7 @@ public class AssemblyLine {
     public List<String> move(CarOrder carOrder, int timeBetweenTwoStates) throws IllegalCallerException{
         for(WorkStation workStation : getWorkStations())
             if(!workStation.isFinished())
-                throw new IllegalCallerException("The assmebly line is stil working at a workpost!");
+                throw new IllegalCallerException("The assembly line is stil working at a workpost!");
         setMinutesWorkedToday(getMinutesWorkedToday() + timeBetweenTwoStates);
         CarOrder finishedCar = workStations.get(2).getCurrentOrder();
         if (finishedCar !=  null) {
@@ -202,7 +193,8 @@ public class AssemblyLine {
 
     /**
      * Finds a specific work station and returns this.
-     *
+     * @return The WorkStation that was requested.
+     * @throws IllegalArgumentException | The requested work station does not exist or is null.
      */
     public WorkStation findWorkStation (String workStation) throws IllegalArgumentException{
         for (WorkStation station : workStations) {
