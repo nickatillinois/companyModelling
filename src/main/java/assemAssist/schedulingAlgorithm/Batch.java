@@ -101,7 +101,6 @@ public class Batch extends SchedulingAlgorithm{
 
             }
         }
-
         return batchs;
     }
     /**
