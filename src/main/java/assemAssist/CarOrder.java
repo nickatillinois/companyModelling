@@ -144,9 +144,9 @@ public class CarOrder implements StatisticsObservable {
      */
     public void setCompleted(boolean completed){
         if(this.estCompletionTime == null){throw new NullPointerException("Estimated completion time has not been set.");}
-        this.completed = completed;
-        if (completed)
+        if (completed){
             this.completionTime = LocalDateTime.now();
+            this.completed = completed;}
         double delayInMinutes = ChronoUnit.MINUTES.between(estCompletionTime,completionTime);
         notifyObservers(delayInMinutes);
 

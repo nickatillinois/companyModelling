@@ -11,11 +11,14 @@ import ui.ManagerUI;
 import ui.MechanicUI;
 import ui.UI;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.TreeMap;
+import java.util.concurrent.TimeUnit;
 
 public class main {
 
-    public static void main(String[] args) throws IllegalModelException, IllegalCompletionDateException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+    public static void main(String[] args) throws IllegalModelException, IllegalCompletionDateException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException, InterruptedException {
         Company company = new Company();
         GarageHolderController garageHolderController = new GarageHolderController(company);
         GarageHolderUI garageHolderUI = new GarageHolderUI(garageHolderController);
@@ -62,6 +65,37 @@ public class main {
         company.getProductionScheduler().getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderF);
         company.getProductionScheduler().getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderG);
         company.getProductionScheduler().getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderH);*/
+
+        //use Case 1 & 2 Test
+        TreeMap<String, String> legalOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        legalOptions.put("color", "red");
+        legalOptions.put("body", "break");
+        legalOptions.put("engine", "v4");
+        legalOptions.put("seats", "leather white");
+        legalOptions.put("airco", "manual");
+        legalOptions.put("gearbox", "6 manual");
+        legalOptions.put("wheels", "winter");
+        CarModel carModelA1 = new CarModel("A", legalOptions);
+        company.completeOrderingForm(legalOptions,"Tom Smets","A");
+        company.completeOrderingForm(legalOptions,"Tom Smets","A");
+        ArrayList<CarOrder> completedCarOrders = new ArrayList<>();
+        List<CarOrder>[] orders = company.getOrdersFromGarageHolder("Tom Smets");
+        // set every order in orders completed
+        for (List<CarOrder> order : orders) {
+            for (CarOrder carOrder : order) {
+                TimeUnit.SECONDS.sleep(2);
+                carOrder.setCompleted(true);
+                completedCarOrders.add(carOrder);
+
+            }
+        }
+        company.setCompletedCarOrders(completedCarOrders);
+        List<CarOrder>[] completedCarOrders2 = company.getOrdersFromGarageHolder("Tom Smets");
+
+        company.getProductionScheduler().advanceOrders(50);
+        company.completeOrderingForm(legalOptions,"Tom Smets","A");
+        company.getProductionScheduler().advanceOrders(50);
+        company.completeOrderingForm(legalOptions,"Tom Smets","A");
         new UI(garageHolderUI, managerUI, mechanicUI);
 
     }

@@ -36,7 +36,7 @@ public class GarageHolderUI {
         System.out.println("Your finished orders are:");
         for (String[] order : overViewOfOrders[1]) {
             // Prints the elements of the order in a nice way.
-            System.out.println(" | " + "ID: " + order[0] + " | est. completion date: " + order[1] + " | ");
+            System.out.println(" | " + "ID: " + order[0] + " | completion date: " + order[1] + " | ");
         }
         System.out.println("-------------");
 

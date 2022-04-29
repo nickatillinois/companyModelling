@@ -71,8 +71,8 @@ public class Company {
      */
     private List<CarOrder> getPendingOrdersFromGarageHolder(String name) {
         List<CarOrder> orders = getProductionScheduler().getOrdersFromGarageHolder(name);
+        orders.removeIf(CarOrder::isCompleted);
         PendingCarOrderComparator comparator = new PendingCarOrderComparator();
-        // sort the orders by the comparator
         orders.sort(comparator);
         return orders;
     }
