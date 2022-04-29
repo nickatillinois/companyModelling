@@ -15,6 +15,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.TreeMap;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 public class MechanicTest {
 
     static Mechanic mechanic;
@@ -25,17 +27,30 @@ public class MechanicTest {
     static CarOrder orderC;
 
     @BeforeEach
-    void init() {}
+    void init() {
+        assemblyLine = new AssemblyLine();
+        mechanic = new Mechanic(assemblyLine);
+
+
+    }
 
     @Test
-    void getAssemblyLineTest() {}
+    void getAssemblyLineTest() {
+        assertEquals(assemblyLine, mechanic.getAssemblyLine());
+    }
 
     @Test
-    void getAllWorkStationsTest() {}
+    void getAllWorkStationsTest() {
+        List<String> expWorkStations = List.of("Car Body Post", "Drivetrain Post", "Accessories Post");
+        assertEquals(expWorkStations, mechanic.getAllWorkStations());
+    }
 
     @Test
     void selectWorkStationTest() { // also tests mechanic.getWorkStation()
-
+        mechanic.selectWorkStation("Drivetrain Post");
+        assertEquals(new DrivetrainPost(), mechanic.getWorkStation());
+        assertThrows(IllegalArgumentException.class, () -> mechanic.selectWorkStation(null));
+        assertThrows(IllegalArgumentException.class, () -> mechanic.selectWorkStation("Motorcycle Post"));
     }
 
     @Test

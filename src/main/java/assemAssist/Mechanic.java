@@ -47,7 +47,9 @@ public class Mechanic {
      * @param workStationName The name of the workstation the mechanic wants to work at.
      * @return List of the names of the pending tasks at the selected workstation.
      */
-    public List<String> selectWorkStation(String workStationName) {
+    public List<String> selectWorkStation(String workStationName) throws IllegalArgumentException {
+        if (workStationName == null)
+            throw new IllegalArgumentException("The name of the workstation cannot be null.");
         WorkStation workStation = assemblyLine.findWorkStation(workStationName);
         this.workStation = workStation;
         return workStation.getPendingTasks();
