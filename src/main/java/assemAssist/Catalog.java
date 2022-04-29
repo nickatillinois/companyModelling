@@ -71,7 +71,7 @@ public class Catalog {
     }
 
     /** A method that returns a string representation of a given car model */
-    public String getModelSpecification(String modelName) throws IllegalModelException {
+    public String getModelSpecificationString(String modelName) throws IllegalModelException {
         return getModel(modelName).toString();
     }
 
@@ -79,7 +79,7 @@ public class Catalog {
      * Returns a Map of components and their corresponding options for the given car model name.
      * @param modelName The name of the car model.
      */
-    public TreeMap<String, HashSet<String>> getModelSpecifications(String modelName) throws IllegalModelException {
+    public TreeMap<String, HashSet<String>> getOptions(String modelName) throws IllegalModelException {
         CarModelSpecification model = getModel(modelName);
         return model.getAvailableOptions();
     }
@@ -88,8 +88,13 @@ public class Catalog {
      * Adds the given car model to the set of car models in the catalog.
      *
      * @param model The name of new car model.
+     *              The name of the car model must be unique.
+     * @throws IllegalArgumentException if the given model is null
      */
     public void addModel(CarModelSpecification model){
+        if(model == null) {
+            throw new IllegalArgumentException("model cannot be null.");
+        }
         availableModels.add(model);
     }
 
