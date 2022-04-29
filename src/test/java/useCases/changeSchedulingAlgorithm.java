@@ -14,24 +14,28 @@ import ui.MechanicUI;
 import ui.UI;
 
 import java.io.ByteArrayInputStream;
+import java.nio.charset.StandardCharsets;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class changeSchedulingAlgorithm {
 
-    UI ui;
 
     @BeforeAll
     static void init(){
-        ByteArrayInputStream in = new ByteArrayInputStream("3\na\n0".getBytes());
+        ByteArrayInputStream in = new ByteArrayInputStream("3\na\n1\n4".getBytes());
         System.setIn(in);
+
     }
 
     @Test
     public void setBatch() throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
 
         Company company = new Company();
-        ui = new UI(new GarageHolderUI(new GarageHolderController(company)),new ManagerUI(new ManagerController(company)),
+        new UI(new GarageHolderUI(new GarageHolderController(company)),new ManagerUI(new ManagerController(company)),
                 new MechanicUI(new MechanicController(new Mechanic(company.getProductionScheduler().getAssemblyLine()))));
-
+        System.setIn(new ByteArrayInputStream("".getBytes()));
+        assertEquals(company.getProductionScheduler().getSchedulers().get(0),company.getProductionScheduler().getSchedulingAlgorithm());
 
     }
 }
