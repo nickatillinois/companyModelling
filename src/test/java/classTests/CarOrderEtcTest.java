@@ -109,7 +109,6 @@ class CarOrderEtcTest {
         assertEquals(carOrderA.getGarageHolder(), "Danny Smeets");
         assertEquals(carOrderB.getGarageHolder(), "Sandy Smeets");
         assertEquals(carOrderC.getGarageHolder(), "Kim Smeets");
-        assertEquals(3, carOrderC.getOrderID());
         assertFalse(carOrderA.isCompleted());
         assertFalse(carOrderB.isCompleted());
         assertEquals("A", carOrderA.getCarModel().getModelName());
@@ -118,8 +117,6 @@ class CarOrderEtcTest {
         assertEquals(50, company.getCatalog().getModel("A").getStandardWorkStationTime());
         assertEquals(70, company.getCatalog().getModel("B").getStandardWorkStationTime());
         assertEquals(60, company.getCatalog().getModel("C").getStandardWorkStationTime());
-        assertEquals(1, carOrderA.getOrderID());
-        assertEquals(2, carOrderB.getOrderID());
     }
 
     @Test

@@ -65,8 +65,10 @@ public class Catalog {
         return getModel(modelName).toString();
     }
 
-
-
+    /**
+     * Returns a Map of components and their corresponding options for the given car model name.
+     * @param modelName The name of the car model.
+     */
     public TreeMap<String, HashSet<String>> getModelSpecifications(String modelName) throws IllegalModelException {
         CarModelSpecification model = getModel(modelName);
         return model.getAvailableOptions();
