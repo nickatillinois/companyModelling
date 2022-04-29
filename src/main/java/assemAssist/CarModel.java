@@ -60,8 +60,8 @@ public class CarModel {
     }
 
     /**
-     * Returns true if this car model is speficied according to the existing constraints.
-     * @return true if this car model is speficied according to the existing constraints.
+     * Returns true if this car model is specified according to the existing constraints.
+     * @return true if this car model is specified according to the existing constraints.
      * @throws IllegalConstraintException if a given constraint does not have the correct format.
      * @throws IllegalModelException if this car model is not specified in the model names
      * @throws OptionThenComponentException if an option is specified implying a component, but the component is not chosen.
