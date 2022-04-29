@@ -49,10 +49,19 @@ public class Catalog {
      * Returns the car model with the given name.
      *
      * @param modelName The name of the car model.
+     * @throws IllegalArgumentException if the given modelName is null or empty or only contains whitespace.
      * @return The car model with the given name.
      */
     public CarModelSpecification getModel(String modelName) throws IllegalModelException {
-
+        if (modelName == null) {
+            throw new IllegalArgumentException("modelName name cannot be null.");
+        }
+        if (modelName.isEmpty()) {
+            throw new IllegalArgumentException("modelName name cannot be empty.");
+        }
+        if(modelName.trim().length() <= 0) {
+            throw new IllegalArgumentException("modelName name cannot be whitespace.");
+        }
         for (CarModelSpecification model : availableModels) {
             if (model.getModelName().equals(modelName)) {
                 return model;
@@ -60,6 +69,7 @@ public class Catalog {
         }
         throw new IllegalModelException("Model " + modelName + " is currently not offered.");
     }
+
     /** A method that returns a string representation of a given car model */
     public String getModelSpecification(String modelName) throws IllegalModelException {
         return getModel(modelName).toString();
@@ -83,6 +93,9 @@ public class Catalog {
         availableModels.add(model);
     }
 
+    /**
+     * Creates the standard car models offered by the car manufacturing company specified in the assignment.
+     */
     private void createStandardModels(){
         TreeMap<String, HashSet<String>> A = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         A.put("Body", new HashSet<>() {{

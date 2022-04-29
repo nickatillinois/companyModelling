@@ -6,11 +6,34 @@ import controller.GarageHolderController;
 import javax.swing.text.html.Option;
 import java.util.*;
 
+/**
+ * The UI for the GarageHolder.
+ * @author Team 10
+ */
 public class GarageHolderUI {
+
+    /**
+     * The controller for the GarageHolder. This is used to interact with the
+     * GarageHolder.
+     */
     private final GarageHolderController garageHolderController;
+
+    /**
+     * The scanner used to read user input.
+     */
     private Scanner in;
 
+    /**
+     * Constructor for the GarageHolderUI.
+     * @param garageHolderController The controller for the GarageHolder.
+     *                               This is used to interact with the GarageHolder.
+     *                               Gets initialised for the GarageHolderUI class.
+     * @throws IllegalArgumentException if the controller is null.
+     */
     public GarageHolderUI(GarageHolderController garageHolderController) {
+        if(garageHolderController == null) {
+            throw new IllegalArgumentException("GarageHolderController cannot be null");
+        }
         this.garageHolderController = garageHolderController;
     }
 

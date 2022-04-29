@@ -25,7 +25,7 @@ import java.util.TreeMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class changeSchedulingAlgorithm {
+public class ChangeSchedulingAlgorithm {
     static CarOrder carOrderA;
     static CarOrder carOrderB;
     static CarOrder carOrderC;
