@@ -1,19 +1,30 @@
 package assemAssist.constraint;
 
 import assemAssist.CarModel;
-import assemAssist.exceptions.IllegalConstraintException;
-import assemAssist.exceptions.OptionAThenOptionBException;
+import assemAssist.exceptions.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 
+/**
+ * Class representing the constraint that each model needs to be in the catalog of the products offered by the car manufacturing company.
+ *
+ * @author SWOP team 10
+ */
 public class IfOptionAThenOptionB extends Constraint {
 
-    // set of lists of each 2 elements implying that option A leads to option B
-    // if the array contains more than two elements, that indicates that the first element implicates the latter two.
+
+    /**
+     * The set of lists of each 2 elements implying that option A leads to option B.
+     * If the array contains more than two elements, that indicates that the first element implicates the latter two.
+     */
     private final HashSet<ArrayList<String>> pairs = new HashSet<>();
 
+
+    /**
+     * Constructor for the IfOptionAThenOptionB class.
+     */
     protected IfOptionAThenOptionB() throws IllegalConstraintException {
         super();
         if(pairs.size() == 0) {
@@ -21,6 +32,17 @@ public class IfOptionAThenOptionB extends Constraint {
         }
     }
 
+    /**
+     * Function that accepts a list of options strings, so that the first element implies one of the latter elements.
+     * For example, if the first element is "Green", and the two other elements "V6" and "V8",
+     * then Green implies V6 or V8.
+     * @param pair The list of options that are implied by the first element in the list.
+     * @throws IllegalConstraintException thrown if:
+     *                                   - the list has less than 2 elements
+     *                                   - One of the strings is null
+     *                                   - Some strings are duplicated
+     *                                   - The list is already in the list of constraints
+     */
     protected void addOptionAThenOptionBPair(ArrayList<String> pair) throws IllegalConstraintException {
         if (pair.size() < 2) {
             throw new IllegalConstraintException("Given list must have at least 2 option strings.");
@@ -48,6 +70,19 @@ public class IfOptionAThenOptionB extends Constraint {
         pairs.add(lowerCasePair);
     }
 
+
+    /**
+     * Function that accepts a list of 1 option string followed by 1 option string, so that the first element implies
+     * the second element and vice versa.
+     * For example, if the first element is "sedan", and the second element is "Green",
+     * then a sedan body implies a Green color and vice versa.
+     * @param pair A list of two option strings
+     * @throws IllegalConstraintException thrown if:
+     *                                   - the list doesn't have 2 elements
+     *                                   - One of the strings is null
+     *                                   - Some strings are duplicated
+     *                                   - The list is already in the list of constraints
+     */
     protected void addOptionAAndOptionBPair(ArrayList<String> pair) throws IllegalConstraintException {
         // must be of size 2
         if (pair.size() != 2) {
@@ -60,7 +95,12 @@ public class IfOptionAThenOptionB extends Constraint {
         this.addOptionAThenOptionBPair(reversed);
     }
 
-    // function to check if a given arraylist of strings is identical to an arraylist in pairs
+    /**
+     * Function to check if a list of options is already in the list of pairs.
+     * @param list The list of options to check.
+     *
+     * @return true if list is not in the list of pairs, false otherwise.
+     */
     private boolean pairsContains(ArrayList<String> list) {
         for (ArrayList<String> pair : pairs) {
             // if each element in pair is also in list in the same sequence, return true
@@ -80,6 +120,15 @@ public class IfOptionAThenOptionB extends Constraint {
         return false;
     }
 
+    /**
+     * Method that checks if the chosen specifications are in line with the constraints
+     *
+     * @param chosenSpecifications The chosen specifications
+     * @throws IllegalArgumentException   | chosenSpecifications = null
+     * @throws OptionAThenOptionBException | IfOptionAThenOptionB is not satisfied
+     *
+     * @return True if the chosen specifications are in line with the constraints, false otherwise.
+     */
     @Override
     protected boolean isValidCombo(CarModel chosenSpecifications) throws IllegalArgumentException, OptionAThenOptionBException {
         if (chosenSpecifications == null) {
@@ -115,6 +164,9 @@ public class IfOptionAThenOptionB extends Constraint {
         return true;
     }
 
+    /**
+     * Method that adds the pairs given in the assignment to the list of pairs.
+     */
     private void addCurrentPairs() throws IllegalConstraintException {
         this.addOptionAThenOptionBPair(new ArrayList<>(Arrays.asList("Sport", "V6", "V8")));
         this.addOptionAThenOptionBPair(new ArrayList<>(Arrays.asList("V8", "Manual")));

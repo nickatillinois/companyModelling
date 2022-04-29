@@ -2,17 +2,36 @@ package assemAssist.constraint;
 
 import assemAssist.CarModel;
 import assemAssist.Catalog;
-import assemAssist.exceptions.IllegalModelException;
+import assemAssist.exceptions.*;
 
 import java.util.HashSet;
 import java.util.TreeMap;
 
+
+/**
+ * Class representing the constraint that chosen each car model must be in the catalog.
+ *
+ * @author SWOP team 10
+ */
 public class Model extends Constraint{
 
+    /**
+     * Constructor for the Model constraint.
+     */
     public Model() {
         super();
     }
 
+
+    /**
+     * method that checks if the chosen specifications are in line with the constraints
+     *
+     * @param chosenSpecifications The chosen specifications
+     * @throws IllegalArgumentException   | chosenSpecifications = null
+     * @throws IllegalModelException | Model is not satisfied
+     *
+     * @return True if the chosen specifications are in line with the constraints, false otherwise.
+     */
     @Override
     protected boolean isValidCombo(CarModel chosenSpecifications) throws IllegalArgumentException, IllegalModelException {
         Catalog catalog = new Catalog();
