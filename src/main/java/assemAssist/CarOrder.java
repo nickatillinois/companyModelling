@@ -16,6 +16,9 @@ import java.util.Objects;
  */
 public class CarOrder implements StatisticsObservable {
 
+    /**
+     * static counter for keeping track of the number of orders in order to assign a unique id to each order.
+     */
     private static int counter = 0;
 
     /**
@@ -43,6 +46,9 @@ public class CarOrder implements StatisticsObservable {
      */
     private LocalDateTime estCompletionTime;
 
+    /**
+     * The estimated completion date of this car order in LocalDateTime format.
+     */
     public LocalDateTime getOrderingTime() {
         return orderingTime;
     }
@@ -80,9 +86,15 @@ public class CarOrder implements StatisticsObservable {
         this.orderingTime = LocalDateTime.now();
     }
 
+
+    /**
+     * Returns the estimated completion date for this car order.
+     * @return The estimated completion date for this car order.
+     */
     public LocalDateTime getEstCompletionTime() {
         return estCompletionTime;
     }
+
     /**
      * Sets the garage holder of this car order to the given garage holder.
      *
@@ -130,8 +142,11 @@ public class CarOrder implements StatisticsObservable {
         this.carModel = carModel;
     }
 
-
-
+    /**
+     * Returns whether this car order is completed or not.
+     * @return true if this car order is completed, false otherwise.
+     *
+     */
     public boolean isCompleted(){
         return this.completed;
     }
@@ -167,40 +182,60 @@ public class CarOrder implements StatisticsObservable {
      * @param completionTime The given estimated completion date in LocalTimeDate format.
 
      */
-
     public void setCompletionTime(LocalDateTime completionTime) throws IllegalCompletionDateException {
-
         if (completionTime == null){throw new IllegalArgumentException("A completion time cannot be null.");}
         if (completionTime.isBefore(LocalDateTime.now())){throw new IllegalCompletionDateException("completion time cannot be set in the past");}
         this.completionTime = completionTime;
     }
 
+    /**
+     * Sets the given LocalTimeDate when this order is estimated to be completed to the given LocalTimeDate.
+     * @param estCompletionTime The given estimated completion date in LocalTimeDate format.
+     * @throws IllegalArgumentException | estCompletionTime is null
+     */
     public void setEstCompletionTime(LocalDateTime estCompletionTime) {
-
         if (estCompletionTime == null){throw new IllegalArgumentException("An estimated completion time cannot be null.");}
         //if (completionTime.isBefore(LocalDate.now())){throw new IllegalCompletionDateException("completion time cannot be set in the past");}
         this.estCompletionTime = estCompletionTime;
     }
 
-
+    /**
+     * Returns the unique id of this carOrder.
+     *
+     * @return The unique id of this carOrder.
+     */
     public int getOrderID(){
         return this.ID;
     }
 
-
-
-
-
+    /**
+     * Function that checks if the given car order is a legal one according to the specified constraints.
+     * @param carModel The car model of the car order.
+     * @throws IllegalArgumentException | carModel is null
+     * @return true if the given car order is legal, false otherwise.
+     */
     public boolean isValidCarModel(CarModel carModel) throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+        if(carModel == null){throw new IllegalArgumentException("A car model cannot be null.");}
         return carModel.inspect();
     }
 
+    /**
+     * Function that returns a string representation of this car order.
+     * @return A string representation of this car order.
+     */
     public String getCarModelAndOptions() {
         String modelAndOptions = "model: " + carModel.getModelName() + ", ";
         modelAndOptions += carModel.getChosenOptions();
         return modelAndOptions;
     }
 
+    /**
+     * Function that returns a string representation of the order details of this car order.
+     * The format of the string is as follows:
+     * "Order ID: <orderID>, Car Model: <carModel>, Options: <options>, Estimated Completion Time: <estCompletionTime>, Completed: <completed>"
+     * Only to be used for pending orders.
+     * @return A string representation of this car order.
+     */
     private ArrayList<String> getPendingOrderDetails(){
         ArrayList<String> orderDetails = new ArrayList<>();
         orderDetails.add("Specifications: " + getCarModelAndOptions ());
@@ -215,6 +250,13 @@ public class CarOrder implements StatisticsObservable {
         return orderDetails;
     }
 
+    /**
+     * Function that returns a string representation of the order details of this car order.
+     * The format of the string is as follows:
+     * Specifications: <carModel>, <options>, order Time: <estCompletionTime>, completionTime: <completionTime>
+     * @return A string representation of this car order.
+     * Only to be used for completed orders.
+     */
     private ArrayList<String> getCompletedOrderDetails(){
         ArrayList<String> orderDetails = new ArrayList<>();
         // format orderingTime in a more readable format
@@ -226,6 +268,16 @@ public class CarOrder implements StatisticsObservable {
         orderDetails.add("completionTime: " + formattedCompletionTime);
         return orderDetails;
     }
+
+    /**
+     * Function that returns a string representation of the order details of this car order.
+     * The format of the string depends on the status of the order.
+     * If the order is pending, the format is as follows:
+     * Specifications: <carModel>, <options>, order Time: <estCompletionTime>, est. completionTime: <estCompletionTime>
+     * If the order is completed, the format is as follows:
+     * Specifications: <carModel>, <options>, order Time: <estCompletionTime>, completionTime: <completionTime>
+     * @return A string representation of this car order.
+     */
     public ArrayList<String> getOrderDetails(){
         if(completed){
             return getCompletedOrderDetails();
@@ -235,6 +287,20 @@ public class CarOrder implements StatisticsObservable {
         }
     }
 
+    /**
+     * Function that returns whether the given CarOrder is equal to this CarOrder.
+     * @param o The CarOrder to compare to this CarOrder.
+     *              If other is null, this function returns false.
+     *              If other is not a CarOrder, this function returns false.
+     *              If other is a CarOrder, this function returns true if and only if
+     *              this CarOrder is equal to other.
+     *              Two CarOrders are equal if they have the same orderID, carModel,
+     *              options, orderingTime, estCompletionTime, and completed.
+     *              If either orderingTime, estCompletionTime, or completionTime is null,
+     *              the corresponding value in other must also be null.
+     *
+     * @return true if and only if this CarOrder is equal to other.
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
