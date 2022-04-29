@@ -5,12 +5,10 @@ import assemAssist.exceptions.*;
 import assemAssist.workStation.AccessoriesPost;
 import assemAssist.workStation.CarBodyPost;
 import assemAssist.workStation.DrivetrainPost;
-import assemAssist.workStation.WorkStation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.TreeMap;
 
@@ -73,8 +71,8 @@ class WorkStationTest {
 
     @Test
     void getAndSetCurrentOrderTest() {
-        carBodyPost.setCurrentOrder(orderA);
-        assertEquals(orderA, carBodyPost.getCurrentOrder());
+        drivetrainPost.setCurrentOrder(orderA);
+        assertEquals(orderA, drivetrainPost.getCurrentOrder());
     }
 
     @Test
@@ -86,20 +84,29 @@ class WorkStationTest {
 
     @Test
     void getTasksTest() {
-        List<AssemblyTask> carBodyPostTasks = List.of(new AssemblyTask("body", "assemble sedan body"), new AssemblyTask("paint", "paint the car blue"));
-        assertEquals(carBodyPostTasks, carBodyPost.getTasks());
+        List<AssemblyTask> carBodyTasks = List.of(new AssemblyTask("body", "assemble sedan body"), new AssemblyTask("paint", "paint the car blue"));
+        for (int i = 0; i < carBodyTasks.size(); i++) {
+            assertEquals(carBodyTasks.get(i).getName(), carBodyPost.getTasks().get(i).getName());
+            assertEquals(carBodyTasks.get(i).getTaskDefinition(), carBodyPost.getTasks().get(i).getTaskDefinition());
+        }
 
         List<AssemblyTask> drivetrainTasks = new ArrayList<>();
         drivetrainTasks.add(new AssemblyTask("engine", "insert V8"));
         drivetrainTasks.add(new AssemblyTask("gearbox", "install 6 manual"));
-        assertEquals(drivetrainTasks, drivetrainPost.getTasks());
+        for (int i = 0; i < drivetrainTasks.size(); i++) {
+            assertEquals(drivetrainTasks.get(i).getName(), drivetrainPost.getTasks().get(i).getName());
+            assertEquals(drivetrainTasks.get(i).getTaskDefinition(), drivetrainPost.getTasks().get(i).getTaskDefinition());
+        }
 
         List<AssemblyTask> accessoriesTasks = new ArrayList<>();
         accessoriesTasks.add(new AssemblyTask("seats", "install leather black seats"));
         accessoriesTasks.add(new AssemblyTask("airco", "install manual airco"));
         accessoriesTasks.add(new AssemblyTask("wheels", "mount sports wheels"));
         accessoriesTasks.add(new AssemblyTask("spoiler", "install high spoiler"));
-        assertEquals(accessoriesTasks, accessoriesPost.getTasks());
+        for (int i = 0; i < drivetrainTasks.size(); i++) {
+            assertEquals(accessoriesTasks.get(i).getName(), accessoriesPost.getTasks().get(i).getName());
+            assertEquals(accessoriesTasks.get(i).getTaskDefinition(), accessoriesPost.getTasks().get(i).getTaskDefinition());
+        }
     }
 
     @Test
@@ -133,9 +140,9 @@ class WorkStationTest {
         assertEquals(mechanicsCBPAfterRemove, carBodyPost.getMechanics());
         drivetrainPost.removeMechanic("Wim");
         List<String> mechanicsDPAfterRemove = List.of("Jos");
-        assertEquals(mechanicsDPAfterRemove,drivetrainPost.getMechanics());
+        assertEquals(mechanicsDPAfterRemove, drivetrainPost.getMechanics());
 
-        assertThrows(IllegalArgumentException.class, () -> drivetrainPost.removeMechanic(null));
+        assertThrows(IllegalArgumentException.class, () -> carBodyPost.removeMechanic(null));
         assertThrows(IllegalArgumentException.class, () -> carBodyPost.removeMechanic(""));
     }
 
