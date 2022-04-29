@@ -67,6 +67,7 @@ public class main {
         company.getProductionScheduler().getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderH);*/
 
         //use Case 1 & 2 Test
+        /*
         TreeMap<String, String> legalOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         legalOptions.put("color", "red");
         legalOptions.put("body", "break");
@@ -93,6 +94,7 @@ public class main {
         company.completeOrderingForm(legalOptions,"Tom Smets","A");
         company.getProductionScheduler().advanceOrders(50);
         company.completeOrderingForm(legalOptions,"Tom Smets","A");
+        */
         new UI(garageHolderUI, managerUI, mechanicUI);
 
     }
