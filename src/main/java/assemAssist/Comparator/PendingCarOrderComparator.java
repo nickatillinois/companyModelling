@@ -1,14 +1,31 @@
-package assemAssist.etc;
+package assemAssist.Comparator;
 
 import assemAssist.CarOrder;
 
 import java.util.Comparator;
 
+/**
+ * This class is used to compare two CarOrder objects.
+ *
+ * @author Team 10
+ */
 public class PendingCarOrderComparator implements Comparator {
 
+
+    /**
+     * Constructor for PendingCarOrderComparator.
+     */
     public PendingCarOrderComparator() {
     }
 
+
+    /**
+     * Compares two CarOrder objects.
+     *
+     * @param o1 The first CarOrder object to compare.
+     * @param o2 The second CarOrder object to compare.
+     * @return The result of the comparison.
+     */
     @Override
     public int compare(Object o1, Object o2) {
         CarOrder c1 = (CarOrder) o1;
