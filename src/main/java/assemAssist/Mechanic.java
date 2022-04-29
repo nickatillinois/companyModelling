@@ -80,7 +80,7 @@ public class Mechanic {
     /**
      * Gives an overview of the different workstations at the assembly line the mechanic works at as well as the tasks
      * at these stations and their status.
-     * @return List containing string of the form "WorkStationName ; TaskName1: TaskStatus1, ..., TaskNameN, TaskStatusN".
+     * @return List containing strings of the form "WorkStationName ; TaskName1: TaskStatus1, ..., TaskNameN, TaskStatusN".
      */
     public List<String> getCurrentStateAssembly() {
         return assemblyLine.getCurrentStateString();
