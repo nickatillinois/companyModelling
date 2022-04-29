@@ -118,24 +118,26 @@ productionSchedule
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2420</x>
+      <x>2398</x>
       <y>759</y>
-      <w>242</w>
-      <h>176</h>
+      <w>275</w>
+      <h>187</h>
     </coordinates>
     <panel_attributes>AssemblyLine
 --
-- maxWorkingHoursToday : Integer
-- hoursWorkedToday : Integer
+- maxWorkingHoursToday : int
+- hoursWorkedToday : int
+_- STARTHOUR: int = 6_
+_- ENDHOUR: int = 22_
 --
++ getWorkStationNames() List&lt;String&gt;
 + nextDay()
-+ getCurrentState() : String
-+ remainWorkingTime()
++ getCurrentState() : List&lt;CarOrder&gt;
++ getCurrentStateString() : List&lt;String&gt;
 + canMove()
-+ canNotMove()
 + move()
-+ findWorkStation(name : String)
-
++ findWorkStation(workStation : String) : WorkStation
+bg=green
 
 </panel_attributes>
     <additional_attributes/>
@@ -164,6 +166,7 @@ _+ newTasks()_
 + performAssemblyTask(task : AssemblyTask, time : int)
 + getTasksAndStatus() : String
 + getFinishedTasks() : List&lt;String&gt;
+bg=green
 
 </panel_attributes>
     <additional_attributes/>
@@ -172,15 +175,15 @@ _+ newTasks()_
     <id>Relation</id>
     <coordinates>
       <x>2508</x>
-      <y>924</y>
+      <y>935</y>
       <w>99</w>
-      <h>154</h>
+      <h>143</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=0..n
 m2=
 workStations</panel_attributes>
-    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -198,15 +201,15 @@ workStations</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>2684</x>
-      <y>660</y>
+      <y>627</y>
       <w>88</w>
-      <h>418</h>
+      <h>451</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
 m2=
 workStation</panel_attributes>
-    <additional_attributes>10.0;360.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;390.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -430,13 +433,13 @@ managerUI</panel_attributes>
     <coordinates>
       <x>2101</x>
       <y>803</y>
-      <w>341</w>
+      <w>319</w>
       <h>44</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m2=1
 assemblyLine</panel_attributes>
-    <additional_attributes>10.0;20.0;290.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;270.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -611,7 +614,7 @@ bg=green
       <x>2365</x>
       <y>539</y>
       <w>396</w>
-      <h>132</h>
+      <h>99</h>
     </coordinates>
     <panel_attributes>Mechanic
 --
@@ -639,15 +642,15 @@ m1=1</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>2508</x>
-      <y>660</y>
+      <y>627</y>
       <w>99</w>
-      <h>121</h>
+      <h>154</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
 m2=
 assemblyLine</panel_attributes>
-    <additional_attributes>10.0;90.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -1558,7 +1561,8 @@ bg=green</panel_attributes>
     <panel_attributes>&lt;&lt;interface&gt;&gt;
 TaskObserver
 --
-+ update(int time)</panel_attributes>
++ update(int time)
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -1574,7 +1578,8 @@ TaskObservable
 --
 + addObserver(observer : TaskObserver
 + removeObserver(observer : TaskObserver)
-+ notifyObservers(int time)</panel_attributes>
++ notifyObservers(int time)
+bg=green</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
