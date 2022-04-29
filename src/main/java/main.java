@@ -75,7 +75,6 @@ public class main {
         legalOptions.put("airco", "manual");
         legalOptions.put("gearbox", "6 manual");
         legalOptions.put("wheels", "winter");
-        CarModel carModelA1 = new CarModel("A", legalOptions);
         company.completeOrderingForm(legalOptions,"Tom Smets","A");
         company.completeOrderingForm(legalOptions,"Tom Smets","A");
         ArrayList<CarOrder> completedCarOrders = new ArrayList<>();
@@ -90,8 +89,6 @@ public class main {
             }
         }
         company.setCompletedCarOrders(completedCarOrders);
-        List<CarOrder>[] completedCarOrders2 = company.getOrdersFromGarageHolder("Tom Smets");
-
         company.getProductionScheduler().advanceOrders(50);
         company.completeOrderingForm(legalOptions,"Tom Smets","A");
         company.getProductionScheduler().advanceOrders(50);
