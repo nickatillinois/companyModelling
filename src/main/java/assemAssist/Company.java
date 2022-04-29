@@ -238,7 +238,7 @@ public class Company implements TaskObserver {
         if(model.trim().length() <= 0) {
             throw new IllegalArgumentException("Model name cannot be whitespace.");
         }
-        return catalog.getModelSpecification(model);
+        return catalog.getModelSpecificationString(model);
     }
 
     /**
@@ -261,7 +261,7 @@ public class Company implements TaskObserver {
         if(model.trim().length() <= 0) {
             throw new IllegalArgumentException("Model name cannot be whitespace.");
         }
-        return catalog.getModelSpecifications(model);
+        return catalog.getOptions(model);
     }
 
     /**

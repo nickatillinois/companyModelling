@@ -47,7 +47,7 @@ public class Model extends Constraint{
         if (!containsModelName) {
             throw new IllegalModelException("Model name " + modelName + " is not in the catalog.");
         }
-        TreeMap<String, HashSet<String>> model = catalog.getModelSpecifications(modelName);
+        TreeMap<String, HashSet<String>> model = catalog.getOptions(modelName);
         // check if the chosen specifications are in the model
         for (String key : chosenSpecifications.getChosenOptions().keySet()) {
             // every key in chosenOptions must be in model, ignore case of key
