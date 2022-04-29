@@ -25,9 +25,10 @@ public class CheckProductionStatisticsTest {
 
     @Test
     public void checkProductionStatistics() throws IllegalCompletionDateException, IllegalModelException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
-        ProductionScheduler productionScheduler = new ProductionScheduler();
+
         Company company = new Company();
-        AssemblyLine assemblyLine = new AssemblyLine();
+        ProductionScheduler productionScheduler = company.getProductionScheduler();
+        AssemblyLine assemblyLine = productionScheduler.getAssemblyLine();
         TreeMap<String, String> legalAOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         legalAOptions.put("color", "red"); legalAOptions.put("body", "break");
         legalAOptions.put("engine", "v4"); legalAOptions.put("seats", "leather white");
