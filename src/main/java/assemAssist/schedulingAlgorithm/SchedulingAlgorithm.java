@@ -12,7 +12,7 @@ public abstract class SchedulingAlgorithm {
     /**
      * This is the list af al car orders that are waiting to be produced.
      */
-    List<CarOrder> carOrderList = new ArrayList<>();
+    static List<CarOrder> carOrderList = new ArrayList<>();
 
     Catalog catalog = new Catalog();
 

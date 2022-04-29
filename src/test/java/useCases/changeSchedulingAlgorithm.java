@@ -84,11 +84,18 @@ public class changeSchedulingAlgorithm {
     @Test
     public  void setBatch() throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         String string = carOrderA.getCarModel().getChosenOptionsString();
-        ByteArrayInputStream in = new ByteArrayInputStream("3\na\n1\n1\n4".getBytes());
+        ByteArrayInputStream in = new ByteArrayInputStream("3\na\n1\n0\n4".getBytes());
         System.setIn(in);
         new UI(new GarageHolderUI(new GarageHolderController(company)),new ManagerUI(new ManagerController(company)),
                 new MechanicUI(new MechanicController(new Mechanic(company.getProductionScheduler().getAssemblyLine()))));
         assertEquals(company.getProductionScheduler().getSchedulers().get(1),company.getProductionScheduler().getSchedulingAlgorithm());
+        List<CarOrder> carOrderList = new ArrayList<>();
+        carOrderList.add(carOrderA);
+        carOrderList.add(carOrderC);
+        carOrderList.add(carOrderE);
+        carOrderList.add(carOrderB);
+        carOrderList.add(carOrderD);
+        assertEquals(carOrderList, company.getProductionScheduler().getSchedulingAlgorithm().getProductionSchedule());
 
     }
 }

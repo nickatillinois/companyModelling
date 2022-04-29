@@ -96,7 +96,8 @@ public class Batch extends SchedulingAlgorithm{
                         if(Objects.equals(specification, order1.getCarModel().getChosenOptionsString()))
                             counter++;
                 if(counter >= 3 ){
-                    batchs.add(specification);
+                    if (!batchs.contains(specification))
+                        batchs.add(specification);
                 }
 
             }

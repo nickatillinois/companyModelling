@@ -26,7 +26,7 @@ public class main {
         ManagerUI managerUI = new ManagerUI(managerController);
         //DEMO
 
-        TreeMap<String, String> legalAOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+       /* TreeMap<String, String> legalAOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         legalAOptions.put("color", "red");
         legalAOptions.put("body", "break");
         legalAOptions.put("engine", "v4");
@@ -61,7 +61,7 @@ public class main {
         company.getProductionScheduler().getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderE);
         company.getProductionScheduler().getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderF);
         company.getProductionScheduler().getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderG);
-        company.getProductionScheduler().getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderH);
+        company.getProductionScheduler().getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderH);*/
         new UI(garageHolderUI, managerUI, mechanicUI);
 
     }
