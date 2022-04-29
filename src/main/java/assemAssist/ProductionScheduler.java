@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
  *
  * @author SWOP Team 10
  */
-    public class ProductionScheduler implements TaskObserver {
+public class ProductionScheduler {
     private final AssemblyLine assemblyLine;
     private SchedulingAlgorithm schedulingAlgorithm = new FIFO();
     private final ArrayList<SchedulingAlgorithm> schedulers = new ArrayList<>();
@@ -82,9 +82,13 @@ import java.util.stream.Collectors;
      * with the same options set are produced if this is true the scheduling algorithm is changed to "FIFO"
      * @param timeBetweenTwoStates | time entered by the manager that was consumed
      */
-    public void advanceOrders(int timeBetweenTwoStates){
+    public CarOrder advanceOrders(int timeBetweenTwoStates){
         if (!assemblyLine.canMove())
-            return;
+            return null;
+        CarOrder finishedOrder;
+        int nrOfWorkStations;
+        nrOfWorkStations = assemblyLine.getWorkStations().size();
+        finishedOrder = assemblyLine.getWorkStations().get(nrOfWorkStations-1).getCurrentOrder();
         if (getProductionSchedule().isEmpty())
             assemblyLine.move(null,timeBetweenTwoStates);
         else {
@@ -94,7 +98,7 @@ import java.util.stream.Collectors;
         if (Objects.equals(schedulingAlgorithm.getName(), "Specification Batch"))
             if (schedulingAlgorithm.getProductionSchedule() == schedulers.get(0).getProductionSchedule())
                 selectSchedulingAlgorithm("FIFO");
-
+        return finishedOrder;
     }
     
     /**
@@ -153,10 +157,5 @@ import java.util.stream.Collectors;
         return pending;
     }
 
-    /**
-     * Updates the observer when a task is finished.
-     */
-    public void update(int time) {
-        advanceOrders(time);
-    }
+
 }
