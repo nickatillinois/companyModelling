@@ -1,3 +1,5 @@
+import assemAssist.CarModel;
+import assemAssist.CarOrder;
 import assemAssist.Company;
 import assemAssist.Mechanic;
 import assemAssist.exceptions.*;
@@ -8,6 +10,8 @@ import ui.GarageHolderUI;
 import ui.ManagerUI;
 import ui.MechanicUI;
 import ui.UI;
+
+import java.util.TreeMap;
 
 public class main {
 
@@ -20,40 +24,46 @@ public class main {
         MechanicUI mechanicUI = new MechanicUI(mechanicController);
         ManagerController managerController = new ManagerController(company);
         ManagerUI managerUI = new ManagerUI(managerController);
-        UI ui = new UI(garageHolderUI, managerUI, mechanicUI);
+        //DEMO
 
+  /*      TreeMap<String, String> legalAOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        legalAOptions.put("color", "red");
+        legalAOptions.put("body", "break");
+        legalAOptions.put("engine", "v4");
+        legalAOptions.put("seats", "leather white");
+        legalAOptions.put("airco", "manual");
+        legalAOptions.put("gearbox", "6 manual");
+        legalAOptions.put("wheels", "winter");
+        CarModel carModelA = new CarModel("A", legalAOptions);
+        TreeMap<String, String> legalBOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        legalBOptions.put("color", "red");
+        legalBOptions.put("body", "break");
+        legalBOptions.put("engine", "v4");
+        legalBOptions.put("seats", "leather white");
+        legalBOptions.put("airco", "manual");
+        legalBOptions.put("gearbox", "6 manual");
+        legalBOptions.put("wheels", "winter");
+        legalBOptions.put("spoiler", "low");
+        CarModel carModelB = new CarModel("B", legalBOptions);
+        CarOrder carOrderA = new CarOrder("Danny Smeets", carModelA);
+        CarOrder carOrderB = new CarOrder("Els Smeets", carModelB);
+        CarOrder carOrderC = new CarOrder("Dirk Smeets", carModelA);
+        CarOrder carOrderD = new CarOrder("Jan Smeets", carModelB);
+        CarOrder carOrderE = new CarOrder("Jef Smeets", carModelA);
+        CarOrder carOrderF = new CarOrder("Jef Smeets", carModelB);
+        CarOrder carOrderG = new CarOrder("Jef Smeets", carModelA);
+        CarOrder carOrderH = new CarOrder("Jef Smeets", carModelB);
 
-        /*//DEMO
-        CarModelSpecification cmf = new CarModelSpecification(new Body("sedan"),new Color("red"),
-                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
-                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        String modelName = "jaguar";
-        CarModel carModel = new CarModel(modelName, cmf);
-        String garageHolder = "Nick Degelin";
-        CarOrder carOrder1 = new CarOrder(garageHolder, carModel);
-
-        CarModelSpecification cmf2 = new CarModelSpecification(new Body("sedan"),new Color("blue"),
-                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
-                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        CarModel carModel2 = new CarModel(modelName, cmf2);
-        CarOrder carOrder2 = new CarOrder(garageHolder, carModel2);
-
-        String garageHolder2 = "Raf Sablon";
-        CarModelSpecification cmf3 = new CarModelSpecification(new Body("sedan"),new Color("blue"),
-                new Engine("standard 2l 4 cilinders"),new Gearbox("6 speed manual"),
-                new Seats("leather white"),new Airco("manual"),new Wheels("comfort"));
-        CarModel carModel3 = new CarModel(modelName, cmf3);
-        CarOrder carOrder3 = new CarOrder(garageHolder2, carModel3);
-        productionScheduler.getAssemblyLine().getWorkStations().get(0).setCurrentOrder(carOrder3);
-        productionScheduler.getAssemblyLine().getWorkStations().get(1).setCurrentOrder(carOrder2);
-        productionScheduler.getAssemblyLine().getWorkStations().get(2).setCurrentOrder(carOrder1);
-        for (AssemblyTask task :productionScheduler.getAssemblyLine().getWorkStations().get(2).getTasks()){
-            task.setIsCompleted(true);
-        }
-        for (AssemblyTask task :productionScheduler.getAssemblyLine().getWorkStations().get(1).getTasks()){
-            task.setIsCompleted(true);
-        }
-        // Tot hier DEMO*/
+        company.getProductionScheduler().getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderA);
+        company.getProductionScheduler().getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderB);
+        company.getProductionScheduler().getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderC);
+        company.getProductionScheduler().getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderD);
+        company.getProductionScheduler().getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderE);
+        company.getProductionScheduler().getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderF);
+        company.getProductionScheduler().getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderG);
+        company.getProductionScheduler().getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderH);
+*/
+        new UI(garageHolderUI, managerUI, mechanicUI);
 
     }
 }
