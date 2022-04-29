@@ -47,7 +47,9 @@ public class Mechanic {
      * @param workStationName The name of the workstation the mechanic wants to work at.
      * @return List of the names of the pending tasks at the selected workstation.
      */
-    public List<String> selectWorkStation(String workStationName) {
+    public List<String> selectWorkStation(String workStationName) throws IllegalArgumentException {
+        if (workStationName == null)
+            throw new IllegalArgumentException("The name of the workstation cannot be null.");
         WorkStation workStation = assemblyLine.findWorkStation(workStationName);
         this.workStation = workStation;
         return workStation.getPendingTasks();
@@ -58,7 +60,9 @@ public class Mechanic {
      * @param taskName The name of the selected task.
      * @return The description of the selected task.
      */
-    public String selectTask(String taskName) {
+    public String selectTask(String taskName) throws IllegalArgumentException {
+        if (taskName == null)
+            throw new IllegalArgumentException("The name of a task cannot be null.");
         return workStation.getInformationFromTask(taskName);
     }
 

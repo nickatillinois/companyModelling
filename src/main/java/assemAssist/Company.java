@@ -1,10 +1,9 @@
 package assemAssist;
 
-import assemAssist.etc.CompletedCarOrderComparator;
-import assemAssist.etc.PendingCarOrderComparator;
+import assemAssist.Comparator.CompletedCarOrderComparator;
+import assemAssist.Comparator.PendingCarOrderComparator;
 import assemAssist.exceptions.*;
 import assemAssist.observer.TaskObserver;
-import assemAssist.schedulingAlgorithm.SchedulingAlgorithm;
 import assemAssist.statistics.DelayStats;
 import assemAssist.statistics.Stats;
 import assemAssist.statistics.WorkingDayStats;

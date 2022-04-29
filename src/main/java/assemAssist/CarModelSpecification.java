@@ -16,9 +16,13 @@ public class CarModelSpecification {
      */
     private String modelName;
 
-    private final int standardTaskTime;
     /**
-     * A map containing the options for this car model's components.
+     * An integer with the number of minutes it normally takes to finish a task.
+     */
+    private final int standardTaskTime;
+
+    /**
+     * A map containing the components with corresponding options for this car model's components.
      */
     private TreeMap<String, HashSet<String>> availableOptions;
 
@@ -51,6 +55,11 @@ public class CarModelSpecification {
         return modelName;
     }
 
+    /**
+     * Returns the standard task time for this car model.
+     *
+     * @return Standard task time.
+     */
     public int getStandardWorkStationTime() {
         return standardTaskTime;
     }
@@ -101,6 +110,12 @@ public class CarModelSpecification {
                 ", availableOptions =" + getAvailableOptionsString() +
                 '}';
     }
+
+    /**
+     * Returns a string representation of the available options of this car model.
+     *
+     * @return A string representation of the available options of this car model.
+     */
     public String getAvailableOptionsString(){
     	StringBuilder sb = new StringBuilder();
     	for(String key : availableOptions.keySet()){

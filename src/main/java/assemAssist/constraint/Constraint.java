@@ -4,7 +4,7 @@ import assemAssist.CarModel;
 import assemAssist.exceptions.*;
 
 /**
- * Class representing a restriction.
+ * Class representing a restriction on a CarModel.
  * @author SWOP team 10
  */
 public abstract class Constraint {
@@ -20,7 +20,12 @@ public abstract class Constraint {
      *
      * @param chosenSpecifications The chosen specifications
      * @throws IllegalArgumentException   | chosenSpecifications = null
-     * @throws IllegalConstraintException | the chosen specifications are not in line with the constraints
+     * @throws IllegalConstraintException | a given constraint is not a correct constraint
+     * @throws OptionAThenOptionBException | IfOptionAThenOptionB is not satisfied
+     * @throws OptionThenComponentException | IfOptionThenComponent is not satisfied
+     * @throws RequiredComponentException   | IfRequiredComponent is not satisfied
+     * @throws IllegalModelException | Model is not satisfied
+     *
      * @return True if the chosen specifications are in line with the constraints, false otherwise.
      */
     protected abstract boolean isValidCombo(CarModel chosenSpecifications) throws IllegalArgumentException, IllegalConstraintException, IllegalModelException, RequiredComponentException, OptionAThenOptionBException, OptionThenComponentException;

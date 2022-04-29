@@ -11,7 +11,14 @@ import java.util.*;
  */
 public class Catalog {
 
+    /**
+     * The set of the CarModels offered by the car manufacturing company.
+     */
     private static final HashSet<CarModelSpecification> availableModels = new HashSet<>();
+
+    /**
+     * A constructor that initializes the catalog with the car models specified in the assignment.
+     */
     public Catalog() {
         createStandardModels();
     }
@@ -25,6 +32,11 @@ public class Catalog {
         return availableModels;
     }
 
+    /**
+     * Returns a set of car model names currently offered by the car manufacturing company.
+     *
+     * @return A set of car model names currently offered by the car manufacturing company.
+     */
     public HashSet<String> getAvailableModelNames() {
         HashSet<String> names = new HashSet<>();    // Set of all available model names
         for (CarModelSpecification model : availableModels) {
@@ -37,9 +49,19 @@ public class Catalog {
      * Returns the car model with the given name.
      *
      * @param modelName The name of the car model.
+     * @throws IllegalArgumentException if the given modelName is null or empty or only contains whitespace.
      * @return The car model with the given name.
      */
     public CarModelSpecification getModel(String modelName) throws IllegalModelException {
+        if (modelName == null) {
+            throw new IllegalArgumentException("modelName name cannot be null.");
+        }
+        if (modelName.isEmpty()) {
+            throw new IllegalArgumentException("modelName name cannot be empty.");
+        }
+        if(modelName.trim().length() <= 0) {
+            throw new IllegalArgumentException("modelName name cannot be whitespace.");
+        }
         for (CarModelSpecification model : availableModels) {
             if (model.getModelName().equals(modelName)) {
                 return model;
@@ -47,13 +69,16 @@ public class Catalog {
         }
         throw new IllegalModelException("Model " + modelName + " is currently not offered.");
     }
+
     /** A method that returns a string representation of a given car model */
     public String getModelSpecification(String modelName) throws IllegalModelException {
         return getModel(modelName).toString();
     }
 
-
-
+    /**
+     * Returns a Map of components and their corresponding options for the given car model name.
+     * @param modelName The name of the car model.
+     */
     public TreeMap<String, HashSet<String>> getModelSpecifications(String modelName) throws IllegalModelException {
         CarModelSpecification model = getModel(modelName);
         return model.getAvailableOptions();
@@ -68,6 +93,9 @@ public class Catalog {
         availableModels.add(model);
     }
 
+    /**
+     * Creates the standard car models offered by the car manufacturing company specified in the assignment.
+     */
     private void createStandardModels(){
         TreeMap<String, HashSet<String>> A = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         A.put("Body", new HashSet<>() {{
