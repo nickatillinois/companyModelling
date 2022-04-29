@@ -60,7 +60,9 @@ public class Mechanic {
      * @param taskName The name of the selected task.
      * @return The description of the selected task.
      */
-    public String selectTask(String taskName) {
+    public String selectTask(String taskName) throws IllegalArgumentException {
+        if (taskName == null)
+            throw new IllegalArgumentException("The name of a task cannot be null.");
         return workStation.getInformationFromTask(taskName);
     }
 
