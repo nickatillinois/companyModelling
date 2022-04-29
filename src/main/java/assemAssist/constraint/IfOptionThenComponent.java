@@ -1,19 +1,29 @@
 package assemAssist.constraint;
 
 import assemAssist.CarModel;
-import assemAssist.exceptions.IllegalConstraintException;
-import assemAssist.exceptions.OptionThenComponentException;
+import assemAssist.exceptions.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 
+
+/**
+ * Class representing the constraint that some options imply a component.
+ *
+ * @author SWOP team 10
+ */
 public class IfOptionThenComponent extends Constraint {
 
-    // set of lists of each 2 elements implying that option leads to Component.
-    // if the array contains more than two elements, that indicates that the first element implicates the latter two.
+    /**
+     * Set of lists of each two elemtens implying that the first element implies the second.
+     *
+     */
     private static final HashSet<ArrayList<String>> pairs = new HashSet<>();
 
+    /**
+     * Initializes the pairs of options and components.
+     */
     protected IfOptionThenComponent() throws IllegalConstraintException {
         super();
         if(pairs.size() == 0) {
@@ -21,6 +31,18 @@ public class IfOptionThenComponent extends Constraint {
         }
     }
 
+
+    /**
+     * Function that accepts a list of 1 option string followed by 1 component string, so that the first element implies the second element.
+     * For example, if the first element is "Green", and the second element is "wheels",
+     * then a Green color implies that the car has wheels.
+     * @param pair A list of 1 option string followed by 1 component string
+     * @throws IllegalConstraintException thrown if:
+     *                                   - the list doesn't have 2 elements
+     *                                   - One of the strings is null
+     *                                   - Some strings are duplicated
+     *                                   - The list is already in the list of constraints
+     */
     protected void addOptionThenComponentPair(ArrayList<String> pair) throws IllegalConstraintException {
         // must be 2 elements
         if (pair.size() != 2) {
@@ -49,7 +71,12 @@ public class IfOptionThenComponent extends Constraint {
         pairs.add(lowerCasePair);
     }
 
-    // function to check if a given arraylist of strings is identical to an arraylist in pairs
+    /**
+     * Function to check if a list of options is already in the list of pairs.
+     * @param list The list of options to check.
+     *
+     * @return true if list is not in the list of pairs, false otherwise.
+     */
     private boolean pairsContains(ArrayList<String> list) {
         for (ArrayList<String> pair : pairs) {
             // if each element in pair is also in list in the same sequence, return true
@@ -64,6 +91,16 @@ public class IfOptionThenComponent extends Constraint {
         return false;
     }
 
+
+    /**
+     * method that checks if the chosen specifications are in line with the constraints
+     *
+     * @param chosenSpecifications The chosen specifications
+     * @throws IllegalArgumentException   | chosenSpecifications = null
+     * @throws OptionThenComponentException | IfOptionThenComponent is not satisfied
+     *
+     * @return True if the chosen specifications are in line with the constraints, false otherwise.
+     */
     @Override
     protected boolean isValidCombo(CarModel chosenSpecifications) throws IllegalArgumentException, OptionThenComponentException {
         if (chosenSpecifications == null) {
@@ -86,6 +123,9 @@ public class IfOptionThenComponent extends Constraint {
         return true;
     }
 
+    /**
+     * Method that adds the pairs given in the assignment to the list of pairs.
+     */
     private void addCurrentPairs() throws IllegalConstraintException {
         this.addOptionThenComponentPair(new ArrayList<>(Arrays.asList("Sport", "Spoiler")));
     }

@@ -11,7 +11,14 @@ import java.util.*;
  */
 public class Catalog {
 
+    /**
+     * The set of the CarModels offered by the car manufacturing company.
+     */
     private static final HashSet<CarModelSpecification> availableModels = new HashSet<>();
+
+    /**
+     * A constructor that initializes the catalog with the car models specified in the assignment.
+     */
     public Catalog() {
         createStandardModels();
     }
@@ -25,6 +32,11 @@ public class Catalog {
         return availableModels;
     }
 
+    /**
+     * Returns a set of car model names currently offered by the car manufacturing company.
+     *
+     * @return A set of car model names currently offered by the car manufacturing company.
+     */
     public HashSet<String> getAvailableModelNames() {
         HashSet<String> names = new HashSet<>();    // Set of all available model names
         for (CarModelSpecification model : availableModels) {
@@ -40,6 +52,7 @@ public class Catalog {
      * @return The car model with the given name.
      */
     public CarModelSpecification getModel(String modelName) throws IllegalModelException {
+
         for (CarModelSpecification model : availableModels) {
             if (model.getModelName().equals(modelName)) {
                 return model;

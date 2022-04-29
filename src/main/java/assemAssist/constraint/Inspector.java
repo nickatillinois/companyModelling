@@ -5,28 +5,54 @@ import assemAssist.exceptions.*;
 
 import java.util.ArrayList;
 
+/**
+ * Class representing a constraint inspector that inspects a car model for
+ * constraints.
+ *
+ * @author SWOP team 10
+ */
 public class Inspector {
 
     /**
      * List of constraints that the inspector validates.
      */
     private static ArrayList<Constraint> constraints;
+
+    /**
+     * The car model to be inspected.
+     */
     private final CarModel carModel;
 
     /**
-     * Creates a new inspector.
+     * Creates a new inspector with the given car model.
+     * @param carModel The car model to be inspected.
+     *                 The inspector will not be able to inspect the car model if it is null.
+     *                 The inspector will not be able to inspect the car model if it is not a valid car model.
+     * @throws IllegalModelException thrown if the car model is null.
      */
-    public Inspector(CarModel carModel) throws IllegalConstraintException {
+    public Inspector(CarModel carModel) throws IllegalConstraintException, IllegalModelException {
+        if (carModel == null) {
+            throw new IllegalModelException("The car model is null.");
+        }
         constraints = new ArrayList<>();
         this.carModel = carModel;
         addConstraints();
     }
+
+    /**
+     * Adds constraints to the inspector.
+     */
     private void addConstraints() throws IllegalConstraintException {
         constraints.add(new Model());
         constraints.add(new RequiredComponent());
         constraints.add(new IfOptionAThenOptionB());
         constraints.add(new IfOptionThenComponent());
     }
+
+    /**
+     * Inspects the car model for constraints.
+     * @return true if the car model is valid, false otherwise.
+     */
     public boolean inspect() throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         for (Constraint constraint : constraints) {
             if(!constraint.isValidCombo(this.carModel)) {

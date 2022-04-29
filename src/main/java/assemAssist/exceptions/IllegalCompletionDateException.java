@@ -1,6 +1,14 @@
 package assemAssist.exceptions;
 
+/**
+ * A class representing an illegal completion exception.
+ * Thrown when a completion date is not in the future.
+ *
+ * @author SWOP team 10
+ */
 public class IllegalCompletionDateException extends Exception{
+
+
     /**
      * Creates a new illegal completion date exception given a message.
      *

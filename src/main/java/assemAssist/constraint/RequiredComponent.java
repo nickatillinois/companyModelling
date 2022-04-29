@@ -1,12 +1,32 @@
 package assemAssist.constraint;
 
 import assemAssist.CarModel;
-import assemAssist.exceptions.RequiredComponentException;
+import assemAssist.exceptions.*;
 
+
+/**
+ * Class representing the certain components are required to be present in the
+ * car.
+ */
 public class RequiredComponent extends Constraint {
+
+    /**
+     * Constructor for the class.
+     */
     public RequiredComponent() {
         super();
     }
+
+
+    /**
+     * method that checks if the chosen specifications are in line with the constraints
+     *
+     * @param chosenSpecifications The chosen specifications
+     * @throws IllegalArgumentException   | chosenSpecifications = null
+     * @throws RequiredComponentException   | IfRequiredComponent is not satisfied
+     *
+     * @return True if the chosen specifications are in line with the constraints, false otherwise.
+     */
     @Override
     protected boolean isValidCombo(CarModel chosenSpecifications) throws IllegalArgumentException, RequiredComponentException {
         if(
