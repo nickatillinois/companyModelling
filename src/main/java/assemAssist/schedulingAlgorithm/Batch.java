@@ -27,6 +27,8 @@ public class Batch extends SchedulingAlgorithm{
             throw new IllegalArgumentException("There is no production schedule because there is no batch selected!");
         if (productionSchedule.isEmpty())
             return null;
+        carOrderList.remove(getProductionSchedule().get(0));
+        productionSchedule.remove(getProductionSchedule().get(0));
         return getProductionSchedule().get(0);
     }
 
@@ -95,7 +97,6 @@ public class Batch extends SchedulingAlgorithm{
                             counter++;
                 if(counter >= 3 ){
                     batchs.add(specification);
-                    break;
                 }
 
             }
