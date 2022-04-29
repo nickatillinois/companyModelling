@@ -3,13 +3,11 @@ package assemAssist;
 import assemAssist.etc.CompletedCarOrderComparator;
 import assemAssist.etc.PendingCarOrderComparator;
 import assemAssist.exceptions.*;
-import assemAssist.schedulingAlgorithm.SchedulingAlgorithm;
 import assemAssist.statistics.DelayStats;
 import assemAssist.statistics.Stats;
 import assemAssist.statistics.WorkingDayStats;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -18,9 +16,9 @@ import java.util.TreeMap;
 
 public class Company {
     private final ProductionScheduler productionScheduler;
-    private Catalog catalog;
+    private final Catalog catalog;
     private ArrayList<CarOrder> completedCarOrders;
-    private List<Stats> statistics = new ArrayList<>();
+    private final List<Stats> statistics = new ArrayList<>();
 
     public Company(){
         this.productionScheduler = new ProductionScheduler();

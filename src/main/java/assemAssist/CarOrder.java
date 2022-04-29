@@ -149,6 +149,7 @@ public class CarOrder implements StatisticsObservable {
             this.completionTime = LocalDateTime.now();
         double delayInMinutes = ChronoUnit.MINUTES.between(estCompletionTime,completionTime);
         notifyObservers(delayInMinutes);
+
     }
 
     /**

@@ -11,7 +11,7 @@ import java.util.*;
  */
 public class Catalog {
 
-    private static HashSet<CarModelSpecification> availableModels = new HashSet<>();
+    private static final HashSet<CarModelSpecification> availableModels = new HashSet<>();
     public Catalog() {
         createStandardModels();
     }

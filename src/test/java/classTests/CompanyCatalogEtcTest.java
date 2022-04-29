@@ -23,10 +23,6 @@ public class CompanyCatalogEtcTest {
     static CarOrder carOrderD;
     static CarOrder carOrderE;
     static CarOrder carOrderF;
-    static CarOrder carOrderG;
-    static CarOrder carOrderH;
-    static CarOrder carOrderI;
-    static CarOrder carOrderJ;
 
     @BeforeAll
     static void init() throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
@@ -71,8 +67,6 @@ public class CompanyCatalogEtcTest {
         carOrderE.setEstCompletionTime(LocalDateTime.now().minusDays(2));
         carOrderF.setEstCompletionTime(LocalDateTime.now().minusDays(3));
         System.out.println(carOrderA.getEstCompletionTime());
-        // company.addOrderToProductionSchedule(carOrderB);
-        // company.addOrderToProductionSchedule(carOrderC);
         company.completeOrderingForm(legalAOptions,"Danny Smeets","B");
         company.completeOrderingForm(legalBOptions,"Sandy Smeets","B");
         company.completeOrderingForm(legalCOptions,"Kim Smeets","C");
@@ -270,7 +264,7 @@ public class CompanyCatalogEtcTest {
     }
 
     @Test
-    void testNewLogin() throws IllegalArgumentException, IllegalModelException, IllegalConstraintException, IllegalCompletionDateException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException, OrderNotFoundException {
+    void testNewLogin() throws IllegalArgumentException {
         boolean got_error = false;
         try{
             company.newLogin(null);
@@ -394,15 +388,13 @@ public class CompanyCatalogEtcTest {
             got_error = true;
         }
         assertTrue(got_error);
-        got_error = false;
-        CarModelSpecification Dee = new CarModelSpecification("D", 80, D);
     }
 
     @Test
-    void testSetModelname() {
+    void testSetModelName() {
         String oldName;
         TreeMap<String, HashSet<String>> oldOptions;
-        boolean got_error = false;
+        boolean got_error;
         for (CarModelSpecification c : company.getCatalog().getAvailableModels()) {
             oldName = c.getModelName();
             got_error = false;
@@ -446,14 +438,14 @@ public class CompanyCatalogEtcTest {
         for (CarModelSpecification c : company.getCatalog().getAvailableModels()) {
             // print a nice box
             System.out.println("+" + String.join("", Collections.nCopies(c.toString().length() + 2, "-")) + "+");
-            System.out.println("| " + c.toString() + " |");
+            System.out.println("| " + c + " |");
             System.out.println("+" + String.join("", Collections.nCopies(c.toString().length() + 2, "-")) + "+");
         }
     }
 
     @Test
-    void testaddOption() {
-        boolean got_error = false;
+    void testAddOption() {
+        boolean got_error;
         for (CarModelSpecification c : company.getCatalog().getAvailableModels()) {
             got_error = false;
             try{
@@ -518,7 +510,7 @@ public class CompanyCatalogEtcTest {
 
     @Test
     void testAddComponent() {
-        boolean got_error = false;
+        boolean got_error;
         HashSet<String> options = new HashSet<>();
         for (CarModelSpecification c : company.getCatalog().getAvailableModels()) {
             got_error = false;
@@ -564,8 +556,7 @@ public class CompanyCatalogEtcTest {
 
     @Test
     void testRemoveComponent() {
-        boolean got_error = false;
-        HashSet<String> options = new HashSet<>();
+        boolean got_error;
         for (CarModelSpecification c : company.getCatalog().getAvailableModels()) {
             got_error = false;
             try{

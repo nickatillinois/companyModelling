@@ -12,7 +12,7 @@ public class IfOptionAThenOptionB extends Constraint {
 
     // set of lists of each 2 elements implying that option A leads to option B
     // if the array contains more than two elements, that indicates that the first element implicates the latter two.
-    private HashSet<ArrayList<String>> pairs = new HashSet<>();
+    private final HashSet<ArrayList<String>> pairs = new HashSet<>();
 
     protected IfOptionAThenOptionB() throws IllegalConstraintException {
         super();
