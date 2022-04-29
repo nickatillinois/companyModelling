@@ -380,6 +380,10 @@ public class Company implements TaskObserver {
         for (Stats stat : statistics) {
             carOrder.addObserver(stat);
         }
+
+        // When an order is added to the production schedule, it is possible it can already be added to the assembly line.
+        update(0);
+
         // format carOrder.getEstCompletionTime() in a nice way
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         return carOrder.getEstCompletionTime().format(formatter);

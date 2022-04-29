@@ -60,7 +60,7 @@ public class ProductionScheduler {
     }
 
     /**
-     * This function returns the assembly line on whits this production schedule runs.
+     * This function returns the assembly line on which this production schedule runs.
      * @return assemblyLine
      */
     public AssemblyLine getAssemblyLine(){
@@ -78,7 +78,7 @@ public class ProductionScheduler {
 
     /**
      * This function will advance the assembly line if that is possible and then returns the nuw state
-     * else it returns null. If the scheduling algorithm is "Specification Batch" than it will check of al the orders
+     * else it returns null. If the scheduling algorithm is "Specification Batch" then it will check of al the orders
      * with the same options set are produced if this is true the scheduling algorithm is changed to "FIFO"
      * @param timeBetweenTwoStates | time entered by the manager that was consumed
      */
