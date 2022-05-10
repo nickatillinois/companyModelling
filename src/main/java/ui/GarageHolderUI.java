@@ -2,8 +2,6 @@ package ui;
 
 import assemAssist.exceptions.*;
 import controller.GarageHolderController;
-
-import javax.swing.text.html.Option;
 import java.util.*;
 
 /**
@@ -47,7 +45,7 @@ public class GarageHolderUI {
      */
     public void startUI(Scanner in) throws IllegalModelException, IllegalCompletionDateException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         this.in = in;
-        System.out.println("Enter your first name lastname, e.g. 'Tom Smets'");
+        System.out.println("Enter your first name and last name, e.g. 'Tom Smets'");
         String name = in.next() + " " + in.next();
         ArrayList<String[]>[] overViewOfOrders = garageHolderController.newLogin(name);
         System.out.println("Your pending orders are:");
@@ -64,7 +62,7 @@ public class GarageHolderUI {
         System.out.println("-------------");
 
         while (true) {
-            System.out.println("Press \'n\' to order a new car, press \'d\' to check the details of an order press \'c\' to leave the overview");
+            System.out.println("Press 'n' to order a new car, press 'd' to check the details of an order press 'c' to leave the overview");
             char nextstep = in.next().charAt(0);
             if (nextstep == 'c') {
                 break;
@@ -126,7 +124,7 @@ public class GarageHolderUI {
 
     /**
      * Handles the case when the user wants order a new car. Once they selected a model, the ordering form is completed
-     * by a submethod for the UI.
+     * by a sub method for the UI.
      * @throws IllegalModelException
      * @throws IllegalCompletionDateException
      */
@@ -180,7 +178,7 @@ public class GarageHolderUI {
         for (String option : orderingFormList.keySet()) {
             System.out.println(option + ":");
             i = 0;
-            System.out.println("Press \'x\' to skip this component, press \'s\' to select it, or press \'q\' to cancel");
+            System.out.println("Press 'x' to skip this component, press 's' to select it, or press 'q' to cancel");
             String choice = in.next();
             if (choice.equalsIgnoreCase("x")) {
                 continue;
@@ -211,13 +209,12 @@ public class GarageHolderUI {
             System.out.println(e.getMessage());
             System.out.println("No order was placed.");
         }
-        System.out.println("Press \'q\' to cancel ordering, press \'s\' to place a new order.");
+        System.out.println("Press 'q' to cancel ordering, press 's' to place a new order.");
         String nextstep = in.next();
         if (nextstep.equals("q")) {
             System.out.println("-------------");
             System.out.println("Leaving the Ordering Form");
             System.out.println("-------------");
-            return;
         } else if (nextstep.equals("s")) {
             System.out.println("-------------");
             System.out.println("Ordering a new car");

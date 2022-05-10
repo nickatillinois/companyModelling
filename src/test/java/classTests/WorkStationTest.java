@@ -26,11 +26,10 @@ class WorkStationTest {
     @BeforeEach
     void init() throws IllegalModelException, IllegalConstraintException, OptionAThenOptionBException, OptionThenComponentException, RequiredComponentException {
 
-        carBodyPost = new CarBodyPost(null);
-        drivetrainPost = new DrivetrainPost(null);
-        accessoriesPost = new AccessoriesPost(null);
-
-        Catalog catalog = new Catalog();
+        Company company = new Company();
+        carBodyPost = new CarBodyPost(company);
+        drivetrainPost = new DrivetrainPost(company);
+        accessoriesPost = new AccessoriesPost(company);
 
         TreeMap<String, String> chosenOptionsA = new TreeMap<>();
         chosenOptionsA.put("Body", "Sedan");
@@ -83,12 +82,16 @@ class WorkStationTest {
     }
 
     @Test
-    void getTasksTest() {
+    void getCarBodyTasksTest() {
         List<AssemblyTask> carBodyTasks = List.of(new AssemblyTask("body", "assemble sedan body"), new AssemblyTask("paint", "paint the car blue"));
         for (int i = 0; i < carBodyTasks.size(); i++) {
             assertEquals(carBodyTasks.get(i).getName(), carBodyPost.getTasks().get(i).getName());
             assertEquals(carBodyTasks.get(i).getTaskDefinition(), carBodyPost.getTasks().get(i).getTaskDefinition());
         }
+    }
+
+    @Test
+    void getDrivetrainTasksTest() {
 
         List<AssemblyTask> drivetrainTasks = new ArrayList<>();
         drivetrainTasks.add(new AssemblyTask("engine", "insert V8"));
@@ -97,13 +100,17 @@ class WorkStationTest {
             assertEquals(drivetrainTasks.get(i).getName(), drivetrainPost.getTasks().get(i).getName());
             assertEquals(drivetrainTasks.get(i).getTaskDefinition(), drivetrainPost.getTasks().get(i).getTaskDefinition());
         }
+    }
+
+    @Test
+    void getAccessoriesTasksTest() {
 
         List<AssemblyTask> accessoriesTasks = new ArrayList<>();
         accessoriesTasks.add(new AssemblyTask("seats", "install leather black seats"));
         accessoriesTasks.add(new AssemblyTask("airco", "install manual airco"));
         accessoriesTasks.add(new AssemblyTask("wheels", "mount sports wheels"));
         accessoriesTasks.add(new AssemblyTask("spoiler", "install high spoiler"));
-        for (int i = 0; i < drivetrainTasks.size(); i++) {
+        for (int i = 0; i < accessoriesTasks.size(); i++) {
             assertEquals(accessoriesTasks.get(i).getName(), accessoriesPost.getTasks().get(i).getName());
             assertEquals(accessoriesTasks.get(i).getTaskDefinition(), accessoriesPost.getTasks().get(i).getTaskDefinition());
         }

@@ -17,7 +17,7 @@ public class MechanicUI {
     public void startUI(Scanner in) {
         this.in = in;
         System.out.println("-------------");
-        System.out.println("Press \'w\' to select a workstation, press \'o\' to get an overview of the assembly line.");
+        System.out.println("Press 'w' to select a workstation, press 'o' to get an overview of the assembly line.");
         while (true) {
             String selection = in.next();
             if (selection.equals("w")) {
@@ -32,6 +32,7 @@ public class MechanicUI {
         }
 
         System.out.println("Leaving the Car Mechanic View.");
+        System.out.println("-------------");
     }
 
     private void workStationUI() {
@@ -63,16 +64,17 @@ public class MechanicUI {
         List<String> currentStatus = mechanicController.getCurrentStateAssembly();
         System.out.println("-------------");
         System.out.println("The current status of the assembly line is:");
-        for (int i = 0; i < currentStatus.size(); i++) {
-            String[] workstationStatus = currentStatus.get(i).split(" ; ");
+        for (String status : currentStatus) {
+            String[] workstationStatus = status.split(" ; ");
+
             System.out.println(workstationStatus[0]);
+            System.out.print("-> ");
             if (workstationStatus.length >= 2) {
                 System.out.println(workstationStatus[1]);
-            }
-            else
+            } else
                 System.out.println("No order at this work station.");
         }
-
+        System.out.println("-------------");
     }
 
     private void performTasksUI(List<String> pendingTasks) {
@@ -86,7 +88,7 @@ public class MechanicUI {
                 }
 
                 while (true) {
-                    System.out.println("Select the task you want to perform. Press \'s\' to stop performing tasks.");
+                    System.out.println("Select the task you want to perform. Press 's' to stop performing tasks.");
                     String task = in.next();
                     if (task.equals("s")) {
                         return;
@@ -118,7 +120,7 @@ public class MechanicUI {
         List<String> pendingTasks;
 
         while (true) {
-            System.out.println("Press \'d\' to indicate the task is finished.");
+            System.out.println("Press 'd' to indicate the task is finished.");
             String finished = in.next();
             if (finished.equals("d")) {
                 System.out.println("Enter the time you spent on this task in minutes:");

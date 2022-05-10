@@ -38,6 +38,12 @@ class StatsTest {
     }
 
     @Test
+    void testConstructors() {
+        workingDayStats = new WorkingDayStats();
+        delayStats = new DelayStats();
+    }
+
+    @Test
     void getStatisticsWorkingDayStats() {
         List<String> statistics = new ArrayList<>();
         statistics.add("the average of completed cars in a day is 11.0");
@@ -122,6 +128,11 @@ class StatsTest {
         delayStats.update(10.0);
         statistics.replace(LocalDate.now().toString(),List.of(15.0,10.0));
         assertEquals(delayStats.getStatsPerDay(),statistics);
+    }
+
+    @Test
+    void checkStatistics() {
+        // TODO implement
     }
 
 }

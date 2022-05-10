@@ -14,7 +14,6 @@ import ui.UI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
-import java.util.concurrent.TimeUnit;
 
 public class main {
 
@@ -30,7 +29,6 @@ public class main {
         ManagerUI managerUI = new ManagerUI(managerController);
 
         //DEMO
-
         TreeMap<String, String> legalAOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         legalAOptions.put("color", "red");
         legalAOptions.put("body", "break");
@@ -52,7 +50,6 @@ public class main {
         company.completeOrderingForm(legalBOptions,"Jef Smeets","B");
         company.completeOrderingForm(legalAOptions,"Danny Smeets","A");
         company.completeOrderingForm(legalAOptions,"Dirk Smeets","A");
-        company.completeOrderingForm(legalAOptions,"Jef Smeets","A");
         company.completeOrderingForm(legalAOptions,"Jef Smeets","A");
         company.completeOrderingForm(legalAOptions,"Jef Smeets","A");
         company.completeOrderingForm(legalAOptions,"Jef Smeets","A");

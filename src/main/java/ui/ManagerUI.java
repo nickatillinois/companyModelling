@@ -1,7 +1,6 @@
 package ui;
 
 import controller.ManagerController;
-
 import java.util.List;
 import java.util.Scanner;
 
@@ -17,7 +16,7 @@ public class ManagerUI {
         this.in = in;
 
         while (true) {
-            System.out.println("Press \'s\' to check the production statistics, press \'a\' to change the scheduling algorithm.");
+            System.out.println("Press 's' to check the production statistics, press 'a' to change the scheduling algorithm.");
             String choice = in.next();
             if (choice.equals("s")) {
                 statisticsUI();
@@ -50,7 +49,7 @@ public class ManagerUI {
             System.out.println(i + ". " + schedulingAlgorithms.get(i));
         }
 
-        System.out.println("Select your chosen scheduling algorithm, by selecting a number. Press \'c\' to cancel.");
+        System.out.println("Select your chosen scheduling algorithm, by selecting the corresponding number. Press 'c' to cancel.");
         while (true) {
             String chosenAlgorithm = in.next();
             if (chosenAlgorithm.equals("c")) {
