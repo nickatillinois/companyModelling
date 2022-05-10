@@ -26,9 +26,9 @@ class WorkStationTest {
     @BeforeEach
     void init() throws IllegalModelException, IllegalConstraintException, OptionAThenOptionBException, OptionThenComponentException, RequiredComponentException {
 
-        carBodyPost = new CarBodyPost();
-        drivetrainPost = new DrivetrainPost();
-        accessoriesPost = new AccessoriesPost();
+        carBodyPost = new CarBodyPost(null);
+        drivetrainPost = new DrivetrainPost(null);
+        accessoriesPost = new AccessoriesPost(null);
 
         Catalog catalog = new Catalog();
 

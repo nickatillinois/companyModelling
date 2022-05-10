@@ -28,7 +28,7 @@ public class MechanicTest {
 
     @BeforeEach
     void init() throws RequiredComponentException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, IllegalModelException {
-        assemblyLine = new AssemblyLine();
+        assemblyLine = new AssemblyLine(null);
         mechanic = new Mechanic(assemblyLine);
 
         mechanic.selectWorkStation("Car Body Post");

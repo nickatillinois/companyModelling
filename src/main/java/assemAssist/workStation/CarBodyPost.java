@@ -1,6 +1,7 @@
 package assemAssist.workStation;
 
 import assemAssist.AssemblyTask;
+import assemAssist.Company;
 
 /**
  *  Class representing a Car Body post
@@ -10,8 +11,9 @@ public class CarBodyPost extends WorkStation{
     /**
      * Creates a car body post.
      */
-    public CarBodyPost() {
+    public CarBodyPost(Company company) {
         super("Car Body Post");
+        addObserver(company);
     }
 
     /**

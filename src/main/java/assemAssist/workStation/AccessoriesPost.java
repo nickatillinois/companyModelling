@@ -1,6 +1,7 @@
 package assemAssist.workStation;
 
 import assemAssist.AssemblyTask;
+import assemAssist.Company;
 
 /**
  *  Class representing an Accessories Post
@@ -10,7 +11,10 @@ public class AccessoriesPost extends WorkStation{
     /**
      * Creates an accessory post.
      */
-    public AccessoriesPost() { super("Accessories Post"); }
+    public AccessoriesPost(Company company) {
+        super("Accessories Post");
+        addObserver(company);
+    }
 
 
     /**

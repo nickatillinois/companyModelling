@@ -51,9 +51,9 @@ public class Company implements TaskObserver {
      * It also creates the statistics of the company.
      */
     public Company(){
-        this.productionScheduler = new ProductionScheduler();
+        this.productionScheduler = new ProductionScheduler(this);
         this.catalog = new Catalog();
-        this.completedCarOrders = new ArrayList<CarOrder>();
+        this.completedCarOrders = new ArrayList<>();
         //statistics aanmaken
         statistics.add(new WorkingDayStats());
         statistics.add(new DelayStats());

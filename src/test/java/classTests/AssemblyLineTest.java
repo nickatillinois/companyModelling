@@ -26,7 +26,7 @@ class AssemblyLineTest {
 
     @BeforeEach
     void init() throws IllegalModelException, IllegalConstraintException, OptionAThenOptionBException, OptionThenComponentException, RequiredComponentException {
-        assemblyLine = new AssemblyLine();
+        assemblyLine = new AssemblyLine(null);
 
         Catalog catalog = new Catalog();
 
@@ -69,9 +69,9 @@ class AssemblyLineTest {
     @Test
     void getWorkStationsTest() {
         ArrayList<WorkStation> workStationstest = new ArrayList<>();
-        workStationstest.add(new CarBodyPost());
-        workStationstest.add(new DrivetrainPost());
-        workStationstest.add(new AccessoriesPost());
+        workStationstest.add(new CarBodyPost(null));
+        workStationstest.add(new DrivetrainPost(null));
+        workStationstest.add(new AccessoriesPost(null));
         assertEquals(workStationstest,assemblyLine.getWorkStations());
     }
 
@@ -183,9 +183,9 @@ class AssemblyLineTest {
 
     @Test
     void findWorkStationTest() {
-        assertEquals(new DrivetrainPost(), assemblyLine.findWorkStation("Drivetrain Post"));
-        assertEquals(new CarBodyPost(), assemblyLine.findWorkStation("Car Body Post"));
-        assertEquals(new AccessoriesPost(), assemblyLine.findWorkStation("Accessories Post"));
+        assertEquals(new DrivetrainPost(null), assemblyLine.findWorkStation("Drivetrain Post"));
+        assertEquals(new CarBodyPost(null), assemblyLine.findWorkStation("Car Body Post"));
+        assertEquals(new AccessoriesPost(null), assemblyLine.findWorkStation("Accessories Post"));
         assertThrows(IllegalArgumentException.class, () -> assemblyLine.findWorkStation("foo"));
     }
 

@@ -22,12 +22,12 @@ public class AssemblyLine {
     /**
      * This will create a new assembly line en initialise it.
      */
-    public AssemblyLine(){
+    public AssemblyLine(Company company){
 
         List<WorkStation> workStations = new ArrayList<>();
-        CarBodyPost carBodyPost = new CarBodyPost(); workStations.add(carBodyPost);
-        DrivetrainPost drivetrainPost = new DrivetrainPost(); workStations.add(drivetrainPost);
-        AccessoriesPost accessoriesPost = new AccessoriesPost(); workStations.add(accessoriesPost);
+        CarBodyPost carBodyPost = new CarBodyPost(company); workStations.add(carBodyPost);
+        DrivetrainPost drivetrainPost = new DrivetrainPost(company); workStations.add(drivetrainPost);
+        AccessoriesPost accessoriesPost = new AccessoriesPost(company); workStations.add(accessoriesPost);
         setWorkStations(workStations);
     }
 
