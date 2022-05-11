@@ -22,16 +22,15 @@ public class DelayStats extends Stats{
      * @param fromXLastDays the number of days this method will return statistics from
      * @param date the date statistics need to be calculated on
      * @return a list of statistics in string form
-     * @throws IllegalArgumentException if the given integer is higher than the amount of statistics in the system
      */
     @Override
     public List<String> getStatistics(int fromXLastDays, LocalDate date) {
-        if (getStatsPerDay().size() < fromXLastDays) {
-            throw new IllegalArgumentException("The system only contains data for the past " + statsPerDay.size() + " days!");
-        }
         List<String> statistics = new ArrayList<>();
-        statistics.add("the average delay on a car is " + getAverage());
-        statistics.add("the median delay on a car is " + getMedian());
+        if (statsPerDay.size() < fromXLastDays) {
+            fromXLastDays = statsPerDay.size();
+        }
+        statistics.add("- the average delay on a car is " + getAverage());
+        statistics.add("- the median delay on a car is " + getMedian());
 
         Map<String,List<Double>> statsOnlyDelays = onlyDelays();
 
@@ -39,12 +38,12 @@ public class DelayStats extends Stats{
             int daysAgo = i + 1;
             String text;
             if (daysAgo == 1) {
-                text = "the last delay was on ";
+                text = "- the last delay was on ";
             } else if (daysAgo == 2) {
-                text = "the 2nd to last delay was on ";
+                text = "- the 2nd to last delay was on ";
             } else if (daysAgo == 3) {
-                text = "the 3rd last delay was on ";
-            } else { text = "the " + daysAgo + "th last delay was on "; }
+                text = "- the 3rd last delay was on ";
+            } else { text = "- the " + daysAgo + "th last delay was on "; }
 
             Set<String> delayDates = statsPerDay.keySet(); List<String> dates = delayDates.stream().toList();
 

@@ -20,7 +20,10 @@ public class ManagerUI {
             String choice = in.next();
             if (choice.equals("s")) {
                 statisticsUI();
-                break;
+                System.out.println("Press 'd' to indicate you are done viewing the production statistics.");
+                if (in.next().equals("d")) {
+                    break;
+                }
             } else if (choice.equals("a")) {
                 algorithmUI();
                 break;

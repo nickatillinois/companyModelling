@@ -29,7 +29,6 @@ public class CarBodyPost extends WorkStation{
         this.addTask(new AssemblyTask("paint",
                 "paint the car " + getCurrentOrder().getCarModel().getChosenOptions().get("Color").toLowerCase()));
 
-
     }
 
 }

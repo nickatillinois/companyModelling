@@ -22,20 +22,21 @@ public class WorkingDayStats extends Stats {
      * @param fromXLastDays the number of days this method will return statistics from
      * @param date the date statistics need to be calculated on
      * @return a list of statistics in string form
-     * @throws IllegalArgumentException if the given integer is higher than the amount of statistics in the system
      */
     @Override
     public List<String> getStatistics(int fromXLastDays, LocalDate date) {
-        if (statsPerDay.size() < fromXLastDays) {
-            throw new IllegalArgumentException("The system only contains data for the past " + statsPerDay.size() + " days!");
-        }
         List<String> statistics = new ArrayList<>();
-        statistics.add("the average of completed cars in a day is " + getAverage());
-        statistics.add("the median of completed cars in a day is " + getMedian());
+        if (statsPerDay.size() < fromXLastDays) {
+            statistics.add("There are no statistics that go back " + fromXLastDays +
+                    " days, here are the statistics for the last " + statsPerDay.size() + " days:");
+            fromXLastDays = statsPerDay.size();
+        }
+        statistics.add("- the average of completed cars in a day is " + getAverage());
+        statistics.add("- the median of completed cars in a day is " + getMedian());
 
         for (int i = 0; i<fromXLastDays; i++) {
             int daysAgo = i + 1;
-            statistics.add("cars produced " + daysAgo + " day(s) ago: " +
+            statistics.add("- cars produced " + daysAgo + " day(s) ago: " +
                     statsPerDay.get(date.minusDays(i+1).toString()).get(0));
         }
         return statistics;

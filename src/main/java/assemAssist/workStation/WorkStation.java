@@ -58,16 +58,18 @@ public abstract class WorkStation implements TaskObservable {
      */
     public void setCurrentOrder(CarOrder newOrder) {
         this.currentOrder = newOrder;
+        tasks.clear();
         if (newOrder != null){
-            tasks.clear();
             newTasks();
         }
     }
 
     /**
      * Returns the name of this work station.
+     *
+     * @return the name of this work station
      */
-    public String getName() {return this.name;}
+    public String getName() { return this.name; }
 
     /**
      *  Assigns the car options of the current car order to this work station and creates new tasks to be completed.
@@ -221,16 +223,15 @@ public abstract class WorkStation implements TaskObservable {
      * @return a string with all the tasks at this work station and their current status
      */
     public String getTasksAndStatus() {
-        String s = "";
+        StringBuilder s = new StringBuilder();
         List<AssemblyTask> assemblyTasks = getTasks();
         for(AssemblyTask assemblyTask : assemblyTasks){
             boolean status = assemblyTask.getIsCompleted();
-            s += assemblyTask.getName() + ": ";
+            s.append(assemblyTask.getName()).append(": ");
             if (status)
-                s += "done, ";
+                s.append("done, ");
             else
-                s += "pending, ";
-
+                s.append("pending, ");
         }
         int j = s.length();
         if (j >= 2)

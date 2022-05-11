@@ -35,7 +35,7 @@ public class Mechanic {
     }
 
     /**
-     * Returns the names of all the work stations at the assemblyline the mechanic works at.
+     * Returns the names of all the work stations at the assembly line the mechanic works at.
      * @return List of names of work stations.
      */
     public List<String> getAllWorkStations() {

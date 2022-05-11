@@ -44,18 +44,6 @@ class StatsTest {
     }
 
     @Test
-    void getStatisticsWorkingDayStats() {
-        List<String> statistics = new ArrayList<>();
-        statistics.add("the average of completed cars in a day is 11.0");
-        statistics.add("the median of completed cars in a day is 11.5");
-        assertEquals(workingDayStats.getStatistics(0,LocalDate.of(2022,4,25)),statistics);
-        statistics.add("cars produced 1 day(s) ago: 10.0");
-        assertEquals(workingDayStats.getStatistics(1,LocalDate.of(2022,4,25)),statistics);
-        statistics.add("cars produced 2 day(s) ago: 13.0");
-        assertEquals(workingDayStats.getStatistics(2,LocalDate.of(2022,4,25)),statistics);
-    }
-
-    @Test
     void getStatisticsDelayStats() {
         List<String> statistics = new ArrayList<>();
         statistics.add("the average delay on a car is 3.5");
@@ -128,6 +116,18 @@ class StatsTest {
         delayStats.update(10.0);
         statistics.replace(LocalDate.now().toString(),List.of(15.0,10.0));
         assertEquals(delayStats.getStatsPerDay(),statistics);
+    }
+
+    @Test
+    void getStatisticsWorkingDayStats() {
+        List<String> statistics = new ArrayList<>();
+        statistics.add("the average of completed cars in a day is 11.0");
+        statistics.add("the median of completed cars in a day is 11.5");
+        assertEquals(workingDayStats.getStatistics(0,LocalDate.of(2022,4,25)),statistics);
+        statistics.add("cars produced 1 day(s) ago: 10.0");
+        assertEquals(workingDayStats.getStatistics(1,LocalDate.of(2022,4,25)),statistics);
+        statistics.add("cars produced 2 day(s) ago: 13.0");
+        assertEquals(workingDayStats.getStatistics(2,LocalDate.of(2022,4,25)),statistics);
     }
 
     @Test
