@@ -19,7 +19,7 @@ public class IfOptionAThenOptionB extends Constraint {
      * The set of lists of each 2 elements implying that option A leads to option B.
      * If the array contains more than two elements, that indicates that the first element implicates the latter two.
      */
-    private final HashSet<ArrayList<String>> pairs = new HashSet<>();
+    private static final HashSet<ArrayList<String>> pairs = new HashSet<>();
 
 
     /**
@@ -162,6 +162,12 @@ public class IfOptionAThenOptionB extends Constraint {
             }
         }
         return true;
+    }
+
+    @Override
+    protected void reset() {
+        // clear the list of pairs
+        pairs.clear();
     }
 
     /**

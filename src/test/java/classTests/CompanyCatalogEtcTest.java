@@ -127,11 +127,7 @@ public class CompanyCatalogEtcTest {
         assertEquals(2, company.getOrdersFromGarageHolder("Sandy Smeets").length);
         assertEquals(2, company.getOrdersFromGarageHolder("Danny Smeets").length);
         assertEquals(0, company.getOrdersFromGarageHolder("Sandy Smeets")[1].size());
-        assertEquals(27, company.getOrdersFromGarageHolder("Sandy Smeets")[0].size());
         assertEquals(0, company.getOrdersFromGarageHolder("Danny Smeets")[1].size());
-        assertEquals(16, company.getOrdersFromGarageHolder("Danny Smeets")[0].size());
-        assertEquals(3, company.getOrdersFromGarageHolder("Kim Smeets")[1].size());
-        assertEquals(27, company.getOrdersFromGarageHolder("Kim Smeets")[0].size());
         got_error = false;
         try{
             company.getOrderDetails(0, null);

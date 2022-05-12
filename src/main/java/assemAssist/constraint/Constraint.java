@@ -29,5 +29,5 @@ public abstract class Constraint {
      * @return True if the chosen specifications are in line with the constraints, false otherwise.
      */
     protected abstract boolean isValidCombo(CarModel chosenSpecifications) throws IllegalArgumentException, IllegalConstraintException, IllegalModelException, RequiredComponentException, OptionAThenOptionBException, OptionThenComponentException;
-
+    protected abstract void reset();
 }

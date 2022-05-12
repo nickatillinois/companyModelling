@@ -42,7 +42,7 @@ public class CarModel {
      *                                  if the given name is the empty string
      *                                  if the given options are null
      */
-    public CarModel(String modelName, TreeMap<String, String> chosenOptions) {
+    public CarModel(String modelName, TreeMap<String, String> chosenOptions) throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         if (modelName == null) {
             throw new IllegalArgumentException("modelName must not be null.");
         }
@@ -57,6 +57,7 @@ public class CarModel {
         }
         this.modelName = modelName;
         this.chosenOptions = chosenOptions;
+        this.inspect();
     }
 
     /**

@@ -123,6 +123,12 @@ public class IfOptionThenComponent extends Constraint {
         return true;
     }
 
+    @Override
+    protected void reset() {
+        // clear the list of pairs
+        pairs.clear();
+    }
+
     /**
      * Method that adds the pairs given in the assignment to the list of pairs.
      */

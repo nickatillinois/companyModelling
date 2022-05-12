@@ -118,4 +118,12 @@ public class Inspector {
             }
         }
     }
+
+    public void reset() throws IllegalConstraintException {
+        for (Constraint constraint : constraints) {
+            constraint.reset();
+        }
+        constraints.clear();
+        addConstraints();
+    }
 }

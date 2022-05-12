@@ -4,10 +4,7 @@ import assemAssist.CarModel;
 import assemAssist.exceptions.*;
 
 
-/**
- * Class representing the certain components are required to be present in the
- * car.
- */
+
 public class RequiredComponent extends Constraint {
 
     /**
@@ -39,5 +36,10 @@ public class RequiredComponent extends Constraint {
             return true;
         }
         throw new RequiredComponentException("You are missing an essential component: body, color, engine, gearbox, seats or/and wheels.");
+    }
+
+    @Override
+    protected void reset() {
+        //do nothing
     }
 }

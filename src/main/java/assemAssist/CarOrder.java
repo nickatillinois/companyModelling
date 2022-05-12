@@ -72,11 +72,10 @@ public class CarOrder implements StatisticsObservable {
      *                                  | garageHolder is the empty string
      *                                  | carModel is null
      */
-    public CarOrder(String  garageHolder, CarModel carModel) throws IllegalArgumentException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+    public CarOrder(String  garageHolder, CarModel carModel) throws IllegalArgumentException{
         if(garageHolder == null){throw new IllegalArgumentException("A garage holder cannot be null.");}
         if(garageHolder.equals("")){throw new IllegalArgumentException("A garage holder cannot be the empty string.");}
         if(carModel == null){throw new IllegalArgumentException("A car model cannot be null.");}
-        isValidCarModel(carModel);
         this.garageHolder = garageHolder;
         this.carModel = carModel;
         this.completed = false;
@@ -206,17 +205,6 @@ public class CarOrder implements StatisticsObservable {
      */
     public int getOrderID(){
         return this.ID;
-    }
-
-    /**
-     * Function that checks if the given car order is a legal one according to the specified constraints.
-     * @param carModel The car model of the car order.
-     * @throws IllegalArgumentException | carModel is null
-     * @return true if the given car order is legal, false otherwise.
-     */
-    public boolean isValidCarModel(CarModel carModel) throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
-        if(carModel == null){throw new IllegalArgumentException("A car model cannot be null.");}
-        return carModel.inspect();
     }
 
     /**

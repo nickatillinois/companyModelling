@@ -80,4 +80,9 @@ public class Model extends Constraint{
         }
         return true;
     }
+
+    @Override
+    protected void reset() {
+        // do nothing
+    }
 }
