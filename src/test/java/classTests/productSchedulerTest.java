@@ -22,7 +22,8 @@ public class productSchedulerTest {
 
     @BeforeEach
     public void init() throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
-        productionScheduler = new ProductionScheduler(null);
+        Company company = new Company();
+        productionScheduler = new ProductionScheduler(company);
         TreeMap<String, String> legalAOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         legalAOptions.put("color", "red");
         legalAOptions.put("body", "sedan");
@@ -32,7 +33,7 @@ public class productSchedulerTest {
         legalAOptions.put("gearbox", "6 manual");
         legalAOptions.put("wheels", "winter");
         CarModel carModelA = new CarModel("A", legalAOptions);
-        carOrderA = new CarOrder("Danny Smeets", carModelA);
+        carOrderA = new CarOrder("Danny Smeets", carModelA,company.getWorkingTimeWorkingStation("A"));
         TreeMap<String, String> legalBOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         legalBOptions.put("color", "red");
         legalBOptions.put("body", "sedan");
@@ -43,7 +44,7 @@ public class productSchedulerTest {
         legalBOptions.put("wheels", "winter");
         legalBOptions.put("spoiler", "low");
         CarModel carModelB = new CarModel("B", legalBOptions);
-        carOrderB = new CarOrder("Sandy Smeets", carModelB);
+        carOrderB = new CarOrder("Sandy Smeets", carModelB,company.getWorkingTimeWorkingStation("B"));
         TreeMap<String, String> legalCOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         legalCOptions.put("color", "black");
         legalCOptions.put("body", "sport");
@@ -54,7 +55,7 @@ public class productSchedulerTest {
         legalCOptions.put("wheels", "winter");
         legalCOptions.put("spoiler", "low");
         CarModel carModelC = new CarModel("C", legalCOptions);
-        carOrderC = new CarOrder("Kim Smeets", carModelC);
+        carOrderC = new CarOrder("Kim Smeets", carModelC,company.getWorkingTimeWorkingStation("C"));
     }
 
     @Test

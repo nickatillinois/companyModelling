@@ -34,7 +34,7 @@ class CarOrderEtcTest {
         legalAOptions.put("gearbox", "6 manual");
         legalAOptions.put("wheels", "winter");
         CarModel carModelA = new CarModel("A", legalAOptions);
-        carOrderA = new CarOrder("Danny Smeets", carModelA);
+        carOrderA = new CarOrder("Danny Smeets", carModelA,company.getWorkingTimeWorkingStation("A"));
         try {
             carOrderA.setGarageHolder(null);
         }
@@ -89,7 +89,7 @@ class CarOrderEtcTest {
         legalBOptions.put("wheels", "winter");
         legalBOptions.put("spoiler", "low");
         CarModel carModelB = new CarModel("B", legalBOptions);
-        carOrderB = new CarOrder("Sandy Smeets", carModelB);
+        carOrderB = new CarOrder("Sandy Smeets", carModelB,company.getWorkingTimeWorkingStation("B"));
         TreeMap<String, String> legalCOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         legalCOptions.put("color", "black");
         legalCOptions.put("body", "sport");
@@ -100,7 +100,7 @@ class CarOrderEtcTest {
         legalCOptions.put("wheels", "winter");
         legalCOptions.put("spoiler", "low");
         CarModel carModelC = new CarModel("C", legalCOptions);
-        carOrderC = new CarOrder("Kim Smeets", carModelC);
+        carOrderC = new CarOrder("Kim Smeets", carModelC,company.getWorkingTimeWorkingStation("C"));
         assertNotEquals(carOrderA, carOrderB);
     }
 
@@ -238,7 +238,7 @@ class CarOrderEtcTest {
             options.put("gearbox", "6 manual");
             options.put("wheels", "winter");
             CarModel model = new CarModel("A", options);
-            CarOrder order = new CarOrder("A", model);
+            CarOrder order = new CarOrder("A", model,company.getWorkingTimeWorkingStation("A"));
             order.setCarModel(model);
             System.out.println(order.getCarModelAndOptions());
             boolean gotException = false;
@@ -360,7 +360,7 @@ class CarOrderEtcTest {
         options2.put("gearbox", "6 manual");
         options2.put("wheels", "winter");
         CarModel model2 = new CarModel("A", options2);
-        CarOrder order = new CarOrder("A", model2);
+        CarOrder order = new CarOrder("A", model2,company.getWorkingTimeWorkingStation("A"));
         gotError = false;
         try{
             order.setCompletionTime(LocalDateTime.now().minusDays(1));

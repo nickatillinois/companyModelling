@@ -26,9 +26,8 @@ class AssemblyLineTest {
 
     @BeforeEach
     void init() throws IllegalModelException, IllegalConstraintException, OptionAThenOptionBException, OptionThenComponentException, RequiredComponentException {
-        assemblyLine = new AssemblyLine(null);
-
-        Catalog catalog = new Catalog();
+        Company company = new Company();
+        assemblyLine = new AssemblyLine(company);
 
         TreeMap<String, String> chosenOptionsA = new TreeMap<>();
         chosenOptionsA.put("Body", "Sedan");
@@ -38,7 +37,7 @@ class AssemblyLineTest {
         chosenOptionsA.put("Seats", "leather white");
         chosenOptionsA.put("Airco", "Manual");
         chosenOptionsA.put("Wheels", "comfort");
-        orderA = new CarOrder("A", new CarModel("A", chosenOptionsA));
+        orderA = new CarOrder("A", new CarModel("A", chosenOptionsA),company.getWorkingTimeWorkingStation("A"));
         orderA.setEstCompletionTime(LocalDateTime.now());
 
         TreeMap<String, String> chosenOptionsB = new TreeMap<>();
@@ -50,7 +49,7 @@ class AssemblyLineTest {
         chosenOptionsB.put("Airco", "Manual");
         chosenOptionsB.put("Wheels", "sports");
         chosenOptionsB.put("spoiler", "low");
-        orderB = new CarOrder("B", new CarModel("B", chosenOptionsB));
+        orderB = new CarOrder("B", new CarModel("B", chosenOptionsB),company.getWorkingTimeWorkingStation("B"));
         orderB.setEstCompletionTime(LocalDateTime.now());
 
         TreeMap<String, String> chosenOptionsC = new TreeMap<>();
@@ -62,7 +61,7 @@ class AssemblyLineTest {
         chosenOptionsC.put("Airco", "Manual");
         chosenOptionsC.put("Wheels", "sports");
         chosenOptionsC.put("spoiler", "high");
-        orderC = new CarOrder("C", new CarModel("C", chosenOptionsC));
+        orderC = new CarOrder("C", new CarModel("C", chosenOptionsC),company.getWorkingTimeWorkingStation("C"));
         orderC.setEstCompletionTime(LocalDateTime.now());
     }
 

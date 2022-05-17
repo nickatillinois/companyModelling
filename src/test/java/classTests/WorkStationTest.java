@@ -39,7 +39,7 @@ class WorkStationTest {
         chosenOptionsA.put("Seats", "leather white");
         chosenOptionsA.put("Airco", "Manual");
         chosenOptionsA.put("Wheels", "comfort");
-        orderA = new CarOrder("A", new CarModel("A", chosenOptionsA));
+        orderA = new CarOrder("A", new CarModel("A", chosenOptionsA),company.getWorkingTimeWorkingStation("A"));
 
         TreeMap<String, String> chosenOptionsB = new TreeMap<>();
         chosenOptionsB.put("Body", "Sport");
@@ -50,7 +50,7 @@ class WorkStationTest {
         chosenOptionsB.put("Airco", "Manual");
         chosenOptionsB.put("Wheels", "sports");
         chosenOptionsB.put("spoiler", "low");
-        orderB = new CarOrder("B", new CarModel("B", chosenOptionsB));
+        orderB = new CarOrder("B", new CarModel("B", chosenOptionsB),company.getWorkingTimeWorkingStation("B"));
 
         TreeMap<String, String> chosenOptionsC = new TreeMap<>();
         chosenOptionsC.put("Body", "Sport");
@@ -61,7 +61,7 @@ class WorkStationTest {
         chosenOptionsC.put("Airco", "Manual");
         chosenOptionsC.put("Wheels", "sports");
         chosenOptionsC.put("spoiler", "high");
-        orderC = new CarOrder("C", new CarModel("C", chosenOptionsC));
+        orderC = new CarOrder("C", new CarModel("C", chosenOptionsC),company.getWorkingTimeWorkingStation("C"));
 
         carBodyPost.setCurrentOrder(orderA);
         drivetrainPost.setCurrentOrder(orderB);

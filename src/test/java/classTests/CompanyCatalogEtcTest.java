@@ -35,7 +35,7 @@ public class CompanyCatalogEtcTest {
         legalAOptions.put("gearbox", "6 manual");
         legalAOptions.put("wheels", "winter");
         CarModel carModelA = new CarModel("A", legalAOptions);
-        carOrderA = new CarOrder("Danny Smeets", carModelA);
+        carOrderA = new CarOrder("Danny Smeets", carModelA,company.getWorkingTimeWorkingStation("A"));
         TreeMap<String, String> legalBOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         legalBOptions.put("color", "red");
         legalBOptions.put("body", "break");
@@ -46,7 +46,7 @@ public class CompanyCatalogEtcTest {
         legalBOptions.put("wheels", "winter");
         legalBOptions.put("spoiler", "low");
         CarModel carModelB = new CarModel("B", legalBOptions);
-        carOrderB = new CarOrder("Sandy Smeets", carModelB);
+        carOrderB = new CarOrder("Sandy Smeets", carModelB,company.getWorkingTimeWorkingStation("B"));
         TreeMap<String, String> legalCOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         legalCOptions.put("color", "black");
         legalCOptions.put("body", "sport");
@@ -57,23 +57,23 @@ public class CompanyCatalogEtcTest {
         legalCOptions.put("wheels", "winter");
         legalCOptions.put("spoiler", "low");
         CarModel carModelC = new CarModel("C", legalCOptions);
-        carOrderC = new CarOrder("Kim Smeets", carModelC);
+        carOrderC = new CarOrder("Kim Smeets", carModelC,company.getWorkingTimeWorkingStation("C"));
         //company.addOrderToProductionSchedule(carOrderA);
-        carOrderD = new CarOrder("Tanya Smeets", carModelC);
-        carOrderE = new CarOrder("Kimberly Smeets", carModelC);
-        carOrderF = new CarOrder("Vanessa Smeets", carModelC);
+        carOrderD = new CarOrder("Tanya Smeets", carModelC,company.getWorkingTimeWorkingStation("C"));
+        carOrderE = new CarOrder("Kimberly Smeets", carModelC,company.getWorkingTimeWorkingStation("C"));
+        carOrderF = new CarOrder("Vanessa Smeets", carModelC,company.getWorkingTimeWorkingStation("C"));
         carOrderD.setEstCompletionTime(LocalDateTime.now().minusDays(1));
         carOrderE.setEstCompletionTime(LocalDateTime.now().minusDays(2));
         carOrderF.setEstCompletionTime(LocalDateTime.now().minusDays(3));
         System.out.println(carOrderA.getEstCompletionTime());
-        company.completeOrderingForm(legalAOptions,"Danny Smeets","B");
-        company.completeOrderingForm(legalBOptions,"Sandy Smeets","B");
-        company.completeOrderingForm(legalCOptions,"Kim Smeets","C");
+        company.completeOrderingForm(legalAOptions,"Danny Smeets","B",company.getWorkingTimeWorkingStation("B"));
+        company.completeOrderingForm(legalBOptions,"Sandy Smeets","B",company.getWorkingTimeWorkingStation("B"));
+        company.completeOrderingForm(legalCOptions,"Kim Smeets","C",company.getWorkingTimeWorkingStation("C"));
         company.getProductionScheduler().advanceOrders(50);
         // add some completed orders
-        carOrderD = new CarOrder("Kim Smeets", carModelC);
-        carOrderE = new CarOrder("Kim Smeets", carModelC);
-        carOrderF = new CarOrder("Kim Smeets", carModelC);
+        carOrderD = new CarOrder("Kim Smeets", carModelC,company.getWorkingTimeWorkingStation("C"));
+        carOrderE = new CarOrder("Kim Smeets", carModelC,company.getWorkingTimeWorkingStation("C"));
+        carOrderF = new CarOrder("Kim Smeets", carModelC,company.getWorkingTimeWorkingStation("C"));
 
 
 
@@ -239,7 +239,7 @@ public class CompanyCatalogEtcTest {
         assertTrue(got_error);
         got_error = false;
         try{
-            company.completeOrderingForm(null,null,null);
+            company.completeOrderingForm(null,null,null, 0);
         }
         catch (IllegalArgumentException | IllegalCompletionDateException | IllegalConstraintException | IllegalModelException | OptionThenComponentException | OptionAThenOptionBException | RequiredComponentException e){
             assertEquals("chosenOptions cannot be null.", e.getMessage());
