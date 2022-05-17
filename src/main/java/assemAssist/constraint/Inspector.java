@@ -5,6 +5,7 @@ import assemAssist.exceptions.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 
 /**
  * Class representing a constraint inspector that inspects a car model for
@@ -17,7 +18,7 @@ public class Inspector {
     /**
      * List of constraints that the inspector validates.
      */
-    private static ArrayList<Constraint> constraints;
+    private static HashSet<Constraint> constraints = new HashSet<Constraint>();;
 
     /**
      * The car model to be inspected.
@@ -35,7 +36,6 @@ public class Inspector {
         if (carModel == null) {
             throw new IllegalModelException("The car model is null.");
         }
-        constraints = new ArrayList<>();
         this.carModel = carModel;
         addConstraints();
     }
@@ -79,6 +79,8 @@ public class Inspector {
      *                                   - The list is already in the list of constraints
      */
     public void addOptionAThenOptionBPair(ArrayList<String> pair) throws IllegalConstraintException {
+        constraints.add(new IfOptionAThenOptionB(pair));
+
         for (Constraint constraint : constraints) {
             if (constraint instanceof IfOptionAThenOptionB) {
                 ((IfOptionAThenOptionB) constraint).addOptionAThenOptionBPair(pair);
@@ -118,6 +120,7 @@ public class Inspector {
      *                                   - The list is already in the list of constraints
      */
     public void addOptionAAndOptionBPair(ArrayList<String> pair) throws IllegalConstraintException {
+
         for (Constraint constraint : constraints) {
             if (constraint instanceof IfOptionAThenOptionB) {
                 ((IfOptionAThenOptionB) constraint).addOptionAAndOptionBPair(pair);

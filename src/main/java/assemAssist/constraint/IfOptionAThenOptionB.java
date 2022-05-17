@@ -137,4 +137,22 @@ public class IfOptionAThenOptionB extends Constraint {
         // clear the list of pairs
         pairs.clear();
     }
+
+    public boolean equals(Object obj) {
+        if (! super.equals(obj)) return false;
+        if (this.getClass() != obj.getClass())
+            return false;
+        IfOptionAThenOptionB other = (IfOptionAThenOptionB) obj;
+        // 2 lists of pairs are equal if they have the same size and the same elements in pairs in the same order
+        // if the size is different, the lists are not equal
+        if (this.pairs.size() != other.pairs.size()) return false;
+        // if the size is the same, check if the elements in pairs are the same
+        for (int i = 0; i < this.pairs.size(); i++) {
+            if (!this.pairs.get(i).equals(other.pairs.get(i))) return false;
+        }
+        return true;
+    }
+    public int hashCode() {
+        return super.hashCode() + this.pairs.hashCode();
+    }
 }

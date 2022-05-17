@@ -34,74 +34,7 @@ class CarOrderEtcTest {
         legalAOptions.put("gearbox", "6 manual");
         legalAOptions.put("wheels", "winter");
         CarModel carModelA = new CarModel("A", legalAOptions);
-        carOrderA = new CarOrder("Danny Smeets", carModelA,company.getWorkingTimeWorkingStation("A"));
-        try {
-            carOrderA.setGarageHolder(null);
-        }
-        catch (IllegalArgumentException e) {
-            assertEquals("A garage holder cannot be null.", e.getMessage());
-        }
-        try {
-            carOrderA.setGarageHolder("");
-        }
-        catch (IllegalArgumentException e) {
-            assertEquals("A garage holder cannot be the empty string.", e.getMessage());
-        }
-        carOrderA.setGarageHolder("Irma Smeets");
-        assertEquals("Irma Smeets", carOrderA.getGarageHolder());
-        carOrderA.setGarageHolder("Danny Smeets");
-        try {
-            carOrderA.setCarModel(null);
-        }
-        catch (IllegalArgumentException e) {
-            assertEquals("A car model cannot be null.", e.getMessage());
-        }
-        try {
-            carOrderA.setCarModel(new CarModel("", null));
-        }
-        catch (IllegalArgumentException e) {
-            assertEquals("modelName must not be empty.", e.getMessage());
-        }
-        try {
-            carOrderA.setCompletionTime(null);
-        }
-        catch (IllegalArgumentException e) {
-            assertEquals("A completion time cannot be null.", e.getMessage());
-        } catch (IllegalCompletionDateException e) {
-            e.printStackTrace();
-        }
-        try {
-            carOrderA.setEstCompletionTime(null);
-        }
-        catch (IllegalArgumentException e) {
-            assertEquals("An estimated completion time cannot be null.", e.getMessage());
-        }
-        assertEquals(carOrderA, carOrderA);
-        assertNotEquals(null, carOrderA);
 
-        TreeMap<String, String> legalBOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
-        legalBOptions.put("color", "red");
-        legalBOptions.put("body", "break");
-        legalBOptions.put("engine", "v4");
-        legalBOptions.put("seats", "leather white");
-        legalBOptions.put("airco", "manual");
-        legalBOptions.put("gearbox", "6 manual");
-        legalBOptions.put("wheels", "winter");
-        legalBOptions.put("spoiler", "low");
-        CarModel carModelB = new CarModel("B", legalBOptions);
-        carOrderB = new CarOrder("Sandy Smeets", carModelB,company.getWorkingTimeWorkingStation("B"));
-        TreeMap<String, String> legalCOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
-        legalCOptions.put("color", "black");
-        legalCOptions.put("body", "sport");
-        legalCOptions.put("engine", "v6");
-        legalCOptions.put("seats", "leather white");
-        legalCOptions.put("airco", "manual");
-        legalCOptions.put("gearbox", "6 manual");
-        legalCOptions.put("wheels", "winter");
-        legalCOptions.put("spoiler", "low");
-        CarModel carModelC = new CarModel("C", legalCOptions);
-        carOrderC = new CarOrder("Kim Smeets", carModelC,company.getWorkingTimeWorkingStation("C"));
-        assertNotEquals(carOrderA, carOrderB);
     }
 
     @Test

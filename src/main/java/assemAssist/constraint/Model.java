@@ -85,4 +85,12 @@ public class Model extends Constraint{
     protected void reset() {
         // do nothing
     }
+
+    public boolean equals(Object obj) {
+        if (! super.equals(obj)) return false;
+        if (this.getClass() != obj.getClass())
+            return false;
+        Model other = (Model) obj;
+        return true;
+    }
 }
