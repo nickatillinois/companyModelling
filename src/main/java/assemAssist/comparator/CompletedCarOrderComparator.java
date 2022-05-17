@@ -1,4 +1,4 @@
-package assemAssist.Comparator;
+package assemAssist.comparator;
 
 import assemAssist.CarOrder;
 
