@@ -23,11 +23,6 @@ public abstract class WorkStation implements TaskObservable {
     private List<AssemblyTask> tasks = new ArrayList<>();
 
     /**
-     * A list of mechanics currently working at this work station.
-     */
-    private List<String> mechanics = new ArrayList<>();
-
-    /**
      * The name of this work station.
      */
     private final String name;
@@ -108,50 +103,6 @@ public abstract class WorkStation implements TaskObservable {
             }
         }
         return true;
-    }
-
-    /**
-     * Adds a given mechanic's name to the list of mechanics working at this workstation.
-     *
-     * @param mechanic the mechanic that will be added to the list of mechanics for this work station
-     * @throws IllegalArgumentException | mechanic is null
-     *                                  | mechanic is the empty string
-     */
-    public void addMechanic(String mechanic) {
-        if(mechanic == null){throw new IllegalArgumentException("A mechanic cannot be null.");}
-        if(mechanic.length() == 0){throw new IllegalArgumentException("A mechanic cannot be the empty string.");}
-        mechanics.add(mechanic);
-    }
-
-    /**
-     * Removes a given name of a mechanic from the list of mechanics working at this workstation.
-     * If the given mechanic is not working at this station, the function will return.
-     *
-     * @param mechanic the mechanic that needs to be removed from this work station
-     * @throws IllegalArgumentException | mechanic is null
-     *                                  | mechanic is the empty string
-     */
-    public void removeMechanic(String mechanic) {
-        if(mechanic == null){throw new IllegalArgumentException("A mechanic cannot be null.");}
-        if(mechanic.length() == 0){throw new IllegalArgumentException("A mechanic cannot be the empty string.");}
-        boolean contains = false;
-        for(String mech : getMechanics()){
-            if(mech.equalsIgnoreCase(mechanic)){
-                contains = true;
-                break;
-            }
-        }
-        if(!contains) return;
-        mechanics.remove(mechanic);
-    }
-
-    /**
-     * Returns the list containing the names of the mechanics currently working at this work station.
-     *
-     * @return the list containing the names of the mechanics currently working at this work station.
-     */
-    public List<String> getMechanics() {
-        return mechanics;
     }
 
     /**
@@ -248,7 +199,6 @@ public abstract class WorkStation implements TaskObservable {
 
         if (!Objects.equals(currentOrder, that.currentOrder)) return false;
         if (!tasks.equals(that.tasks)) return false;
-        if (!mechanics.equals(that.mechanics)) return false;
         return name.equals(that.name);
     }
 
