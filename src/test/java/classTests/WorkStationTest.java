@@ -130,31 +130,6 @@ class WorkStationTest {
     }
 
     @Test
-    void addAndRemoveMechanicTest() {
-        carBodyPost.addMechanic("Bart");
-        drivetrainPost.addMechanic("Jos");
-        drivetrainPost.addMechanic("Wim");
-
-        List<String> mechanicsCBP = List.of("Bart");
-        assertEquals(carBodyPost.getMechanics(),mechanicsCBP);
-        List<String> mechanicsDP = List.of("Jos","Wim");
-        assertEquals(drivetrainPost.getMechanics(),mechanicsDP);
-        List<String> mechanicsAP = List.of();
-        assertEquals(accessoriesPost.getMechanics(),mechanicsAP);
-
-        carBodyPost.removeMechanic("Bart");
-        List<String> mechanicsCBPAfterRemove = List.of();
-        assertEquals(mechanicsCBPAfterRemove, carBodyPost.getMechanics());
-        drivetrainPost.removeMechanic("Wim");
-        List<String> mechanicsDPAfterRemove = List.of("Jos");
-        assertEquals(mechanicsDPAfterRemove, drivetrainPost.getMechanics());
-
-        assertThrows(IllegalArgumentException.class, () -> carBodyPost.removeMechanic(null));
-        assertThrows(IllegalArgumentException.class, () -> carBodyPost.removeMechanic(""));
-    }
-
-
-    @Test
     void getPendingTasksTest() {
         List<String> pendingCBP = List.of("body", "paint");
         assertEquals(carBodyPost.getPendingTasks(), pendingCBP);
