@@ -1,4 +1,4 @@
-package classTests;
+package main.assemAssist;
 
 import assemAssist.CarModel;
 import assemAssist.CarOrder;

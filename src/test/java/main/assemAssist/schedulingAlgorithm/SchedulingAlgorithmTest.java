@@ -1,4 +1,4 @@
-package classTests;
+package main.assemAssist.schedulingAlgorithm;
 
 import assemAssist.CarModel;
 import assemAssist.CarOrder;

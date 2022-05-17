@@ -1,4 +1,4 @@
-package classTests;
+package main.assemAssist.workStation;
 
 import assemAssist.*;
 import assemAssist.exceptions.*;
