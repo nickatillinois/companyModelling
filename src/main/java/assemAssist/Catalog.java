@@ -98,6 +98,9 @@ public class Catalog {
         availableModels.add(model);
     }
 
+    public int getWorkingMinutesWorkstation(String modelName) throws IllegalModelException {
+      return  getModel(modelName).getStandardWorkStationTime();
+    }
     /**
      * Creates the standard car models offered by the car manufacturing company specified in the assignment.
      */

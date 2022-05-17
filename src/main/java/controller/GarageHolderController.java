@@ -69,6 +69,10 @@ public class GarageHolderController {
         return company.getAvailableModels();
     }
 
+    public int getWorkingMinutesWorkingStation(String modelName) throws IllegalModelException {
+        return this.company.getWorkingTimeWorkingStation(modelName);
+    }
+
     /**
      * Returns a map of the components and their options for the given model.
      * @param carModel The model of the car.
@@ -105,8 +109,8 @@ public class GarageHolderController {
      * @throws OptionAThenOptionBException if there is an option specified but not the implied option(s).
      * @throws RequiredComponentException if there is a required component not specified.
      */
-    public String completeOrderingForm(TreeMap<String, String> chosenOptions) throws IllegalArgumentException, IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
-        return company.completeOrderingForm(chosenOptions, this.garageHolder, this.chosenModel);
+    public String completeOrderingForm(TreeMap<String, String> chosenOptions, int workingMinutesWorkstation) throws IllegalArgumentException, IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+        return company.completeOrderingForm(chosenOptions, this.garageHolder, this.chosenModel, workingMinutesWorkstation);
     }
 
     /**

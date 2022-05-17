@@ -219,6 +219,10 @@ public class Company implements TaskObserver {
         return catalog.getAvailableModelNames();
     }
 
+    public int getWorkingTimeWorkingStation(String modelName) throws IllegalModelException {
+        return catalog.getWorkingMinutesWorkstation(modelName);
+    }
+
     /**
      * Returns a string representation of the model with the given name.
      * @param model the name of the model to get the string representation of
@@ -352,7 +356,7 @@ public class Company implements TaskObserver {
      * @throws OptionAThenOptionBException if there is an option specified but not the implied option(s).
      * @throws RequiredComponentException if there is a required component not specified.
      */
-    public String completeOrderingForm(TreeMap<String, String> chosenOptions, String garageHolder, String chosenModel) throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+    public String completeOrderingForm(TreeMap<String, String> chosenOptions, String garageHolder, String chosenModel, int workingMinutesWorkstation) throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         if(chosenOptions == null) {
             throw new IllegalArgumentException("chosenOptions cannot be null.");
         }
@@ -375,7 +379,7 @@ public class Company implements TaskObserver {
             throw new IllegalArgumentException("chosenModel cannot be whitespace.");
         }
         CarModel carModel = new CarModel(chosenModel, chosenOptions);
-        CarOrder carOrder = new CarOrder(garageHolder, carModel);
+        CarOrder carOrder = new CarOrder(garageHolder, carModel, workingMinutesWorkstation);
         this.productionScheduler.getSchedulingAlgorithm().addOrderToProductionSchedule(carOrder);
         for (Stats stat : statistics) {
             carOrder.addObserver(stat);

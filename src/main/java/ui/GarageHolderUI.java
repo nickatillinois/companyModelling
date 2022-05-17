@@ -149,7 +149,7 @@ public class GarageHolderUI {
                 }
             }
             if (contains) {
-                completeOrderingFormUI(model);
+                completeOrderingFormUI(model, garageHolderController.getWorkingMinutesWorkingStation(model));
                 break;
             } else {
                 System.out.println("This is not a valid model. Try again.");
@@ -165,7 +165,7 @@ public class GarageHolderUI {
      * @throws IllegalModelException
      * @throws IllegalCompletionDateException
      */
-    private void completeOrderingFormUI(String model) throws IllegalModelException, IllegalCompletionDateException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+    private void completeOrderingFormUI(String model, int workingMinutesWorkstation) throws IllegalModelException, IllegalCompletionDateException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         TreeMap<String, HashSet<String>> orderingForm = garageHolderController.selectModel(model);
         TreeMap<String, String[]> orderingFormList = new TreeMap<String, String[]>(String.CASE_INSENSITIVE_ORDER);
         for (String option : orderingForm.keySet()) {
@@ -202,7 +202,7 @@ public class GarageHolderUI {
             }
         }
         try {
-            String estimatedCompletionDate = garageHolderController.completeOrderingForm(selectedOptions);
+            String estimatedCompletionDate = garageHolderController.completeOrderingForm(selectedOptions, workingMinutesWorkstation );
             System.out.println("You have successfully ordered a car! The estimated completion date is " + estimatedCompletionDate);
         }
         catch (IllegalModelException | OptionAThenOptionBException | OptionThenComponentException | RequiredComponentException e){

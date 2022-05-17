@@ -168,6 +168,7 @@ public class AssemblyLine {
         for(WorkStation workStation : getWorkStations())
             if(!workStation.isFinished())
                 throw new IllegalCallerException("The assembly line is stil working at a workpost!");
+        if (getMinutesWorkedToday() + timeBetweenTwoStates > getMaxWorkingMinutesToday())
         setMinutesWorkedToday(getMinutesWorkedToday() + timeBetweenTwoStates);
         CarOrder finishedCar = workStations.get(2).getCurrentOrder();
         if (finishedCar !=  null) {
