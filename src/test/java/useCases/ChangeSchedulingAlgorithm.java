@@ -53,12 +53,13 @@ public class ChangeSchedulingAlgorithm {
         legalBOptions.put("wheels", "winter");
         legalBOptions.put("spoiler", "low");
         CarModel carModelB = new CarModel("B", legalBOptions);
-        carOrderA = new CarOrder("Danny Smeets", carModelA);
-        carOrderB = new CarOrder("Els Smeets", carModelB);
-        carOrderC = new CarOrder("Dirk Smeets", carModelA);
-        carOrderD = new CarOrder("Jan Smeets", carModelB);
-        carOrderE = new CarOrder("Jef Smeets", carModelA);
         company = new Company();
+        carOrderA = new CarOrder("Danny Smeets", carModelA,company.getWorkingTimeWorkingStation(carModelA.getModelName()) );
+        carOrderB = new CarOrder("Els Smeets", carModelB, company.getWorkingTimeWorkingStation(carModelB.getModelName()));
+        carOrderC = new CarOrder("Dirk Smeets", carModelA, company.getWorkingTimeWorkingStation(carModelA.getModelName()));
+        carOrderD = new CarOrder("Jan Smeets", carModelB, company.getWorkingTimeWorkingStation(carModelB.getModelName()));
+        carOrderE = new CarOrder("Jef Smeets", carModelA, company.getWorkingTimeWorkingStation(carModelA.getModelName()));
+
         company.getProductionScheduler().getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderA);
         company.getProductionScheduler().getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderB);
         company.getProductionScheduler().getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderC);
