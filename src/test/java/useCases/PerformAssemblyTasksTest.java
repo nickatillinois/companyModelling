@@ -34,10 +34,10 @@ public class PerformAssemblyTasksTest {
         legalAOptions.put("engine", "v4"); legalAOptions.put("seats", "leather white");
         legalAOptions.put("airco", "manual"); legalAOptions.put("gearbox", "6 manual");
         legalAOptions.put("wheels", "winter");
-        company.completeOrderingForm(legalAOptions,"Luna Van den Bergh","A");
-        company.completeOrderingForm(legalAOptions,"Luna Van den Bergh","A");
-        company.completeOrderingForm(legalAOptions,"Luna Van den Bergh","A");
-        company.completeOrderingForm(legalAOptions,"Luna Van den Bergh","A");
+        company.completeOrderingForm(legalAOptions,"Luna Van den Bergh","A", company.getWorkingTimeWorkingStation("A"));
+        company.completeOrderingForm(legalAOptions,"Luna Van den Bergh","A", company.getWorkingTimeWorkingStation("A"));
+        company.completeOrderingForm(legalAOptions,"Luna Van den Bergh","A",company.getWorkingTimeWorkingStation("A"));
+        company.completeOrderingForm(legalAOptions,"Luna Van den Bergh","A",company.getWorkingTimeWorkingStation("A"));
         mechanic = new Mechanic(assemblyLine);
     }
 
