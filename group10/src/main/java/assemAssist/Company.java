@@ -1,7 +1,7 @@
 package assemAssist;
 
-import assemAssist.Comparator.CompletedCarOrderComparator;
-import assemAssist.Comparator.PendingCarOrderComparator;
+import assemAssist.comparator.CompletedCarOrderComparator;
+import assemAssist.comparator.PendingCarOrderComparator;
 import assemAssist.exceptions.*;
 import assemAssist.observer.TaskObserver;
 import assemAssist.statistics.DelayStats;

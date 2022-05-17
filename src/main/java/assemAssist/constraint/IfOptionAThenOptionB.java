@@ -1,10 +1,10 @@
 package assemAssist.constraint;
 
 import assemAssist.CarModel;
-import assemAssist.exceptions.*;
+import assemAssist.exceptions.IllegalConstraintException;
+import assemAssist.exceptions.OptionAThenOptionBException;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 
 /**
@@ -19,17 +19,15 @@ public class IfOptionAThenOptionB extends Constraint {
      * The set of lists of each 2 elements implying that option A leads to option B.
      * If the array contains more than two elements, that indicates that the first element implicates the latter two.
      */
-    private static final HashSet<ArrayList<String>> pairs = new HashSet<>();
+    private ArrayList<String> pairs;
 
 
     /**
      * Constructor for the IfOptionAThenOptionB class.
      */
-    protected IfOptionAThenOptionB() throws IllegalConstraintException {
+    protected IfOptionAThenOptionB(ArrayList<String> pairs) throws IllegalConstraintException {
         super();
-        if(pairs.size() == 0) {
-            addCurrentPairs();
-        }
+        addOptionAThenOptionBPair(pairs);
     }
 
     /**
@@ -64,10 +62,7 @@ public class IfOptionAThenOptionB extends Constraint {
         for (String option : pair) {
             lowerCasePair.add(option.toLowerCase());
         }
-        if (this.pairsContains(lowerCasePair)) {
-            throw new IllegalConstraintException("Given list is already in the list of pairs.");
-        }
-        pairs.add(lowerCasePair);
+        this.pairs = lowerCasePair;
     }
 
 
@@ -96,31 +91,6 @@ public class IfOptionAThenOptionB extends Constraint {
     }
 
     /**
-     * Function to check if a list of options is already in the list of pairs.
-     * @param list The list of options to check.
-     *
-     * @return true if list is not in the list of pairs, false otherwise.
-     */
-    private boolean pairsContains(ArrayList<String> list) {
-        for (ArrayList<String> pair : pairs) {
-            // if each element in pair is also in list in the same sequence, return true
-            if (pair.size() != list.size()) {
-                continue;
-            }
-            int equalEls = 0;
-            for (int i = 0; i < pair.size(); i++) {
-                if (pair.get(i).equals(list.get(i))) {
-                    equalEls += 1;
-                }
-            }
-            if (equalEls == pair.size()) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
      * Method that checks if the chosen specifications are in line with the constraints
      *
      * @param chosenSpecifications The chosen specifications
@@ -141,24 +111,22 @@ public class IfOptionAThenOptionB extends Constraint {
             String value = chosenSpecifications.getChosenOptions().get(key);
             chosenOptionsSet.add(value.toLowerCase());
         }
-       // for each pair in pairs, check if the first element is in the set of chosen options
-        for (ArrayList<String> pair : pairs) {
-            boolean pairOK;
-            if (chosenOptionsSet.contains(pair.get(0).toLowerCase())) {
-                pairOK = false;
-                // check if one of the other elements is in the set of chosen options
-                for (int i = 1; i < pair.size(); i++) {
-                    if (chosenOptionsSet.contains(pair.get(i).toLowerCase())) {
-                        pairOK = true;
-                        break;
-                    }
+        // for each pair in pairs, check if the first element is in the set of chosen options
+        boolean pairOK;
+        if (chosenOptionsSet.contains(this.pairs.get(0).toLowerCase())) {
+            pairOK = false;
+            // check if one of the other elements is in the set of chosen options
+            for (int i = 1; i < this.pairs.size(); i++) {
+                if (chosenOptionsSet.contains(this.pairs.get(i).toLowerCase())) {
+                    pairOK = true;
+                    break;
                 }
-                if (!pairOK) {
-                    // take a set consisting of the elements in pair and remove the first element
-                    HashSet<String> pairImplied = new HashSet<>(pair);
-                    pairImplied.remove(pair.get(0));
-                    throw new OptionAThenOptionBException("Option " + pair.get(0) + " implies one of the following options: " + pairImplied.stream().toList());
-                }
+            }
+            if (!pairOK) {
+                // take a set consisting of the elements in pair and remove the first element
+                HashSet<String> pairImplied = new HashSet<>(this.pairs);
+                pairImplied.remove(this.pairs.get(0));
+                throw new OptionAThenOptionBException("Option " + this.pairs.get(0) + " implies one of the following options: " + pairImplied.stream().toList());
             }
         }
         return true;
@@ -169,14 +137,4 @@ public class IfOptionAThenOptionB extends Constraint {
         // clear the list of pairs
         pairs.clear();
     }
-
-    /**
-     * Method that adds the pairs given in the assignment to the list of pairs.
-     */
-    private void addCurrentPairs() throws IllegalConstraintException {
-        this.addOptionAThenOptionBPair(new ArrayList<>(Arrays.asList("Sport", "V6", "V8")));
-        this.addOptionAThenOptionBPair(new ArrayList<>(Arrays.asList("V8", "Manual")));
-
-    }
-
 }

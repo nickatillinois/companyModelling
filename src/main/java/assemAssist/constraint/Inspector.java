@@ -4,6 +4,7 @@ import assemAssist.CarModel;
 import assemAssist.exceptions.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Class representing a constraint inspector that inspects a car model for
@@ -45,8 +46,13 @@ public class Inspector {
     private void addConstraints() throws IllegalConstraintException {
         constraints.add(new Model());
         constraints.add(new RequiredComponent());
-        constraints.add(new IfOptionAThenOptionB());
-        constraints.add(new IfOptionThenComponent());
+        IfOptionAThenOptionB standardConstraint1 = new IfOptionAThenOptionB(new ArrayList<>(Arrays.asList("Sport", "V6", "V8")));
+        IfOptionAThenOptionB standardConstraint2 = new IfOptionAThenOptionB(new ArrayList<>(Arrays.asList("V8", "Manual")));
+        IfOptionThenComponent standardConstraint3 = new IfOptionThenComponent(new ArrayList<>(Arrays.asList("Sport", "Spoiler")));
+        constraints.add(standardConstraint1);
+        constraints.add(standardConstraint2);
+        constraints.add(standardConstraint3);
+
     }
 
     /**

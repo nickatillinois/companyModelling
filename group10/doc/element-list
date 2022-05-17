@@ -1,6 +1,6 @@
 unnamed package
 assemAssist
-assemAssist.Comparator
+assemAssist.comparator
 assemAssist.constraint
 assemAssist.exceptions
 assemAssist.observer
