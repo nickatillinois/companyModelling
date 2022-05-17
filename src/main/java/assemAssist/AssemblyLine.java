@@ -168,15 +168,36 @@ public class AssemblyLine {
         for(WorkStation workStation : getWorkStations())
             if(!workStation.isFinished())
                 throw new IllegalCallerException("The assembly line is stil working at a workpost!");
-        if (getMinutesWorkedToday() + timeBetweenTwoStates > getMaxWorkingMinutesToday())
-        setMinutesWorkedToday(getMinutesWorkedToday() + timeBetweenTwoStates);
-        CarOrder finishedCar = workStations.get(2).getCurrentOrder();
-        if (finishedCar !=  null) {
-            finishedCar.setCompleted(true);
+        if (carOrder.getWorkingMinutesWorkStation()*3 < remainingWorkingTime()) {
+            setMinutesWorkedToday(getMinutesWorkedToday() + timeBetweenTwoStates);
+            CarOrder finishedCar = workStations.get(2).getCurrentOrder();
+            if (finishedCar != null) {
+                finishedCar.setCompleted(true);
+            }
+            workStations.get(2).setCurrentOrder(workStations.get(1).getCurrentOrder());
+            workStations.get(1).setCurrentOrder(workStations.get(0).getCurrentOrder());
+            workStations.get(0).setCurrentOrder(carOrder);
         }
-        workStations.get(2).setCurrentOrder(workStations.get(1).getCurrentOrder());
-        workStations.get(1).setCurrentOrder(workStations.get(0).getCurrentOrder());
-        workStations.get(0).setCurrentOrder(carOrder);
+        else{
+            boolean emptyAssemblyLine = true;
+            for(WorkStation workStation :workStations){
+                if (workStation.getCurrentOrder()!= null)
+                    emptyAssemblyLine = true;
+            }
+            if (emptyAssemblyLine)
+                nextDay();
+            else{
+                setMinutesWorkedToday(getMinutesWorkedToday() + timeBetweenTwoStates);
+                CarOrder finishedCar = workStations.get(2).getCurrentOrder();
+                if (finishedCar != null) {
+                    finishedCar.setCompleted(true);
+                }
+                workStations.get(2).setCurrentOrder(workStations.get(1).getCurrentOrder());
+                workStations.get(1).setCurrentOrder(workStations.get(0).getCurrentOrder());
+                workStations.get(0).setCurrentOrder(null);
+
+            }
+        }
         List<String> newStateAndFinished = new ArrayList<>();
         List<CarOrder> currentStatus  = getCurrentState();
         for(int i = 0 ; i < currentStatus.size() ; i++){
