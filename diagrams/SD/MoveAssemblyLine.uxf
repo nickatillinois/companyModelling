@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>300</x>
+      <y>90</y>
+      <w>1080</w>
+      <h>700</h>
+    </coordinates>
+    <panel_attributes>Move Assembly Line</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
