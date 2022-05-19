@@ -897,7 +897,7 @@ m1=0..n</panel_attributes>
     <panel_attributes>lt=&lt;.
 
 
-&lt;&lt;creates&gt;&gt;</panel_attributes>
+&lt;&lt;throws&gt;&gt;</panel_attributes>
     <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
   </element>
   <element>
@@ -910,7 +910,7 @@ m1=0..n</panel_attributes>
     </coordinates>
     <panel_attributes>lt=&lt;.
 
-&lt;&lt;creates&gt;&gt;</panel_attributes>
+&lt;&lt;throws&gt;&gt;</panel_attributes>
     <additional_attributes>10.0;10.0;100.0;10.0;100.0;580.0;680.0;580.0;680.0;630.0</additional_attributes>
   </element>
   <element>
@@ -1449,7 +1449,7 @@ Exception {abstract}
     </coordinates>
     <panel_attributes>lt=&lt;.
 
-&lt;&lt;creates&gt;&gt;</panel_attributes>
+&lt;&lt;throws&gt;&gt;</panel_attributes>
     <additional_attributes>10.0;70.0;10.0;20.0;340.0;20.0;340.0;650.0;690.0;650.0</additional_attributes>
   </element>
   <element>
@@ -1462,7 +1462,7 @@ Exception {abstract}
     </coordinates>
     <panel_attributes>lt=&lt;.
 
-&lt;&lt;creates&gt;&gt;</panel_attributes>
+&lt;&lt;throws&gt;&gt;</panel_attributes>
     <additional_attributes>10.0;80.0;10.0;10.0;330.0;10.0;330.0;730.0;1340.0;730.0;1340.0;710.0</additional_attributes>
   </element>
   <element>
@@ -1475,7 +1475,7 @@ Exception {abstract}
     </coordinates>
     <panel_attributes>lt=&lt;.
 
-&lt;&lt;creates&gt;&gt;</panel_attributes>
+&lt;&lt;throws&gt;&gt;</panel_attributes>
     <additional_attributes>10.0;50.0;10.0;20.0;200.0;20.0;200.0;540.0;520.0;540.0</additional_attributes>
   </element>
   <element>
@@ -1488,7 +1488,7 @@ Exception {abstract}
     </coordinates>
     <panel_attributes>lt=&lt;.
 
-&lt;&lt;creates&gt;&gt;</panel_attributes>
+&lt;&lt;throws&gt;&gt;</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;580.0;1580.0;580.0;1580.0;540.0</additional_attributes>
   </element>
   <element>
@@ -1501,7 +1501,7 @@ Exception {abstract}
     </coordinates>
     <panel_attributes>lt=&lt;.
 
-&lt;&lt;creates&gt;&gt;</panel_attributes>
+&lt;&lt;throws&gt;&gt;</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;420.0;510.0;420.0</additional_attributes>
   </element>
   <element>
@@ -1514,7 +1514,7 @@ Exception {abstract}
     </coordinates>
     <panel_attributes>lt=&lt;.
 
-&lt;&lt;creates&gt;&gt;</panel_attributes>
+&lt;&lt;throws&gt;&gt;</panel_attributes>
     <additional_attributes>10.0;20.0;10.0;110.0;760.0;110.0;760.0;10.0;870.0;10.0</additional_attributes>
   </element>
   <element>
@@ -1527,7 +1527,7 @@ Exception {abstract}
     </coordinates>
     <panel_attributes>lt=&lt;.
 
-&lt;&lt;creates&gt;&gt;</panel_attributes>
+&lt;&lt;throws&gt;&gt;</panel_attributes>
     <additional_attributes>280.0;340.0;280.0;450.0;10.0;450.0;10.0;10.0;770.0;10.0</additional_attributes>
   </element>
   <element>
@@ -1540,7 +1540,7 @@ Exception {abstract}
     </coordinates>
     <panel_attributes>lt=&lt;.
 
-&lt;&lt;creates&gt;&gt;</panel_attributes>
+&lt;&lt;throws&gt;&gt;</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;180.0;1530.0;180.0;1530.0;360.0</additional_attributes>
   </element>
   <element>
@@ -1553,7 +1553,7 @@ Exception {abstract}
     </coordinates>
     <panel_attributes>lt=&lt;.
 
-&lt;&lt;creates&gt;&gt;</panel_attributes>
+&lt;&lt;throws&gt;&gt;</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;160.0;1070.0;160.0;1070.0;60.0;1200.0;60.0</additional_attributes>
   </element>
   <element>
