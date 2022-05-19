@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>7</zoom_level>
+  <zoom_level>6</zoom_level>
   <element>
     <id>UMLFrame</id>
     <coordinates>
       <x>0</x>
-      <y>0</y>
-      <w>3038</w>
-      <h>1407</h>
+      <y>66</y>
+      <w>2316</w>
+      <h>1104</h>
     </coordinates>
     <panel_attributes>Order New Car</panel_attributes>
     <additional_attributes/>
@@ -15,10 +15,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>784</x>
-      <y>210</y>
-      <w>21</w>
-      <h>1127</h>
+      <x>516</x>
+      <y>138</y>
+      <w>18</w>
+      <h>966</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;1590.0</additional_attributes>
@@ -26,10 +26,10 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>994</x>
-      <y>196</y>
-      <w>105</w>
-      <h>21</h>
+      <x>696</x>
+      <y>126</y>
+      <w>90</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>: Company</panel_attributes>
     <additional_attributes/>
@@ -37,21 +37,21 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1036</x>
-      <y>210</y>
-      <w>28</w>
-      <h>1134</h>
+      <x>738</x>
+      <y>138</y>
+      <w>18</w>
+      <h>966</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>20.0;10.0;10.0;1600.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;1590.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>539</x>
-      <y>210</y>
-      <w>21</w>
-      <h>1099</h>
+      <x>306</x>
+      <y>138</y>
+      <w>18</w>
+      <h>942</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;1550.0</additional_attributes>
@@ -59,10 +59,10 @@
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>322</x>
-      <y>154</y>
-      <w>112</w>
-      <h>84</h>
+      <x>132</x>
+      <y>90</y>
+      <w>72</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>Garage Holder</panel_attributes>
     <additional_attributes/>
@@ -70,10 +70,10 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>728</x>
-      <y>196</y>
-      <w>189</w>
-      <h>21</h>
+      <x>468</x>
+      <y>126</y>
+      <w>162</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>: GarageHolderController</panel_attributes>
     <additional_attributes/>
@@ -81,24 +81,24 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>546</x>
-      <y>413</y>
-      <w>252</w>
-      <h>56</h>
+      <x>312</x>
+      <y>318</y>
+      <w>216</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>wantsToOrder()
 
 lt=&lt;-
 </panel_attributes>
-    <additional_attributes>340.0;30.0;10.0;30.0</additional_attributes>
+    <additional_attributes>340.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>784</x>
-      <y>434</y>
-      <w>14</w>
-      <h>63</h>
+      <x>516</x>
+      <y>330</y>
+      <w>12</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=100
@@ -108,24 +108,24 @@ transparency=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>546</x>
-      <y>476</y>
-      <w>252</w>
-      <h>56</h>
+      <x>312</x>
+      <y>372</y>
+      <w>216</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>availableModels : 
 Set&lt;String&gt;
 lt=&lt;.
 </panel_attributes>
-    <additional_attributes>10.0;30.0;340.0;30.0</additional_attributes>
+    <additional_attributes>10.0;20.0;340.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>784</x>
-      <y>532</y>
-      <w>14</w>
-      <h>49</h>
+      <x>516</x>
+      <y>414</y>
+      <w>12</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=100
@@ -135,51 +135,51 @@ transparency=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>546</x>
-      <y>511</y>
-      <w>252</w>
-      <h>42</h>
+      <x>312</x>
+      <y>402</y>
+      <w>216</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>selectModel(String carModel)
 lt=&lt;-
 </panel_attributes>
-    <additional_attributes>340.0;30.0;10.0;30.0</additional_attributes>
+    <additional_attributes>340.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>546</x>
-      <y>560</y>
-      <w>252</w>
-      <h>56</h>
+      <x>312</x>
+      <y>444</y>
+      <w>216</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>availableOptions : 
 Map&lt;String, Set&lt;String&gt;&gt;
 lt=&lt;.
 </panel_attributes>
-    <additional_attributes>10.0;30.0;340.0;30.0</additional_attributes>
+    <additional_attributes>10.0;20.0;340.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>546</x>
-      <y>602</y>
-      <w>252</w>
-      <h>56</h>
+      <x>312</x>
+      <y>480</y>
+      <w>216</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>completeOrderingForm(
 Map&lt;String, String&gt; carOptions)
 lt=&lt;-
 </panel_attributes>
-    <additional_attributes>340.0;30.0;10.0;30.0</additional_attributes>
+    <additional_attributes>340.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>784</x>
-      <y>623</y>
-      <w>21</w>
-      <h>469</h>
+      <x>516</x>
+      <y>492</y>
+      <w>12</w>
+      <h>402</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=100
@@ -189,24 +189,24 @@ transparency=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>798</x>
-      <y>609</y>
-      <w>259</w>
-      <h>56</h>
+      <x>522</x>
+      <y>486</y>
+      <w>228</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>completeOrderingForm(
 Map&lt;String, String&gt; carOptions)
 lt=&lt;-
 </panel_attributes>
-    <additional_attributes>350.0;30.0;10.0;30.0</additional_attributes>
+    <additional_attributes>360.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1043</x>
-      <y>630</y>
-      <w>14</w>
-      <h>441</h>
+      <x>738</x>
+      <y>498</y>
+      <w>12</w>
+      <h>378</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=100
@@ -216,37 +216,37 @@ transparency=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>798</x>
-      <y>924</y>
-      <w>259</w>
-      <h>42</h>
+      <x>522</x>
+      <y>756</y>
+      <w>228</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>estimatedCompletionDate:  Time
 lt=&lt;.
 </panel_attributes>
-    <additional_attributes>10.0;30.0;350.0;30.0</additional_attributes>
+    <additional_attributes>10.0;20.0;360.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>546</x>
-      <y>931</y>
-      <w>252</w>
-      <h>56</h>
+      <x>312</x>
+      <y>762</y>
+      <w>216</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>estimatedCompletionDate:  
 LocalDate
 lt=&lt;.
 </panel_attributes>
-    <additional_attributes>10.0;30.0;340.0;30.0</additional_attributes>
+    <additional_attributes>10.0;20.0;340.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>371</x>
-      <y>217</y>
-      <w>21</w>
-      <h>1099</h>
+      <x>162</x>
+      <y>144</y>
+      <w>18</w>
+      <h>942</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;1550.0</additional_attributes>
@@ -254,10 +254,10 @@ lt=&lt;.
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>497</x>
-      <y>196</y>
-      <w>126</w>
-      <h>21</h>
+      <x>270</x>
+      <y>126</y>
+      <w>108</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>: GarageHolderUI</panel_attributes>
     <additional_attributes/>
@@ -265,10 +265,10 @@ lt=&lt;.
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>371</x>
-      <y>231</y>
-      <w>14</w>
-      <h>1071</h>
+      <x>162</x>
+      <y>156</y>
+      <w>12</w>
+      <h>918</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=100
@@ -278,10 +278,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>112</x>
-      <y>371</y>
-      <w>2723</w>
-      <h>861</h>
+      <x>30</x>
+      <y>276</y>
+      <w>2244</w>
+      <h>738</h>
     </coordinates>
     <panel_attributes>alt
 --
@@ -346,128 +346,128 @@ wants to quite]</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>378</x>
-      <y>399</y>
-      <w>175</w>
-      <h>42</h>
+      <x>168</x>
+      <y>306</y>
+      <w>150</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 indicates he wants
 to place a new car order</panel_attributes>
-    <additional_attributes>230.0;30.0;10.0;30.0</additional_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>378</x>
-      <y>483</y>
-      <w>175</w>
-      <h>42</h>
+      <x>168</x>
+      <y>378</y>
+      <w>150</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 shows list of available
 models</panel_attributes>
-    <additional_attributes>10.0;30.0;230.0;30.0</additional_attributes>
+    <additional_attributes>10.0;20.0;230.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>378</x>
-      <y>504</y>
-      <w>175</w>
-      <h>42</h>
+      <x>168</x>
+      <y>396</y>
+      <w>150</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 
 choose car model</panel_attributes>
-    <additional_attributes>230.0;30.0;10.0;30.0</additional_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>378</x>
-      <y>567</y>
-      <w>175</w>
-      <h>35</h>
+      <x>168</x>
+      <y>450</y>
+      <w>150</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 display ordering form</panel_attributes>
-    <additional_attributes>10.0;30.0;230.0;30.0</additional_attributes>
+    <additional_attributes>10.0;20.0;230.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>378</x>
-      <y>595</y>
-      <w>175</w>
-      <h>35</h>
+      <x>168</x>
+      <y>474</y>
+      <w>150</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 fill in ordering form</panel_attributes>
-    <additional_attributes>230.0;30.0;10.0;30.0</additional_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>378</x>
-      <y>1169</y>
-      <w>175</w>
-      <h>35</h>
+      <x>168</x>
+      <y>966</y>
+      <w>150</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 cancels order</panel_attributes>
-    <additional_attributes>230.0;30.0;10.0;30.0</additional_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>378</x>
-      <y>931</y>
-      <w>175</w>
-      <h>77</h>
+      <x>168</x>
+      <y>762</y>
+      <w>150</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>display 
 est.completion date 
 &amp;
 leave overview
 lt=&lt;-</panel_attributes>
-    <additional_attributes>10.0;30.0;230.0;30.0</additional_attributes>
+    <additional_attributes>10.0;20.0;230.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>791</x>
-      <y>420</y>
-      <w>266</w>
-      <h>56</h>
+      <x>522</x>
+      <y>324</y>
+      <w>228</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>getAvailableModels()
 
 lt=&lt;-
 </panel_attributes>
-    <additional_attributes>360.0;30.0;10.0;30.0</additional_attributes>
+    <additional_attributes>360.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>791</x>
-      <y>469</y>
-      <w>266</w>
-      <h>56</h>
+      <x>522</x>
+      <y>366</y>
+      <w>228</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>availableModels : 
 Set&lt;String&gt;
 lt=&lt;.
 </panel_attributes>
-    <additional_attributes>10.0;30.0;360.0;30.0</additional_attributes>
+    <additional_attributes>10.0;20.0;360.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1218</x>
-      <y>210</y>
-      <w>21</w>
-      <h>1120</h>
+      <x>888</x>
+      <y>138</y>
+      <w>18</w>
+      <h>960</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;1580.0</additional_attributes>
@@ -475,10 +475,10 @@ lt=&lt;.
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1169</x>
-      <y>196</y>
-      <w>105</w>
-      <h>21</h>
+      <x>846</x>
+      <y>126</y>
+      <w>90</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>: Catalog</panel_attributes>
     <additional_attributes/>
@@ -486,23 +486,23 @@ lt=&lt;.
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>791</x>
-      <y>518</y>
-      <w>266</w>
-      <h>42</h>
+      <x>522</x>
+      <y>408</y>
+      <w>228</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>selectModel(String carModel)
 lt=&lt;-
 </panel_attributes>
-    <additional_attributes>360.0;30.0;10.0;30.0</additional_attributes>
+    <additional_attributes>360.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1043</x>
-      <y>539</y>
-      <w>14</w>
-      <h>35</h>
+      <x>738</x>
+      <y>420</y>
+      <w>12</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=100
@@ -512,23 +512,23 @@ transparency=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>791</x>
-      <y>553</y>
-      <w>266</w>
-      <h>42</h>
+      <x>522</x>
+      <y>438</y>
+      <w>228</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>availableOptions : 
 Map&lt;String, Set&lt;String&gt;&gt;
 lt=&lt;.</panel_attributes>
-    <additional_attributes>10.0;30.0;360.0;30.0</additional_attributes>
+    <additional_attributes>10.0;20.0;360.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1323</x>
-      <y>196</y>
-      <w>147</w>
-      <h>21</h>
+      <x>978</x>
+      <y>126</y>
+      <w>126</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>: CarModelSpecification</panel_attributes>
     <additional_attributes/>
@@ -536,21 +536,21 @@ lt=&lt;.</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1365</x>
-      <y>210</y>
-      <w>28</w>
-      <h>1127</h>
+      <x>1020</x>
+      <y>138</y>
+      <w>18</w>
+      <h>966</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>20.0;10.0;10.0;1590.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;1590.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1043</x>
-      <y>441</y>
-      <w>14</w>
-      <h>49</h>
+      <x>738</x>
+      <y>336</y>
+      <w>12</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=100
@@ -560,10 +560,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>539</x>
-      <y>420</y>
-      <w>14</w>
-      <h>84</h>
+      <x>306</x>
+      <y>318</y>
+      <w>12</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=100
@@ -573,10 +573,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>539</x>
-      <y>525</y>
-      <w>14</w>
-      <h>63</h>
+      <x>306</x>
+      <y>408</y>
+      <w>12</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=100
@@ -586,10 +586,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>539</x>
-      <y>616</y>
-      <w>14</w>
-      <h>686</h>
+      <x>306</x>
+      <y>486</y>
+      <w>12</w>
+      <h>588</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=100
@@ -599,22 +599,22 @@ transparency=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1043</x>
-      <y>427</y>
-      <w>189</w>
-      <h>35</h>
+      <x>738</x>
+      <y>330</y>
+      <w>162</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 getAvailableModels()</panel_attributes>
-    <additional_attributes>250.0;30.0;10.0;30.0</additional_attributes>
+    <additional_attributes>250.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1218</x>
-      <y>448</y>
-      <w>14</w>
-      <h>35</h>
+      <x>888</x>
+      <y>342</y>
+      <w>12</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=100
@@ -624,10 +624,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1372</x>
-      <y>455</y>
-      <w>14</w>
-      <h>21</h>
+      <x>1020</x>
+      <y>348</y>
+      <w>12</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=100
@@ -637,61 +637,61 @@ transparency=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1225</x>
-      <y>434</y>
-      <w>161</w>
-      <h>35</h>
+      <x>894</x>
+      <y>336</y>
+      <w>138</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 getModelName()</panel_attributes>
-    <additional_attributes>210.0;30.0;10.0;30.0</additional_attributes>
+    <additional_attributes>210.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1225</x>
-      <y>455</y>
-      <w>161</w>
-      <h>42</h>
+      <x>894</x>
+      <y>354</y>
+      <w>138</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 name : 
 String</panel_attributes>
-    <additional_attributes>10.0;30.0;210.0;30.0</additional_attributes>
+    <additional_attributes>10.0;20.0;210.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1050</x>
-      <y>462</y>
-      <w>168</w>
-      <h>42</h>
+      <x>744</x>
+      <y>360</y>
+      <w>144</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 availableModels : 
 Set&lt;String&gt;</panel_attributes>
-    <additional_attributes>10.0;30.0;220.0;30.0</additional_attributes>
+    <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1050</x>
-      <y>525</y>
-      <w>182</w>
-      <h>42</h>
+      <x>744</x>
+      <y>414</y>
+      <w>156</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>getOptions(name : String)
 lt=&lt;-
 </panel_attributes>
-    <additional_attributes>240.0;30.0;10.0;30.0</additional_attributes>
+    <additional_attributes>240.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1218</x>
-      <y>539</y>
-      <w>14</w>
-      <h>28</h>
+      <x>888</x>
+      <y>420</y>
+      <w>12</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=100
@@ -701,51 +701,51 @@ transparency=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1225</x>
-      <y>525</y>
-      <w>161</w>
-      <h>42</h>
+      <x>894</x>
+      <y>414</y>
+      <w>138</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>getAvailableOptions()
 lt=&lt;-
 </panel_attributes>
-    <additional_attributes>210.0;30.0;10.0;30.0</additional_attributes>
+    <additional_attributes>210.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1225</x>
-      <y>539</y>
-      <w>161</w>
-      <h>56</h>
+      <x>894</x>
+      <y>426</y>
+      <w>138</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>availableOptions : 
 Map&lt;String, Set&lt;String&gt;&gt;
 lt=&lt;.
 </panel_attributes>
-    <additional_attributes>10.0;30.0;210.0;30.0</additional_attributes>
+    <additional_attributes>10.0;20.0;210.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1050</x>
-      <y>546</y>
-      <w>182</w>
-      <h>56</h>
+      <x>744</x>
+      <y>432</y>
+      <w>156</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>availableOptions : 
 Map&lt;String, Set&lt;String&gt;&gt;
 lt=&lt;.
 </panel_attributes>
-    <additional_attributes>10.0;30.0;240.0;30.0</additional_attributes>
+    <additional_attributes>10.0;20.0;240.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1372</x>
-      <y>546</y>
-      <w>14</w>
-      <h>14</h>
+      <x>1020</x>
+      <y>426</y>
+      <w>12</w>
+      <h>12</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=100
@@ -755,10 +755,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1477</x>
-      <y>196</y>
-      <w>140</w>
-      <h>21</h>
+      <x>1110</x>
+      <y>126</y>
+      <w>120</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>: ProductionScheduler</panel_attributes>
     <additional_attributes/>
@@ -766,10 +766,10 @@ transparency=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1526</x>
-      <y>210</y>
-      <w>21</w>
-      <h>1127</h>
+      <x>1152</x>
+      <y>138</y>
+      <w>18</w>
+      <h>966</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;1590.0</additional_attributes>
@@ -777,23 +777,23 @@ transparency=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1050</x>
-      <y>840</y>
-      <w>490</w>
-      <h>42</h>
+      <x>744</x>
+      <y>684</y>
+      <w>420</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>getScheduleAlgorithm()
 lt=&lt;-
 </panel_attributes>
-    <additional_attributes>680.0;30.0;10.0;30.0</additional_attributes>
+    <additional_attributes>680.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2023</x>
-      <y>847</y>
-      <w>21</w>
-      <h>539</h>
+      <x>1578</x>
+      <y>684</y>
+      <w>18</w>
+      <h>462</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;750.0</additional_attributes>
@@ -801,10 +801,10 @@ lt=&lt;-
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>1204</x>
-      <y>399</y>
-      <w>224</w>
-      <h>112</h>
+      <x>876</x>
+      <y>300</y>
+      <w>192</w>
+      <h>96</h>
     </coordinates>
     <panel_attributes>loop
 --
@@ -815,10 +815,10 @@ halign=left
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1722</x>
-      <y>196</y>
-      <w>217</w>
-      <h>21</h>
+      <x>1320</x>
+      <y>126</y>
+      <w>186</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>SchedulingAlgorithm{abstract}</panel_attributes>
     <additional_attributes/>
@@ -826,10 +826,10 @@ halign=left
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1827</x>
-      <y>210</y>
-      <w>21</w>
-      <h>1169</h>
+      <x>1410</x>
+      <y>138</y>
+      <w>18</w>
+      <h>1002</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;1650.0</additional_attributes>
@@ -837,49 +837,49 @@ halign=left
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1050</x>
-      <y>819</y>
-      <w>945</w>
-      <h>42</h>
+      <x>744</x>
+      <y>666</y>
+      <w>810</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>create(garageHolder, carModel)
 lt=&lt;.
 </panel_attributes>
-    <additional_attributes>1330.0;30.0;10.0;30.0</additional_attributes>
+    <additional_attributes>1330.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1050</x>
-      <y>917</y>
-      <w>987</w>
-      <h>42</h>
+      <x>744</x>
+      <y>750</y>
+      <w>846</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>estimatedCompletionDate:  Time
 lt=&lt;.
 </panel_attributes>
-    <additional_attributes>10.0;30.0;1390.0;30.0</additional_attributes>
+    <additional_attributes>10.0;20.0;1390.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1050</x>
-      <y>854</y>
-      <w>490</w>
-      <h>42</h>
+      <x>744</x>
+      <y>696</y>
+      <w>420</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>scheduleAlgorithmm: ScheduleAlgorithm
 lt=&lt;.
 </panel_attributes>
-    <additional_attributes>10.0;30.0;680.0;30.0</additional_attributes>
+    <additional_attributes>10.0;20.0;680.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>2093</x>
-      <y>630</y>
-      <w>105</w>
-      <h>21</h>
+      <x>1638</x>
+      <y>498</y>
+      <w>90</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>: CarModel</panel_attributes>
     <additional_attributes/>
@@ -887,10 +887,10 @@ lt=&lt;.
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2142</x>
-      <y>644</y>
-      <w>21</w>
-      <h>742</h>
+      <x>1680</x>
+      <y>510</y>
+      <w>18</w>
+      <h>636</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;1040.0</additional_attributes>
@@ -898,23 +898,23 @@ lt=&lt;.
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2184</x>
-      <y>623</y>
-      <w>119</w>
-      <h>42</h>
+      <x>1722</x>
+      <y>498</y>
+      <w>90</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>create(carModel)
 lt=&lt;.
 </panel_attributes>
-    <additional_attributes>140.0;30.0;20.0;30.0</additional_attributes>
+    <additional_attributes>130.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>2142</x>
-      <y>651</y>
-      <w>14</w>
-      <h>406</h>
+      <x>1680</x>
+      <y>516</y>
+      <w>12</w>
+      <h>348</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=100
@@ -924,23 +924,23 @@ transparency=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1050</x>
-      <y>616</y>
-      <w>1057</w>
-      <h>42</h>
+      <x>744</x>
+      <y>492</y>
+      <w>906</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>create(chosenModel, chosenOptions)
 lt=&lt;.
 </panel_attributes>
-    <additional_attributes>1490.0;30.0;10.0;30.0</additional_attributes>
+    <additional_attributes>1490.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>2282</x>
-      <y>630</y>
-      <w>105</w>
-      <h>28</h>
+      <x>1800</x>
+      <y>498</y>
+      <w>90</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>: Inspector</panel_attributes>
     <additional_attributes/>
@@ -948,10 +948,10 @@ lt=&lt;.
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2331</x>
-      <y>651</y>
-      <w>21</w>
-      <h>728</h>
+      <x>1842</x>
+      <y>516</y>
+      <w>18</w>
+      <h>624</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;1020.0</additional_attributes>
@@ -959,23 +959,23 @@ lt=&lt;.
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2142</x>
-      <y>721</y>
-      <w>203</w>
-      <h>42</h>
+      <x>1680</x>
+      <y>582</y>
+      <w>174</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>inspect()
 lt=&lt;-
 </panel_attributes>
-    <additional_attributes>270.0;30.0;10.0;30.0</additional_attributes>
+    <additional_attributes>270.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>2457</x>
-      <y>630</y>
-      <w>140</w>
-      <h>28</h>
+      <x>1950</x>
+      <y>498</y>
+      <w>120</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>Constraint{abstract}</panel_attributes>
     <additional_attributes/>
@@ -983,49 +983,49 @@ lt=&lt;-
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2338</x>
-      <y>728</y>
-      <w>196</w>
-      <h>42</h>
+      <x>1848</x>
+      <y>588</y>
+      <w>168</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>isValidCombo(carModel)
 lt=&lt;-
 </panel_attributes>
-    <additional_attributes>260.0;30.0;10.0;30.0</additional_attributes>
+    <additional_attributes>260.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2380</x>
-      <y>623</y>
-      <w>91</w>
-      <h>42</h>
+      <x>1884</x>
+      <y>498</y>
+      <w>78</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>create
 lt=&lt;.
 </panel_attributes>
-    <additional_attributes>110.0;30.0;10.0;30.0</additional_attributes>
+    <additional_attributes>110.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1050</x>
-      <y>896</y>
-      <w>987</w>
-      <h>42</h>
+      <x>744</x>
+      <y>732</y>
+      <w>846</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>getEstCompletionTime()
 lt=&lt;-
 </panel_attributes>
-    <additional_attributes>1390.0;30.0;10.0;30.0</additional_attributes>
+    <additional_attributes>1390.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>2331</x>
-      <y>742</y>
-      <w>14</w>
-      <h>287</h>
+      <x>1842</x>
+      <y>594</y>
+      <w>12</w>
+      <h>246</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=100
@@ -1035,10 +1035,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>2373</x>
-      <y>574</y>
-      <w>259</w>
-      <h>91</h>
+      <x>1878</x>
+      <y>450</y>
+      <w>222</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes>loop
 --
@@ -1049,10 +1049,10 @@ halign=left
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2520</x>
-      <y>651</y>
-      <w>21</w>
-      <h>728</h>
+      <x>2004</x>
+      <y>516</y>
+      <w>18</w>
+      <h>624</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;1020.0</additional_attributes>
@@ -1060,10 +1060,10 @@ halign=left
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>2520</x>
-      <y>749</y>
-      <w>14</w>
-      <h>259</h>
+      <x>2004</x>
+      <y>600</y>
+      <w>12</w>
+      <h>222</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=100
@@ -1073,10 +1073,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>2310</x>
-      <y>679</y>
-      <w>280</w>
-      <h>343</h>
+      <x>1824</x>
+      <y>540</y>
+      <w>240</w>
+      <h>294</h>
     </coordinates>
     <panel_attributes>loop
 --
@@ -1087,23 +1087,23 @@ halign=left
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2149</x>
-      <y>1008</y>
-      <w>196</w>
-      <h>42</h>
+      <x>1686</x>
+      <y>828</y>
+      <w>168</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>exception
 lt=&lt;.
 </panel_attributes>
-    <additional_attributes>10.0;30.0;260.0;30.0</additional_attributes>
+    <additional_attributes>10.0;20.0;260.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>2072</x>
-      <y>763</y>
-      <w>301</w>
-      <h>56</h>
+      <x>1620</x>
+      <y>612</y>
+      <w>258</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>opt
 --
@@ -1114,10 +1114,10 @@ halign=left
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>294</x>
-      <y>721</y>
-      <w>2513</w>
-      <h>413</h>
+      <x>96</x>
+      <y>576</y>
+      <w>2154</w>
+      <h>354</h>
     </coordinates>
     <panel_attributes>alt
 --
@@ -1152,90 +1152,90 @@ halign=left
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1050</x>
-      <y>875</y>
-      <w>791</w>
-      <h>42</h>
+      <x>744</x>
+      <y>714</y>
+      <w>678</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>addOrderToProductionSchedule(carOrder)
 lt=&lt;-
 </panel_attributes>
-    <additional_attributes>1110.0;30.0;10.0;30.0</additional_attributes>
+    <additional_attributes>1110.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>378</x>
-      <y>1071</y>
-      <w>175</w>
-      <h>77</h>
+      <x>168</x>
+      <y>882</y>
+      <w>150</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>Inform user
 &amp;
 leave overview
 lt=&lt;-
 </panel_attributes>
-    <additional_attributes>10.0;30.0;230.0;30.0</additional_attributes>
+    <additional_attributes>10.0;20.0;230.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2338</x>
-      <y>749</y>
-      <w>196</w>
-      <h>42</h>
+      <x>1848</x>
+      <y>606</y>
+      <w>168</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>true
 lt=&lt;.
 </panel_attributes>
-    <additional_attributes>10.0;30.0;260.0;30.0</additional_attributes>
+    <additional_attributes>10.0;20.0;260.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2338</x>
-      <y>980</y>
-      <w>196</w>
-      <h>42</h>
+      <x>1848</x>
+      <y>804</y>
+      <w>168</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>exception
 lt=&lt;.
 </panel_attributes>
-    <additional_attributes>10.0;30.0;260.0;30.0</additional_attributes>
+    <additional_attributes>10.0;20.0;260.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2149</x>
-      <y>770</y>
-      <w>196</w>
-      <h>42</h>
+      <x>1686</x>
+      <y>624</y>
+      <w>168</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>true
 lt=&lt;.
 </panel_attributes>
-    <additional_attributes>10.0;30.0;260.0;30.0</additional_attributes>
+    <additional_attributes>10.0;20.0;260.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1050</x>
-      <y>1036</y>
-      <w>1106</w>
-      <h>42</h>
+      <x>744</x>
+      <y>852</y>
+      <w>948</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>exception
 lt=&lt;.
 </panel_attributes>
-    <additional_attributes>10.0;30.0;1560.0;30.0</additional_attributes>
+    <additional_attributes>10.0;20.0;1560.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>2541</x>
-      <y>756</y>
-      <w>224</w>
-      <h>49</h>
+      <x>2022</x>
+      <y>606</y>
+      <w>192</w>
+      <h>42</h>
     </coordinates>
     <panel_attributes>ref
 --
@@ -1251,10 +1251,10 @@ transparency=0
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1981</x>
-      <y>826</y>
-      <w>105</w>
-      <h>28</h>
+      <x>1542</x>
+      <y>666</y>
+      <w>90</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>: CarOrder</panel_attributes>
     <additional_attributes/>
@@ -1262,10 +1262,10 @@ transparency=0
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>322</x>
-      <y>266</y>
-      <w>2520</w>
-      <h>70</h>
+      <x>120</x>
+      <y>186</y>
+      <w>2160</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>ref
 --
@@ -1280,10 +1280,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1526</x>
-      <y>861</y>
-      <w>14</w>
-      <h>14</h>
+      <x>1152</x>
+      <y>696</y>
+      <w>12</w>
+      <h>12</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=100
@@ -1293,10 +1293,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1827</x>
-      <y>889</y>
-      <w>14</w>
-      <h>14</h>
+      <x>1410</x>
+      <y>720</y>
+      <w>12</w>
+      <h>12</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=100
@@ -1306,10 +1306,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1841</x>
-      <y>868</y>
-      <w>140</w>
-      <h>42</h>
+      <x>1422</x>
+      <y>702</y>
+      <w>120</w>
+      <h>36</h>
     </coordinates>
     <panel_attributes>ref
 --
@@ -1325,10 +1325,10 @@ transparency=0
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>2023</x>
-      <y>910</y>
-      <w>14</w>
-      <h>28</h>
+      <x>1578</x>
+      <y>738</y>
+      <w>12</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=100
@@ -1338,63 +1338,63 @@ transparency=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>798</x>
-      <y>1050</y>
-      <w>259</w>
-      <h>42</h>
+      <x>522</x>
+      <y>864</y>
+      <w>228</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>exception
 lt=&lt;.
 </panel_attributes>
-    <additional_attributes>10.0;30.0;350.0;30.0</additional_attributes>
+    <additional_attributes>10.0;20.0;360.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>546</x>
-      <y>1064</y>
-      <w>252</w>
-      <h>42</h>
+      <x>312</x>
+      <y>876</y>
+      <w>216</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>exception
 lt=&lt;.
 </panel_attributes>
-    <additional_attributes>10.0;30.0;340.0;30.0</additional_attributes>
+    <additional_attributes>10.0;20.0;340.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>378</x>
-      <y>1197</y>
-      <w>175</w>
-      <h>42</h>
+      <x>168</x>
+      <y>990</y>
+      <w>150</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 leave garage holder
 overview</panel_attributes>
-    <additional_attributes>10.0;30.0;230.0;30.0</additional_attributes>
+    <additional_attributes>10.0;20.0;230.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>378</x>
-      <y>1246</y>
-      <w>175</w>
-      <h>35</h>
+      <x>168</x>
+      <y>1032</y>
+      <w>150</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>wants to stop</panel_attributes>
-    <additional_attributes>230.0;30.0;10.0;30.0</additional_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>378</x>
-      <y>1267</y>
-      <w>175</w>
-      <h>35</h>
+      <x>168</x>
+      <y>1050</y>
+      <w>150</w>
+      <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 end program</panel_attributes>
-    <additional_attributes>10.0;30.0;230.0;30.0</additional_attributes>
+    <additional_attributes>10.0;20.0;230.0;20.0</additional_attributes>
   </element>
 </diagram>
