@@ -61,8 +61,11 @@ public class Inspector {
      */
     public boolean inspect() throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         for (Constraint constraint : constraints) {
-            if(!constraint.isValidCombo(this.carModel)) {
-                return false;
+            try{
+                constraint.isValidCombo(this.carModel);
+            }
+            catch (Exception e){
+                throw e;
             }
         }
         return true;

@@ -86,7 +86,7 @@ public class CarOrder implements StatisticsObservable {
         counter++;
         this.ID = counter;
         this.orderingTime = LocalDateTime.now();
-        setWorkingMinutesWorkStation(workingMinutesWorkStation);
+        this.setWorkingMinutesWorkStation(workingMinutesWorkStation);
     }
 
 

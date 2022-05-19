@@ -144,6 +144,7 @@ public class GarageHolderUI {
             boolean contains = false;
             for (String modelName: availableModels) {
                 if(modelName.equalsIgnoreCase(model)){
+                    model = model.toUpperCase(Locale.ROOT);
                     contains = true;
                     break;
                 }

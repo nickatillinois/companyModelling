@@ -377,7 +377,13 @@ public class Company implements TaskObserver {
         if(chosenModel.trim().length() <= 0) {
             throw new IllegalArgumentException("chosenModel cannot be whitespace.");
         }
-        CarModel carModel = new CarModel(chosenModel, chosenOptions);
+        CarModel carModel;
+        try{
+            carModel = new CarModel(chosenModel, chosenOptions);
+        }
+        catch(IllegalModelException e){
+            throw e;
+        }
         CarOrder carOrder = new CarOrder(garageHolder, carModel, workingMinutesWorkstation);
         this.productionScheduler.getSchedulingAlgorithm().addOrderToProductionSchedule(carOrder);
         for (Stats stat : statistics) {

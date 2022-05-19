@@ -70,7 +70,13 @@ public class CarModel {
      * @throws RequiredComponentException  if a component is required, but not chosen.
      */
     public boolean inspect() throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
-        return new Inspector(this).inspect();
+        try{
+            return new Inspector(this).inspect();
+        }
+        catch (Exception e){
+            throw e;
+        }
+
     }
 
     /**

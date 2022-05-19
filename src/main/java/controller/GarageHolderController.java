@@ -110,7 +110,13 @@ public class GarageHolderController {
      * @throws RequiredComponentException if there is a required component not specified.
      */
     public String completeOrderingForm(TreeMap<String, String> chosenOptions, int workingMinutesWorkstation) throws IllegalArgumentException, IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
-        return company.completeOrderingForm(chosenOptions, this.garageHolder, this.chosenModel, workingMinutesWorkstation);
+        try{
+            return company.completeOrderingForm(chosenOptions, this.garageHolder, this.chosenModel, workingMinutesWorkstation);
+        }
+        catch (Exception e){
+            throw e;
+        }
+
     }
 
     /**
