@@ -117,14 +117,14 @@ public class Batch extends SchedulingAlgorithm{
             //order.isValidCarModel();
             carOrderList.add(order);
             selectBatch(getBatch());
-            int workingTime = catalog.getModel(order.getCarModel().getModelName()).getStandardWorkStationTime() * 3;
+            int workingTime = order.getWorkingMinutesWorkStation() * 3;
             boolean before = true;
             if (carOrderList != null && batch != null) {
                 for (CarOrder order1 : getProductionSchedule()) {
                     if (order == order1)
                         before = false;
                     if (before)
-                        workingTime = workingTime + catalog.getModel(order1.getCarModel().getModelName()).getStandardWorkStationTime();
+                        workingTime = workingTime + order1.getWorkingMinutesWorkStation();
                     else
                         break;
                 }
