@@ -1,7 +1,7 @@
 package main.assemAssist;
 
+
 import assemAssist.CarModel;
-import assemAssist.CarModelSpecification;
 import assemAssist.CarOrder;
 import assemAssist.Company;
 import assemAssist.exceptions.*;
@@ -9,11 +9,14 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.TreeMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CompanyCatalogEtcTest {
+
+public class CompanyTest {
 
     static Company company;
     static CarOrder carOrderA;
@@ -24,7 +27,7 @@ public class CompanyCatalogEtcTest {
     static CarOrder carOrderF;
 
     @BeforeAll
-    static void init() throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+    static void init() throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException, IllegalCompletionDateException {
         company = new Company();
         TreeMap<String, String> legalAOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         legalAOptions.put("color", "red");
@@ -74,13 +77,9 @@ public class CompanyCatalogEtcTest {
         carOrderD = new CarOrder("Kim Smeets", carModelC,company.getWorkingTimeWorkingStation("C"));
         carOrderE = new CarOrder("Kim Smeets", carModelC,company.getWorkingTimeWorkingStation("C"));
         carOrderF = new CarOrder("Kim Smeets", carModelC,company.getWorkingTimeWorkingStation("C"));
-
-
-
         carOrderD.setEstCompletionTime(LocalDateTime.now().plusDays(7));
         carOrderE.setEstCompletionTime(LocalDateTime.now().plusDays(9));
         carOrderF.setEstCompletionTime(LocalDateTime.now().plusDays(8));
-
         ArrayList<CarOrder> completedOrders = new ArrayList<>();
         carOrderD.setCompleted(true);
         carOrderE.setCompleted(true);
@@ -300,8 +299,5 @@ public class CompanyCatalogEtcTest {
             System.out.println(s[0] + " " + s[1]);
         }
     }
-
-
-
 
 }

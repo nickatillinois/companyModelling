@@ -41,7 +41,7 @@ public class IfOptionAThenOptionB extends Constraint {
      *                                   - Some strings are duplicated
      *                                   - The list is already in the list of constraints
      */
-    protected void addOptionAThenOptionBPair(ArrayList<String> pair) throws IllegalConstraintException {
+    private void addOptionAThenOptionBPair(ArrayList<String> pair) throws IllegalConstraintException {
         if (pair.size() < 2) {
             throw new IllegalConstraintException("Given list must have at least 2 option strings.");
         }
@@ -78,7 +78,7 @@ public class IfOptionAThenOptionB extends Constraint {
      *                                   - Some strings are duplicated
      *                                   - The list is already in the list of constraints
      */
-    protected void addOptionAAndOptionBPair(ArrayList<String> pair) throws IllegalConstraintException {
+    private void addOptionAAndOptionBPair(ArrayList<String> pair) throws IllegalConstraintException {
         // must be of size 2
         if (pair.size() != 2) {
             throw new IllegalConstraintException("Given list is not of size 2.");
@@ -137,9 +137,8 @@ public class IfOptionAThenOptionB extends Constraint {
         // clear the list of pairs
         pairs.clear();
     }
-
+    @Override
     public boolean equals(Object obj) {
-        if (! super.equals(obj)) return false;
         if (this.getClass() != obj.getClass())
             return false;
         IfOptionAThenOptionB other = (IfOptionAThenOptionB) obj;
@@ -152,7 +151,21 @@ public class IfOptionAThenOptionB extends Constraint {
         }
         return true;
     }
+
+    @Override
     public int hashCode() {
-        return super.hashCode() + this.pairs.hashCode();
+        int hash = 7;
+        // hashcode so that 2 lists of pairs are equal if they have the same size and the same elements in pairs in the same order
+        hash = 31 * hash + this.pairs.size();
+        for (String pair : this.pairs) {
+            hash = 31 * hash + pair.hashCode();
+        }
+        // take the sun of the hashcodes of all elements in pairs, except the first one
+        int sum = 0;
+        for (int i = 1; i < this.pairs.size(); i++) {
+            sum += this.pairs.get(i).hashCode();
+        }
+        hash = hash + (sum - pairs.get(0).hashCode());
+        return hash;
     }
 }

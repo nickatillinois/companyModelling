@@ -31,15 +31,5 @@ public abstract class Constraint {
     protected abstract boolean isValidCombo(CarModel chosenSpecifications) throws IllegalArgumentException, IllegalConstraintException, IllegalModelException, RequiredComponentException, OptionAThenOptionBException, OptionThenComponentException;
     protected abstract void reset();
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        Constraint other = (Constraint) obj;
-        return other.equals(this);
-    }
+
 }

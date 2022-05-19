@@ -38,4 +38,14 @@ class AssemblyTaskTest {
         assert(task1.getName().equals("paint"));
         assert(task2.getName().equals("seats"));
     }
+
+    @Test
+    void testEquals() {
+        task1 = new AssemblyTask("seats","install leather black seats");
+        task2 = new AssemblyTask("seats","install leather black seats");
+        assert(task1.equals(task1));
+        task1 = new AssemblyTask("seats","install leather white seats");
+        task2 = new AssemblyTask("seats","install leather black seats");
+        assert(!task1.equals(task2));
+    }
 }

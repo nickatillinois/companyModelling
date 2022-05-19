@@ -336,6 +336,7 @@ public class CarOrderTest {
             gotError = true;
         }
         assertTrue(gotError);
+        new Inspector(carOrderA.getCarModel()).reset();
     }
 
     @Test
@@ -361,6 +362,7 @@ public class CarOrderTest {
             gotError = true;
         }
         assertTrue(gotError);
+        new Inspector(carOrderA.getCarModel()).reset();
     }
 
     @Test
@@ -389,6 +391,7 @@ public class CarOrderTest {
         catch(Exception e){
             assertEquals("OptionThenComponentException", e.getClass().getSimpleName());
         }
+        new Inspector(carOrderA.getCarModel()).reset();
         TreeMap<String, String> options2 = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         options2.put("color", "red");
         options2.put("body", "sedan");

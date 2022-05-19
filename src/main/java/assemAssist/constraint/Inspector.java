@@ -18,7 +18,7 @@ public class Inspector {
     /**
      * List of constraints that the inspector validates.
      */
-    private static HashSet<Constraint> constraints = new HashSet<Constraint>();;
+    private static final HashSet<Constraint> constraints = new HashSet<>();
 
     /**
      * The car model to be inspected.
@@ -82,13 +82,13 @@ public class Inspector {
      *                                   - The list is already in the list of constraints
      */
     public void addOptionAThenOptionBPair(ArrayList<String> pair) throws IllegalConstraintException {
-        constraints.add(new IfOptionAThenOptionB(pair));
-
-        for (Constraint constraint : constraints) {
-            if (constraint instanceof IfOptionAThenOptionB) {
-                ((IfOptionAThenOptionB) constraint).addOptionAThenOptionBPair(pair);
-            }
+        if (pair == null) {
+            throw new IllegalConstraintException("The list of strings is null");
         }
+        if(pair.size() < 2) {
+            throw new IllegalConstraintException("The list must have at least 2 elements");
+        }
+        constraints.add(new IfOptionAThenOptionB(pair));
     }
 
     /**
@@ -103,11 +103,13 @@ public class Inspector {
      *                                   - The list is already in the list of constraints
      */
     public void addOptionThenComponentPair(ArrayList<String> pair) throws IllegalConstraintException {
-        for (Constraint constraint : constraints) {
-            if (constraint instanceof IfOptionThenComponent) {
-                ((IfOptionThenComponent) constraint).addOptionThenComponentPair(pair);
-            }
+        if (pair == null) {
+            throw new IllegalConstraintException("The list of strings is null");
         }
+        if(pair.size() != 2) {
+            throw new IllegalConstraintException("The list must have 2 elements");
+        }
+        constraints.add(new IfOptionThenComponent(pair));
     }
 
     /**
@@ -123,12 +125,14 @@ public class Inspector {
      *                                   - The list is already in the list of constraints
      */
     public void addOptionAAndOptionBPair(ArrayList<String> pair) throws IllegalConstraintException {
-
-        for (Constraint constraint : constraints) {
-            if (constraint instanceof IfOptionAThenOptionB) {
-                ((IfOptionAThenOptionB) constraint).addOptionAAndOptionBPair(pair);
-            }
+        if (pair == null) {
+            throw new IllegalConstraintException("The list of strings is null");
         }
+        if(pair.size() != 2) {
+            throw new IllegalConstraintException("The list must have 2 elements");
+        }
+        constraints.add(new IfOptionAThenOptionB(pair));
+        constraints.add(new IfOptionAThenOptionB(new ArrayList<>(Arrays.asList(pair.get(1), pair.get(0)))));
     }
 
     public void reset() throws IllegalConstraintException {

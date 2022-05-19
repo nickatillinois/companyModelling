@@ -44,7 +44,6 @@ public class RequiredComponent extends Constraint {
     }
 
     public boolean equals(Object obj) {
-        if (! super.equals(obj)) return false;
         if (this.getClass() != obj.getClass())
             return false;
         RequiredComponent other = (RequiredComponent) obj;

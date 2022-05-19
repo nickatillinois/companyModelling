@@ -50,7 +50,7 @@ public class CarModel {
             throw new IllegalArgumentException("modelName must not be empty.");
         }
         if (modelName.contains(" ")) {
-            throw new IllegalArgumentException("modelName must not contain whitespace.");
+            throw new IllegalArgumentException("modelName must not contain only whitespace.");
         }
         if (chosenOptions == null) {
             throw new IllegalArgumentException("chosenOptions must not be null.");
