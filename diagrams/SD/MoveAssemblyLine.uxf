@@ -12,4 +12,15 @@
     <panel_attributes>Move Assembly Line</panel_attributes>
     <additional_attributes/>
   </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>400</x>
+      <y>150</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>_:Instance_</panel_attributes>
+    <additional_attributes/>
+  </element>
 </diagram>

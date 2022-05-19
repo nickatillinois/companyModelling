@@ -4,10 +4,10 @@
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>0</x>
-      <y>0</y>
-      <w>1640</w>
-      <h>910</h>
+      <x>50</x>
+      <y>30</y>
+      <w>1450</w>
+      <h>860</h>
     </coordinates>
     <panel_attributes>Advance Assembly Line
 --
@@ -17,8 +17,8 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>60</x>
-      <y>50</y>
+      <x>140</x>
+      <y>80</y>
       <w>160</w>
       <h>30</h>
     </coordinates>
@@ -29,8 +29,8 @@ valign=center</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>490</x>
-      <y>50</y>
+      <x>360</x>
+      <y>80</y>
       <w>160</w>
       <h>30</h>
     </coordinates>
@@ -41,8 +41,8 @@ valign=center</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1160</x>
-      <y>50</y>
+      <x>1020</x>
+      <y>80</y>
       <w>160</w>
       <h>30</h>
     </coordinates>
@@ -53,64 +53,66 @@ valign=center</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>130</x>
-      <y>70</y>
+      <x>210</x>
+      <y>100</y>
       <w>30</w>
-      <h>820</h>
+      <h>790</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;800.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;770.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1230</x>
-      <y>70</y>
+      <x>1090</x>
+      <y>100</y>
       <w>30</w>
-      <h>820</h>
+      <h>790</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;800.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;770.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>560</x>
-      <y>70</y>
+      <x>430</x>
+      <y>100</y>
       <w>30</w>
-      <h>820</h>
+      <h>790</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;800.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;770.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>140</x>
-      <y>140</y>
-      <w>440</w>
+      <x>220</x>
+      <y>150</y>
+      <w>230</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 advanceOrders(time : int)</panel_attributes>
-    <additional_attributes>420.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>210.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>130</x>
-      <y>110</y>
+      <x>210</x>
+      <y>140</y>
       <w>20</w>
-      <h>730</h>
+      <h>700</h>
     </coordinates>
-    <panel_attributes/>
+    <panel_attributes>bg=white
+layer=1000
+transparency=0</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>720</x>
-      <y>50</y>
+      <x>580</x>
+      <y>80</y>
       <w>160</w>
       <h>30</h>
     </coordinates>
@@ -121,43 +123,47 @@ valign=center</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>790</x>
-      <y>70</y>
+      <x>650</x>
+      <y>100</y>
       <w>30</w>
-      <h>820</h>
+      <h>790</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;800.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;770.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>560</x>
-      <y>160</y>
+      <x>430</x>
+      <y>170</y>
       <w>20</w>
-      <h>470</h>
+      <h>540</h>
     </coordinates>
-    <panel_attributes/>
+    <panel_attributes>bg=white
+layer=1000
+transparency=0</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>790</x>
-      <y>280</y>
+      <x>650</x>
+      <y>310</y>
       <w>20</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes/>
+    <panel_attributes>bg=white
+layer=1000
+transparency=0</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>460</x>
-      <y>170</y>
-      <w>1160</w>
-      <h>600</h>
+      <x>100</x>
+      <y>190</y>
+      <w>1380</w>
+      <h>540</h>
     </coordinates>
     <panel_attributes>opt
 --
@@ -167,50 +173,51 @@ cannot move]
 
 --
 [assembly line
-can move]</panel_attributes>
+can move]
+layer=1001</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>570</x>
-      <y>260</y>
-      <w>240</w>
+      <x>440</x>
+      <y>290</y>
+      <w>230</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 getWorkStations().size()</panel_attributes>
-    <additional_attributes>220.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>210.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>570</x>
-      <y>290</y>
-      <w>240</w>
+      <x>440</x>
+      <y>320</y>
+      <w>230</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 nrOfStations : int</panel_attributes>
-    <additional_attributes>10.0;20.0;220.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;210.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>570</x>
-      <y>320</y>
-      <w>680</w>
+      <x>440</x>
+      <y>350</y>
+      <w>670</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 getWorkStations().get(nrOfStations - 1).getCurrentOrder()</panel_attributes>
-    <additional_attributes>660.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>650.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>940</x>
-      <y>50</y>
+      <x>800</x>
+      <y>80</y>
       <w>160</w>
       <h>30</h>
     </coordinates>
@@ -221,67 +228,69 @@ valign=center</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1010</x>
-      <y>70</y>
+      <x>870</x>
+      <y>100</y>
       <w>30</w>
-      <h>820</h>
+      <h>790</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;800.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;770.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1230</x>
-      <y>340</y>
+      <x>1090</x>
+      <y>370</y>
       <w>20</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes/>
+    <panel_attributes>bg=white
+layer=1000
+transparency=0</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>10</x>
-      <y>130</y>
-      <w>140</w>
+      <x>60</x>
+      <y>140</y>
+      <w>170</w>
       <h>50</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 update
 (time : int)</panel_attributes>
-    <additional_attributes>120.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>150.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>570</x>
-      <y>350</y>
-      <w>680</w>
+      <x>440</x>
+      <y>380</y>
+      <w>670</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 finishedOrder : CarOrder</panel_attributes>
-    <additional_attributes>10.0;20.0;660.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;650.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>140</x>
-      <y>220</y>
-      <w>440</w>
+      <x>220</x>
+      <y>190</y>
+      <w>230</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 null</panel_attributes>
-    <additional_attributes>10.0;20.0;420.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;210.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>480</x>
-      <y>400</y>
+      <x>340</x>
+      <y>430</y>
       <w>1120</w>
       <h>220</h>
     </coordinates>
@@ -294,38 +303,39 @@ is empty]
 [production
 schedule
 isn't empty]
-halign=left</panel_attributes>
+halign=left
+layer=1001</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>570</x>
-      <y>420</y>
-      <w>210</w>
+      <x>440</x>
+      <y>450</y>
+      <w>200</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 move(null, time : int)</panel_attributes>
-    <additional_attributes>190.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>180.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>570</x>
-      <y>550</y>
-      <w>210</w>
+      <x>440</x>
+      <y>580</y>
+      <w>200</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-move(carOrder, time : int)</panel_attributes>
-    <additional_attributes>190.0;20.0;10.0;20.0</additional_attributes>
+move(nextOrder, time : int)</panel_attributes>
+    <additional_attributes>180.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1380</x>
-      <y>50</y>
+      <x>1240</x>
+      <y>80</y>
       <w>160</w>
       <h>30</h>
     </coordinates>
@@ -336,19 +346,19 @@ valign=center</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1450</x>
-      <y>70</y>
+      <x>1310</x>
+      <y>100</y>
       <w>30</w>
-      <h>820</h>
+      <h>790</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;800.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;770.0</additional_attributes>
   </element>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>760</x>
-      <y>410</y>
+      <x>620</x>
+      <y>440</y>
       <w>160</w>
       <h>60</h>
     </coordinates>
@@ -356,14 +366,18 @@ valign=center</panel_attributes>
 --
 halign=center
 valign=center
-Move Assembly Line</panel_attributes>
+Move Assembly Line
+
+bg=white
+layer=1000
+transparency=0</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>760</x>
-      <y>540</y>
+      <x>620</x>
+      <y>570</y>
       <w>160</w>
       <h>60</h>
     </coordinates>
@@ -371,48 +385,41 @@ Move Assembly Line</panel_attributes>
 --
 halign=center
 valign=center
-Move Assembly Line</panel_attributes>
+Move Assembly Line
+bg=white
+layer=1000
+transparency=0</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>570</x>
-      <y>490</y>
-      <w>610</w>
+      <x>440</x>
+      <y>520</y>
+      <w>670</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;.
 &lt;&lt;creates&gt;&gt;</panel_attributes>
-    <additional_attributes>590.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>650.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1450</x>
+      <x>1310</x>
       <y>550</y>
       <w>20</w>
       <h>30</h>
     </coordinates>
-    <panel_attributes/>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>1160</x>
-      <y>500</y>
-      <w>160</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>: CarOrder
-valign=center</panel_attributes>
+    <panel_attributes>bg=white
+layer=1000
+transparency=0</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1240</x>
+      <x>1100</x>
       <y>530</y>
       <w>230</w>
       <h>40</h>
@@ -424,18 +431,20 @@ getNextCarOrder()</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1230</x>
+      <x>1090</x>
       <y>540</y>
       <w>20</w>
       <h>50</h>
     </coordinates>
-    <panel_attributes/>
+    <panel_attributes>bg=white
+layer=1000
+transparency=0</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1240</x>
+      <x>1100</x>
       <y>560</y>
       <w>230</w>
       <h>40</h>
@@ -447,8 +456,8 @@ nextOrder</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>1670</x>
-      <y>530</y>
+      <x>1530</x>
+      <y>560</y>
       <w>170</w>
       <h>50</h>
     </coordinates>
@@ -456,5 +465,70 @@ nextOrder</panel_attributes>
 &lt;-- nu enkel fifo
 bg=red</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>460</x>
+      <y>670</y>
+      <w>190</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>ProductionScheduler 99-102
+bg=red</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>220</x>
+      <y>690</y>
+      <w>230</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+finishedOrder : CarOrder</panel_attributes>
+    <additional_attributes>10.0;20.0;210.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>100</x>
+      <y>750</y>
+      <w>470</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>opt
+--
+[finishedOrder
+is not null]
+halign=left
+layer=1001</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>220</x>
+      <y>780</y>
+      <w>20</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>bg=white
+layer=1001
+transparency=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>220</x>
+      <y>760</y>
+      <w>340</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+completedCarOrders.add(finishedOrder)</panel_attributes>
+    <additional_attributes>20.0;40.0;70.0;40.0;70.0;10.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
