@@ -1127,42 +1127,48 @@ StatisticsObserver
     <id>UMLClass</id>
     <coordinates>
       <x>1848</x>
-      <y>473</y>
+      <y>462</y>
       <w>319</w>
-      <h>66</h>
+      <h>121</h>
     </coordinates>
     <panel_attributes>SchedulingAlgorithm {abstract}
 --
-/ + addOrderToProductionSchedule(order: CarOrder): LocalDate /</panel_attributes>
+-Name: String
+--
+/+ addOrderToProductionSchedule(order: CarOrder): LocalDate /
+/+ possibleBatch(): List&lt;String&gt;/
+/+ selectBatch()/
+/+ getNextCarOrder(): CarOrder/
+/+ getProductionSchedule: List&lt;CarOrder&gt;/</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1881</x>
-      <y>528</y>
-      <w>99</w>
-      <h>77</h>
+      <x>1892</x>
+      <y>572</y>
+      <w>88</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>70.0;10.0;10.0;50.0</additional_attributes>
+    <additional_attributes>60.0;10.0;10.0;30.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>2024</x>
-      <y>528</y>
+      <y>572</y>
       <w>110</w>
-      <h>77</h>
+      <h>55</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;80.0;50.0</additional_attributes>
+    <additional_attributes>10.0;10.0;80.0;30.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>2024</x>
-      <y>583</y>
+      <y>605</y>
       <w>176</w>
       <h>55</h>
     </coordinates>
@@ -1173,8 +1179,8 @@ StatisticsObserver
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1804</x>
-      <y>583</y>
+      <x>1815</x>
+      <y>605</y>
       <w>176</w>
       <h>55</h>
     </coordinates>
@@ -1621,14 +1627,14 @@ observers</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1144</x>
-      <y>528</y>
-      <w>880</w>
-      <h>440</h>
+      <x>1716</x>
+      <y>572</y>
+      <w>308</w>
+      <h>550</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-catalog
-m1= 1</panel_attributes>
-    <additional_attributes>10.0;380.0;780.0;380.0;780.0;10.0</additional_attributes>
+CarOrderList
+m1= 0..n</panel_attributes>
+    <additional_attributes>10.0;480.0;260.0;480.0;260.0;10.0</additional_attributes>
   </element>
 </diagram>
