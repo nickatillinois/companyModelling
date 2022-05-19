@@ -14,7 +14,6 @@ public abstract class SchedulingAlgorithm {
      */
     static List<CarOrder> carOrderList = new ArrayList<>();
 
-    Catalog catalog = new Catalog();
 
     /**
      * This function gives a list of possible batch of options where for there are more than three car order with that

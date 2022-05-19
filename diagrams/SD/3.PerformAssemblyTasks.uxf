@@ -500,7 +500,7 @@ halign=left
 [as long as there 
 are tasks left to 
 be performed]
-layer=1001</panel_attributes>
+layer=1002</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -590,7 +590,7 @@ transparency=0</panel_attributes>
       <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-setIsCompleted()</panel_attributes>
+setCompleted()</panel_attributes>
     <additional_attributes>190.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
@@ -719,7 +719,7 @@ give time it took</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>64</x>
+      <x>72</x>
       <y>496</y>
       <w>1416</w>
       <h>712</h>
@@ -729,7 +729,7 @@ give time it took</panel_attributes>
 halign=left
 [mechanic wants 
 to continue working]
-layer=100
+layer=1001
 
 
 
