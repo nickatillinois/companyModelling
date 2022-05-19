@@ -10,12 +10,15 @@ public class AccessoriesPost extends WorkStation{
 
     /**
      * Creates an accessory post.
+     *
+     * @param company the observer that will be watching this class
+     * @throws IllegalArgumentException company == null
      */
     public AccessoriesPost(Company company) {
         super("Accessories Post");
+        if( company == null ) { throw new IllegalArgumentException("The given observer cannot be null."); }
         addObserver(company);
     }
-
 
     /**
      *  Assigns the car options of the new car order to this work station
@@ -35,7 +38,8 @@ public class AccessoriesPost extends WorkStation{
         //add task for spoiler, IF there needs to be one
         if (getCurrentOrder().getCarModel().getChosenOptions().get("spoiler") != null) {
             this.addTask(new AssemblyTask("spoiler",
-                    "install " + getCurrentOrder().getCarModel().getChosenOptions().get("spoiler").toLowerCase() + " spoiler"));
+                "install " + getCurrentOrder().getCarModel().getChosenOptions().get("Spoiler").toLowerCase() + " spoiler"));
+
         }
     }
 

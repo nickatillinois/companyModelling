@@ -58,7 +58,6 @@ public class DelayStats extends Stats{
                     day++;
                 }
             }
-
         }
         return statistics;
     }
@@ -99,9 +98,5 @@ public class DelayStats extends Stats{
             addStats(LocalDate.now().toString(), List.of(newDelay));
         }
     }
-
-
-
-
 
 }

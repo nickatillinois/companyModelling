@@ -10,9 +10,13 @@ public class DrivetrainPost extends WorkStation{
 
     /**
      * Creates a drivetrain post.
+     *
+     * @param company the observer that will be watching this class
+     * @throws IllegalArgumentException company == null
      */
     public DrivetrainPost(Company company) {
         super("Drivetrain Post");
+        if( company == null ) { throw new IllegalArgumentException("The given observer cannot be null."); }
         addObserver(company);
     }
 

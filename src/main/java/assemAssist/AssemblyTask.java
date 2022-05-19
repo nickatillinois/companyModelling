@@ -27,9 +27,11 @@ public class AssemblyTask {
      * @param taskDefinition the description for this assembly task
      * @throws IllegalArgumentException | workStation is null
      *                                  | name is null
+     *                                  | string is empty
      */
     public AssemblyTask(String name, String taskDefinition) {
         if (name == null) { throw new IllegalArgumentException("The name for this task cannot be null."); }
+        if (taskDefinition.isEmpty()) { throw new IllegalArgumentException("The given definition cannot be empty!"); }
 
         this.name = name;
         this.isCompleted = false;

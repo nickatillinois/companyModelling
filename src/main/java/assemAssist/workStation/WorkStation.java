@@ -20,7 +20,7 @@ public abstract class WorkStation implements TaskObservable {
     /**
      *  A list of AssemblyTask objects representing this work station's list of tasks that need to be completed.
      */
-    private List<AssemblyTask> tasks = new ArrayList<>();
+    private final List<AssemblyTask> tasks = new ArrayList<>();
 
     /**
      * The name of this work station.
@@ -64,7 +64,7 @@ public abstract class WorkStation implements TaskObservable {
      *
      * @return the name of this work station
      */
-    public String getName() { return this.name; }
+    public String getName() { return name; }
 
     /**
      *  Assigns the car options of the current car order to this work station and creates new tasks to be completed.
@@ -113,7 +113,6 @@ public abstract class WorkStation implements TaskObservable {
      */
     public List<String> getPendingTasks() {
         List<String> pendingTasks = new ArrayList<>();
-        if ( this.isFinished() ) { return pendingTasks; }
         for (AssemblyTask task : tasks) {
             if (!task.getIsCompleted()) { pendingTasks.add(task.getName()); }
         }

@@ -14,7 +14,6 @@ public abstract class Stats implements StatisticsObserver {
      */
     Map<String,List<Double>> statsPerDay = new HashMap<>();
 
-
     /**
      * Creates a statistic.
      */
@@ -26,11 +25,11 @@ public abstract class Stats implements StatisticsObserver {
      * @return statistics per day
      */
     public Map<String, List<Double>> getStatsPerDay() {
-        Map<String,List<Double>> result = new HashMap<>();
+        Map<String,List<Double>> copy = new HashMap<>();
         for (Map.Entry<String,List<Double>> entry : statsPerDay.entrySet()) {
-            result.put(entry.getKey(), new ArrayList<>(entry.getValue()));
+            copy.put(entry.getKey(), new ArrayList<>(entry.getValue()));
         }
-        return result;
+        return copy;
     }
 
     /**

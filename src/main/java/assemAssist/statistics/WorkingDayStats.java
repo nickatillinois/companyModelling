@@ -56,5 +56,4 @@ public class WorkingDayStats extends Stats {
             stats.put(LocalDate.now().toString(),List.of(1.0));
         }
     }
-
 }
