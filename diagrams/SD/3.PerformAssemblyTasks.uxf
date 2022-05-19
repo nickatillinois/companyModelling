@@ -260,9 +260,9 @@ lt=&lt;.</panel_attributes>
     <id>UMLFrame</id>
     <coordinates>
       <x>944</x>
-      <y>376</y>
+      <y>344</y>
       <w>264</w>
-      <h>80</h>
+      <h>112</h>
     </coordinates>
     <panel_attributes>loop
 --
@@ -729,7 +729,7 @@ give time it took</panel_attributes>
 halign=left
 [mechanic wants 
 to continue working]
-layer=1001
+layer=1002
 
 
 
@@ -1071,31 +1071,6 @@ List&lt;WorkStation&gt;</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1024</x>
-      <y>328</y>
-      <w>112</w>
-      <h>48</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-isFinished()</panel_attributes>
-    <additional_attributes>20.0;40.0;50.0;40.0;50.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLNote</id>
-    <coordinates>
-      <x>1104</x>
-      <y>224</y>
-      <w>136</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>alt = een van de opties
-opt = kan meerdere
-bg=green</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1024</x>
       <y>400</y>
       <w>168</w>
       <h>32</h>
@@ -1144,19 +1119,6 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1024</x>
-      <y>344</y>
-      <w>16</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>bg=white
-layer=1001
-transparency=0</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
       <x>1176</x>
       <y>416</y>
       <w>16</w>
@@ -1180,7 +1142,7 @@ transparency=0</panel_attributes>
 halign=left
 [for all 
 observers]
-layer=1002</panel_attributes>
+layer=1003</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -1196,17 +1158,6 @@ layer=1002</panel_attributes>
 halign=center
 valign=center
 Advance Assembly Line</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLFrame</id>
-    <coordinates>
-      <x>928</x>
-      <y>304</y>
-      <w>296</w>
-      <h>168</h>
-    </coordinates>
-    <panel_attributes>alt</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -1262,9 +1213,9 @@ lt=&lt;.</panel_attributes>
     <id>UMLFrame</id>
     <coordinates>
       <x>944</x>
-      <y>952</y>
+      <y>920</y>
       <w>264</w>
-      <h>80</h>
+      <h>112</h>
     </coordinates>
     <panel_attributes>loop
 --
@@ -1317,18 +1268,6 @@ List&lt;String&gt;</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1024</x>
-      <y>904</y>
-      <w>112</w>
-      <h>48</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-isFinished()</panel_attributes>
-    <additional_attributes>20.0;40.0;50.0;40.0;50.0;10.0;10.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1024</x>
       <y>976</y>
       <w>168</w>
       <h>32</h>
@@ -1336,19 +1275,6 @@ isFinished()</panel_attributes>
     <panel_attributes>getName()
 lt=&lt;-</panel_attributes>
     <additional_attributes>190.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>1024</x>
-      <y>920</y>
-      <w>16</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>bg=white
-layer=1001
-transparency=0</panel_attributes>
-    <additional_attributes/>
   </element>
   <element>
     <id>UMLGeneric</id>
@@ -1361,17 +1287,6 @@ transparency=0</panel_attributes>
     <panel_attributes>bg=white
 layer=1000
 transparency=0</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLFrame</id>
-    <coordinates>
-      <x>928</x>
-      <y>880</y>
-      <w>296</w>
-      <h>168</h>
-    </coordinates>
-    <panel_attributes>alt</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -1399,55 +1314,5 @@ List&lt;String&gt;</panel_attributes>
 show updated list 
 of pending tasks</panel_attributes>
     <additional_attributes>10.0;20.0;200.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>688</x>
-      <y>928</y>
-      <w>344</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-emptyList : List&lt;String&gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;410.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>688</x>
-      <y>352</y>
-      <w>344</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;.
-emptyList : List&lt;String&gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;410.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLNote</id>
-    <coordinates>
-      <x>1256</x>
-      <y>392</y>
-      <w>136</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>nog iets mis met dit deel
-&lt;--
-bg=red</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLNote</id>
-    <coordinates>
-      <x>1232</x>
-      <y>936</y>
-      <w>136</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>nog iets mis met dit deel
-&lt;--
-bg=red</panel_attributes>
-    <additional_attributes/>
   </element>
 </diagram>
