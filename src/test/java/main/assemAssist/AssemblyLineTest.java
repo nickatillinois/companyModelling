@@ -95,15 +95,15 @@ class AssemblyLineTest {
         assemblyLine.move(orderA,120);
         assertEquals(120,assemblyLine.getMinutesWorkedToday());
         for(AssemblyTask assemblyTask : assemblyLine.getWorkStations().get(0).getTasks())
-            assemblyTask.setIsCompleted(true);
+            assemblyTask.setCompleted();
         assemblyLine.move(null, 16*60);
         assertEquals(18*60,assemblyLine.getMinutesWorkedToday());
         for(AssemblyTask assemblyTask : assemblyLine.getWorkStations().get(1).getTasks())
-            assemblyTask.setIsCompleted(true);
+            assemblyTask.setCompleted();
         assemblyLine.move(null, 2*60);
         assertEquals(20*60, assemblyLine.getMinutesWorkedToday());
         for(AssemblyTask assemblyTask : assemblyLine.getWorkStations().get(2).getTasks())
-            assemblyTask.setIsCompleted(true);
+            assemblyTask.setCompleted();
         assemblyLine.move(null,2*60);
         assertEquals(22*60, assemblyLine.getMinutesWorkedToday());
         assemblyLine.nextDay();
@@ -154,7 +154,7 @@ class AssemblyLineTest {
         assemblyLine.getWorkStations().get(0).setCurrentOrder(orderA);
         assert(!assemblyLine.canMove());
         for(AssemblyTask assemblyTask : assemblyLine.getWorkStations().get(0).getTasks())
-            assemblyTask.setIsCompleted(true);
+            assemblyTask.setCompleted();
         assert(assemblyLine.canMove());
     }
 
@@ -163,16 +163,16 @@ class AssemblyLineTest {
         assemblyLine.getWorkStations().get(1).setCurrentOrder(orderA);
         assemblyLine.getWorkStations().get(0).setCurrentOrder(orderB);
         for(AssemblyTask assemblyTask : assemblyLine.getWorkStations().get(0).getTasks())
-            assemblyTask.setIsCompleted(true);
+            assemblyTask.setCompleted();
         for(AssemblyTask assemblyTask : assemblyLine.getWorkStations().get(1).getTasks())
-            assemblyTask.setIsCompleted(true);
+            assemblyTask.setCompleted();
         assemblyLine.move(null, 60);
         assertEquals((22-6-1)*60,assemblyLine.remainingWorkingTime());
         assertEquals(orderA, assemblyLine.getWorkStations().get(2).getCurrentOrder());
         for(AssemblyTask assemblyTask : assemblyLine.getWorkStations().get(1).getTasks())
-            assemblyTask.setIsCompleted(true);
+            assemblyTask.setCompleted();
         for(AssemblyTask assemblyTask : assemblyLine.getWorkStations().get(2).getTasks())
-            assemblyTask.setIsCompleted(true);
+            assemblyTask.setCompleted();
         assemblyLine.move(null,1*60);
         assertEquals((22-6-2)*60,assemblyLine.remainingWorkingTime());
         assertEquals(orderB, assemblyLine.getWorkStations().get(2).getCurrentOrder());

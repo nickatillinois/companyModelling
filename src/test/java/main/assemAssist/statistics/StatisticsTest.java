@@ -14,7 +14,7 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-class StatsTest {
+class StatisticsTest {
 
     WorkingDayStats workingDayStats;
     DelayStats delayStats;
@@ -46,16 +46,16 @@ class StatsTest {
     @Test
     void getStatisticsDelayStats() {
         List<String> statistics = new ArrayList<>();
-        statistics.add("the average delay on a car is 3.5");
-        statistics.add("the median delay on a car is 1.5");
+        statistics.add("- the average delay on a car is 3.5");
+        statistics.add("- the median delay on a car is 1.5");
         assertEquals(delayStats.getStatistics(0,LocalDate.of(2022,4,25)),statistics);
-        statistics.add("the last delay was on 2022-04-24: 12.0 minutes");
+        statistics.add("- the last delay was on 2022-04-24: 12.0 minutes");
         assertEquals(delayStats.getStatistics(1,LocalDate.of(2022,4,25)),statistics);
-        statistics.add("the 2nd to last delay was on 2022-04-24: 3.0 minutes");
+        statistics.add("- the 2nd to last delay was on 2022-04-24: 3.0 minutes");
         assertEquals(delayStats.getStatistics(2,LocalDate.of(2022,4,25)),statistics);
-        statistics.add("the 3rd last delay was on 2022-04-22: 6.0 minutes");
+        statistics.add("- the 3rd last delay was on 2022-04-22: 6.0 minutes");
         assertEquals(delayStats.getStatistics(3,LocalDate.of(2022,4,25)),statistics);
-        statistics.add("the 4th last delay was on 2022-04-20: 7.0 minutes");
+        statistics.add("- the 4th last delay was on 2022-04-20: 7.0 minutes");
         assertEquals(delayStats.getStatistics(4,LocalDate.of(2022,4,25)),statistics);
     }
 
@@ -121,12 +121,12 @@ class StatsTest {
     @Test
     void getStatisticsWorkingDayStats() {
         List<String> statistics = new ArrayList<>();
-        statistics.add("the average of completed cars in a day is 11.0");
-        statistics.add("the median of completed cars in a day is 11.5");
+        statistics.add("- the average of completed cars in a day is 11.0");
+        statistics.add("- the median of completed cars in a day is 11.5");
         assertEquals(workingDayStats.getStatistics(0,LocalDate.of(2022,4,25)),statistics);
-        statistics.add("cars produced 1 day(s) ago: 10.0");
+        statistics.add("- cars produced 1 day(s) ago: 10.0");
         assertEquals(workingDayStats.getStatistics(1,LocalDate.of(2022,4,25)),statistics);
-        statistics.add("cars produced 2 day(s) ago: 13.0");
+        statistics.add("- cars produced 2 day(s) ago: 13.0");
         assertEquals(workingDayStats.getStatistics(2,LocalDate.of(2022,4,25)),statistics);
     }
 

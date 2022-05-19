@@ -19,10 +19,10 @@ class AssemblyTaskTest {
     void getAndSetIsCompleted() {
         assert(!task1.getIsCompleted());
         assert(!task2.getIsCompleted());
-        task1.setIsCompleted(true);
+        task1.setCompleted();
         assert(task1.getIsCompleted());
         assert(!task2.getIsCompleted());
-        task2.setIsCompleted(true);
+        task2.setCompleted();
         assert(task1.getIsCompleted());
         assert(task2.getIsCompleted());
     }
@@ -43,7 +43,7 @@ class AssemblyTaskTest {
     void testEquals() {
         task1 = new AssemblyTask("seats","install leather black seats");
         task2 = new AssemblyTask("seats","install leather black seats");
-        assert(task1.equals(task1));
+        assert(task1.equals(task2));
         task1 = new AssemblyTask("seats","install leather white seats");
         task2 = new AssemblyTask("seats","install leather black seats");
         assert(!task1.equals(task2));

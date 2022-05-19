@@ -160,7 +160,7 @@ public abstract class WorkStation implements TaskObservable {
     public void performAssemblyTask(String taskName,int time) throws IllegalArgumentException{
         for (AssemblyTask task : tasks) {
             if (task.getName().equals(taskName)) {
-                task.setIsCompleted(true);
+                task.setCompleted();
                 notifyObservers(time);
                 return;
             }

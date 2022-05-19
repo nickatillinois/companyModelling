@@ -47,11 +47,9 @@ public class AssemblyTask {
 
     /**
      * Sets this task's status to complete or not complete.
-     *
-     * @param isCompleted whether this task needs to be complete or not
      */
-    public void setIsCompleted(boolean isCompleted) {
-        this.isCompleted = isCompleted;
+    public void setCompleted() {
+        isCompleted = true;
     }
 
     /**
