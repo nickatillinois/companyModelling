@@ -64,7 +64,6 @@ public abstract class SchedulingAlgorithm {
 
     public void addOrderToProductionSchedule(CarOrder order) throws IllegalConstraintException, IllegalModelException, IllegalCompletionDateException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         try{
-            //order.isValidCarModel();
             carOrderList.add(order);
             int workingTime = order.getWorkingMinutesWorkStation()* 3;
             boolean before = true;

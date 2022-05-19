@@ -20,7 +20,9 @@
       <w>18</w>
       <h>144</h>
     </coordinates>
-    <panel_attributes/>
+    <panel_attributes>bg=white
+layer=100
+transparency=0</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -99,9 +101,10 @@ lt=&lt;.</panel_attributes>
       <x>342</x>
       <y>198</y>
       <w>324</w>
-      <h>54</h>
+      <h>72</h>
     </coordinates>
-    <panel_attributes>newLogin(string garageHolderName)
+    <panel_attributes>newLogin
+(string garageHolderName)
 lt=&lt;-
 </panel_attributes>
     <additional_attributes>340.0;30.0;10.0;30.0</additional_attributes>
@@ -170,7 +173,9 @@ lt=&lt;.</panel_attributes>
       <w>18</w>
       <h>225</h>
     </coordinates>
-    <panel_attributes/>
+    <panel_attributes>bg=white
+layer=100
+transparency=0</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -192,9 +197,10 @@ Login
       <x>126</x>
       <y>351</y>
       <w>225</w>
-      <h>54</h>
+      <h>72</h>
     </coordinates>
-    <panel_attributes>give overview pending and
+    <panel_attributes>give overview 
+pending and
 lt=&lt;-
 completed orders</panel_attributes>
     <additional_attributes>10.0;30.0;230.0;30.0</additional_attributes>
@@ -207,7 +213,9 @@ completed orders</panel_attributes>
       <w>18</w>
       <h>117</h>
     </coordinates>
-    <panel_attributes/>
+    <panel_attributes>bg=white
+layer=100
+transparency=0</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -218,7 +226,9 @@ completed orders</panel_attributes>
       <w>18</w>
       <h>162</h>
     </coordinates>
-    <panel_attributes/>
+    <panel_attributes>bg=white
+layer=100
+transparency=0</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -265,7 +275,9 @@ halign=left
       <w>18</w>
       <h>36</h>
     </coordinates>
-    <panel_attributes/>
+    <panel_attributes>bg=white
+layer=100
+transparency=0</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -322,7 +334,9 @@ getGarageHolder()</panel_attributes>
       <w>18</w>
       <h>18</h>
     </coordinates>
-    <panel_attributes/>
+    <panel_attributes>bg=white
+layer=100
+transparency=0</panel_attributes>
     <additional_attributes/>
   </element>
   <element>

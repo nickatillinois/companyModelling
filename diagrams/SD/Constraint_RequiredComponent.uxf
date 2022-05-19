@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>5</zoom_level>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>50</x>
+      <y>55</y>
+      <w>695</w>
+      <h>425</h>
+    </coordinates>
+    <panel_attributes>Constraint_RequiredComponent
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>65</x>
+      <y>130</y>
+      <w>10</w>
+      <h>10</h>
+    </coordinates>
+    <panel_attributes>type=initial
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>70</x>
+      <y>120</y>
+      <w>230</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>isValidCombo(carModel)
+lt=&lt;&lt;&lt;-
+
+</panel_attributes>
+    <additional_attributes>440.0;30.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>245</x>
+      <y>95</y>
+      <w>130</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>:   RequiredComponent</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>295</x>
+      <y>105</y>
+      <w>15</w>
+      <h>325</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;630.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>290</x>
+      <y>135</y>
+      <w>20</w>
+      <h>265</h>
+    </coordinates>
+    <panel_attributes>bg=white
+layer=100
+transparency=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>525</x>
+      <y>245</y>
+      <w>165</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>:   RequiredComponent</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>305</x>
+      <y>235</y>
+      <w>230</w>
+      <h>25</h>
+    </coordinates>
+    <panel_attributes>create(specificationMessage)
+lt=&lt;&lt;&lt;.</panel_attributes>
+    <additional_attributes>440.0;30.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>135</x>
+      <y>145</y>
+      <w>585</w>
+      <h>265</h>
+    </coordinates>
+    <panel_attributes>alt
+--
+
+halign=left
+[success]
+
+
+-.
+halign=left
+[∃ an essential component 
+not listed in carModel]
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>70</x>
+      <y>180</y>
+      <w>230</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>true
+lt=&lt;.
+</panel_attributes>
+    <additional_attributes>10.0;30.0;440.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>255</y>
+      <w>15</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;280.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>70</x>
+      <y>380</y>
+      <w>230</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>RequiredComponentException
+lt=&lt;.
+</panel_attributes>
+    <additional_attributes>10.0;30.0;440.0;30.0</additional_attributes>
+  </element>
+</diagram>

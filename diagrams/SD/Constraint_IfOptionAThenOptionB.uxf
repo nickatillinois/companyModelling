@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>5</zoom_level>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>20</x>
+      <y>75</y>
+      <w>695</w>
+      <h>425</h>
+    </coordinates>
+    <panel_attributes>Constraint_IfOptionAThenOptionB
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>35</x>
+      <y>150</y>
+      <w>10</w>
+      <h>10</h>
+    </coordinates>
+    <panel_attributes>type=initial
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>40</x>
+      <y>140</y>
+      <w>230</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>isValidCombo(carModel)
+lt=&lt;&lt;&lt;-
+
+</panel_attributes>
+    <additional_attributes>440.0;30.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>215</x>
+      <y>115</y>
+      <w>130</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>:   IfOptionAThenOptionB</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>265</x>
+      <y>125</y>
+      <w>15</w>
+      <h>325</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;630.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>260</x>
+      <y>155</y>
+      <w>20</w>
+      <h>265</h>
+    </coordinates>
+    <panel_attributes>bg=white
+layer=100
+transparency=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>495</x>
+      <y>265</y>
+      <w>165</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>:   IfOptionAThenOptionBException</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>275</x>
+      <y>255</y>
+      <w>230</w>
+      <h>25</h>
+    </coordinates>
+    <panel_attributes>create(specificationMessage)
+lt=&lt;&lt;&lt;.</panel_attributes>
+    <additional_attributes>440.0;30.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>40</x>
+      <y>170</y>
+      <w>650</w>
+      <h>265</h>
+    </coordinates>
+    <panel_attributes>alt
+--
+
+halign=left
+[success]
+
+
+-.
+halign=left
+[∃ an option in carModel listed 
+as a premise, but its concluding option(s) 
+is (are) not listed in carModel.]
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>40</x>
+      <y>200</y>
+      <w>230</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>true
+lt=&lt;.
+</panel_attributes>
+    <additional_attributes>10.0;30.0;440.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>570</x>
+      <y>275</y>
+      <w>15</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;280.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>40</x>
+      <y>400</y>
+      <w>230</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>IfOptionAThenOptionBException
+lt=&lt;.
+</panel_attributes>
+    <additional_attributes>10.0;30.0;440.0;30.0</additional_attributes>
+  </element>
+</diagram>

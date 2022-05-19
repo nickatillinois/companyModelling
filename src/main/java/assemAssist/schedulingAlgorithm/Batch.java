@@ -60,7 +60,7 @@ public class Batch extends SchedulingAlgorithm{
      */
     public Executable selectBatch(String batch){
         this.batch = batch;
-        productionSchedule  =new ArrayList<>();
+        productionSchedule  = new ArrayList<>();
         List<CarOrder> fifo = new ArrayList<>();
         for(CarOrder order: carOrderList) {
             if (Objects.equals(order.getCarModel().getChosenOptionsString(), getBatch()))

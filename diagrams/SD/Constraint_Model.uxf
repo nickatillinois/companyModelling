@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>5</zoom_level>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>25</x>
+      <y>10</y>
+      <w>750</w>
+      <h>425</h>
+    </coordinates>
+    <panel_attributes>Constraint_Model
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>40</x>
+      <y>85</y>
+      <w>10</w>
+      <h>10</h>
+    </coordinates>
+    <panel_attributes>type=initial
+group=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>45</x>
+      <y>75</y>
+      <w>230</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>isValidCombo(carModel)
+lt=&lt;&lt;&lt;-
+
+</panel_attributes>
+    <additional_attributes>440.0;30.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>240</x>
+      <y>55</y>
+      <w>65</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>:   Model</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>270</x>
+      <y>65</y>
+      <w>15</w>
+      <h>310</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;600.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>265</x>
+      <y>90</y>
+      <w>20</w>
+      <h>265</h>
+    </coordinates>
+    <panel_attributes>bg=white
+layer=100
+transparency=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>550</x>
+      <y>245</y>
+      <w>165</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>:   IllegalModelException</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>235</y>
+      <w>280</w>
+      <h>25</h>
+    </coordinates>
+    <panel_attributes>create(specificationMessage)
+lt=&lt;&lt;&lt;.</panel_attributes>
+    <additional_attributes>540.0;30.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>115</x>
+      <y>165</y>
+      <w>610</w>
+      <h>135</h>
+    </coordinates>
+    <panel_attributes>alt
+--
+
+halign=left
+[success]
+
+
+-.
+halign=left
+[The modelname of carModel
+is not in setOfNames]
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>45</x>
+      <y>200</y>
+      <w>230</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>true
+lt=&lt;.
+</panel_attributes>
+    <additional_attributes>10.0;30.0;440.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>625</x>
+      <y>255</y>
+      <w>15</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;280.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>45</x>
+      <y>305</y>
+      <w>230</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>IllegalModelException
+lt=&lt;.
+</panel_attributes>
+    <additional_attributes>10.0;30.0;440.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>95</y>
+      <w>230</w>
+      <h>25</h>
+    </coordinates>
+    <panel_attributes>create
+lt=&lt;&lt;&lt;.</panel_attributes>
+    <additional_attributes>440.0;30.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>500</x>
+      <y>105</y>
+      <w>75</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>:   Catalog</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>535</x>
+      <y>115</y>
+      <w>15</w>
+      <h>255</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;490.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>530</x>
+      <y>135</y>
+      <w>20</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>bg=white
+layer=100
+transparency=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>120</y>
+      <w>265</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>getAvailableModelNames()
+lt=&lt;-
+</panel_attributes>
+    <additional_attributes>510.0;30.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>135</y>
+      <w>260</w>
+      <h>25</h>
+    </coordinates>
+    <panel_attributes>setOfNames
+lt=&lt;.</panel_attributes>
+    <additional_attributes>10.0;30.0;500.0;30.0</additional_attributes>
+  </element>
+</diagram>
