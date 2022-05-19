@@ -167,7 +167,8 @@ public class AssemblyLine {
     public List<String> move(CarOrder carOrder, int timeBetweenTwoStates) throws IllegalCallerException{
         for(WorkStation workStation : getWorkStations())
             if(!workStation.isFinished())
-                throw new IllegalCallerException("The assembly line is stil working at a workpost!");
+                throw new IllegalCallerException("The assembly line is stil working at a work post!");
+
         if (carOrder.getWorkingMinutesWorkStation()*3 < remainingWorkingTime()) {
             setMinutesWorkedToday(getMinutesWorkedToday() + timeBetweenTwoStates);
             CarOrder finishedCar = workStations.get(2).getCurrentOrder();
@@ -179,12 +180,7 @@ public class AssemblyLine {
             workStations.get(0).setCurrentOrder(carOrder);
         }
         else{
-            boolean emptyAssemblyLine = true;
-            for(WorkStation workStation :workStations){
-                if (workStation.getCurrentOrder()!= null)
-                    emptyAssemblyLine = true;
-            }
-            if (emptyAssemblyLine)
+            if (emptyAssemblyLine())
                 nextDay();
             else{
                 setMinutesWorkedToday(getMinutesWorkedToday() + timeBetweenTwoStates);
@@ -211,6 +207,15 @@ public class AssemblyLine {
             newStateAndFinished.add(s);
         }
         return newStateAndFinished;
+    }
+
+    private boolean emptyAssemblyLine() {
+        for( WorkStation workStation : workStations ){
+            if (workStation.getCurrentOrder() != null) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**

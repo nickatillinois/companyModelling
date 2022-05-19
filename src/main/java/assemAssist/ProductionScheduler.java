@@ -1,6 +1,5 @@
 package assemAssist;
 
-import assemAssist.observer.TaskObserver;
 import assemAssist.schedulingAlgorithm.Batch;
 import assemAssist.schedulingAlgorithm.FIFO;
 import assemAssist.workStation.WorkStation;
@@ -17,6 +16,7 @@ import java.util.stream.Collectors;
  * @author SWOP Team 10
  */
 public class ProductionScheduler {
+
     private final AssemblyLine assemblyLine;
     private SchedulingAlgorithm schedulingAlgorithm = new FIFO();
     private final ArrayList<SchedulingAlgorithm> schedulers = new ArrayList<>();
@@ -38,7 +38,7 @@ public class ProductionScheduler {
      */
     public void selectSchedulingAlgorithm(String algorithm) throws IllegalArgumentException{
         for (SchedulingAlgorithm algorithm1 : schedulers )
-            if (Objects.equals(algorithm, algorithm1.getName()))
+            if (algorithm.equals(algorithm1.getName()))
                 setSchedulingAlgorithm(algorithm1);
         if (!Objects.equals(getSchedulingAlgorithm().getName(), algorithm))
             throw new IllegalArgumentException("This is not a valid argument!");
@@ -85,17 +85,18 @@ public class ProductionScheduler {
     public CarOrder advanceOrders(int timeBetweenTwoStates){
         if (!assemblyLine.canMove())
             return null;
-        CarOrder finishedOrder;
-        int nrOfWorkStations;
-        nrOfWorkStations = assemblyLine.getWorkStations().size();
-        finishedOrder = assemblyLine.getWorkStations().get(nrOfWorkStations-1).getCurrentOrder();
+
+        int nrOfWorkStations = assemblyLine.getWorkStations().size();
+        CarOrder finishedOrder = assemblyLine.getWorkStations().get(nrOfWorkStations-1).getCurrentOrder();
+
         if (getProductionSchedule().isEmpty())
             assemblyLine.move(null,timeBetweenTwoStates);
         else {
             CarOrder carOrder = schedulingAlgorithm.getNextCarOrder();
             assemblyLine.move(carOrder, timeBetweenTwoStates);
         }
-        if (Objects.equals(schedulingAlgorithm.getName(), "Specification Batch"))
+
+        if (schedulingAlgorithm.getName().equals("Specification Batch"))
             if (schedulingAlgorithm.getProductionSchedule() == schedulers.get(0).getProductionSchedule())
                 selectSchedulingAlgorithm("FIFO");
         return finishedOrder;

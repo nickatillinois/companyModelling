@@ -25,7 +25,7 @@ import java.util.TreeMap;
 public class Company implements TaskObserver {
 
     /**
-     * The prodiction scheduler of the company.
+     * The production scheduler of the company.
      */
     private final ProductionScheduler productionScheduler;
 
