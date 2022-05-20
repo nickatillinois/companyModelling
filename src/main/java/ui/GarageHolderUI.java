@@ -189,10 +189,25 @@ public class GarageHolderUI {
                     i++;
                 }
                 System.out.println("Enter the number of the option you want to select:");
-                int optionNumber = in.nextInt();
-                if (optionNumber >= 0 && optionNumber < orderingFormList.get(option).length) {
-                    String optionValue = orderingFormList.get(option)[optionNumber];
-                    selectedOptions.put(option, optionValue);
+                while (true) {
+                    boolean failed = false;
+                    int optionNumber;
+                    try {
+                        optionNumber = in.nextInt();
+                        if (optionNumber >= 0 && optionNumber < orderingFormList.get(option).length) {
+                            String optionValue = orderingFormList.get(option)[optionNumber];
+                            selectedOptions.put(option, optionValue);
+                            break;
+                        } else {
+                            System.out.println("This is not a valid option number.\n  Enter the number of the option you want to select: ");
+                            failed = true;
+
+                        }
+                    } catch (InputMismatchException e) {
+                        System.out.println("This is not a valid option number.\n  Enter the number of the option you want to select: ");
+                        failed = true;
+                        in.next();
+                    }
                 }
             } else if (choice.equalsIgnoreCase("q")) {
                 System.out.println("Cancelling order");
@@ -211,7 +226,13 @@ public class GarageHolderUI {
             System.out.println("No order was placed.");
         }
         System.out.println("Press 'q' to cancel ordering, press 's' to place a new order.");
-        String nextstep = in.next();
+        String nextstep = "";
+        try {
+            nextstep = in.next();
+        }
+        catch (Exception e){
+            System.out.println("No order was placed.");
+        }
         if (nextstep.equals("q")) {
             System.out.println("-------------");
             System.out.println("Leaving the Ordering Form");
