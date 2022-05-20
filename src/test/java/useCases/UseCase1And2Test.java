@@ -42,8 +42,8 @@ public class UseCase1And2Test {
         legalOptions.put("airco", "manual");
         legalOptions.put("gearbox", "6 manual");
         legalOptions.put("wheels", "winter");
-        company.completeOrderingForm(legalOptions,"Tom Smets","A",company.getWorkingTimeWorkingStation("A"));
-        company.completeOrderingForm(legalOptions,"Tom Smets","A",company.getWorkingTimeWorkingStation("A"));
+        company.completeOrderingForm(legalOptions,"Tom Smets","A");
+        company.completeOrderingForm(legalOptions,"Tom Smets","A");
         ArrayList<CarOrder> completedCarOrders = new ArrayList<>();
         List<CarOrder>[] orders = company.getOrdersFromGarageHolder("Tom Smets");
         // set every order in orders completed
@@ -57,9 +57,9 @@ public class UseCase1And2Test {
         }
         company.setCompletedCarOrders(completedCarOrders);
         company.getProductionScheduler().advanceOrders(50);
-        company.completeOrderingForm(legalOptions,"Tom Smets","A",company.getWorkingTimeWorkingStation("A"));
+        company.completeOrderingForm(legalOptions,"Tom Smets","A");
         company.getProductionScheduler().advanceOrders(50);
-        company.completeOrderingForm(legalOptions,"Tom Smets","A",company.getWorkingTimeWorkingStation("A"));
+        company.completeOrderingForm(legalOptions,"Tom Smets","A");
     }
 
     @Test
@@ -80,7 +80,7 @@ public class UseCase1And2Test {
         illegalOptions.put("gearbox", "6 manual");
         illegalOptions.put("wheels", "winter");
         try {
-            company.completeOrderingForm(illegalOptions,"Tom Smets","B",company.getWorkingTimeWorkingStation("B"));
+            company.completeOrderingForm(illegalOptions,"Tom Smets","B");
         } catch (IllegalModelException | IllegalCompletionDateException | IllegalConstraintException | OptionThenComponentException | OptionAThenOptionBException | RequiredComponentException e) {
             assertEquals("Option sport implies one of the following options: [v6, v8]", e.getMessage());
         }

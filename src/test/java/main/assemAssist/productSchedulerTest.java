@@ -32,8 +32,8 @@ public class productSchedulerTest {
         legalAOptions.put("airco", "manual");
         legalAOptions.put("gearbox", "6 manual");
         legalAOptions.put("wheels", "winter");
-        CarModel carModelA = new CarModel("A", legalAOptions);
-        carOrderA = new CarOrder("Danny Smeets", carModelA,company.getWorkingTimeWorkingStation("A"));
+        CarModel carModelA = new CarModel("A", legalAOptions,company.getWorkingTimeWorkingStation("A"));
+        carOrderA = new CarOrder("Danny Smeets", carModelA);
         TreeMap<String, String> legalBOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         legalBOptions.put("color", "red");
         legalBOptions.put("body", "sedan");
@@ -43,8 +43,8 @@ public class productSchedulerTest {
         legalBOptions.put("gearbox", "6 manual");
         legalBOptions.put("wheels", "winter");
         legalBOptions.put("spoiler", "low");
-        CarModel carModelB = new CarModel("B", legalBOptions);
-        carOrderB = new CarOrder("Sandy Smeets", carModelB,company.getWorkingTimeWorkingStation("B"));
+        CarModel carModelB = new CarModel("B", legalBOptions,company.getWorkingTimeWorkingStation("B"));
+        carOrderB = new CarOrder("Sandy Smeets", carModelB);
         TreeMap<String, String> legalCOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         legalCOptions.put("color", "black");
         legalCOptions.put("body", "sport");
@@ -54,8 +54,8 @@ public class productSchedulerTest {
         legalCOptions.put("gearbox", "6 manual");
         legalCOptions.put("wheels", "winter");
         legalCOptions.put("spoiler", "low");
-        CarModel carModelC = new CarModel("C", legalCOptions);
-        carOrderC = new CarOrder("Kim Smeets", carModelC,company.getWorkingTimeWorkingStation("C"));
+        CarModel carModelC = new CarModel("C", legalCOptions,company.getWorkingTimeWorkingStation("C"));
+        carOrderC = new CarOrder("Kim Smeets", carModelC);
     }
 
     @Test

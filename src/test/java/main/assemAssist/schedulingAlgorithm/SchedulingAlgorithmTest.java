@@ -39,8 +39,8 @@ class SchedulingAlgorithmTest {
         legalAOptions.put("airco", "manual");
         legalAOptions.put("gearbox", "6 manual");
         legalAOptions.put("wheels", "winter");
-        CarModel carModelA = new CarModel("A", legalAOptions);
-        carOrderB = new CarOrder("Sandy Smeets", carModelA, company.getWorkingTimeWorkingStation("A"));
+        CarModel carModelA = new CarModel("A", legalAOptions, company.getWorkingTimeWorkingStation("A"));
+        carOrderB = new CarOrder("Sandy Smeets", carModelA);
         TreeMap<String, String> legalCOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         legalCOptions.put("color", "black");
         legalCOptions.put("body", "sport");
@@ -50,11 +50,11 @@ class SchedulingAlgorithmTest {
         legalCOptions.put("gearbox", "6 manual");
         legalCOptions.put("wheels", "winter");
         legalCOptions.put("spoiler", "low");
-        CarModel carModelC = new CarModel("C", legalCOptions);
-        carOrderC = new CarOrder("Kim Smeets", carModelC, company.getWorkingTimeWorkingStation("C"));
-        carOrderD = new CarOrder("Kim Smeets", carModelA, company.getWorkingTimeWorkingStation("A"));
-        carOrderE = new CarOrder("Sandy Smeets", carModelA, company.getWorkingTimeWorkingStation("A"));
-        carOrderA = new CarOrder("Danny Smeets", carModelC, company.getWorkingTimeWorkingStation("C"));
+        CarModel carModelC = new CarModel("C", legalCOptions, company.getWorkingTimeWorkingStation("C"));
+        carOrderC = new CarOrder("Kim Smeets", carModelC);
+        carOrderD = new CarOrder("Kim Smeets", carModelA);
+        carOrderE = new CarOrder("Sandy Smeets", carModelA);
+        carOrderA = new CarOrder("Danny Smeets", carModelC);
         batch.addOrderToProductionSchedule(carOrderA);
         batch.addOrderToProductionSchedule(carOrderB);
         batch.addOrderToProductionSchedule(carOrderC);

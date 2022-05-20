@@ -42,7 +42,7 @@ public class ChangeSchedulingAlgorithm {
         legalAOptions.put("airco", "manual");
         legalAOptions.put("gearbox", "6 manual");
         legalAOptions.put("wheels", "winter");
-        CarModel carModelA = new CarModel("A", legalAOptions);
+        CarModel carModelA = new CarModel("A", legalAOptions,company.getWorkingTimeWorkingStation("A"));
         TreeMap<String, String> legalBOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         legalBOptions.put("color", "red");
         legalBOptions.put("body", "break");
@@ -52,13 +52,13 @@ public class ChangeSchedulingAlgorithm {
         legalBOptions.put("gearbox", "6 manual");
         legalBOptions.put("wheels", "winter");
         legalBOptions.put("spoiler", "low");
-        CarModel carModelB = new CarModel("B", legalBOptions);
+        CarModel carModelB = new CarModel("B", legalBOptions,company.getWorkingTimeWorkingStation("B"));
         company = new Company();
-        carOrderA = new CarOrder("Danny Smeets", carModelA,company.getWorkingTimeWorkingStation(carModelA.getModelName()) );
-        carOrderB = new CarOrder("Els Smeets", carModelB, company.getWorkingTimeWorkingStation(carModelB.getModelName()));
-        carOrderC = new CarOrder("Dirk Smeets", carModelA, company.getWorkingTimeWorkingStation(carModelA.getModelName()));
-        carOrderD = new CarOrder("Jan Smeets", carModelB, company.getWorkingTimeWorkingStation(carModelB.getModelName()));
-        carOrderE = new CarOrder("Jef Smeets", carModelA, company.getWorkingTimeWorkingStation(carModelA.getModelName()));
+        carOrderA = new CarOrder("Danny Smeets", carModelA );
+        carOrderB = new CarOrder("Els Smeets", carModelB);
+        carOrderC = new CarOrder("Dirk Smeets", carModelA);
+        carOrderD = new CarOrder("Jan Smeets", carModelB);
+        carOrderE = new CarOrder("Jef Smeets", carModelA);
 
         company.getProductionScheduler().getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderA);
         company.getProductionScheduler().getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderB);

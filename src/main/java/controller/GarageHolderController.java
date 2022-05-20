@@ -109,9 +109,9 @@ public class GarageHolderController {
      * @throws OptionAThenOptionBException if there is an option specified but not the implied option(s).
      * @throws RequiredComponentException if there is a required component not specified.
      */
-    public String completeOrderingForm(TreeMap<String, String> chosenOptions, int workingMinutesWorkstation) throws IllegalArgumentException, IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+    public String completeOrderingForm(TreeMap<String, String> chosenOptions) throws IllegalArgumentException, IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         try{
-            return company.completeOrderingForm(chosenOptions, this.garageHolder, this.chosenModel, workingMinutesWorkstation);
+            return company.completeOrderingForm(chosenOptions, this.garageHolder, this.chosenModel);
         }
         catch (Exception e){
             throw e;

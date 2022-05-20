@@ -30,20 +30,8 @@ public class CarModel {
         return modelName;
     }
 
-    /**
-     * Constructs a new CarModel with the given name and options.
-     * @param modelName the name of the car model.
-     *                  Must not be null.
-     *                  Must not be empty.
-     *                  Must not contain whitespace.
-     * @param chosenOptions the options chosen for the car model.
-     *                      Must not be null.
-     * @throws IllegalArgumentException if the given name contains only whitespace.
-     *                                  if the given name is null
-     *                                  if the given name is the empty string
-     *                                  if the given options are null
-     */
-    public CarModel(String modelName, TreeMap<String, String> chosenOptions) throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+
+/*    public CarModel(String modelName, TreeMap<String, String> chosenOptions) throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         if (modelName == null) {
             throw new IllegalArgumentException("modelName must not be null.");
         }
@@ -60,8 +48,23 @@ public class CarModel {
         this.chosenOptions = chosenOptions;
         this.workingTimeWorkingTime = 60;
         this.inspect();
-    }
+    }*/
 
+    /**
+     * Constructs a new CarModel with the given name and options.
+     * @param modelName the name of the car model.
+     *                  Must not be null.
+     *                  Must not be empty.
+     *                  Must not contain whitespace.
+     * @param chosenOptions the options chosen for the car model.
+     *                      Must not be null.
+     * @param workingTimeWorkPost the time that a model spend in a workstation.
+     *                            Must not be null.
+     * @throws IllegalArgumentException if the given name contains only whitespace.
+     *                                  if the given name is null
+     *                                  if the given name is the empty string
+     *                                  if the given options are null
+     */
     public CarModel(String modelName, TreeMap<String, String> chosenOptions, int workingTimeWorkPost) throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         if (modelName == null) {
             throw new IllegalArgumentException("modelName must not be null.");

@@ -42,7 +42,7 @@ public class OrderNewCar {
         legalAOptions.put("airco", "manual");
         legalAOptions.put("gearbox", "6 manual");
         legalAOptions.put("wheels", "winter");
-        CarModel carModelA = new CarModel("A", legalAOptions);
+        CarModel carModelA = new CarModel("A", legalAOptions, company.getWorkingTimeWorkingStation("A"));
         TreeMap<String, String> legalBOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         legalBOptions.put("color", "red");
         legalBOptions.put("body", "break");
@@ -52,13 +52,13 @@ public class OrderNewCar {
         legalBOptions.put("gearbox", "6 manual");
         legalBOptions.put("wheels", "winter");
         legalBOptions.put("spoiler", "low");
-        CarModel carModelB = new CarModel("B", legalBOptions);
+        CarModel carModelB = new CarModel("B", legalBOptions, company.getWorkingTimeWorkingStation("B"));
         company = new Company();
-        company.completeOrderingForm(legalAOptions,"Danny Smeets","A",company.getWorkingTimeWorkingStation("A"));
-        company.completeOrderingForm(legalAOptions,"Danny Smeets","B",company.getWorkingTimeWorkingStation("B"));
-        company.completeOrderingForm(legalAOptions,"Danny Smeets","A",company.getWorkingTimeWorkingStation("A"));
-        company.completeOrderingForm(legalAOptions,"Jan Smeets","B",company.getWorkingTimeWorkingStation("B"));
-        company.completeOrderingForm(legalAOptions,"Jan Smeets","A",company.getWorkingTimeWorkingStation("A"));
+        company.completeOrderingForm(legalAOptions,"Danny Smeets","A");
+        company.completeOrderingForm(legalAOptions,"Danny Smeets","B");
+        company.completeOrderingForm(legalAOptions,"Danny Smeets","A");
+        company.completeOrderingForm(legalAOptions,"Jan Smeets","B");
+        company.completeOrderingForm(legalAOptions,"Jan Smeets","A");
     }
     @Test
     public void orderLegalA() throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException, CloneNotSupportedException {

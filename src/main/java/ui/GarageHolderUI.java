@@ -218,7 +218,7 @@ public class GarageHolderUI {
             }
         }
         try {
-            String estimatedCompletionDate = garageHolderController.completeOrderingForm(selectedOptions, workingMinutesWorkstation );
+            String estimatedCompletionDate = garageHolderController.completeOrderingForm(selectedOptions);
             System.out.println("You have successfully ordered a car! The estimated completion date is " + estimatedCompletionDate);
         }
         catch (IllegalModelException | OptionAThenOptionBException | OptionThenComponentException | RequiredComponentException e){

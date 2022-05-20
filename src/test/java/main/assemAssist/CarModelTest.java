@@ -2,6 +2,7 @@ package main.assemAssist;
 
 import assemAssist.CarModel;
 import assemAssist.CarOrder;
+import assemAssist.Company;
 import assemAssist.exceptions.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -13,6 +14,7 @@ public class CarModelTest {
     static CarModel carModelA;
     static CarModel carModelB;
     static CarModel carModelC;
+    static Company company = new Company();
 
 
     @BeforeAll
@@ -27,13 +29,13 @@ public class CarModelTest {
         legalAOptions.put("wheels", "winter");
         boolean wasError = false;
         try{
-            CarModel carModelA = new CarModel("A", legalAOptions);
+            CarModel carModelA = new CarModel("A", legalAOptions,company.getWorkingTimeWorkingStation("A"));
         }
         catch (IllegalConstraintException e){
             wasError = true;
         }
         assertFalse(wasError);
-        carModelA = new CarModel("A", legalAOptions);
+        carModelA = new CarModel("A", legalAOptions,company.getWorkingTimeWorkingStation("A"));
     }
 
     @Test
@@ -48,7 +50,7 @@ public class CarModelTest {
         legalAOptions.put("wheels", "winter");
         boolean threwError = false;
         try{
-            new CarModel(null, legalAOptions);
+            new CarModel(null, legalAOptions,0);
         }
         catch (IllegalArgumentException e){
             threwError = true;
@@ -56,7 +58,7 @@ public class CarModelTest {
         assertTrue(threwError);
         threwError = false;
         try{
-            new CarModel("", legalAOptions);
+            new CarModel("", legalAOptions,0);
         }
         catch (IllegalArgumentException e){
             threwError = true;
@@ -64,7 +66,7 @@ public class CarModelTest {
         assertTrue(threwError);
         threwError = false;
         try{
-            new CarModel("  ", legalAOptions);
+            new CarModel("  ", legalAOptions, 0);
         }
         catch (IllegalArgumentException e){
             threwError = true;
@@ -72,13 +74,13 @@ public class CarModelTest {
         assertTrue(threwError);
         threwError = false;
         try{
-            new CarModel("A", null);
+            new CarModel("A", null,0);
         }
         catch (IllegalArgumentException e){
             threwError = true;
         }
         assertTrue(threwError);
-        CarModel a = new CarModel("A", legalAOptions);
+        CarModel a = new CarModel("A", legalAOptions,company.getWorkingTimeWorkingStation("A"));
         assertEquals("A", a.getModelName());
         assertEquals(legalAOptions, a.getChosenOptions());
     }

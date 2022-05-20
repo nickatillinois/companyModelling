@@ -172,7 +172,7 @@ public class CarOrderTest {
         // test if it throws an IllegalModelException, if so catch it and test passes
         boolean caught = false;
         try {
-            new CarModel("illegal", illegalOptions);
+            new CarModel("illegal", illegalOptions,0);
         }
         catch (IllegalModelException e) {
             assertEquals("IllegalModelException", e.getClass().getSimpleName());
@@ -193,7 +193,7 @@ public class CarOrderTest {
         noBodyOptions.put("Gearbox", "6 manual");
         boolean caught = false;
         try {
-            new CarModel("B", noBodyOptions);
+            new CarModel("B", noBodyOptions,company.getWorkingTimeWorkingStation("B"));
         }
         catch (RequiredComponentException e) {
             assertEquals("RequiredComponentException", e.getClass().getSimpleName());
@@ -329,7 +329,7 @@ public class CarOrderTest {
         new Inspector(carOrderA.getCarModel()).addOptionAAndOptionBPair(AAndB);
         boolean gotError = false;
         try{
-            new CarModel("B", options);
+            new CarModel("B", options,company.getWorkingTimeWorkingStation("B"));
         }
         catch(Exception e){
             assertEquals("OptionAThenOptionBException", e.getClass().getSimpleName());

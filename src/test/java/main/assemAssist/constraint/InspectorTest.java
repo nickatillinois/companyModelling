@@ -2,6 +2,7 @@ package main.assemAssist.constraint;
 
 
 import assemAssist.CarModel;
+import assemAssist.Company;
 import assemAssist.constraint.IfOptionThenComponent;
 import assemAssist.constraint.Inspector;
 import assemAssist.exceptions.*;
@@ -15,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 public class InspectorTest {
-
+ static Company company = new Company();
     @Test
     void testLegal() throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         TreeMap<String, String> legalAOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
@@ -28,7 +29,7 @@ public class InspectorTest {
         legalAOptions.put("wheels", "winter");
         boolean threwException = false;
         try {
-            new CarModel("A", legalAOptions);
+            new CarModel("A", legalAOptions,company.getWorkingTimeWorkingStation("A"));
         } catch (Exception e) {
             threwException = true;
         }
@@ -46,7 +47,7 @@ public class InspectorTest {
         noWheelsAModel.put("gearbox", "6 manual");
         boolean threwException = false;
         try {
-            new CarModel("A", noWheelsAModel);
+            new CarModel("A", noWheelsAModel,company.getWorkingTimeWorkingStation("A"));
         } catch (Exception e) {
             assertEquals(e.getClass(), RequiredComponentException.class);
             threwException = true;
@@ -66,7 +67,7 @@ public class InspectorTest {
         sportNoSpoilerBModel.put("wheels", "winter");
         boolean threwException = false;
         try{
-            new CarModel("B", sportNoSpoilerBModel);
+            new CarModel("B", sportNoSpoilerBModel,company.getWorkingTimeWorkingStation("B"));
         }
         catch(Exception e){
             assertEquals(e.getClass(), OptionThenComponentException.class);
@@ -89,7 +90,7 @@ public class InspectorTest {
         sportWeakEngineBModel.put("spoiler", "low");
         boolean threwException = false;
         try{
-            new CarModel("B", sportWeakEngineBModel);
+            new CarModel("B", sportWeakEngineBModel,company.getWorkingTimeWorkingStation("B"));
         }
         catch(Exception e){
             assertEquals(e.getClass(), OptionAThenOptionBException.class);
@@ -108,7 +109,7 @@ public class InspectorTest {
         legalAOptions.put("airco", "manual");
         legalAOptions.put("gearbox", "6 manual");
         legalAOptions.put("wheels", "winter");
-        CarModel A = new CarModel("A", legalAOptions);
+        CarModel A = new CarModel("A", legalAOptions,company.getWorkingTimeWorkingStation("A"));
         ArrayList<String> AAndB = new ArrayList<>();
         AAndB.add("red");
         Inspector IA = new Inspector(A);
@@ -126,7 +127,7 @@ public class InspectorTest {
         IA.addOptionAAndOptionBPair(AAndB);
         gotError = false;
         try{
-            new CarModel("A", legalAOptions);
+            new CarModel("A", legalAOptions,company.getWorkingTimeWorkingStation("A"));
         }
         catch(Exception e){
             assertEquals("OptionAThenOptionBException", e.getClass().getSimpleName());
@@ -146,7 +147,7 @@ public class InspectorTest {
         legalAOptions.put("airco", "manual");
         legalAOptions.put("gearbox", "6 manual");
         legalAOptions.put("wheels", "winter");
-        CarModel A = new CarModel("A", legalAOptions);
+        CarModel A = new CarModel("A", legalAOptions,company.getWorkingTimeWorkingStation("A"));
         ArrayList<String> AAndB = new ArrayList<>();
         AAndB.add("red");
         Inspector IA = new Inspector(A);
@@ -164,7 +165,7 @@ public class InspectorTest {
         IA.addOptionAThenOptionBPair(AAndB);
         gotError = false;
         try{
-            new CarModel("A", legalAOptions);
+            new CarModel("A", legalAOptions,company.getWorkingTimeWorkingStation("A"));
         }
         catch(Exception e){
             assertEquals("OptionAThenOptionBException", e.getClass().getSimpleName());
@@ -184,7 +185,7 @@ public class InspectorTest {
         legalAOptions.put("airco", "manual");
         legalAOptions.put("gearbox", "6 manual");
         legalAOptions.put("wheels", "winter");
-        CarModel A = new CarModel("A", legalAOptions);
+        CarModel A = new CarModel("A", legalAOptions,company.getWorkingTimeWorkingStation("A"));
         ArrayList<String> OThenC = new ArrayList<>();
         OThenC.add("red");
         Inspector IA = new Inspector(A);
@@ -202,7 +203,7 @@ public class InspectorTest {
         IA.addOptionThenComponentPair(OThenC);
         gotError = false;
         try{
-            new CarModel("A", legalAOptions);
+            new CarModel("A", legalAOptions,company.getWorkingTimeWorkingStation("A"));
         }
         catch(Exception e){
             assertEquals("OptionThenComponentException", e.getClass().getSimpleName());
@@ -222,7 +223,7 @@ public class InspectorTest {
         legalAOptions.put("airco", "manual");
         legalAOptions.put("gearbox", "6 manual");
         legalAOptions.put("wheels", "winter");
-        CarModel A = new CarModel("A", legalAOptions);
+        CarModel A = new CarModel("A", legalAOptions,company.getWorkingTimeWorkingStation("A"));
         ArrayList<String> OThenC = new ArrayList<>();
         OThenC.add("red");
         OThenC.add("spoiler");
