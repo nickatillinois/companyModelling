@@ -34,8 +34,8 @@ public class CarOrderTest {
         legalAOptions.put("airco", "manual");
         legalAOptions.put("gearbox", "6 manual");
         legalAOptions.put("wheels", "winter");
-        CarModel carModelA = new CarModel("A", legalAOptions);
-        carOrderA = new CarOrder("Danny Smeets", carModelA,company.getWorkingTimeWorkingStation("A"));
+        CarModel carModelA = new CarModel("A", legalAOptions, company.getCatalog().getWorkingMinutesWorkstation("A"));
+        carOrderA = new CarOrder("Danny Smeets", carModelA);
         TreeMap<String, String> legalBOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         legalBOptions.put("color", "red");
         legalBOptions.put("body", "break");
@@ -45,8 +45,8 @@ public class CarOrderTest {
         legalBOptions.put("gearbox", "6 manual");
         legalBOptions.put("wheels", "winter");
         legalBOptions.put("spoiler", "low");
-        CarModel carModelB = new CarModel("B", legalBOptions);
-        carOrderB = new CarOrder("Sandy Smeets", carModelB,company.getWorkingTimeWorkingStation("B"));
+        CarModel carModelB = new CarModel("B", legalBOptions, company.getCatalog().getWorkingMinutesWorkstation("B"));
+        carOrderB = new CarOrder("Sandy Smeets", carModelB);
         TreeMap<String, String> legalCOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         legalCOptions.put("color", "black");
         legalCOptions.put("body", "sport");
@@ -56,25 +56,25 @@ public class CarOrderTest {
         legalCOptions.put("gearbox", "6 manual");
         legalCOptions.put("wheels", "winter");
         legalCOptions.put("spoiler", "low");
-        CarModel carModelC = new CarModel("C", legalCOptions);
-        carOrderC = new CarOrder("Kim Smeets", carModelC,company.getWorkingTimeWorkingStation("C"));
+        CarModel carModelC = new CarModel("C", legalCOptions, company.getCatalog().getWorkingMinutesWorkstation("C"));
+        carOrderC = new CarOrder("Kim Smeets", carModelC);
         //company.addOrderToProductionSchedule(carOrderA);
-        carOrderD = new CarOrder("Tanya Smeets", carModelC,company.getWorkingTimeWorkingStation("C"));
-        carOrderE = new CarOrder("Kimberly Smeets", carModelC,company.getWorkingTimeWorkingStation("C"));
-        carOrderF = new CarOrder("Vanessa Smeets", carModelC,company.getWorkingTimeWorkingStation("C"));
+        carOrderD = new CarOrder("Tanya Smeets", carModelC);
+        carOrderE = new CarOrder("Kimberly Smeets", carModelC);
+        carOrderF = new CarOrder("Vanessa Smeets", carModelC);
         carOrderD.setEstCompletionTime(LocalDateTime.now().minusDays(1));
         carOrderE.setEstCompletionTime(LocalDateTime.now().minusDays(2));
         carOrderF.setEstCompletionTime(LocalDateTime.now().minusDays(3));
         assertNull(carOrderA.getEstCompletionTime());
         assertEquals(carOrderD.getEstCompletionTime().getDayOfYear(), LocalDateTime.now().minusDays(1).getDayOfYear());
-        company.completeOrderingForm(legalAOptions,"Danny Smeets","B",company.getWorkingTimeWorkingStation("B"));
-        company.completeOrderingForm(legalBOptions,"Sandy Smeets","B",company.getWorkingTimeWorkingStation("B"));
-        company.completeOrderingForm(legalCOptions,"Kim Smeets","C",company.getWorkingTimeWorkingStation("C"));
+        company.completeOrderingForm(legalAOptions,"Danny Smeets","B");
+        company.completeOrderingForm(legalBOptions,"Sandy Smeets","B");
+        company.completeOrderingForm(legalCOptions,"Kim Smeets","C");
         company.getProductionScheduler().advanceOrders(50);
         // add some completed orders
-        carOrderD = new CarOrder("Kim Smeets", carModelC,company.getWorkingTimeWorkingStation("C"));
-        carOrderE = new CarOrder("Kim Smeets", carModelC,company.getWorkingTimeWorkingStation("C"));
-        carOrderF = new CarOrder("Kim Smeets", carModelC,company.getWorkingTimeWorkingStation("C"));
+        carOrderD = new CarOrder("Kim Smeets", carModelC);
+        carOrderE = new CarOrder("Kim Smeets", carModelC);
+        carOrderF = new CarOrder("Kim Smeets", carModelC);
 
 
 
@@ -90,7 +90,7 @@ public class CarOrderTest {
         completedOrders.add(carOrderE);
         completedOrders.add(carOrderF);
         company.setCompletedCarOrders(completedOrders);
-        carOrderA = new CarOrder("Danny Smeets", carModelA,company.getWorkingTimeWorkingStation("A"));
+        carOrderA = new CarOrder("Danny Smeets", carModelA);
         try {
             carOrderA.setGarageHolder(null);
         }
@@ -113,7 +113,7 @@ public class CarOrderTest {
             assertEquals("A car model cannot be null.", e.getMessage());
         }
         try {
-            carOrderA.setCarModel(new CarModel("", null));
+            carOrderA.setCarModel(new CarModel("", null, 0));
         }
         catch (IllegalArgumentException e) {
             assertEquals("modelName must not be empty.", e.getMessage());
@@ -216,7 +216,7 @@ public class CarOrderTest {
         // test if it throws an IllegalModelException, if so catch it and test passes
         boolean caught = false;
         try {
-            new CarModel("B", illegalOptions);
+            new CarModel("B", illegalOptions, company.getCatalog().getWorkingMinutesWorkstation("B"));
         }
         catch (OptionAThenOptionBException e) {
             assertEquals("OptionAThenOptionBException", e.getClass().getSimpleName());
@@ -237,7 +237,7 @@ public class CarOrderTest {
         illegalOptions.put("wheels", "winter");
         boolean caught = false;
         try {
-            new CarModel("B", illegalOptions);
+            new CarModel("B", illegalOptions, company.getCatalog().getWorkingMinutesWorkstation("B"));
         }
         catch (OptionThenComponentException e) {
             assertEquals("OptionThenComponentException", e.getClass().getSimpleName());
@@ -257,7 +257,7 @@ public class CarOrderTest {
         illegalOptions.put("wheels", "winter");
         boolean thrown = false;
         try {
-            new CarModel("A", illegalOptions);
+            new CarModel("A", illegalOptions, company.getCatalog().getWorkingMinutesWorkstation("A"));
         }
         catch (RequiredComponentException e) {
             assertEquals(e.getMessage(), "You are missing an essential component: body, color, engine, gearbox, seats or/and wheels.");
@@ -276,8 +276,8 @@ public class CarOrderTest {
         options.put("airco", "manual");
         options.put("gearbox", "6 manual");
         options.put("wheels", "winter");
-        CarModel model = new CarModel("A", options);
-        CarOrder order = new CarOrder("A", model,company.getWorkingTimeWorkingStation("A"));
+        CarModel model = new CarModel("A", options, company.getCatalog().getWorkingMinutesWorkstation("A"));
+        CarOrder order = new CarOrder("A", model);
         order.setCarModel(model);
         System.out.println(order.getCarModelAndOptions());
         boolean gotException = false;
@@ -352,10 +352,10 @@ public class CarOrderTest {
         ArrayList<String> AAndB = new ArrayList<>();
         AAndB.add("green");
         AAndB.add("spoiler");
-        new Inspector(new CarModel("B", options)).addOptionThenComponentPair(AAndB);
+        new Inspector(new CarModel("B", options, company.getCatalog().getWorkingMinutesWorkstation("B"))).addOptionThenComponentPair(AAndB);
         boolean gotError = false;
         try{
-            new CarModel("B", options);
+            new CarModel("B", options, company.getCatalog().getWorkingMinutesWorkstation("B"));
         }
         catch(Exception e){
             assertEquals("OptionThenComponentException", e.getClass().getSimpleName());
@@ -379,14 +379,14 @@ public class CarOrderTest {
         AAndB.add("green");
         new Inspector(carOrderA.getCarModel()).reset();
         try{
-            new Inspector(new CarModel("B", options)).addOptionAThenOptionBPair(AAndB);
+            new Inspector(new CarModel("B", options, company.getCatalog().getWorkingMinutesWorkstation("B"))).addOptionAThenOptionBPair(AAndB);
         }
         catch(Exception e){
             assertEquals("IllegalConstraintException", e.getClass().getSimpleName());
         }
         boolean gotError;
         try{
-            new CarModel("B", options);
+            new CarModel("B", options, company.getCatalog().getWorkingMinutesWorkstation("B"));
         }
         catch(Exception e){
             assertEquals("OptionThenComponentException", e.getClass().getSimpleName());
@@ -400,8 +400,8 @@ public class CarOrderTest {
         options2.put("airco", "manual");
         options2.put("gearbox", "6 manual");
         options2.put("wheels", "winter");
-        CarModel model2 = new CarModel("A", options2);
-        CarOrder order = new CarOrder("A", model2,company.getWorkingTimeWorkingStation("A"));
+        CarModel model2 = new CarModel("A", options2,company.getCatalog().getWorkingMinutesWorkstation("A"));
+        CarOrder order = new CarOrder("A", model2);
         gotError = false;
         try{
             order.setCompletionTime(LocalDateTime.now().minusDays(1));

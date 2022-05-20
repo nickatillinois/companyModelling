@@ -11,6 +11,7 @@ import java.util.TreeMap;
 public class CarModel {
 
 
+    private final int workingTimeWorkingTime;
     /**
      * The name of the car model.
      */
@@ -57,7 +58,27 @@ public class CarModel {
         }
         this.modelName = modelName;
         this.chosenOptions = chosenOptions;
+        this.workingTimeWorkingTime = 60;
         this.inspect();
+    }
+
+    public CarModel(String modelName, TreeMap<String, String> chosenOptions, int workingTimeWorkPost) throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+        if (modelName == null) {
+            throw new IllegalArgumentException("modelName must not be null.");
+        }
+        if (modelName.isEmpty()) {
+            throw new IllegalArgumentException("modelName must not be empty.");
+        }
+        if (modelName.contains(" ")) {
+            throw new IllegalArgumentException("modelName must not contain only whitespace.");
+        }
+        if (chosenOptions == null) {
+            throw new IllegalArgumentException("chosenOptions must not be null.");
+        }
+        this.modelName = modelName;
+        this.chosenOptions = chosenOptions;
+        this.inspect();
+        this.workingTimeWorkingTime = workingTimeWorkPost;
     }
 
     /**
@@ -97,6 +118,9 @@ public class CarModel {
             sb.append(key).append(": ").append(chosenOptions.get(key)).append("\n");
         }
         return sb.toString();
+    }
+    public int getWorkingTimeWorkingTime(){
+        return workingTimeWorkingTime;
     }
 
 }

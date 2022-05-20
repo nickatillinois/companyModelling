@@ -63,7 +63,6 @@ public class CarOrder implements StatisticsObservable {
      */
     private CarModel carModel;
 
-    private int WorkingMinutesWorkStation;
 
 
     /**
@@ -75,7 +74,7 @@ public class CarOrder implements StatisticsObservable {
      *                                  | garageHolder is the empty string
      *                                  | carModel is null
      */
-    public CarOrder(String  garageHolder, CarModel carModel, int workingMinutesWorkStation) throws IllegalArgumentException{
+    public CarOrder(String  garageHolder, CarModel carModel) throws IllegalArgumentException{
         if(garageHolder == null){throw new IllegalArgumentException("A garage holder cannot be null.");}
         if(garageHolder.equals("")){throw new IllegalArgumentException("A garage holder cannot be the empty string.");}
         if(carModel == null){throw new IllegalArgumentException("A car model cannot be null.");}
@@ -86,7 +85,6 @@ public class CarOrder implements StatisticsObservable {
         counter++;
         this.ID = counter;
         this.orderingTime = LocalDateTime.now();
-        this.setWorkingMinutesWorkStation(workingMinutesWorkStation);
     }
 
 
@@ -302,10 +300,8 @@ public class CarOrder implements StatisticsObservable {
     }
 
     public int getWorkingMinutesWorkStation() {
-        return WorkingMinutesWorkStation;
+        return getCarModel().getWorkingTimeWorkingTime();
     }
 
-    public void setWorkingMinutesWorkStation(int workingMinutesWorkStation) {
-        WorkingMinutesWorkStation = workingMinutesWorkStation;
-    }
+
 }

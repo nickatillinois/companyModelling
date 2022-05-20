@@ -355,7 +355,7 @@ public class Company implements TaskObserver {
      * @throws OptionAThenOptionBException if there is an option specified but not the implied option(s).
      * @throws RequiredComponentException if there is a required component not specified.
      */
-    public String completeOrderingForm(TreeMap<String, String> chosenOptions, String garageHolder, String chosenModel, int workingMinutesWorkstation) throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+    public String completeOrderingForm(TreeMap<String, String> chosenOptions, String garageHolder, String chosenModel) throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         if(chosenOptions == null) {
             throw new IllegalArgumentException("chosenOptions cannot be null.");
         }
@@ -379,12 +379,12 @@ public class Company implements TaskObserver {
         }
         CarModel carModel;
         try{
-            carModel = new CarModel(chosenModel, chosenOptions);
+            carModel = new CarModel(chosenModel, chosenOptions, getCatalog().getWorkingMinutesWorkstation(chosenModel));
         }
         catch(IllegalModelException e){
             throw e;
         }
-        CarOrder carOrder = new CarOrder(garageHolder, carModel, workingMinutesWorkstation);
+        CarOrder carOrder = new CarOrder(garageHolder, carModel);
         this.productionScheduler.getSchedulingAlgorithm().addOrderToProductionSchedule(carOrder);
         for (Stats stat : statistics) {
             carOrder.addObserver(stat);
