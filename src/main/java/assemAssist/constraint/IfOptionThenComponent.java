@@ -77,7 +77,7 @@ public class IfOptionThenComponent extends Constraint {
      * @return True if the chosen specifications are in line with the constraints, false otherwise.
      */
     @Override
-    protected boolean isValidCombo(CarModel chosenSpecifications) throws IllegalArgumentException, OptionThenComponentException {
+    protected void isValidCombo(CarModel chosenSpecifications) throws IllegalArgumentException, OptionThenComponentException {
         if (chosenSpecifications == null) {
             throw new IllegalArgumentException("Chosen specifications is null");
         }
@@ -93,7 +93,6 @@ public class IfOptionThenComponent extends Constraint {
         if (chosenOptionsSet.contains(this.pairs.get(0).toLowerCase()) && !chosenSpecifications.getChosenOptions().containsKey(this.pairs.get(1).toLowerCase())) {
             throw new OptionThenComponentException("Option " + this.pairs.get(0) + " implies component " + this.pairs.get(1) + ". But component " + this.pairs.get(1) + " is not chosen.");
         }
-        return true;
     }
 
     @Override

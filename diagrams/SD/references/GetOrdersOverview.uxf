@@ -46,7 +46,7 @@ transparency=0</panel_attributes>
     </coordinates>
     <panel_attributes>newLogin(string garageHolderName)
 
-lt=&lt;-
+lt=&lt;&lt;&lt;-
 </panel_attributes>
     <additional_attributes>350.0;30.0;10.0;30.0</additional_attributes>
   </element>
@@ -105,7 +105,7 @@ lt=&lt;.</panel_attributes>
     </coordinates>
     <panel_attributes>newLogin
 (string garageHolderName)
-lt=&lt;-
+lt=&lt;&lt;&lt;-
 </panel_attributes>
     <additional_attributes>340.0;30.0;10.0;30.0</additional_attributes>
   </element>
@@ -186,7 +186,7 @@ transparency=0</panel_attributes>
       <w>225</w>
       <h>54</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;-
 Login
 </panel_attributes>
     <additional_attributes>230.0;30.0;10.0;30.0</additional_attributes>
@@ -195,7 +195,7 @@ Login
     <id>Relation</id>
     <coordinates>
       <x>126</x>
-      <y>351</y>
+      <y>360</y>
       <w>225</w>
       <h>72</h>
     </coordinates>
@@ -224,7 +224,7 @@ transparency=0</panel_attributes>
       <x>333</x>
       <y>216</y>
       <w>18</w>
-      <h>162</h>
+      <h>171</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=100
@@ -236,7 +236,7 @@ transparency=0</panel_attributes>
     <coordinates>
       <x>891</x>
       <y>279</y>
-      <w>1350</w>
+      <w>1368</w>
       <h>117</h>
     </coordinates>
     <panel_attributes>loop/opt
@@ -322,7 +322,7 @@ lt=&lt;.</panel_attributes>
       <w>1269</w>
       <h>45</h>
     </coordinates>
-    <panel_attributes>lt=&lt;-
+    <panel_attributes>lt=&lt;&lt;&lt;-
 getGarageHolder()</panel_attributes>
     <additional_attributes>1390.0;30.0;10.0;30.0</additional_attributes>
   </element>
@@ -361,7 +361,7 @@ lt=&lt;.</panel_attributes>
     </coordinates>
     <panel_attributes>getOrdersFromGarageHolder(name)
 
-lt=&lt;-
+lt=&lt;&lt;&lt;-
 </panel_attributes>
     <additional_attributes>690.0;30.0;10.0;30.0</additional_attributes>
   </element>

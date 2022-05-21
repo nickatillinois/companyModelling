@@ -100,7 +100,7 @@ public class IfOptionAThenOptionB extends Constraint {
      * @return True if the chosen specifications are in line with the constraints, false otherwise.
      */
     @Override
-    protected boolean isValidCombo(CarModel chosenSpecifications) throws IllegalArgumentException, OptionAThenOptionBException {
+    protected void isValidCombo(CarModel chosenSpecifications) throws IllegalArgumentException, OptionAThenOptionBException {
         if (chosenSpecifications == null) {
             throw new IllegalArgumentException("Chosen specifications is null");
         }
@@ -129,7 +129,6 @@ public class IfOptionAThenOptionB extends Constraint {
                 throw new OptionAThenOptionBException("Option " + this.pairs.get(0) + " implies one of the following options: " + pairImplied.stream().toList());
             }
         }
-        return true;
     }
 
     @Override

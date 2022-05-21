@@ -101,38 +101,20 @@ lt=&lt;&lt;&lt;.</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>135</x>
-      <y>145</y>
-      <w>585</w>
-      <h>265</h>
+      <x>60</x>
+      <y>225</y>
+      <w>660</w>
+      <h>200</h>
     </coordinates>
-    <panel_attributes>alt
+    <panel_attributes>opt
 --
 
 halign=left
-[success]
-
-
--.
-halign=left
-[∃ an essential component 
+[There is an essential component 
 not listed in carModel]
 
 </panel_attributes>
     <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>70</x>
-      <y>180</y>
-      <w>230</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>true
-lt=&lt;.
-</panel_attributes>
-    <additional_attributes>10.0;30.0;440.0;30.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -157,5 +139,17 @@ lt=&lt;.
 lt=&lt;.
 </panel_attributes>
     <additional_attributes>10.0;30.0;440.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>65</x>
+      <y>390</y>
+      <w>10</w>
+      <h>10</h>
+    </coordinates>
+    <panel_attributes>type=initial
+group=2</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>

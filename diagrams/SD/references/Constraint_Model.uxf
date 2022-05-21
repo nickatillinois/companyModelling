@@ -101,38 +101,20 @@ lt=&lt;&lt;&lt;.</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>115</x>
-      <y>165</y>
-      <w>610</w>
-      <h>135</h>
+      <x>35</x>
+      <y>230</y>
+      <w>690</w>
+      <h>115</h>
     </coordinates>
-    <panel_attributes>alt
+    <panel_attributes>opt
 --
 
-halign=left
-[success]
-
-
--.
 halign=left
 [The modelname of carModel
 is not in setOfNames]
 
 </panel_attributes>
     <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>45</x>
-      <y>200</y>
-      <w>230</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>true
-lt=&lt;.
-</panel_attributes>
-    <additional_attributes>10.0;30.0;440.0;30.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -208,13 +190,13 @@ transparency=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>280</x>
+      <x>275</x>
       <y>120</y>
       <w>265</w>
       <h>30</h>
     </coordinates>
     <panel_attributes>getAvailableModelNames()
-lt=&lt;-
+lt=&lt;&lt;&lt;-
 </panel_attributes>
     <additional_attributes>510.0;30.0;10.0;30.0</additional_attributes>
   </element>
@@ -229,5 +211,17 @@ lt=&lt;-
     <panel_attributes>setOfNames
 lt=&lt;.</panel_attributes>
     <additional_attributes>10.0;30.0;500.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>40</x>
+      <y>315</y>
+      <w>10</w>
+      <h>10</h>
+    </coordinates>
+    <panel_attributes>type=initial
+group=2</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>

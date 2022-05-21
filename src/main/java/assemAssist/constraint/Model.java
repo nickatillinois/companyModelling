@@ -33,7 +33,7 @@ public class Model extends Constraint{
      * @return True if the chosen specifications are in line with the constraints, false otherwise.
      */
     @Override
-    protected boolean isValidCombo(CarModel chosenSpecifications) throws IllegalArgumentException, IllegalModelException {
+    protected void isValidCombo(CarModel chosenSpecifications) throws IllegalArgumentException, IllegalModelException {
         Catalog catalog = new Catalog();
         String modelName = chosenSpecifications.getModelName();
         // check if this model name is in catalog.getAvailableModelNames(), ignore case of model name
@@ -78,7 +78,6 @@ public class Model extends Constraint{
                 throw new IllegalModelException("Model " + modelName + " does not have a value for the component " + key);
             }
         }
-        return true;
     }
 
     @Override

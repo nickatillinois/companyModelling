@@ -25,7 +25,7 @@ public class RequiredComponent extends Constraint {
      * @return True if the chosen specifications are in line with the constraints, false otherwise.
      */
     @Override
-    protected boolean isValidCombo(CarModel chosenSpecifications) throws IllegalArgumentException, RequiredComponentException {
+    protected void isValidCombo(CarModel chosenSpecifications) throws IllegalArgumentException, RequiredComponentException {
         if(
                 chosenSpecifications.getChosenOptions().containsKey("Body") &&
                         chosenSpecifications.getChosenOptions().containsKey("Color") &&
@@ -33,7 +33,7 @@ public class RequiredComponent extends Constraint {
                         chosenSpecifications.getChosenOptions().containsKey("Gearbox") &&
                         chosenSpecifications.getChosenOptions().containsKey("Seats") &&
                         chosenSpecifications.getChosenOptions().containsKey("Wheels")) {
-            return true;
+            return;
         }
         throw new RequiredComponentException("You are missing an essential component: body, color, engine, gearbox, seats or/and wheels.");
     }

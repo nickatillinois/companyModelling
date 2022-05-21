@@ -96,9 +96,9 @@ public class CarModel {
      * @throws OptionAThenOptionBException if an option is specified implying another option, but the option is not chosen.
      * @throws RequiredComponentException  if a component is required, but not chosen.
      */
-    public boolean inspect() throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+    public void inspect() throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         try{
-            return new Inspector(this).inspect();
+            new Inspector(this).inspect();
         }
         catch (Exception e){
             throw e;

@@ -37,13 +37,13 @@ public class Inspector {
             throw new IllegalModelException("The car model is null.");
         }
         this.carModel = carModel;
-        addConstraints();
+        addStdConstraints();
     }
 
     /**
      * Adds constraints to the inspector.
      */
-    private void addConstraints() throws IllegalConstraintException {
+    private void addStdConstraints() throws IllegalConstraintException {
         constraints.add(new Model());
         constraints.add(new RequiredComponent());
         IfOptionAThenOptionB standardConstraint1 = new IfOptionAThenOptionB(new ArrayList<>(Arrays.asList("Sport", "V6", "V8")));
@@ -59,7 +59,7 @@ public class Inspector {
      * Inspects the car model for constraints.
      * @return true if the car model is valid, false otherwise.
      */
-    public boolean inspect() throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+    public void inspect() throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         for (Constraint constraint : constraints) {
             try{
                 constraint.isValidCombo(this.carModel);
@@ -68,7 +68,6 @@ public class Inspector {
                 throw e;
             }
         }
-        return true;
     }
     /**
      * Function that accepts a list of options strings, so that the first element implies one of the latter elements.
@@ -140,6 +139,6 @@ public class Inspector {
             constraint.reset();
         }
         constraints.clear();
-        addConstraints();
+        addStdConstraints();
     }
 }

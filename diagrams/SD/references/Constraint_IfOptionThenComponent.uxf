@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>5</zoom_level>
+  <zoom_level>6</zoom_level>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>65</x>
-      <y>120</y>
-      <w>695</w>
-      <h>425</h>
+      <x>24</x>
+      <y>84</y>
+      <w>834</w>
+      <h>510</h>
     </coordinates>
     <panel_attributes>Constraint_IfOptionThenComponent
 --
@@ -17,10 +17,10 @@
   <element>
     <id>UMLSpecialState</id>
     <coordinates>
-      <x>80</x>
-      <y>195</y>
-      <w>10</w>
-      <h>10</h>
+      <x>42</x>
+      <y>174</y>
+      <w>12</w>
+      <h>12</h>
     </coordinates>
     <panel_attributes>type=initial
 group=1</panel_attributes>
@@ -29,10 +29,10 @@ group=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>85</x>
-      <y>185</y>
-      <w>230</w>
-      <h>40</h>
+      <x>48</x>
+      <y>162</y>
+      <w>276</w>
+      <h>48</h>
     </coordinates>
     <panel_attributes>isValidCombo(carModel)
 lt=&lt;&lt;&lt;-
@@ -43,10 +43,10 @@ lt=&lt;&lt;&lt;-
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>260</x>
-      <y>160</y>
-      <w>130</w>
-      <h>15</h>
+      <x>258</x>
+      <y>132</y>
+      <w>156</w>
+      <h>18</h>
     </coordinates>
     <panel_attributes>:   IfOptionThenComponent</panel_attributes>
     <additional_attributes/>
@@ -54,10 +54,10 @@ lt=&lt;&lt;&lt;-
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>310</x>
-      <y>170</y>
-      <w>15</w>
-      <h>325</h>
+      <x>318</x>
+      <y>144</y>
+      <w>18</w>
+      <h>390</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;630.0</additional_attributes>
@@ -65,10 +65,10 @@ lt=&lt;&lt;&lt;-
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>305</x>
-      <y>200</y>
-      <w>20</w>
-      <h>265</h>
+      <x>312</x>
+      <y>180</y>
+      <w>24</w>
+      <h>318</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=100
@@ -78,21 +78,21 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>540</x>
-      <y>310</y>
-      <w>165</w>
-      <h>15</h>
+      <x>594</x>
+      <y>312</y>
+      <w>198</w>
+      <h>18</h>
     </coordinates>
-    <panel_attributes>:   IfOptionThenComponentException</panel_attributes>
+    <panel_attributes>:   OptionThenComponentException</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>320</x>
+      <x>330</x>
       <y>300</y>
-      <w>230</w>
-      <h>25</h>
+      <w>276</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>create(specificationMessage)
 lt=&lt;&lt;&lt;.</panel_attributes>
@@ -101,21 +101,16 @@ lt=&lt;&lt;&lt;.</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>150</x>
-      <y>210</y>
-      <w>585</w>
-      <h>265</h>
+      <x>36</x>
+      <y>300</y>
+      <w>792</w>
+      <h>210</h>
     </coordinates>
-    <panel_attributes>alt
+    <panel_attributes>opt
 --
 
 halign=left
-[success]
-
-
--.
-halign=left
-[∃ an option in carModel listed 
+[There is an option in carModel listed 
 as a premise, but its concluding 
 component 
 is not listed in carModel.]
@@ -126,23 +121,10 @@ is not listed in carModel.]
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>85</x>
-      <y>245</y>
-      <w>230</w>
-      <h>30</h>
-    </coordinates>
-    <panel_attributes>true
-lt=&lt;.
-</panel_attributes>
-    <additional_attributes>10.0;30.0;440.0;30.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>615</x>
-      <y>320</y>
-      <w>15</w>
-      <h>150</h>
+      <x>684</x>
+      <y>324</y>
+      <w>18</w>
+      <h>180</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;280.0</additional_attributes>
@@ -150,14 +132,26 @@ lt=&lt;.
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>85</x>
-      <y>445</y>
-      <w>230</w>
-      <h>30</h>
+      <x>48</x>
+      <y>474</y>
+      <w>276</w>
+      <h>36</h>
     </coordinates>
-    <panel_attributes>IfOptionThenComponentException
+    <panel_attributes>OptionThenComponentException
 lt=&lt;.
 </panel_attributes>
     <additional_attributes>10.0;30.0;440.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLSpecialState</id>
+    <coordinates>
+      <x>42</x>
+      <y>486</y>
+      <w>12</w>
+      <h>12</h>
+    </coordinates>
+    <panel_attributes>type=initial
+group=2</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
