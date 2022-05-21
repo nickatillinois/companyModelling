@@ -78,6 +78,9 @@ public class CarModel {
         if (chosenOptions == null) {
             throw new IllegalArgumentException("chosenOptions must not be null.");
         }
+        if(workingTimeWorkPost < 0){
+            throw new IllegalArgumentException("workingTimeWorkPost must not be negative.");
+        }
         this.modelName = modelName;
         this.chosenOptions = chosenOptions;
         this.inspect();

@@ -34,6 +34,7 @@ public class OrderNewCar {
 
     @BeforeAll
     static void init() throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException, IllegalCompletionDateException {
+        company = new Company();
         TreeMap<String, String> legalAOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         legalAOptions.put("color", "red");
         legalAOptions.put("body", "break");
@@ -53,7 +54,6 @@ public class OrderNewCar {
         legalBOptions.put("wheels", "winter");
         legalBOptions.put("spoiler", "low");
         CarModel carModelB = new CarModel("B", legalBOptions, company.getWorkingTimeWorkingStation("B"));
-        company = new Company();
         company.completeOrderingForm(legalAOptions,"Danny Smeets","A");
         company.completeOrderingForm(legalAOptions,"Danny Smeets","B");
         company.completeOrderingForm(legalAOptions,"Danny Smeets","A");
@@ -75,6 +75,7 @@ public class OrderNewCar {
         advanceLine();
         System.out.print("According to the assembly line, " +
                 "\nthe assembly line can advance:  ");
+        advanceLine();
         advanceLine();
         advanceLine();
         advanceLine();
