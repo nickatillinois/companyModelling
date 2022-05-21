@@ -1,8 +1,10 @@
 package controller;
 
+import assemAssist.CarOrder;
 import assemAssist.Company;
 import assemAssist.exceptions.*;
 
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 /**
@@ -41,11 +43,19 @@ public class GarageHolderController {
     }
 
     /**
-     * Sets the garage holder and returns the orders belonging to the garage holder.
-     * @param garageHolder The garage holder.
-     * @throws IllegalArgumentException If the garage holder is null.
-     *                                  If the garage holder is empty.
-     *                                  If the garage holder is only whitespace.
+     * Returns an array consisting of two elements:
+     * the first element is a list of pending orders that were not completed.
+     * the second element is a list of completed orders.
+     * @return an array consisting of two elements.
+     *         the first element is a list of pending orders that were not completed.
+     *         the second element is a list of completed orders.
+     *         if there are no pending orders, the first element is empty.
+     *         if there are no completed orders, the second element is empty.
+     *         if there are no pending or completed orders, both elements are empty.
+     * @param garageHolder the garage holder to get the orders from
+     * @throws IllegalArgumentException if the given garage holder is null
+     *                                  or if the given string is empty
+     *                                  or if only whitespace is given
      */
     public ArrayList<String[]>[] newLogin(String garageHolder) {
         if(garageHolder == null) {
@@ -58,7 +68,26 @@ public class GarageHolderController {
             throw new IllegalArgumentException("Garage holder cannot be whitespace");
         }
         this.garageHolder = garageHolder;
-        return this.company.newLogin(garageHolder);
+        // create an array of 2 lists each containing a number of arrays of strings
+        ArrayList<String[]>[] result = new ArrayList[2];
+        ArrayList<String[]> pendingOrdersString = new ArrayList<>();
+        ArrayList<String[]> completedOrdersString = new ArrayList<>();
+        // get the pending and completed orders from this garage holder
+        List<CarOrder>[] orders = company.getOrdersFromGarageHolder(garageHolder);
+        List<CarOrder> pendingOrders = orders[0];
+        List<CarOrder> completedOrders = orders[1];
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        // take the ID and the estimated completion date from each pending order
+        for (CarOrder carOrder : pendingOrders) {
+            pendingOrdersString.add(new String[]{Integer.toString(carOrder.getOrderID()), carOrder.getEstCompletionTime().format(formatter)});
+        }
+        // take the ID and the completion date from each completed order
+        for (CarOrder carOrder : completedOrders) {
+            completedOrdersString.add(new String[]{Integer.toString(carOrder.getOrderID()), carOrder.getCompletionTime().format(formatter)});
+        }
+        result[0] = pendingOrdersString;
+        result[1] = completedOrdersString;
+        return result;
     }
 
     /**
@@ -76,10 +105,6 @@ public class GarageHolderController {
     /**
      * Returns a map of the components and their options for the given model.
      * @param carModel The model of the car.
-     *                 If the model is null, an IllegalArgumentException is thrown.
-     *                 If the model is empty, an IllegalArgumentException is thrown.
-     *                 If the model is only whitespace, an IllegalArgumentException is thrown.
-     *                 If the model is not offered by the car manufacturer, an IllegalModelException is thrown.
      * @throws IllegalArgumentException If the model is null.
      *                                  If the model is empty.
      *                                  If the model is only whitespace.

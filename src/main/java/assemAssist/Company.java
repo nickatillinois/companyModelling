@@ -245,14 +245,14 @@ public class Company implements TaskObserver {
     }
 
     /**
-     * Returns a map of components and their respective offerd options for the given modelname.
-     * @param model the name of the model to get the map of components and their respective offerd options for
+     * Returns a map of components and their respective offered options for the given modelName.
+     * @param model the name of the model to get the map of components and their respective offered options for
      *              from the catalog
      * @throws IllegalArgumentException if the given model is null
      *                                  or if the given model is empty
      *                                  or if only whitespace is given
      * @throws IllegalModelException if the given model is not offered by the company
-     * @return map of components and their respective offerd options for the given modelname
+     * @return map of components and their respective offered options for the given modelName
      */
     public TreeMap<String, HashSet<String>> selectModel(String model) throws IllegalModelException {
         if (model == null) {
@@ -285,53 +285,6 @@ public class Company implements TaskObserver {
         return result;
     }
 
-    /**
-     * Returns an array consisting of two elements:
-     * the first element is a list of pending orders that were not completed.
-     * the second element is a list of completed orders.
-     * @return an array consisting of two elements.
-     *         the first element is a list of pending orders that were not completed.
-     *         the second element is a list of completed orders.
-     *         if there are no pending orders, the first element is empty.
-     *         if there are no completed orders, the second element is empty.
-     *         if there are no pending or completed orders, both elements are empty.
-     * @param garageHolder the garage holder to get the orders from
-     * @throws IllegalArgumentException if the given garage holder is null
-     *                                  or if the given string is empty
-     *                                  or if only whitespace is given
-     */
-    public ArrayList<String[]>[] newLogin(String garageHolder) {
-        if (garageHolder == null) {
-            throw new IllegalArgumentException("Garage holder name cannot be null.");
-        }
-        if (garageHolder.isEmpty()) {
-            throw new IllegalArgumentException("Garage holder name cannot be empty.");
-        }
-        if(garageHolder.trim().length() <= 0) {
-            throw new IllegalArgumentException("Garage holder name cannot be whitespace.");
-        }
-        // create an array of 2 lists each containing a number of arrays of strings
-        ArrayList<String[]>[] result = new ArrayList[2];
-        ArrayList<String[]> pendingOrdersString = new ArrayList<>();
-        ArrayList<String[]> completedOrdersString = new ArrayList<>();
-        // get the pending and completed orders from this garage holder
-        List<CarOrder>[] orders = this.getOrdersFromGarageHolder(garageHolder);
-        List<CarOrder> pendingOrders = orders[0];
-        List<CarOrder> completedOrders = orders[1];
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        // take the ID and the estimated completion date from each pending order
-        for (CarOrder carOrder : pendingOrders) {
-            pendingOrdersString.add(new String[]{Integer.toString(carOrder.getOrderID()), carOrder.getEstCompletionTime().format(formatter)});
-        }
-        // take the ID and the completion date from each completed order
-        for (CarOrder carOrder : completedOrders) {
-            completedOrdersString.add(new String[]{Integer.toString(carOrder.getOrderID()), carOrder.getCompletionTime().format(formatter)});
-        }
-        result[0] = pendingOrdersString;
-        result[1] = completedOrdersString;
-        // return the result
-        return result;
-    }
 
     /**
      * Function that accepts a map of specifications, a garage holder name, and a chosen car type.

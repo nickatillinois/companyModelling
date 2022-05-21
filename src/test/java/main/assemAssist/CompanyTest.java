@@ -255,49 +255,4 @@ public class CompanyTest {
         List<String> statistics = company.getStatistics(0);
         System.out.println(statistics);
     }
-
-    @Test
-    void testNewLogin() throws IllegalArgumentException {
-        boolean got_error = false;
-        try{
-            company.newLogin(null);
-        }
-        catch (IllegalArgumentException e){
-            assertEquals("Garage holder name cannot be null.", e.getMessage());
-            got_error = true;
-        }
-        assertTrue(got_error);
-        got_error = false;
-        try{
-            company.newLogin("");
-        }
-        catch (IllegalArgumentException e){
-            assertEquals("Garage holder name cannot be empty.", e.getMessage());
-            got_error = true;
-        }
-        assertTrue(got_error);
-        got_error = false;
-        try{
-            company.newLogin(" ");
-        }
-        catch (IllegalArgumentException e){
-            assertEquals("Garage holder name cannot be whitespace.", e.getMessage());
-            got_error = true;
-        }
-        assertTrue(got_error);
-        System.out.println("---------------------New Login---------------------");
-        // print the two lists returned by the newLogin method
-        ArrayList<String[]>[] login = company.newLogin("kim Smeets");
-        // print the first list
-        System.out.println("The first list is: ");
-        for (String[] s : login[0]){
-            System.out.println(s[0] + " " + s[1]);
-        }
-        // print the second list
-        System.out.println("The second list is: ");
-        for (String[] s : login[1]){
-            System.out.println(s[0] + " " + s[1]);
-        }
-    }
-
 }
