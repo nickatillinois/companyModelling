@@ -194,19 +194,8 @@ public class AssemblyLine {
 
             }
         }
-        List<String> newStateAndFinished = new ArrayList<>();
-        List<CarOrder> currentStatus  = getCurrentState();
-        for(int i = 0 ; i < currentStatus.size() ; i++){
-            CarOrder carOrder2 = currentStatus.get(i);
-            String s = getWorkStations().get(i).getName() + " ; ";
-            if(carOrder2 != null) {
-                s += carOrder2.getCarModelAndOptions();
-            }
-            else
-                s += "No Order in this workstation";
-            newStateAndFinished.add(s);
-        }
-        return newStateAndFinished;
+
+        return getNewState();
     }
 
     private boolean emptyAssemblyLine() {
@@ -230,6 +219,22 @@ public class AssemblyLine {
             }
         }
         throw new IllegalArgumentException("This is not a work station at this assembly line!");
+    }
+
+    private List<String> getNewState() {
+        List<String> newStateAndFinished = new ArrayList<>();
+        List<CarOrder> currentStatus  = getCurrentState();
+        for(int i = 0 ; i < currentStatus.size() ; i++){
+            CarOrder carOrder2 = currentStatus.get(i);
+            String s = getWorkStations().get(i).getName() + " ; ";
+            if(carOrder2 != null) {
+                s += carOrder2.getCarModelAndOptions();
+            }
+            else
+                s += "No Order in this workstation";
+            newStateAndFinished.add(s);
+        }
+        return newStateAndFinished;
     }
 
 }
