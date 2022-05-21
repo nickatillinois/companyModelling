@@ -108,9 +108,9 @@ public class ProductionScheduler {
      * @return list of car order
      */
     public List<CarOrder> getOrdersFromGarageHolder(String garageHolder){
-        List<CarOrder> orderFromGarageHolder = schedulingAlgorithm.getProductionSchedule().stream().
+        List<CarOrder> orderFromGarageHolder = new ArrayList<>(getPendingOrdersFromGarageHolder(garageHolder));
+        orderFromGarageHolder = schedulingAlgorithm.getProductionSchedule().stream().
                 filter(p-> Objects.equals(p.getGarageHolder(), garageHolder)).collect(Collectors.toList());
-        orderFromGarageHolder.addAll(getPendingOrdersFromGarageHolder(garageHolder));
         return orderFromGarageHolder;
     }
 

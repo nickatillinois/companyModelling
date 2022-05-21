@@ -121,9 +121,7 @@ public class Company implements TaskObserver {
                 orders.add(carOrder);
             }
         }
-        CompletedCarOrderComparator comparator = new CompletedCarOrderComparator();
-        // sort the orders by the comparator
-        orders.sort(comparator);
+        orders.sort(new CompletedCarOrderComparator());
         return orders;
     }
 
@@ -137,8 +135,7 @@ public class Company implements TaskObserver {
     private List<CarOrder> getPendingOrdersFromGarageHolder(String name) {
         List<CarOrder> orders = getProductionScheduler().getOrdersFromGarageHolder(name);
         orders.removeIf(CarOrder::isCompleted);
-        PendingCarOrderComparator comparator = new PendingCarOrderComparator();
-        orders.sort(comparator);
+        orders.sort(new PendingCarOrderComparator());
         return orders;
     }
 

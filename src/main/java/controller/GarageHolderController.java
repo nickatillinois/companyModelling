@@ -161,7 +161,11 @@ public class GarageHolderController {
         if (carID <= 0) {
             throw new IllegalArgumentException("Car ID cannot be less than or equal to 0");
         } else {
-            return company.getOrderDetails(carID, garageHolderName);
+            try {
+                return company.getOrderDetails(carID, garageHolderName);
+            } catch (OrderNotFoundException e) {
+                throw e;
+            }
         }
     }
 }
