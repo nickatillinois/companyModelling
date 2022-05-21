@@ -22,7 +22,6 @@ public class RequiredComponent extends Constraint {
      * @throws IllegalArgumentException   | chosenSpecifications = null
      * @throws RequiredComponentException   | IfRequiredComponent is not satisfied
      *
-     * @return True if the chosen specifications are in line with the constraints, false otherwise.
      */
     @Override
     protected void isValidCombo(CarModel chosenSpecifications) throws IllegalArgumentException, RequiredComponentException {
@@ -43,10 +42,14 @@ public class RequiredComponent extends Constraint {
         //do nothing
     }
 
+    @Override
     public boolean equals(Object obj) {
-        if (this.getClass() != obj.getClass())
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
             return false;
-        RequiredComponent other = (RequiredComponent) obj;
-        return true;
+        }
+        return getClass() == obj.getClass();
     }
 }

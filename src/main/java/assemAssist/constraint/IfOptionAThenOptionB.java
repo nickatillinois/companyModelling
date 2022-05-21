@@ -97,7 +97,6 @@ public class IfOptionAThenOptionB extends Constraint {
      * @throws IllegalArgumentException   | chosenSpecifications = null
      * @throws OptionAThenOptionBException | IfOptionAThenOptionB is not satisfied
      *
-     * @return True if the chosen specifications are in line with the constraints, false otherwise.
      */
     @Override
     protected void isValidCombo(CarModel chosenSpecifications) throws IllegalArgumentException, OptionAThenOptionBException {

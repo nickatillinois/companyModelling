@@ -57,7 +57,6 @@ public class Inspector {
 
     /**
      * Inspects the car model for constraints.
-     * @return true if the car model is valid, false otherwise.
      */
     public void inspect() throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         for (Constraint constraint : constraints) {

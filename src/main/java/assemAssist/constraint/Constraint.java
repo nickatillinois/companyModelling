@@ -26,7 +26,6 @@ public abstract class Constraint {
      * @throws RequiredComponentException   | IfRequiredComponent is not satisfied
      * @throws IllegalModelException | Model is not satisfied
      *
-     * @return True if the chosen specifications are in line with the constraints, false otherwise.
      */
     protected abstract void isValidCombo(CarModel chosenSpecifications) throws IllegalArgumentException, IllegalConstraintException, IllegalModelException, RequiredComponentException, OptionAThenOptionBException, OptionThenComponentException;
     protected abstract void reset();
