@@ -12,8 +12,11 @@ import ui.ManagerUI;
 import ui.MechanicUI;
 import ui.UI;
 import java.io.ByteArrayInputStream;
-import java.time.LocalDateTime;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.PrintStream;
 import java.util.TreeMap;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CheckProductionStatisticsTest {
 
@@ -24,8 +27,6 @@ public class CheckProductionStatisticsTest {
 
     @BeforeAll
     static void init() throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
-        ByteArrayInputStream in = new ByteArrayInputStream("3\ns".getBytes());
-        System.setIn(in);
         company = new Company();
         productionScheduler = company.getProductionScheduler();
         assemblyLine = productionScheduler.getAssemblyLine();
@@ -38,17 +39,48 @@ public class CheckProductionStatisticsTest {
         company.completeOrderingForm(legalAOptions,"Luna Van den Bergh","A");
         company.completeOrderingForm(legalAOptions,"Luna Van den Bergh","A");
         company.completeOrderingForm(legalAOptions,"Luna Van den Bergh","A");
+    }
 
+    @Test
+    public void checkProductionStatisticsEmpty() throws IllegalCompletionDateException, IllegalModelException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException, IOException {
+        ByteArrayInputStream in = new ByteArrayInputStream("3\ns\nd\n4".getBytes());
+        System.setIn(in);
+
+        ByteArrayOutputStream test = new ByteArrayOutputStream();
+        PrintStream PS = new PrintStream(test);
+        System.setOut(PS);
+
+        new UI( new GarageHolderUI( new GarageHolderController(company)),
+                new ManagerUI(      new ManagerController(company)),
+                new MechanicUI(     new MechanicController( new Mechanic(assemblyLine) )));
+
+        String output = test.toString();
+        assertTrue(output.contains("the average of completed cars in a day is 0.0"));
+        assertTrue(output.contains("the median of completed cars in a day is 0.0"));
+        assertTrue(output.contains("the average delay on a car is 0.0"));
+        assertTrue(output.contains("the median delay on a car is 0.0"));
     }
 
     @Test
     public void checkProductionStatistics() throws IllegalCompletionDateException, IllegalModelException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
 
+        //TODO statistieken toevoegen
 
+        ByteArrayInputStream in = new ByteArrayInputStream("3\ns\nd\n4\n".getBytes());
+        System.setIn(in);
 
-    /*    new UI( new GarageHolderUI( new GarageHolderController(company)),
+        ByteArrayOutputStream test = new ByteArrayOutputStream();
+        PrintStream PS = new PrintStream(test);
+        PrintStream old = System.out;
+        System.setOut(PS);
+
+        new UI( new GarageHolderUI( new GarageHolderController(company)),
                 new ManagerUI(      new ManagerController(company)),
                 new MechanicUI(     new MechanicController( new Mechanic(assemblyLine) )));
-    */
+
+        System.setOut(old);
+        System.out.println(test);
+
     }
+
 }

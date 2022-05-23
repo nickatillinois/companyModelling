@@ -39,6 +39,8 @@ public class WorkingDayStatistics extends Statistics {
         statistics.add("- the average of completed cars in a day is " + getAverage());
         statistics.add("- the median of completed cars in a day is " + getMedian());
 
+        if (statsPerDay.size() == 1 && statsPerDay.containsKey(LocalDate.now().toString())) return statistics;
+
         for (int i = 0; i<fromXLastDays; i++) {
             int daysAgo = i + 1;
             statistics.add("- cars produced " + daysAgo + " day(s) ago: " +
