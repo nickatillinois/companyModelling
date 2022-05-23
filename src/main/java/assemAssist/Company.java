@@ -133,10 +133,14 @@ public class Company implements TaskObserver {
      * @param name the garage holder to get the pending CarOrders for
      */
     private List<CarOrder> getPendingOrdersFromGarageHolder(String name) {
-        List<CarOrder> orders = getProductionScheduler().getOrdersFromGarageHolder(name);
-        orders.removeIf(CarOrder::isCompleted);
-        orders.sort(new PendingCarOrderComparator());
-        return orders;
+        List<CarOrder> orders = getProductionScheduler().getPendingOrders();
+        // stream over orders, filter so that only orders from the given garage holder are returned
+        List<CarOrder> filteredOrders = orders.stream()
+                .filter(order -> order.getGarageHolder().equalsIgnoreCase(name))
+                .collect(java.util.stream.Collectors.toList());
+        filteredOrders.removeIf(CarOrder::isCompleted);
+        filteredOrders.sort(new PendingCarOrderComparator());
+        return filteredOrders;
     }
 
 

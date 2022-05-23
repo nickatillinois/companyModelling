@@ -15,7 +15,6 @@ import ui.UI;
 
 import java.io.ByteArrayInputStream;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
@@ -76,47 +75,26 @@ public class OrderNewCar {
         new UI(new GarageHolderUI(new GarageHolderController(company)),new ManagerUI(new ManagerController(company)),
                 new MechanicUI(new MechanicController(new Mechanic(company.getProductionScheduler().getAssemblyLine()))));
         assertEquals(company.getOrdersFromGarageHolder("Timo Smeets")[0].size(), 4);
-        System.out.print("According to the assembly line, " +
-                "\nthe assembly line can advance:  ");
-        System.out.println(company.getProductionScheduler().getAssemblyLine().canMove());
-        advanceLine();
-        System.out.print("According to the assembly line, " +
-                "\nthe assembly line can advance:  ");
-        advanceLine();
-        advanceLine();
-        advanceLine();
-        advanceLine();
-        advanceLine();
-        advanceLine();
-        advanceLine();
-        advanceLine();
-        advanceLine();
-        advanceLine();
-        advanceLine();
-        advanceLine();
-        advanceLine();
-        //TODO: waarom is er hier nog 1 pending order? moet er naar volgende dag geschakeld woren ofzoiets?
+        completeAssemblyTask();
+        completeAssemblyTask();
+        completeAssemblyTask();
+        completeAssemblyTask();
+        completeAssemblyTask();
+        completeAssemblyTask();
+        completeAssemblyTask();
+        completeAssemblyTask();
         assertEquals(company.getOrdersFromGarageHolder("Timo Smeets")[0].size(), 0);
+        assertEquals(company.getOrdersFromGarageHolder("Timo Smeets")[1].size(), 4);
 
     }
-        void advanceLine(){
-            for(AssemblyTask assemblyTask : company.getProductionScheduler().getAssemblyLine().getWorkStations().get(0).getTasks())
-                assemblyTask.setCompleted();
-            for(AssemblyTask assemblyTask : company.getProductionScheduler().getAssemblyLine().getWorkStations().get(1).getTasks())
-                assemblyTask.setCompleted();
-            for(AssemblyTask assemblyTask : company.getProductionScheduler().getAssemblyLine().getWorkStations().get(2).getTasks())
-                assemblyTask.setCompleted();
-            for(WorkStation workStation: company.getProductionScheduler().getAssemblyLine().getWorkStations()){
-                if(workStation.getCurrentOrder() != null ){
-                    String garagist = workStation.getCurrentOrder().getGarageHolder();
-                    // if garagist not equal to Timo Smeets or Filip Smeets, set is as null
-                    if(!garagist.equals("Timo Smeets") && !garagist.equals("Filip Smeets")){
-                        workStation.setCurrentOrder(null);
-                    }
-                }
-                System.out.println(workStation.getName() + ": " + workStation.isFinished());
+
+    void completeAssemblyTask(){
+        for(WorkStation workStation: company.getProductionScheduler().getAssemblyLine().getWorkStations()){
+            List<String> tasks = workStation.getPendingTasks();
+            for(String task : tasks){
+               workStation.performAssemblyTask(task, 60);
             }
-            System.out.println(company.getProductionScheduler().advanceOrders(50));
         }
+    }
 
 }

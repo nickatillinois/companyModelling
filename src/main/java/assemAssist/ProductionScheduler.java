@@ -2,13 +2,12 @@ package assemAssist;
 
 import assemAssist.schedulingAlgorithm.Batch;
 import assemAssist.schedulingAlgorithm.FIFO;
-import assemAssist.workStation.WorkStation;
 import assemAssist.schedulingAlgorithm.SchedulingAlgorithm;
+import assemAssist.workStation.WorkStation;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 /**
  * Class representing a production schedule.
@@ -77,7 +76,7 @@ public class ProductionScheduler {
     }
 
     /**
-     * This function will advance the assembly line if that is possible and then returns the nuw state
+     * This function will advance the assembly line if that is possible and then returns the new state
      * else it returns null. If the scheduling algorithm is "Specification Batch" then it will check of al the orders
      * with the same options set are produced if this is true the scheduling algorithm is changed to "FIFO"
      * @param timeBetweenTwoStates | time entered by the manager that was consumed
@@ -104,29 +103,30 @@ public class ProductionScheduler {
     
     /**
      * This function return a list of car orders of the given garageHolder.
-     * @param garageHolder | the garage holder of whom the car orders are to be found
      * @return list of car order
      */
-    public List<CarOrder> getOrdersFromGarageHolder(String garageHolder){
-        List<CarOrder> orderFromGarageHolder = new ArrayList<>(getPendingOrdersFromGarageHolder(garageHolder));
-        orderFromGarageHolder = schedulingAlgorithm.getProductionSchedule().stream().
-                filter(p-> Objects.equals(p.getGarageHolder(), garageHolder)).collect(Collectors.toList());
-        return orderFromGarageHolder;
+    private List<CarOrder> getWaitingOrders(){
+        return new ArrayList<>(schedulingAlgorithm.getProductionSchedule());
+    }
+
+    public List<CarOrder> getPendingOrders(){
+        List<CarOrder> allOrders = new ArrayList<>();
+        allOrders.addAll(getWaitingOrders());
+        allOrders.addAll(getOrdersInProduction());
+        return allOrders;
     }
 
     /**
-     * This function returns a list of pending car orders of the given garage holder.
-     * @param garageHolder | the garage holder of whom the car orders are to be found
+     * This function returns a list of pending car orders
      * @return list of car orders
      */
-    public List<CarOrder> getPendingOrdersFromGarageHolder(String garageHolder){
-        List<CarOrder> pending = new ArrayList<>();
+    private List<CarOrder> getOrdersInProduction(){
+        List<CarOrder> inProductionOrders = new ArrayList<>();
         for(WorkStation workStation : getAssemblyLine().getWorkStations()){
             if (workStation.getCurrentOrder() != null)
-                if (Objects.equals(workStation.getCurrentOrder().getGarageHolder(), garageHolder))
-                    pending.add( workStation.getCurrentOrder());
+                    inProductionOrders.add( workStation.getCurrentOrder());
         }
-        return pending;
+        return inProductionOrders;
     }
 
     /**
@@ -145,18 +145,4 @@ public class ProductionScheduler {
             throw new IllegalArgumentException("This is not a valid scheduling algorithm");
         this.schedulingAlgorithm = schedulingAlgorithm;
     }
-
-    /**
-     * Gives a list of pending orders in the work stations.
-     * @return the pending orders in the workstations of the assembly line
-     */
-    public List<CarOrder> getPendingOrders(){
-        ArrayList<CarOrder> pending = new ArrayList<>();
-        for (WorkStation workStation : getAssemblyLine().getWorkStations())
-            if (workStation.getCurrentOrder() != null)
-                pending.add(workStation.getCurrentOrder());
-        return pending;
-    }
-
-
 }
