@@ -67,7 +67,6 @@ _ -counter: int_
 - getPendingOrderDetails(): List&lt;String&gt;
 - getCompletedOrderDetails(): List&lt;String&gt;
 + getOrderDetails(): List&lt;String&gt;
-+ equals(a: Object): boolean
 
 
 </panel_attributes>
@@ -154,7 +153,7 @@ _- ENDHOUR: int = 22_
 --
 - name : String
 --
-_+ newTasks()_
+_~ newTasks()_
 ~ addTask(task : AssemblyTask)
 + isFinished() : Boolean
 + getPendingTasks() : List&lt;String&gt;
