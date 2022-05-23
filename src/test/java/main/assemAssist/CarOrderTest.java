@@ -83,9 +83,9 @@ public class CarOrderTest {
         carOrderF.setEstCompletionTime(LocalDateTime.now().plusDays(8));
 
         ArrayList<CarOrder> completedOrders = new ArrayList<>();
-        carOrderD.setCompleted(true);
-        carOrderE.setCompleted(true);
-        carOrderF.setCompleted(true);
+        carOrderD.setCompleted();
+        carOrderE.setCompleted();
+        carOrderF.setCompleted();
         completedOrders.add(carOrderD);
         completedOrders.add(carOrderE);
         completedOrders.add(carOrderF);
@@ -307,7 +307,7 @@ public class CarOrderTest {
         catch(IllegalArgumentException e){
             assertEquals("IllegalArgumentException", e.getClass().getSimpleName());
         }
-        order.setCompleted(true);
+        order.setCompleted();
         assertTrue(order.isCompleted());
         System.out.println(order.getCarModel().getChosenOptionsString());
     }

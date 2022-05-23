@@ -55,7 +55,7 @@ public class WorkingDayStatistics extends Statistics {
      */
     @Override
     public void update(double delay) {
-        if (delay < 0) throw new IllegalArgumentException("The given delay cannot be smaller than zero.");
+        //if (delay < 0) throw new IllegalArgumentException("The given delay cannot be smaller than zero.");
 
         Map<String,List<Double>> stats = statsPerDay;
         if (stats.containsKey(LocalDate.now().toString())) {

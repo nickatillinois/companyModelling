@@ -155,17 +155,14 @@ public class CarOrder implements StatisticsObservable {
     /**
      * Sets whether this order is completed to the given boolean.
      *
-     * @param completed Boolean representing whether the order is completed by the car manufacturing company.
      *
      */
-    public void setCompleted(boolean completed){
+    public void setCompleted(){
         if(this.estCompletionTime == null){throw new NullPointerException("Estimated completion time has not been set.");}
-        if (completed){
-            this.completionTime = LocalDateTime.now();
-            this.completed = completed;}
+        this.completionTime = LocalDateTime.now();
+        this.completed = true;
         double delayInMinutes = ChronoUnit.MINUTES.between(estCompletionTime,completionTime);
-        notifyObservers(delayInMinutes);
-
+        this.notifyObservers(delayInMinutes);
     }
 
     /**

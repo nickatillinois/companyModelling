@@ -50,7 +50,7 @@ public class UseCase1And2Test {
         for (List<CarOrder> order : orders) {
             for (CarOrder carOrder : order) {
                 TimeUnit.SECONDS.sleep(2);
-                carOrder.setCompleted(true);
+                carOrder.setCompleted();
                 completedCarOrders.add(carOrder);
 
             }

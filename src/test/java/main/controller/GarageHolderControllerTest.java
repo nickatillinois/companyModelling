@@ -82,9 +82,9 @@ public class GarageHolderControllerTest {
         carOrderE.setEstCompletionTime(LocalDateTime.now().plusDays(9));
         carOrderF.setEstCompletionTime(LocalDateTime.now().plusDays(8));
         ArrayList<CarOrder> completedOrders = new ArrayList<>();
-        carOrderD.setCompleted(true);
-        carOrderE.setCompleted(true);
-        carOrderF.setCompleted(true);
+        carOrderD.setCompleted();
+        carOrderE.setCompleted();
+        carOrderF.setCompleted();
         completedOrders.add(carOrderD);
         completedOrders.add(carOrderE);
         completedOrders.add(carOrderF);

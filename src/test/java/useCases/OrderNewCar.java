@@ -54,21 +54,28 @@ public class OrderNewCar {
         legalBOptions.put("wheels", "winter");
         legalBOptions.put("spoiler", "low");
         CarModel carModelB = new CarModel("B", legalBOptions, company.getWorkingTimeWorkingStation("B"));
-        company.completeOrderingForm(legalAOptions,"Danny Smeets","A");
-        company.completeOrderingForm(legalAOptions,"Danny Smeets","B");
-        company.completeOrderingForm(legalAOptions,"Danny Smeets","A");
-        company.completeOrderingForm(legalAOptions,"Jan Smeets","B");
-        company.completeOrderingForm(legalAOptions,"Jan Smeets","A");
+        company.completeOrderingForm(legalAOptions,"Timo Smeets","A");
+        company.completeOrderingForm(legalAOptions,"Timo Smeets","B");
+        company.completeOrderingForm(legalAOptions,"Timo Smeets","A");
+        List <CarOrder> orders = company.getOrdersFromGarageHolder("Timo Smeets")[0];
+        orders.get(0).setEstCompletionTime(LocalDateTime.now().minusDays(1));
+        orders.get(1).setEstCompletionTime(LocalDateTime.now().minusDays(2));
+        orders.get(2).setEstCompletionTime(LocalDateTime.now().minusDays(3));
+        List <CarOrder> orders2 = company.getOrdersFromGarageHolder("Filip Smeets")[0];
+        orders.get(0).setEstCompletionTime(LocalDateTime.now().minusDays(1));
+        orders.get(1).setEstCompletionTime(LocalDateTime.now().minusDays(2));
+        company.completeOrderingForm(legalAOptions,"Filip Smeets","B");
+        company.completeOrderingForm(legalAOptions,"Filip Smeets","A");
     }
     @Test
     public void orderLegalA() throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException, CloneNotSupportedException {
         // bestel nieuwe auto A met juiste opties
-        assertEquals(company.getOrdersFromGarageHolder("Danny Smeets")[0].size(), 3);
-        ByteArrayInputStream in = new ByteArrayInputStream("2\nDanny Smeets\nn\nA\ns\n0\ns\n0\ns\n0\ns\n0\ns\n0\ns\n0\ns\n0\nq\n4".getBytes());
+        assertEquals(company.getOrdersFromGarageHolder("Timo Smeets")[0].size(), 3);
+        ByteArrayInputStream in = new ByteArrayInputStream("2\nTimo Smeets\nn\nA\ns\n0\ns\n0\ns\n0\ns\n0\ns\n0\ns\n0\ns\n0\nq\n4".getBytes());
         System.setIn(in);
         new UI(new GarageHolderUI(new GarageHolderController(company)),new ManagerUI(new ManagerController(company)),
                 new MechanicUI(new MechanicController(new Mechanic(company.getProductionScheduler().getAssemblyLine()))));
-        assertEquals(company.getOrdersFromGarageHolder("Danny Smeets")[0].size(), 4);
+        assertEquals(company.getOrdersFromGarageHolder("Timo Smeets")[0].size(), 4);
         System.out.print("According to the assembly line, " +
                 "\nthe assembly line can advance:  ");
         System.out.println(company.getProductionScheduler().getAssemblyLine().canMove());
@@ -80,8 +87,16 @@ public class OrderNewCar {
         advanceLine();
         advanceLine();
         advanceLine();
+        advanceLine();
+        advanceLine();
+        advanceLine();
+        advanceLine();
+        advanceLine();
+        advanceLine();
+        advanceLine();
+        advanceLine();
         //TODO: waarom is er hier nog 1 pending order? moet er naar volgende dag geschakeld woren ofzoiets?
-        assertEquals(company.getOrdersFromGarageHolder("Danny Smeets")[0].size(), 1);
+        assertEquals(company.getOrdersFromGarageHolder("Timo Smeets")[0].size(), 0);
 
     }
         void advanceLine(){
@@ -92,7 +107,15 @@ public class OrderNewCar {
             for(AssemblyTask assemblyTask : company.getProductionScheduler().getAssemblyLine().getWorkStations().get(2).getTasks())
                 assemblyTask.setCompleted();
             for(WorkStation workStation: company.getProductionScheduler().getAssemblyLine().getWorkStations()){
-                System.out.println(workStation.getName() + ": " + workStation.isFinished());}
+                if(workStation.getCurrentOrder() != null ){
+                    String garagist = workStation.getCurrentOrder().getGarageHolder();
+                    // if garagist not equal to Timo Smeets or Filip Smeets, set is as null
+                    if(!garagist.equals("Timo Smeets") && !garagist.equals("Filip Smeets")){
+                        workStation.setCurrentOrder(null);
+                    }
+                }
+                System.out.println(workStation.getName() + ": " + workStation.isFinished());
+            }
             System.out.println(company.getProductionScheduler().advanceOrders(50));
         }
 
