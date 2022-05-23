@@ -4,6 +4,8 @@ import assemAssist.AssemblyTask;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 class AssemblyTaskTest {
 
     static AssemblyTask task1;
@@ -16,36 +18,59 @@ class AssemblyTaskTest {
     }
 
     @Test
+    void constructorTest() {
+        task1 = new AssemblyTask("name","definition");
+        assertFalse(task1.getIsCompleted());
+        assertEquals("name", task1.getName());
+        assertEquals("definition",task1.getTaskDefinition());
+    }
+
+    @Test
+    void constructorTestNameEmpty() {
+        assertThrows(IllegalArgumentException.class, () -> task1 = new AssemblyTask("","definition"));
+    }
+
+    @Test
+    void constructorTestDefNull() {
+        assertThrows(IllegalArgumentException.class, () -> task1 = new AssemblyTask("spoiler",null));
+    }
+
+    @Test
+    void constructorTestDefEmpty() {
+        assertThrows(IllegalArgumentException.class, () -> task1 = new AssemblyTask("spoiler",""));
+    }
+
+    @Test
     void getAndSetIsCompleted() {
-        assert(!task1.getIsCompleted());
-        assert(!task2.getIsCompleted());
+        assertFalse(task1.getIsCompleted());
+        assertFalse(task2.getIsCompleted());
         task1.setCompleted();
-        assert(task1.getIsCompleted());
-        assert(!task2.getIsCompleted());
+        assertTrue(task1.getIsCompleted());
+        assertFalse(task2.getIsCompleted());
         task2.setCompleted();
-        assert(task1.getIsCompleted());
-        assert(task2.getIsCompleted());
+        assertTrue(task1.getIsCompleted());
+        assertTrue(task2.getIsCompleted());
     }
 
     @Test
     void getTaskDefinition() {
-        assert(task1.getTaskDefinition().equals("paint the car blue"));
-        assert(task2.getTaskDefinition().equals("install leather black seats"));
+        assertEquals(task1.getTaskDefinition(),"paint the car blue");
+        assertEquals(task2.getTaskDefinition(),"install leather black seats");
     }
 
     @Test
     void getName() {
-        assert(task1.getName().equals("paint"));
-        assert(task2.getName().equals("seats"));
+        assertEquals(task1.getName(),"paint");
+        assertEquals(task2.getName(),"seats");
     }
 
     @Test
     void testEquals() {
         task1 = new AssemblyTask("seats","install leather black seats");
         task2 = new AssemblyTask("seats","install leather black seats");
-        assert(task1.equals(task2));
+        assertEquals(task1,task2);
         task1 = new AssemblyTask("seats","install leather white seats");
         task2 = new AssemblyTask("seats","install leather black seats");
-        assert(!task1.equals(task2));
+        assertNotEquals(task1,task2);
     }
 }

@@ -38,7 +38,7 @@ public class AccessoriesPost extends WorkStation{
         //add task for spoiler, IF there needs to be one
         if (getCurrentOrder().getCarModel().getChosenOptions().get("spoiler") != null) {
             this.addTask(new AssemblyTask("spoiler",
-                "install " + getCurrentOrder().getCarModel().getChosenOptions().get("Spoiler").toLowerCase() + " spoiler"));
+                "install " + getCurrentOrder().getCarModel().getChosenOptions().get("spoiler").toLowerCase() + " spoiler"));
 
         }
     }

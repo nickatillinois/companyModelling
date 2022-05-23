@@ -6,12 +6,12 @@ import java.util.*;
 /**
  * Class representing delay statistics.
  */
-public class DelayStats extends Stats{
+public class DelayStatistics extends Statistics {
 
     /**
      * Creates a delay statistic.
      */
-    public DelayStats() {
+    public DelayStatistics() {
         super();
     }
 
@@ -22,9 +22,14 @@ public class DelayStats extends Stats{
      * @param fromXLastDays the number of days this method will return statistics from
      * @param date the date statistics need to be calculated on
      * @return a list of statistics in string form
+     * @throws IllegalArgumentException | fromXLastDays < 0
+     *                                  | date == null
      */
     @Override
     public List<String> getStatistics(int fromXLastDays, LocalDate date) {
+        if (fromXLastDays < 0) throw new IllegalArgumentException();
+        if (date == null) throw new IllegalArgumentException();
+
         List<String> statistics = new ArrayList<>();
         if (statsPerDay.size() < fromXLastDays) {
             fromXLastDays = statsPerDay.size();
@@ -87,9 +92,12 @@ public class DelayStats extends Stats{
      * Updates this statistic.
      *
      * @param newDelay the delay of a completed order
+     * @throws IllegalArgumentException | newDelay < 0
      */
     @Override
     public void update(double newDelay) {
+        if (newDelay < 0) throw new IllegalArgumentException("The given delay cannot be smaller than zero.");
+
         if (statsPerDay.containsKey(LocalDate.now().toString())) {
             List<Double> newValues = new ArrayList<>(statsPerDay.get(LocalDate.now().toString()));
             newValues.add(newDelay);

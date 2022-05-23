@@ -7,7 +7,7 @@ import java.util.*;
 /**
  * A class representing statistics of this car manufacturing company.
  */
-public abstract class Stats implements StatisticsObserver {
+public abstract class Statistics implements StatisticsObserver {
 
     /**
      * A map representing the statistics day by day.
@@ -17,7 +17,7 @@ public abstract class Stats implements StatisticsObserver {
     /**
      * Creates a statistic.
      */
-    public Stats() {}
+    public Statistics() {}
 
     /**
      * Returns the map representing the statistics day by day.
@@ -37,8 +37,18 @@ public abstract class Stats implements StatisticsObserver {
      *
      * @param key the key for the map
      * @param values the value belonging to the given key
+     * @throws IllegalArgumentException | key == null
+     *                                  | !isDate(key)
+     *                                  | values == null
+     *                                  | value < 0
      */
     public void addStats(String key, List<Double> values) {
+        if (key == null) throw new IllegalArgumentException("The given key cannot be null.");
+        if ( !isDate(key) ) { throw new IllegalArgumentException("The given key must be a date in the YYYY-DD-MM format."); }
+        if ( values == null ) { throw new IllegalArgumentException("The given values cannot be null."); }
+        for ( double value : values ) {
+            if (value < 0) throw new IllegalArgumentException("The given values must be positive.");
+        }
         statsPerDay.put(key,values);
     }
 
@@ -79,8 +89,10 @@ public abstract class Stats implements StatisticsObserver {
      *
      * @param numbers the list of doubles to calculate the median
      * @return the median of the given list of doubles
+     * @throws IllegalArgumentException | numbers == null
      */
     private double calculateMedian(List<Double> numbers) {
+        if (numbers == null) throw new IllegalArgumentException("The given values cannot be null.");
         Collections.sort(numbers);
         int n = numbers.size();
         if (n == 0) { return 0; }
@@ -98,9 +110,20 @@ public abstract class Stats implements StatisticsObserver {
      * @param fromXLastDays the number of days this method will return statistics from
      * @param date the date statistics need to be calculated on
      * @return a list of statistics in string form
-     * @throws IllegalArgumentException if the given integer is higher than the amount of statistics in the system
+     * @throws IllegalArgumentException | fromXLastDays < 0
+     *                                  | date == null
      */
     public abstract List<String> getStatistics(int fromXLastDays, LocalDate date);
 
+    /**
+     * Returns true if the given string represents a date in the YYYY-MM-DD format.
+     * @param date the given string that needs to be checked out
+     * @return true if the given string is a date in the right format
+     */
+    private boolean isDate(String date) {
+        if (date.length() != 10) return false;
+        if (date.indexOf("-") != 4) return false;
+        return date.lastIndexOf("-") == 7;
+    }
 
 }

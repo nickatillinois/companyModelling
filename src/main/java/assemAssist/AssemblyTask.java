@@ -1,5 +1,7 @@
 package assemAssist;
 
+import java.util.Objects;
+
 /**
  * Class representing an assembly task.
  *
@@ -25,13 +27,16 @@ public class AssemblyTask {
      *
      * @param name the name for this assembly task
      * @param taskDefinition the description for this assembly task
-     * @throws IllegalArgumentException | workStation is null
-     *                                  | name is null
-     *                                  | string is empty
+     * @throws IllegalArgumentException | name == null
+     *                                  | name.isEmpty()
+     *                                  | taskDefinition == null
+     *                                  | taskDefinition.isEmpty()
      */
     public AssemblyTask(String name, String taskDefinition) {
         if (name == null) { throw new IllegalArgumentException("The name for this task cannot be null."); }
-        if (taskDefinition.isEmpty()) { throw new IllegalArgumentException("The given definition cannot be empty!"); }
+        if (name.isEmpty()) throw new IllegalArgumentException("The given name cannot be empty.");
+        if (taskDefinition == null) throw new IllegalArgumentException("The given definition cannot be null.");
+        if (taskDefinition.isEmpty()) { throw new IllegalArgumentException("The given definition cannot be empty."); }
 
         this.name = name;
         this.isCompleted = false;
@@ -77,6 +82,6 @@ public class AssemblyTask {
             return false;
         }
         AssemblyTask that = (AssemblyTask) o;
-        return name == that.getName() && taskDefinition == that.getTaskDefinition();
+        return Objects.equals(name, that.getName()) && Objects.equals(taskDefinition, that.getTaskDefinition());
     }
 }

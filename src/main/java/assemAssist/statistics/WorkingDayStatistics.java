@@ -6,12 +6,12 @@ import java.util.*;
 /**
  * Class representing working day statistics.
  */
-public class WorkingDayStats extends Stats {
+public class WorkingDayStatistics extends Statistics {
 
     /**
      * Creates working day statistics.
      */
-    public WorkingDayStats() {
+    public WorkingDayStatistics() {
         super();
     }
 
@@ -22,9 +22,14 @@ public class WorkingDayStats extends Stats {
      * @param fromXLastDays the number of days this method will return statistics from
      * @param date the date statistics need to be calculated on
      * @return a list of statistics in string form
+     * @throws IllegalArgumentException | fromXLastDays < 0
+     *                                  | date == null
      */
     @Override
     public List<String> getStatistics(int fromXLastDays, LocalDate date) {
+        if (fromXLastDays < 0) throw new IllegalArgumentException();
+        if (date == null) throw new IllegalArgumentException();
+
         List<String> statistics = new ArrayList<>();
         if (statsPerDay.size() < fromXLastDays) {
             statistics.add("There are no statistics that go back " + fromXLastDays +
@@ -46,9 +51,12 @@ public class WorkingDayStats extends Stats {
      * Updates this statistic.
      *
      * @param delay the delay of a completed order
+     * @throws IllegalArgumentException | newDelay < 0
      */
     @Override
     public void update(double delay) {
+        if (delay < 0) throw new IllegalArgumentException("The given delay cannot be smaller than zero.");
+
         Map<String,List<Double>> stats = statsPerDay;
         if (stats.containsKey(LocalDate.now().toString())) {
             stats.replace(LocalDate.now().toString(), List.of(stats.get(LocalDate.now().toString()).get(0) + 1));

@@ -3,9 +3,9 @@ package assemAssist;
 import assemAssist.comparator.*;
 import assemAssist.exceptions.*;
 import assemAssist.observer.TaskObserver;
-import assemAssist.statistics.DelayStats;
-import assemAssist.statistics.Stats;
-import assemAssist.statistics.WorkingDayStats;
+import assemAssist.statistics.DelayStatistics;
+import assemAssist.statistics.Statistics;
+import assemAssist.statistics.WorkingDayStatistics;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -42,7 +42,7 @@ public class Company implements TaskObserver {
     /**
      * The list of Statistics of the company.
      */
-    private final List<Stats> statistics = new ArrayList<>();
+    private final List<Statistics> statistics = new ArrayList<>();
 
     /**
      * Constructs a new Company, initializing the production scheduler, the catalogue, and the
@@ -54,8 +54,8 @@ public class Company implements TaskObserver {
         this.catalog = new Catalog();
         this.completedCarOrders = new ArrayList<>();
         //statistics aanmaken
-        statistics.add(new WorkingDayStats());
-        statistics.add(new DelayStats());
+        statistics.add(new WorkingDayStatistics());
+        statistics.add(new DelayStatistics());
     }
 
     /**
@@ -276,7 +276,7 @@ public class Company implements TaskObserver {
             throw new IllegalArgumentException("fromXLastDays must be strictly positive.");
         }
         List<String> result = new ArrayList<>();
-        for (Stats stat : statistics) {
+        for (Statistics stat : statistics) {
             result.addAll(stat.getStatistics(fromXLastDays, LocalDate.now()));
         }
         return result;
@@ -336,7 +336,7 @@ public class Company implements TaskObserver {
         }
         CarOrder carOrder = new CarOrder(garageHolder, carModel);
         this.productionScheduler.getSchedulingAlgorithm().addOrderToProductionSchedule(carOrder);
-        for (Stats stat : statistics) {
+        for (Statistics stat : statistics) {
             carOrder.addObserver(stat);
         }
 
