@@ -68,7 +68,14 @@ class DelayStatisticsTest {
 
     @Test
     void addStatsTestNegValues() {
-        assertThrows(IllegalArgumentException.class, () -> delayStats.addStats("2022-04-04", List.of(-5.0)));
+        Map<String,List<Double>> stats = new HashMap<>();
+        stats.put(LocalDate.of(2022,4,24).toString(),List.of(12.0,3.0,0.0));
+        stats.put(LocalDate.of(2022,4,22).toString(),List.of(6.0,0.0,0.0));
+        stats.put(LocalDate.of(2022,4,20).toString(),List.of(7.0));
+        stats.put(LocalDate.of(2022,4,19).toString(),List.of(0.0));
+        delayStats.addStats(LocalDate.of(2022,4,25).toString(),List.of(-5.0));
+        stats.put(LocalDate.of(2022,4,25).toString(),List.of(-5.0));
+        assertEquals(delayStats.getStatsPerDay(),stats);
     }
 
     @Test
@@ -115,7 +122,15 @@ class DelayStatisticsTest {
 
     @Test
     void updateTestNegValues() {
-        assertThrows(IllegalArgumentException.class, () -> delayStats.update(-1));
+        Map<String,List<Double>> statistics = new HashMap<>();
+        statistics.put(LocalDate.of(2022,4,24).toString(),List.of(12.0,3.0,0.0));
+        statistics.put(LocalDate.of(2022,4,22).toString(),List.of(6.0,0.0,0.0));
+        statistics.put(LocalDate.of(2022,4,20).toString(),List.of(7.0));
+        statistics.put(LocalDate.of(2022,4,19).toString(),List.of(0.0));
+        assertEquals(delayStats.getStatsPerDay(),statistics);
+        delayStats.update(-1.0);
+        statistics.put(LocalDate.now().toString(),List.of(-1.0));
+        assertEquals(delayStats.getStatsPerDay(),statistics);
     }
 
 }

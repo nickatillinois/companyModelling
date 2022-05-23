@@ -51,12 +51,9 @@ public class WorkingDayStatistics extends Statistics {
      * Updates this statistic.
      *
      * @param delay the delay of a completed order
-     * @throws IllegalArgumentException | newDelay < 0
      */
     @Override
     public void update(double delay) {
-        //if (delay < 0) throw new IllegalArgumentException("The given delay cannot be smaller than zero.");
-
         Map<String,List<Double>> stats = statsPerDay;
         if (stats.containsKey(LocalDate.now().toString())) {
             stats.replace(LocalDate.now().toString(), List.of(stats.get(LocalDate.now().toString()).get(0) + 1));

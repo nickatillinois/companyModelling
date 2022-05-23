@@ -40,15 +40,12 @@ public abstract class Statistics implements StatisticsObserver {
      * @throws IllegalArgumentException | key == null
      *                                  | !isDate(key)
      *                                  | values == null
-     *                                  | value < 0
      */
     public void addStats(String key, List<Double> values) {
         if (key == null) throw new IllegalArgumentException("The given key cannot be null.");
         if ( !isDate(key) ) { throw new IllegalArgumentException("The given key must be a date in the YYYY-DD-MM format."); }
         if ( values == null ) { throw new IllegalArgumentException("The given values cannot be null."); }
-        for ( double value : values ) {
-            if (value < 0) throw new IllegalArgumentException("The given values must be positive.");
-        }
+
         statsPerDay.put(key,values);
     }
 

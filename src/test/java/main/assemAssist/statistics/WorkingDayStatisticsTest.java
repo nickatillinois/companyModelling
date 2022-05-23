@@ -96,7 +96,16 @@ class WorkingDayStatisticsTest {
 
     @Test
     void addStatsTestNegValues() {
-        assertThrows(IllegalArgumentException.class, () -> workingDayStats.addStats("2022-04-04", List.of(-5.0)));
+        workingDayStats.addStats("2022-04-04", List.of(-5.0));
+        Map<String,List<Double>> stats = new HashMap<>();
+        stats.put(LocalDate.of(2022,4,24).toString(),List.of(10.0));
+        stats.put(LocalDate.of(2022,4,23).toString(),List.of(13.0));
+        stats.put(LocalDate.of(2022,4,22).toString(),List.of(16.0));
+        stats.put(LocalDate.of(2022,4,21).toString(),List.of(18.0));
+        stats.put(LocalDate.of(2022,4,20).toString(),List.of(0.0));
+        stats.put(LocalDate.of(2022,4,19).toString(),List.of(9.0));
+        stats.put(LocalDate.of(2022,4,4).toString(),List.of(-5.0));
+        assertEquals(workingDayStats.getStatsPerDay(),stats);
     }
 
     @Test
@@ -119,7 +128,17 @@ class WorkingDayStatisticsTest {
 
     @Test
     void updateTestNegValues() {
-        assertThrows(IllegalArgumentException.class, () -> workingDayStats.update(-1));
+        Map<String,List<Double>> statistics = new HashMap<>();
+        statistics.put(LocalDate.of(2022,4,24).toString(),List.of(10.0));
+        statistics.put(LocalDate.of(2022,4,23).toString(),List.of(13.0));
+        statistics.put(LocalDate.of(2022,4,22).toString(),List.of(16.0));
+        statistics.put(LocalDate.of(2022,4,21).toString(),List.of(18.0));
+        statistics.put(LocalDate.of(2022,4,20).toString(),List.of(0.0));
+        statistics.put(LocalDate.of(2022,4,19).toString(),List.of(9.0));
+        assertEquals(workingDayStats.getStatsPerDay(),statistics);
+        workingDayStats.update(-1);
+        statistics.put(LocalDate.now().toString(),List.of(1.0));
+        assertEquals(workingDayStats.getStatsPerDay(),statistics);
     }
 
 }

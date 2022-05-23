@@ -92,12 +92,9 @@ public class DelayStatistics extends Statistics {
      * Updates this statistic.
      *
      * @param newDelay the delay of a completed order
-     * @throws IllegalArgumentException | newDelay < 0
      */
     @Override
     public void update(double newDelay) {
-        //if (newDelay < 0) throw new IllegalArgumentException("The given delay cannot be smaller than zero.");
-
         if (statsPerDay.containsKey(LocalDate.now().toString())) {
             List<Double> newValues = new ArrayList<>(statsPerDay.get(LocalDate.now().toString()));
             newValues.add(newDelay);
