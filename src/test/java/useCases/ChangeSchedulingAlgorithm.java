@@ -34,6 +34,7 @@ public class ChangeSchedulingAlgorithm {
     static Company company;
     @BeforeAll
     static void init() throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException, IllegalCompletionDateException {
+        company = new Company();
         TreeMap<String, String> legalAOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         legalAOptions.put("color", "red");
         legalAOptions.put("body", "break");

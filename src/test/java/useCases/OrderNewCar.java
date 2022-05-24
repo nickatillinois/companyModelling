@@ -15,6 +15,7 @@ import ui.UI;
 
 import java.io.ByteArrayInputStream;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
@@ -34,6 +35,7 @@ public class OrderNewCar {
     @BeforeAll
     static void init() throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException, IllegalCompletionDateException {
         company = new Company();
+        reset();
         TreeMap<String, String> legalAOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         legalAOptions.put("color", "red");
         legalAOptions.put("body", "break");
@@ -75,6 +77,11 @@ public class OrderNewCar {
         new UI(new GarageHolderUI(new GarageHolderController(company)),new ManagerUI(new ManagerController(company)),
                 new MechanicUI(new MechanicController(new Mechanic(company.getProductionScheduler().getAssemblyLine()))));
         assertEquals(company.getOrdersFromGarageHolder("Timo Smeets")[0].size(), 4);
+        List<CarOrder> orders = company.getOrdersFromGarageHolder("Timo Smeets")[0];
+        int nmbrOrders = company.getCompletedCarOrders().size() + company.getProductionScheduler().getPendingOrders().size();
+        completeAllOrders(nmbrOrders + 500);
+        completeAssemblyTask();
+        completeAssemblyTask();
         completeAssemblyTask();
         completeAssemblyTask();
         completeAssemblyTask();
@@ -88,12 +95,37 @@ public class OrderNewCar {
 
     }
 
+
+    void completeAllOrders(int n) throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException, CloneNotSupportedException {
+        for (int i = 0; i < n; i++) {
+            completeAssemblyTask();
+        }
+    }
     void completeAssemblyTask(){
         for(WorkStation workStation: company.getProductionScheduler().getAssemblyLine().getWorkStations()){
             List<String> tasks = workStation.getPendingTasks();
             for(String task : tasks){
                workStation.performAssemblyTask(task, 60);
             }
+        }
+    }
+
+    static void reset(){
+        emptyAllCompletedOrders();
+        emptyWaitingList();
+        emptyAllWorkStations();
+    }
+    static void emptyAllCompletedOrders(){
+        company.setCompletedCarOrders(new ArrayList<>());
+    }
+
+    static void emptyWaitingList(){
+        company.getProductionScheduler().getSchedulingAlgorithm().getProductionSchedule().clear();
+    }
+
+    static void emptyAllWorkStations(){
+        for(WorkStation workStation: company.getProductionScheduler().getAssemblyLine().getWorkStations()){
+            workStation.setCurrentOrder(null);
         }
     }
 
