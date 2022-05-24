@@ -15,16 +15,13 @@ import ui.MechanicUI;
 import ui.UI;
 
 import java.io.ByteArrayInputStream;
-import java.io.Serial;
-import java.io.Serializable;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class ChangeSchedulingAlgorithm {
+public class ChangeSchedulingAlgorithmTest {
     private CarOrder carOrderA;
     private CarOrder carOrderB;
     private CarOrder carOrderC;

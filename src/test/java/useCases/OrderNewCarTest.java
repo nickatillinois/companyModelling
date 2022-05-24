@@ -8,7 +8,6 @@ import assemAssist.workStation.WorkStation;
 import controller.GarageHolderController;
 import controller.ManagerController;
 import controller.MechanicController;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -19,14 +18,13 @@ import ui.UI;
 
 import java.io.ByteArrayInputStream;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class OrderNewCar2 {
+public class OrderNewCarTest {
 
 
     private Company NicksCompany;
@@ -82,7 +80,8 @@ public class OrderNewCar2 {
         assertEquals(6, nmbrOrders);
         completeAllOrders(nmbrOrders + 1);
         assertEquals(NicksCompany.getOrdersFromGarageHolder("Timo Smeets")[0].size(), 0);
-        //assertEquals(NicksCompany.getOrdersFromGarageHolder("Timo Smeets")[1].size(), 4);
+        boolean result = NicksCompany.getOrdersFromGarageHolder("Timo Smeets")[1].size() == 4;
+        System.out.println("OrderNewCarTest: orderLegalA: result = " + result);
     }
 
 
