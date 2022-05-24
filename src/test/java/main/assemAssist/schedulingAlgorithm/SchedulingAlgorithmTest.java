@@ -18,8 +18,9 @@ import java.util.TreeMap;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SchedulingAlgorithmTest {
-    private static SchedulingAlgorithm fifo ;
-    private static SchedulingAlgorithm batch ;
+    private  SchedulingAlgorithm fifo ;
+    private  SchedulingAlgorithm batch ;
+    private Company company;
     static CarOrder carOrderA;
     static CarOrder carOrderB;
     static CarOrder carOrderC;
@@ -28,7 +29,7 @@ class SchedulingAlgorithmTest {
 
     @BeforeEach
     public void init() throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
-        Company company = new Company();
+        company = new Company();
         fifo = company.getProductionScheduler().getSchedulers().get(0);;
         batch = company.getProductionScheduler().getSchedulers().get(1);;
         TreeMap<String, String> legalAOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
@@ -55,11 +56,6 @@ class SchedulingAlgorithmTest {
         carOrderD = new CarOrder("Kim Smeets", carModelA);
         carOrderE = new CarOrder("Sandy Smeets", carModelA);
         carOrderA = new CarOrder("Danny Smeets", carModelC);
-        batch.addOrderToProductionSchedule(carOrderA);
-        batch.addOrderToProductionSchedule(carOrderB);
-        batch.addOrderToProductionSchedule(carOrderC);
-        batch.addOrderToProductionSchedule(carOrderD);
-        batch.addOrderToProductionSchedule(carOrderE);
         fifo.addOrderToProductionSchedule(carOrderA);
         fifo.addOrderToProductionSchedule(carOrderB);
         fifo.addOrderToProductionSchedule(carOrderC);
@@ -78,6 +74,7 @@ class SchedulingAlgorithmTest {
 
     @Test
     void selectBatch() {
+        company.getProductionScheduler().selectSchedulingAlgorithm(batch.getName());
         batch.selectBatch(carOrderB.getCarModel().getChosenOptionsString());
         assertEquals(carOrderB, batch.getNextCarOrder());
     }

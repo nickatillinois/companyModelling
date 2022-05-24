@@ -105,15 +105,16 @@ public class productSchedulerTest {
 
     @Test
     public void getPendingOrders() throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
-        productionScheduler.getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderA);
-        productionScheduler.getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderB);
-        productionScheduler.getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderC);
-        List<CarOrder> carOrderList = new ArrayList<>();
-        carOrderList.add(carOrderA);
         assertEquals(new ArrayList<>(), productionScheduler.getPendingOrders());
-        productionScheduler.advanceOrders(50);
-        assertEquals(carOrderList, productionScheduler.getPendingOrders());
-
+        ArrayList<Object> pending = new ArrayList<>();
+        pending.add(carOrderA);
+        productionScheduler.getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderA);
+        assertEquals(pending, productionScheduler.getPendingOrders());
+        productionScheduler.getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderB);
+        pending.add(carOrderB);
+        pending.add(carOrderC);
+        productionScheduler.getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderC);
+        assertEquals(pending, productionScheduler.getPendingOrders());
     }
 
     @Test

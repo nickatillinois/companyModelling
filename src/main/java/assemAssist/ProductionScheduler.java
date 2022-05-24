@@ -24,6 +24,7 @@ public class ProductionScheduler {
          * Create a new production schedule af a single assembly line that can be managed by the manager
          */
     public ProductionScheduler(Company company){
+
         schedulers.add(schedulingAlgorithm);
         schedulers.add(new Batch());
         this.assemblyLine = new AssemblyLine(company);
