@@ -176,6 +176,7 @@ public class GarageHolderUI {
         System.out.println("The available options for this model are:");
         TreeMap<String, String> selectedOptions = new TreeMap<>();
         int i;
+        in.nextLine();
         for (String option : orderingFormList.keySet()) {
             System.out.println(option + ":");
             i = 0;
@@ -204,9 +205,10 @@ public class GarageHolderUI {
 
                         }
                     } catch (InputMismatchException e) {
-                        System.out.println("This is not a valid option number.\n  Enter the number of the option you want to select: ");
-                        failed = true;
-                        in.next();
+                        if(e instanceof InputMismatchException){
+                            System.out.println("This is not a valid option number.\n  Enter the number of the option you want to select: ");
+                            failed = true;
+                            in.nextLine();}
                     }
                 }
             } else if (choice.equalsIgnoreCase("q")) {

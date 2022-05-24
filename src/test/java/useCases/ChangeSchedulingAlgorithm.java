@@ -101,8 +101,4 @@ public class ChangeSchedulingAlgorithm {
         assertEquals(carOrderList, company.getProductionScheduler().getSchedulingAlgorithm().getProductionSchedule());
     }
 
-    @AfterAll
-static void tearDown() {
-
-    }
 }

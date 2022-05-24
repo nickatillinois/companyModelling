@@ -19,6 +19,7 @@ public class UI {
                 case "3" -> managerUI.startUI(in);
                 case "4" -> {System.out.println("Goodbye!");
                             in.close();
+                            System.out.print("scanner closed");
                             return;}
                 default -> System.out.println("The option you chose was not valid, please try again.");
             }

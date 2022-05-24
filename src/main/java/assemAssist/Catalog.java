@@ -214,4 +214,8 @@ public class Catalog {
         }});
         this.addModel(new CarModelSpecification("C", 60, C));
     }
+
+    public void clearCatalog() {
+        availableModels.clear();
+    }
 }

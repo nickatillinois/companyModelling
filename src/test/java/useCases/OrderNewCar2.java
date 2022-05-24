@@ -9,6 +9,7 @@ import controller.GarageHolderController;
 import controller.ManagerController;
 import controller.MechanicController;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import ui.GarageHolderUI;
@@ -31,9 +32,11 @@ public class OrderNewCar2 {
     private Company NicksCompany;
 
 
-    @BeforeAll
+    @BeforeEach
     void init() throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException, IllegalCompletionDateException {
         NicksCompany = new Company();
+        assertEquals(NicksCompany.getProductionScheduler().getPendingOrders().size(), 0);
+        assertEquals(NicksCompany.getCompletedCarOrders().size(), 0);
         TreeMap<String, String> legal_AOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         legal_AOptions.put("color", "red");
         legal_AOptions.put("body", "break");
@@ -66,24 +69,18 @@ public class OrderNewCar2 {
 
     @Test
     public void orderLegalA() throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException, CloneNotSupportedException {
+        assertEquals(NicksCompany.getProductionScheduler().getPendingOrders().size(), 5);
         assertEquals(NicksCompany.getOrdersFromGarageHolder("Timo Smeets")[0].size(), 3);
+        assertEquals(NicksCompany.getOrdersFromGarageHolder("Filip Smeets")[0].size(), 2);
         ByteArrayInputStream in = new ByteArrayInputStream("2\nTimo Smeets\nn\nA\ns\n0\ns\n0\ns\n0\ns\n0\ns\n0\ns\n0\ns\n0\nq\n4".getBytes());
         System.setIn(in);
         new UI(new GarageHolderUI(new GarageHolderController(NicksCompany)),new ManagerUI(new ManagerController(NicksCompany)),
                 new MechanicUI(new MechanicController(new Mechanic(NicksCompany.getProductionScheduler().getAssemblyLine()))));
         assertEquals(NicksCompany.getOrdersFromGarageHolder("Timo Smeets")[0].size(), 4);
+        assertEquals(NicksCompany.getOrdersFromGarageHolder("Filip Smeets")[0].size(), 2);
         int nmbrOrders = NicksCompany.getCompletedCarOrders().size() + NicksCompany.getProductionScheduler().getPendingOrders().size();
-        completeAllOrders(nmbrOrders + 500);
-        completeAssemblyTask();
-        completeAssemblyTask();
-        completeAssemblyTask();
-        completeAssemblyTask();
-        completeAssemblyTask();
-        completeAssemblyTask();
-        completeAssemblyTask();
-        completeAssemblyTask();
-        completeAssemblyTask();
-        completeAssemblyTask();
+        assertEquals(6, nmbrOrders);
+        completeAllOrders(nmbrOrders + 1);
         assertEquals(NicksCompany.getOrdersFromGarageHolder("Timo Smeets")[0].size(), 0);
         assertEquals(NicksCompany.getOrdersFromGarageHolder("Timo Smeets")[1].size(), 4);
     }
@@ -101,6 +98,20 @@ public class OrderNewCar2 {
                 workStation.performAssemblyTask(task, 60);
             }
         }
+        System.out.println("------------------------------------------------------");
+        // print each workstation and it's current order and its status
+        for(WorkStation workStation: NicksCompany.getProductionScheduler().getAssemblyLine().getWorkStations()){
+            if(workStation.getCurrentOrder() != null){
+                System.out.println(workStation.getName() + ": " + "\n\t" + workStation.getCurrentOrder().getOrderID() + " " + workStation.isFinished());
+            }
+            else{
+                System.out.println(workStation.getName() + ": " + "\n\t" + "No order");
+            }
+        }
+        //Print the number of orders in completed orders in Nick's company
+        System.out.println("------------------------------------------------------");
+        System.out.println("Completed orders: " + NicksCompany.getCompletedCarOrders().size());
+
     }
 
 

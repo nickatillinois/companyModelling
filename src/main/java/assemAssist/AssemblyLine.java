@@ -151,6 +151,7 @@ public class AssemblyLine {
         for (WorkStation workStation : workStations){
             if(!workStation.isFinished()){
                 canMove = false;
+                break;
             }
         }
         return canMove;

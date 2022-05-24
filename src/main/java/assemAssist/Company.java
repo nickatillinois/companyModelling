@@ -51,6 +51,8 @@ public class Company implements TaskObserver {
      */
     public Company(){
         this.productionScheduler = new ProductionScheduler(this);
+        Catalog catalogus = new Catalog();
+        catalogus.clearCatalog();
         this.catalog = new Catalog();
         this.completedCarOrders = new ArrayList<>();
         //statistics aanmaken
