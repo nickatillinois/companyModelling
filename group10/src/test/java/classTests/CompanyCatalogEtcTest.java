@@ -1,4 +1,4 @@
-package classTests;
+package integrationTests;
 
 import assemAssist.CarModel;
 import assemAssist.CarModelSpecification;

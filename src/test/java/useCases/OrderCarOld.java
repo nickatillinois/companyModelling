@@ -8,6 +8,7 @@ import controller.ManagerController;
 import controller.MechanicController;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import ui.GarageHolderUI;
 import ui.ManagerUI;
 import ui.MechanicUI;
@@ -21,7 +22,8 @@ import java.util.TreeMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class OrderNewCar {
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+public class OrderCarOld {
 
 
     static CarOrder carOrderA;
@@ -29,13 +31,12 @@ public class OrderNewCar {
     static CarOrder carOrderC;
     static CarOrder carOrderD;
     static CarOrder carOrderE;
-    static Company company;
+    private Company company;
 
 
     @BeforeAll
-    static void init() throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException, IllegalCompletionDateException {
+    void init() throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException, IllegalCompletionDateException {
         company = new Company();
-        reset();
         TreeMap<String, String> legalAOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         legalAOptions.put("color", "red");
         legalAOptions.put("body", "break");
@@ -105,27 +106,8 @@ public class OrderNewCar {
         for(WorkStation workStation: company.getProductionScheduler().getAssemblyLine().getWorkStations()){
             List<String> tasks = workStation.getPendingTasks();
             for(String task : tasks){
-               workStation.performAssemblyTask(task, 60);
+                workStation.performAssemblyTask(task, 60);
             }
-        }
-    }
-
-    static void reset(){
-        emptyAllCompletedOrders();
-        emptyWaitingList();
-        emptyAllWorkStations();
-    }
-    static void emptyAllCompletedOrders(){
-        company.setCompletedCarOrders(new ArrayList<>());
-    }
-
-    static void emptyWaitingList(){
-        company.getProductionScheduler().getSchedulingAlgorithm().getProductionSchedule().clear();
-    }
-
-    static void emptyAllWorkStations(){
-        for(WorkStation workStation: company.getProductionScheduler().getAssemblyLine().getWorkStations()){
-            workStation.setCurrentOrder(null);
         }
     }
 

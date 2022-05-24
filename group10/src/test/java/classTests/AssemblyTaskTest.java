@@ -1,4 +1,4 @@
-package classTests;
+package integrationTests;
 
 import assemAssist.AssemblyTask;
 import org.junit.jupiter.api.BeforeEach;

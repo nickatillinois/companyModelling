@@ -7,7 +7,7 @@ assemAssist.observer
 assemAssist.schedulingAlgorithm
 assemAssist.statistics
 assemAssist.workStation
-classTests
+integrationTests
 controller
 ui
 useCases

@@ -1,4 +1,4 @@
-package classTests;
+package integrationTests;
 
 import assemAssist.statistics.DelayStats;
 import assemAssist.statistics.WorkingDayStats;

@@ -27,6 +27,7 @@ public class ProductionScheduler {
         schedulers.add(schedulingAlgorithm);
         schedulers.add(new Batch());
         this.assemblyLine = new AssemblyLine(company);
+        this.clearWaitingList();
     }
 
 
@@ -144,5 +145,9 @@ public class ProductionScheduler {
         if (!schedulers.contains(schedulingAlgorithm))
             throw new IllegalArgumentException("This is not a valid scheduling algorithm");
         this.schedulingAlgorithm = schedulingAlgorithm;
+    }
+
+    private void clearWaitingList(){
+        this.getSchedulingAlgorithm().clearWaitingList();
     }
 }

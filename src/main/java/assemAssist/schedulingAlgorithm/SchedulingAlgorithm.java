@@ -83,4 +83,8 @@ public abstract class SchedulingAlgorithm {
             throw e;
         }
     }
+
+    public void clearWaitingList(){
+        carOrderList.clear();
+    }
 }

@@ -105,7 +105,7 @@ public class GarageHolderUI {
                         System.out.println("We could not find an order with this ID.");}
                     else if(e instanceof IllegalArgumentException){
                         System.out.println("This is not a valid ID.");}
-                    }
+                }
             } catch (NumberFormatException e) {
                 System.out.println("This is not a valid ID. Try again");
             }

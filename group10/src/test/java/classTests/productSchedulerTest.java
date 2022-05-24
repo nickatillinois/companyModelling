@@ -1,5 +1,5 @@
 
-package classTests;
+package integrationTests;
 
 import assemAssist.*;
 import assemAssist.exceptions.*;

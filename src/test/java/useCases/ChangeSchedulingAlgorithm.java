@@ -8,6 +8,7 @@ import assemAssist.exceptions.*;
 import controller.GarageHolderController;
 import controller.ManagerController;
 import controller.MechanicController;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import ui.GarageHolderUI;
@@ -98,6 +99,10 @@ public class ChangeSchedulingAlgorithm {
         carOrderList.add(carOrderB);
         carOrderList.add(carOrderD);
         assertEquals(carOrderList, company.getProductionScheduler().getSchedulingAlgorithm().getProductionSchedule());
+    }
+
+    @AfterAll
+static void tearDown() {
 
     }
 }

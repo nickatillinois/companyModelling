@@ -18,11 +18,12 @@ public class UI {
                 case "2" -> garageHolderUI.startUI(in);
                 case "3" -> managerUI.startUI(in);
                 case "4" -> {System.out.println("Goodbye!");
-                                return;}
+                            in.close();
+                            return;}
                 default -> System.out.println("The option you chose was not valid, please try again.");
             }
-
         }
+
     }
 
 
