@@ -16,7 +16,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 public class InspectorTest {
- static Company company = new Company();
+ static Company company;
+
+    static {
+        try {
+            company = new Company();
+        } catch (IllegalConstraintException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Test
     void testLegal() throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         TreeMap<String, String> legalAOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);

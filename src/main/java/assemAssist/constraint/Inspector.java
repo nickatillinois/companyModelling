@@ -43,7 +43,7 @@ public class Inspector {
     /**
      * Adds constraints to the inspector.
      */
-    private void addStdConstraints() throws IllegalConstraintException {
+    private static void addStdConstraints() throws IllegalConstraintException {
         constraints.add(new Model());
         constraints.add(new RequiredComponent());
         IfOptionAThenOptionB standardConstraint1 = new IfOptionAThenOptionB(new ArrayList<>(Arrays.asList("Sport", "V6", "V8")));
@@ -133,7 +133,7 @@ public class Inspector {
         constraints.add(new IfOptionAThenOptionB(new ArrayList<>(Arrays.asList(pair.get(1), pair.get(0)))));
     }
 
-    public void reset() throws IllegalConstraintException {
+    public static void reset() throws IllegalConstraintException {
         for (Constraint constraint : constraints) {
             constraint.reset();
         }

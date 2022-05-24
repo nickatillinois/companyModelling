@@ -8,9 +8,7 @@ import assemAssist.exceptions.*;
 import controller.GarageHolderController;
 import controller.ManagerController;
 import controller.MechanicController;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import ui.GarageHolderUI;
 import ui.ManagerUI;
 import ui.MechanicUI;
@@ -25,16 +23,18 @@ import java.util.List;
 import java.util.TreeMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ChangeSchedulingAlgorithm {
-    static CarOrder carOrderA;
-    static CarOrder carOrderB;
-    static CarOrder carOrderC;
-    static CarOrder carOrderD;
-    static CarOrder carOrderE;
-    static Company company;
+    private CarOrder carOrderA;
+    private CarOrder carOrderB;
+    private CarOrder carOrderC;
+    private CarOrder carOrderD;
+    private CarOrder carOrderE;
+    private Company company;
+
+
     @BeforeAll
-    static void init() throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException, IllegalCompletionDateException {
+    void init() throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException, IllegalCompletionDateException {
         company = new Company();
         TreeMap<String, String> legalAOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         legalAOptions.put("color", "red");
@@ -68,6 +68,7 @@ public class ChangeSchedulingAlgorithm {
         company.getProductionScheduler().getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderD);
         company.getProductionScheduler().getSchedulingAlgorithm().addOrderToProductionSchedule(carOrderE);
     }
+
     @Test
     public void setFifo() throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException, CloneNotSupportedException {
         ByteArrayInputStream in = new ByteArrayInputStream("3\na\n0\n4".getBytes());

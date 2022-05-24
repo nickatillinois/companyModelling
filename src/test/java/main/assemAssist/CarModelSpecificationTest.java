@@ -2,6 +2,7 @@ package main.assemAssist;
 
 import assemAssist.CarModelSpecification;
 import assemAssist.Company;
+import assemAssist.exceptions.IllegalConstraintException;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +17,7 @@ public class CarModelSpecificationTest {
 
 
     @BeforeAll
-    static void init() {
+    static void init() throws IllegalConstraintException {
         company = new Company();
     }
 

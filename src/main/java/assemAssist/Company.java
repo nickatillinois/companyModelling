@@ -1,6 +1,7 @@
 package assemAssist;
 
 import assemAssist.comparator.*;
+import assemAssist.constraint.Inspector;
 import assemAssist.exceptions.*;
 import assemAssist.observer.TaskObserver;
 import assemAssist.statistics.DelayStatistics;
@@ -49,12 +50,14 @@ public class Company implements TaskObserver {
      * list of completed orders.
      * It also creates the statistics of the company.
      */
-    public Company(){
+    public Company() throws IllegalConstraintException {
         this.productionScheduler = new ProductionScheduler(this);
         Catalog catalogus = new Catalog();
         catalogus.clearCatalog();
         this.catalog = new Catalog();
         this.completedCarOrders = new ArrayList<>();
+        CarOrder.resetCounter();
+        Inspector.reset();
         //statistics aanmaken
         statistics.add(new WorkingDayStatistics());
         statistics.add(new DelayStatistics());

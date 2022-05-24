@@ -14,7 +14,15 @@ public class CarModelTest {
     static CarModel carModelA;
     static CarModel carModelB;
     static CarModel carModelC;
-    static Company company = new Company();
+    static Company company;
+
+    static {
+        try {
+            company = new Company();
+        } catch (IllegalConstraintException e) {
+            e.printStackTrace();
+        }
+    }
 
 
     @BeforeAll

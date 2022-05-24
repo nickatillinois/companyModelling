@@ -300,5 +300,8 @@ public class CarOrder implements StatisticsObservable {
         return getCarModel().getWorkingTimeWorkingTime();
     }
 
+    public static void resetCounter() {
+        counter = 0;
+    }
 
 }

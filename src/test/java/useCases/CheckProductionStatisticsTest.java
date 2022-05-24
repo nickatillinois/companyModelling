@@ -6,7 +6,9 @@ import controller.GarageHolderController;
 import controller.ManagerController;
 import controller.MechanicController;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import ui.GarageHolderUI;
 import ui.ManagerUI;
 import ui.MechanicUI;
@@ -17,16 +19,16 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.TreeMap;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CheckProductionStatisticsTest {
 
-    static Company company;
-    static AssemblyLine assemblyLine;
-    static ProductionScheduler productionScheduler;
-    static Mechanic mechanic;
+    private Company company;
+    private AssemblyLine assemblyLine;
+    private ProductionScheduler productionScheduler;
+    private Mechanic mechanic;
 
     @BeforeAll
-    static void init() throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+    void init() throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         company = new Company();
         productionScheduler = company.getProductionScheduler();
         assemblyLine = productionScheduler.getAssemblyLine();
