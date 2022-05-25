@@ -19,10 +19,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class UC3_PerformAssemblyTasksTest {
+public class UC4_CheckAssemblyLineStatusTest {
 
     private Company company;
     private AssemblyLine assemblyLine;
@@ -31,8 +31,6 @@ public class UC3_PerformAssemblyTasksTest {
 
     @BeforeAll
     void init() throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
-        ByteArrayInputStream in = new ByteArrayInputStream("1\nw\n0\n0\nd\n60\n0\nd\n60\ns\n4".getBytes());
-        System.setIn(in);
         company = new Company();
         productionScheduler = company.getProductionScheduler();
         assemblyLine = productionScheduler.getAssemblyLine();
@@ -49,22 +47,12 @@ public class UC3_PerformAssemblyTasksTest {
     }
 
     @Test
-    public void performAssemblyTasks() throws IllegalCompletionDateException, IllegalModelException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
-
-        List<CarOrder> orderListPre = new ArrayList<>();
-        for (WorkStation ws : assemblyLine.getWorkStations()) {
-            orderListPre.add(ws.getCurrentOrder());
-        }
-
-        new UI( new GarageHolderUI( new GarageHolderController(company)),
-                new ManagerUI(      new ManagerController(company)),
-                new MechanicUI(     new MechanicController( mechanic )));
-
-        List<CarOrder> orderListPost = new ArrayList<>();
-        for (WorkStation ws : assemblyLine.getWorkStations()) {
-            orderListPost.add(ws.getCurrentOrder());
-        }
-        assertNotEquals(orderListPost,orderListPre);
+    void assemblyLineOnlyOneStationTest() {
+        ByteArrayInputStream in = new ByteArrayInputStream("1\nw\n0\n0\nd\n60\n0\nd\n60\ns\n4".getBytes());
+        System.setIn(in);
     }
 
+
 }
+
+
