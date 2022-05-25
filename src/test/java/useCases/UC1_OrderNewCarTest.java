@@ -27,7 +27,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class OrderNewCarTest {
+public class UC1_OrderNewCarTest {
 
 
     private Company NicksCompany;

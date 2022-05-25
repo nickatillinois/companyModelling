@@ -21,7 +21,7 @@ import java.util.TreeMap;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class CheckOrderDetailsTest {
+public class UC2_CheckOrderDetailsTest {
 
     private Company NicksSecondCompany;
 

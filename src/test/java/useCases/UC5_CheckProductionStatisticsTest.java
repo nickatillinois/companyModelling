@@ -6,7 +6,6 @@ import controller.GarageHolderController;
 import controller.ManagerController;
 import controller.MechanicController;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import ui.GarageHolderUI;
@@ -20,7 +19,7 @@ import java.io.PrintStream;
 import java.util.TreeMap;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class CheckProductionStatisticsTest {
+public class UC5_CheckProductionStatisticsTest {
 
     private Company company;
     private AssemblyLine assemblyLine;

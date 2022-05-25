@@ -7,7 +7,6 @@ import controller.GarageHolderController;
 import controller.ManagerController;
 import controller.MechanicController;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import ui.GarageHolderUI;
@@ -23,7 +22,7 @@ import java.util.TreeMap;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class PerformAssemblyTasksTest {
+public class UC3_PerformAssemblyTasksTest {
 
     private Company company;
     private AssemblyLine assemblyLine;
