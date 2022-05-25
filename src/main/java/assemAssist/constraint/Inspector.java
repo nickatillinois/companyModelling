@@ -52,7 +52,6 @@ public class Inspector {
         constraints.add(standardConstraint1);
         constraints.add(standardConstraint2);
         constraints.add(standardConstraint3);
-
     }
 
     /**

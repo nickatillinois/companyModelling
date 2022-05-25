@@ -24,9 +24,12 @@ public class IfOptionThenComponent extends Constraint {
     /**
      * Initializes the pairs of options and components.
      */
-    protected IfOptionThenComponent(ArrayList<String> pairs) throws IllegalConstraintException {
+    protected IfOptionThenComponent(ArrayList<String> constraintPairs) throws IllegalConstraintException {
         super();
-        addOptionThenComponentPair(pairs);
+        if(constraintPairs == null) {
+            throw new IllegalConstraintException("The pairs cannot be null.");
+        }
+        addOptionThenComponentPair(new ArrayList<>(constraintPairs));
     }
 
 
@@ -34,36 +37,35 @@ public class IfOptionThenComponent extends Constraint {
      * Function that accepts a list of 1 option string followed by 1 component string, so that the first element implies the second element.
      * For example, if the first element is "Green", and the second element is "wheels",
      * then a Green color implies that the car has wheels.
-     * @param pair A list of 1 option string followed by 1 component string
+     * @param constraintPairs A list of 1 option string followed by 1 component string
      * @throws IllegalConstraintException thrown if:
      *                                   - the list doesn't have 2 elements
      *                                   - One of the strings is null
      *                                   - Some strings are duplicated
      *                                   - The list is already in the list of constraints
      */
-    private void addOptionThenComponentPair(ArrayList<String> pair) throws IllegalConstraintException {
-        // must be 2 elements
-        if (pair.size() != 2) {
+    private void addOptionThenComponentPair(ArrayList<String> constraintPairs) throws IllegalConstraintException {
+        if (constraintPairs.size() != 2) {
             throw new IllegalConstraintException("Pair must be 2 elements");
         }
-        for (String option : pair) {
+        for (String option : constraintPairs) {
             if (option == null) {
                 throw new IllegalConstraintException("Given list contains null strings.");
             }
             // each string in pair must be distinct
             // get only the distinct strings
             // take each string in pair and add it to the set in lower case
-            HashSet<String> distinct = new HashSet<>(pair.stream().map(String::toLowerCase).collect(ArrayList::new, ArrayList::add, ArrayList::addAll));
-            if (pair.size() != distinct.size()) {
+            HashSet<String> distinct = new HashSet<>(constraintPairs.stream().map(String::toLowerCase).collect(ArrayList::new, ArrayList::add, ArrayList::addAll));
+            if (constraintPairs.size() != distinct.size()) {
                 throw new IllegalConstraintException("Given list contains duplicate strings.");
             }
         }
         // set each string in pair to lower case
         ArrayList<String> lowerCasePair = new ArrayList<>();
-        for (String option : pair) {
+        for (String option : constraintPairs) {
             lowerCasePair.add(option.toLowerCase());
         }
-        pairs =lowerCasePair;
+        this.pairs =lowerCasePair;
     }
 
 

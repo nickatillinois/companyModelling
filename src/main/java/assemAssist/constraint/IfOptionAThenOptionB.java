@@ -29,7 +29,10 @@ public class IfOptionAThenOptionB extends Constraint {
      */
     protected IfOptionAThenOptionB(ArrayList<String> constraintPairs) throws IllegalConstraintException {
         super();
-        addOptionAThenOptionBPair(constraintPairs);
+        if(constraintPairs == null) {
+            throw new IllegalConstraintException("The constraintPairs cannot be null.");
+        }
+        addOptionAThenOptionBPair(new ArrayList<>(constraintPairs));
     }
 
     /**
