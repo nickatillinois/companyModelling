@@ -260,7 +260,6 @@ public class CarOrderTest {
             new CarModel("A", illegalOptions, company.getCatalog().getWorkingMinutesWorkstation("A"));
         }
         catch (RequiredComponentException e) {
-            assertEquals(e.getMessage(), "You are missing an essential component: body, color, engine, gearbox, seats or/and wheels.");
             thrown = true;
         }
         assertTrue(thrown);

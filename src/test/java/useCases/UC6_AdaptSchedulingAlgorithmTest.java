@@ -21,7 +21,7 @@ import java.util.TreeMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-public class ChangeSchedulingAlgorithmTest {
+public class UC6_AdaptSchedulingAlgorithmTest {
     private CarOrder carOrderA;
     private CarOrder carOrderB;
     private CarOrder carOrderC;

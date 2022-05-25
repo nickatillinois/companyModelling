@@ -30,26 +30,6 @@ public class CarModel {
         return modelName;
     }
 
-
-/*    public CarModel(String modelName, TreeMap<String, String> chosenOptions) throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
-        if (modelName == null) {
-            throw new IllegalArgumentException("modelName must not be null.");
-        }
-        if (modelName.isEmpty()) {
-            throw new IllegalArgumentException("modelName must not be empty.");
-        }
-        if (modelName.contains(" ")) {
-            throw new IllegalArgumentException("modelName must not contain only whitespace.");
-        }
-        if (chosenOptions == null) {
-            throw new IllegalArgumentException("chosenOptions must not be null.");
-        }
-        this.modelName = modelName;
-        this.chosenOptions = chosenOptions;
-        this.workingTimeWorkingTime = 60;
-        this.inspect();
-    }*/
-
     /**
      * Constructs a new CarModel with the given name and options.
      * @param modelName the name of the car model.
@@ -57,7 +37,7 @@ public class CarModel {
      *                  Must not be empty.
      *                  Must not contain whitespace.
      * @param chosenOptions the options chosen for the car model.
-     *                      Must not be null.
+     *                      Must not be null. This parameter is copied.
      * @param workingTimeWorkPost the time that a model spend in a workstation.
      *                            Must not be null.
      * @throws IllegalArgumentException if the given name contains only whitespace.
@@ -82,7 +62,8 @@ public class CarModel {
             throw new IllegalArgumentException("workingTimeWorkPost must not be negative.");
         }
         this.modelName = modelName;
-        this.chosenOptions = chosenOptions;
+        this.chosenOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        this.chosenOptions.putAll(chosenOptions);
         this.inspect();
         this.workingTimeWorkingTime = workingTimeWorkPost;
     }
