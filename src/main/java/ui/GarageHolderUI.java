@@ -197,7 +197,7 @@ public class GarageHolderUI {
                         optionNumber = in.nextInt();
                         if (optionNumber >= 0 && optionNumber < orderingFormList.get(option).length) {
                             String optionValue = orderingFormList.get(option)[optionNumber];
-                            selectedOptions.put(option, optionValue);
+                            selectedOptions.put(option.toLowerCase(), optionValue.toLowerCase());
                             break;
                         } else {
                             System.out.println("This is not a valid option number.\n  Enter the number of the option you want to select: ");
@@ -233,7 +233,7 @@ public class GarageHolderUI {
             nextstep = in.next();
         }
         catch (Exception e){
-            System.out.println("No order was placed.");
+            //System.out.println("No order was placed.");
         }
         if (nextstep.equals("q")) {
             System.out.println("-------------");

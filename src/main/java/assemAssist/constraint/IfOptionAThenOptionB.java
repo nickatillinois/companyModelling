@@ -1,7 +1,9 @@
 package assemAssist.constraint;
 
 import assemAssist.CarModel;
+import assemAssist.Catalog;
 import assemAssist.exceptions.IllegalConstraintException;
+import assemAssist.exceptions.IllegalModelException;
 import assemAssist.exceptions.OptionAThenOptionBException;
 
 import java.util.ArrayList;
@@ -67,30 +69,6 @@ public class IfOptionAThenOptionB extends Constraint {
 
 
     /**
-     * Function that accepts a list of 1 option string followed by 1 option string, so that the first element implies
-     * the second element and vice versa.
-     * For example, if the first element is "sedan", and the second element is "Green",
-     * then a sedan body implies a Green color and vice versa.
-     * @param pair A list of two option strings
-     * @throws IllegalConstraintException thrown if:
-     *                                   - the list doesn't have 2 elements
-     *                                   - One of the strings is null
-     *                                   - Some strings are duplicated
-     *                                   - The list is already in the list of constraints
-     */
-    private void addOptionAAndOptionBPair(ArrayList<String> pair) throws IllegalConstraintException {
-        // must be of size 2
-        if (pair.size() != 2) {
-            throw new IllegalConstraintException("Given list is not of size 2.");
-        }
-        this.addOptionAThenOptionBPair(pair);
-        ArrayList<String> reversed = new ArrayList<>();
-        reversed.add(pair.get(1));
-        reversed.add(pair.get(0));
-        this.addOptionAThenOptionBPair(reversed);
-    }
-
-    /**
      * Method that checks if the chosen specifications are in line with the constraints
      *
      * @param chosenSpecifications The chosen specifications
@@ -99,7 +77,7 @@ public class IfOptionAThenOptionB extends Constraint {
      *
      */
     @Override
-    protected void isValidCombo(CarModel chosenSpecifications) throws IllegalArgumentException, OptionAThenOptionBException {
+    protected void isValidCombo(CarModel chosenSpecifications) throws IllegalArgumentException, OptionAThenOptionBException, IllegalModelException {
         if (chosenSpecifications == null) {
             throw new IllegalArgumentException("Chosen specifications is null");
         }
@@ -123,9 +101,39 @@ public class IfOptionAThenOptionB extends Constraint {
             }
             if (!pairOK) {
                 // take a set consisting of the elements in pair and remove the first element
+                final String[] causingComponent = new String[1];
+                final String[] impliedComponent = new String[1];
+                new Catalog().getModel(chosenSpecifications.getModelName()).getAvailableOptions().forEach((key, value) -> {
+                    for (String option : value) {
+                        if (option.toLowerCase().equals(this.pairs.get(0).toLowerCase())) {
+                            causingComponent[0] = key;
+                        }
+                        if (option.toLowerCase().equals(this.pairs.get(1).toLowerCase())) {
+                            impliedComponent[0] = key;
+                        }
+                    }
+                });
                 HashSet<String> pairImplied = new HashSet<>(this.pairs);
                 pairImplied.remove(this.pairs.get(0));
-                throw new OptionAThenOptionBException("Option " + this.pairs.get(0) + " implies one of the following options: " + pairImplied.stream().toList());
+                // generate a box message with | ! and -
+                String warning = "You chose a " +  this.pairs.get(0) + " " + causingComponent[0] + ".\nThis implies one of the following options for component " + impliedComponent[0] + ": " + pairImplied.stream().toList() + ".\nPlease choose one of these options.";
+                //Split warning into 4 equal lines
+                String[] warningLines = warning.split("\n");
+                StringBuilder boxMessage = new StringBuilder();
+                boxMessage.append("\n");
+                boxMessage.append("|");
+                boxMessage.append("-".repeat(warningLines[0].length()));
+                boxMessage.append("!");
+                boxMessage.append("-".repeat(warningLines[0].length()));
+                boxMessage.append("|\n");
+                boxMessage.append(warning);
+                boxMessage.append("\n");
+                boxMessage.append("|");
+                boxMessage.append("-".repeat(warningLines[0].length()));
+                boxMessage.append("!");
+                boxMessage.append("-".repeat(warningLines[0].length()));
+                boxMessage.append("|\n");
+                throw new OptionAThenOptionBException(boxMessage.toString());
             }
         }
     }

@@ -90,7 +90,24 @@ public class IfOptionThenComponent extends Constraint {
 
         // for each pair in pairs, check if the set of chosen options contains the pair
         if (chosenOptionsSet.contains(this.pairs.get(0).toLowerCase()) && !chosenSpecifications.getChosenOptions().containsKey(this.pairs.get(1).toLowerCase())) {
-            throw new OptionThenComponentException("Option " + this.pairs.get(0) + " implies component " + this.pairs.get(1) + ". But component " + this.pairs.get(1) + " is not chosen.");
+            String warning =  "Option " + this.pairs.get(0) + " implies component " + this.pairs.get(1) + ".\nBut component " + this.pairs.get(1) + " is not chosen.\nPlease choose component " + this.pairs.get(1) + ".";
+            //Split warning into 4 equal lines
+            String[] warningLines = warning.split("\n");
+            StringBuilder boxMessage = new StringBuilder();
+            boxMessage.append("\n");
+            boxMessage.append("|");
+            boxMessage.append("-".repeat(warningLines[0].length()/3));
+            boxMessage.append("!");
+            boxMessage.append("-".repeat(warningLines[0].length()/3));
+            boxMessage.append("|\n");
+            boxMessage.append(warning);
+            boxMessage.append("\n");
+            boxMessage.append("|");
+            boxMessage.append("-".repeat(warningLines[0].length()/3));
+            boxMessage.append("!");
+            boxMessage.append("-".repeat(warningLines[0].length()/3));
+            boxMessage.append("|\n");
+            throw new OptionThenComponentException(boxMessage.toString());
         }
     }
 

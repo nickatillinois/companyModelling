@@ -17,11 +17,14 @@ import ui.MechanicUI;
 import ui.UI;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.TreeMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class OrderNewCarTest {
@@ -66,7 +69,7 @@ public class OrderNewCarTest {
     }
 
     @Test
-    public void orderLegalA() throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException, CloneNotSupportedException {
+    public void orderLegalA() throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         assertEquals(NicksCompany.getProductionScheduler().getPendingOrders().size(), 5);
         assertEquals(NicksCompany.getOrdersFromGarageHolder("Timo Smeets")[0].size(), 3);
         assertEquals(NicksCompany.getOrdersFromGarageHolder("Filip Smeets")[0].size(), 2);
@@ -76,16 +79,109 @@ public class OrderNewCarTest {
                 new MechanicUI(new MechanicController(new Mechanic(NicksCompany.getProductionScheduler().getAssemblyLine()))));
         assertEquals(NicksCompany.getOrdersFromGarageHolder("Timo Smeets")[0].size(), 4);
         assertEquals(NicksCompany.getOrdersFromGarageHolder("Filip Smeets")[0].size(), 2);
-        int nmbrOrders = NicksCompany.getCompletedCarOrders().size() + NicksCompany.getProductionScheduler().getPendingOrders().size();
-        assertEquals(6, nmbrOrders);
-        completeAllOrders(nmbrOrders + 1);
+        int amountOfOrders = NicksCompany.getCompletedCarOrders().size() + NicksCompany.getProductionScheduler().getPendingOrders().size();
+        assertEquals(6, amountOfOrders);
+        completeAllOrders(amountOfOrders + 1);
         assertEquals(NicksCompany.getOrdersFromGarageHolder("Timo Smeets")[0].size(), 0);
         boolean result = NicksCompany.getOrdersFromGarageHolder("Timo Smeets")[1].size() == 4;
         System.out.println("OrderNewCarTest: orderLegalA: result = " + result);
     }
 
+    @Test
+    public void testIllegalModel(){
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(out);
+        // IMPORTANT: Save the old System.out!
+        PrintStream old = System.out;
+        // Tell Java to use your special stream
+        System.setOut(ps);
+        ByteArrayInputStream in = new ByteArrayInputStream("2\nTimo Smeets\nn\nK".getBytes());
+        System.setIn(in);
+        try{
+            new UI(new GarageHolderUI(new GarageHolderController(NicksCompany)),new ManagerUI(new ManagerController(NicksCompany)),
+                    new MechanicUI(new MechanicController(new Mechanic(NicksCompany.getProductionScheduler().getAssemblyLine()))));
+        } catch (Exception ignored) {}
+        // Put things back
+        System.out.flush();
+        System.setOut(old);
+        // Show what happened
+        boolean containsString = out.toString().contains("This is not a valid model.");
+        assertTrue(containsString);
+    }
 
-    private void completeAllOrders(int n) throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException, CloneNotSupportedException {
+    @Test
+    public void testRequiredComponent(){
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(out);
+        // IMPORTANT: Save the old System.out!
+        PrintStream old = System.out;
+        // Tell Java to use your special stream
+        System.setOut(ps);
+        ByteArrayInputStream in = new ByteArrayInputStream("2\nTimo Smeets\nn\nA\nx\n0\ns\n0\ns\n0\ns\n0\ns\n0\ns\n0\ns\n0\n".getBytes());
+        System.setIn(in);
+        try{
+            new UI(new GarageHolderUI(new GarageHolderController(NicksCompany)),new ManagerUI(new ManagerController(NicksCompany)),
+                    new MechanicUI(new MechanicController(new Mechanic(NicksCompany.getProductionScheduler().getAssemblyLine()))));
+        } catch (Exception ignored) {}
+        // Put things back
+        System.out.flush();
+        System.setOut(old);
+        // Show what happened
+        boolean containsString = out.toString().contains("You are missing an essential component: body, color, engine, gearbox, seats or/and wheels.\n" +
+                "Please choose all of them because we can't build a car without them.");
+        assertTrue(containsString);
+    }
+
+    @Test
+    public void optionButNotComponent(){
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(out);
+        // IMPORTANT: Save the old System.out!
+        PrintStream old = System.out;
+        // Tell Java to use your special stream
+        System.setOut(ps);
+        ByteArrayInputStream in = new ByteArrayInputStream("2\nTimo Smeets\nn\nB\ns\n0\ns\n0\ns\n0\ns\n0\ns\n0\ns\n0\nx\ns\n0".getBytes());
+        System.setIn(in);
+        try{
+            new UI(new GarageHolderUI(new GarageHolderController(NicksCompany)),new ManagerUI(new ManagerController(NicksCompany)),
+                    new MechanicUI(new MechanicController(new Mechanic(NicksCompany.getProductionScheduler().getAssemblyLine()))));
+        } catch (Exception ignored) {}
+        // Put things back
+        System.out.flush();
+        System.setOut(old);
+        // Show what happened
+        boolean containsString = out.toString().contains("""
+                Option sport implies component spoiler.
+                But component spoiler is not chosen.
+                Please choose component spoiler.""");
+        assertTrue(containsString);
+    }
+
+    @Test
+    public void optionButNotOption(){
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(out);
+        // IMPORTANT: Save the old System.out!
+        PrintStream old = System.out;
+        // Tell Java to use your special stream
+        System.setOut(ps);
+        ByteArrayInputStream in = new ByteArrayInputStream("2\nTimo Smeets\nn\nB\ns\n1\ns\n0\ns\n0\ns\n1\ns\n0\ns\n0\ns\n0\ns\n0".getBytes());
+        System.setIn(in);
+        try{
+            new UI(new GarageHolderUI(new GarageHolderController(NicksCompany)),new ManagerUI(new ManagerController(NicksCompany)),
+                    new MechanicUI(new MechanicController(new Mechanic(NicksCompany.getProductionScheduler().getAssemblyLine()))));
+        } catch (Exception ignored) {}
+        // Put things back
+        System.out.flush();
+        System.setOut(old);
+        // Show what happened
+        boolean containsString = out.toString().contains("""
+                You chose a v8 Engine.
+                This implies one of the following options for component Airco: [manual].
+                Please choose one of these options.""");
+        assertTrue(containsString);
+    }
+    private void completeAllOrders(int n) {
         for (int i = 0; i < n; i++) {
             completeAssemblyTask();
         }
@@ -98,7 +194,7 @@ public class OrderNewCarTest {
             }
         }
         System.out.println("------------------------------------------------------");
-        // print each workstation and it's current order and its status
+        // print each workstation, and it's current order and its status
         for(WorkStation workStation: NicksCompany.getProductionScheduler().getAssemblyLine().getWorkStations()){
             if(workStation.getCurrentOrder() != null){
                 System.out.println(workStation.getName() + ": " + "\n\t" + workStation.getCurrentOrder().getOrderID() + " " + workStation.isFinished());
