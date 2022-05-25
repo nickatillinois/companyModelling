@@ -164,8 +164,9 @@ public class AssemblyLine {
      * @param timeBetweenTwoStates time necessary to complete this phase.
      * @return list of car orders
      * @throws IllegalCallerException if the assembly line can't move
+     * @throws RuntimeException | setting of the new orders goes wrong.
      */
-    public List<String> move(CarOrder carOrder, int timeBetweenTwoStates) throws IllegalCallerException{
+    public List<String> move(CarOrder carOrder, int timeBetweenTwoStates) throws IllegalCallerException, RuntimeException{
         for(WorkStation workStation : getWorkStations())
             if(!workStation.isFinished())
                 throw new IllegalCallerException("The assembly line is stil working at a work post!");
@@ -175,9 +176,13 @@ public class AssemblyLine {
             if (finishedCar != null) {
                 finishedCar.setCompleted();
             }
-            workStations.get(2).setCurrentOrder(workStations.get(1).getCurrentOrder());
-            workStations.get(1).setCurrentOrder(workStations.get(0).getCurrentOrder());
-            workStations.get(0).setCurrentOrder(carOrder);
+            try {
+                workStations.get(2).setCurrentOrder(workStations.get(1).getCurrentOrder());
+                workStations.get(1).setCurrentOrder(workStations.get(0).getCurrentOrder());
+                workStations.get(0).setCurrentOrder(carOrder);
+            } catch (RuntimeException e) {
+                throw new RuntimeException(e.getMessage());
+            }
         }
         else{
             if (emptyAssemblyLine())
@@ -188,9 +193,13 @@ public class AssemblyLine {
                 if (finishedCar != null) {
                     finishedCar.setCompleted();
                 }
-                workStations.get(2).setCurrentOrder(workStations.get(1).getCurrentOrder());
-                workStations.get(1).setCurrentOrder(workStations.get(0).getCurrentOrder());
-                workStations.get(0).setCurrentOrder(null);
+                try {
+                    workStations.get(2).setCurrentOrder(workStations.get(1).getCurrentOrder());
+                    workStations.get(1).setCurrentOrder(workStations.get(0).getCurrentOrder());
+                    workStations.get(0).setCurrentOrder(null);
+                } catch (RuntimeException e) {
+                    throw new RuntimeException(e.getMessage());
+                }
 
             }
         }

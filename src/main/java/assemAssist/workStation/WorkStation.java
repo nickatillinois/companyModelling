@@ -34,7 +34,7 @@ public abstract class WorkStation implements TaskObservable {
      * @throws IllegalArgumentException | name == null
      *                                  | name.isEmpty()
      */
-    public WorkStation(String name) {
+    public WorkStation(String name) throws IllegalArgumentException{
         super();
         if (name == null) throw new IllegalArgumentException("The given name cannot be null.");
         if (name.isEmpty()) throw new IllegalArgumentException("The given name cannot be empty.");
@@ -54,12 +54,17 @@ public abstract class WorkStation implements TaskObservable {
      * Sets the current order to the given order.
      *
      * @param newOrder new current order
+     * @throws RuntimeException | Adding of the assembly tasks of newOrder goes wrong.
      */
-    public void setCurrentOrder(CarOrder newOrder) {
+    public void setCurrentOrder(CarOrder newOrder) throws RuntimeException {
         this.currentOrder = newOrder;
         tasks.clear();
         if (newOrder != null){
-            newTasks();
+            try {
+                newTasks();
+            } catch (RuntimeException e) {
+                throw new RuntimeException(e.getMessage());
+            }
         }
     }
 
@@ -73,7 +78,7 @@ public abstract class WorkStation implements TaskObservable {
     /**
      *  Assigns the car options of the current car order to this work station and creates new tasks to be completed.
      */
-    abstract void newTasks();
+    abstract void newTasks() throws RuntimeException;
 
     /**
      * Returns the list of tasks for this work station.
@@ -90,7 +95,7 @@ public abstract class WorkStation implements TaskObservable {
      * @param task the task to be added
      * @throws IllegalArgumentException | task is null
      */
-    void addTask(AssemblyTask task){
+    void addTask(AssemblyTask task) throws IllegalArgumentException{
         if (task == null) { throw new IllegalArgumentException("The given task cannot be null."); }
         tasks.add(task);
     }
@@ -145,6 +150,9 @@ public abstract class WorkStation implements TaskObservable {
      * @throws IllegalArgumentException | taskName is not a valid name of a task at this work station.
      */
     public String getInformationFromTask(String taskName) throws IllegalArgumentException{
+        if (taskName == null) {
+            throw new IllegalArgumentException("The taskName cannot be null.");
+        }
         for (AssemblyTask task : tasks) {
             if (task.getName().equals(taskName)) {
                 return task.getTaskDefinition();
@@ -158,9 +166,12 @@ public abstract class WorkStation implements TaskObservable {
      *
      * @param taskName the name of the task to be completed
      * @param time the time it took to complete the given task
-     * @throws IllegalArgumentException | taskName is not a valid name of a task at this work station.
+     * @throws IllegalArgumentException | taskName is not a valid name of a task at this work station or if time is not valid.
      */
-    public void performAssemblyTask(String taskName,int time) throws IllegalArgumentException{
+    public void performAssemblyTask(String taskName,int time) throws IllegalArgumentException {
+        if (taskName == null) {
+            throw new IllegalArgumentException("The taskname cannot be null!");
+        }
         if (time <= 0) throw new IllegalArgumentException("The time spent on this task must be positive.");
         for (AssemblyTask task : tasks) {
             if (task.getName().equals(taskName)) {

@@ -14,26 +14,30 @@ public class DrivetrainPost extends WorkStation{
      * @param company the observer that will be watching this class
      * @throws IllegalArgumentException company == null
      */
-    public DrivetrainPost(Company company) {
+    public DrivetrainPost(Company company) throws IllegalArgumentException {
         super("Drivetrain Post");
         if( company == null ) { throw new IllegalArgumentException("The given observer cannot be null."); }
         addObserver(company);
     }
 
     /**
-     *  Assigns the car options of the current car order to this work station and creates new tasks to be completed.
+     * Assigns the car options of the current car order to this work station and creates new tasks to be completed.
+     * @throws RuntimeException | The adding of the assembly tasks goes wrong.
      */
     @Override
-    public void newTasks() {
+    public void newTasks() throws RuntimeException{
 
-        //add task for engine
-        this.addTask(new AssemblyTask("engine",
-                "insert " + getCurrentOrder().getCarModel().getChosenOptions().get("Engine")));
+        try {
+            //add task for engine
+            this.addTask(new AssemblyTask("engine",
+                    "insert " + getCurrentOrder().getCarModel().getChosenOptions().get("Engine")));
 
-        //add task for gearbox
-        this.addTask(new AssemblyTask("gearbox",
-                "install " + getCurrentOrder().getCarModel().getChosenOptions().get("Gearbox").toLowerCase()));
-
+            //add task for gearbox
+            this.addTask(new AssemblyTask("gearbox",
+                    "install " + getCurrentOrder().getCarModel().getChosenOptions().get("Gearbox").toLowerCase()));
+        } catch (IllegalArgumentException e) {
+            throw new RuntimeException("Construction of the assembly tasks in "+ this.getName() +" went wrong.");
+        }
     }
 
 

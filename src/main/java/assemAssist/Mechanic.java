@@ -63,7 +63,11 @@ public class Mechanic {
     public String selectTask(String taskName) throws IllegalArgumentException {
         if (taskName == null)
             throw new IllegalArgumentException("The name of a task cannot be null.");
-        return workStation.getInformationFromTask(taskName);
+        try {
+            return workStation.getInformationFromTask(taskName);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(e.getMessage());
+        }
     }
 
     /**
@@ -72,8 +76,12 @@ public class Mechanic {
      * @param timeWorked Time spent performing the finished task
      * @return List containing the remaining pending tasks at the workstation the mechanic is working at.
      */
-    public List<String> finishTask(String taskName, int timeWorked) {
-        workStation.performAssemblyTask(taskName,timeWorked);
+    public List<String> finishTask(String taskName, int timeWorked) throws  IllegalArgumentException {
+        try {
+            workStation.performAssemblyTask(taskName,timeWorked);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(e.getMessage());
+        }
         return workStation.getPendingTasks();
     }
 

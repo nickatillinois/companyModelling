@@ -82,8 +82,9 @@ public class ProductionScheduler {
      * else it returns null. If the scheduling algorithm is "Specification Batch" then it will check of al the orders
      * with the same options set are produced if this is true the scheduling algorithm is changed to "FIFO"
      * @param timeBetweenTwoStates | time entered by the manager that was consumed
+     * @throws RuntimeException | something goes wrong when moving the assemblyline.
      */
-    public CarOrder advanceOrders(int timeBetweenTwoStates){
+    public CarOrder advanceOrders(int timeBetweenTwoStates) throws RuntimeException {
         if (!assemblyLine.canMove())
             return null;
 
@@ -91,10 +92,18 @@ public class ProductionScheduler {
         CarOrder finishedOrder = assemblyLine.getWorkStations().get(nrOfWorkStations-1).getCurrentOrder();
 
         if (getProductionSchedule().isEmpty())
-            assemblyLine.move(null,timeBetweenTwoStates);
+            try {
+                assemblyLine.move(null, timeBetweenTwoStates);
+            } catch (RuntimeException e) {
+                throw new RuntimeException(e.getMessage());
+            }
         else {
             CarOrder carOrder = schedulingAlgorithm.getNextCarOrder();
-            assemblyLine.move(carOrder, timeBetweenTwoStates);
+            try {
+                assemblyLine.move(carOrder, timeBetweenTwoStates);
+            } catch (RuntimeException e) {
+                throw new RuntimeException(e.getMessage());
+            }
         }
 
         if (schedulingAlgorithm.getName().equals("Specification Batch"))

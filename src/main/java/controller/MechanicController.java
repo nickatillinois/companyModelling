@@ -34,18 +34,31 @@ public class MechanicController {
      * Selects a task and returns the description of this task.
      * @param task The name of the task to give the description of.
      * @return Description of the task.
+     * @throws IllegalArgumentException | The taskName is null or not a valid taskName.
      */
-    public String selectTask (String task) {
-        return mechanic.selectTask(task);
+    public String selectTask (String task) throws IllegalArgumentException {
+        if (task == null) {
+            throw new IllegalArgumentException("Name of the task cannot be null.");
+        }
+        try {
+            return mechanic.selectTask(task);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(e.getMessage());
+        }
     }
 
     /**
      * Finishes the given task and then gives an overview of the pending tasks at the mechanics work station.
      * @param task The name of the task to be finished.
      * @return List of pending tasks at the work station.
+     * @throws IllegalArgumentException | The taskName is not a valid task or null or timeWorked is negative.
      */
-    public List<String> finishTask(String task, int timeWorked) {
-        return mechanic.finishTask(task, timeWorked);
+    public List<String> finishTask(String task, int timeWorked) throws IllegalArgumentException {
+        try {
+            return mechanic.finishTask(task, timeWorked);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(e.getMessage());
+        }
     }
 
     public List<String> getCurrentStateAssembly() {

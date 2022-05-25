@@ -367,7 +367,12 @@ public class Company implements TaskObserver {
         if(time < 0) {
             throw new IllegalArgumentException("time cannot be negative.");
         }
-        CarOrder finishedOrder = productionScheduler.advanceOrders(time);
+        CarOrder finishedOrder;
+        try {
+            finishedOrder = productionScheduler.advanceOrders(time);
+        } catch (RuntimeException e) {
+            throw new RuntimeException(e.getMessage());
+        }
         if (finishedOrder != null) {
             completedCarOrders.add(finishedOrder);
         }

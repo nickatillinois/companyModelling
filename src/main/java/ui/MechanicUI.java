@@ -101,8 +101,13 @@ public class MechanicUI {
                                 pendingTasks = performSpecificTaskUI(pendingTasks.get(taskNumber));
                                 break;
                             }
-                        } catch (NumberFormatException e) {
-                           System.out.println("This is not a valid option. Try again.");
+                        } catch (Exception e) {
+                            if (e instanceof NumberFormatException) {
+                                System.out.println("This is not a valid option. Try again.");
+                            } else if (e instanceof IllegalArgumentException) {
+                                System.out.println("Something unexpected went wrong. Try again.");
+                                break;
+                            }
                         }
                     }
                 }
@@ -113,9 +118,14 @@ public class MechanicUI {
         }
     }
 
-    private List<String> performSpecificTaskUI(String taskName) {
+    private List<String> performSpecificTaskUI(String taskName) throws IllegalArgumentException{
 
-        String taskDefinition = mechanicController.selectTask(taskName);
+        String taskDefinition;
+        try {
+            taskDefinition = mechanicController.selectTask(taskName);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(e.getMessage());
+        }
         System.out.println("This task consists of: " + taskDefinition);
         List<String> pendingTasks;
 
@@ -130,8 +140,12 @@ public class MechanicUI {
                         int timeSpentNumber = Integer.parseInt(timeSpent);
                         pendingTasks = mechanicController.finishTask(taskName, timeSpentNumber);
                         break;
-                    } catch (NumberFormatException e) {
-                        System.out.println("This is not a valid option. Try again.");
+                    } catch (Exception e) {
+                        if (e instanceof NumberFormatException) {
+                            System.out.println("This is not a valid time. Try again.");
+                        } else if (e instanceof IllegalArgumentException) {
+                            System.out.println(e.getMessage() + " Try again.");
+                        }
                     }
                 }
                 break;
