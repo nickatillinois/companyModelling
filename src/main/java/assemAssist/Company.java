@@ -225,6 +225,11 @@ public class Company implements TaskObserver {
         return catalog.getAvailableModelNames();
     }
 
+    /**
+     * Returns the standard task time for the given car model.
+     * @param modelName The name of the car model.
+     * @return The standard task time for the given car model.
+     */
     public int getWorkingTimeWorkingStation(String modelName) throws IllegalModelException {
         return catalog.getWorkingMinutesWorkstation(modelName);
     }

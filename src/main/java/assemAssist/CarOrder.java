@@ -1,9 +1,8 @@
 package assemAssist;
 
-import assemAssist.exceptions.*;
+import assemAssist.exceptions.IllegalCompletionDateException;
 import assemAssist.observer.StatisticsObservable;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -19,7 +18,7 @@ import java.util.Objects;
 public class CarOrder implements StatisticsObservable {
 
     /**
-     * static counter for keeping track of the number of orders in order to assign a unique id to each order.
+     * Static counter for keeping track of the number of orders in order to assign a unique id to each order.
      */
     private static int counter = 0;
 
@@ -66,7 +65,6 @@ public class CarOrder implements StatisticsObservable {
     private CarModel carModel;
 
 
-
     /**
      * Creates a new car model specification with a given body, color, engine, gearbox, seats, airco, wheels.
      *
@@ -88,7 +86,6 @@ public class CarOrder implements StatisticsObservable {
         this.ID = counter;
         this.orderingTime = LocalDateTime.now();
     }
-
 
     /**
      * Returns the estimated completion date for this car order.
@@ -136,6 +133,8 @@ public class CarOrder implements StatisticsObservable {
      *
      * @param carModel The carModel of this car order.
      * @throws IllegalArgumentException | carModel is null
+     *                                  | carModel is the empty string
+     *                                  | carModel.getModelName() is null
      *
      */
     public void setCarModel(CarModel carModel) {
@@ -155,8 +154,9 @@ public class CarOrder implements StatisticsObservable {
     }
 
     /**
-     * Sets whether this order is completed to the given boolean.
-     *
+     * Sets whether this order's isCompleted status to true.
+     * Notifies the observers of this order that it has been completed.
+     * @throws NullPointerException | estCompletionTime is null
      *
      */
     public void setCompleted(){
@@ -169,7 +169,6 @@ public class CarOrder implements StatisticsObservable {
 
     /**
      * Returns the immutable LocalTimeDate of this carOrder.
-     *
      * @return The immutable LocalTimeDate of this carOrder.
      */
     public LocalDateTime getCompletionTime(){
@@ -178,9 +177,9 @@ public class CarOrder implements StatisticsObservable {
 
     /**
      * Sets the current LocalTimeDate when this order is estimated to be completed to the given LocalTimeDate.
-     *
      * @param completionTime The given estimated completion date in LocalTimeDate format.
-
+     * @throws IllegalArgumentException | completionTime is null
+     * @throws IllegalCompletionDateException | completionTime is before the current LocalTimeDate
      */
     public void setCompletionTime(LocalDateTime completionTime) throws IllegalCompletionDateException {
         if (completionTime == null){throw new IllegalArgumentException("A completion time cannot be null.");}
@@ -193,6 +192,7 @@ public class CarOrder implements StatisticsObservable {
      * Sets the given LocalTimeDate when this order is estimated to be completed to the given LocalTimeDate.
      * @param estCompletionTime The given estimated completion date in LocalTimeDate format.
      * @throws IllegalArgumentException | estCompletionTime is null
+     *                                  | estCompletionTime is before the current LocalTimeDate
      */
     public void setEstCompletionTime(LocalDateTime estCompletionTime) throws IllegalCompletionDateException {
         if (estCompletionTime == null){throw new IllegalArgumentException("An estimated completion time cannot be null.");}
@@ -283,13 +283,13 @@ public class CarOrder implements StatisticsObservable {
      *              If other is null, this function returns false.
      *              If other is not a CarOrder, this function returns false.
      *              If other is a CarOrder, this function returns true if and only if
-     *              this CarOrder is equal to other.
+     *              this CarOrder is equal to the other.
      *              Two CarOrders are equal if they have the same orderID, carModel,
      *              options, orderingTime, estCompletionTime, and completed.
      *              If either orderingTime, estCompletionTime, or completionTime is null,
      *              the corresponding value in other must also be null.
      *
-     * @return true if and only if this CarOrder is equal to other.
+     * @return true if and only if this CarOrder is equal to the other.
      */
     @Override
     public boolean equals(Object o) {
@@ -299,10 +299,17 @@ public class CarOrder implements StatisticsObservable {
         return ID == carOrder.ID;
     }
 
+    /**
+     * Returns the standard task time for this car order.
+     * @return The standard task time for this car order.
+     */
     public int getWorkingMinutesWorkStation() {
         return getCarModel().getWorkingTimeWorkingTime();
     }
 
+    /**
+     * Method that resets the counter used for generating a unique ID for each car order.
+     */
     public static void resetCounter() {
         counter = 0;
     }

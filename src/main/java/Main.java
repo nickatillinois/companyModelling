@@ -1,5 +1,3 @@
-import assemAssist.CarModel;
-import assemAssist.CarOrder;
 import assemAssist.Company;
 import assemAssist.Mechanic;
 import assemAssist.exceptions.*;
@@ -11,8 +9,6 @@ import ui.ManagerUI;
 import ui.MechanicUI;
 import ui.UI;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.TreeMap;
 
 
@@ -22,7 +18,7 @@ import java.util.TreeMap;
  * It then starts the UI.
  * @author Team 10
  */
-public class main {
+public class Main {
 
     public static void main(String[] args) throws IllegalModelException, IllegalCompletionDateException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException, InterruptedException {
 
