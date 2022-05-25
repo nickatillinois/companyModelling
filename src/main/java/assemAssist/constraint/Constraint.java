@@ -12,7 +12,7 @@ public abstract class Constraint {
     /**
      * Creates a new restriction.
      */
-    public Constraint() {
+    protected Constraint() {
     }
 
     /**

@@ -49,9 +49,9 @@ public class GarageHolderController {
      * @return an array consisting of two elements.
      *         the first element is a list of pending orders that were not completed.
      *         the second element is a list of completed orders.
-     *         if there are no pending orders, the first element is empty.
-     *         if there are no completed orders, the second element is empty.
-     *         if there are no pending or completed orders, both elements are empty.
+     *         if there are not any pending orders, the first element is empty.
+     *         if there are not any completed orders, the second element is empty.
+     *         if there are not any pending or completed orders, both elements are empty.
      * @param garageHolder the garage holder to get the orders from
      * @throws IllegalArgumentException if the given garage holder is null
      *                                  or if the given string is empty

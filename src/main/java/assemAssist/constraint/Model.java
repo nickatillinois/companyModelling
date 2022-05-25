@@ -18,7 +18,7 @@ public class Model extends Constraint{
     /**
      * Constructor for the Model constraint.
      */
-    public Model() {
+    protected Model() {
         super();
     }
 
@@ -33,11 +33,10 @@ public class Model extends Constraint{
      */
     @Override
     protected void isValidCombo(CarModel chosenSpecifications) throws IllegalArgumentException, IllegalModelException {
-        Catalog catalog = new Catalog();
         String modelName = chosenSpecifications.getModelName();
         // check if this model name is in catalog.getAvailableModelNames(), ignore case of model name
         boolean containsModelName = false;
-        for (String availableModelName : catalog.getAvailableModelNames()) {
+        for (String availableModelName : new Catalog().getAvailableModelNames()) {
             if (availableModelName.equalsIgnoreCase(modelName)) {
                 containsModelName = true;
                 break;
@@ -46,7 +45,7 @@ public class Model extends Constraint{
         if (!containsModelName) {
             throw new IllegalModelException("Model name " + modelName + " is not in the catalog.");
         }
-        TreeMap<String, HashSet<String>> model = catalog.getOptions(modelName);
+        TreeMap<String, HashSet<String>> model = new Catalog().getOptions(modelName);
         // check if the chosen specifications are in the model
         for (String key : chosenSpecifications.getChosenOptions().keySet()) {
             // every key in chosenOptions must be in model, ignore case of key
@@ -86,9 +85,6 @@ public class Model extends Constraint{
 
     public boolean equals(Object obj) {
         if (! super.equals(obj)) return false;
-        if (this.getClass() != obj.getClass())
-            return false;
-        Model other = (Model) obj;
-        return true;
+        return this.getClass() == obj.getClass();
     }
 }

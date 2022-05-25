@@ -1,10 +1,10 @@
 package assemAssist.constraint;
 
 import assemAssist.CarModel;
-import assemAssist.exceptions.*;
+import assemAssist.exceptions.IllegalConstraintException;
+import assemAssist.exceptions.OptionThenComponentException;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 
 
@@ -16,7 +16,7 @@ import java.util.HashSet;
 public class IfOptionThenComponent extends Constraint {
 
     /**
-     * Set of lists of each two elemtens implying that the first element implies the second.
+     * Set of lists of each two elements implying that the first element implies the second.
      *
      */
     private ArrayList<String> pairs;
@@ -73,7 +73,6 @@ public class IfOptionThenComponent extends Constraint {
      * @param chosenSpecifications The chosen specifications
      * @throws IllegalArgumentException   | chosenSpecifications = null
      * @throws OptionThenComponentException | IfOptionThenComponent is not satisfied
-     *
      */
     @Override
     protected void isValidCombo(CarModel chosenSpecifications) throws IllegalArgumentException, OptionThenComponentException {
@@ -81,47 +80,38 @@ public class IfOptionThenComponent extends Constraint {
             throw new IllegalArgumentException("Chosen specifications is null");
         }
         // for each key in chosenSpecifications, get the value
-        // create a set of Strings of the values
         HashSet<String> chosenOptionsSet = new HashSet<>();
         for (String key : chosenSpecifications.getChosenOptions().keySet()) {
             String value = chosenSpecifications.getChosenOptions().get(key);
             chosenOptionsSet.add(value.toLowerCase());
         }
-
         // for each pair in pairs, check if the set of chosen options contains the pair
         if (chosenOptionsSet.contains(this.pairs.get(0).toLowerCase()) && !chosenSpecifications.getChosenOptions().containsKey(this.pairs.get(1).toLowerCase())) {
             String warning =  "Option " + this.pairs.get(0) + " implies component " + this.pairs.get(1) + ".\nBut component " + this.pairs.get(1) + " is not chosen.\nPlease choose component " + this.pairs.get(1) + ".";
-            //Split warning into 4 equal lines
-            String[] warningLines = warning.split("\n");
-            StringBuilder boxMessage = new StringBuilder();
-            boxMessage.append("\n");
-            boxMessage.append("|");
-            boxMessage.append("-".repeat(warningLines[0].length()/3));
-            boxMessage.append("!");
-            boxMessage.append("-".repeat(warningLines[0].length()/3));
-            boxMessage.append("|\n");
-            boxMessage.append(warning);
-            boxMessage.append("\n");
-            boxMessage.append("|");
-            boxMessage.append("-".repeat(warningLines[0].length()/3));
-            boxMessage.append("!");
-            boxMessage.append("-".repeat(warningLines[0].length()/3));
-            boxMessage.append("|\n");
-            throw new OptionThenComponentException(boxMessage.toString());
+            throw new OptionThenComponentException(putInBox(warning));
         }
     }
 
+    private String putInBox(String warning){
+        String[] warningLines = warning.split("\n");
+        return "\n" +
+                "|" +
+                "-".repeat(warningLines[0].length() / 3) +
+                "!" +
+                "-".repeat(warningLines[0].length() / 3) +
+                "|\n" +
+                warning +
+                "\n" +
+                "|" +
+                "-".repeat(warningLines[0].length() / 3) +
+                "!" +
+                "-".repeat(warningLines[0].length() / 3) +
+                "|\n";
+    }
     @Override
     protected void reset() {
         // clear the list of pairs
         pairs.clear();
-    }
-
-    /**
-     * Method that adds the pairs given in the assignment to the list of pairs.
-     */
-    private void addCurrentPairs() throws IllegalConstraintException {
-        this.addOptionThenComponentPair(new ArrayList<>(Arrays.asList("Sport", "Spoiler")));
     }
 
     @Override
@@ -144,11 +134,6 @@ public class IfOptionThenComponent extends Constraint {
         int hash = 51;
         // hashcode so that 2 lists of pairs are equal if they have the same size and the same elements in pairs in the same order
         hash = 31 * hash + this.pairs.size();
-        for (String pair : this.pairs) {
-            hash = 31 * hash + pair.hashCode();
-            int pairHash = pair.hashCode();
-            int pairHash2 = pair.hashCode();
-        }
         // take the sun of the hashcodes of all elements in pairs, except the first one
         int sum = 0;
         for (int i = 1; i < this.pairs.size(); i++) {
