@@ -226,6 +226,7 @@ public class CarModelSpecificationTest {
     void testAddComponent() {
         boolean got_error;
         HashSet<String> options = new HashSet<>();
+        options.add("laser");
         for (CarModelSpecification c : company.getCatalog().getAvailableModels()) {
             got_error = false;
             try{

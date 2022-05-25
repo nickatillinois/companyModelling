@@ -90,7 +90,9 @@ public class CarModel {
      * @return a map of the options chosen for this car model.
      */
     public TreeMap<String, String> getChosenOptions() {
-        return chosenOptions;
+        TreeMap<String, String> chosenOptionsCopy = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        chosenOptionsCopy.putAll(chosenOptions);
+        return chosenOptionsCopy;
     }
 
     /**

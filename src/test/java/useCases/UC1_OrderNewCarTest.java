@@ -59,11 +59,6 @@ public class UC1_OrderNewCarTest {
         NicksCompany.completeOrderingForm(legal_BOptions,"Timo Smeets","B");
         NicksCompany.completeOrderingForm(legal_AOptions,"Timo Smeets","A");
         List <CarOrder> orders = NicksCompany.getOrdersFromGarageHolder("Timo Smeets")[0];
-        orders.get(0).setEstCompletionTime(LocalDateTime.now().minusDays(1));
-        orders.get(1).setEstCompletionTime(LocalDateTime.now().minusDays(2));
-        orders.get(2).setEstCompletionTime(LocalDateTime.now().minusDays(3));
-        orders.get(0).setEstCompletionTime(LocalDateTime.now().minusDays(1));
-        orders.get(1).setEstCompletionTime(LocalDateTime.now().minusDays(2));
         NicksCompany.completeOrderingForm(legal_AOptions,"Filip Smeets","B");
         NicksCompany.completeOrderingForm(legal_AOptions,"Filip Smeets","A");
     }

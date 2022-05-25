@@ -25,7 +25,7 @@ class AssemblyLineTest {
     static CarOrder orderC;
 
     @BeforeEach
-    void init() throws IllegalModelException, IllegalConstraintException, OptionAThenOptionBException, OptionThenComponentException, RequiredComponentException {
+    void init() throws IllegalModelException, IllegalConstraintException, OptionAThenOptionBException, OptionThenComponentException, RequiredComponentException, IllegalCompletionDateException {
         Company company = new Company();
         assemblyLine = new AssemblyLine(company);
 

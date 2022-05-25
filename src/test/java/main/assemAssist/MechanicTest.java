@@ -27,7 +27,7 @@ public class MechanicTest {
     static CarOrder orderC;
 
     @BeforeEach
-    void init() throws RequiredComponentException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, IllegalModelException {
+    void init() throws RequiredComponentException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, IllegalModelException, IllegalCompletionDateException {
         Company company = new Company();
         assemblyLine = new AssemblyLine(company);
         mechanic = new Mechanic(assemblyLine);

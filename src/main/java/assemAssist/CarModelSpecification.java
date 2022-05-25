@@ -44,7 +44,8 @@ public class CarModelSpecification {
         if(availableOptions == null){throw new IllegalArgumentException("A car model specification cannot be null.");}
         this.modelName = modelName;
         this.standardTaskTime = standardTaskTime;
-        this.availableOptions = availableOptions;
+        this.availableOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        this.availableOptions.putAll(availableOptions);
     }
     /**
      * Returns the name of this car model.
@@ -84,7 +85,9 @@ public class CarModelSpecification {
      * @return The car model specification of this car model.
      */
     public TreeMap<String, HashSet<String>> getAvailableOptions() {
-        return availableOptions;
+        TreeMap<String, HashSet<String>> optionsCopy = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        optionsCopy.putAll(availableOptions);
+        return optionsCopy;
     }
 
     /**
@@ -95,7 +98,9 @@ public class CarModelSpecification {
      */
     public void setAvailableOptions(TreeMap<String, HashSet<String>> availableOptions)  {
         if(availableOptions == null){throw new IllegalArgumentException("A car model specification cannot be null.");}
-        this.availableOptions = availableOptions;
+        TreeMap<String, HashSet<String>> optionsCopy = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        optionsCopy.putAll(availableOptions);
+        this.availableOptions = optionsCopy;
     }
 
     /**
@@ -157,7 +162,9 @@ public class CarModelSpecification {
         if(component.length() == 0){throw new IllegalArgumentException("A component cannot be the empty string.");}
         if(component.trim().length() <= 0){throw new IllegalArgumentException("A component cannot be whitespace.");}
         if(options == null){throw new IllegalArgumentException("There must be at least one option for the given component.");}
-        availableOptions.put(component, options);
+        if(options.size() == 0){throw new IllegalArgumentException("There must be at least one option for the given component.");}
+        HashSet<String> optionsCopy = new HashSet<>(options);
+        availableOptions.put(component, optionsCopy);
     }
 
     /**

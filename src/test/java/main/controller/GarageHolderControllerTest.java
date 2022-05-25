@@ -66,9 +66,6 @@ public class GarageHolderControllerTest {
         carOrderD = new CarOrder("Tanya Smeets", carModelC);
         carOrderE = new CarOrder("Kimberly Smeets", carModelC);
         carOrderF = new CarOrder("Vanessa Smeets", carModelC);
-        carOrderD.setEstCompletionTime(LocalDateTime.now().minusDays(1));
-        carOrderE.setEstCompletionTime(LocalDateTime.now().minusDays(2));
-        carOrderF.setEstCompletionTime(LocalDateTime.now().minusDays(3));
         System.out.println(carOrderA.getEstCompletionTime());
         company.completeOrderingForm(legalAOptions,"Danny Smeets","B");
         company.completeOrderingForm(legalBOptions,"Sandy Smeets","B");

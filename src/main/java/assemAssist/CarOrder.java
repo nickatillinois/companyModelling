@@ -2,6 +2,8 @@ package assemAssist;
 
 import assemAssist.exceptions.*;
 import assemAssist.observer.StatisticsObservable;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -183,6 +185,7 @@ public class CarOrder implements StatisticsObservable {
     public void setCompletionTime(LocalDateTime completionTime) throws IllegalCompletionDateException {
         if (completionTime == null){throw new IllegalArgumentException("A completion time cannot be null.");}
         if (completionTime.isBefore(LocalDateTime.now())){throw new IllegalCompletionDateException("completion time cannot be set in the past");}
+        //is immutable, so we don't need to clone it
         this.completionTime = completionTime;
     }
 
@@ -191,9 +194,9 @@ public class CarOrder implements StatisticsObservable {
      * @param estCompletionTime The given estimated completion date in LocalTimeDate format.
      * @throws IllegalArgumentException | estCompletionTime is null
      */
-    public void setEstCompletionTime(LocalDateTime estCompletionTime) {
+    public void setEstCompletionTime(LocalDateTime estCompletionTime) throws IllegalCompletionDateException {
         if (estCompletionTime == null){throw new IllegalArgumentException("An estimated completion time cannot be null.");}
-        //if (completionTime.isBefore(LocalDate.now())){throw new IllegalCompletionDateException("completion time cannot be set in the past");}
+        if (estCompletionTime.isBefore(LocalDateTime.now().minusMinutes(1))){throw new IllegalCompletionDateException("completion time cannot be set in the past");}
         this.estCompletionTime = estCompletionTime;
     }
 

@@ -62,11 +62,11 @@ public class CarOrderTest {
         carOrderD = new CarOrder("Tanya Smeets", carModelC);
         carOrderE = new CarOrder("Kimberly Smeets", carModelC);
         carOrderF = new CarOrder("Vanessa Smeets", carModelC);
-        carOrderD.setEstCompletionTime(LocalDateTime.now().minusDays(1));
-        carOrderE.setEstCompletionTime(LocalDateTime.now().minusDays(2));
-        carOrderF.setEstCompletionTime(LocalDateTime.now().minusDays(3));
+        carOrderD.setEstCompletionTime(LocalDateTime.now().plusDays(1));
+        carOrderE.setEstCompletionTime(LocalDateTime.now().plusDays(2));
+        carOrderF.setEstCompletionTime(LocalDateTime.now().plusDays(3));
         assertNull(carOrderA.getEstCompletionTime());
-        assertEquals(carOrderD.getEstCompletionTime().getDayOfYear(), LocalDateTime.now().minusDays(1).getDayOfYear());
+        assertEquals(carOrderD.getEstCompletionTime().getDayOfYear(), LocalDateTime.now().plusDays(1).getDayOfYear());
         company.completeOrderingForm(legalAOptions,"Danny Smeets","B");
         company.completeOrderingForm(legalBOptions,"Sandy Smeets","B");
         company.completeOrderingForm(legalCOptions,"Kim Smeets","C");
