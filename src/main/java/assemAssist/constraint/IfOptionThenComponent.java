@@ -16,13 +16,14 @@ import java.util.HashSet;
 public class IfOptionThenComponent extends Constraint {
 
     /**
-     * Set of lists of each two elements implying that the first element implies the second.
-     *
+     * A list of at least 2 elements implying that the first element implies the second component element.
      */
     private ArrayList<String> pairs;
 
     /**
-     * Initializes the pairs of options and components.
+     * Constructor for the IfOptionThenComponent class.
+     * @param constraintPairs A list of at exactly 2 elements implying that the first element implies the latter component.
+     * @throws IllegalConstraintException | constraintPairs = null
      */
     protected IfOptionThenComponent(ArrayList<String> constraintPairs) throws IllegalConstraintException {
         super();
@@ -65,12 +66,12 @@ public class IfOptionThenComponent extends Constraint {
         for (String option : constraintPairs) {
             lowerCasePair.add(option.toLowerCase());
         }
-        this.pairs =lowerCasePair;
+        this.pairs = lowerCasePair;
     }
 
 
     /**
-     * method that checks if the chosen specifications are in line with the constraints
+     * Method that checks if the chosen specifications are in line with the constraints
      *
      * @param chosenSpecifications The chosen specifications
      * @throws IllegalArgumentException   | chosenSpecifications = null
@@ -94,6 +95,17 @@ public class IfOptionThenComponent extends Constraint {
         }
     }
 
+
+    /**
+     * Method that puts a given string in a message box.
+     * @param warning The string to be put in a message box.
+     *                The string must be in the format:
+     *                "Option [option] implies component [component].\nBut component [component] is not chosen.\nPlease choose component [component]."
+     *                For example:
+     *                "Option Green implies component wheels.\nBut component wheels is not chosen.\nPlease choose component wheels."
+     * @throws IllegalArgumentException | warning = null
+     * @return The string in a message box.
+     */
     private String putInBox(String warning){
         String[] warningLines = warning.split("\n");
         return "\n" +
@@ -110,14 +122,19 @@ public class IfOptionThenComponent extends Constraint {
                 "-".repeat(warningLines[0].length() / 3) +
                 "|\n";
     }
-    @Override
-    protected void reset() {
-        // clear the list of pairs
-        pairs.clear();
-    }
 
+
+    /**
+     * Method compares a given IfOptionThenComponent with this IfOptionThenComponent.
+     * @param obj The other IfOptionThenComponent to compare with.
+     * @return True if the other IfOptionThenComponent is equal to this IfOptionThenComponent,
+     *        false otherwise.
+     */
     @Override
     public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
         if (this.getClass() != obj.getClass())
             return false;
         IfOptionThenComponent other = (IfOptionThenComponent) obj;
@@ -131,6 +148,11 @@ public class IfOptionThenComponent extends Constraint {
         return true;
     }
 
+
+    /**
+     * Method that returns a hash code for this IfOptionThenComponent.
+     * @return A hash code for this IfOptionThenComponent.
+     */
     @Override
     public int hashCode() {
         int hash = 51;

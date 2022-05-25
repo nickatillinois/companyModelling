@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 /**
- * Class representing the constraint that each model needs to be in the catalog of the products offered by the car manufacturing company.
+ * Class representing the constraint that some options may imply other options.
  *
  * @author SWOP team 10
  */
@@ -18,14 +18,15 @@ public class IfOptionAThenOptionB extends Constraint {
 
 
     /**
-     * The set of lists of each 2 elements implying that option A leads to option B.
-     * If the array contains more than two elements, that indicates that the first element implicates the latter two.
+     * A list of at least 2 elements implying that the first element implies the latter ones.
      */
     private ArrayList<String> constraintPairs;
 
 
     /**
      * Constructor for the IfOptionAThenOptionB class.
+     * @param constraintPairs A list of at least 2 elements implying that the first element implies the latter ones.
+     * @throws IllegalConstraintException | constraintPairs = null
      */
     protected IfOptionAThenOptionB(ArrayList<String> constraintPairs) throws IllegalConstraintException {
         super();
@@ -107,7 +108,21 @@ public class IfOptionAThenOptionB extends Constraint {
         }
     }
 
+
+    /**
+     * Method that puts a given string in a message box.
+     * @param warning The string to be put in a message box.
+     *                The string must be in the format:
+     *                "You chose a [option] [component].\nThis implies one of the following options for component [component]: [options].\nPlease choose one of these options."
+     *                For example:
+     *                "You chose a V6 engine.\nThis implies one of the following options for component engine: V6, V8.\nPlease choose one of these options."
+     * @throws IllegalArgumentException | warning = null
+     * @return The string in a message box.
+     */
     private String putInBox(String warning) {
+        if (warning == null) {
+            throw new IllegalArgumentException("Warning is null");
+        }
         String[] warningLines = warning.split("\n");
         return "\n" +
                 "|" +
@@ -124,7 +139,18 @@ public class IfOptionAThenOptionB extends Constraint {
                 "|\n";
     }
 
+
+    /**
+     * Method that returns the component that is implied by the first element in the list of options.
+     * @param chosenSpecifications The chosen specifications
+     * @return An array of two strings, the first one is the component that is implied by the first element in the list of options,
+     *        and the second one is the component that is implied by the second element in the list of options.
+     * @throws IllegalArgumentException | chosenSpecifications = null
+     */
     private String[] getCausingAndImplyingComponent(CarModel chosenSpecifications) throws IllegalModelException {
+        if (chosenSpecifications == null) {
+            throw new IllegalArgumentException("Chosen specifications is null");
+        }
         final String[] causingComponent = new String[1];
         final String[] impliedComponent = new String[1];
         new Catalog().getModel(chosenSpecifications.getModelName()).getAvailableOptions().forEach((key, value) -> {
@@ -140,13 +166,18 @@ public class IfOptionAThenOptionB extends Constraint {
         return new String[]{causingComponent[0], impliedComponent[0]};
     }
 
-    @Override
-    protected void reset() {
-        constraintPairs.clear();
-    }
 
+    /**
+     * Method compares a given IfOptionAThenOptionB with this IfOptionAThenOptionB.
+     * @param obj The other IfOptionAThenOptionB to compare with.
+     * @return True if the other IfOptionAThenOptionB is equal to this IfOptionAThenOptionB,
+     *        false otherwise.
+     */
     @Override
     public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
         if (this.getClass() != obj.getClass())
             return false;
         IfOptionAThenOptionB other = (IfOptionAThenOptionB) obj;
@@ -157,6 +188,11 @@ public class IfOptionAThenOptionB extends Constraint {
         return true;
     }
 
+
+    /**
+     * Method that returns a hash code for this IfOptionAThenOptionB.
+     * @return A hash code for this IfOptionAThenOptionB.
+     */
     @Override
     public int hashCode() {
         int hash = 7;

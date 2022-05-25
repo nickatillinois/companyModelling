@@ -10,13 +10,15 @@ import assemAssist.exceptions.*;
 public abstract class Constraint {
 
     /**
-     * Creates a new restriction.
+     * Creates a new constraint.
+     *
+     * @author SWOP team 10
      */
     protected Constraint() {
     }
 
     /**
-     * method that checks if the chosen specifications are in line with the constraints
+     * Method that checks if the chosen specifications are in line with the constraints
      *
      * @param chosenSpecifications The chosen specifications
      * @throws IllegalArgumentException   | chosenSpecifications = null
@@ -28,7 +30,6 @@ public abstract class Constraint {
      *
      */
     protected abstract void isValidCombo(CarModel chosenSpecifications) throws IllegalArgumentException, IllegalConstraintException, IllegalModelException, RequiredComponentException, OptionAThenOptionBException, OptionThenComponentException;
-    protected abstract void reset();
 
 
 }

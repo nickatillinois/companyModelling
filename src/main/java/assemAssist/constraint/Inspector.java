@@ -9,7 +9,7 @@ import java.util.HashSet;
 
 /**
  * Class representing a constraint inspector that inspects a car model for
- * constraints.
+ * being valid according to all the constraints.
  *
  * @author SWOP team 10
  */
@@ -28,8 +28,6 @@ public class Inspector {
     /**
      * Creates a new inspector with the given car model.
      * @param carModel The car model to be inspected.
-     *                 The inspector will not be able to inspect the car model if it is null.
-     *                 The inspector will not be able to inspect the car model if it is not a valid car model.
      * @throws IllegalModelException thrown if the car model is null.
      */
     public Inspector(CarModel carModel) throws IllegalConstraintException, IllegalModelException {
@@ -41,7 +39,7 @@ public class Inspector {
     }
 
     /**
-     * Adds constraints to the inspector.
+     * Adds the standard constraints specified in the assignment to the inspector.
      */
     private static void addStdConstraints() throws IllegalConstraintException {
         constraints.add(new Model());
@@ -56,6 +54,16 @@ public class Inspector {
 
     /**
      * Inspects the car model for constraints.
+     * @throws IllegalConstraintException thrown if:
+     *                               - a constraint is malformed
+     * @throws IllegalModelException thrown if:
+     *                               - the car model is not in the list of car models
+     * @throws OptionAThenOptionBException thrown if:
+     *                               - an option implies another option that is not in the list of options
+     * @throws OptionThenComponentException thrown if:
+     *                               - an option implies a component that is not in the list of components
+     * @throws RequiredComponentException thrown if:
+     *                               - a component is required but not in the list of components
      */
     public void inspect() throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         for (Constraint constraint : constraints) {
@@ -133,9 +141,6 @@ public class Inspector {
     }
 
     public static void reset() throws IllegalConstraintException {
-        for (Constraint constraint : constraints) {
-            constraint.reset();
-        }
         constraints.clear();
         addStdConstraints();
     }
