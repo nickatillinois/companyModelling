@@ -5,8 +5,9 @@ import assemAssist.CarOrder;
 import assemAssist.comparator.CompletedCarOrderComparator;
 import assemAssist.comparator.PendingCarOrderComparator;
 import assemAssist.exceptions.*;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import java.util.TreeMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ComparatorTest {
     private CarOrder order1;
     private CarOrder order2;
@@ -24,7 +26,7 @@ public class ComparatorTest {
     private CarOrder order7;
     private CarOrder order8;
 
-    @BeforeEach
+    @BeforeAll
     public void init() throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException, IllegalCompletionDateException {
         TreeMap<String, String> legalAOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         legalAOptions.put("color", "red");
