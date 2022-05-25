@@ -5,6 +5,8 @@ import assemAssist.Company;
 
 /**
  *  Class representing an Accessories Post.
+ *
+ *  @author SWOP team 10
  */
 public class AccessoriesPost extends WorkStation{
 

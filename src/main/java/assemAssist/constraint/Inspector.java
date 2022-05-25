@@ -140,6 +140,10 @@ public class Inspector {
         constraints.add(new IfOptionAThenOptionB(new ArrayList<>(Arrays.asList(pair.get(1), pair.get(0)))));
     }
 
+
+    /**
+     * Function that clears the list of constraints.
+     */
     public static void reset() throws IllegalConstraintException {
         constraints.clear();
         addStdConstraints();

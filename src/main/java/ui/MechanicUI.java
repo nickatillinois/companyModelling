@@ -5,6 +5,10 @@ import controller.MechanicController;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * The UI for the Mechanic.
+ * @author Team 10
+ */
 public class MechanicUI {
 
     private MechanicController mechanicController;

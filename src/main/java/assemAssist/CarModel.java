@@ -7,6 +7,8 @@ import java.util.TreeMap;
 
 /**
  * CarModel is the class that represents the car model.
+ *
+ * @author SWOP team 10
  */
 public class CarModel {
 

@@ -3,6 +3,12 @@ package ui;
 import assemAssist.exceptions.*;
 import java.util.Scanner;
 
+
+/**
+ * The general UI initially used for all users.
+ * It reads the user input and calls the corresponding methods in the corresponding controller.
+ * @author Team 10
+ */
 public class UI {
     public UI(GarageHolderUI garageHolderUI, ManagerUI managerUI, MechanicUI mechanicUI) throws IllegalModelException, IllegalCompletionDateException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         Scanner in = new Scanner(System.in);

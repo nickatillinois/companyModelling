@@ -6,6 +6,8 @@ import java.util.*;
 
 /**
  * A class representing statistics of this car manufacturing company.
+ *
+ * @author SWOP team 10
  */
 public abstract class Statistics implements StatisticsObserver {
 

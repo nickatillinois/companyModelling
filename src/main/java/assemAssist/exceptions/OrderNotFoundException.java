@@ -2,7 +2,7 @@ package assemAssist.exceptions;
 
 /**
  * A class representing an illegal model exception.
- * Thrown when a model is chosen that is not offered.
+ * Thrown when a CarOrder is requested but not found.
  *
  * @author SWOP team 10
  */

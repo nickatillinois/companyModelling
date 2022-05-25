@@ -5,6 +5,8 @@ import assemAssist.Company;
 
 /**
  *  Class representing a Drivetrain Post.
+ *
+ *  @author SWOP team 10
  */
 public class DrivetrainPost extends WorkStation{
 

@@ -15,6 +15,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
+
+/**
+ * The main class of the program.
+ * It creates the company, the garage holder, the manager and the mechanic.
+ * It then starts the UI.
+ * @author Team 10
+ */
 public class main {
 
     public static void main(String[] args) throws IllegalModelException, IllegalCompletionDateException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException, InterruptedException {

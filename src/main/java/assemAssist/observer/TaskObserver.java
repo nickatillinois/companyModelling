@@ -1,5 +1,10 @@
 package assemAssist.observer;
 
+/**
+ * A class representing the observers for the Task class.
+ *
+ * @author SWOP team 10
+ */
 public interface TaskObserver {
 
     /**

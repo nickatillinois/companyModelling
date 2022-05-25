@@ -4,7 +4,11 @@ import assemAssist.CarModel;
 import assemAssist.exceptions.*;
 
 
-
+/**
+ * Class representing the constraint that certain components must be chosen.
+ *
+ * @author SWOP team 10
+ */
 public class RequiredComponent extends Constraint {
 
     /**
@@ -16,7 +20,7 @@ public class RequiredComponent extends Constraint {
 
 
     /**
-     * method that checks if the chosen specifications are in line with the constraints
+     * Method that checks if the chosen specifications contain the required components.
      *
      * @param chosenSpecifications The chosen specifications
      * @throws IllegalArgumentException   | chosenSpecifications = null
@@ -39,16 +43,14 @@ public class RequiredComponent extends Constraint {
 
     }
 
-    @Override
-    protected void reset() {
-        //do nothing
-    }
 
+    /**
+     * Method that compares 2 RequiredComponent constraints.
+     * @param obj The constraint to compare with.
+     * @return True if the constraints are equal, false otherwise.
+     */
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
         if (obj == null) {
             return false;
         }

@@ -5,6 +5,8 @@ import assemAssist.Company;
 
 /**
  *  Class representing a Car Body post.
+ *
+ *  @author SWOP team 10
  */
 public class CarBodyPost extends WorkStation{
 

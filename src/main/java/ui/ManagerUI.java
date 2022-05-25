@@ -4,6 +4,11 @@ import controller.ManagerController;
 import java.util.List;
 import java.util.Scanner;
 
+
+/**
+ * The UI for the Manager.
+ * @author Team 10
+ */
 public class ManagerUI {
     private ManagerController managerController;
     private Scanner in;

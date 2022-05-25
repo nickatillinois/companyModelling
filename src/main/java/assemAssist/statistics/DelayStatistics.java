@@ -5,6 +5,8 @@ import java.util.*;
 
 /**
  * Class representing delay statistics.
+ *
+ * @author SWOP team 10
  */
 public class DelayStatistics extends Statistics {
 

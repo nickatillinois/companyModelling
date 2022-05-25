@@ -78,12 +78,20 @@ public class Model extends Constraint{
         }
     }
 
+    /**
+     * Method that compares 2 Model constraints.
+     * There can only be one Model constraint.
+     * @param obj The constraint to compare with.
+     * @return True if the constraints are equal, false otherwise.
+     */
     @Override
-    protected void reset() {
-        // do nothing
-    }
-
     public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
         if (! super.equals(obj)) return false;
         return this.getClass() == obj.getClass();
     }

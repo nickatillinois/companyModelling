@@ -1,8 +1,8 @@
 package assemAssist.exceptions;
 
 /**
- * A class representing an illegal choice exception.
- * Thrown when a choice is chosen that is not offered for a component of a car.
+ * A class representing an illegal constraint exception.
+ * Thrown when a constraint is not in the correct format.
  *
  * @author SWOP team 10
  */

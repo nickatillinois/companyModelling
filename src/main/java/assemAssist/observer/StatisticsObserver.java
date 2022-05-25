@@ -2,6 +2,8 @@ package assemAssist.observer;
 
 /**
  * An interface representing the observer for the Statistics class.
+ *
+ * @author SWOP team 10
  */
 public interface StatisticsObserver {
 

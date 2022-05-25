@@ -3,6 +3,11 @@ package assemAssist.observer;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A class representing the observables for the Task class.
+ *
+ * @author SWOP team 10
+ */
 public interface TaskObservable {
 
     /**

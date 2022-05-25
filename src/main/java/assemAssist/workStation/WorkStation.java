@@ -9,6 +9,8 @@ import java.util.Objects;
 
 /**
  * Class representing a single work station.
+ *
+ * @author SWOP team 10
  */
 public abstract class WorkStation implements TaskObservable {
 

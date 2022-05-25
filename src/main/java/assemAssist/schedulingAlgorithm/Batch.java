@@ -8,6 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * A class representing the Batch scheduling algorithm.
+ *
+ * @author SWOP team 10
+ */
 public class Batch extends SchedulingAlgorithm{
     /**
      * The name of this scheduling algorithm.

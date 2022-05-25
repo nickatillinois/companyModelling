@@ -5,6 +5,8 @@ import java.util.*;
 
 /**
  * Class representing working day statistics.
+ *
+ * @author SWOP team 10
  */
 public class WorkingDayStatistics extends Statistics {
 

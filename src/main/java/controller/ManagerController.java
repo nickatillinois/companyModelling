@@ -4,6 +4,13 @@ import assemAssist.Company;
 
 import java.util.List;
 
+/**
+ * This class is the controller for the manager.
+ * It is responsible for the communication between the manager and the
+ * Company class.
+ *
+ * @author  Team 10
+ */
 public class ManagerController {
 
     private final Company company;

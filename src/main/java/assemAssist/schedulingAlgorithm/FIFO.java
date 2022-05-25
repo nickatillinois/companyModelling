@@ -5,6 +5,11 @@ import java.lang.reflect.Executable;
 
 import java.util.List;
 
+/**
+ * A class representing the FIFO scheduling algorithm.
+ *
+ * @author SWOP team 10
+ */
 public class FIFO extends SchedulingAlgorithm {
     /**
      * The name of the scheduling Algorithm

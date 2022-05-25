@@ -4,6 +4,13 @@ import assemAssist.Mechanic;
 
 import java.util.List;
 
+/**
+ * This class is the controller for the mechanic.
+ * It is responsible for the communication between the mechanic actor and the
+ * Mechanic class.
+ *
+ * @author  Team 10
+ */
 public class MechanicController {
 
     private Mechanic mechanic;

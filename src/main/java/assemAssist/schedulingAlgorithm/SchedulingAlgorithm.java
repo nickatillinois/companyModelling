@@ -8,6 +8,12 @@ import java.lang.reflect.Executable;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * A class representing an abstract scheduling algorithm.
+ *
+ * @author SWOP team 10
+ */
 public abstract class SchedulingAlgorithm {
     /**
      * This is the list af al car orders that are waiting to be produced.

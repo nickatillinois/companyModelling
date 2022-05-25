@@ -5,6 +5,8 @@ import java.util.List;
 
 /**
  * A class representing the observables for the Statistics class.
+ *
+ * @author SWOP team 10
  */
 public interface StatisticsObservable {
 
