@@ -96,7 +96,8 @@ public class Company implements TaskObserver {
         if(completedCarOrders == null) {
             throw new IllegalArgumentException("completedCarOrders must not be null.");
         }
-        this.completedCarOrders = completedCarOrders;
+        // copy the given list
+        this.completedCarOrders = new ArrayList<>(completedCarOrders);
     }
 
 

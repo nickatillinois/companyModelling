@@ -29,7 +29,11 @@ public class Catalog {
      * @return The available car models in the catalog.
      */
     public HashSet<CarModelSpecification> getAvailableModels() {
-        return availableModels;
+        HashSet<CarModelSpecification> copy = new HashSet<>();
+        for (CarModelSpecification model : availableModels) {
+            copy.add(model.deepCopy());
+        }
+        return copy;
     }
 
     /**
@@ -95,7 +99,7 @@ public class Catalog {
         if(model == null) {
             throw new IllegalArgumentException("model cannot be null.");
         }
-        availableModels.add(model);
+        availableModels.add(model.deepCopy());
     }
 
     public int getWorkingMinutesWorkstation(String modelName) throws IllegalModelException {
@@ -140,7 +144,6 @@ public class Catalog {
             add("sports");
         }});
         this.addModel(new CarModelSpecification("A", 50, A));
-
         TreeMap<String, HashSet<String>> B = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         B.put("Body", new HashSet<>() {{
             add("Sedan");
@@ -180,7 +183,6 @@ public class Catalog {
             add("low");
         }});
         this.addModel(new CarModelSpecification("B", 70, B));
-
         TreeMap<String, HashSet<String>> C = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         C.put("Body", new HashSet<>() {{
             add("Sport");

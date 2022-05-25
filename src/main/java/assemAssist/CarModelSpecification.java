@@ -144,7 +144,7 @@ public class CarModelSpecification {
         if(option.length() == 0){throw new IllegalArgumentException("An option cannot be the empty string.");}
         if(option.trim().length() <= 0){throw new IllegalArgumentException("An option cannot be whitespace.");}
         if(!availableOptions.containsKey(component)){
-            availableOptions.put(component, new HashSet<String>());
+            availableOptions.put(component, new HashSet<>());
         }
         availableOptions.get(component).add(option);
     }
@@ -209,7 +209,9 @@ public class CarModelSpecification {
      * @return A deep copy of this car model specification.
      */
     public CarModelSpecification deepCopy(){
-        return new CarModelSpecification(this.modelName, standardTaskTime, this.availableOptions);
+        TreeMap<String, HashSet<String>> availableOptionsCopy = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        availableOptionsCopy.putAll(availableOptions);
+        return new CarModelSpecification(this.modelName, this.standardTaskTime, availableOptionsCopy);
     }
 
     /**
