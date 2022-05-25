@@ -27,10 +27,10 @@ public class AssemblyTask {
      *
      * @param name the name for this assembly task
      * @param taskDefinition the description for this assembly task
-     * @throws IllegalArgumentException | name == null
-     *                                  | name.isEmpty()
-     *                                  | taskDefinition == null
-     *                                  | taskDefinition.isEmpty()
+     * @throws IllegalArgumentException name is null
+     * @throws IllegalArgumentException name is the empty string
+     * @throws IllegalArgumentException taskDefinition is null
+     * @throws IllegalArgumentException taskDefinition is the empty string
      */
     public AssemblyTask(String name, String taskDefinition) {
         if (name == null) { throw new IllegalArgumentException("The name for this task cannot be null."); }

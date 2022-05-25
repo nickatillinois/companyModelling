@@ -14,7 +14,7 @@ public class CarBodyPost extends WorkStation{
      * Creates a car body post.
      *
      * @param company the observer that will be watching this class
-     * @throws IllegalArgumentException | company == null
+     * @throws IllegalArgumentException company is null
      */
     public CarBodyPost(Company company) throws IllegalArgumentException {
         super("Car Body Post");
@@ -24,7 +24,7 @@ public class CarBodyPost extends WorkStation{
 
     /**
      * Assigns the car options of the current car order to this work station and creates new tasks to be completed.
-     * @throws RuntimeException | The adding of the assembly tasks goes wrong.
+     * @throws RuntimeException the adding of the assembly tasks goes wrong
      */
     @Override
     public void newTasks() throws RuntimeException {

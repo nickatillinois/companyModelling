@@ -37,9 +37,6 @@ public class UC5_CheckProductionStatisticsTest {
         legalAOptions.put("airco", "manual"); legalAOptions.put("gearbox", "6 manual");
         legalAOptions.put("wheels", "winter");
         company.completeOrderingForm(legalAOptions,"Luna Van den Bergh","A");
-        company.completeOrderingForm(legalAOptions,"Luna Van den Bergh","A");
-        company.completeOrderingForm(legalAOptions,"Luna Van den Bergh","A");
-        company.completeOrderingForm(legalAOptions,"Luna Van den Bergh","A");
     }
 
     @Test
@@ -63,11 +60,17 @@ public class UC5_CheckProductionStatisticsTest {
     }
 
     @Test
-    public void checkProductionStatistics() throws IllegalCompletionDateException, IllegalModelException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+    public void checkProductionStatisticsToday() throws IllegalCompletionDateException, IllegalModelException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
 
-        //TODO statistieken toevoegen
+        // Because our system works with real-time dates, showcasing the statistics use case is a bit difficult.
+        // To really test it, we would have te run our program consecutively for multiple days, which is -
+        // - obviously not possible. That's why this test only includes the average and median overall, not -
+        // the last two. These numbers do not make sense because the program isn't made to work that way.
 
-        ByteArrayInputStream in = new ByteArrayInputStream("3\ns\nd\n4\n".getBytes());
+        ByteArrayInputStream in = new ByteArrayInputStream(("1\nw\n0\n0\nd\n80\n0\nd\n80\n" +
+                                                            "1\nw\n1\n0\nd\n80\n0\nd\n80\n" +
+                                                            "1\nw\n2\n0\nd\n80\n0\nd\n80\n0\nd\n80\n0\nd\n80\n" +
+                                                            "3\ns\nd\n4\n").getBytes());
         System.setIn(in);
 
         ByteArrayOutputStream test = new ByteArrayOutputStream();
@@ -78,6 +81,10 @@ public class UC5_CheckProductionStatisticsTest {
         new UI( new GarageHolderUI( new GarageHolderController(company)),
                 new ManagerUI(      new ManagerController(company)),
                 new MechanicUI(     new MechanicController( new Mechanic(assemblyLine) )));
+
+        String output = test.toString();
+        assertTrue(output.contains("the average of completed cars in a day is 1.0"));
+        assertTrue(output.contains("the median of completed cars in a day is 1.0"));
 
         System.setOut(old);
         System.out.println(test);

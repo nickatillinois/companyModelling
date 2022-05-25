@@ -51,14 +51,14 @@ public class Main {
         legalBOptions.put("spoiler", "low");
 
         company.completeOrderingForm(legalBOptions,"Jef Smeets","B");
-        company.completeOrderingForm(legalAOptions,"Danny Smeets","A");
-        company.completeOrderingForm(legalAOptions,"Dirk Smeets","A");
-        company.completeOrderingForm(legalAOptions,"Jef Smeets","A");
-        company.completeOrderingForm(legalAOptions,"Jef Smeets","A");
-        company.completeOrderingForm(legalAOptions,"Jef Smeets","A");
-        company.completeOrderingForm(legalAOptions,"Jef Smeets","A");
-        company.completeOrderingForm(legalBOptions,"Jef Smeets","B");
-        company.completeOrderingForm(legalBOptions,"Jef Smeets","B");
+        //company.completeOrderingForm(legalAOptions,"Danny Smeets","A");
+        //company.completeOrderingForm(legalAOptions,"Dirk Smeets","A");
+        //company.completeOrderingForm(legalAOptions,"Jef Smeets","A");
+        //company.completeOrderingForm(legalAOptions,"Jef Smeets","A");
+        //company.completeOrderingForm(legalAOptions,"Jef Smeets","A");
+        //company.completeOrderingForm(legalAOptions,"Jef Smeets","A");
+        //company.completeOrderingForm(legalBOptions,"Jef Smeets","B");
+        //company.completeOrderingForm(legalBOptions,"Jef Smeets","B");
 
         new UI(garageHolderUI, managerUI, mechanicUI);
 

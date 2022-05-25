@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 /**
- * A class representing statistics of this car manufacturing company.
+ * Class representing statistics of this car manufacturing company.
  *
  * @author SWOP team 10
  */
@@ -39,13 +39,13 @@ public abstract class Statistics implements StatisticsObserver {
      *
      * @param key the key for the map
      * @param values the value belonging to the given key
-     * @throws IllegalArgumentException | key == null
-     *                                  | !isDate(key)
-     *                                  | values == null
+     * @throws IllegalArgumentException key is null
+     * @throws IllegalArgumentException key is not a real date in the YYYY-MM-DD format
+     * @throws IllegalArgumentException values is null
      */
     public void addStats(String key, List<Double> values) {
         if (key == null) throw new IllegalArgumentException("The given key cannot be null.");
-        if ( !isDate(key) ) { throw new IllegalArgumentException("The given key must be a date in the YYYY-DD-MM format."); }
+        if ( !isDate(key) ) { throw new IllegalArgumentException("The given key must be a date in the YYYY-MM-DD format."); }
         if ( values == null ) { throw new IllegalArgumentException("The given values cannot be null."); }
 
         statsPerDay.put(key,values);
@@ -88,7 +88,7 @@ public abstract class Statistics implements StatisticsObserver {
      *
      * @param numbers the list of doubles to calculate the median
      * @return the median of the given list of doubles
-     * @throws IllegalArgumentException | numbers == null
+     * @throws IllegalArgumentException numbers is null
      */
     private double calculateMedian(List<Double> numbers) {
         if (numbers == null) throw new IllegalArgumentException("The given values cannot be null.");
@@ -109,8 +109,8 @@ public abstract class Statistics implements StatisticsObserver {
      * @param fromXLastDays the number of days this method will return statistics from
      * @param date the date statistics need to be calculated on
      * @return a list of statistics in string form
-     * @throws IllegalArgumentException | fromXLastDays < 0
-     *                                  | date == null
+     * @throws IllegalArgumentException fromXLastDays is less than zero
+     * @throws IllegalArgumentException date is null
      */
     public abstract List<String> getStatistics(int fromXLastDays, LocalDate date);
 

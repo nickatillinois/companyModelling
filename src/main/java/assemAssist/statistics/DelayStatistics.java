@@ -24,8 +24,8 @@ public class DelayStatistics extends Statistics {
      * @param fromXLastDays the number of days this method will return statistics from
      * @param date the date statistics need to be calculated on
      * @return a list of statistics in string form
-     * @throws IllegalArgumentException | fromXLastDays < 0
-     *                                  | date == null
+     * @throws IllegalArgumentException fromXLastDays is less than zero
+     * @throws IllegalArgumentException date is null
      */
     @Override
     public List<String> getStatistics(int fromXLastDays, LocalDate date) {
