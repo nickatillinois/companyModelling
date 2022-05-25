@@ -11,8 +11,12 @@ public class UI {
         System.out.println("||                 Welcome to AssemAssist.                   ||");
         System.out.println("==============================================================");
         while (true){
-            System.out.println("Please enter the number corresponding with your role: " +
-                    "\n\t1. Car Mechanic; \n\t2. Garage Holder; \n\t3. Manager; \n\t4. STOP.");
+            System.out.println("""
+                    Please enter the number corresponding with your role:\s
+                    \t1. Car Mechanic;\s
+                    \t2. Garage Holder;\s
+                    \t3. Manager;\s
+                    \t4. STOP.""");
             String option = in.next();
             switch (option) {
                 case "1" -> mechanicUI.startUI(in);
