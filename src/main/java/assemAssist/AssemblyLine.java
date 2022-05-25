@@ -207,6 +207,10 @@ public class AssemblyLine {
         return getNewState();
     }
 
+    /**
+     * Method to check whether the assembly line is empty. That is, there are no orders in the WorkStations.
+     * @return whether the assembly line is empty.
+     */
     private boolean emptyAssemblyLine() {
         for( WorkStation workStation : workStations ){
             if (workStation.getCurrentOrder() != null) {
@@ -230,6 +234,10 @@ public class AssemblyLine {
         throw new IllegalArgumentException("This is not a work station at this assembly line!");
     }
 
+    /**
+     * Returns the new state of the assembly line.
+     * @return List of String representing the orders in the workstations.
+     */
     private List<String> getNewState() {
         List<String> newStateAndFinished = new ArrayList<>();
         List<CarOrder> currentStatus  = getCurrentState();

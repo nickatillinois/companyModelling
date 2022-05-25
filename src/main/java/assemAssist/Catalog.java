@@ -215,6 +215,9 @@ public class Catalog {
         this.addModel(new CarModelSpecification("C", 60, C));
     }
 
+    /**
+     * Clears the catalog of all available car models.
+     */
     public void clearCatalog() {
         availableModels.clear();
     }

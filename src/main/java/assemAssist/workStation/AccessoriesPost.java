@@ -4,7 +4,7 @@ import assemAssist.AssemblyTask;
 import assemAssist.Company;
 
 /**
- *  Class representing an Accessories Post
+ *  Class representing an Accessories Post.
  */
 public class AccessoriesPost extends WorkStation{
 

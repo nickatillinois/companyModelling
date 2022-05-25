@@ -4,7 +4,7 @@ import assemAssist.AssemblyTask;
 import assemAssist.Company;
 
 /**
- *  Class representing a Car Body post
+ *  Class representing a Car Body post.
  */
 public class CarBodyPost extends WorkStation{
 

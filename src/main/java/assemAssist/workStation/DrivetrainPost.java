@@ -4,7 +4,7 @@ import assemAssist.AssemblyTask;
 import assemAssist.Company;
 
 /**
- *  Class representing a Drivetrain Post
+ *  Class representing a Drivetrain Post.
  */
 public class DrivetrainPost extends WorkStation{
 

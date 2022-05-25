@@ -4,6 +4,11 @@ import assemAssist.workStation.WorkStation;
 
 import java.util.List;
 
+/**
+ * Represents a mechanic working at an AssemblyLine. They can check the current status of the assembly line,
+ * select a WorkStation to work at and perform tasks at this WorkStation.
+ */
+
 public class Mechanic {
 
     /**
