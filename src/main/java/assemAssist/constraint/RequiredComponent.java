@@ -10,7 +10,7 @@ public class RequiredComponent extends Constraint {
     /**
      * Constructor for the class.
      */
-    public RequiredComponent() {
+    protected RequiredComponent() {
         super();
     }
 
@@ -34,23 +34,8 @@ public class RequiredComponent extends Constraint {
                         chosenSpecifications.getChosenOptions().containsKey("wheels")))
         {
         String warning = "You are missing an essential component: body, color, engine, gearbox, seats or/and wheels.\nPlease choose all of them because we can't build a car without them.";
-        String[] warningLines = warning.split("\n");
-            String boxMessage = "\n" +
-                    "|" +
-                    "-".repeat(warningLines[0].length() / 4) +
-                    "!" +
-                    "-".repeat(warningLines[0].length() / 4) +
-                    "|\n" +
-                    warning +
-                    "\n" +
-                    "|" +
-                    "-".repeat(warningLines[0].length() / 4) +
-                    "!" +
-                    "-".repeat(warningLines[0].length() / 4) +
-                    "|\n";
-        throw new RequiredComponentException(boxMessage);
+        throw new RequiredComponentException(putInBox(warning));
         }
-        return;
 
     }
 
@@ -68,5 +53,22 @@ public class RequiredComponent extends Constraint {
             return false;
         }
         return getClass() == obj.getClass();
+    }
+
+    private String putInBox(String warning){
+        String[] warningLines = warning.split("\n");
+        return "\n" +
+                "|" +
+                "-".repeat(warningLines[0].length() / 4) +
+                "!" +
+                "-".repeat(warningLines[0].length() / 4) +
+                "|\n" +
+                warning +
+                "\n" +
+                "|" +
+                "-".repeat(warningLines[0].length() / 4) +
+                "!" +
+                "-".repeat(warningLines[0].length() / 4) +
+                "|\n";
     }
 }

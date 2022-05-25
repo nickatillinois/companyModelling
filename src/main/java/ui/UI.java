@@ -1,17 +1,22 @@
 package ui;
 
 import assemAssist.exceptions.*;
-
 import java.util.Scanner;
 
 public class UI {
     public UI(GarageHolderUI garageHolderUI, ManagerUI managerUI, MechanicUI mechanicUI) throws IllegalModelException, IllegalCompletionDateException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         Scanner in = new Scanner(System.in);
-
-        System.out.println("Welcome to AssemAssist.");
+        // print welcome message in a nice box
+        System.out.println("==============================================================");
+        System.out.println("||                 Welcome to AssemAssist.                   ||");
+        System.out.println("==============================================================");
         while (true){
-            System.out.println("Please enter the number corresponding with your role: " +
-                    "1 Car Mechanic, 2 Garage Holder, 3 Manager or 4 STOP.");
+            System.out.println("""
+                    Please enter the number corresponding with your role:\s
+                    \t1. Car Mechanic;\s
+                    \t2. Garage Holder;\s
+                    \t3. Manager;\s
+                    \t4. STOP.""");
             String option = in.next();
             switch (option) {
                 case "1" -> mechanicUI.startUI(in);
@@ -23,8 +28,5 @@ public class UI {
                 default -> System.out.println("The option you chose was not valid, please try again.");
             }
         }
-
     }
-
-
 }

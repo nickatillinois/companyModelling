@@ -312,7 +312,7 @@ public class CarOrderTest {
     }
 
     @Test
-    void testAddOptionAAndBPair() throws IllegalConstraintException, IllegalModelException {
+    void testAddOptionAAndBPair() throws IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         TreeMap<String, String> options = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         options.put("color", "red");
         options.put("body", "sedan");

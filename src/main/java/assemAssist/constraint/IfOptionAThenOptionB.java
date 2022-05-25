@@ -21,15 +21,18 @@ public class IfOptionAThenOptionB extends Constraint {
      * The set of lists of each 2 elements implying that option A leads to option B.
      * If the array contains more than two elements, that indicates that the first element implicates the latter two.
      */
-    private ArrayList<String> pairs;
+    private ArrayList<String> constraintPairs;
 
 
     /**
      * Constructor for the IfOptionAThenOptionB class.
      */
-    protected IfOptionAThenOptionB(ArrayList<String> pairs) throws IllegalConstraintException {
+    protected IfOptionAThenOptionB(ArrayList<String> constraintPairs) throws IllegalConstraintException {
         super();
-        addOptionAThenOptionBPair(pairs);
+        if(constraintPairs == null) {
+            throw new IllegalConstraintException("The constraintPairs cannot be null.");
+        }
+        addOptionAThenOptionBPair(new ArrayList<>(constraintPairs));
     }
 
     /**
@@ -51,20 +54,16 @@ public class IfOptionAThenOptionB extends Constraint {
             if (option == null) {
                 throw new IllegalConstraintException("Given list contains null strings.");
             }
-            // each string in pair must be distinct
-            // get only the distinct strings
-            // take each string in pair and add it to the set in lower case
-            HashSet<String> distinct = new HashSet<>(pair.stream().map(String::toLowerCase).collect(ArrayList::new, ArrayList::add, ArrayList::addAll));
-            if (pair.size() != distinct.size()) {
+            HashSet<String> distinctPairs = new HashSet<>(pair.stream().map(String::toLowerCase).collect(ArrayList::new, ArrayList::add, ArrayList::addAll));
+            if (pair.size() != distinctPairs.size()) {
                 throw new IllegalConstraintException("Given list contains duplicate strings.");
             }
         }
-        // set each string in pair to lower case
         ArrayList<String> lowerCasePair = new ArrayList<>();
         for (String option : pair) {
             lowerCasePair.add(option.toLowerCase());
         }
-        this.pairs = lowerCasePair;
+        this.constraintPairs = lowerCasePair;
     }
 
 
@@ -81,8 +80,6 @@ public class IfOptionAThenOptionB extends Constraint {
         if (chosenSpecifications == null) {
             throw new IllegalArgumentException("Chosen specifications is null");
         }
-        // for each key in chosenSpecifications, get the value
-        // create a set of Strings of the values
         HashSet<String> chosenOptionsSet = new HashSet<>();
         for (String key : chosenSpecifications.getChosenOptions().keySet()) {
             String value = chosenSpecifications.getChosenOptions().get(key);
@@ -90,70 +87,72 @@ public class IfOptionAThenOptionB extends Constraint {
         }
         // for each pair in pairs, check if the first element is in the set of chosen options
         boolean pairOK;
-        if (chosenOptionsSet.contains(this.pairs.get(0).toLowerCase())) {
+        if (chosenOptionsSet.contains(this.constraintPairs.get(0).toLowerCase())) {
             pairOK = false;
             // check if one of the other elements is in the set of chosen options
-            for (int i = 1; i < this.pairs.size(); i++) {
-                if (chosenOptionsSet.contains(this.pairs.get(i).toLowerCase())) {
+            for (int i = 1; i < this.constraintPairs.size(); i++) {
+                if (chosenOptionsSet.contains(this.constraintPairs.get(i).toLowerCase())) {
                     pairOK = true;
                     break;
                 }
             }
             if (!pairOK) {
-                // take a set consisting of the elements in pair and remove the first element
-                final String[] causingComponent = new String[1];
-                final String[] impliedComponent = new String[1];
-                new Catalog().getModel(chosenSpecifications.getModelName()).getAvailableOptions().forEach((key, value) -> {
-                    for (String option : value) {
-                        if (option.toLowerCase().equals(this.pairs.get(0).toLowerCase())) {
-                            causingComponent[0] = key;
-                        }
-                        if (option.toLowerCase().equals(this.pairs.get(1).toLowerCase())) {
-                            impliedComponent[0] = key;
-                        }
-                    }
-                });
-                HashSet<String> pairImplied = new HashSet<>(this.pairs);
-                pairImplied.remove(this.pairs.get(0));
-                // generate a box message with | ! and -
-                String warning = "You chose a " +  this.pairs.get(0) + " " + causingComponent[0] + ".\nThis implies one of the following options for component " + impliedComponent[0] + ": " + pairImplied.stream().toList() + ".\nPlease choose one of these options.";
-                //Split warning into 4 equal lines
-                String[] warningLines = warning.split("\n");
-                StringBuilder boxMessage = new StringBuilder();
-                boxMessage.append("\n");
-                boxMessage.append("|");
-                boxMessage.append("-".repeat(warningLines[0].length()));
-                boxMessage.append("!");
-                boxMessage.append("-".repeat(warningLines[0].length()));
-                boxMessage.append("|\n");
-                boxMessage.append(warning);
-                boxMessage.append("\n");
-                boxMessage.append("|");
-                boxMessage.append("-".repeat(warningLines[0].length()));
-                boxMessage.append("!");
-                boxMessage.append("-".repeat(warningLines[0].length()));
-                boxMessage.append("|\n");
-                throw new OptionAThenOptionBException(boxMessage.toString());
+                String causingComponent = getCausingAndImplyingComponent(chosenSpecifications)[0];
+                String impliedComponent = getCausingAndImplyingComponent(chosenSpecifications)[1];
+                HashSet<String> pairImplied = new HashSet<>(this.constraintPairs);
+                pairImplied.remove(this.constraintPairs.get(0));
+                String warning = "You chose a " +  this.constraintPairs.get(0) + " " + causingComponent + ".\nThis implies one of the following options for component " + impliedComponent + ": " + pairImplied.stream().toList() + ".\nPlease choose one of these options.";
+                throw new OptionAThenOptionBException(putInBox(warning));
             }
         }
     }
 
+    private String putInBox(String warning) {
+        String[] warningLines = warning.split("\n");
+        return "\n" +
+                "|" +
+                "-".repeat(warningLines[0].length()) +
+                "!" +
+                "-".repeat(warningLines[0].length()) +
+                "|\n" +
+                warning +
+                "\n" +
+                "|" +
+                "-".repeat(warningLines[0].length()) +
+                "!" +
+                "-".repeat(warningLines[0].length()) +
+                "|\n";
+    }
+
+    private String[] getCausingAndImplyingComponent(CarModel chosenSpecifications) throws IllegalModelException {
+        final String[] causingComponent = new String[1];
+        final String[] impliedComponent = new String[1];
+        new Catalog().getModel(chosenSpecifications.getModelName()).getAvailableOptions().forEach((key, value) -> {
+            for (String option : value) {
+                if (option.equalsIgnoreCase(this.constraintPairs.get(0))) {
+                    causingComponent[0] = key;
+                }
+                if (option.equalsIgnoreCase(this.constraintPairs.get(1))) {
+                    impliedComponent[0] = key;
+                }
+            }
+        });
+        return new String[]{causingComponent[0], impliedComponent[0]};
+    }
+
     @Override
     protected void reset() {
-        // clear the list of pairs
-        pairs.clear();
+        constraintPairs.clear();
     }
+
     @Override
     public boolean equals(Object obj) {
         if (this.getClass() != obj.getClass())
             return false;
         IfOptionAThenOptionB other = (IfOptionAThenOptionB) obj;
-        // 2 lists of pairs are equal if they have the same size and the same elements in pairs in the same order
-        // if the size is different, the lists are not equal
-        if (this.pairs.size() != other.pairs.size()) return false;
-        // if the size is the same, check if the elements in pairs are the same
-        for (int i = 0; i < this.pairs.size(); i++) {
-            if (!this.pairs.get(i).equals(other.pairs.get(i))) return false;
+        if (this.constraintPairs.size() != other.constraintPairs.size()) return false;
+        for (int i = 0; i < this.constraintPairs.size(); i++) {
+            if (!this.constraintPairs.get(i).equals(other.constraintPairs.get(i))) return false;
         }
         return true;
     }
@@ -161,17 +160,16 @@ public class IfOptionAThenOptionB extends Constraint {
     @Override
     public int hashCode() {
         int hash = 7;
-        // hashcode so that 2 lists of pairs are equal if they have the same size and the same elements in pairs in the same order
-        hash = 31 * hash + this.pairs.size();
-        for (String pair : this.pairs) {
+        // hashcode so that 2 lists of pairs are equal iff they have the same size and the same elements in pairs in the same order
+        hash = 31 * hash + this.constraintPairs.size();
+        for (String pair : this.constraintPairs) {
             hash = 31 * hash + pair.hashCode();
         }
-        // take the sun of the hashcodes of all elements in pairs, except the first one
         int sum = 0;
-        for (int i = 1; i < this.pairs.size(); i++) {
-            sum += this.pairs.get(i).hashCode();
+        for (int i = 1; i < this.constraintPairs.size(); i++) {
+            sum += this.constraintPairs.get(i).hashCode();
         }
-        hash = hash + (sum - pairs.get(0).hashCode());
+        hash = hash + (sum - constraintPairs.get(0).hashCode());
         return hash;
     }
 }
