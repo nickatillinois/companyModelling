@@ -7,7 +7,13 @@ assemAssist.observer
 assemAssist.schedulingAlgorithm
 assemAssist.statistics
 assemAssist.workStation
-integrationTests
 controller
+main.assemAssist
+main.assemAssist.comparator
+main.assemAssist.constraint
+main.assemAssist.exceptions
+main.assemAssist.observer
+main.controller
+main.ui
 ui
 useCases
