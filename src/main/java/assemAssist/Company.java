@@ -236,28 +236,6 @@ public class Company implements TaskObserver {
     }
 
     /**
-     * Returns a string representation of the model with the given name.
-     * @param model the name of the model to get the string representation of
-     * @throws IllegalArgumentException if the given model is null
-     *                                  or if the given model is empty
-     *                                  or if only whitespace is given
-     * @throws IllegalModelException if the given model is not offered by the company
-     * @return set of model names that are offered by the company
-     */
-    public String selectModelString(String model) throws IllegalModelException, IllegalArgumentException {
-        if (model == null) {
-            throw new IllegalArgumentException("Model name cannot be null.");
-        }
-        if (model.isEmpty()) {
-            throw new IllegalArgumentException("Model name cannot be empty.");
-        }
-        if(model.trim().length() <= 0) {
-            throw new IllegalArgumentException("Model name cannot be whitespace.");
-        }
-        return catalog.getModelSpecificationString(model);
-    }
-
-    /**
      * Returns a map of components and their respective offered options for the given modelName.
      * @param model the name of the model to get the map of components and their respective offered options for
      *              from the catalog

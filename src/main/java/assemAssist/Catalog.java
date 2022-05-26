@@ -76,25 +76,6 @@ public class Catalog {
     }
 
     /**
-     * A method that returns a string representation of a given car model.
-     * @param modelName The name of the car model.
-     * @return A string representation of the car model.
-     * @throws IllegalArgumentException if the given modelName is null or empty or only contains whitespace.
-     */
-    public String getModelSpecificationString(String modelName) throws IllegalModelException {
-        if (modelName == null) {
-            throw new IllegalArgumentException("modelName name cannot be null.");
-        }
-        if (modelName.isEmpty()) {
-            throw new IllegalArgumentException("modelName name cannot be empty.");
-        }
-        if(modelName.trim().length() <= 0) {
-            throw new IllegalArgumentException("modelName name cannot be whitespace.");
-        }
-        return getModel(modelName).toString();
-    }
-
-    /**
      * Returns a Map of components and their corresponding options for the given car model name.
      * @param modelName The name of the car model.
      * @return A Map of components and their corresponding options for the given car model name.

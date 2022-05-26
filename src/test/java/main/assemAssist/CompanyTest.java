@@ -174,31 +174,6 @@ public class CompanyTest {
         assertEquals(3, company.getAvailableModels().size());
         boolean got_error = false;
         try{
-            company.selectModelString(null);
-        }
-        catch (IllegalArgumentException | IllegalModelException e){
-            assertEquals("Model name cannot be null.", e.getMessage());
-            got_error = true;
-        }
-        assertTrue(got_error);
-        got_error = false;
-        try{
-            company.selectModelString("");
-        }
-        catch (IllegalArgumentException | IllegalModelException e){
-            assertEquals("Model name cannot be empty.", e.getMessage());
-            got_error = true;
-        }
-        assertTrue(got_error);
-        got_error = false;
-        try{
-            company.selectModelString(" ");
-        }
-        catch (IllegalArgumentException | IllegalModelException e){
-            assertEquals("Model name cannot be whitespace.", e.getMessage());
-            got_error = true;
-        }
-        try{
             company.selectModel(null);
         }
         catch (IllegalArgumentException | IllegalModelException e){

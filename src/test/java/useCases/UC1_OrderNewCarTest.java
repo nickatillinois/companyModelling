@@ -68,7 +68,7 @@ public class UC1_OrderNewCarTest {
         assertEquals(NicksCompany.getProductionScheduler().getPendingOrders().size(), 5);
         assertEquals(NicksCompany.getOrdersFromGarageHolder("Timo Smeets")[0].size(), 3);
         assertEquals(NicksCompany.getOrdersFromGarageHolder("Filip Smeets")[0].size(), 2);
-        ByteArrayInputStream in = new ByteArrayInputStream("2\nTimo Smeets\nn\nA\ns\n0\ns\n0\ns\n0\ns\n0\ns\n0\ns\n0\ns\n0\nq\n4".getBytes());
+        ByteArrayInputStream in = new ByteArrayInputStream("2\nTimo Smeets\nn\nA\ns\n0\ns\n0\ns\n0\ns\n0\ns\n0\ns\n0\ns\n0\nq\nc\n4".getBytes());
         System.setIn(in);
         new UI(new GarageHolderUI(new GarageHolderController(NicksCompany)),new ManagerUI(new ManagerController(NicksCompany)),
                 new MechanicUI(new MechanicController(new Mechanic(NicksCompany.getProductionScheduler().getAssemblyLine()))));
