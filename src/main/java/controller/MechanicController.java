@@ -68,6 +68,10 @@ public class MechanicController {
         }
     }
 
+    /**
+     * Gives an overview of the AssemblyLine and the tasks that are still pending
+     * @return List of WorkStations and their pending tasks.
+     */
     public List<String> getCurrentStateAssembly() {
         return mechanic.getCurrentStateAssembly();
     }
