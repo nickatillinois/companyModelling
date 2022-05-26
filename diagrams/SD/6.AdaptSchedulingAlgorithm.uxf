@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.3.0">
-  <zoom_level>8</zoom_level>
+  <zoom_level>5</zoom_level>
   <element>
     <id>UMLActor</id>
     <coordinates>
-      <x>200</x>
-      <y>96</y>
-      <w>72</w>
-      <h>88</h>
+      <x>610</x>
+      <y>235</y>
+      <w>45</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>: Manager</panel_attributes>
     <additional_attributes/>
@@ -15,21 +15,21 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>392</x>
-      <y>160</y>
-      <w>24</w>
-      <h>712</h>
+      <x>730</x>
+      <y>275</y>
+      <w>15</w>
+      <h>480</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;870.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;940.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>512</x>
-      <y>144</y>
-      <w>112</w>
-      <h>24</h>
+      <x>825</x>
+      <y>265</y>
+      <w>70</w>
+      <h>15</h>
     </coordinates>
     <panel_attributes>: ManagerController</panel_attributes>
     <additional_attributes/>
@@ -37,21 +37,21 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>784</x>
-      <y>160</y>
-      <w>24</w>
-      <h>704</h>
+      <x>1045</x>
+      <y>275</y>
+      <w>15</w>
+      <h>475</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;860.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;930.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>744</x>
-      <y>144</y>
-      <w>80</w>
-      <h>24</h>
+      <x>1020</x>
+      <y>265</y>
+      <w>50</w>
+      <h>15</h>
     </coordinates>
     <panel_attributes>: Company</panel_attributes>
     <additional_attributes/>
@@ -59,9 +59,93 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>560</x>
-      <y>208</y>
-      <w>16</w>
+      <x>855</x>
+      <y>305</y>
+      <w>10</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>bg=white
+layer=1000
+transparency=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>855</x>
+      <y>275</y>
+      <w>15</w>
+      <h>480</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;940.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>735</x>
+      <y>440</y>
+      <w>130</w>
+      <h>25</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+selectSchedulingAlgorithm
+(String algorithmeName)</panel_attributes>
+    <additional_attributes>240.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>855</x>
+      <y>450</y>
+      <w>10</w>
+      <h>85</h>
+    </coordinates>
+    <panel_attributes>bg=white
+layer=1000
+transparency=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>710</x>
+      <y>265</y>
+      <w>50</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>: ManagerUI</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>630</x>
+      <y>275</y>
+      <w>15</w>
+      <h>480</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;940.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>635</x>
+      <y>285</y>
+      <w>105</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+Change Scheduling algorithm</panel_attributes>
+    <additional_attributes>190.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>630</x>
+      <y>295</y>
+      <w>10</w>
       <h>120</h>
     </coordinates>
     <panel_attributes>bg=white
@@ -72,94 +156,10 @@ transparency=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>560</x>
-      <y>160</y>
-      <w>24</w>
-      <h>712</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;870.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>400</x>
-      <y>368</y>
-      <w>176</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-selectSchedulingAlgorithm
-(string algorithmeName)</panel_attributes>
-    <additional_attributes>200.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>560</x>
-      <y>384</y>
-      <w>16</w>
-      <h>136</h>
-    </coordinates>
-    <panel_attributes>bg=white
-layer=1000
-transparency=0</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>360</x>
-      <y>144</y>
-      <w>80</w>
-      <h>24</h>
-    </coordinates>
-    <panel_attributes>: ManagerUI</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>232</x>
-      <y>168</y>
-      <w>24</w>
-      <h>704</h>
-    </coordinates>
-    <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;860.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>240</x>
-      <y>176</y>
-      <w>168</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-Change Scheduling algorithm</panel_attributes>
-    <additional_attributes>190.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>232</x>
-      <y>192</y>
-      <w>16</w>
-      <h>144</h>
-    </coordinates>
-    <panel_attributes>bg=white
-layer=1000
-transparency=0</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>240</x>
-      <y>360</y>
-      <w>168</w>
-      <h>32</h>
+      <x>635</x>
+      <y>435</y>
+      <w>105</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 indicates his choise</panel_attributes>
@@ -168,10 +168,10 @@ indicates his choise</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>392</x>
-      <y>192</y>
-      <w>16</w>
-      <h>144</h>
+      <x>730</x>
+      <y>295</y>
+      <w>10</w>
+      <h>115</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=1000
@@ -181,10 +181,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>392</x>
-      <y>376</y>
-      <w>16</w>
-      <h>152</h>
+      <x>730</x>
+      <y>445</y>
+      <w>10</w>
+      <h>95</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=1000
@@ -194,10 +194,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>784</x>
-      <y>216</y>
-      <w>16</w>
-      <h>96</h>
+      <x>1045</x>
+      <y>310</y>
+      <w>10</w>
+      <h>55</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=1000
@@ -207,10 +207,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>992</x>
-      <y>144</y>
-      <w>104</w>
-      <h>24</h>
+      <x>1245</x>
+      <y>265</y>
+      <w>65</w>
+      <h>15</h>
     </coordinates>
     <panel_attributes>: ProductionSchedule</panel_attributes>
     <additional_attributes/>
@@ -218,21 +218,21 @@ transparency=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1040</x>
-      <y>160</y>
-      <w>24</w>
-      <h>712</h>
+      <x>1275</x>
+      <y>275</y>
+      <w>15</w>
+      <h>480</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;870.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;940.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1040</x>
-      <y>224</y>
-      <w>16</w>
-      <h>80</h>
+      <x>1275</x>
+      <y>315</y>
+      <w>10</w>
+      <h>35</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=1000
@@ -242,58 +242,58 @@ transparency=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
-      <y>192</y>
-      <w>176</w>
-      <h>32</h>
+      <x>735</x>
+      <y>295</y>
+      <w>130</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 adaptSchedulingAlgorithm()</panel_attributes>
-    <additional_attributes>200.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>240.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>568</x>
-      <y>200</y>
-      <w>232</w>
-      <h>32</h>
+      <x>860</x>
+      <y>300</y>
+      <w>195</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-getProductionScheduler()</panel_attributes>
-    <additional_attributes>270.0;20.0;10.0;20.0</additional_attributes>
+getSchedulingAlgorithms()</panel_attributes>
+    <additional_attributes>370.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>568</x>
-      <y>424</y>
-      <w>232</w>
-      <h>32</h>
+      <x>860</x>
+      <y>475</y>
+      <w>195</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 </panel_attributes>
-    <additional_attributes>10.0;20.0;270.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;370.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
-      <y>312</y>
-      <w>176</w>
-      <h>32</h>
+      <x>735</x>
+      <y>395</y>
+      <w>130</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
 schedulers : List&lt;String&gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;200.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;240.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>240</x>
-      <y>320</y>
-      <w>168</w>
-      <h>40</h>
+      <x>635</x>
+      <y>400</y>
+      <w>105</w>
+      <h>25</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 give overview of
@@ -303,10 +303,10 @@ scheduling algorithms</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>88</x>
-      <y>40</y>
-      <w>1312</w>
-      <h>832</h>
+      <x>520</x>
+      <y>210</y>
+      <w>940</w>
+      <h>605</h>
     </coordinates>
     <panel_attributes>Adapt Scheduling Algorithm</panel_attributes>
     <additional_attributes/>
@@ -314,34 +314,34 @@ scheduling algorithms</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>792</x>
-      <y>208</y>
-      <w>264</w>
-      <h>32</h>
+      <x>1050</x>
+      <y>305</y>
+      <w>235</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-getSchedulingAlgorithms()</panel_attributes>
-    <additional_attributes>310.0;20.0;10.0;20.0</additional_attributes>
+getSchedulers()</panel_attributes>
+    <additional_attributes>450.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>792</x>
-      <y>288</y>
-      <w>264</w>
-      <h>32</h>
+      <x>1050</x>
+      <y>340</y>
+      <w>235</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
-schedulers : List&lt;String&gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;310.0;20.0</additional_attributes>
+schedulers : List&lt;SchedulingAlgorithm&gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;450.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>232</x>
-      <y>336</y>
-      <w>16</w>
-      <h>208</h>
+      <x>630</x>
+      <y>435</y>
+      <w>10</w>
+      <h>115</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=1000
@@ -351,22 +351,22 @@ transparency=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>568</x>
-      <y>376</y>
-      <w>232</w>
-      <h>32</h>
+      <x>860</x>
+      <y>445</y>
+      <w>195</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-getProductionScheduler()</panel_attributes>
-    <additional_attributes>270.0;20.0;10.0;20.0</additional_attributes>
+selectScheduler(SchedulingAlgorithm scheduler)</panel_attributes>
+    <additional_attributes>370.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>784</x>
-      <y>392</y>
-      <w>16</w>
-      <h>48</h>
+      <x>1045</x>
+      <y>455</y>
+      <w>10</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=1000
@@ -376,10 +376,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1200</x>
-      <y>144</y>
-      <w>104</w>
-      <h>24</h>
+      <x>1350</x>
+      <y>265</y>
+      <w>65</w>
+      <h>15</h>
     </coordinates>
     <panel_attributes>: SchedulingAlgorithm</panel_attributes>
     <additional_attributes/>
@@ -387,10 +387,10 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1248</x>
-      <y>480</y>
-      <w>16</w>
-      <h>24</h>
+      <x>1380</x>
+      <y>510</y>
+      <w>10</w>
+      <h>15</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=1000
@@ -400,34 +400,33 @@ transparency=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1248</x>
-      <y>160</y>
-      <w>24</w>
-      <h>704</h>
+      <x>1380</x>
+      <y>275</y>
+      <w>15</w>
+      <h>475</h>
     </coordinates>
     <panel_attributes>lt=.</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;860.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;930.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>792</x>
-      <y>384</y>
-      <w>264</w>
-      <h>40</h>
+      <x>1050</x>
+      <y>450</y>
+      <w>235</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-selectSchedulingAlgorithm
-(string algorithmName)</panel_attributes>
-    <additional_attributes>310.0;20.0;10.0;20.0</additional_attributes>
+setSchedulingAlgorithm(schedulingAlgorithm)</panel_attributes>
+    <additional_attributes>450.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1040</x>
-      <y>400</y>
-      <w>16</w>
-      <h>32</h>
+      <x>1275</x>
+      <y>460</y>
+      <w>10</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=1000
@@ -437,132 +436,82 @@ transparency=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>792</x>
-      <y>416</y>
-      <w>264</w>
-      <h>32</h>
+      <x>1050</x>
+      <y>470</y>
+      <w>235</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 </panel_attributes>
-    <additional_attributes>10.0;20.0;310.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;450.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>568</x>
-      <y>592</y>
-      <w>232</w>
-      <h>32</h>
+      <x>860</x>
+      <y>580</y>
+      <w>195</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-getProductionScheduler()</panel_attributes>
-    <additional_attributes>270.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>784</x>
-      <y>464</y>
-      <w>16</w>
-      <h>48</h>
-    </coordinates>
-    <panel_attributes>bg=white
-layer=1000
-transparency=0</panel_attributes>
-    <additional_attributes/>
+selectBatch(String batch)</panel_attributes>
+    <additional_attributes>370.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>792</x>
-      <y>456</y>
-      <w>264</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-getSchedulingAlgorithm()</panel_attributes>
-    <additional_attributes>310.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>1040</x>
-      <y>472</y>
-      <w>16</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>bg=white
-layer=1000
-transparency=0</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1048</x>
-      <y>464</y>
-      <w>216</w>
-      <h>32</h>
+      <x>1050</x>
+      <y>500</y>
+      <w>340</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 possibleBatch()</panel_attributes>
-    <additional_attributes>250.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>660.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1048</x>
-      <y>488</y>
-      <w>216</w>
-      <h>32</h>
+      <x>1050</x>
+      <y>515</y>
+      <w>340</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 possibleBatches: List&lt;String&gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;250.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;660.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>792</x>
-      <y>488</y>
-      <w>264</w>
-      <h>32</h>
+      <x>860</x>
+      <y>520</y>
+      <w>195</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 possibleBatches: List&lt;String&gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;310.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;370.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>568</x>
-      <y>496</y>
-      <w>232</w>
-      <h>32</h>
+      <x>735</x>
+      <y>520</y>
+      <w>130</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 possibleBatches: List&lt;String&gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;270.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;240.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
-      <y>496</y>
-      <w>176</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.
-possibleBatches: List&lt;String&gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;200.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>240</x>
-      <y>512</y>
-      <w>168</w>
-      <h>40</h>
+      <x>635</x>
+      <y>530</y>
+      <w>105</w>
+      <h>25</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 give overview of
@@ -572,10 +521,10 @@ Batches</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>160</x>
-      <y>488</y>
-      <w>1200</w>
-      <h>320</h>
+      <x>605</x>
+      <y>515</y>
+      <w>800</w>
+      <h>200</h>
     </coordinates>
     <panel_attributes>alt
 --
@@ -604,10 +553,10 @@ halign=left
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>232</x>
-      <y>568</y>
-      <w>16</w>
-      <h>112</h>
+      <x>630</x>
+      <y>565</y>
+      <w>10</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=1000
@@ -617,10 +566,10 @@ transparency=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>240</x>
+      <x>635</x>
       <y>560</y>
-      <w>168</w>
-      <h>40</h>
+      <w>105</w>
+      <h>25</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 indicates his choise
@@ -630,10 +579,10 @@ of batch</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>392</x>
-      <y>576</y>
-      <w>16</w>
-      <h>96</h>
+      <x>730</x>
+      <y>570</y>
+      <w>10</w>
+      <h>60</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=1000
@@ -643,22 +592,22 @@ transparency=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
-      <y>576</y>
-      <w>176</w>
-      <h>32</h>
+      <x>735</x>
+      <y>570</y>
+      <w>130</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 selectBatchSet(string Batch)</panel_attributes>
-    <additional_attributes>200.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>240.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>560</x>
-      <y>592</y>
-      <w>16</w>
-      <h>72</h>
+      <x>855</x>
+      <y>580</y>
+      <w>10</w>
+      <h>45</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=1000
@@ -668,22 +617,22 @@ transparency=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>568</x>
-      <y>448</y>
-      <w>232</w>
-      <h>32</h>
+      <x>860</x>
+      <y>490</y>
+      <w>195</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-getProductionScheduler()</panel_attributes>
-    <additional_attributes>270.0;20.0;10.0;20.0</additional_attributes>
+possibleBatch()</panel_attributes>
+    <additional_attributes>370.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>784</x>
-      <y>608</y>
-      <w>16</w>
-      <h>48</h>
+      <x>1045</x>
+      <y>590</y>
+      <w>10</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=1000
@@ -693,47 +642,22 @@ transparency=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>792</x>
-      <y>600</y>
-      <w>264</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-getSchedulingAlgorithm()</panel_attributes>
-    <additional_attributes>310.0;20.0;10.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>1040</x>
-      <y>616</y>
-      <w>16</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>bg=white
-layer=1000
-transparency=0</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>1048</x>
-      <y>608</y>
-      <w>216</w>
-      <h>32</h>
+      <x>1050</x>
+      <y>585</y>
+      <w>340</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 selectBatch(string batch)</panel_attributes>
-    <additional_attributes>250.0;20.0;10.0;20.0</additional_attributes>
+    <additional_attributes>660.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1248</x>
-      <y>624</y>
-      <w>16</w>
-      <h>16</h>
+      <x>1380</x>
+      <y>595</y>
+      <w>10</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=1000
@@ -743,58 +667,46 @@ transparency=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1048</x>
-      <y>712</y>
-      <w>216</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.
-null</panel_attributes>
-    <additional_attributes>10.0;20.0;250.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>792</x>
-      <y>632</y>
-      <w>264</w>
-      <h>32</h>
+      <x>1050</x>
+      <y>605</y>
+      <w>340</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 </panel_attributes>
-    <additional_attributes>10.0;20.0;310.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;660.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>568</x>
-      <y>640</y>
-      <w>232</w>
-      <h>32</h>
+      <x>860</x>
+      <y>610</y>
+      <w>195</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 </panel_attributes>
-    <additional_attributes>10.0;20.0;270.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;370.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>400</x>
-      <y>648</y>
-      <w>176</w>
-      <h>32</h>
+      <x>735</x>
+      <y>615</y>
+      <w>130</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
 </panel_attributes>
-    <additional_attributes>10.0;20.0;200.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;240.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>240</x>
-      <y>656</y>
-      <w>168</w>
-      <h>32</h>
+      <x>635</x>
+      <y>620</y>
+      <w>105</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 </panel_attributes>
@@ -803,10 +715,10 @@ null</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1248</x>
-      <y>704</y>
-      <w>16</w>
-      <h>24</h>
+      <x>1380</x>
+      <y>650</y>
+      <w>10</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=1000
@@ -816,10 +728,47 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1040</x>
-      <y>704</y>
-      <w>16</w>
-      <h>32</h>
+      <x>1045</x>
+      <y>650</y>
+      <w>10</w>
+      <h>25</h>
+    </coordinates>
+    <panel_attributes>bg=white
+layer=1000
+transparency=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1050</x>
+      <y>660</y>
+      <w>340</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+null   </panel_attributes>
+    <additional_attributes>10.0;20.0;660.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>860</x>
+      <y>665</y>
+      <w>195</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+null</panel_attributes>
+    <additional_attributes>10.0;20.0;370.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>855</x>
+      <y>650</y>
+      <w>10</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=1000
@@ -829,9 +778,46 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>784</x>
-      <y>704</y>
-      <w>16</w>
+      <x>730</x>
+      <y>650</y>
+      <w>10</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>bg=white
+layer=1000
+transparency=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>735</x>
+      <y>670</y>
+      <w>130</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+null</panel_attributes>
+    <additional_attributes>10.0;20.0;240.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>635</x>
+      <y>675</y>
+      <w>105</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>10.0;20.0;190.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>630</x>
+      <y>650</y>
+      <w>10</w>
       <h>40</h>
     </coordinates>
     <panel_attributes>bg=white
@@ -842,84 +828,34 @@ transparency=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>792</x>
-      <y>720</y>
-      <w>264</w>
-      <h>32</h>
+      <x>860</x>
+      <y>355</y>
+      <w>195</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
-null</panel_attributes>
-    <additional_attributes>10.0;20.0;310.0;20.0</additional_attributes>
+schedulers : List&lt;SchedulingAlgorithm&gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;370.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>568</x>
-      <y>728</y>
-      <w>232</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.
-null</panel_attributes>
-    <additional_attributes>10.0;20.0;270.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>560</x>
-      <y>704</y>
-      <w>16</w>
-      <h>48</h>
-    </coordinates>
-    <panel_attributes>bg=white
-layer=1000
-transparency=0</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLGeneric</id>
-    <coordinates>
-      <x>392</x>
-      <y>704</y>
-      <w>16</w>
-      <h>56</h>
-    </coordinates>
-    <panel_attributes>bg=white
-layer=1000
-transparency=0</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>400</x>
-      <y>736</y>
-      <w>176</w>
-      <h>32</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;.
-null</panel_attributes>
-    <additional_attributes>10.0;20.0;200.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>240</x>
-      <y>744</y>
-      <w>168</w>
-      <h>32</h>
+      <x>860</x>
+      <y>370</y>
+      <w>530</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-</panel_attributes>
-    <additional_attributes>10.0;20.0;190.0;20.0</additional_attributes>
+getName()</panel_attributes>
+    <additional_attributes>1040.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>232</x>
-      <y>704</y>
-      <w>16</w>
-      <h>64</h>
+      <x>1380</x>
+      <y>380</y>
+      <w>10</w>
+      <h>15</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=1000
@@ -929,25 +865,41 @@ transparency=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>568</x>
-      <y>296</y>
-      <w>232</w>
-      <h>32</h>
+      <x>860</x>
+      <y>380</y>
+      <w>530</w>
+      <h>20</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;.
-schedulers : List&lt;String&gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;270.0;20.0</additional_attributes>
+schedulerName : String</panel_attributes>
+    <additional_attributes>10.0;20.0;1040.0;20.0</additional_attributes>
   </element>
   <element>
-    <id>Relation</id>
+    <id>UMLFrame</id>
     <coordinates>
-      <x>1048</x>
-      <y>624</y>
-      <w>216</w>
-      <h>32</h>
+      <x>760</x>
+      <y>370</y>
+      <w>640</w>
+      <h>25</h>
     </coordinates>
-    <panel_attributes>lt=&lt;&lt;.
-</panel_attributes>
-    <additional_attributes>10.0;20.0;250.0;20.0</additional_attributes>
+    <panel_attributes>Loop
+--
+halign=left
+[for al SchedulingAlgorithm]
+layer=1002</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1045</x>
+      <y>500</y>
+      <w>10</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>bg=white
+layer=1000
+transparency=0</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
