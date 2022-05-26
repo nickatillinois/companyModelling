@@ -5,6 +5,7 @@ import assemAssist.comparator.PendingCarOrderComparator;
 import assemAssist.constraint.Inspector;
 import assemAssist.exceptions.*;
 import assemAssist.observer.TaskObserver;
+import assemAssist.schedulingAlgorithm.SchedulingAlgorithm;
 import assemAssist.statistics.DelayStatistics;
 import assemAssist.statistics.Statistics;
 import assemAssist.statistics.WorkingDayStatistics;
@@ -361,5 +362,39 @@ public class Company implements TaskObserver {
         if (finishedOrder != null) {
             completedCarOrders.add(finishedOrder);
         }
+    }
+
+    /**
+     * This function will return a list with al the possible scheduling algorithm
+     * of the company productionschedule.
+     * @return list of schedulers
+     */
+    public List<SchedulingAlgorithm> getSchedulingAlgorithms(){
+        return getProductionScheduler().getSchedulers();
+    }
+
+    /**
+     * This function select the new schedulingAlgorithm.
+     * @param schedulingAlgorithm the new schedulingAlgorithm
+     */
+    public void selectScheduler(SchedulingAlgorithm schedulingAlgorithm){
+        getProductionScheduler().setSchedulingAlgorithm(schedulingAlgorithm);
+    }
+
+    /**
+     * This function will search in the list of car orders that must produced al batches  with mor than
+     * three car orders with the same options. And returns that batches in a list.
+     * @return A list of possible batch.
+     */
+    public List<String> possibleBatch(){
+        return getProductionScheduler().getSchedulingAlgorithm().possibleBatch();
+    }
+
+    /**
+     * This function will set the batch of the current scheduling algorithm.
+     * @param batch Batch to set and schedule the car orders
+     */
+    public void selectBatch(String batch){
+        getProductionScheduler().getSchedulingAlgorithm().selectBatch(batch);
     }
 }

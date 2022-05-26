@@ -1,7 +1,9 @@
 package controller;
 
 import assemAssist.Company;
+import assemAssist.schedulingAlgorithm.SchedulingAlgorithm;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,17 +23,26 @@ public class ManagerController {
 
 
     public List<String> adaptSchedulingAlgorithm() {
-        return company.getProductionScheduler().getSchedulingAlgorithms();
+        List<String> schedulers  = new ArrayList<>();
+        for(SchedulingAlgorithm x : company.getSchedulingAlgorithms()){
+            schedulers.add(x.getName());
+        }
+        return schedulers;
     }
 
-    public List<String> selectSchedulingAlgorithm( String algorithmName) {
-        company.getProductionScheduler().selectSchedulingAlgorithm(algorithmName);
-        return company.getProductionScheduler().getSchedulingAlgorithm().possibleBatch();
+    public List<String> selectSchedulingAlgorithm(String algorithmName) {
+        List<SchedulingAlgorithm> schedulers = company.getSchedulingAlgorithms();
+        for(SchedulingAlgorithm x :schedulers){
+            if ((x.getName()).equals(algorithmName)){
+                company.selectScheduler(x);
+            }
+        }
+        return company.possibleBatch();
     }
 
-    public void selectBatchSet (String batchSet) {
+    public void selectBatchSet(String batchSet) {
         try{
-            company.getProductionScheduler().getSchedulingAlgorithm().selectBatch(batchSet);
+            company.selectBatch(batchSet);
         }
         catch (Exception e) {
             throw new IllegalArgumentException("This is not a vallid batch set.");
