@@ -103,31 +103,6 @@ public class CarModelSpecification {
         this.availableOptions = optionsCopy;
     }
 
-    /**
-     * Returns a string representation of this car model.
-     *
-     * @return A string representation of this car model.
-     */
-    @Override
-    public String toString() {
-        return "CarModelSpecification{" +
-                "modelName='" + modelName + '\'' +
-                ", availableOptions =" + getAvailableOptionsString() +
-                '}';
-    }
-
-    /**
-     * Returns a string representation of the available options of this car model.
-     *
-     * @return A string representation of the available options of this car model.
-     */
-    public String getAvailableOptionsString(){
-    	StringBuilder sb = new StringBuilder();
-    	for(String key : availableOptions.keySet()){
-    		sb.append(key).append(": ").append(availableOptions.get(key).toString()).append("\n");
-    	}
-    	return sb.toString();
-    }
 
     /**
      * Adds a given option to an existing component of this car model.

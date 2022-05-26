@@ -13,7 +13,7 @@ import java.util.TreeMap;
 public class CarModel {
 
 
-    private final int workingTimeWorkingTime;
+    private final int standardWorkingTime;
     /**
      * The name of the car model.
      */
@@ -67,7 +67,7 @@ public class CarModel {
         this.chosenOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         this.chosenOptions.putAll(chosenOptions);
         this.inspect();
-        this.workingTimeWorkingTime = workingTimeWorkPost;
+        this.standardWorkingTime = workingTimeWorkPost;
     }
 
     /**
@@ -108,8 +108,8 @@ public class CarModel {
         }
         return sb.toString();
     }
-    public int getWorkingTimeWorkingTime(){
-        return workingTimeWorkingTime;
+    public int getStandardWorkingTime(){
+        return standardWorkingTime;
     }
 
 }

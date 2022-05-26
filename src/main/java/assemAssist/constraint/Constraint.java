@@ -31,5 +31,4 @@ public abstract class Constraint {
      */
     protected abstract void isValidCombo(CarModel chosenSpecifications) throws IllegalArgumentException, IllegalConstraintException, IllegalModelException, RequiredComponentException, OptionAThenOptionBException, OptionThenComponentException;
 
-
 }

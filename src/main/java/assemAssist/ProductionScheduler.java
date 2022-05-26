@@ -89,7 +89,7 @@ public class ProductionScheduler {
      * current algorithm.
      * @return productionSchedule
      */
-     List<CarOrder> getProductionSchedule() {
+     public List<CarOrder> getProductionSchedule() {
         return schedulingAlgorithm.getProductionSchedule();
     }
 

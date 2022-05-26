@@ -304,7 +304,7 @@ public class CarOrder implements StatisticsObservable {
      * @return The standard task time for this car order.
      */
     public int getWorkingMinutesWorkStation() {
-        return getCarModel().getWorkingTimeWorkingTime();
+        return getCarModel().getStandardWorkingTime();
     }
 
     /**
