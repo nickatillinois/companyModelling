@@ -30,8 +30,7 @@ public class UC3_PerformAssemblyTasksTest {
 
     @BeforeAll
     void init() throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
-        ByteArrayInputStream in = new ByteArrayInputStream("1\nw\n0\n0\nd\n60\n0\nd\n60\ns\n4".getBytes());
-        System.setIn(in);
+
         company = new Company();
         ProductionScheduler productionScheduler = company.getProductionScheduler();
         assemblyLine = productionScheduler.getAssemblyLine();
@@ -48,7 +47,10 @@ public class UC3_PerformAssemblyTasksTest {
     }
 
     @Test
-    public void performAssemblyTasks() throws IllegalCompletionDateException, IllegalModelException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+    public void performAllAssemblyTasks() throws IllegalCompletionDateException, IllegalModelException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+
+        ByteArrayInputStream in = new ByteArrayInputStream("1\nw\n0\n0\nd\n60\n0\nd\n60\ns\n4".getBytes());
+        System.setIn(in);
 
         List<CarOrder> orderListPre = new ArrayList<>();
         for (WorkStation ws : assemblyLine.getWorkStations()) {
@@ -64,6 +66,26 @@ public class UC3_PerformAssemblyTasksTest {
             orderListPost.add(ws.getCurrentOrder());
         }
         assertNotEquals(orderListPost,orderListPre);
+        assertEquals(orderListPost.get(1),orderListPre.get(0));
+    }
+
+    @Test
+    void performOneAssemblyTask() throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+
+        ByteArrayInputStream in = new ByteArrayInputStream("1\nw\n0\n0\nd\n60\ns\n4".getBytes());
+        System.setIn(in);
+        WorkStation workStation = assemblyLine.getWorkStations().get(0);
+
+        assertEquals(workStation.getPendingTasks(),List.of("body","paint"));
+
+        new UI( new GarageHolderUI( new GarageHolderController(company)),
+                new ManagerUI(      new ManagerController(company)),
+                new MechanicUI(     new MechanicController( mechanic )));
+
+        assertEquals(workStation.getPendingTasks(),List.of("paint"));
+        assertEquals(workStation.getFinishedTasks(),List.of("body"));
+
+
     }
 
 }
