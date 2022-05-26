@@ -26,7 +26,6 @@ public class UC3_PerformAssemblyTasksTest {
 
     private Company company;
     private AssemblyLine assemblyLine;
-    private ProductionScheduler productionScheduler;
     private Mechanic mechanic;
 
     @BeforeAll
@@ -34,7 +33,7 @@ public class UC3_PerformAssemblyTasksTest {
         ByteArrayInputStream in = new ByteArrayInputStream("1\nw\n0\n0\nd\n60\n0\nd\n60\ns\n4".getBytes());
         System.setIn(in);
         company = new Company();
-        productionScheduler = company.getProductionScheduler();
+        ProductionScheduler productionScheduler = company.getProductionScheduler();
         assemblyLine = productionScheduler.getAssemblyLine();
         TreeMap<String, String> legalAOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         legalAOptions.put("color", "red"); legalAOptions.put("body", "break");

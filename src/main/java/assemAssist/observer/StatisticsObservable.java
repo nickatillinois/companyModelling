@@ -25,6 +25,7 @@ public interface StatisticsObservable {
         if (observer == null) {
             throw new IllegalArgumentException("An observer cannot be null.");
         }
+        if (observers.contains(observer)) return;
         observers.add(observer);
     }
 
