@@ -59,7 +59,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1048</x>
+      <x>1080</x>
       <y>304</y>
       <w>24</w>
       <h>296</h>
@@ -70,7 +70,7 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1016</x>
+      <x>1048</x>
       <y>288</y>
       <w>80</w>
       <h>24</h>
@@ -81,7 +81,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1248</x>
+      <x>1280</x>
       <y>304</y>
       <w>24</w>
       <h>296</h>
@@ -92,7 +92,7 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1216</x>
+      <x>1248</x>
       <y>288</y>
       <w>88</w>
       <h>24</h>
@@ -238,7 +238,7 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>848</x>
+      <x>880</x>
       <y>288</y>
       <w>80</w>
       <h>24</h>
@@ -249,7 +249,7 @@ transparency=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>880</x>
+      <x>912</x>
       <y>304</y>
       <w>24</w>
       <h>296</h>
@@ -260,7 +260,7 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>880</x>
+      <x>912</x>
       <y>368</y>
       <w>16</w>
       <h>88</h>
@@ -275,7 +275,7 @@ transparency=0</panel_attributes>
     <coordinates>
       <x>104</x>
       <y>208</y>
-      <w>1216</w>
+      <w>1264</w>
       <h>400</h>
     </coordinates>
     <panel_attributes>Check Assembly Line Status</panel_attributes>
@@ -310,17 +310,17 @@ getCurrentStateAssembly()</panel_attributes>
     <coordinates>
       <x>728</x>
       <y>352</y>
-      <w>168</w>
+      <w>200</w>
       <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
-getWorkStations()</panel_attributes>
-    <additional_attributes>190.0;20.0;10.0;20.0</additional_attributes>
+getCurrentStateString()</panel_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1048</x>
+      <x>1080</x>
       <y>376</y>
       <w>16</w>
       <h>72</h>
@@ -333,7 +333,7 @@ transparency=0</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>1032</x>
+      <x>1064</x>
       <y>336</y>
       <w>248</w>
       <h>128</h>
@@ -341,14 +341,14 @@ transparency=0</panel_attributes>
     <panel_attributes>loop
 --
 halign=left
-[for all work stations]
+[for all Assembly Tasks]
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>888</x>
+      <x>920</x>
       <y>360</y>
       <w>176</w>
       <h>32</h>
@@ -360,7 +360,7 @@ getTasksAndStatus()</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1248</x>
+      <x>1280</x>
       <y>384</y>
       <w>16</w>
       <h>16</h>
@@ -373,7 +373,7 @@ transparency=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1056</x>
+      <x>1088</x>
       <y>368</y>
       <w>208</w>
       <h>32</h>
@@ -385,7 +385,7 @@ getIsCompleted()</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>864</x>
+      <x>896</x>
       <y>328</y>
       <w>432</w>
       <h>152</h>
@@ -400,7 +400,7 @@ halign=left
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1056</x>
+      <x>1088</x>
       <y>408</y>
       <w>208</w>
       <h>32</h>
@@ -412,7 +412,7 @@ getName()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1056</x>
+      <x>1088</x>
       <y>384</y>
       <w>208</w>
       <h>32</h>
@@ -424,7 +424,7 @@ isCompleted : Boolean</panel_attributes>
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>1248</x>
+      <x>1280</x>
       <y>424</y>
       <w>16</w>
       <h>16</h>
@@ -437,7 +437,7 @@ transparency=0</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1056</x>
+      <x>1088</x>
       <y>424</y>
       <w>208</w>
       <h>32</h>
@@ -449,7 +449,7 @@ name : String</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>888</x>
+      <x>920</x>
       <y>432</y>
       <w>176</w>
       <h>32</h>
@@ -463,12 +463,12 @@ tasksAndStatus : String</panel_attributes>
     <coordinates>
       <x>728</x>
       <y>440</y>
-      <w>168</w>
+      <w>200</w>
       <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
-stateAssembly</panel_attributes>
-    <additional_attributes>10.0;20.0;190.0;20.0</additional_attributes>
+stateAssembly: List&lt;String&gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;230.0;20.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -479,7 +479,7 @@ stateAssembly</panel_attributes>
       <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
-stateAssembly</panel_attributes>
+stateAssembly: List&lt;String&gt;</panel_attributes>
     <additional_attributes>10.0;20.0;230.0;20.0</additional_attributes>
   </element>
   <element>
@@ -491,7 +491,7 @@ stateAssembly</panel_attributes>
       <h>32</h>
     </coordinates>
     <panel_attributes>lt=&lt;.
-stateAssembly</panel_attributes>
+stateAssembly: List&lt;String&gt;</panel_attributes>
     <additional_attributes>10.0;20.0;200.0;20.0</additional_attributes>
   </element>
   <element>
