@@ -8,12 +8,9 @@ assemAssist.schedulingAlgorithm
 assemAssist.statistics
 assemAssist.workStation
 controller
-Main.assemAssist
-Main.assemAssist.comparator
-Main.assemAssist.constraint
-Main.assemAssist.exceptions
-Main.assemAssist.observer
-Main.controller
-Main.ui
+main.assemAssist
+main.assemAssist.comparator
+main.assemAssist.constraint
+main.controller
 ui
 useCases
