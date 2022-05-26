@@ -167,7 +167,12 @@ class DrivetrainPostTest {
 
     @Test
     void performTaskTestNeg() {
-        assertThrows(IllegalArgumentException.class, () -> drivetrainPost.performAssemblyTask("body",0));
+        assertThrows(IllegalArgumentException.class, () -> drivetrainPost.performAssemblyTask("engine",0));
+    }
+
+    @Test
+    void performTaskTestWrongTask() {
+        assertThrows(IllegalArgumentException.class, () -> drivetrainPost.performAssemblyTask("airco",60));
     }
 
     @Test

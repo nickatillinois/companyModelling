@@ -169,7 +169,8 @@ public abstract class WorkStation implements TaskObservable {
      * @param taskName the name of the task to be completed
      * @param time the time it took to complete the given task
      * @throws IllegalArgumentException taskName is not a valid name of a task at this work station
-     * @throws IllegalArgumentException time is not valid
+     * @throws IllegalArgumentException time is less than zero
+     * @throws IllegalArgumentException taskName is null
      */
     public void performAssemblyTask(String taskName,int time) throws IllegalArgumentException {
         if (taskName == null) {

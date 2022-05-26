@@ -159,6 +159,11 @@ class CarBodyPostTest {
     }
 
     @Test
+    void performTaskTestWrongTask() {
+        assertThrows(IllegalArgumentException.class, () -> carBodyPost.performAssemblyTask("airco",60));
+    }
+
+    @Test
     void getTasksAndStatusTest() {
         String statusCBP = carBodyPost.getTasksAndStatus();
         assertEquals(statusCBP, "body: pending, paint: pending");

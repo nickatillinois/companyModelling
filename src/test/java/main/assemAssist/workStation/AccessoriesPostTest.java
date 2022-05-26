@@ -171,7 +171,12 @@ class AccessoriesPostTest {
 
     @Test
     void performTaskTestNeg() {
-        assertThrows(IllegalArgumentException.class, () -> accessoriesPost.performAssemblyTask("body",0));
+        assertThrows(IllegalArgumentException.class, () -> accessoriesPost.performAssemblyTask("seats",0));
+    }
+
+    @Test
+    void performTaskTestWrongTask() {
+        assertThrows(IllegalArgumentException.class, () -> accessoriesPost.performAssemblyTask("body",60));
     }
 
     @Test

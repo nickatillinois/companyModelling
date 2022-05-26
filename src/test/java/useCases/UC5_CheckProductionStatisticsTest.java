@@ -1,6 +1,9 @@
 package useCases;
 
-import assemAssist.*;
+import assemAssist.AssemblyLine;
+import assemAssist.Company;
+import assemAssist.Mechanic;
+import assemAssist.ProductionScheduler;
 import assemAssist.exceptions.*;
 import controller.GarageHolderController;
 import controller.ManagerController;
@@ -14,11 +17,12 @@ import ui.MechanicUI;
 import ui.UI;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.PrintStream;
 import java.time.LocalDate;
 import java.util.TreeMap;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class UC5_CheckProductionStatisticsTest {
 
@@ -26,19 +30,18 @@ public class UC5_CheckProductionStatisticsTest {
     // To really test it, we would have te run our program consecutively for multiple days, which is -
     // - obviously not possible. That's why the different statistics do not make sense mathematically.
     // This is also why this use case can only be tested for one day, not the pas x days.
+    // A way around this would be to change what LocalDate.now() returns, but there wasn't enough time left
+    // at the time of finishing these tests to actually implement this.
 
     private Company company;
     private AssemblyLine assemblyLine;
-    private ProductionScheduler productionScheduler;
-    private Mechanic mechanic;
-    private TreeMap<String,String> legalAOptions;
 
     @BeforeAll
     void init() throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         company = new Company();
-        productionScheduler = company.getProductionScheduler();
+        ProductionScheduler productionScheduler = company.getProductionScheduler();
         assemblyLine = productionScheduler.getAssemblyLine();
-        legalAOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        TreeMap<String, String> legalAOptions = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         legalAOptions.put("color", "red"); legalAOptions.put("body", "break");
         legalAOptions.put("engine", "v4"); legalAOptions.put("seats", "leather white");
         legalAOptions.put("airco", "manual"); legalAOptions.put("gearbox", "6 manual");
@@ -47,7 +50,7 @@ public class UC5_CheckProductionStatisticsTest {
     }
 
     @Test
-    public void checkProductionStatisticsEmpty() throws IllegalCompletionDateException, IllegalModelException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException, IOException {
+    public void checkProductionStatisticsEmpty() throws IllegalCompletionDateException, IllegalModelException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         ByteArrayInputStream in = new ByteArrayInputStream("3\ns\nd\n4".getBytes());
         System.setIn(in);
 
@@ -77,7 +80,6 @@ public class UC5_CheckProductionStatisticsTest {
 
         ByteArrayOutputStream test = new ByteArrayOutputStream();
         PrintStream PS = new PrintStream(test);
-        PrintStream old = System.out;
         System.setOut(PS);
 
         new UI( new GarageHolderUI( new GarageHolderController(company)),
@@ -108,7 +110,6 @@ public class UC5_CheckProductionStatisticsTest {
 
         ByteArrayOutputStream test = new ByteArrayOutputStream();
         PrintStream PS = new PrintStream(test);
-        PrintStream old = System.out;
         System.setOut(PS);
 
         new UI( new GarageHolderUI( new GarageHolderController(company)),
@@ -116,7 +117,6 @@ public class UC5_CheckProductionStatisticsTest {
                 new MechanicUI(     new MechanicController( new Mechanic(assemblyLine) )));
 
         String output = test.toString();
-        System.setOut(old); System.out.print(output);
         assertTrue(output.contains("the average of completed cars in a day is 2.0"));
         assertTrue(output.contains("the median of completed cars in a day is 2.0"));
         assertTrue(output.contains("the average delay on a car is -149.0"));
