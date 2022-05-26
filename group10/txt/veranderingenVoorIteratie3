@@ -1,0 +1,4 @@
+- Aan Carmodel van een carorder de tijd die dat model nodig heeft in een workstation toe voegen zo is de verbinding
+  tussen schedulingAlgorithm en catalog niet meer nodig, en bekomt men een lagere koppeling. Dit zorgt dat sommige
+  methode een andere singiatuur krijgen(meer invoer argumenten)
+- Update move functie deze functie ging eerst niet over naar de volgende dag maar nu wel.

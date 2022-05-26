@@ -99,8 +99,6 @@ public class productSchedulerTest {
         List<CarOrder> garageHolderOrders = pendingOrders.stream().filter(carOrder -> carOrder.getGarageHolder().equals("Danny Smeets")).collect(java.util.stream.Collectors.toList());
         assertEquals(carOrderList,garageHolderOrders);
         productionScheduler.advanceOrders(50);
-        //assertEquals(carOrderList,productionScheduler.getOrdersInProductionFromGarageHolder("Danny Smeets"));
-        //ssertEquals(carOrderList, productionScheduler.getOrdersInProductionFromGarageHolder("Danny Smeets"));
     }
 
     @Test

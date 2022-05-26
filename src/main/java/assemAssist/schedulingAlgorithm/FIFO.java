@@ -30,9 +30,9 @@ public class FIFO extends SchedulingAlgorithm {
     }
 
     /**
+     * This function can not execute in this scheduling algorithm en throws an error.
      * @param selectBatch the batch that you will select
      * @throws IllegalCallerException this methode can not be called in this algorithm
-     * @return
      */
     @Override
     public Executable selectBatch(String selectBatch) throws IllegalCallerException{

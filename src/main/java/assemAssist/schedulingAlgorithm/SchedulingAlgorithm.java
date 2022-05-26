@@ -51,7 +51,7 @@ public abstract class SchedulingAlgorithm {
     public abstract String getName();
 
     /**
-     * This function return the list of how the car orders will be produced.
+     * This function return the list of how the car orders will be produced that is different for each type(Batch,Fifo).
      *
      * @return the list of car orders in the order they would be produced.
      */
@@ -63,10 +63,9 @@ public abstract class SchedulingAlgorithm {
      *
      * @param order new carOrder
      * @throws IllegalConstraintException If the car model is not a valid confirmation.
-     * @throws IllegalModelException
      */
 
-    public void addOrderToProductionSchedule(CarOrder order) throws IllegalConstraintException, IllegalModelException, IllegalCompletionDateException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+    public void addOrderToProductionSchedule(CarOrder order) throws IllegalConstraintException, IllegalCompletionDateException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         try{
             carOrderList.add(order);
             int workingTime = order.getWorkingMinutesWorkStation()* 3;
@@ -89,6 +88,9 @@ public abstract class SchedulingAlgorithm {
         }
     }
 
+    /**
+     * This function will reset the CarOrderList.
+     */
     public void clearWaitingList(){
         carOrderList.clear();
     }

@@ -15,14 +15,25 @@ import java.util.Objects;
  * @author SWOP Team 10
  */
 public class ProductionScheduler {
-
+    /**
+     * The assembly line of the production scheduler.
+     */
     private final AssemblyLine assemblyLine;
+
+    /**
+     * The current scheduling algorithm, with default FIFO.
+     */
     private SchedulingAlgorithm schedulingAlgorithm = new FIFO();
+
+    /**
+     * The list with al the different scheduling algorithms.
+     */
     private final ArrayList<SchedulingAlgorithm> schedulers = new ArrayList<>();
 
-        /**
-         * Create a new production schedule af a single assembly line that can be managed by the manager
-         */
+    /**
+     * Create a new production schedule af a single assembly line that can be managed by the company.
+     * @param company The company that has this assembly line.
+     */
     public ProductionScheduler(Company company){
 
         schedulers.add(schedulingAlgorithm);
@@ -33,8 +44,8 @@ public class ProductionScheduler {
 
 
     /**
-     * This function wil set the scheduling algorithm
-     * @param algorithm the algorithm you will set
+     * This function wil set the scheduling algorithm to another of the list of schedulers.
+     * @param algorithm the name of the algorithm you will set
      * @throws IllegalArgumentException if the algorithm is not valid.
      */
     public void selectSchedulingAlgorithm(String algorithm) throws IllegalArgumentException{
@@ -56,6 +67,11 @@ public class ProductionScheduler {
             algorithms.add(schedulingAlgorithm.getName());
         return algorithms;
 }
+
+    /**
+     * This function return a list of al the scheduling algorithm where this production scheduler can choose to schedule.
+     * @return All the possible scheduling algorithms.
+     */
     public List<SchedulingAlgorithm> getSchedulers(){
         return schedulers;
     }
@@ -105,7 +121,7 @@ public class ProductionScheduler {
                 throw new RuntimeException(e.getMessage());
             }
         }
-
+        //Check of all the car orders from the batch are produced and if that is it set the scheduling algorithm back to FIFO
         if (schedulingAlgorithm.getName().equals("Specification Batch"))
             if (schedulingAlgorithm.getProductionSchedule() == schedulers.get(0).getProductionSchedule())
                 selectSchedulingAlgorithm("FIFO");
@@ -120,6 +136,10 @@ public class ProductionScheduler {
         return new ArrayList<>(schedulingAlgorithm.getProductionSchedule());
     }
 
+    /**
+     * This function will give a list of al the orders that not are completed in the system.
+     * @return Get al the orders.
+     */
     public List<CarOrder> getPendingOrders(){
         List<CarOrder> allOrders = new ArrayList<>();
         allOrders.addAll(getWaitingOrders());
@@ -157,6 +177,9 @@ public class ProductionScheduler {
         this.schedulingAlgorithm = schedulingAlgorithm;
     }
 
+    /**
+     * This function reset the carOrderList of the schedulers.
+     */
     private void clearWaitingList(){
         this.getSchedulingAlgorithm().clearWaitingList();
     }

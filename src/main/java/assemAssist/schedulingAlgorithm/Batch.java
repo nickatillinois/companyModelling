@@ -18,7 +18,15 @@ public class Batch extends SchedulingAlgorithm{
      * The name of this scheduling algorithm.
      */
     String name = "Specification Batch";
+
+    /**
+     * The Batch that is selected.
+     */
     private String batch = null;
+
+    /**
+     * The list how car orders will produce on the Batch.
+     */
     private List<CarOrder> productionSchedule = null;
 
     /**
@@ -62,7 +70,7 @@ public class Batch extends SchedulingAlgorithm{
     /**
      * This function will set the batch to the new value en the production schedule will be updated.
      * @param batch the new batch
-     * @return
+     * @return null
      */
     public Executable selectBatch(String batch){
         this.batch = batch;
@@ -115,12 +123,11 @@ public class Batch extends SchedulingAlgorithm{
      *
      * @param order new carOrder
      * @throws IllegalConstraintException If the car model is not a valid confirmation.
-     * @throws IllegalModelException
+     *
      */
 
-    public void addOrderToProductionSchedule(CarOrder order) throws IllegalConstraintException, IllegalModelException, IllegalCompletionDateException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
+    public void addOrderToProductionSchedule(CarOrder order) throws IllegalConstraintException,  IllegalCompletionDateException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         try{
-            //order.isValidCarModel();
             carOrderList.add(order);
             selectBatch(getBatch());
             int workingTime = order.getWorkingMinutesWorkStation() * 3;
