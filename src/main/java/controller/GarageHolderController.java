@@ -168,4 +168,8 @@ public class GarageHolderController {
             }
         }
     }
+
+    public void forwardAssemblyLine() {
+        company.forwardAssemblyLine();
+    }
 }

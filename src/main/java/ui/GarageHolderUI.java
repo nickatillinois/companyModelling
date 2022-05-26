@@ -62,18 +62,23 @@ public class GarageHolderUI {
         System.out.println("-------------");
 
         while (true) {
-            System.out.println("Press 'n' to order a new car, press 'd' to check the details of an order press 'c' to leave the overview");
+            System.out.println("""
+                    Press the letter that matches your request:\s
+                    \tn. order a new car;\s
+                    \td. check order details;\s
+                    \tf. forward the assembly line (for testing purpose only);\s
+                    \tc. leave the overview.""");
             char nextstep = in.next().charAt(0);
             if (nextstep == 'c') {
                 break;
             } else if (nextstep == 'n') {
                 orderCarUI();
-                break;
             } else if (nextstep == 'd'){
                 checkDetailsUI(name);
-                break;
+            } else if (nextstep == 'f'){
+                forwardAssemblyLine();
             } else {
-                System.out.println("This is not a valid option. Try again.");
+                System.out.println("The option you chose was not valid, please try again.");
             }
         }
 
@@ -236,5 +241,9 @@ public class GarageHolderUI {
             System.out.println("-------------");
             orderCarUI();
         }
+    }
+
+    private void forwardAssemblyLine(){
+        garageHolderController.forwardAssemblyLine();
     }
 }
