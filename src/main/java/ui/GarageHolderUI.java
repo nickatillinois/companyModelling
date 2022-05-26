@@ -23,13 +23,14 @@ public class GarageHolderUI {
 
     /**
      * Constructor for the GarageHolderUI.
+     *
      * @param garageHolderController The controller for the GarageHolder.
      *                               This is used to interact with the GarageHolder.
      *                               Gets initialised for the GarageHolderUI class.
      * @throws IllegalArgumentException if the controller is null.
      */
     public GarageHolderUI(GarageHolderController garageHolderController) {
-        if(garageHolderController == null) {
+        if (garageHolderController == null) {
             throw new IllegalArgumentException("GarageHolderController cannot be null");
         }
         this.garageHolderController = garageHolderController;
@@ -39,8 +40,9 @@ public class GarageHolderUI {
      * Starts the UI for the Garage Holder, once the user selected that they are a garage holder. It asks the name
      * of the user and gives its pending and finished orders. Then it asks whether the user wants to order a new car,
      * check the details of a specific order or leave the overview and starts the relevant sub-UI-method.
+     *
      * @param in Scanner used to ask input from the user. Gets initialised for the GarageHolderUI class.
-     * @throws IllegalModelException | if the chosen model is not offered by the company.
+     * @throws IllegalModelException          | if the chosen model is not offered by the company.
      * @throws IllegalCompletionDateException | if a completion date is given that is before the order date.
      */
     public void startUI(Scanner in) throws IllegalModelException, IllegalCompletionDateException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
@@ -66,17 +68,14 @@ public class GarageHolderUI {
                     Press the letter that matches your request:\s
                     \tn. order a new car;\s
                     \td. check order details;\s
-                    \tf. forward the assembly line (for testing purpose only);\s
                     \tc. leave the overview.""");
             char nextstep = in.next().charAt(0);
             if (nextstep == 'c') {
                 break;
             } else if (nextstep == 'n') {
                 orderCarUI();
-            } else if (nextstep == 'd'){
+            } else if (nextstep == 'd') {
                 checkDetailsUI(name);
-            } else if (nextstep == 'f'){
-                forwardAssemblyLine();
             } else {
                 System.out.println("The option you chose was not valid, please try again.");
             }
@@ -90,15 +89,16 @@ public class GarageHolderUI {
     /**
      * Handles the case where the user wants to check the details of a certain order. It asks for the ID and returns the
      * details if possible.
+     *
      * @param name Name of the user (that is a garage holder).
      */
-    private void checkDetailsUI(String name){
+    private void checkDetailsUI(String name) {
         while (true) {
             System.out.println("Give the ID of the car order you want to check the details of");
             String carIDString = in.next();
-            try{
+            try {
                 int carID = Integer.parseInt(carIDString);
-                try{
+                try {
                     List<String> details = garageHolderController.viewDetails(carID, name);
                     // Prints the details of the order in a nice way.
                     System.out.println("-------------");
@@ -106,10 +106,11 @@ public class GarageHolderUI {
                     System.out.println(" | " + details.get(1) + " | ");
                     System.out.println(" | " + details.get(2) + " | ");
                 } catch (Exception e) {
-                    if(e instanceof OrderNotFoundException){
-                        System.out.println("We could not find an order with this ID.");}
-                    else if(e instanceof IllegalArgumentException){
-                        System.out.println("This is not a valid ID.");}
+                    if (e instanceof OrderNotFoundException) {
+                        System.out.println("We could not find an order with this ID.");
+                    } else if (e instanceof IllegalArgumentException) {
+                        System.out.println("This is not a valid ID.");
+                    }
                 }
             } catch (NumberFormatException e) {
                 System.out.println("This is not a valid ID. Try again");
@@ -123,14 +124,16 @@ public class GarageHolderUI {
                 nextstep = in.next().charAt(0);
             }
             if (nextstep == 'n') {
-                break;}
+                break;
+            }
         }
     }
 
     /**
      * Handles the case when the user wants order a new car. Once they selected a model, the ordering form is completed
      * by a sub method for the UI.
-     * @throws IllegalModelException | if the chosen model is not offered by the company.
+     *
+     * @throws IllegalModelException          | if the chosen model is not offered by the company.
      * @throws IllegalCompletionDateException | if a completion date is given that is before the order date.
      */
     private void orderCarUI() throws IllegalModelException, IllegalCompletionDateException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
@@ -144,8 +147,8 @@ public class GarageHolderUI {
             System.out.println("Enter the car model name you want to order:");
             String model = in.next();
             boolean contains = false;
-            for (String modelName: availableModels) {
-                if(modelName.equalsIgnoreCase(model)){
+            for (String modelName : availableModels) {
+                if (modelName.equalsIgnoreCase(model)) {
                     model = model.toUpperCase(Locale.ROOT);
                     contains = true;
                     break;
@@ -164,8 +167,9 @@ public class GarageHolderUI {
     /**
      * This method shows the available options for the chosen car model and then asks the user whether they want to select
      * the options. This is then handled by a specific subroutine.
+     *
      * @param model | The chosen car model.
-     * @throws IllegalModelException | if the chosen model is not offered by the company.
+     * @throws IllegalModelException          | if the chosen model is not offered by the company.
      * @throws IllegalCompletionDateException | if a completion date is given that is before the order date.
      */
     private void completeOrderingFormUI(String model, int workingMinutesWorkstation) throws IllegalModelException, IllegalCompletionDateException, IllegalConstraintException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
@@ -185,7 +189,7 @@ public class GarageHolderUI {
             System.out.println("Press 'x' to skip this component, press 's' to select it, or press 'q' to cancel");
             String choice = in.next();
             if (choice.equalsIgnoreCase("s")) {
-                for(String value : orderingFormList.get(option)){
+                for (String value : orderingFormList.get(option)) {
                     System.out.println("\t" + i + ": " + value);
                     i++;
                 }
@@ -210,16 +214,14 @@ public class GarageHolderUI {
             } else if (choice.equalsIgnoreCase("q")) {
                 System.out.println("Cancelling order");
                 return;
-            }
-            else {
+            } else {
                 System.out.println("This is not a valid option.");
             }
         }
         try {
             String estimatedCompletionDate = garageHolderController.completeOrderingForm(selectedOptions);
             System.out.println("You have successfully ordered a car! The estimated completion date is " + estimatedCompletionDate);
-        }
-        catch (IllegalModelException | OptionAThenOptionBException | OptionThenComponentException | RequiredComponentException e){
+        } catch (IllegalModelException | OptionAThenOptionBException | OptionThenComponentException | RequiredComponentException e) {
             System.out.println(e.getMessage());
             System.out.println("No order was placed.");
         }
@@ -227,8 +229,7 @@ public class GarageHolderUI {
         String nextstep = "";
         try {
             nextstep = in.next();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             //System.out.println("No order was placed.");
         }
         if (nextstep.equals("q")) {
@@ -241,9 +242,5 @@ public class GarageHolderUI {
             System.out.println("-------------");
             orderCarUI();
         }
-    }
-
-    private void forwardAssemblyLine(){
-        garageHolderController.forwardAssemblyLine();
     }
 }

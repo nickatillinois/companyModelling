@@ -1,13 +1,13 @@
 package assemAssist;
 
-import assemAssist.comparator.*;
+import assemAssist.comparator.CompletedCarOrderComparator;
+import assemAssist.comparator.PendingCarOrderComparator;
 import assemAssist.constraint.Inspector;
 import assemAssist.exceptions.*;
 import assemAssist.observer.TaskObserver;
 import assemAssist.statistics.DelayStatistics;
 import assemAssist.statistics.Statistics;
 import assemAssist.statistics.WorkingDayStatistics;
-import assemAssist.workStation.WorkStation;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -383,30 +383,5 @@ public class Company implements TaskObserver {
         if (finishedOrder != null) {
             completedCarOrders.add(finishedOrder);
         }
-    }
-
-    public void forwardAssemblyLine(){
-        completeAssemblyTask();
-    }
-
-    private void completeAssemblyTask(){
-        for(WorkStation workStation: this.getProductionScheduler().getAssemblyLine().getWorkStations()){
-            List<String> tasks = workStation.getPendingTasks();
-            for(String task : tasks){
-                workStation.performAssemblyTask(task, 60);
-            }
-        }
-        System.out.println("------------------------------------------------------");
-        // print each workstation, and it's current order and its status
-        for(WorkStation workStation: this.getProductionScheduler().getAssemblyLine().getWorkStations()){
-            if(workStation.getCurrentOrder() != null){
-                System.out.println(workStation.getName() + ": " + "\n\t ID:" + workStation.getCurrentOrder().getOrderID() + " from: " + workStation.getCurrentOrder().getGarageHolder());
-            }
-            else{
-                System.out.println(workStation.getName() + ": " + "\n\t" + "No order");
-            }
-        }
-        System.out.println("------------------------------------------------------");
-        System.out.println("Completed orders: " + this.getCompletedCarOrders().size());
     }
 }
