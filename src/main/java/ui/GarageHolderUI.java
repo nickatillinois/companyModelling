@@ -67,23 +67,21 @@ public class GarageHolderUI {
                     \tn. order a new car;\s
                     \td. check order details;\s
                     \tc. leave the overview.""");
-            String nextstep = "";
+            String nextstep;
             try {
                 nextstep = in.next();}
             catch (Exception e) {
                 break;
-                //System.out.println("The option you chose was not valid, please try again.");
-                //throw e;
             }
-                if (Objects.equals(nextstep, "c")) {
-                    break;
-                } else if (Objects.equals(nextstep, "n")) {
-                    orderCarUI();
-                } else if (Objects.equals(nextstep, "d")) {
-                    checkDetailsUI(name);
-                } else {
-                    System.out.println("The option you chose was not valid, please try again.");
-                }
+            if (Objects.equals(nextstep, "c")) {
+                break;
+            } else if (Objects.equals(nextstep, "n")) {
+                orderCarUI();
+            } else if (Objects.equals(nextstep, "d")) {
+                checkDetailsUI(name);
+            } else {
+                System.out.println("The option you chose was not valid, please try again.");
+            }
         }
 
         System.out.println("-------------");

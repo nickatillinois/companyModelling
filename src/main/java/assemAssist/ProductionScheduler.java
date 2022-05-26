@@ -142,8 +142,8 @@ public class ProductionScheduler {
      */
     public List<CarOrder> getPendingOrders(){
         List<CarOrder> allOrders = new ArrayList<>();
-        allOrders.addAll(getWaitingOrders());
         allOrders.addAll(getOrdersInProduction());
+        allOrders.addAll(getWaitingOrders());
         return allOrders;
     }
 
