@@ -69,7 +69,7 @@ public class Catalog {
         }
         for (CarModelSpecification model : availableModels) {
             if (model.getModelName().equals(modelName)) {
-                return model;
+                return model.deepCopy();
             }
         }
         throw new IllegalModelException("Model " + modelName + " is currently not offered.");
