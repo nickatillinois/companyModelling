@@ -572,7 +572,7 @@ Batches</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>128</x>
+      <x>160</x>
       <y>488</y>
       <w>1200</w>
       <h>320</h>
@@ -733,7 +733,7 @@ selectBatch(string batch)</panel_attributes>
       <x>1248</x>
       <y>624</y>
       <w>16</w>
-      <h>24</h>
+      <h>16</h>
     </coordinates>
     <panel_attributes>bg=white
 layer=1000
@@ -937,5 +937,17 @@ transparency=0</panel_attributes>
     <panel_attributes>lt=&lt;&lt;.
 schedulers : List&lt;String&gt;</panel_attributes>
     <additional_attributes>10.0;20.0;270.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1048</x>
+      <y>624</y>
+      <w>216</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.
+</panel_attributes>
+    <additional_attributes>10.0;20.0;250.0;20.0</additional_attributes>
   </element>
 </diagram>
