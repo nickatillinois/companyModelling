@@ -1,11 +1,10 @@
 package assemAssist.workStation;
 import assemAssist.AssemblyTask;
 import assemAssist.CarOrder;
+import assemAssist.CarOrderData;
 import assemAssist.observer.TaskObservable;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Class representing a single work station.
@@ -192,21 +191,19 @@ public abstract class WorkStation implements TaskObservable {
      *
      * @return a string with all the tasks at this work station and their current status
      */
-    public String getTasksAndStatus() {
-        StringBuilder s = new StringBuilder();
-        List<AssemblyTask> assemblyTasks = getTasks();
-        for(AssemblyTask assemblyTask : assemblyTasks){
-            boolean status = assemblyTask.getIsCompleted();
-            s.append(assemblyTask.getName()).append(": ");
-            if (status)
-                s.append("done, ");
-            else
-                s.append("pending, ");
+    public WorkStationData workStationData() {
+
+        Map<String,Boolean> tasksAndStatus = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        for (AssemblyTask assemblyTask : tasks) {
+            tasksAndStatus.put(assemblyTask.getName(), assemblyTask.getIsCompleted());
         }
-        int j = s.length();
-        if (j >= 2)
-            j -= 2;
-        return s.substring(0,j);
+        CarOrderData currentOrderData;
+        if (currentOrder == null) {
+            currentOrderData = null;
+        } else {
+            currentOrderData = currentOrder.carOrderData();
+        }
+        return new WorkStationData(name, tasksAndStatus, currentOrderData);
     }
 
     @Override

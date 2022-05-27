@@ -123,29 +123,6 @@ class AssemblyLineTest {
     }
 
     @Test
-    void getCurrentStateStringTest() {
-        ArrayList<String> test = new ArrayList<>();
-        test.add("Car Body Post ; ");
-        test.add("Drivetrain Post ; ");
-        test.add("Accessories Post ; ");
-        assertEquals(test, assemblyLine.getCurrentStateString());
-
-        ArrayList<String> test2 = new ArrayList<>();
-        test2.add("Car Body Post ; body: pending, paint: pending");
-        test2.add("Drivetrain Post ; ");
-        test2.add("Accessories Post ; ");
-        assemblyLine.getWorkStations().get(0).setCurrentOrder(orderA);
-        assertEquals(test2,assemblyLine.getCurrentStateString());
-
-        ArrayList<String> test3 = new ArrayList<>();
-        test3.add("Car Body Post ; body: done, paint: pending");
-        test3.add("Drivetrain Post ; ");
-        test3.add("Accessories Post ; ");
-        assemblyLine.getWorkStations().get(0).performAssemblyTask("body", 60);
-        assertEquals(test3,assemblyLine.getCurrentStateString());
-    }
-
-    @Test
     void canMoveTest() {
         assemblyLine.getWorkStations().get(0).setCurrentOrder(orderA);
         assert(!assemblyLine.canMove());

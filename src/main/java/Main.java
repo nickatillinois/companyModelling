@@ -1,5 +1,4 @@
-import assemAssist.Company;
-import assemAssist.Mechanic;
+import assemAssist.*;
 import assemAssist.exceptions.*;
 import controller.GarageHolderController;
 import controller.ManagerController;
@@ -50,15 +49,22 @@ public class Main {
         legalBOptions.put("wheels", "winter");
         legalBOptions.put("spoiler", "low");
 
-        company.completeOrderingForm(legalBOptions,"Jef Smeets","B");
+        /*company.completeOrderingForm(legalBOptions,"Jef Smeets","B");
         company.completeOrderingForm(legalAOptions,"Danny Smeets","A");
-        company.completeOrderingForm(legalAOptions,"Tom Smets","A");
+        company.completeOrderingForm(legalAOptions,"Tom Smets","A");*/
         //company.completeOrderingForm(legalAOptions,"Jef Smeets","A");
         //company.completeOrderingForm(legalAOptions,"Jef Smeets","A");
         //company.completeOrderingForm(legalAOptions,"Jef Smeets","A");
         //company.completeOrderingForm(legalAOptions,"Jef Smeets","A");
         //company.completeOrderingForm(legalBOptions,"Jef Smeets","B");
         //company.completeOrderingForm(legalBOptions,"Jef Smeets","B");
+
+        AssemblyLine assemblyLine = company.getProductionScheduler().getAssemblyLine();
+        try {
+            assemblyLine.getWorkStations().get(0).setCurrentOrder(new CarOrder("Raf Sablon", new CarModel("A", legalAOptions, 60)));
+            assemblyLine.getWorkStations().get(1).setCurrentOrder(new CarOrder("Raf Sablon", new CarModel("A", legalAOptions, 60)));
+            assemblyLine.getWorkStations().get(2).setCurrentOrder(new CarOrder("Raf Sablon", new CarModel("A", legalAOptions, 60)));
+        } catch (Exception ignored){}
 
         new UI(garageHolderUI, managerUI, mechanicUI);
 

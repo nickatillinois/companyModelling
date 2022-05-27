@@ -142,7 +142,7 @@ public class UC4_CheckAssemblyLineStatusTest {
                 "Drivetrain Post\r\n" +
                 "-> No order at this work station.\r\n" +
                 "Accessories Post\r\n" +
-                "-> seats: pending, airco: pending, wheels: pending");
+                "-> airco: pending, seats: pending, wheels: pending");
 
         assertTrue(expectedOutput);
     }
@@ -183,7 +183,7 @@ public class UC4_CheckAssemblyLineStatusTest {
                 "Drivetrain Post\r\n" +
                 "-> engine: pending, gearbox: pending\r\n" +
                 "Accessories Post\r\n" +
-                "-> seats: pending, airco: pending, wheels: pending");
+                "-> airco: pending, seats: pending, wheels: pending");
 
         assertTrue(expectedOutput);
     }

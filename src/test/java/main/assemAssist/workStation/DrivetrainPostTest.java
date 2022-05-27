@@ -176,12 +176,6 @@ class DrivetrainPostTest {
     }
 
     @Test
-    void getTasksAndStatusTest() {
-        String statusCBP = drivetrainPost.getTasksAndStatus();
-        assertEquals(statusCBP, "engine: pending, gearbox: pending");
-    }
-
-    @Test
     void equalsTest() {
         DrivetrainPost dtp1 = new DrivetrainPost(company);
         DrivetrainPost dtp2 = new DrivetrainPost(company);

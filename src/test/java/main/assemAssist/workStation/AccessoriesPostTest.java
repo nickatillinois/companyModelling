@@ -180,12 +180,6 @@ class AccessoriesPostTest {
     }
 
     @Test
-    void getTasksAndStatusTest() {
-        String statusCBP = accessoriesPost.getTasksAndStatus();
-        assertEquals(statusCBP, "seats: pending, airco: pending, wheels: pending, spoiler: pending");
-    }
-
-    @Test
     void equalsTest() {
         CarBodyPost cbp1 = new CarBodyPost(company);
         CarBodyPost cbp2 = new CarBodyPost(company);

@@ -103,17 +103,4 @@ public class MechanicTest {
         assertThrows(IllegalArgumentException.class, () -> mechanic.finishTask("engine", 60));
     }
 
-    @Test
-    void getCurrentStateAssembly() {
-        assemblyLine.getWorkStations().get(0).setCurrentOrder(orderA);
-        assemblyLine.getWorkStations().get(1).setCurrentOrder(orderB);
-        assemblyLine.getWorkStations().get(2).setCurrentOrder(orderC);
-
-        List<String> expStateAssembly = new ArrayList<>();
-        expStateAssembly.add("Car Body Post ; body: pending, paint: pending");
-        expStateAssembly.add("Drivetrain Post ; engine: pending, gearbox: pending");
-        expStateAssembly.add("Accessories Post ; seats: pending, airco: pending, wheels: pending, spoiler: pending");
-
-        assertEquals(expStateAssembly, mechanic.getCurrentStateAssembly());
-    }
 }

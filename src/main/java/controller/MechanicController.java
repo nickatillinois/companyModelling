@@ -1,8 +1,11 @@
 package controller;
 
 import assemAssist.Mechanic;
+import assemAssist.workStation.WorkStationData;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * This class is the controller for the mechanic.
@@ -73,6 +76,27 @@ public class MechanicController {
      * @return List of WorkStations and their pending tasks.
      */
     public List<String> getCurrentStateAssembly() {
-        return mechanic.getCurrentStateAssembly();
+        List<WorkStationData> workStations = mechanic.getCurrentStateAssembly();
+        List<String> currentState = new ArrayList<>();
+        for (WorkStationData data : workStations) {
+            String workStationString = data.getNAME() + " ; ";
+
+            StringBuilder statusString = new StringBuilder();
+            for (Object object : data.getTASKSANDSTATUS().entrySet()) {
+                Map.Entry<String,Boolean> entry = (Map.Entry<String,Boolean>) object;
+                statusString.append(entry.getKey() + ": ");
+                if (entry.getValue())
+                    statusString.append("done, ");
+                else
+                    statusString.append("pending, ");
+            }
+            int j = statusString.length();
+            if (j >= 2)
+                j -= 2;
+            workStationString += statusString.substring(0,j);
+            currentState.add(workStationString);
+        }
+
+        return currentState;
     }
 }

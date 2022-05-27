@@ -164,12 +164,6 @@ class CarBodyPostTest {
     }
 
     @Test
-    void getTasksAndStatusTest() {
-        String statusCBP = carBodyPost.getTasksAndStatus();
-        assertEquals(statusCBP, "body: pending, paint: pending");
-    }
-
-    @Test
     void equalsTest() {
         CarBodyPost cbp1 = new CarBodyPost(company);
         CarBodyPost cbp2 = new CarBodyPost(company);

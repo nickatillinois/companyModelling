@@ -1,6 +1,7 @@
 package assemAssist;
 
 import assemAssist.workStation.WorkStation;
+import assemAssist.workStation.WorkStationData;
 
 import java.util.List;
 
@@ -94,9 +95,9 @@ public class Mechanic {
     /**
      * Gives an overview of the different workstations at the assembly line the mechanic works at as well as the tasks
      * at these stations and their status.
-     * @return List containing strings of the form "WorkStationName ; TaskName1: TaskStatus1, ..., TaskNameN, TaskStatusN".
+     * @return List of WorkStationData objects representing the different workstations.
      */
-    public List<String> getCurrentStateAssembly() {
-        return assemblyLine.getCurrentStateString();
+    public List<WorkStationData> getCurrentStateAssembly() {
+        return assemblyLine.getCurrentStateData();
     }
 }

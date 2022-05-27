@@ -1,9 +1,7 @@
 package assemAssist;
 
-import assemAssist.workStation.AccessoriesPost;
-import assemAssist.workStation.CarBodyPost;
-import assemAssist.workStation.DrivetrainPost;
-import assemAssist.workStation.WorkStation;
+import assemAssist.workStation.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -126,12 +124,12 @@ public class AssemblyLine {
     /**
      * Returns the name of all the workstation in the assembly line along with the tasks at the workstation and
      * their current status.
-     * @return List of strings in the format "NameOfWorkstation ; TaskName1, TaskStatus1; ...; TaskNameN, TaskStatusN"
+     * @return List of WorkStationData objects representing the different workstations.
      */
-    public List<String> getCurrentStateString() {
-        List<String> currentState  = new ArrayList<>(workStations.size());
+    public List<WorkStationData> getCurrentStateData() {
+        List<WorkStationData> currentState  = new ArrayList<>(workStations.size());
         for (WorkStation workStation : workStations) {
-            currentState.add(workStation.getName() + " ; " + workStation.getTasksAndStatus());
+            currentState.add(workStation.workStationData());
         }
         return currentState;
     }
