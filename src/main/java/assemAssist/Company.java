@@ -265,7 +265,7 @@ public class Company implements TaskObserver {
      */
     public List<String> getStatistics(int fromXLastDays) {
         if(fromXLastDays < 0) {
-            throw new IllegalArgumentException("fromXLastDays must be strictly positive.");
+            throw new IllegalArgumentException("fromXLastDays must be positive.");
         }
         List<String> result = new ArrayList<>();
         for (Statistics stat : statistics) {
