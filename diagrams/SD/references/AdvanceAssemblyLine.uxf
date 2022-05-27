@@ -174,7 +174,7 @@ cannot move]
 -.
 [assembly line
 can move]
-layer=0</panel_attributes>
+layer=1002</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -304,7 +304,7 @@ is empty]
 schedule
 isn't empty]
 halign=left
-layer=0</panel_attributes>
+layer=1001</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -452,18 +452,6 @@ transparency=0</panel_attributes>
     <panel_attributes>lt=&lt;.
 nextOrder</panel_attributes>
     <additional_attributes>10.0;20.0;210.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLNote</id>
-    <coordinates>
-      <x>423</x>
-      <y>657</y>
-      <w>171</w>
-      <h>27</h>
-    </coordinates>
-    <panel_attributes>ProductionScheduler 99-102
-bg=red</panel_attributes>
-    <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>

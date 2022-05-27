@@ -205,7 +205,7 @@ public class CompanyTest {
             company.getStatistics(-1);
         }
         catch (IllegalArgumentException e){
-            assertEquals("fromXLastDays must be strictly positive.", e.getMessage());
+            assertEquals("fromXLastDays must be positive.", e.getMessage());
             got_error = true;
         }
         assertTrue(got_error);

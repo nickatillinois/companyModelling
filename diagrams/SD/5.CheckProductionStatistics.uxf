@@ -222,7 +222,7 @@ transparency=0</panel_attributes>
     <coordinates>
       <x>910</x>
       <y>350</y>
-      <w>310</w>
+      <w>320</w>
       <h>200</h>
     </coordinates>
     <panel_attributes>loop
@@ -297,7 +297,7 @@ production statistics</panel_attributes>
   <element>
     <id>UMLFrame</id>
     <coordinates>
-      <x>200</x>
+      <x>220</x>
       <y>210</y>
       <w>1090</w>
       <h>510</h>
