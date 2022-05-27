@@ -209,72 +209,13 @@ public class CarOrder implements StatisticsObservable {
         return this.ID;
     }
 
-    /**
-     * Function that returns a string representation of this car order.
-     * @return A string representation of this car order.
-     */
-    public String getCarModelAndOptions() {
-        String modelAndOptions = "model: " + carModel.getModelName() + ", ";
-        modelAndOptions += carModel.getChosenOptions();
-        return modelAndOptions;
-    }
 
     /**
-     * Function that returns a string representation of the order details of this car order.
-     * The format of the string is as follows:
-     * "Order ID: orderID, Car Model: carModel, Options: options, Estimated Completion Time: estCompletionTime, Completed: completed"
-     * Only to be used for pending orders.
-     * @return A string representation of this car order.
+     * Method that returns the data object of this car order.
+     * @returns CarOrderData object representing this car order.
      */
-    private ArrayList<String> getPendingOrderDetails(){
-        ArrayList<String> orderDetails = new ArrayList<>();
-        orderDetails.add("Specifications: " + getCarModelAndOptions ());
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String formattedOrderTime = orderingTime.format(formatter);
-        String formattedEstProdTime = estCompletionTime.format(formatter);
-        if(this.estCompletionTime == null){
-            throw new IllegalArgumentException("The given car order's estimated completion time is still set to 'null'");
-        }
-        orderDetails.add("orderTime: " + formattedOrderTime);
-        orderDetails.add("estProdTime: " + formattedEstProdTime);
-        return orderDetails;
-    }
-
-    /**
-     * Function that returns a string representation of the order details of this car order.
-     * The format of the string is as follows:
-     * Specifications: carModel, options, order Time: estCompletionTime, completionTime: completionTime
-     * @return A string representation of this car order.
-     * Only to be used for completed orders.
-     */
-    private ArrayList<String> getCompletedOrderDetails(){
-        ArrayList<String> orderDetails = new ArrayList<>();
-        // format orderingTime in a more readable format
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String formattedOrderTime = orderingTime.format(formatter);
-        String formattedCompletionTime = completionTime.format(formatter);
-        orderDetails.add("Specifications: " + getCarModelAndOptions ());
-        orderDetails.add("orderTime: " + formattedOrderTime);
-        orderDetails.add("completionTime: " + formattedCompletionTime);
-        return orderDetails;
-    }
-
-    /**
-     * Function that returns a string representation of the order details of this car order.
-     * The format of the string depends on the status of the order.
-     * If the order is pending, the format is as follows:
-     * Specifications: carModel, options, order Time: estCompletionTime, est. completionTime: estCompletionTime
-     * If the order is completed, the format is as follows:
-     * Specifications: carModel, options, order Time: estCompletionTime, completionTime: completionTime
-     * @return A string representation of this car order.
-     */
-    public ArrayList<String> getOrderDetails(){
-        if(completed){
-            return getCompletedOrderDetails();
-        }
-        else{
-            return getPendingOrderDetails();
-        }
+    public CarOrderData carOrderData() {
+        return new CarOrderData(carModel.getModelName(), carModel.getChosenOptions(), ID, garageHolder, orderingTime, estCompletionTime, completionTime, completed);
     }
 
     /**

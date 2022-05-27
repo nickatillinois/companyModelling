@@ -1,6 +1,7 @@
 package controller;
 
 import assemAssist.CarOrder;
+import assemAssist.CarOrderData;
 import assemAssist.Company;
 import assemAssist.exceptions.*;
 
@@ -162,7 +163,27 @@ public class GarageHolderController {
             throw new IllegalArgumentException("Car ID cannot be less than or equal to 0");
         } else {
             try {
-                return company.getOrderDetails(carID, garageHolderName);
+                CarOrderData carOrderData = company.getOrderDetails(carID, garageHolderName);
+
+                ArrayList<String> orderDetails = new ArrayList<>();
+
+                String modelOptionsAndName = "model: " + carOrderData.getMODELNAME() + ", ";
+                modelOptionsAndName += carOrderData.getCAROPTIONS();
+                orderDetails.add("Specifications: " + modelOptionsAndName);
+
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                String formattedOrderTime = carOrderData.getORDERINGTIME().format(formatter);
+                orderDetails.add("orderTime: " + formattedOrderTime);
+
+                if (carOrderData.isCOMPLETED()) {
+                    String formattedCompletionTime = carOrderData.getCOMPLETIONTIME().format(formatter);
+                    orderDetails.add("completionTime: " + formattedCompletionTime);
+                } else {
+                    String formattedEstProdTime = carOrderData.getESTCOMPLETIONTIME().format(formatter);
+                    orderDetails.add("estProdTime: " + formattedEstProdTime);
+                }
+
+                return orderDetails;
             } catch (OrderNotFoundException e) {
                 throw e;
             }

@@ -6,6 +6,8 @@ import assemAssist.workStation.DrivetrainPost;
 import assemAssist.workStation.WorkStation;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Class representing an assembly line with workstations.
@@ -162,11 +164,11 @@ public class AssemblyLine {
      * the order in workstation i and on the 4 place the order that is finished complete.
      * @param carOrder new car order for workstation 1
      * @param timeBetweenTwoStates time necessary to complete this phase.
-     * @return list of car orders
+     * @return Map of workstations to their current order
      * @throws IllegalCallerException if the assembly line can't move
      * @throws RuntimeException | setting of the new orders goes wrong.
      */
-    public List<String> move(CarOrder carOrder, int timeBetweenTwoStates) throws IllegalCallerException, RuntimeException{
+    public Map<String, CarOrderData> move(CarOrder carOrder, int timeBetweenTwoStates) throws IllegalCallerException, RuntimeException{
         for(WorkStation workStation : getWorkStations())
             if(!workStation.isFinished())
                 throw new IllegalCallerException("The assembly line is stil working at a work post!");
@@ -238,18 +240,17 @@ public class AssemblyLine {
      * Returns the new state of the assembly line.
      * @return List of String representing the orders in the workstations.
      */
-    private List<String> getNewState() {
-        List<String> newStateAndFinished = new ArrayList<>();
+    private Map<String,CarOrderData> getNewState() {
+        Map<String, CarOrderData> newStateAndFinished = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
         List<CarOrder> currentStatus  = getCurrentState();
         for(int i = 0 ; i < currentStatus.size() ; i++){
             CarOrder carOrder2 = currentStatus.get(i);
-            String s = getWorkStations().get(i).getName() + " ; ";
-            if(carOrder2 != null) {
-                s += carOrder2.getCarModelAndOptions();
+            String workStationName = getWorkStations().get(i).getName();
+            CarOrderData carOrderData = null;
+            if (carOrder2 != null) {
+                carOrderData = carOrder2.carOrderData();
             }
-            else
-                s += "No Order in this workstation";
-            newStateAndFinished.add(s);
+            newStateAndFinished.put(workStationName,carOrderData);
         }
         return newStateAndFinished;
     }

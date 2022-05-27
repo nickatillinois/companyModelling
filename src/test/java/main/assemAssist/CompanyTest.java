@@ -3,6 +3,7 @@ package main.assemAssist;
 
 import assemAssist.CarModel;
 import assemAssist.CarOrder;
+import assemAssist.CarOrderData;
 import assemAssist.Company;
 import assemAssist.exceptions.*;
 import org.junit.jupiter.api.BeforeAll;
@@ -222,7 +223,7 @@ public class CompanyTest {
     @Test
     void testStatistics() throws OrderNotFoundException {
         List<CarOrder>[] orders = company.getOrdersFromGarageHolder("Danny Smeets");
-        ArrayList<String> orderDetails = company.getOrderDetails(orders[0].get(0).getOrderID(), "Danny Smeets");
+        CarOrderData orderDetails = company.getOrderDetails(orders[0].get(0).getOrderID(), "Danny Smeets");
         System.out.println(orderDetails);
         List<String> statistics = company.getStatistics(0);
         System.out.println(statistics);

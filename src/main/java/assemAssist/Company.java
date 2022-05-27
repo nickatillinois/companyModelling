@@ -181,13 +181,10 @@ public class Company implements TaskObserver {
        return orders;
     }
 
-
     /**
-     * Returns a list consisting of strings. For a pending CarOrder, these are the specifications, the timestamp of ordering and the
-     * estimated production time. For completed orders, these are the specifications, the timestamp
-     * of ordering and the timestamp of completion.
+     * Returns the details of a car order in a CarOrderData object
      *
-     * @return set of CarOrders that are pending or completed and ordered by the given garage holder
+     * @return CarOrderData of the car order that was selected
      * @param ID the id of the order of which the details will be returned
      * @param garageHolder the garage holder who ordered the order belonging to the given ID
      * @throws IllegalArgumentException if the given ID is not strictly positive
@@ -195,7 +192,7 @@ public class Company implements TaskObserver {
      *                                  or if the given garage holder is empty
      *                                  or if only whitespace is given
      */
-    public ArrayList<String> getOrderDetails(int ID, String garageHolder) throws OrderNotFoundException {
+    public CarOrderData getOrderDetails(int ID, String garageHolder) throws IllegalArgumentException, OrderNotFoundException {
         if(ID <= 0) {
             throw new IllegalArgumentException("ID must be strictly positive.");
         }
@@ -213,7 +210,7 @@ public class Company implements TaskObserver {
         pendingOrders.addAll(completedOrders);
         for (CarOrder carOrder : pendingOrders) {
             if (carOrder.getOrderID() == ID ) {
-                return carOrder.getOrderDetails();
+                return carOrder.carOrderData();
             }
         }
         throw new OrderNotFoundException("ID: " + ID + " was not found in pending or completed orders from this garage holder.");

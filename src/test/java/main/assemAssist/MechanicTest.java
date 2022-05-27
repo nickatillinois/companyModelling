@@ -2,16 +2,11 @@ package main.assemAssist;
 
 import assemAssist.*;
 import assemAssist.exceptions.*;
-import assemAssist.workStation.AccessoriesPost;
-import assemAssist.workStation.CarBodyPost;
-import assemAssist.workStation.DrivetrainPost;
-import assemAssist.workStation.WorkStation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.TreeMap;
 

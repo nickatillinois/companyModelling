@@ -278,18 +278,9 @@ public class CarOrderTest {
         CarModel model = new CarModel("A", options, company.getCatalog().getWorkingMinutesWorkstation("A"));
         CarOrder order = new CarOrder("A", model);
         order.setCarModel(model);
-        System.out.println(order.getCarModelAndOptions());
-        boolean gotException = false;
-        try {
-            order.getOrderDetails();
-        }
-        catch(IllegalArgumentException | NullPointerException e){
-            assertEquals("NullPointerException", e.getClass().getSimpleName());
-            gotException = true;
-        }
-        assertTrue(gotException);
+        System.out.println(order.carOrderData());
         order.setEstCompletionTime(LocalDateTime.now());
-        System.out.println(order.getOrderDetails());
+        System.out.println(order.carOrderData());
         order.setCompletionTime(LocalDateTime.now());
         assertEquals(order.getCompletionTime().getDayOfYear(), LocalDateTime.now().getDayOfYear());
         assertEquals(order.getEstCompletionTime().getDayOfYear(), LocalDateTime.now().getDayOfYear());
