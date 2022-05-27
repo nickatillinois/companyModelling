@@ -8,7 +8,7 @@ import assemAssist.exceptions.*;
 import controller.GarageHolderController;
 import controller.ManagerController;
 import controller.MechanicController;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import ui.GarageHolderUI;
@@ -36,7 +36,7 @@ public class UC5_CheckProductionStatisticsTest {
     private Company company;
     private AssemblyLine assemblyLine;
 
-    @BeforeAll
+    @BeforeEach
     void init() throws IllegalCompletionDateException, IllegalConstraintException, IllegalModelException, OptionThenComponentException, OptionAThenOptionBException, RequiredComponentException {
         company = new Company();
         ProductionScheduler productionScheduler = company.getProductionScheduler();
