@@ -212,7 +212,7 @@ public class CarOrder implements StatisticsObservable {
 
     /**
      * Method that returns the data object of this car order.
-     * @returns CarOrderData object representing this car order.
+     * @return CarOrderData object representing this car order.
      */
     public CarOrderData carOrderData() {
         return new CarOrderData(carModel.getModelName(), carModel.getChosenOptions(), ID, garageHolder, orderingTime, estCompletionTime, completionTime, completed);

@@ -11,6 +11,7 @@ controller
 main.assemAssist
 main.assemAssist.comparator
 main.assemAssist.constraint
+main.assemAssist.workStation
 main.controller
 ui
 useCases
