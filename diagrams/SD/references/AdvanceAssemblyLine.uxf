@@ -5,7 +5,7 @@
     <id>UMLFrame</id>
     <coordinates>
       <x>54</x>
-      <y>81</y>
+      <y>0</y>
       <w>1269</w>
       <h>756</h>
     </coordinates>
@@ -18,7 +18,7 @@
     <id>UMLGeneric</id>
     <coordinates>
       <x>135</x>
-      <y>126</y>
+      <y>45</y>
       <w>144</w>
       <h>27</h>
     </coordinates>
@@ -30,7 +30,7 @@ valign=center</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>333</x>
-      <y>126</y>
+      <y>45</y>
       <w>144</w>
       <h>27</h>
     </coordinates>
@@ -42,7 +42,7 @@ valign=center</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>927</x>
-      <y>126</y>
+      <y>45</y>
       <w>144</w>
       <h>27</h>
     </coordinates>
@@ -54,7 +54,7 @@ valign=center</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>198</x>
-      <y>144</y>
+      <y>63</y>
       <w>27</w>
       <h>693</h>
     </coordinates>
@@ -65,7 +65,7 @@ valign=center</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>990</x>
-      <y>144</y>
+      <y>63</y>
       <w>27</w>
       <h>693</h>
     </coordinates>
@@ -76,7 +76,7 @@ valign=center</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>396</x>
-      <y>144</y>
+      <y>63</y>
       <w>27</w>
       <h>693</h>
     </coordinates>
@@ -87,7 +87,7 @@ valign=center</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>207</x>
-      <y>189</y>
+      <y>108</y>
       <w>207</w>
       <h>36</h>
     </coordinates>
@@ -99,7 +99,7 @@ advanceOrders(time : int)</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>198</x>
-      <y>180</y>
+      <y>99</y>
       <w>18</w>
       <h>630</h>
     </coordinates>
@@ -112,7 +112,7 @@ transparency=0</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>531</x>
-      <y>126</y>
+      <y>45</y>
       <w>144</w>
       <h>27</h>
     </coordinates>
@@ -124,7 +124,7 @@ valign=center</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>594</x>
-      <y>144</y>
+      <y>63</y>
       <w>27</w>
       <h>693</h>
     </coordinates>
@@ -135,7 +135,7 @@ valign=center</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>396</x>
-      <y>207</y>
+      <y>126</y>
       <w>18</w>
       <h>486</h>
     </coordinates>
@@ -148,7 +148,7 @@ transparency=0</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>594</x>
-      <y>333</y>
+      <y>252</y>
       <w>18</w>
       <h>27</h>
     </coordinates>
@@ -161,7 +161,7 @@ transparency=0</panel_attributes>
     <id>UMLFrame</id>
     <coordinates>
       <x>99</x>
-      <y>225</y>
+      <y>144</y>
       <w>1206</w>
       <h>486</h>
     </coordinates>
@@ -181,7 +181,7 @@ layer=1002</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>405</x>
-      <y>315</y>
+      <y>234</y>
       <w>207</w>
       <h>36</h>
     </coordinates>
@@ -193,7 +193,7 @@ getWorkStations().size()</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>405</x>
-      <y>342</y>
+      <y>261</y>
       <w>207</w>
       <h>36</h>
     </coordinates>
@@ -205,7 +205,7 @@ nrOfStations : int</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>405</x>
-      <y>369</y>
+      <y>288</y>
       <w>603</w>
       <h>36</h>
     </coordinates>
@@ -217,7 +217,7 @@ getWorkStations().get(nrOfStations - 1).getCurrentOrder()</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>729</x>
-      <y>126</y>
+      <y>45</y>
       <w>144</w>
       <h>27</h>
     </coordinates>
@@ -229,7 +229,7 @@ valign=center</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>792</x>
-      <y>144</y>
+      <y>63</y>
       <w>27</w>
       <h>693</h>
     </coordinates>
@@ -240,7 +240,7 @@ valign=center</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>990</x>
-      <y>387</y>
+      <y>306</y>
       <w>18</w>
       <h>27</h>
     </coordinates>
@@ -253,7 +253,7 @@ transparency=0</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>72</x>
-      <y>180</y>
+      <y>99</y>
       <w>144</w>
       <h>45</h>
     </coordinates>
@@ -266,7 +266,7 @@ update
     <id>Relation</id>
     <coordinates>
       <x>405</x>
-      <y>396</y>
+      <y>315</y>
       <w>603</w>
       <h>36</h>
     </coordinates>
@@ -278,7 +278,7 @@ finishedOrder : CarOrder</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>207</x>
-      <y>225</y>
+      <y>144</y>
       <w>207</w>
       <h>36</h>
     </coordinates>
@@ -290,7 +290,7 @@ null</panel_attributes>
     <id>UMLFrame</id>
     <coordinates>
       <x>315</x>
-      <y>441</y>
+      <y>360</y>
       <w>972</w>
       <h>198</h>
     </coordinates>
@@ -311,7 +311,7 @@ layer=1001</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>405</x>
-      <y>450</y>
+      <y>369</y>
       <w>207</w>
       <h>36</h>
     </coordinates>
@@ -323,7 +323,7 @@ move(null, time : int)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>405</x>
-      <y>567</y>
+      <y>486</y>
       <w>207</w>
       <h>36</h>
     </coordinates>
@@ -335,7 +335,7 @@ move(nextOrder, time : int)</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>1125</x>
-      <y>126</y>
+      <y>45</y>
       <w>144</w>
       <h>27</h>
     </coordinates>
@@ -347,7 +347,7 @@ valign=center</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1188</x>
-      <y>144</y>
+      <y>63</y>
       <w>27</w>
       <h>693</h>
     </coordinates>
@@ -358,7 +358,7 @@ valign=center</panel_attributes>
     <id>UMLFrame</id>
     <coordinates>
       <x>594</x>
-      <y>450</y>
+      <y>369</y>
       <w>144</w>
       <h>54</h>
     </coordinates>
@@ -377,7 +377,7 @@ transparency=0</panel_attributes>
     <id>UMLFrame</id>
     <coordinates>
       <x>594</x>
-      <y>567</y>
+      <y>486</y>
       <w>144</w>
       <h>54</h>
     </coordinates>
@@ -395,7 +395,7 @@ transparency=0</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>405</x>
-      <y>522</y>
+      <y>441</y>
       <w>603</w>
       <h>36</h>
     </coordinates>
@@ -407,7 +407,7 @@ transparency=0</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>1188</x>
-      <y>549</y>
+      <y>468</y>
       <w>18</w>
       <h>27</h>
     </coordinates>
@@ -420,7 +420,7 @@ transparency=0</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>999</x>
-      <y>531</y>
+      <y>450</y>
       <w>207</w>
       <h>36</h>
     </coordinates>
@@ -432,7 +432,7 @@ getNextCarOrder()</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>990</x>
-      <y>540</y>
+      <y>459</y>
       <w>18</w>
       <h>45</h>
     </coordinates>
@@ -445,7 +445,7 @@ transparency=0</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>999</x>
-      <y>558</y>
+      <y>477</y>
       <w>207</w>
       <h>36</h>
     </coordinates>
@@ -457,7 +457,7 @@ nextOrder</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>207</x>
-      <y>675</y>
+      <y>594</y>
       <w>207</w>
       <h>36</h>
     </coordinates>
@@ -469,7 +469,7 @@ finishedOrder : CarOrder</panel_attributes>
     <id>UMLFrame</id>
     <coordinates>
       <x>99</x>
-      <y>729</y>
+      <y>648</y>
       <w>423</w>
       <h>63</h>
     </coordinates>
@@ -485,7 +485,7 @@ layer=1001</panel_attributes>
     <id>UMLGeneric</id>
     <coordinates>
       <x>207</x>
-      <y>756</y>
+      <y>675</y>
       <w>18</w>
       <h>27</h>
     </coordinates>
@@ -498,7 +498,7 @@ transparency=0</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>207</x>
-      <y>738</y>
+      <y>657</y>
       <w>306</w>
       <h>54</h>
     </coordinates>
@@ -510,7 +510,7 @@ completedCarOrders.add(finishedOrder)</panel_attributes>
     <id>UMLSpecialState</id>
     <coordinates>
       <x>63</x>
-      <y>189</y>
+      <y>108</y>
       <w>18</w>
       <h>18</h>
     </coordinates>
@@ -521,7 +521,7 @@ completedCarOrders.add(finishedOrder)</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>405</x>
-      <y>477</y>
+      <y>396</y>
       <w>207</w>
       <h>36</h>
     </coordinates>
@@ -533,7 +533,7 @@ newState : String</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>405</x>
-      <y>594</y>
+      <y>513</y>
       <w>207</w>
       <h>36</h>
     </coordinates>
